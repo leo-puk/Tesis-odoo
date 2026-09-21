@@ -1,0 +1,82 @@
+# Sandbox raiz. Levanta: red aislada, postgres, produccion y el contenedor de control.
+# Los forks NO viven aqui: los crea/destruye el control por run (stacks/fork.compose.yml).
+name: ${COMPOSE_PROJECT_NAME:-odolab}
+
+networks:
+  sandbox:
+    name: ${SANDBOX_NET:-odolab-net}
+
+volumes:
+  pgdata:
+  prod-filestore:
+  oca-cache:
+    name: ${OCA_CACHE_VOLUME:-odolab-oca-cache}
+  runs:
+
+services:
+  db:
+    image: ${PG_IMAGE:-postgres:15}
+    container_name: sbx-db
+    environment:
+      POSTGRES_USER: ${PG_USER:-odoo}
+      POSTGRES_PASSWORD: ${PG_PASSWORD:-odoo}
+      POSTGRES_DB: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks: [sandbox]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${PG_USER:-odoo}"]
+      interval: 5s
+      retries: 20
+
+  prod:
+    build:
+      context: ./images/odoo
+      args:
+        ODOO_VERSION: ${PROD_ODOO_VERSION:-16.0}
+    image: odolab/odoo:${PROD_ODOO_VERSION:-16.0}
+    container_name: sbx-prod
+    depends_on:
+      db: {condition: service_healthy}
+    environment:
+      HOST: db
+      USER: ${PG_USER:-odoo}
+      PASSWORD: ${PG_PASSWORD:-odoo}
+    ports:
+      - "${PROD_HTTP_PORT:-8069}:8069"
+    volumes:
+      - prod-filestore:/var/lib/odoo
+    networks: [sandbox]
+    restart: unless-stopped        # "nunca se debe caer"
+    labels:
+      odolab.role: production
+      odolab.immutable: "true"
+
+  control:
+    build: ./images/control
+    image: odolab/control:latest
+    container_name: sbx-control
+    depends_on:
+      db: {condition: service_healthy}
+    environment:
+      ODOLAB_IN_SANDBOX: "1"
+      PGHOST: db
+      PGUSER: ${PG_USER:-odoo}
+      PGPASSWORD: ${PG_PASSWORD:-odoo}
+      COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME:-odolab}
+      SANDBOX_NET: ${SANDBOX_NET:-odolab-net}
+      FORK_PORT_BASE: ${FORK_PORT_BASE:-8100}
+      PROD_ODOO_VERSION: ${PROD_ODOO_VERSION:-16.0}
+      PG_USER: ${PG_USER:-odoo}
+      PG_PASSWORD: ${PG_PASSWORD:-odoo}
+      PG_DB_PROD: ${PG_DB_PROD:-prod}
+      OCA_CACHE_VOLUME: ${OCA_CACHE_VOLUME:-odolab-oca-cache}
+      MIGRATION_TOOL_PATH: ${MIGRATION_TOOL_PATH:-../tool}
+      ODOLAB_HOST_ROOT: ${ODOLAB_HOST_ROOT:-}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock   # control de los stacks hijos
+      - ./:/workspace
+      - oca-cache:/opt/oca
+    working_dir: /workspace
+    networks: [sandbox]
+    command: ["sleep", "infinity"]

@@ -1,0 +1,4 @@
+.env
+runs/
+custom-addons/*
+!custom-addons/.gitkeep

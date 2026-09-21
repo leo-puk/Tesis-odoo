@@ -1,0 +1,38 @@
+# Stack efimero de un fork. Lo levanta el control con:
+#   docker compose -p odolab-fork-<RUN_ID> -f stacks/fork.compose.yml up -d
+# Variables inyectadas por el control via environment.
+name: odolab-fork-${RUN_ID}
+
+networks:
+  sandbox:
+    name: ${SANDBOX_NET}
+    external: true
+
+volumes:
+  filestore:
+  oca-cache:
+    name: ${OCA_CACHE_VOLUME}
+    external: true
+
+services:
+  odoo:
+    image: odolab/odoo:${FORK_ODOO_VERSION}
+    container_name: sbx-fork-${RUN_ID}
+    environment:
+      HOST: db
+      USER: ${PG_USER}
+      PASSWORD: ${PG_PASSWORD}
+    ports:
+      - "${FORK_HTTP_PORT}:8069"
+    volumes:
+      - filestore:/var/lib/odoo
+      - oca-cache:/opt/oca:ro
+      - ${TOOL_MOUNT}:/opt/tool:ro
+      - ${CUSTOM_ADDONS_MOUNT}:/mnt/extra-addons:ro
+    networks: [sandbox]
+    # sin restart: un fork puede (y debe poder) caerse
+    entrypoint: ["sleep", "infinity"]   # el control dispara odoo-bin por fase
+    labels:
+      odolab.role: fork
+      odolab.run_id: "${RUN_ID}"
+      odolab.arm: "${ARM}"

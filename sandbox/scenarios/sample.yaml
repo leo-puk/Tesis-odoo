@@ -1,0 +1,26 @@
+# Escenario de ejemplo: los tres parametros que pide la tesis + como se evalua.
+name: ventas16a18
+version_from: "16.0"     # -version inicio
+version_to: "18.0"       # -version fin
+modules:                 # -modulos integrados
+  - sale_management
+  - stock
+  - account
+  - purchase
+demo_data: true
+seed: null               # control/seeds/<seed>.py opcional para datos sinteticos
+
+arms: [ours, oca]
+
+# Como se invoca TU herramienta dentro del contenedor fork.
+# Placeholders disponibles: {db} {src} {dst} {modules} {tool}
+tool_cmd: "python3 {tool}/cli.py migrate --db {db} --from {src} --to {dst} --modules {modules}"
+
+compare:
+  schema: true
+  data: true
+  modules: true
+  ignore_tables: [ir_logging, bus_bus, mail_tracking_value, ir_cron_trigger, mail_notification]
+  ignore_columns: [write_date, create_date, write_uid, create_uid, __last_update]
+
+timeout_min: 120

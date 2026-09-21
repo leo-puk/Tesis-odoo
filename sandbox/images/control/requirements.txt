@@ -1,0 +1,5 @@
+psycopg[binary]==3.2.3
+PyYAML==6.0.2
+rich==13.9.4
+typer==0.15.1
+Jinja2==3.1.4
