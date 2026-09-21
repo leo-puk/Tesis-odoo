@@ -1,0 +1,25 @@
+# Prueba de funcionamiento del sandbox: 16.0 -> 17.0, solo modulos core de Odoo.
+# Sin addons externos de la OCA. OpenUpgrade se usa unicamente como motor de
+# migracion de la base de datos (es lo que hace el partner en un proyecto real).
+name: demo1617
+version_from: "16.0"
+version_to: "17.0"
+modules:
+  - sale_management
+  - stock
+  - account
+demo_data: true
+seed: null
+
+# Solo la rama de referencia: todavia no hay herramienta propia que invocar.
+arms: [oca]
+tool_cmd: null
+
+compare:
+  schema: true
+  data: true
+  modules: true
+  ignore_tables: [ir_logging, bus_bus, mail_tracking_value, ir_cron_trigger, mail_notification]
+  ignore_columns: [write_date, create_date, write_uid, create_uid, __last_update]
+
+timeout_min: 120

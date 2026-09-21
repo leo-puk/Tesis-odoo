@@ -58,7 +58,8 @@ def run_cmd(
     version_to: Optional[str] = typer.Option(None, "--version-fin", "--to"),
     modules: Optional[str] = typer.Option(None, "--modulos", help="csv de modulos integrados"),
     name: Optional[str] = typer.Option(None, "--name"),
-    arms: str = typer.Option("ours,oca", "--arms", help="ramas a ejecutar"),
+    arms: Optional[str] = typer.Option(None, "--arms",
+        help="ramas a ejecutar; por defecto las del escenario (ours,oca)"),
     keep: bool = typer.Option(False, "--keep", help="no borrar las DBs resultantes"),
     no_compare: bool = typer.Option(False, "--no-compare"),
 ):
@@ -71,7 +72,9 @@ def run_cmd(
             raise typer.BadParameter("sin escenario hacen falta --name --version-inicio --version-fin")
         sc = Scenario.from_args(name, version_from, version_to,
                                 modules.split(",") if modules else [])
-    sc.arms = [a.strip() for a in arms.split(",") if a.strip()]
+    # solo se pisa el escenario si el flag vino explicito
+    if arms:
+        sc.arms = [a.strip() for a in arms.split(",") if a.strip()]
 
     rd = _run_dir(sc.name)
     rprint(f"[bold]run:[/bold] {rd.name}  ruta {' -> '.join(sc.path)}  modulos {sc.modules}")

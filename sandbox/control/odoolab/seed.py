@@ -6,7 +6,7 @@ from pathlib import Path
 
 from . import docker_ctl as d, pg
 from .config import Scenario
-from .odoo_run import run_odoo, core_addons_path
+from .odoo_run import run_odoo, valid_addons_path
 
 PROD = "sbx-prod"
 
@@ -21,7 +21,7 @@ def init_prod(sc: Scenario, *, run_dir: Path, force=False) -> dict:
 
     mods = ",".join(sc.modules or ["base"])
     extra = [] if sc.demo_data else ["--without-demo=all"]
-    r = run_odoo(PROD, db=db, addons_path=core_addons_path(sc.version_from),
+    r = run_odoo(PROD, db=db, addons_path=valid_addons_path(PROD),
                  init=mods, extra=extra, log_dir=run_dir / "logs", tag="prod-init",
                  timeout_min=sc.timeout_min)
     if not r.ok:
@@ -35,7 +35,7 @@ def init_prod(sc: Scenario, *, run_dir: Path, force=False) -> dict:
         p = d.run([
             "docker", "exec", PROD, "odoo", "shell", "-d", db,
             "--db_host", "db", "--db_user", "odoo", "--db_password", "odoo",
-            f"--addons-path={core_addons_path(sc.version_from)}", "--no-http",
+            f"--addons-path={valid_addons_path(PROD)}", "--no-http",
         ], check=False)
         (run_dir / "logs" / "prod-seed.log").write_text(
             (p.stdout or "") + (p.stderr or ""), encoding="utf-8", errors="replace")

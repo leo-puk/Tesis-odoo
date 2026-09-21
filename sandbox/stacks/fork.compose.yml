@@ -27,8 +27,15 @@ services:
     volumes:
       - filestore:/var/lib/odoo
       - oca-cache:/opt/oca:ro
-      - ${TOOL_MOUNT}:/opt/tool:ro
-      - ${CUSTOM_ADDONS_MOUNT}:/mnt/extra-addons:ro
+      # sintaxis larga: la corta se rompe si la ruta del host tiene espacios
+      - type: bind
+        source: ${TOOL_MOUNT}
+        target: /opt/tool
+        read_only: true
+      - type: bind
+        source: ${CUSTOM_ADDONS_MOUNT}
+        target: /mnt/extra-addons
+        read_only: true
     networks: [sandbox]
     # sin restart: un fork puede (y debe poder) caerse
     entrypoint: ["sleep", "infinity"]   # el control dispara odoo-bin por fase

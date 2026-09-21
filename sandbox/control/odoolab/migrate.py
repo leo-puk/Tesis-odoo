@@ -8,7 +8,7 @@ from pathlib import Path
 
 from . import docker_ctl as d, oca, pg
 from .config import Scenario
-from .odoo_run import run_odoo, core_addons_path
+from .odoo_run import run_odoo, valid_addons_path
 
 
 @dataclass
@@ -74,8 +74,9 @@ def run_arm(sc: Scenario, arm: str, *, run_dir: Path, port_base: int) -> ArmResu
                 oca.ensure_branch(dst)
                 res.oca_commits[dst] = oca.commit(dst)
                 r = run_odoo(container, db=db,
-                             addons_path=oca.addons_path(dst),
-                             upgrade_path=f"{oca.CACHE}/{dst}/openupgrade_scripts/scripts",
+                             addons_path=oca.addons_path(dst, valid_addons_path(container)),
+                             upgrade_path=oca.upgrade_path(dst),
+                             load=oca.SERVER_WIDE,
                              update="all", log_dir=run_dir / "logs", tag=f"{arm}-{dst}-upgrade",
                              timeout_min=sc.timeout_min)
             else:
@@ -94,7 +95,7 @@ def run_arm(sc: Scenario, arm: str, *, run_dir: Path, port_base: int) -> ArmResu
                     step.ok = False
                     step.note = f"tool_cmd salio con {p.returncode}"
                 # validacion: Odoo debe poder levantar y actualizar todo
-                r = run_odoo(container, db=db, addons_path=core_addons_path(dst),
+                r = run_odoo(container, db=db, addons_path=valid_addons_path(container),
                              update="all", log_dir=run_dir / "logs",
                              tag=f"{arm}-{dst}-validate", timeout_min=sc.timeout_min)
 
