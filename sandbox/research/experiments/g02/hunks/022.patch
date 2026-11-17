@@ -1,0 +1,14 @@
+diff --git a/product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py b/product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py
+index ae14021..3fc9a76 100644
+--- a/product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py
++++ b/product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py
+@@ -448,7 +449,8 @@ class TestProductCostPriceAvcoSync(BaseCommon):
+             )
+         )
+         # Change qty before cost
+-        move_in_01.with_context(keep_avco_inventory=True).quantity_done = 0.0
++        move_in_01.with_context(keep_avco_inventory=True).quantity = 0.0
++        move_in_01.with_context(keep_avco_inventory=True).picked = True
+         self.print_svl(
+             "After force quantity to 0 in first IN move Quant:{} Cost:{}".format(
+                 quant.quantity, quant.product_id.standard_price

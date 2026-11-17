@@ -1,0 +1,23 @@
+diff --git a/product_variant_sale_price/static/description/index.html b/product_variant_sale_price/static/description/index.html
+index a583e80..98d47be 100644
+--- a/product_variant_sale_price/static/description/index.html
++++ b/product_variant_sale_price/static/description/index.html
+@@ -368,12 +368,13 @@ ul.auto-toc {
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ !! source digest: sha256:eabb6a04d9381856755a13dc5e8005d1670e608efc95bd388c1f0f0550f2ed14
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/product-variant/tree/16.0/product_variant_sale_price"><img alt="OCA/product-variant" src="https://img.shields.io/badge/github-OCA%2Fproduct--variant-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/product-variant-16-0/product-variant-16-0-product_variant_sale_price"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/product-variant&amp;target_branch=16.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
++<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/product-variant/tree/17.0/product_variant_sale_price"><img alt="OCA/product-variant" src="https://img.shields.io/badge/github-OCA%2Fproduct--variant-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/product-variant-17-0/product-variant-17-0-product_variant_sale_price"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/product-variant&amp;target_branch=17.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+ <p>This module allows to handle sale price at product variant level
+-(product.product) instead of product level (product.template), which is the
+-default.</p>
+-<p>It replaces the extra price configuration with a fix price that can be modified on each variant independently, which
+-allows setting absolute prices instead of relative ones.</p>
++(product.product) instead of product level (product.template), which is
++the default.</p>
++<p>It replaces the extra price configuration with a fix price that can be
++modified on each variant independently, which allows setting absolute
++prices instead of relative ones.</p>
+ <p><strong>Table of contents</strong></p>
+ <div class="contents local topic" id="contents">
+ <ul class="simple">

@@ -1,0 +1,58 @@
+test_pagination_projection_and_no_token_in_archive (test_methodology.HttpTests.test_pagination_projection_and_no_token_in_archive) ... ok
+test_search_rejects_incomplete_population (test_methodology.HttpTests.test_search_rejects_incomplete_population) ... ok
+test_bm25_whitelist_excludes_admin_fields (test_methodology.MethodologyTests.test_bm25_whitelist_excludes_admin_fields) ... ok
+test_excluded_content_is_not_opened (test_methodology.MethodologyTests.test_excluded_content_is_not_opened) ... ok
+test_format_difference_is_not_automatically_verified (test_methodology.MethodologyTests.test_format_difference_is_not_automatically_verified) ... ERROR
+test_invalid_evaluator_correspondences (test_methodology.MethodologyTests.test_invalid_evaluator_correspondences) ... ok
+test_many_changes_can_share_one_evidence (test_methodology.MethodologyTests.test_many_changes_can_share_one_evidence) ... ok
+test_multiple_edge_evidences_and_minimum_depth (test_methodology.MethodologyTests.test_multiple_edge_evidences_and_minimum_depth) ... ok
+test_original_and_normalized_byte_hashes_are_distinct (test_methodology.MethodologyTests.test_original_and_normalized_byte_hashes_are_distinct) ... ok
+test_real_temporary_git_commits_are_fixed (test_methodology.MethodologyTests.test_real_temporary_git_commits_are_fixed) ... ERROR
+test_self_attribute_is_not_automatically_a_method (test_methodology.MethodologyTests.test_self_attribute_is_not_automatically_a_method) ... ok
+test_three_consecutive_jumps_are_separate (test_methodology.MethodologyTests.test_three_consecutive_jumps_are_separate) ... ok
+test_verified_requires_jump_validity_and_conditions (test_methodology.MethodologyTests.test_verified_requires_jump_validity_and_conditions) ... ok
+test_xml_ids_roles_qweb_groups_and_security (test_methodology.MethodologyTests.test_xml_ids_roles_qweb_groups_and_security) ... ok
+test_xml_validator_rule_generalizes_beyond_pilot_names (test_methodology.MethodologyTests.test_xml_validator_rule_generalizes_beyond_pilot_names) ... ok
+test_fixed_seed_selection_replacements_and_unknown_stop (test_methodology.SamplingTests.test_fixed_seed_selection_replacements_and_unknown_stop) ... ok
+test_freeze_refuses_missing_independent_cases (test_methodology.SamplingTests.test_freeze_refuses_missing_independent_cases) ... ok
+test_bfs_cycles_multiorigin_stable_and_depth (test_r2.R2Tests.test_bfs_cycles_multiorigin_stable_and_depth) ... ok
+test_empty_metrics_and_conformity (test_r2.R2Tests.test_empty_metrics_and_conformity) ... ok
+test_evaluation_formulas_require_judgments (test_r2.R2Tests.test_evaluation_formulas_require_judgments) ... ok
+test_explicit_semantic_grouping_preserves_both_evidences (test_r2.R2Tests.test_explicit_semantic_grouping_preserves_both_evidences) ... ok
+test_immutable_build_and_reviewed_filter (test_r2.R2Tests.test_immutable_build_and_reviewed_filter) ... ok
+test_no_execution_and_dynamic_references_warn (test_r2.R2Tests.test_no_execution_and_dynamic_references_warn) ... ok
+test_pipeline_traceability_determinism_baseline_and_versions (test_r2.R2Tests.test_pipeline_traceability_determinism_baseline_and_versions) ... ok
+test_review_narrows_path_to_actual_affected_element (test_r2.R2Tests.test_review_narrows_path_to_actual_affected_element) ... ok
+test_source_switch_filters_derivatives_and_reserved_solutions (test_r2.R2Tests.test_source_switch_filters_derivatives_and_reserved_solutions) ... ok
+test_ten_limit_and_full_summary (test_r2.R2Tests.test_ten_limit_and_full_summary) ... ok
+test_xml_references_and_reject_dtd_and_bad_syntax (test_r2.R2Tests.test_xml_references_and_reject_dtd_and_bad_syntax) ... ok
+
+======================================================================
+ERROR: test_format_difference_is_not_automatically_verified (test_methodology.MethodologyTests.test_format_difference_is_not_automatically_verified)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\USUARIO\Documents\ChatGPT\tesis 3\repo odo\sandbox\r2\tests\test_methodology.py", line 164, in test_format_difference_is_not_automatically_verified
+    ref["to_version"]="17.0"; ref["element"]="field:wrong.name"
+    ^^^
+NameError: name 'ref' is not defined
+
+======================================================================
+ERROR: test_real_temporary_git_commits_are_fixed (test_methodology.MethodologyTests.test_real_temporary_git_commits_are_fixed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\USUARIO\Documents\ChatGPT\tesis 3\repo odo\sandbox\r2\tests\test_methodology.py", line 38, in test_real_temporary_git_commits_are_fixed
+    build(self.manifest, self.db)
+  File "C:\Users\USUARIO\Documents\ChatGPT\tesis 3\repo odo\sandbox\r2\r2\collection.py", line 188, in build
+    source, before, after = read_source(raw, manifest.parent, registry.get("excluded_modules", []) if registry else [])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\Documents\ChatGPT\tesis 3\repo odo\sandbox\r2\r2\collection.py", line 53, in read_source
+    paths = git(repo, "ls-tree", "-r", "-z", "--name-only", rev, "--", prefix).split("\0")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\Documents\ChatGPT\tesis 3\repo odo\sandbox\r2\r2\collection.py", line 32, in git
+    raise ValueError(result.stderr.decode(errors="replace").strip())
+ValueError: fatal: empty string is not a valid pathspec. please use . instead if you meant to match all paths
+
+----------------------------------------------------------------------
+Ran 28 tests in 2.863s
+
+FAILED (errors=2)

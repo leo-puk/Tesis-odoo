@@ -1,0 +1,13 @@
+diff --git a/stock_quant_manual_assign/wizard/assign_manual_quants.py b/stock_quant_manual_assign/wizard/assign_manual_quants.py
+index 79e8c44..cb95794 100644
+--- a/stock_quant_manual_assign/wizard/assign_manual_quants.py
++++ b/stock_quant_manual_assign/wizard/assign_manual_quants.py
+@@ -115,7 +111,7 @@ class AssignManualQuants(models.TransientModel):
+                 and ml.package_id == quant.package_id
+             )
+         )
+-        line["qty"] = sum(move_lines.mapped("reserved_uom_qty"))
++        line["qty"] = sum(move_lines.mapped("quantity_product_uom"))
+         line["selected"] = bool(line["qty"])
+         line["reserved"] = quant.reserved_quantity - line["qty"]
+         return line

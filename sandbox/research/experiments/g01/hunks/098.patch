@@ -1,0 +1,13 @@
+diff --git a/sale_financial_risk/tests/test_partner_sale_risk.py b/sale_financial_risk/tests/test_partner_sale_risk.py
+index 63b3945..7d6ce78 100644
+--- a/sale_financial_risk/tests/test_partner_sale_risk.py
++++ b/sale_financial_risk/tests/test_partner_sale_risk.py
+@@ -95,7 +93,7 @@ class TestPartnerSaleRisk(TransactionCase):
+         )
+         self.sale_order.action_confirm()
+         self.partner.risk_sale_order_include = True
+-        self.assertAlmostEqual(self.partner.risk_sale_order, 100.0)
++        self.assertAlmostEqual(self.partner.risk_sale_order, 115.0)
+         self.assertFalse(self.partner.risk_exception)
+         self.partner.risk_sale_order_limit = 99.0
+         self.assertTrue(self.partner.risk_exception)

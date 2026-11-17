@@ -1,0 +1,13 @@
+diff --git a/account_credit_control/views/credit_control_policy.xml b/account_credit_control/views/credit_control_policy.xml
+index 420ecf7..57147ea 100644
+--- a/account_credit_control/views/credit_control_policy.xml
++++ b/account_credit_control/views/credit_control_policy.xml
+@@ -10,7 +10,7 @@
+                         name="web_ribbon"
+                         title="Archived"
+                         bg_color="bg-danger"
+-                        attrs="{'invisible': [('active', '=', True)]}"
++                        invisible="active"
+                     />
+                 </div>
+                 <group>

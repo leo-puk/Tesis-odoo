@@ -1,0 +1,157 @@
+[
+  {
+    "Id": 1,
+    "Detail": "La carpeta revision corresponde a una etapa previa del sistema. Describe R2 como no implementado y al selector como independiente; el paquete posterior ya incorpora esas funciones. Es necesario unificar la documentación de entrega.",
+    "Type": "Documentación"
+  },
+  {
+    "Id": 2,
+    "Detail": "La API REST de GitHub definida en la Tabla 4 no está implementada en R2. La recolección admite Git local y snapshots, pero no obtiene metadatos de PR, revisiones ni criterios de selección mediante esa API.",
+    "Type": "Desviación"
+  },
+  {
+    "Id": 3,
+    "Detail": "Los descargadores de documentación están separados del constructor R2. Generan archivos e inventarios, pero no los convierten directamente en fuentes del manifiesto que consume el paquete.",
+    "Type": "Integración pendiente"
+  },
+  {
+    "Id": 4,
+    "Detail": "Las descargas usan direcciones mutables. Conservan SHA256 de la copia, pero sus registros no incluyen una fecha de captura ni una revisión upstream fijada. El hash identifica lo descargado; falta completar su procedencia temporal.",
+    "Type": "Trazabilidad incompleta"
+  },
+  {
+    "Id": 5,
+    "Detail": "La colección de demostración cubre únicamente dos archivos del núcleo para 16→17. No acredita el alcance de fuentes y saltos 16→17, 17→18 y 18→19 previsto para R2.",
+    "Type": "Corpus pendiente"
+  },
+  {
+    "Id": 6,
+    "Detail": "La exclusión de evaluación depende de metadatos declarados. El selector aplica correctamente split y la procedencia transitiva, pero no comprueba el corte temporal ni los seis criterios de selección de la tesis.",
+    "Type": "Validación metodológica pendiente"
+  },
+  {
+    "Id": 7,
+    "Detail": "Los XML-ID locales no se normalizan con el nombre del módulo. Una declaración view_order_form puede quedar separada de una referencia sale_advance_payment.view_order_form; también pueden coincidir identificadores locales de módulos distintos.",
+    "Type": "Limitación de implementación"
+  },
+  {
+    "Id": 8,
+    "Detail": "Las llamadas QWeb t-call se registran como elementos, sin una relación de llamada. Esto limita el recorrido entre plantillas.",
+    "Type": "Limitación de implementación"
+  },
+  {
+    "Id": 9,
+    "Detail": "La extracción CSV recoge identificadores, pero no construye sus relaciones semánticas. Falta representar de forma explícita relaciones de seguridad con modelos y grupos.",
+    "Type": "Limitación de implementación"
+  },
+  {
+    "Id": 10,
+    "Detail": "Una referencia self.x puede generar una relación hacia un método aunque x sea un campo. El extractor no resuelve suficientemente esa distinción antes de crear self_reference.",
+    "Type": "Posible relación incorrecta"
+  },
+  {
+    "Id": 11,
+    "Detail": "La categoría verified exige responsable y justificación, pero no evidencia estructurada de vigencia en destino. La revisión puede aceptarse sin registrar por separado cómo se comprobó la aplicabilidad a la versión destino.",
+    "Type": "Validación metodológica incompleta"
+  },
+  {
+    "Id": 12,
+    "Detail": "Se permite agrupar varios fragmentos en un cambio, pero no dividir explícitamente un mismo fragmento en varios cambios semánticos. El modelo no representa completamente esa relación entre evidencia y cambio.",
+    "Type": "Limitación del modelo de datos"
+  },
+  {
+    "Id": 13,
+    "Detail": "El reconocimiento de ciertos cambios está especializado en nombres del ejemplo. attrs, states, invisible, readonly y t-call reciben tratamiento explícito; falta comprobar su generalización con otros casos de construcción.",
+    "Type": "Validación pendiente"
+  },
+  {
+    "Id": 14,
+    "Detail": "Los hashes de archivos se calculan sobre texto decodificado o normalizado. Deben distinguirse de los hashes de los bytes originales para evitar atribuirles una trazabilidad que no representan.",
+    "Type": "Precisión de trazabilidad"
+  },
+  {
+    "Id": 15,
+    "Detail": "Todos los elementos extraídos se utilizan como semillas de profundidad cero. Incluye referencias encontradas en el módulo. La convención debe fijarse metodológicamente porque cambia la interpretación de hallazgos directos e indirectos.",
+    "Type": "Definición metodológica pendiente"
+  },
+  {
+    "Id": 16,
+    "Detail": "NetworkX está implementado, pero su ejecución no está garantizada. Si falta la biblioteca, se usa otro BFS. En las pruebas que ejecuté se utilizó stdlib_bfs_fallback; esa ejecución no acredita el uso efectivo de NetworkX.",
+    "Type": "Desviación del entorno de ejecución"
+  },
+  {
+    "Id": 17,
+    "Detail": "Cuando varias fuentes respaldan la misma arista, el grafo conserva una sola evidencia. La condición not graph.has_edge(...) impide añadir los respaldos posteriores a esa arista.",
+    "Type": "Pérdida de trazabilidad múltiple"
+  },
+  {
+    "Id": 18,
+    "Detail": "El ordenamiento es reproducible, pero su pertinencia no está calibrada con casos reales de construcción. Tener reglas deterministas no demuestra que los primeros resultados sean los más relevantes.",
+    "Type": "Validación pendiente"
+  },
+  {
+    "Id": 19,
+    "Detail": "La consulta mezcla candidatos y verificados por defecto. El resumen cuenta ambos; debe distinguirlos para que “cambios encontrados” no se interprete como cambios confirmados.",
+    "Type": "Presentación y configuración"
+  },
+  {
+    "Id": 20,
+    "Detail": "La vista textual omite información explícita por hallazgo. No presenta claramente el elemento afectado y las versiones origen/destino; en agrupaciones tampoco muestra todos los bloques de evidencia. El JSON contiene más información.",
+    "Type": "Conformidad de presentación incompleta"
+  },
+  {
+    "Id": 21,
+    "Detail": "BM25 indexa el registro JSON completo. Incluye contenido de evidencia junto con metadatos y datos de revisión, que también pueden influir en el ranking. Falta justificar y congelar los campos documentales indexados.",
+    "Type": "Diseño experimental pendiente"
+  },
+  {
+    "Id": 22,
+    "Detail": "El evaluador no permite reproducir todos los parámetros de consulta. No transmite un filtro de estado ni un límite configurable; utiliza los valores predeterminados de retrieve().",
+    "Type": "Reproducibilidad incompleta"
+  },
+  {
+    "Id": 23,
+    "Detail": "No se utilizan pandas, scikit-learn ni statsmodels, aunque aparecen asignados a R2 en la Tabla 4. Las métricas se calculan con Python estándar. Hay que justificar la sustitución o ajustar la implementación según una función metodológica pertinente.",
+    "Type": "Desviación de herramientas"
+  },
+  {
+    "Id": 24,
+    "Detail": "C1 verifica que los cambios citados existan, pero no comprueba su estado, salto y elemento. Una correspondencia humana puede apuntar a un cambio candidato o inadecuado sin que el evaluador la rechace por esos motivos.",
+    "Type": "Validación del evaluador incompleta"
+  },
+  {
+    "Id": 25,
+    "Detail": "Los hallazgos pertinentes ausentes del MIG no se reportan en una categoría diferenciada. El evaluador permite pertinencia sin vinculación a referencias, pero no genera el registro separado previsto en la tesis.",
+    "Type": "Reporte metodológico incompleto"
+  },
+  {
+    "Id": 26,
+    "Detail": "V1 comprueba solo parte de la conformidad exigida. Valida campos y algunas consistencias, pero no el idioma de los textos ni la autenticidad completa de las evidencias contra las fuentes.",
+    "Type": "Indicador parcialmente operacionalizado"
+  },
+  {
+    "Id": 27,
+    "Detail": "T1 termina antes de validar, serializar e imprimir la salida. Actualmente representa tiempo interno de recuperación y preparación del resultado; no todo el tiempo hasta presentar la primera vista y el resumen en la CLI.",
+    "Type": "Diferencia en la medición"
+  },
+  {
+    "Id": 28,
+    "Detail": "El evaluador ejecuta primero las repeticiones del grafo y después las de BM25. No alterna el orden y admite caché declarada como uncontrolled; falta controlar estas condiciones para comparar tiempos.",
+    "Type": "Diseño experimental pendiente"
+  },
+  {
+    "Id": 29,
+    "Detail": "Las once pruebas no cubren varias brechas relevantes. Predominan snapshots sintéticos; faltan pruebas del importador con Git real, identidades entre módulos, relaciones QWeb y seguridad, y casos representativos de los tres saltos.",
+    "Type": "Verificación incompleta"
+  },
+  {
+    "Id": 30,
+    "Detail": "El piloto histórico no demuestra una migración autónoma ni equivalencia funcional. Reutilizó código previamente adaptado y ejecutó las pruebas en una base diferente de la actualizada. Sus tiempos tampoco corresponden al T1 de consulta R2.",
+    "Type": "Límite de la evidencia"
+  },
+  {
+    "Id": 31,
+    "Detail": "La evaluación independiente de tesis sigue pendiente. No se ha acreditado la muestra de 30 MIG, los juicios definitivos ni el cumplimiento de C1 o la diferencia de precisión frente a BM25.",
+    "Type": "Evaluación académica pendiente"
+  }
+]

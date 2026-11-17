@@ -1,0 +1,12 @@
+diff --git a/sale_blanket_order/models/blanket_orders.py b/sale_blanket_order/models/blanket_orders.py
+index e18506b6..e63059c7 100644
+--- a/sale_blanket_order/models/blanket_orders.py
++++ b/sale_blanket_order/models/blanket_orders.py
+@@ -44,7 +42,6 @@ class BlanketOrder(models.Model):
+     partner_id = fields.Many2one(
+         "res.partner",
+         string="Partner",
+-        states=READONLY_FIELD_STATES,
+     )
+     line_ids = fields.One2many(
+         "sale.blanket.order.line", "order_id", string="Order lines", copy=True

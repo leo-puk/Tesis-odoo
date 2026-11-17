@@ -1,0 +1,46 @@
+2026-10-13 19:48:29Z [sale_advance_payment] === fase upgrade ===
+2026-10-13 19:50:04Z [sale_advance_payment] iter 04 upgrade: FALLA rc=0 86s | 1 errores y 3 avisos nuevos | log runs/exp-sale_advance_payment/04-upgrade.log
+2026-10-13 19:50:04Z [sale_advance_payment]   C003 SIN RESOLVER [?/?] ? : FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/odoo/filestore/x_sale_advance_payment_u/d5/d5cce68bf4bb4ab57beaf766f3fb775cf8df0c83'
+2026-10-13 19:50:04Z [sale_advance_payment] fase upgrade: sin_resolver
+2026-10-13 19:50:04Z [sale_advance_payment] === fase test ===
+2026-10-13 19:51:21Z [sale_advance_payment] iter 05 test: FALLA rc=1 71s | 4 errores y 1 avisos nuevos | log runs/exp-sale_advance_payment/05-test.log
+2026-10-13 19:51:24Z [sale_advance_payment]   C004 [?/?] cob=C sale_advance_payment sale_advance_payment/tests/test_sale_advance_payment.py:156: FAIL: TestSaleAdvancePayment.test_01_sale_advance_payment -> hunks 006,007 (nivel 1, 12 lineas)
+2026-10-13 19:52:39Z [sale_advance_payment] iter 06 test: FALLA rc=1 71s | 4 errores y 1 avisos nuevos | log runs/exp-sale_advance_payment/06-test.log
+2026-10-13 19:52:41Z [sale_advance_payment]   C005 [?/?] cob=L sale_advance_payment sale_advance_payment/tests/test_sale_advance_payment.py:156: FAIL: TestSaleAdvancePayment.test_01_sale_advance_payment -> hunks 002,003,004,005,009,010,011,012,013,014,015,016 (nivel 3, 68 lineas)
+2026-10-13 19:53:33Z [sale_advance_payment] iter 07 test: FALLA rc=137 49s | 0 errores y 0 avisos nuevos | log runs/exp-sale_advance_payment/07-test.log
+2026-10-13 19:53:33Z [sale_advance_payment]   rc=137 sin eventos nuevos: no hay que corregir
+2026-10-13 19:53:33Z [sale_advance_payment] fase test: falla_sin_evento
+2026-10-13 19:55:34Z [sale_advance_payment] seed: instalando en 16.0 la BD x_sale_advance_payment_prod con sale,sale_advance_payment
+2026-10-13 19:56:29Z [sale_advance_payment] seed: x_sale_advance_payment_prod lista en 54s, {'tables': 367, 'modules': 567, 'installed': 52}
+2026-10-13 19:56:30Z [sale_advance_payment] seed: instalando en 16.0 la BD x_sale_advance_payment_base con sale
+2026-10-13 19:57:19Z [sale_advance_payment] seed: x_sale_advance_payment_base lista en 49s, {'tables': 365, 'modules': 567, 'installed': 51}
+2026-10-13 19:57:24Z [sale_advance_payment] baseline: fase install sin los modulos del grupo
+2026-10-13 19:58:23Z [sale_advance_payment] baseline: install rc=0 58s, 0 eventos (se descuentan)
+2026-10-13 19:58:25Z [sale_advance_payment] baseline: fase upgrade sin los modulos del grupo
+2026-10-13 19:59:49Z [sale_advance_payment] baseline: upgrade rc=0 83s, 698 eventos (se descuentan)
+2026-10-13 19:59:56Z [sale_advance_payment] === fase install ===
+2026-10-13 20:00:04Z [sale_advance_payment] iter 01 install: FALLA rc=255 4s | 2 errores y 0 avisos nuevos | log runs/exp-sale_advance_payment/01-install.log
+2026-10-13 20:00:05Z [sale_advance_payment]   C001 [A/manifest_version] cob=L sale_advance_payment : Failed to load registry  -> hunks 001 (nivel 2, 2 lineas)
+2026-10-13 20:01:07Z [sale_advance_payment] iter 02 install: FALLA rc=255 56s | 2 errores y 2 avisos nuevos | log runs/exp-sale_advance_payment/02-install.log
+2026-10-13 20:01:08Z [sale_advance_payment]   C002 [D/attrs_states] cob=L sale_advance_payment sale_advance_payment/views/sale_view.xml:3: Failed to load registry  -> hunks 008,009,010 (nivel 1, 6 lineas)
+2026-10-13 20:02:19Z [sale_advance_payment] iter 03 install: OK rc=0 64s | 0 errores y 1 avisos nuevos | log runs/exp-sale_advance_payment/03-install.log
+2026-10-13 20:02:19Z [sale_advance_payment]   C003 aviso [?] -: /usr/lib/python3/dist-packages/odoo/fields.py:540: UserWarning: Since Odoo 17, property account.payment.sale_id.states is no longer supporte
+2026-10-13 20:02:19Z [sale_advance_payment] fase install: ok
+2026-10-13 20:02:19Z [sale_advance_payment] === fase upgrade ===
+2026-10-13 20:03:56Z [sale_advance_payment] iter 04 upgrade: OK rc=0 89s | 0 errores y 3 avisos nuevos | log runs/exp-sale_advance_payment/04-upgrade.log
+2026-10-13 20:03:56Z [sale_advance_payment]   C004 aviso [?] sale_advance_payment: Can't render custom view sale_advance_payment.view_order_form for model sale.order. Assuming you are migrating between major versions of Odo
+2026-10-13 20:03:56Z [sale_advance_payment]   C005 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model account.voucher.wizard 
+2026-10-13 20:03:56Z [sale_advance_payment] fase upgrade: ok
+2026-10-13 20:03:56Z [sale_advance_payment] === fase test ===
+2026-10-13 20:05:05Z [sale_advance_payment] iter 05 test: FALLA rc=1 65s | 4 errores y 1 avisos nuevos | log runs/exp-sale_advance_payment/05-test.log
+2026-10-13 20:05:07Z [sale_advance_payment]   C006 [?/?] cob=C sale_advance_payment sale_advance_payment/tests/test_sale_advance_payment.py:156: FAIL: TestSaleAdvancePayment.test_01_sale_advance_payment -> hunks 006,007 (nivel 1, 12 lineas)
+2026-10-13 20:06:11Z [sale_advance_payment] iter 06 test: FALLA rc=1 60s | 4 errores y 1 avisos nuevos | log runs/exp-sale_advance_payment/06-test.log
+2026-10-13 20:06:12Z [sale_advance_payment]   C007 [?/?] cob=C sale_advance_payment sale_advance_payment/tests/test_sale_advance_payment.py:156: FAIL: TestSaleAdvancePayment.test_01_sale_advance_payment -> hunks 002 (nivel 3, 2 lineas)
+2026-10-13 20:07:21Z [sale_advance_payment] iter 07 test: FALLA rc=1 65s | 4 errores y 1 avisos nuevos | log runs/exp-sale_advance_payment/07-test.log
+2026-10-13 20:07:24Z [sale_advance_payment]   C008 [?/?] cob=C sale_advance_payment sale_advance_payment/tests/test_sale_advance_payment.py:156: FAIL: TestSaleAdvancePayment.test_01_sale_advance_payment -> hunks 003 (nivel 3, 4 lineas)
+2026-10-13 20:08:44Z [sale_advance_payment] iter 08 test: FALLA rc=1 75s | 4 errores y 0 avisos nuevos | log runs/exp-sale_advance_payment/08-test.log
+2026-10-13 20:08:45Z [sale_advance_payment]   C009 [?/?] cob=C sale_advance_payment sale_advance_payment/tests/test_sale_advance_payment.py:156: FAIL: TestSaleAdvancePayment.test_01_sale_advance_payment -> hunks 004,005 (nivel 3, 10 lineas)
+2026-10-13 20:09:47Z [sale_advance_payment] iter 09 test: FALLA rc=1 58s | 4 errores y 0 avisos nuevos | log runs/exp-sale_advance_payment/09-test.log
+2026-10-13 20:09:48Z [sale_advance_payment]   C010 [?/?] cob=C sale_advance_payment sale_advance_payment/tests/test_sale_advance_payment.py:156: FAIL: TestSaleAdvancePayment.test_01_sale_advance_payment -> hunks 011,012,013,014 (nivel 3, 41 lineas)
+2026-10-13 20:10:50Z [sale_advance_payment] iter 10 test: OK rc=0 58s | 0 errores y 0 avisos nuevos | log runs/exp-sale_advance_payment/10-test.log
+2026-10-13 20:10:50Z [sale_advance_payment] fase test: ok

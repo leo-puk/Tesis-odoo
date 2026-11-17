@@ -1,0 +1,15 @@
+diff --git a/account_credit_control/models/credit_control_policy.py b/account_credit_control/models/credit_control_policy.py
+index 0e7230d..205a9e1 100644
+--- a/account_credit_control/models/credit_control_policy.py
++++ b/account_credit_control/models/credit_control_policy.py
+@@ -224,9 +224,7 @@ class CreditControlPolicy(models.Model):
+         return (manual_lines, policy_lines_generated, report)
+ 
+     @api.model
+-    def _name_search(
+-        self, name="", args=None, operator="ilike", limit=100, name_get_uid=None
+-    ):
++    def _name_search(self, name, domain=None, operator="ilike", limit=None, order=None):
+         """Alternative implementation for domain on account, equivalent to
+         domain="[('account_ids', 'in', property_account_receivable_id)]"
+         """

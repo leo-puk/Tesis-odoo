@@ -1,0 +1,13 @@
+diff --git a/product_variant_sale_price/hooks.py b/product_variant_sale_price/hooks.py
+index 775cc0f..f38770b 100644
+--- a/product_variant_sale_price/hooks.py
++++ b/product_variant_sale_price/hooks.py
+@@ -19,6 +19,6 @@ def set_sale_price_on_variant(cr, registry, template_id=None):
+     """
+     if template_id:
+         sql += "AND pt.id = %s"
+-        cr.execute(sql, (template_id,))
++        env.cr.execute(sql, (template_id,))
+     else:
+-        cr.execute(sql)
++        env.cr.execute(sql)

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "odoo-core-images-16-17",
+    "kind": "official_code",
+    "split": "construction",
+    "parent_ids": [],
+    "format": "snapshot",
+    "before_dir": "core16",
+    "after_dir": "core17",
+    "from_version": "16.0",
+    "to_version": "17.0",
+    "before_provenance": "odolab/odoo:16.0 sha256:2e5298252098ed124d7cc34a1495278adda37ff257a43894bbccbfe433727566",
+    "after_provenance": "odolab/odoo:17.0 sha256:754e4fe5fdb5eb7d5ac789073e02d68f536f988f5389f07c119f1368a0bc5b0c",
+    "license": "Odoo Community; preserve upstream licensing and copyright headers",
+    "scope": "Only odoo/fields.py and odoo/addons/base/models/ir_ui_view.py; not a complete Odoo corpus"
+  }
+]

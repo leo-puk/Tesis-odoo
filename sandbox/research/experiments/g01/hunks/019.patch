@@ -1,0 +1,13 @@
+diff --git a/server_action_mass_edit/README.rst b/server_action_mass_edit/README.rst
+index e492995..e65635c 100644
+--- a/server_action_mass_edit/README.rst
++++ b/server_action_mass_edit/README.rst
+@@ -73,7 +73,7 @@ Configuration
+ -  This module plays nicely with server_action_domain, allowing you to
+    limit the mass editing action with a domain.
+ 
+-.. |image| image:: https://raw.githubusercontent.com/OCA/server-ux/17.0/server_action_mass_edit/static/description/mass_editing_form.png
++.. |Configuration| image:: https://raw.githubusercontent.com/OCA/server-ux/17.0/server_action_mass_edit/static/description/mass_editing_form.png
+ 
+ Usage
+ =====

@@ -1,0 +1,11 @@
+{
+  "sources": {
+    "odoo-diff": {
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "from_revision": "16.0",
+      "to_revision": "17.0",
+      "context_units": []
+    }
+  }
+}

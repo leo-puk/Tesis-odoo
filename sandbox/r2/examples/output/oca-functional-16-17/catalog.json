@@ -1,0 +1,13 @@
+{
+  "allowed_urls": [
+    "https://github.com/odoo/odoo/compare/16.0...17.0",
+    "https://github.com/OCA/sale-workflow/pull/1"
+  ],
+  "excluded_urls": [],
+  "oca_repositories": [
+    "OCA/sale-workflow"
+  ],
+  "oca_addons": [
+    "sale_advance_payment"
+  ]
+}

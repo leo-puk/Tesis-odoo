@@ -1,0 +1,17 @@
+diff --git a/sale_blanket_order/tests/test_blanket_orders.py b/sale_blanket_order/tests/test_blanket_orders.py
+index b7bc6c9a..37a56cfe 100644
+--- a/sale_blanket_order/tests/test_blanket_orders.py
++++ b/sale_blanket_order/tests/test_blanket_orders.py
+@@ -401,10 +401,10 @@ class TestSaleBlanketOrders(common.TransactionCase):
+         wizard2 = self.blanket_order_wiz_obj.with_context(
+             active_id=blanket_order.id, active_model="sale.blanket.order"
+         ).create({})
+-        wizard2.line_ids.filtered(lambda l: l.product_id == self.product).write(
++        wizard2.line_ids.filtered(lambda line: line.product_id == self.product).write(
+             {"qty": 20.0}
+         )
+-        wizard2.line_ids.filtered(lambda l: l.product_id == self.product2).write(
++        wizard2.line_ids.filtered(lambda line: line.product_id == self.product2).write(
+             {"qty": 0}
+         )
+         wizard2.sudo().create_sale_order()

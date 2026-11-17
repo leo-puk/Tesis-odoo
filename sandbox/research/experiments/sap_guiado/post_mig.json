@@ -1,0 +1,11 @@
+{
+  "sale_advance_payment": {
+    "commits": 10,
+    "fix": [
+      "[FIX] sale_advance_payment: Use signed amount when computing residuals",
+      "[FIX]sale_advance_payment: Amount residual with signed invoice amount",
+      "[FIX] sale_advance_payment: posting many invoices did not reconcile advance payments",
+      "[FIX] sale_advance_payment: fix invoice paid amount"
+    ]
+  }
+}

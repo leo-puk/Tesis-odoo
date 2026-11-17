@@ -1,0 +1,13 @@
+diff --git a/sale_financial_risk/__manifest__.py b/sale_financial_risk/__manifest__.py
+index 2f310fa..27d5a63 100644
+--- a/sale_financial_risk/__manifest__.py
++++ b/sale_financial_risk/__manifest__.py
+@@ -4,7 +4,7 @@
+ {
+     "name": "Sale Financial Risk",
+     "summary": "Manage partner risk in sales orders",
+-    "version": "16.0.1.1.2",
++    "version": "17.0.1.0.0",
+     "category": "Sales Management",
+     "license": "AGPL-3",
+     "author": "Tecnativa, Odoo Community Association (OCA)",

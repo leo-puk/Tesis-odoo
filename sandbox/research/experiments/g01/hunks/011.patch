@@ -1,0 +1,13 @@
+diff --git a/stock_quant_manual_assign/views/stock_move_view.xml b/stock_quant_manual_assign/views/stock_move_view.xml
+index 695ce7e..6d964fa 100644
+--- a/stock_quant_manual_assign/views/stock_move_view.xml
++++ b/stock_quant_manual_assign/views/stock_move_view.xml
+@@ -5,7 +5,7 @@
+         <field name="model">stock.picking</field>
+         <field name="inherit_id" ref="stock.view_picking_form" />
+         <field name="arch" type="xml">
+-            <button name="action_show_details" position="before">
++            <button name="action_assign_serial" position="before">
+                 <button
+                     name="%(assign_manual_quants_action)d"
+                     type="action"

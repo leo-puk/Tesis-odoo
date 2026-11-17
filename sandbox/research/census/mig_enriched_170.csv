@@ -1,0 +1,1709 @@
+repo,module,depends,n_oca_deps,core_deps,mig_added,mig_removed,n_hunks,n_hunks_behaviour,n_hunks_guide,n_hunks_sin_guia,n_hunks_admin,n_hunks_estilo,guide_tasks,mig_touches_module_whole
+account-analytic,account_analytic_account_tag,account_analytic_tag,1,,29,29,2,1,1,0,0,1,G17-01,False
+account-analytic,account_analytic_distribution_manual,account,0,account,360,318,29,25,7,18,4,0,G17-01 G17-02 G17-04 G17-07 G17-12,False
+account-analytic,account_analytic_document_date,account account_reconcile_oca,1,account,39,36,17,6,4,2,11,0,G17-01 G17-04 G17-07,False
+account-analytic,account_analytic_line_name_text,analytic,0,analytic,1,1,1,1,1,0,0,0,G17-01,False
+account-analytic,account_analytic_organization,analytic contacts account,0,analytic contacts account,8,13,3,3,2,1,0,0,G17-01 G17-03,False
+account-analytic,account_analytic_parent,account analytic,0,account analytic,13,17,7,6,4,2,0,1,G17-01 G17-03 G17-04 G17-09,False
+account-analytic,account_analytic_required,account_usability,1,,16,1,4,1,1,0,3,0,G17-01,False
+account-analytic,account_analytic_sequence,analytic,0,analytic,5,4,4,1,1,0,3,0,G17-04,False
+account-analytic,account_analytic_tag,account analytic,0,account analytic,22,11,9,9,3,6,0,0,G17-01 G17-07 G17-09,False
+account-analytic,account_move_update_analytic,account,0,account,28,18,16,8,4,4,6,0,G17-01 G17-07 G17-09,False
+account-analytic,analytic_base_department,account hr,0,account hr,3,3,3,2,1,1,0,1,G17-01,False
+account-analytic,analytic_partner,account,0,account,11,4,5,2,1,1,3,0,G17-01,False
+account-analytic,hr_timesheet_analytic_tag,hr_timesheet account_analytic_tag,1,hr_timesheet,18,8,7,4,1,3,3,0,G17-01,False
+account-analytic,mrp_stock_analytic,mrp_account stock_analytic,1,mrp_account,9,26,5,5,1,4,0,0,G17-01,False
+account-analytic,pos_analytic_by_config,point_of_sale,0,point_of_sale,23,71,10,4,2,2,6,0,G17-01 G17-02,False
+account-analytic,product_analytic,account,0,account,64,2,7,2,1,1,5,0,G17-01,False
+account-analytic,purchase_analytic,purchase base_view_inheritance_extension,1,purchase,82,70,7,7,5,2,0,0,G17-01 G17-07 G17-13,False
+account-analytic,purchase_analytic_tag,purchase account_analytic_tag,1,purchase,4,5,5,5,1,4,0,0,G17-01,False
+account-analytic,purchase_request_analytic,purchase_request,1,,127,100,26,12,3,9,14,0,G17-01 G17-07 G17-13,False
+account-analytic,purchase_stock_analytic,purchase_stock stock_analytic,1,purchase_stock,11,9,7,1,1,0,5,1,G17-01,False
+account-analytic,sale_analytic_tag,sale account_analytic_tag,1,sale,11,11,5,2,1,1,3,0,G17-01,False
+account-analytic,stock_analytic,stock_account analytic,0,stock_account analytic,7,5,8,3,1,2,3,2,G17-01,False
+account-analytic,stock_landed_costs_analytic,stock_landed_costs analytic,0,stock_landed_costs analytic,17,5,4,2,1,1,0,2,G17-01,False
+account-analytic,stock_picking_analytic,stock_analytic base_view_inheritance_extension,2,,14,26,8,5,2,3,3,0,G17-01 G17-07,False
+account-budgeting,account_budget_oca,account,0,account,29,27,11,10,7,3,1,0,G17-01 G17-07 G17-10,False
+account-closing,account_cutoff_accrual_subscription,account_cutoff_start_end_dates,1,,43,34,11,11,5,6,0,0,G17-01 G17-07,False
+account-closing,account_cutoff_base,account,0,account,55,83,35,26,18,8,9,0,G17-01 G17-02 G17-03 G17-07 G17-09,False
+account-closing,account_cutoff_picking,account_cutoff_base purchase_stock sale_stock,1,purchase_stock sale_stock,27,44,14,6,3,3,8,0,G17-01 G17-02 G17-07,False
+account-closing,account_cutoff_start_end_dates,account_cutoff_base account_invoice_start_end_dates,2,,26,36,12,5,4,1,7,0,G17-01 G17-02 G17-07 G17-09,False
+account-closing,account_invoice_start_end_dates,account,0,account,34,25,13,5,5,0,8,0,G17-01 G17-07 G17-09,False
+account-closing,account_move_cutoff,account account_invoice_start_end_dates,1,account,371,577,111,76,7,69,34,1,G17-01 G17-07 G17-10,False
+account-financial-reporting,account_financial_report,account date_range report_xlsx,2,account,53,72,17,15,12,3,0,2,G17-01 G17-07 G17-12,False
+account-financial-reporting,account_move_line_report_xls,account report_xlsx_helper,1,account,4,4,4,2,1,1,0,2,G17-01,False
+account-financial-reporting,account_purchase_stock_report_non_billed,account_sale_stock_report_non_billed purchase_stock_picking_invoice_link purchase_stock,2,purchase_stock,31,33,25,25,1,24,0,0,G17-01,False
+account-financial-reporting,account_sale_stock_report_non_billed,stock_picking_invoice_link,1,,55,75,26,26,4,22,0,0,G17-01 G17-09 G17-10,False
+account-financial-reporting,account_tax_balance,account date_range,1,account,6,6,5,5,3,2,0,0,G17-01 G17-04 G17-07,False
+account-financial-reporting,mis_builder_cash_flow,mis_builder,1,,2,2,2,2,2,0,0,0,G17-01 G17-07,False
+account-financial-reporting,mis_template_financial_report,mis_builder,1,,4,7,3,3,2,1,0,0,G17-01 G17-07,False
+account-financial-reporting,partner_statement,account report_xlsx report_xlsx_helper,2,account,100,101,13,8,3,5,0,5,G17-01 G17-07 G17-10,False
+account-financial-tools,account_account_tag_code,account account_usability,1,account,212,20,12,5,3,2,7,0,G17-01 G17-03 G17-13,False
+account-financial-tools,account_asset_management,account report_xlsx_helper,1,account,156,174,63,59,26,33,0,4,G17-01 G17-03 G17-06 G17-07 G17-09,False
+account-financial-tools,account_asset_management_stock_lot,account_asset_management stock,1,stock,3,6,2,2,2,0,0,0,G17-01 G17-07,False
+account-financial-tools,account_bank_statement_chatter,account_statement_base,1,,2,2,1,1,1,0,0,0,G17-01,False
+account-financial-tools,account_chart_update,account,0,account,13,6,9,2,1,1,3,4,G17-01,False
+account-financial-tools,account_chart_update_l10n_eu_oss,account_chart_update l10n_eu_oss,1,l10n_eu_oss,1,1,1,1,1,0,0,0,G17-01,False
+account-financial-tools,account_check_deposit,account,0,account,85,104,21,20,6,14,0,1,G17-01 G17-07,False
+account-financial-tools,account_fiscal_month,account date_range,1,account,5,1,4,1,1,0,3,0,G17-01,False
+account-financial-tools,account_fiscal_year,account,0,account,9,7,5,1,1,0,4,0,G17-01,False
+account-financial-tools,account_journal_lock_date,account,0,account,1,1,1,1,1,0,0,0,G17-01,False
+account-financial-tools,account_journal_restrict_mode,account,0,account,46,10,6,6,3,3,0,0,G17-01 G17-04 G17-13,False
+account-financial-tools,account_loan,account,0,account,61,547,94,42,8,34,52,0,G17-07 G17-14,False
+account-financial-tools,account_lock_date_update,account,0,account,13,7,5,2,1,1,3,0,G17-01,False
+account-financial-tools,account_lock_to_date,account,0,account,4,6,5,2,1,1,0,3,G17-01,False
+account-financial-tools,account_move_budget,account date_range,1,account,10,11,6,2,2,0,3,1,G17-01 G17-07,False
+account-financial-tools,account_move_line_purchase_info,purchase_stock base_view_inheritance_extension,1,purchase_stock,15,13,11,8,3,5,0,3,G17-01 G17-07 G17-13,False
+account-financial-tools,account_move_line_sale_info,account_move_line_stock_info sale_stock,1,sale_stock,54,58,25,12,4,8,9,4,G17-01 G17-03 G17-04,False
+account-financial-tools,account_move_line_tax_editable,account,0,account,15,10,7,4,2,2,3,0,G17-01 G17-09,False
+account-financial-tools,account_move_name_sequence,account,0,account,44,76,18,18,3,15,0,0,G17-01 G17-04 G17-07,False
+account-financial-tools,account_move_post_date_user,account,0,account,2,2,2,1,1,0,0,1,G17-01,False
+account-financial-tools,account_move_print,account,0,account,9,9,3,3,1,2,0,0,G17-01,False
+account-financial-tools,account_move_template,account,0,account,23,25,11,10,9,1,0,1,G17-01 G17-07 G17-09,False
+account-financial-tools,account_netting,account,0,account,7,6,7,4,2,2,3,0,G17-01 G17-07,False
+account-financial-tools,account_partner_required,account,0,account,6,7,4,1,1,0,3,0,G17-01,False
+account-financial-tools,account_sequence_option,account base_sequence_option,1,account,23,10,6,3,1,2,3,0,G17-01,False
+account-financial-tools,account_spread_cost_revenue,account,0,account,147,140,56,53,25,28,3,0,G17-01 G17-07 G17-09,False
+account-financial-tools,account_spread_cost_revenue_enhanced,account_spread_cost_revenue,1,,12,2,5,2,1,1,3,0,G17-01,False
+account-financial-tools,account_tax_repartition_line_tax_group_account,account,0,account,8,12,4,4,1,3,0,0,G17-01,False
+account-financial-tools,account_usability,account,0,account,5,277,9,9,3,6,0,0,G17-01 G17-07 G17-10,False
+account-financial-tools,purchase_unreconciled,account_move_line_purchase_info purchase_stock,1,purchase_stock,34,65,9,9,4,5,0,0,G17-01 G17-07 G17-10,False
+account-fiscal-rule,account_avatax_oca,sale_stock base_geolocalize,0,sale_stock base_geolocalize,60,41,30,24,15,9,0,6,G17-01 G17-03 G17-04 G17-06 G17-07 G17-13,False
+account-fiscal-rule,account_avatax_sale_oca,account_avatax_oca sale_stock,1,sale_stock,24,18,13,9,5,4,0,4,G17-01 G17-07,False
+account-fiscal-rule,account_avatax_website_sale,account_avatax_sale_oca website_sale,1,website_sale,9,3,5,2,1,1,3,0,G17-01,False
+account-fiscal-rule,account_ecotax,account,0,account,26,43,17,16,12,4,0,1,G17-01 G17-07,False
+account-fiscal-rule,account_ecotax_sale,account_ecotax sale,1,sale,6,10,4,4,4,0,0,0,G17-01 G17-07,False
+account-fiscal-rule,account_ecotax_tax,account_ecotax account_tax_python,1,account_tax_python,1,1,1,1,1,0,0,0,G17-01,False
+account-fiscal-rule,account_fiscal_position_autodetect_optional_vies,account base_vat,0,account base_vat,23,19,10,7,2,5,3,0,G17-01 G17-07,False
+account-fiscal-rule,account_fiscal_position_partner_type,account,0,account,17,13,8,5,3,2,3,0,G17-01 G17-07,False
+account-fiscal-rule,l10n_eu_oss_oca,account account_fiscal_position_partner_type,1,account,51,36,14,7,4,3,3,4,G17-01 G17-02 G17-07 G17-10,False
+account-invoice-reporting,account_comment_template,account base_comment_template,1,account,19,3,5,2,1,1,3,0,G17-01,False
+account-invoice-reporting,account_invoice_bank_details,account,0,account,92,88,15,4,1,3,11,0,G17-01,False
+account-invoice-reporting,account_invoice_line_report,account,0,account,1,1,1,1,1,0,0,0,G17-01,False
+account-invoice-reporting,account_invoice_line_sale_line_position,sale_order_line_position,1,,2,4,4,2,1,1,0,2,G17-01,False
+account-invoice-reporting,account_invoice_production_lot,account stock_picking_invoice_link sale_management,1,account sale_management,67,81,11,11,1,10,0,0,G17-01,False
+account-invoice-reporting,account_invoice_report_grouped_by_picking,stock_picking_invoice_link,1,,76,47,23,15,1,14,8,0,G17-01,False
+account-invoice-reporting,partner_time_to_pay,account,0,account,23,12,7,4,1,3,3,0,G17-01,False
+account-invoicing,account_global_discount,account base_global_discount,1,account,94,62,26,25,7,18,1,0,G17-01 G17-07 G17-09,False
+account-invoicing,account_invoice_auto_send_by_email,account account_invoice_transmit_method queue_job,2,account,27,20,9,9,1,8,0,0,G17-01,False
+account-invoicing,account_invoice_block_payment,account,0,account,11,3,2,2,2,0,0,0,G17-01 G17-07,False
+account-invoicing,account_invoice_blocking,account,0,account,15,3,7,1,1,0,6,0,G17-01,False
+account-invoicing,account_invoice_crm_tag,sale,0,sale,12,2,5,2,2,0,3,0,G17-01 G17-07,False
+account-invoicing,account_invoice_customer_no_autofollow,account,0,account,55,74,25,2,2,0,19,4,G17-01 G17-10,False
+account-invoicing,account_invoice_date_due,account,0,account,19,16,9,7,3,4,2,0,G17-01 G17-07,False
+account-invoicing,account_invoice_discount_display_amount,base account,0,base account,4,4,4,1,1,0,3,0,G17-01,False
+account-invoicing,account_invoice_fixed_discount,account,0,account,88,112,34,2,1,1,30,2,G17-01,False
+account-invoicing,account_invoice_mass_sending,account queue_job,1,account,107,173,12,12,3,9,0,0,G17-01 G17-07,False
+account-invoicing,account_invoice_pricelist,account sale_management,0,account sale_management,41,18,14,11,4,7,3,0,G17-01 G17-04 G17-07,False
+account-invoicing,account_invoice_refund_link,account,0,account,14,22,10,10,4,6,0,0,G17-01 G17-04 G17-07 G17-09,False
+account-invoicing,account_invoice_section_sale_order,account sale,0,account sale,11,2,5,1,1,0,4,0,G17-01,False
+account-invoicing,account_invoice_show_currency_rate,account,0,account,7,2,3,3,2,1,0,0,G17-01 G17-07,False
+account-invoicing,account_invoice_supplier_ref_unique,account,0,account,19,33,7,6,3,3,0,1,G17-01 G17-07 G17-10,False
+account-invoicing,account_invoice_supplierinfo_update,account,0,account,14,15,4,4,3,1,0,0,G17-01 G17-07 G17-09,False
+account-invoicing,account_invoice_transmit_method,account base_view_inheritance_extension,1,account,17,34,7,7,4,3,0,0,G17-01 G17-07 G17-09,False
+account-invoicing,account_invoice_triple_discount,account,0,account,6,6,4,4,2,2,0,0,G17-01 G17-04,False
+account-invoicing,account_invoice_warn_message,account,0,account,2,2,2,2,2,0,0,0,G17-01 G17-07,False
+account-invoicing,account_mail_autosubscribe,mail_autosubscribe account,1,account,1,1,1,1,1,0,0,0,G17-01,False
+account-invoicing,account_manual_currency,account,0,account,111,127,19,13,3,10,5,1,G17-01 G17-07,False
+account-invoicing,account_menu_invoice_refund,account,0,account,1,1,1,1,1,0,0,0,G17-01,False
+account-invoicing,account_move_cancel_confirm,base_cancel_confirm account,1,account,1,1,1,1,1,0,0,0,G17-01,False
+account-invoicing,account_move_tier_validation,account base_tier_validation,1,account,5,2,5,1,1,0,3,1,G17-01,False
+account-invoicing,partner_invoicing_mode,account base_partition queue_job sale,2,account sale,51,46,16,10,3,7,6,0,G17-01 G17-07 G17-10,False
+account-invoicing,portal_account_personal_data_only,account,0,account,28,12,9,6,2,4,3,0,G17-01 G17-04,False
+account-invoicing,product_form_account_move_line_link,account,0,account,1,1,1,1,1,0,0,0,G17-01,False
+account-invoicing,purchase_stock_picking_return_invoicing,purchase_stock,0,purchase_stock,17,27,13,13,7,6,0,0,G17-01 G17-07 G17-09 G17-14,False
+account-invoicing,sale_invoicing_date_selection,sale,0,sale,63,14,10,7,1,6,3,0,G17-01,False
+account-invoicing,sale_order_invoicing_grouping_criteria,sale_management,0,sale_management,35,25,6,3,2,1,3,0,G17-01 G17-07 G17-10,False
+account-invoicing,sale_order_invoicing_qty_percentage,sale,0,sale,17,29,4,3,3,0,1,0,G17-01 G17-07 G17-14,False
+account-invoicing,sale_order_type_whole_delivered_invoiceability,sale_order_type sale_order_whole_delivered_invoiceability,2,,1,1,1,1,1,0,0,0,G17-01,False
+account-invoicing,sale_order_whole_delivered_invoiceability,sale,0,sale,9,12,5,5,2,3,0,0,G17-01 G17-14,False
+account-invoicing,sale_timesheet_invoice_description,sale_timesheet,0,sale_timesheet,44,34,20,6,3,3,14,0,G17-01 G17-07 G17-14,False
+account-invoicing,stock_account_move_reset_to_draft,purchase_stock,0,purchase_stock,4,8,3,3,1,2,0,0,G17-01,False
+account-invoicing,stock_picking_invoicing,stock account stock_picking_invoice_link base_view_inheritance_extension,2,stock account,150,168,38,14,6,8,22,2,G17-01 G17-07 G17-09,False
+account-invoicing,stock_picking_invoicing_incoterm,sale_stock,0,sale_stock,483,23,5,1,1,0,4,0,G17-01,False
+account-invoicing,stock_picking_return_refund_option,stock_account purchase_stock sale_stock,0,stock_account purchase_stock sale_stock,17,10,10,7,2,5,3,0,G17-07 G17-09,False
+account-payment,account_due_list,account,0,account,5,4,5,5,3,2,0,0,G17-01 G17-04 G17-07,False
+account-payment,account_due_list_aging_comment,account_due_list,1,,39,31,19,1,1,0,18,0,G17-01,False
+account-payment,account_due_list_payment_mode,account_payment_partner account_due_list,2,,5,1,4,1,1,0,3,0,G17-01,False
+account-payment,account_payment_multi_deduction,account,0,account,107,82,40,16,4,12,24,0,G17-01 G17-07 G17-09,False
+account-payment,account_payment_promissory_note,account,0,account,15,36,7,7,3,4,0,0,G17-01 G17-07,False
+account-payment,account_payment_return,mail account,0,mail account,39,35,9,8,6,2,0,1,G17-01 G17-07 G17-09 G17-14,False
+account-payment,account_payment_return_import,account_payment_return,1,,18,46,11,8,6,2,3,0,G17-01 G17-05 G17-07 G17-14,False
+account-payment,account_payment_return_import_iso20022,account_payment_return_import account_payment_order,2,,10,14,10,7,1,6,3,0,G17-01,False
+account-payment,account_payment_term_extension,account purchase,0,account purchase,607,449,35,29,2,27,6,0,G17-01 G17-10,False
+account-payment,account_payment_term_partner_paydays,account_payment_term_extension,1,,1,1,1,1,1,0,0,0,G17-01,False
+account-payment,account_payment_term_security,account,0,account,35,55,13,10,2,8,3,0,G17-01 G17-14,False
+account-payment,account_payment_widget_amount,account,0,account,140,113,35,14,1,13,20,1,G17-01,False
+account-payment,partner_aging,account,0,account,25,16,17,6,3,3,6,5,G17-01 G17-07 G17-09,False
+account-payment,partner_restrict_payment_acquirer,sale,0,sale,165,167,18,10,1,9,8,0,G17-13,False
+account-payment,product_restrict_payment_acquirer,partner_restrict_payment_acquirer payment,1,payment,174,160,8,8,2,6,0,0,G17-01 G17-13,False
+account-payment,sale_payment_term_security,account_payment_term_security sale,1,sale,18,34,8,5,2,3,3,0,G17-01 G17-14,False
+account-reconcile,account_in_payment,account_reconcile_oca,1,,12,10,8,2,1,1,6,0,G17-01,False
+account-reconcile,account_mass_reconcile,account,0,account,68,44,20,19,2,17,0,1,G17-01 G17-07,False
+account-reconcile,account_move_reconcile_helper,account,0,account,13,4,5,2,2,0,3,0,G17-01 G17-07,False
+account-reconcile,account_partner_reconcile,account_reconcile_oca,1,,1,1,1,1,1,0,0,0,G17-01,False
+account-reconcile,account_reconcile_oca,account_statement_base base_sparse_field,1,base_sparse_field,95,127,56,53,30,23,0,3,G17-01 G17-02 G17-03 G17-04 G17-06 G17-07 G17-12,False
+account-reconcile,account_statement_base,account,0,account,8,8,2,2,2,0,0,0,G17-01 G17-07 G17-09,False
+agreement,agreement,mail,0,mail,5,12,5,5,5,0,0,0,G17-01 G17-07,False
+agreement,agreement_account,agreement account,1,account,8,6,7,4,3,1,3,0,G17-06 G17-07,False
+agreement,agreement_legal,contacts agreement product web,1,contacts product web,303,356,59,48,36,12,8,3,G17-06 G17-07 G17-09 G17-10 G17-12,False
+agreement,agreement_project,agreement_legal project,1,project,44,12,11,8,2,6,3,0,G17-01 G17-07,False
+agreement,agreement_repair,agreement repair,1,repair,10,31,12,8,1,7,3,1,G17-06,False
+agreement,agreement_sale,sale_management agreement,1,sale_management,110,69,15,10,2,8,5,0,G17-07 G17-10,False
+ai,ai_oca_bridge,mail,0,mail,186,239,50,28,11,17,21,1,G17-01 G17-07 G17-09 G17-11 G17-12,False
+ai,ai_oca_bridge_chatter,ai_oca_bridge,1,,47,48,27,15,1,14,11,1,G17-01,False
+ai,ai_oca_bridge_document_page,ai_oca_bridge document_page,2,,9,9,7,1,1,0,6,0,G17-01,False
+ai,ai_oca_bridge_extra_parameters,ai_oca_bridge,1,,49,22,19,8,4,4,6,5,G17-01 G17-07 G17-13,False
+automation,automation_oca,mail link_tracker,0,mail link_tracker,36,249,27,27,1,26,0,0,G17-01,False
+bank-payment,account_banking_mandate,account_payment_order,1,,67,73,15,15,9,6,0,0,G17-01 G17-06 G17-07,False
+bank-payment,account_banking_mandate_contact,account_banking_mandate sale,1,sale,2,2,2,1,1,0,0,1,G17-01,False
+bank-payment,account_banking_mandate_sale,account_payment_sale account_banking_mandate,2,,1172,0,22,5,2,3,16,0,G17-01 G17-07,True
+bank-payment,account_banking_mandate_sale_contact,account_banking_mandate_contact account_banking_mandate_sale,2,,27,29,13,3,3,0,9,1,G17-01 G17-07 G17-10,False
+bank-payment,account_banking_pain_base,account_payment_order,1,,49,61,15,9,4,5,6,0,G17-01 G17-07 G17-10,False
+bank-payment,account_banking_sepa_credit_transfer,account_banking_pain_base,1,,7,16,7,2,2,0,5,0,G17-01 G17-02,False
+bank-payment,account_banking_sepa_direct_debit,account_banking_pain_base account_banking_mandate,2,,26,45,13,11,5,6,0,2,G17-01 G17-02 G17-07 G17-10,False
+bank-payment,account_payment_mode,account,0,account,10,5,7,4,4,0,3,0,G17-01 G17-07,False
+bank-payment,account_payment_order,account_payment_partner base_iban,1,base_iban,39,64,23,23,13,10,0,0,G17-01 G17-04 G17-07,False
+bank-payment,account_payment_order_grouped_output,account_payment_order,1,,9,12,8,3,2,1,5,0,G17-01 G17-07,False
+bank-payment,account_payment_order_notification,account_payment_order,1,,24,22,14,11,5,6,3,0,G17-01 G17-07,False
+bank-payment,account_payment_order_return,account_payment_return account_payment_order,2,,12,6,5,3,1,2,2,0,G17-01,False
+bank-payment,account_payment_partner,account_payment_mode,1,,29,22,12,10,5,5,2,0,G17-04 G17-07,False
+bank-payment,account_payment_purchase,account_payment_partner purchase,1,purchase,1,4,2,1,1,0,1,0,G17-01,False
+bank-payment,account_payment_purchase_stock,account_payment_purchase purchase_stock,1,purchase_stock,1,6,6,6,1,5,0,0,G17-01,False
+bank-payment,account_payment_sale,sale account_payment_partner,1,sale,1,2,2,2,1,1,0,0,G17-01,False
+bank-statement-import,account_statement_import_base,account_statement_base,1,,1,3,2,1,1,0,1,0,G17-01,False
+bank-statement-import,account_statement_import_camt,account_statement_import_file,1,,495,541,20,11,5,6,9,0,G17-01 G17-05,False
+bank-statement-import,account_statement_import_camt54,account_statement_import_camt,1,,57,46,18,12,3,9,6,0,G17-01 G17-05,False
+bank-statement-import,account_statement_import_file,account_statement_import_base,1,,172,31,12,7,3,4,3,2,G17-01 G17-02 G17-05 G17-13,False
+bank-statement-import,account_statement_import_file_reconcile_oca,account_statement_import_file account_reconcile_oca,2,,10,1,4,1,1,0,3,0,G17-01,False
+bank-statement-import,account_statement_import_move_line,account_statement_base,1,,137,83,19,13,4,9,6,0,G17-01 G17-07 G17-09,False
+bank-statement-import,account_statement_import_ofx,account_statement_import_file,1,,43,50,9,9,5,4,0,0,G17-01 G17-05,False
+bank-statement-import,account_statement_import_ofx_by_acctid,account_statement_import_ofx,1,,2,2,1,1,1,0,0,0,G17-01,False
+bank-statement-import,account_statement_import_online,account_statement_import_base,1,,35,24,14,8,5,3,6,0,G17-01 G17-07,False
+bank-statement-import,account_statement_import_online_gocardless,account_statement_import_online,1,,166,182,6,6,2,4,0,0,G17-01 G17-07,False
+bank-statement-import,account_statement_import_online_plaid,account_statement_import_online,1,,290,63,22,5,3,2,15,1,G17-01 G17-07,False
+bank-statement-import,account_statement_import_online_ponto,account_statement_import_online,1,,47,9,12,9,9,0,3,0,G17-01 G17-07 G17-11,False
+bank-statement-import,account_statement_import_paypal,account_statement_import_file multi_step_wizard web_widget_dropdown_dynamic,3,,44,87,13,12,6,6,0,1,G17-01 G17-02 G17-07,False
+bank-statement-import,account_statement_import_sheet_file,account_statement_import_file,1,,30,85,10,8,6,2,0,2,G17-01 G17-02 G17-07,False
+brand,account_brand,account brand,1,account,33,22,18,5,2,3,11,2,G17-01 G17-07,False
+brand,analytic_brand,analytic brand,1,analytic,1,1,1,1,1,0,0,0,G17-01,False
+brand,brand,base_setup,0,base_setup,95,96,21,3,2,1,17,1,G17-01 G17-07,False
+brand,partner_brand,brand contacts,1,contacts,89,9,9,5,4,1,4,0,G17-01 G17-07 G17-13 G17-14,False
+brand,product_brand,sale,0,sale,32,26,14,5,4,1,8,1,G17-01 G17-02 G17-06,False
+brand,product_brand_mrp,product_brand mrp,1,mrp,41,1,6,3,2,1,3,0,G17-01 G17-13 G17-14,False
+brand,product_brand_purchase,product_brand purchase,1,purchase,59,1,6,3,2,1,3,0,G17-01 G17-13 G17-14,False
+brand,product_brand_stock,product_brand stock,1,stock,80,4,8,5,3,2,3,0,G17-01 G17-04 G17-13 G17-14,False
+brand,product_brand_stock_account,product_brand stock_account,1,stock_account,40,1,6,3,2,1,3,0,G17-01 G17-13 G17-14,False
+brand,product_brand_tag,product_brand,1,,12,2,6,3,1,2,3,0,G17-01,False
+brand,sale_brand,sale brand account_brand,2,sale,9,23,7,3,2,1,3,1,G17-01 G17-07,False
+calendar,resource_booking,calendar mail portal resource web_calendar_slot_duration,1,calendar mail portal resource,169,219,56,53,17,36,2,1,G17-01 G17-02 G17-03 G17-04 G17-07,False
+commission,account_commission,account commission,1,account,55,95,28,18,13,5,10,0,G17-01 G17-07 G17-09,False
+commission,commission,product,0,product,17,27,10,10,10,0,0,0,G17-01 G17-07 G17-09,False
+commission,commission_formula,commission account,1,account,13,3,5,2,2,0,3,0,G17-01 G17-07,False
+commission,hr_commission,account_commission hr,1,hr,6,6,6,3,3,0,3,0,G17-01 G17-07,False
+commission,sale_commission,sale account_commission,1,sale,7,5,5,3,3,0,2,0,G17-01 G17-07 G17-09,False
+commission,sale_commission_pricelist,sale_commission,1,,89,93,11,9,0,9,0,2,,False
+commission,sale_commission_salesman,sale_commission,1,,2,5,2,2,2,0,0,0,G17-01 G17-07,False
+community-data-files,account_payment_unece,account_payment_mode base_unece,2,,3,3,3,3,1,2,0,0,G17-01,False
+community-data-files,account_tax_unece,account base_unece,1,account,1,75,7,6,1,5,1,0,G17-01,False
+community-data-files,base_bank_from_iban,base_iban,0,base_iban,11,1,4,1,1,0,3,0,G17-01,False
+community-data-files,base_currency_iso_4217,base,0,base,1,1,1,1,1,0,0,0,G17-01,False
+community-data-files,base_iso3166,base,0,base,2,5,4,3,1,2,1,0,G17-01,False
+community-data-files,base_unece,base,0,base,26,9,6,6,4,2,0,0,G17-01 G17-03 G17-07 G17-09,False
+community-data-files,company_sanitary_registry,base,0,base,1,1,1,1,1,0,0,0,G17-01,False
+community-data-files,l10n_eu_nace,partner_industry_secondary,1,,2,2,2,2,1,1,0,0,G17-01,False
+community-data-files,l10n_eu_product_adr,stock,0,stock,29593,45666,53,45,12,33,7,1,G17-01 G17-03 G17-05 G17-07 G17-09 G17-14,False
+community-data-files,l10n_eu_product_adr_dangerous_goods,l10n_eu_product_adr,1,,267,128,35,8,4,4,24,3,G17-01 G17-07 G17-13 G17-14,False
+community-data-files,product_fao_fishing,product,0,product,1,1,1,1,1,0,0,0,G17-01,False
+community-data-files,uom_unece,uom,0,uom,15,15,3,3,2,1,0,0,G17-01 G17-02,False
+connector,component,base,0,base,15,16,7,7,1,6,0,0,G17-01,False
+connector,component_event,component,1,,12,12,11,3,1,2,0,8,G17-01,False
+connector,connector,mail queue_job component component_event,3,mail,795,25,312,305,1,304,3,4,G17-01,False
+connector,connector_base_product,connector product,1,product,613,452,3,2,2,0,1,0,G17-01 G17-07,False
+connector,test_component,component,1,,1,1,1,1,1,0,0,0,G17-01,False
+connector,test_connector,connector,1,,1,1,1,1,1,0,0,0,G17-01,False
+connector-interfaces,connector_importer,connector queue_job,2,,62,60,33,28,10,18,0,5,G17-01 G17-05 G17-06 G17-07 G17-09,False
+connector-interfaces,connector_importer_product,connector_importer product,1,product,14,11,8,6,1,5,0,2,G17-01,False
+connector-jira,connector_jira,project hr_timesheet web connector queue_job multi_step_wizard web_widget_url_advanced,4,project hr_timesheet web,1,1,1,1,0,1,0,0,,False
+connector-jira,connector_jira_servicedesk,connector_jira,1,,618,649,42,42,7,35,0,0,G17-01 G17-07,False
+connector-telephony,asterisk_click2dial,base_phone,1,,8,10,5,4,2,2,0,1,G17-01 G17-07,False
+connector-telephony,base_phone,phone_validation base_setup,0,phone_validation base_setup,152,146,14,11,3,8,3,0,G17-01 G17-07,False
+contract,contract,base account product portal,0,base account product portal,268,350,59,56,41,15,1,2,G17-01 G17-02 G17-07 G17-09 G17-10,False
+contract,contract_analytic_tag,contract account_analytic_tag,2,,15,2,7,4,3,1,3,0,G17-01 G17-07 G17-09,False
+contract,contract_invoice_auto_validate,contract,1,,12,9,4,4,2,2,0,0,G17-01 G17-02,False
+contract,contract_invoice_start_end_dates,account_invoice_start_end_dates contract,2,,11,1,4,1,1,0,3,0,G17-01,False
+contract,contract_mandate,contract_payment_mode account_banking_mandate,2,,11,2,5,2,2,0,3,0,G17-01 G17-07,False
+contract,contract_payment_mode,contract account_payment_partner,2,,35,27,12,6,2,4,6,0,G17-01 G17-04,False
+contract,contract_price_revision,contract,1,,14,11,8,5,4,1,3,0,G17-01 G17-07 G17-13,False
+contract,contract_queue_job,contract queue_job,2,,3,3,2,2,2,0,0,0,G17-01 G17-07,False
+contract,contract_sale,sale contract,1,sale,14,17,7,1,1,0,5,1,G17-01,False
+contract,contract_sale_generation,contract_sale,1,,44,33,17,16,2,14,0,1,G17-01 G17-07,False
+contract,contract_sale_invoicing,contract sale_management,1,sale_management,17,17,8,2,2,0,6,0,G17-01 G17-14,False
+contract,contract_update_last_date_invoiced,contract,1,,68,2,7,4,3,1,3,0,G17-01 G17-07 G17-13 G17-14,False
+contract,contract_variable_qty_timesheet,contract_variable_quantity hr_timesheet,1,hr_timesheet,4,1,4,1,1,0,3,0,G17-01,False
+contract,contract_variable_quantity,contract,1,,27,38,13,7,5,2,6,0,G17-01 G17-07,False
+contract,product_contract,product contract sale,1,product sale,63,71,20,17,12,5,3,0,G17-01 G17-07 G17-09 G17-10,False
+contract,subscription_oca,sale_management account,0,sale_management account,122,83,30,26,13,13,3,1,G17-01 G17-07 G17-09,False
+credit-control,account_credit_control,base account mail,0,base account mail,101,106,32,27,13,14,5,0,G17-01 G17-06 G17-07 G17-10,False
+credit-control,account_credit_control_dunning_fees,account_credit_control,1,,3,3,3,3,3,0,0,0,G17-01 G17-07,False
+credit-control,account_financial_risk,account,0,account,193,186,37,17,12,5,20,0,G17-01 G17-07 G17-10,False
+credit-control,account_invoice_overdue_reminder,account,0,account,110,119,42,24,4,20,18,0,G17-01 G17-02 G17-07,False
+credit-control,account_invoice_overdue_warn,account,0,account,6,3,3,2,2,0,1,0,G17-01 G17-07,False
+credit-control,account_invoice_overdue_warn_sale,sale account_invoice_overdue_warn,1,sale,5,3,3,2,2,0,1,0,G17-01 G17-07,False
+credit-control,account_payment_return_financial_risk,account_financial_risk account_payment_return,2,,35,23,12,6,4,2,6,0,G17-01 G17-07 G17-14,False
+credit-control,partner_risk_insurance,account,0,account,7,6,5,5,5,0,0,0,G17-01 G17-07,False
+credit-control,sale_financial_risk,sale account_financial_risk,1,sale,49,70,15,14,5,9,0,1,G17-01 G17-04 G17-07 G17-10,False
+credit-control,sale_financial_risk_info,sale account_financial_risk,1,sale,4,18,4,2,2,0,2,0,G17-01 G17-14,False
+crm,crm_claim,crm mail,0,crm mail,76,25,11,8,5,3,3,0,G17-01 G17-06 G17-07 G17-09,False
+crm,crm_claim_code,crm_claim,1,,19,14,8,5,3,2,3,0,G17-01 G17-07,False
+crm,crm_claim_type,crm_claim,1,,14,7,6,3,3,0,3,0,G17-01 G17-07,False
+crm,crm_exception,crm base_exception,1,crm,17,8,8,5,3,2,3,0,G17-01 G17-07 G17-14,False
+crm,crm_industry,crm partner_industry_secondary,1,crm,1,1,1,1,1,0,0,0,G17-01,False
+crm,crm_lead_code,crm,0,crm,51,39,16,3,1,2,13,0,G17-01,False
+crm,crm_lead_currency,crm,0,crm,12,8,5,2,2,0,3,0,G17-01 G17-07,False
+crm,crm_lead_firstname,crm partner_firstname,1,crm,4,4,4,1,1,0,0,3,G17-01,False
+crm,crm_lead_product,crm product,0,crm product,22,82,13,11,2,9,0,2,G17-01 G17-02,False
+crm,crm_lead_to_task,crm project,0,crm project,18,17,12,8,3,5,4,0,G17-01 G17-06 G17-14,False
+crm,crm_lead_vat,crm,0,crm,71,60,23,4,3,1,17,2,G17-01 G17-07,False
+crm,crm_location,crm base_location,1,crm,15,5,5,2,2,0,3,0,G17-01 G17-14,False
+crm,crm_partner_assign,crm,0,crm,16,11,6,6,4,2,0,0,G17-01 G17-07,False
+crm,crm_phonecall,crm calendar,0,crm calendar,39,44,12,8,8,0,3,1,G17-01 G17-07 G17-09 G17-10,False
+crm,crm_phonecall_summary_predefined,crm_phonecall sales_team,1,sales_team,27,24,14,4,2,2,10,0,G17-01 G17-09,False
+crm,crm_project_task,crm project,0,crm project,67,90,20,7,3,4,13,0,G17-01 G17-06 G17-07 G17-10,False
+crm,crm_salesperson_planner,crm calendar,0,crm calendar,70,60,29,26,18,8,3,0,G17-01 G17-06 G17-07,False
+crm,crm_stage_probability,crm,0,crm,7,12,5,4,4,0,1,0,G17-01 G17-07,False
+crm,marketing_crm_partner,crm,0,crm,51,33,10,2,2,0,3,0,G17-01 G17-09,False
+currency,currency_rate_update,base mail account,0,base mail account,27,22,11,8,5,3,3,0,G17-01 G17-07 G17-09,False
+currency,currency_rate_update_xe,currency_rate_update,1,,9,1,4,4,4,0,0,0,G17-01 G17-11,False
+data-protection,privacy,mail,0,mail,48,41,22,3,3,0,19,0,G17-01 G17-07,False
+data-protection,privacy_consent,privacy,1,,382,259,47,23,12,11,24,0,G17-01 G17-03 G17-06 G17-07 G17-11 G17-13,False
+ddmrp,ddmrp,purchase_stock stock_demand_estimate web_widget_bokeh_chart mrp_multi_level base_cron_exclusion stock_warehouse_calendar stock_helper,6,purchase_stock,205,278,69,69,34,35,0,0,G17-01 G17-07 G17-09 G17-10 G17-12,False
+ddmrp,ddmrp_adjustment,ddmrp web_widget_x2many_2d_matrix date_range,3,,38,31,13,13,4,9,0,0,G17-01 G17-07,False
+ddmrp,ddmrp_chatter,ddmrp,1,,1,1,2,1,1,0,0,0,G17-01,False
+ddmrp,ddmrp_cron_actions_as_job,ddmrp queue_job,2,,1,1,2,1,1,0,0,0,G17-01,False
+ddmrp,ddmrp_exclude_moves_adu_calc,ddmrp,1,,4,3,3,3,1,2,0,0,G17-01,False
+ddmrp,ddmrp_exclude_moves_adu_calc_sales,sale ddmrp_exclude_moves_adu_calc,1,sale,1,1,1,1,1,0,0,0,G17-01,False
+ddmrp,ddmrp_history,ddmrp,1,,2,2,2,1,1,0,0,0,G17-01,False
+ddmrp,ddmrp_product_replace,ddmrp_chatter,1,,14,19,10,9,8,1,0,0,G17-01 G17-07,False
+ddmrp,ddmrp_report_part_flow_index,ddmrp,1,,2,2,3,2,2,0,0,0,G17-01 G17-07,False
+ddmrp,ddmrp_warning,ddmrp,1,,6,6,5,2,2,0,2,0,G17-01 G17-07,False
+delivery-carrier,base_delivery_carrier_label,stock_delivery delivery_carrier_info,1,stock_delivery,76,69,34,27,7,20,6,1,G17-01 G17-07,False
+delivery-carrier,delivery_auto_refresh,stock_delivery sale_order_carrier_auto_assign,1,stock_delivery,102,480,53,31,5,26,22,0,G17-01 G17-02 G17-10 G17-14,False
+delivery-carrier,delivery_carrier_account,stock_delivery,0,stock_delivery,36,30,21,2,2,0,19,0,G17-01 G17-07,False
+delivery-carrier,delivery_carrier_agency,stock_delivery,0,stock_delivery,17,7,8,5,3,2,3,0,G17-01 G17-07 G17-14,False
+delivery-carrier,delivery_carrier_info,delivery,0,delivery,1,19,2,2,2,0,0,0,G17-01 G17-02,False
+delivery-carrier,delivery_carrier_manual_price,delivery,0,delivery,8,9,6,3,1,2,3,0,G17-01,False
+delivery-carrier,delivery_carrier_manual_weight,stock_delivery,0,stock_delivery,13,13,6,3,3,0,3,0,G17-01 G17-07,False
+delivery-carrier,delivery_carrier_multi_zip,stock_delivery,0,stock_delivery,52,147,17,8,4,4,9,0,G17-01 G17-04 G17-07 G17-14,False
+delivery-carrier,delivery_correos_express,delivery_package_number delivery_state,2,,3804,3451,17,17,4,13,0,0,G17-01 G17-07 G17-11 G17-13,False
+delivery-carrier,delivery_cttexpress,delivery_package_number delivery_state delivery_price_method,3,,116,83,33,17,9,8,16,0,G17-01 G17-06 G17-07 G17-11 G17-14,False
+delivery-carrier,delivery_driver,stock_delivery,0,stock_delivery,54,44,21,10,3,7,11,0,G17-01 G17-02 G17-13,False
+delivery-carrier,delivery_estimated_package_quantity_by_weight,stock_delivery,0,stock_delivery,121,29,15,12,6,6,3,0,G17-01 G17-07 G17-13 G17-14,False
+delivery-carrier,delivery_free_fee_removal,delivery,0,delivery,55,35,10,10,3,7,0,0,G17-01 G17-09 G17-13,False
+delivery-carrier,delivery_multi_destination,stock_delivery,0,stock_delivery,45,78,17,10,4,6,7,0,G17-01 G17-03 G17-07 G17-14,False
+delivery-carrier,delivery_package_number,stock_delivery,0,stock_delivery,41,89,15,11,3,8,4,0,G17-07,False
+delivery-carrier,delivery_package_type_number_parcels,stock_delivery,0,stock_delivery,20,14,9,6,5,1,3,0,G17-01 G17-07,False
+delivery-carrier,delivery_price_method,delivery,0,delivery,70,18,9,5,2,3,4,0,G17-01 G17-07,False
+delivery-carrier,delivery_purchase,purchase stock_delivery,0,purchase stock_delivery,52,33,19,16,4,12,3,0,G17-01 G17-07,False
+delivery-carrier,delivery_purchase_multi_destination,delivery_purchase delivery_multi_destination,2,,46,28,10,10,2,8,0,0,G17-01 G17-14,False
+delivery-carrier,delivery_roulier,base_delivery_carrier_label delivery_carrier_account,2,,25,39,10,10,1,9,0,0,G17-01,False
+delivery-carrier,delivery_roulier_chronopost_fr,delivery_roulier_option,1,,121,123,5,4,3,1,1,0,G17-01 G17-07 G17-11 G17-13,False
+delivery-carrier,delivery_roulier_option,delivery_roulier product_harmonized_system,2,,40,32,20,2,1,1,18,0,G17-01,False
+delivery-carrier,delivery_schenker,delivery_package_number delivery_state,2,,23,44,8,8,6,2,0,0,G17-01 G17-02 G17-07,False
+delivery-carrier,delivery_state,delivery stock_delivery,0,delivery stock_delivery,54,63,10,10,6,4,0,0,G17-01 G17-02 G17-07 G17-10 G17-11,False
+delivery-carrier,delivery_ups_oca,stock_delivery delivery_package_number delivery_price_method delivery_state,3,stock_delivery,213,221,26,22,6,16,3,1,G17-01 G17-07 G17-11,False
+delivery-carrier,partner_delivery_schedule,stock_delivery,0,stock_delivery,22,24,11,11,1,10,0,0,G17-01,False
+delivery-carrier,partner_delivery_zone,sale_stock contacts,0,sale_stock contacts,22,51,16,13,6,7,3,0,G17-01 G17-07 G17-14,False
+delivery-carrier,sale_order_warehouse_from_delivery_carrier,sale_stock delivery,0,sale_stock delivery,54,11,11,2,1,1,9,0,G17-01,False
+delivery-carrier,stock_picking_report_delivery_cost,stock_delivery,0,stock_delivery,22,28,15,5,1,4,9,1,G17-01,False
+dms,dms,mail http_routing onboarding portal base web,0,mail http_routing onboarding portal base web,4250,4109,316,193,34,159,106,16,G17-01 G17-03 G17-05 G17-06 G17-07 G17-09 G17-10 G17-12 G17-13,False
+dms,dms_attachment_link,dms,1,,32,39,3,3,2,1,0,0,G17-01 G17-12,False
+dms,dms_storage,dms fs_storage,2,,13,3,6,3,2,1,3,0,G17-01 G17-07,False
+e-commerce,website_sale_affiliate,website_sale,0,website_sale,256,251,30,26,5,21,0,4,G17-01 G17-11 G17-13,False
+e-commerce,website_sale_b2x_alt_price,website_sale,0,website_sale,350,315,25,16,1,15,6,1,G17-01,False
+e-commerce,website_sale_barcode_search,website_sale,0,website_sale,75,24,9,9,2,7,0,0,G17-01 G17-13,False
+e-commerce,website_sale_checkout_skip_payment,website_sale,0,website_sale,11,6,6,2,0,2,4,0,,False
+e-commerce,website_sale_comparison_hide_price,website_sale_hide_price website_sale_comparison,1,website_sale_comparison,1,6,1,1,0,1,0,0,,False
+e-commerce,website_sale_hide_empty_category,website_sale,0,website_sale,112,62,15,8,1,7,7,0,G17-01,False
+e-commerce,website_sale_hide_price,website_sale,0,website_sale,164,146,29,7,2,5,22,0,G17-01 G17-10,False
+e-commerce,website_sale_menu_partner_top_selling,website_sale,0,website_sale,72,72,16,14,2,12,2,0,G17-01 G17-10,False
+e-commerce,website_sale_order_type,website_sale sale_order_type,1,website_sale,69,69,14,8,1,7,6,0,G17-01,False
+e-commerce,website_sale_product_attachment,website_sale,0,website_sale,32,32,16,6,1,5,9,0,G17-07,False
+e-commerce,website_sale_product_attribute_filter_category,website_sale_comparison,0,website_sale_comparison,150,168,21,11,2,9,10,0,G17-01 G17-02,False
+e-commerce,website_sale_product_attribute_filter_order,website_sale,0,website_sale,34,10,9,3,1,2,6,0,G17-01,False
+e-commerce,website_sale_product_attribute_value_filter_existing,website_sale,0,website_sale,44,48,3,3,1,2,0,0,G17-01,False
+e-commerce,website_sale_product_brand,product_brand website_sale,1,website_sale,39,44,10,4,1,3,6,0,G17-01,False
+e-commerce,website_sale_product_description,website_sale,0,website_sale,2,1,2,1,1,0,1,0,G17-01,False
+e-commerce,website_sale_product_detail_attribute_image,website_sale,0,website_sale,29,35,10,4,1,3,6,0,G17-01,False
+e-commerce,website_sale_product_matrix,sale_product_matrix website_sale,0,sale_product_matrix website_sale,91,102,19,5,1,4,14,0,G17-01,False
+e-commerce,website_sale_product_minimal_price,website_sale,0,website_sale,313,422,29,21,1,20,7,1,G17-01,False
+e-commerce,website_sale_product_multi_website,website_sale,0,website_sale,671,508,26,16,3,13,10,0,G17-09 G17-13,False
+e-commerce,website_sale_product_reference_displayed,website_sale,0,website_sale,1,1,1,1,1,0,0,0,G17-01,False
+e-commerce,website_sale_require_legal,website_sale,0,website_sale,167,140,16,10,1,9,4,0,G17-01,False
+e-commerce,website_sale_resource_booking,sale_resource_booking website_sale,1,website_sale,332,348,27,24,2,22,3,0,G17-01 G17-07,False
+e-commerce,website_sale_secondary_unit,website_sale sale_order_secondary_unit,1,website_sale,425,344,22,19,2,17,3,0,G17-01 G17-04,False
+e-commerce,website_sale_secondary_unit_product_matrix,website_sale_product_matrix sale_product_matrix_secondary_unit,2,,28,24,14,4,1,3,10,0,G17-01,False
+e-commerce,website_sale_stock_available,stock_available website_sale_stock,1,website_sale_stock,16,27,9,3,1,2,6,0,G17-01,False
+e-commerce,website_sale_stock_product_matrix,website_sale_product_matrix website_sale_stock,1,website_sale_stock,34,36,15,3,1,2,12,0,G17-01,False
+e-commerce,website_sale_stock_provisioning_date,website_sale_stock,0,website_sale_stock,120,57,12,12,1,11,0,0,G17-13,False
+e-commerce,website_sale_suggest_create_account,website_sale,0,website_sale,52,81,6,6,2,4,0,0,G17-01 G17-04,False
+e-commerce,website_sale_vat_required,website_sale base_vat,0,website_sale base_vat,71,77,7,4,1,3,3,0,G17-01,False
+e-commerce,website_sale_wishlist_hide_price,website_sale_hide_price website_sale_wishlist,1,website_sale_wishlist,12,5,1,1,0,1,0,0,,False
+e-commerce,website_sale_wishlist_keep,website_sale_wishlist,0,website_sale_wishlist,77,69,13,4,1,3,9,0,G17-01,False
+e-commerce,website_snippet_product_category,website_sale,0,website_sale,108,115,11,8,1,7,3,0,G17-01,False
+e-learning,website_sale_slides_order_line_link,website_sale_slides,0,website_sale_slides,8,6,4,4,1,3,0,0,G17-01,False
+edi,account_einvoice_generate,account,0,account,11,31,4,4,2,2,0,0,G17-01 G17-10,False
+edi,account_invoice_export,account account_invoice_transmit_method,1,account,14,31,6,6,4,2,0,0,G17-01 G17-07,False
+edi,account_invoice_facturx,account_einvoice_generate account_payment_partner base_facturx base_vat,3,base_vat,45,71,12,12,2,10,0,0,G17-01 G17-07 G17-10,False
+edi,base_business_document_import,account_tax_unece uom_unece pdf_helper,3,,5,6,4,3,1,2,1,0,G17-01,False
+edi,base_ebill_payment_contract,account_invoice_transmit_method,1,,1,1,1,1,1,0,0,0,G17-01,False
+edi,base_edi,base,0,base,1,2,2,1,1,0,1,0,G17-01,False
+edi,base_facturx,uom_unece account_tax_unece account_payment_unece,3,,1,1,1,1,1,0,0,0,G17-01,False
+edi,base_import_pdf_by_template,mail,0,mail,106,105,21,18,9,9,3,0,G17-01 G17-07 G17-12 G17-14,False
+edi,base_ubl,uom_unece account_tax_unece base_vat pdf_helper,3,base_vat,2,1,2,2,1,1,0,0,G17-01,False
+edi,pdf_helper,base,0,base,1,2,2,1,1,0,1,0,G17-01,False
+edi,test_base_import_pdf_by_template,purchase base_import_pdf_by_template,1,purchase,17,41,14,14,3,11,0,0,G17-01 G17-04 G17-14,False
+edi-framework,edi_account_oca,account edi_oca component_event,2,account,13,7,7,4,3,1,3,0,G17-01 G17-07,False
+edi-framework,edi_endpoint_oca,base_edi edi_oca endpoint,3,,1,1,1,1,1,0,0,0,G17-01,False
+edi-framework,edi_exchange_template_oca,edi_oca component,2,,469,611,9,8,2,6,1,0,G17-07 G17-13,False
+edi-framework,edi_oca,base_edi component_event mail base_sparse_field queue_job,3,mail base_sparse_field,88,110,28,25,13,12,3,0,G17-01 G17-03 G17-07 G17-09 G17-12,False
+edi-framework,edi_record_metadata_oca,edi_oca base_sparse_field,1,base_sparse_field,1,1,1,1,1,0,0,0,G17-01,False
+edi-framework,edi_storage_oca,edi_oca fs_storage component,3,,10,10,5,2,1,1,3,0,G17-01,False
+edi-framework,edi_webservice_oca,edi_oca webservice,2,,12,0,2,2,1,1,0,0,G17-11,False
+edi-voxel,edi_voxel_account_invoice_oca,edi_voxel_oca stock_picking_invoice_link,2,,25,69,17,16,8,8,0,1,G17-01 G17-02 G17-07,False
+edi-voxel,edi_voxel_oca,account product report_xml base_iso3166 queue_job product_supplierinfo_for_customer,4,account product,65,86,13,13,6,7,0,0,G17-01 G17-02 G17-07 G17-10,False
+edi-voxel,edi_voxel_sale_order_import_oca,edi_voxel_oca onchange_helper sale,2,sale,160,31,20,14,3,11,6,0,G17-01 G17-11 G17-13,False
+event,crm_event,crm event,0,crm event,81,43,21,15,4,11,6,0,G17-01 G17-07 G17-14,False
+event,event_email_reminder,event,0,event,47,73,16,7,4,3,9,0,G17-01 G17-02 G17-14,False
+event,event_mail,event,0,event,29,131,17,13,5,8,4,0,G17-01 G17-07 G17-10 G17-14,False
+event,event_min_seat,event,0,event,14,6,7,4,3,1,3,0,G17-01 G17-07,False
+event,event_project,event project,0,event project,195,127,28,12,6,6,15,0,G17-01 G17-06 G17-07 G17-13,False
+event,event_registration_cancel_reason,event,0,event,8,4,6,2,2,0,3,1,G17-01 G17-07,False
+event,event_registration_partner_unique,event partner_event,1,event,6,2,5,2,1,1,3,0,G17-01,False
+event,event_sale_reservation,event_sale,0,event_sale,95,142,30,17,7,10,13,0,G17-01 G17-02 G17-07 G17-09 G17-14,False
+event,event_stage_cancelled,event,0,event,27,25,16,6,3,3,10,0,G17-01 G17-07 G17-14,False
+event,event_track_location_overlap,website_event_track,0,website_event_track,8,4,7,4,3,1,3,0,G17-01 G17-14,False
+event,partner_event,event,0,event,26,24,10,9,2,7,0,1,G17-01 G17-04,False
+event,sale_crm_event_reservation,crm_event event_sale_reservation sale_crm,2,sale_crm,78,66,12,8,3,5,4,0,G17-01 G17-07,False
+event,website_event_crm_invitation,crm_event website_event,1,website_event,54,100,16,11,4,7,5,0,G17-01 G17-02 G17-07,False
+event,website_event_filter_city,website_event,0,website_event,90,42,13,5,1,4,8,0,G17-01,False
+event,website_event_membership_restriction,website_event membership,0,website_event membership,10,28,4,4,1,3,0,0,G17-01,False
+event,website_event_questions_by_ticket,website_event,0,website_event,16,13,7,5,1,4,2,0,G17-01,False
+event,website_event_require_legal,website_event,0,website_event,53,53,8,8,2,6,0,0,G17-01 G17-07,False
+event,website_event_require_login,website_event,0,website_event,2,2,2,1,1,0,0,1,G17-01,False
+event,website_event_sale_b2x_alt_price,website_event_sale website_sale_b2x_alt_price,1,website_event_sale,260,142,22,15,2,13,7,0,G17-01 G17-13,False
+event,website_event_track_stage_cancelled,website_event_track event_stage_cancelled,1,website_event_track,16,14,11,1,1,0,10,0,G17-01,False
+field-service,base_territory,base,0,base,5,8,3,3,2,1,0,0,G17-01 G17-07,False
+field-service,fieldservice,base_territory base_geolocalize resource contacts,1,base_geolocalize resource contacts,541,916,48,42,19,23,4,2,G17-01 G17-03 G17-06 G17-07 G17-10 G17-13,False
+field-service,fieldservice_account,fieldservice account,1,account,3,3,3,3,3,0,0,0,G17-01 G17-07,False
+field-service,fieldservice_account_analytic,fieldservice_account analytic product,1,analytic product,21,24,10,7,3,4,3,0,G17-01 G17-04 G17-10,False
+field-service,fieldservice_activity,fieldservice,1,,21,8,10,2,2,0,8,0,G17-07 G17-09,False
+field-service,fieldservice_agreement,fieldservice agreement,2,,219,298,43,21,3,18,22,0,G17-01 G17-06,False
+field-service,fieldservice_availability,fieldservice_route,1,,4,1,4,1,1,0,3,0,G17-01,False
+field-service,fieldservice_calendar,calendar fieldservice,1,calendar,10,1,4,1,1,0,3,0,G17-01,False
+field-service,fieldservice_crm,fieldservice crm,1,crm,11,2,5,2,2,0,3,0,G17-01 G17-07,False
+field-service,fieldservice_equipment_stock,fieldservice_stock,1,,38,38,7,7,3,4,0,0,G17-01 G17-07,False
+field-service,fieldservice_fleet,fieldservice_vehicle fleet,1,fleet,8,10,4,4,3,1,0,0,G17-01 G17-04 G17-14,False
+field-service,fieldservice_geoengine,base_geoengine fieldservice,2,,13,4,7,7,5,2,0,0,G17-01 G17-06 G17-11,False
+field-service,fieldservice_isp_flow,fieldservice,1,,7,7,7,7,7,0,0,0,G17-01 G17-07,False
+field-service,fieldservice_kanban_info,fieldservice,1,,37,51,13,4,4,0,9,0,G17-01 G17-07 G17-10,False
+field-service,fieldservice_maintenance,fieldservice maintenance,1,maintenance,32,29,9,8,4,4,0,1,G17-01 G17-04 G17-07,False
+field-service,fieldservice_portal,fieldservice portal,1,portal,445,5,9,4,1,3,5,0,G17-01,False
+field-service,fieldservice_project,fieldservice project,1,project,23,23,11,8,3,5,1,1,G17-01 G17-06,False
+field-service,fieldservice_recurring,fieldservice,1,,21,31,15,12,12,0,3,0,G17-01 G17-02 G17-07,False
+field-service,fieldservice_repair,repair fieldservice_equipment_stock,1,repair,8,6,9,3,1,2,3,3,G17-07,False
+field-service,fieldservice_route,fieldservice,1,,1,1,1,1,1,0,0,0,G17-01,False
+field-service,fieldservice_sale_recurring,fieldservice_recurring fieldservice_sale fieldservice_account,3,,56,81,21,5,3,2,15,1,G17-07,False
+field-service,fieldservice_sale_stock,fieldservice_sale fieldservice_stock,2,,21,40,10,1,0,1,8,1,,False
+field-service,fieldservice_size,fieldservice uom,1,uom,10,1,4,1,1,0,3,0,G17-01,False
+field-service,fieldservice_skill,hr_skills fieldservice,1,hr_skills,23,10,11,8,1,7,3,0,G17-01,False
+field-service,fieldservice_stage_server_action,fieldservice base_automation,1,base_automation,4,2,4,1,0,1,3,0,,False
+field-service,fieldservice_stage_validation,fieldservice,1,,22,18,8,1,1,0,6,1,G17-01,False
+field-service,fieldservice_stock,fieldservice stock,1,stock,81,89,35,7,5,2,26,2,G17-01 G17-04 G17-07,False
+field-service,fieldservice_stock_request,fieldservice_stock stock_request_direction stock_request_picking_type stock_request_submit,4,,15,51,9,9,6,3,0,0,G17-01 G17-07 G17-09,False
+field-service,fieldservice_timeline,fieldservice web_timeline,2,,13,4,5,2,2,0,3,0,G17-01 G17-14,False
+field-service,fieldservice_vehicle,fieldservice,1,,10,1,4,1,1,0,3,0,G17-01,False
+fleet,fleet_vehicle_category,fleet,0,fleet,35,15,12,1,1,0,11,0,G17-01,False
+fleet,fleet_vehicle_fuel_capacity,fleet,0,fleet,4,1,5,1,1,0,3,0,G17-01,False
+fleet,fleet_vehicle_history_date_end,fleet,0,fleet,16,13,2,2,1,1,0,0,G17-01,False
+fleet,fleet_vehicle_inspection,fleet,0,fleet,83,93,41,21,15,6,20,0,G17-01 G17-06 G17-07,False
+fleet,fleet_vehicle_inspection_template,fleet_vehicle_inspection,1,,43,37,26,2,2,0,20,4,G17-01 G17-07,False
+fleet,fleet_vehicle_service_services,fleet,0,fleet,5,2,5,2,1,1,3,0,G17-01,False
+fleet,fleet_vehicle_usage,fleet,0,fleet,33,37,7,7,6,1,0,0,G17-01 G17-07,False
+geospatial,base_geoengine,base web,0,base web,728,337,142,119,21,98,19,4,G17-01 G17-07 G17-12,False
+geospatial,base_geoengine_demo,base_geoengine,1,,13,9,6,3,3,0,3,0,G17-01 G17-03 G17-06,False
+geospatial,geoengine_base_geolocalize,base geoengine_partner base_geolocalize,1,base base_geolocalize,529,20,7,2,2,0,5,0,G17-01 G17-11,False
+geospatial,geoengine_partner,base base_geoengine,1,base,526,32,8,1,1,0,7,0,G17-01,False
+geospatial,web_leaflet_lib,base,0,base,2,18,5,4,2,2,0,1,G17-01 G17-04,False
+helpdesk,helpdesk_mgmt,mail portal,0,mail portal,149,210,42,29,15,14,11,2,G17-01 G17-03 G17-06 G17-07 G17-09 G17-10,False
+helpdesk,helpdesk_mgmt_activity,helpdesk_mgmt,1,,173,178,32,7,5,2,25,0,G17-01 G17-07 G17-10,False
+helpdesk,helpdesk_mgmt_assign_method,helpdesk_mgmt,1,,127,103,23,4,1,3,18,1,G17-01,False
+helpdesk,helpdesk_mgmt_crm,helpdesk_mgmt crm,1,crm,33,49,17,10,1,9,7,0,G17-01,False
+helpdesk,helpdesk_mgmt_merge,helpdesk_mgmt,1,,60,40,11,8,3,5,3,0,G17-01 G17-07 G17-14,False
+helpdesk,helpdesk_mgmt_portal_follower,helpdesk_mgmt,1,,21,2,6,1,1,0,5,0,G17-01,False
+helpdesk,helpdesk_mgmt_project,helpdesk_mgmt project,1,project,17,65,18,11,5,6,7,0,G17-01 G17-02 G17-07,False
+helpdesk,helpdesk_mgmt_project_domain,helpdesk_mgmt_project,1,,106,128,55,9,2,7,41,5,G17-01 G17-10,False
+helpdesk,helpdesk_mgmt_rating,helpdesk_mgmt rating,1,rating,7,1315,12,8,5,3,4,0,G17-01 G17-02 G17-06 G17-07,False
+helpdesk,helpdesk_mgmt_sale,helpdesk_mgmt sale,1,sale,14,34,10,8,3,5,2,0,G17-01 G17-02 G17-14,False
+helpdesk,helpdesk_mgmt_sla,base helpdesk_mgmt resource,1,base resource,67,73,25,4,4,0,21,0,G17-01 G17-07,False
+helpdesk,helpdesk_mgmt_stage_validation,helpdesk_mgmt,1,,80,68,28,5,1,4,22,1,G17-01,False
+helpdesk,helpdesk_mgmt_template,helpdesk_mgmt,1,,80,82,25,3,1,2,21,1,G17-01,False
+helpdesk,helpdesk_mgmt_timesheet,helpdesk_mgmt_project hr_timesheet project_timesheet_time_control,2,hr_timesheet,15,17,15,15,13,2,0,0,G17-01 G17-07,False
+helpdesk,helpdesk_mgmtsystem_nonconformity,helpdesk_mgmt mgmtsystem_nonconformity,2,,5,5,4,4,4,0,0,0,G17-01 G17-06 G17-07 G17-14,False
+helpdesk,helpdesk_portal_restriction,helpdesk_mgmt,1,,10,10,8,1,1,0,7,0,G17-01,False
+helpdesk,helpdesk_ticket_close_inactive,helpdesk_mgmt,1,,32,21,15,6,4,2,9,0,G17-01 G17-07 G17-14,False
+helpdesk,helpdesk_ticket_open_tab,helpdesk_mgmt web_widget_open_tab,2,,10,10,8,1,1,0,7,0,G17-01,False
+helpdesk,helpdesk_ticket_partner_response,helpdesk_mgmt,1,,13,13,9,2,2,0,7,0,G17-01 G17-07,False
+helpdesk,helpdesk_ticket_related,helpdesk_mgmt,1,,9,9,7,1,1,0,6,0,G17-01,False
+helpdesk,helpdesk_timesheet_time_type,helpdesk_mgmt_timesheet hr_timesheet_time_type,2,,9,9,7,1,1,0,6,0,G17-01,False
+helpdesk,helpdesk_type,helpdesk_mgmt,1,,7,7,4,4,1,3,0,0,G17-01,False
+hr,hr_announcement,mail hr announcement,1,mail hr,12,6,6,3,2,1,3,0,G17-01 G17-07,False
+hr,hr_course,hr mail,0,hr mail,5,9,5,3,3,0,2,0,G17-07,False
+hr,hr_department_code,hr,0,hr,8,9,3,3,2,1,0,0,G17-01 G17-03,False
+hr,hr_employee_age,hr,0,hr,59,46,23,4,2,2,19,0,G17-01 G17-14,False
+hr,hr_employee_calendar_planning,hr,0,hr,55,44,20,16,3,13,3,1,G17-01 G17-04 G17-09,False
+hr,hr_employee_document,hr,0,hr,40,21,9,6,3,3,3,0,G17-01 G17-07 G17-13,False
+hr,hr_employee_document_from_applicant,hr_employee_document hr_recruitment,1,hr_recruitment,54,43,8,4,1,3,4,0,G17-01,False
+hr,hr_employee_firstname,hr,0,hr,18,18,6,6,3,3,0,0,G17-01 G17-04 G17-07,False
+hr,hr_employee_id,hr,0,hr,75,67,10,4,2,2,6,0,G17-01 G17-07 G17-10,False
+hr,hr_employee_language,hr,0,hr,1,1,1,1,1,0,0,0,G17-01,False
+hr,hr_employee_medical_examination,hr,0,hr,21,21,6,5,4,1,1,0,G17-01 G17-07 G17-14,False
+hr,hr_employee_partner_external,hr,0,hr,12,3,5,2,2,0,3,0,G17-01 G17-07,False
+hr,hr_employee_ppe,hr_personal_equipment_request,1,,32,37,8,8,4,4,0,0,G17-01 G17-07,False
+hr,hr_employee_relative,hr,0,hr,14,1,4,1,1,0,3,0,G17-01,False
+hr,hr_employee_second_lastname,hr_employee_firstname,1,,21,16,9,6,2,4,0,3,G17-01 G17-04,False
+hr,hr_employee_ssn,hr,0,hr,16,17,8,2,1,1,6,0,G17-01,False
+hr,hr_job_category,hr_contract,0,hr_contract,33,62,8,1,1,0,7,0,G17-14,False
+hr,hr_personal_equipment_request,product hr mail,0,product hr mail,148,128,38,18,14,4,16,4,G17-01 G17-07,False
+hr,hr_personal_equipment_request_tier_validation,hr_personal_equipment_request base_tier_validation,2,,16,6,5,2,2,0,3,0,G17-01 G17-14,False
+hr,hr_professional_category,hr_contract,0,hr_contract,10,8,5,5,4,1,0,0,G17-01 G17-03 G17-07,False
+hr,hr_study,hr,0,hr,9,13,6,3,2,1,3,0,G17-01 G17-14,False
+hr,hr_work_entry_profile,hr_work_entry,0,hr_work_entry,89,698,9,4,2,2,5,0,G17-01 G17-07,False
+hr-attendance,hr_attendance_autoclose,hr_attendance_reason,1,,61,63,5,5,4,1,0,0,G17-01 G17-09 G17-10 G17-14,False
+hr-attendance,hr_attendance_calendar_view,base hr_attendance,0,base hr_attendance,10,3,4,2,1,1,2,0,G17-01,False
+hr-attendance,hr_attendance_modification_tracking,hr_attendance,0,hr_attendance,29,35,9,6,3,3,3,0,G17-01 G17-04 G17-14,False
+hr-attendance,hr_attendance_reason,hr_attendance,0,hr_attendance,424,288,27,24,4,20,3,0,G17-01 G17-07 G17-10 G17-14,False
+hr-attendance,hr_attendance_report_theoretical_time,hr_attendance hr_holidays_public,1,hr_attendance,43,53,18,14,3,11,3,1,G17-01 G17-14,False
+hr-attendance,hr_attendance_rfid,hr_attendance,0,hr_attendance,2,2,2,2,1,1,0,0,G17-01,False
+hr-attendance,hr_contract_update_overtime,hr_contract hr_attendance,0,hr_contract hr_attendance,107,67,24,14,3,11,10,0,G17-01 G17-07 G17-14,False
+hr-expense,hr_expense_advance_clearing,hr_expense,0,hr_expense,96,153,35,35,8,27,0,0,G17-01 G17-07 G17-09,False
+hr-expense,hr_expense_advance_clearing_sequence,hr_expense_sequence hr_expense_advance_clearing,2,,30,13,8,5,2,3,3,0,G17-01 G17-14,False
+hr-expense,hr_expense_cancel,hr_expense_payment,1,,75,53,14,8,1,7,6,0,G17-07,False
+hr-expense,hr_expense_employee_analytic_default,hr_expense,0,hr_expense,84,118,18,9,2,7,9,0,G17-01 G17-14,False
+hr-expense,hr_expense_invoice,hr_expense,0,hr_expense,156,150,36,35,4,31,0,1,G17-01 G17-07,False
+hr-expense,hr_expense_journal,hr_expense,0,hr_expense,101,15,12,9,4,5,3,0,G17-01 G17-07 G17-13,False
+hr-expense,hr_expense_payment,hr_expense,0,hr_expense,29,22,9,6,2,4,3,0,G17-01 G17-04,False
+hr-expense,hr_expense_sequence,hr_expense,0,hr_expense,4,10,4,4,1,3,0,0,G17-01,False
+hr-expense,hr_expense_sequence_option,base_sequence_option hr_expense_sequence,2,,16,4,6,3,2,1,3,0,G17-01 G17-14,False
+hr-expense,hr_expense_tier_validation,hr_expense base_tier_validation,1,hr_expense,100,75,22,11,1,10,10,1,G17-01,False
+hr-holidays,hr_holidays_leave_report_calendar_type,hr_holidays,0,hr_holidays,141,34,18,7,2,5,10,0,G17-01 G17-13,False
+hr-holidays,hr_holidays_natural_period,hr_holidays,0,hr_holidays,141,68,18,15,2,13,3,0,G17-01 G17-14,False
+hr-holidays,hr_holidays_public,hr_holidays,0,hr_holidays,53,29,20,12,4,8,8,0,G17-01 G17-03 G17-07 G17-13,False
+hr-holidays,hr_holidays_public_city,hr_holidays_public base_address_extended,1,base_address_extended,11,1,4,1,1,0,3,0,G17-01,False
+hr-holidays,hr_holidays_settings,hr_holidays,0,hr_holidays,18,10,5,2,2,0,3,0,G17-01 G17-10,False
+hr-holidays,hr_leave_custom_hour_interval,hr_holidays,0,hr_holidays,18,12,5,2,2,0,3,0,G17-01 G17-07,False
+interface-git,github_connector,base web,0,base web,265,279,71,40,28,12,29,2,G17-01 G17-05 G17-07 G17-11 G17-14,False
+interface-git,github_connector_odoo,github_connector,1,,131,103,38,22,13,9,16,0,G17-01 G17-05 G17-07,False
+intrastat-extrastat,intrastat_base,base_vat account,0,base_vat account,31,113,14,14,3,11,0,0,G17-01 G17-07 G17-10,False
+intrastat-extrastat,intrastat_product,intrastat_base product_harmonized_system sale_stock purchase_stock report_xlsx_helper,3,sale_stock purchase_stock,194,201,57,57,28,29,0,0,G17-01 G17-03 G17-04 G17-07 G17-09 G17-10,False
+intrastat-extrastat,intrastat_product_generic,intrastat_product,1,,1,2,2,1,1,0,1,0,G17-01,False
+intrastat-extrastat,intrastat_product_hscodes_import,intrastat_product,1,,4,2,3,3,2,1,0,0,G17-01 G17-07,False
+intrastat-extrastat,product_harmonized_system,product,0,product,22,22,9,8,4,4,1,0,G17-01 G17-03 G17-07,False
+intrastat-extrastat,product_harmonized_system_delivery,stock_delivery product_harmonized_system,1,stock_delivery,24,22,7,3,1,2,4,0,G17-01,False
+intrastat-extrastat,product_harmonized_system_stock,product_harmonized_system stock,1,stock,1,2,2,1,1,0,1,0,G17-01,False
+iot,iot_amqp_oca,iot_output_oca,1,,6,6,3,3,3,0,0,0,G17-01 G17-07,False
+iot,iot_input_oca,iot_oca,1,,6,6,4,4,2,2,0,0,G17-01 G17-07,False
+iot,iot_oca,base,0,base,4,30,5,5,5,0,0,0,G17-01 G17-02 G17-07,False
+iot,iot_output_oca,iot_oca,1,,3,20,4,4,3,1,0,0,G17-01 G17-02 G17-07,False
+iot,iot_rule,iot_input_oca,1,,23,18,12,11,7,4,0,1,G17-01 G17-07,False
+iot,iot_template_oca,iot_input_oca iot_output_oca,2,,2,2,2,1,1,0,0,1,G17-01,False
+knowledge,attachment_category,base,0,base,6,2,2,2,1,1,0,0,G17-01,False
+knowledge,attachment_zipped_download,base,0,base,22,68,10,7,2,5,3,0,G17-01 G17-14,False
+knowledge,document_knowledge,base,0,base,21,43,2,2,2,0,0,0,G17-01 G17-10,False
+knowledge,document_page,mail document_knowledge,1,mail,11,7,8,7,6,1,0,1,G17-01 G17-03 G17-07 G17-09,False
+knowledge,document_page_access_group,document_page document_knowledge,2,,1,1,1,1,1,0,0,0,G17-01,False
+knowledge,document_page_approval,document_page mail,1,mail,47,55,25,21,15,6,0,1,G17-01 G17-04 G17-07,False
+knowledge,document_page_group,document_page,1,,21,11,6,3,1,2,3,0,G17-01,False
+knowledge,document_page_partner,document_page,1,,1,1,1,1,1,0,0,0,G17-01,False
+knowledge,document_page_project,project document_page,1,project,1,1,1,1,1,0,0,0,G17-01,False
+knowledge,document_page_reference,document_page,1,,128,186,12,9,2,7,3,0,G17-01 G17-13 G17-14,False
+knowledge,document_page_tag,document_page,1,,12,3,7,4,2,2,3,0,G17-01 G17-07,False
+knowledge,document_page_tag_print_control,document_page_tag,1,,16,1,4,4,1,3,0,0,G17-01,False
+knowledge,document_url,mail,0,mail,85,82,5,5,2,3,0,0,G17-01 G17-12,False
+l10n-belgium,account_statement_import_coda,account_statement_import_file,1,,9,8,5,4,1,3,1,0,G17-01,False
+l10n-belgium,companyweb_base,contacts,0,contacts,166,150,15,13,5,8,0,2,G17-01 G17-05 G17-07 G17-11,False
+l10n-belgium,companyweb_payment_info,companyweb_base account,1,account,620,657,33,33,3,30,0,0,G17-01 G17-07 G17-11,False
+l10n-belgium,l10n_be_intrastat_product,intrastat_product base_view_inheritance_extension,2,,34,17,9,9,0,9,0,0,,False
+l10n-belgium,l10n_be_mis_reports,mis_builder l10n_be,1,l10n_be,1,1,1,1,1,0,0,0,G17-01,False
+l10n-belgium,l10n_be_partner_kbo_bce,partner_identification base_vat,1,base_vat,6,12,4,3,2,1,0,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_account,l10n_br_coa l10n_br_fiscal,2,,33,25,5,5,0,5,0,0,,False
+l10n-brazil,l10n_br_account_due_list,account_due_list,1,,15,15,10,2,2,0,8,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_account_fleet,account_fleet,0,account_fleet,19,29,10,1,1,0,9,0,G17-01,False
+l10n-brazil,l10n_br_account_nfe,l10n_br_nfe l10n_br_account l10n_br_account_due_list account_payment_partner,4,,22,26,10,10,2,8,0,0,G17-01 G17-04,False
+l10n-brazil,l10n_br_account_payment_order,l10n_br_base account_payment_order l10n_br_account_due_list account_due_list_payment_mode,4,,192,1187,63,46,24,22,17,0,G17-01 G17-02 G17-07 G17-09,False
+l10n-brazil,l10n_br_base,base base_setup base_address_extended,0,base base_setup base_address_extended,82,233,30,16,14,2,14,0,G17-01 G17-02 G17-07 G17-09,False
+l10n-brazil,l10n_br_cnpj_search,l10n_br_zip l10n_br_fiscal contacts,2,contacts,24,19,9,9,4,5,0,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_coa,account,0,account,427,437,23,13,1,12,10,0,G17-01,False
+l10n-brazil,l10n_br_coa_generic,l10n_br_coa,1,,662,1573,27,15,2,13,12,0,G17-01 G17-04,False
+l10n-brazil,l10n_br_coa_simple,l10n_br_coa,1,,433,1028,23,14,2,12,9,0,G17-01 G17-04,False
+l10n-brazil,l10n_br_contract,l10n_br_account contract,2,,22,52,13,13,8,5,0,0,G17-01 G17-02 G17-07,False
+l10n-brazil,l10n_br_crm,l10n_br_base crm,1,crm,37,112,11,3,3,0,8,0,G17-01 G17-02 G17-07,False
+l10n-brazil,l10n_br_crm_cnpj_search,l10n_br_cnpj_search l10n_br_crm,2,,3,3,3,3,3,0,0,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_cte,l10n_br_fiscal_edi l10n_br_cte_spec l10n_br_fiscal_certificate spec_driven_model,4,,73,115,24,11,10,1,13,0,G17-01 G17-04 G17-07,False
+l10n-brazil,l10n_br_cte_spec,,0,,37,152,11,4,1,3,7,0,G17-01,False
+l10n-brazil,l10n_br_currency_rate_update,currency_rate_update,1,,1,1,1,1,1,0,0,0,G17-01,False
+l10n-brazil,l10n_br_fiscal,product uom_alias l10n_br_base,2,product,440,777,112,112,100,12,0,0,G17-02 G17-03 G17-07 G17-09 G17-13,False
+l10n-brazil,l10n_br_fiscal_certificate,l10n_br_fiscal,1,,38,65,16,6,6,0,10,0,G17-01 G17-04 G17-07 G17-10,False
+l10n-brazil,l10n_br_fiscal_closing,l10n_br_fiscal_edi,1,,13,20,3,3,3,0,0,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_fiscal_dfe,l10n_br_fiscal l10n_br_fiscal_certificate,2,,4,3,2,2,2,0,0,0,G17-01 G17-03,False
+l10n-brazil,l10n_br_fiscal_dfe_mock,l10n_br_fiscal_dfe l10n_br_nfe_dfe,2,,18,28,10,2,2,0,8,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_fiscal_edi,l10n_br_fiscal,1,,30,41,18,6,5,1,12,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_fiscal_notification,l10n_br_fiscal,1,,4,4,4,3,3,0,1,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_fiscal_subsequent_document,l10n_br_fiscal,1,,21,31,13,4,4,0,9,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_hr,hr l10n_br_base hr_employee_relative,2,hr,12,15,5,5,2,3,0,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_hr_contract,hr_contract l10n_br_hr,1,hr_contract,33,47,16,7,2,5,9,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_hr_expense_invoice,l10n_br_account hr_expense_invoice,2,,25,44,15,5,1,4,10,0,G17-01,False
+l10n-brazil,l10n_br_ie_search,l10n_br_cnpj_search l10n_br_nfe,2,,21,31,13,2,2,0,11,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_mdfe,l10n_br_fiscal_edi l10n_br_fiscal_certificate l10n_br_mdfe_spec spec_driven_model,4,,192,242,39,24,15,9,15,0,G17-01 G17-04 G17-07,False
+l10n-brazil,l10n_br_mdfe_spec,,0,,113,234,22,4,1,3,18,0,G17-01,False
+l10n-brazil,l10n_br_mis_report,mis_builder l10n_br_coa,2,,1,1,1,1,1,0,0,0,G17-01,False
+l10n-brazil,l10n_br_nfe_dfe,l10n_br_fiscal_dfe l10n_br_nfe,2,,48,63,28,11,9,2,17,0,G17-01 G17-03 G17-07 G17-09 G17-13,False
+l10n-brazil,l10n_br_nfe_spec,,0,,83,205,20,3,1,2,17,0,G17-01,False
+l10n-brazil,l10n_br_nfse,l10n_br_fiscal_edi l10n_br_fiscal_certificate,2,,39,56,15,2,2,0,13,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_nfse_focus,l10n_br_nfse,1,,9,15,3,3,2,1,0,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_nfse_paulistana,l10n_br_nfse,1,,24,25,15,4,3,1,11,0,G17-01 G17-07 G17-14,False
+l10n-brazil,l10n_br_portal,portal l10n_br_zip,1,portal,118,131,16,6,1,5,10,0,G17-01,False
+l10n-brazil,l10n_br_product_contract,l10n_br_sale l10n_br_contract product_contract,3,,24,35,11,2,1,1,9,0,G17-01,False
+l10n-brazil,l10n_br_purchase,purchase l10n_br_account,1,purchase,151,201,27,14,9,5,13,0,G17-01 G17-02 G17-04 G17-07 G17-09,False
+l10n-brazil,l10n_br_purchase_request,l10n_br_purchase purchase_request,2,,23,33,13,2,1,1,11,0,G17-01,False
+l10n-brazil,l10n_br_purchase_requisition,purchase_requisition l10n_br_purchase,1,purchase_requisition,22,32,12,1,1,0,11,0,G17-01,False
+l10n-brazil,l10n_br_resource,l10n_br_base resource,1,resource,25,35,12,1,1,0,11,0,G17-01,False
+l10n-brazil,l10n_br_sale,sale_management l10n_br_account,1,sale_management,90,133,41,41,20,21,0,0,G17-01 G17-02 G17-04 G17-07 G17-09 G17-10,False
+l10n-brazil,l10n_br_sale_blanket_order,sale_blanket_order l10n_br_sale,2,,61,53,20,10,5,5,10,0,G17-01 G17-07 G17-09,False
+l10n-brazil,l10n_br_sale_commission,sale_commission l10n_br_sale,2,,72,64,25,9,4,5,16,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_sale_invoice_plan,l10n_br_sale sale_invoice_plan,2,,2,3,2,2,1,1,0,0,G17-01,False
+l10n-brazil,l10n_br_setup_tests,web_responsive web_theme_classic account_usability base_technical_features,4,,20,30,9,1,1,0,8,0,G17-01,False
+l10n-brazil,l10n_br_sped_base,l10n_br_fiscal,1,,20,34,12,3,2,1,9,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_stock,stock l10n_br_base,1,stock,6,9,5,5,3,2,0,0,G17-01 G17-04,False
+l10n-brazil,l10n_br_stock_account,stock_account stock_picking_invoicing l10n_br_stock l10n_br_account,3,stock_account,92,266,39,24,11,13,15,0,G17-01 G17-02 G17-04 G17-07 G17-09,False
+l10n-brazil,l10n_br_stock_account_report,l10n_br_stock_account report_wkhtmltopdf_param,2,,53,66,21,3,2,1,18,0,G17-01 G17-07,False
+l10n-brazil,l10n_br_zip,l10n_br_base,1,,12,22,10,10,9,1,0,0,G17-01 G17-02 G17-07,False
+l10n-brazil,spec_driven_model,,0,,75,74,29,8,1,7,15,6,G17-01,False
+l10n-ecuador,l10n_ec_account_edi,account account_edi l10n_ec l10n_ec_base,1,account account_edi l10n_ec,422,220,69,69,14,55,0,0,G17-01 G17-07 G17-11 G17-13,False
+l10n-ecuador,l10n_ec_base,l10n_ec account,0,l10n_ec account,226,323,26,25,5,20,0,1,G17-01 G17-07 G17-13,False
+l10n-finland,l10n_fi_banks,base,0,base,11,1,2,2,1,1,0,0,G17-01,False
+l10n-finland,l10n_fi_edicode,account,0,account,35,56,8,7,6,1,0,1,G17-01 G17-03 G17-07 G17-10 G17-13,False
+l10n-finland,l10n_fi_payment_terms,account,0,account,79,221,19,6,1,5,13,0,G17-01,False
+l10n-finland,l10n_fi_sale_refund_payment_reference,account,0,account,15,5,4,2,1,1,1,0,G17-01,False
+l10n-france,account_banking_fr_lcr,account_payment_order,1,,26,29,10,9,0,9,0,1,,False
+l10n-france,account_statement_import_fr_cfonb,account_statement_import_file,1,,1,1,1,1,1,0,0,0,G17-01,False
+l10n-france,l10n_fr_account_invoice_facturx,account_invoice_facturx l10n_fr_siret,2,,1,1,1,1,1,0,0,0,G17-01,False
+l10n-france,l10n_fr_account_tax_unece,l10n_fr account_tax_unece,1,l10n_fr,58,388,6,6,1,5,0,0,G17-01,False
+l10n-france,l10n_fr_chorus_account,l10n_fr_siret account_invoice_transmit_method server_environment,3,,288,261,62,62,17,45,0,0,G17-01 G17-03 G17-07 G17-10,False
+l10n-france,l10n_fr_chorus_facturx,l10n_fr_chorus_account l10n_fr_account_invoice_facturx,2,,32,32,4,4,1,3,0,0,G17-01,False
+l10n-france,l10n_fr_chorus_sale,l10n_fr_chorus_account sale,1,sale,1,1,1,1,1,0,0,0,G17-01,False
+l10n-france,l10n_fr_cog,base,0,base,2,4,4,4,1,3,0,0,G17-01,False
+l10n-france,l10n_fr_das2,l10n_fr_siret l10n_fr_cog,2,,105,139,29,29,9,20,0,0,G17-01 G17-03 G17-07 G17-09 G17-10,False
+l10n-france,l10n_fr_department,l10n_fr_state contacts,1,contacts,51,30,9,7,3,4,2,0,G17-01 G17-03 G17-07,False
+l10n-france,l10n_fr_department_oversea,l10n_fr_department,1,,4,8,4,4,1,3,0,0,G17-01,False
+l10n-france,l10n_fr_hr_check_ssnid,hr,0,hr,1,19,3,3,1,2,0,0,G17-01,False
+l10n-france,l10n_fr_intrastat_product,l10n_fr intrastat_product l10n_fr_department,2,l10n_fr,44,75,19,12,9,3,5,2,G17-01 G17-02 G17-03 G17-07 G17-09 G17-10,False
+l10n-france,l10n_fr_intrastat_service,intrastat_base report_xlsx_helper,2,,48,64,15,15,5,10,0,0,G17-01 G17-03 G17-07,False
+l10n-france,l10n_fr_pos_caisse_ap_ip,point_of_sale,0,point_of_sale,294,195,29,10,2,8,19,0,G17-01 G17-07,False
+l10n-france,l10n_fr_siret,l10n_fr base_view_inheritance_extension,1,l10n_fr,96,104,9,9,3,6,0,0,G17-01 G17-07,False
+l10n-france,l10n_fr_state,base,0,base,12,11,6,4,1,3,2,0,G17-01,False
+l10n-germany,datev_export,account l10n_de,0,account l10n_de,7,12,4,3,2,1,1,0,G17-01 G17-10,False
+l10n-germany,datev_export_xml,datev_export,1,,335,345,37,23,16,7,9,5,G17-01 G17-03 G17-07 G17-14,False
+l10n-germany,l10n_de_mis_reports,mis_builder l10n_de,1,l10n_de,2863,1418,8,8,0,8,0,0,,False
+l10n-germany,l10n_de_tax_statement,account date_range l10n_de,1,account l10n_de,105,233,31,29,13,16,1,1,G17-01 G17-07 G17-10 G17-14,False
+l10n-germany,l10n_de_tax_statement_zm,l10n_de_tax_statement sale,1,sale,60,62,11,11,2,9,0,0,G17-01 G17-07,False
+l10n-iran,l10n_ir_account,account,0,account,646,0,13,11,0,11,2,0,,True
+l10n-iran,l10n_ir_states,base base_address_extended,0,base base_address_extended,3,2,2,1,1,0,1,0,G17-01,False
+l10n-japan,account_payment_term_cutoff_day,account,0,account,38,49,15,2,1,1,12,1,G17-01,False
+l10n-japan,account_tax_rounding_method,account,0,account,78,88,22,6,2,4,16,0,G17-01 G17-10,False
+l10n-japan,l10n_jp_address_layout,web,0,web,18,18,9,4,4,0,5,0,G17-01 G17-07,False
+l10n-japan,l10n_jp_country_state,base_country_state_translatable,1,,25,38,11,1,1,0,10,0,G17-01,False
+l10n-japan,l10n_jp_partner_title_qweb,base,0,base,10,10,6,4,1,3,2,0,G17-01,False
+l10n-japan,l10n_jp_partner_zip_address,base,0,base,23,36,11,1,1,0,10,0,G17-01,False
+l10n-mexico,l10n_mx_catalogs,l10n_mx,0,l10n_mx,1,1,1,1,1,0,0,0,G17-01,False
+l10n-mexico,l10n_mx_cfdi,account l10n_mx l10n_mx_catalogs,1,account l10n_mx,31,50,15,15,15,0,0,0,G17-01 G17-07 G17-09 G17-10,False
+l10n-mexico,l10n_mx_res_partner_csf,contacts,0,contacts,1,1,1,1,1,0,0,0,G17-01,False
+l10n-netherlands,l10n_nl_bank,base,0,base,1,1,1,1,1,0,0,0,G17-01,False
+l10n-netherlands,l10n_nl_partner_name,partner_firstname,1,,9,9,7,1,1,0,6,0,G17-01,False
+l10n-netherlands,l10n_nl_xaf_auditfile_export,account l10n_nl,0,account l10n_nl,27,53,12,12,2,10,0,0,G17-01 G17-07,False
+l10n-portugal,l10n_pt_account_invoicexpress,l10n_pt_vat account,1,account,85,64,24,10,1,9,12,2,G17-10,False
+l10n-portugal,l10n_pt_stock_invoicexpress,l10n_pt_account_invoicexpress sale_stock,1,sale_stock,20,12,7,7,0,7,0,0,,False
+l10n-portugal,l10n_pt_vat,account l10n_pt,0,account l10n_pt,7,9,5,5,4,1,0,0,G17-01 G17-03 G17-07,False
+l10n-romania,currency_rate_update_RO_BNR,base currency_rate_update,1,base,2,34,4,3,1,2,1,0,G17-01,False
+l10n-romania,l10n_ro_account_anaf_sync,l10n_ro_config,1,,51,41,14,9,4,5,3,2,G17-01 G17-07 G17-10,False
+l10n-romania,l10n_ro_account_edit_currency_rate,l10n_ro_account_report_invoice,1,,5,2,4,4,1,3,0,0,G17-01,False
+l10n-romania,l10n_ro_account_period_close,l10n_ro_config,1,,109,94,34,5,1,4,27,2,G17-01,False
+l10n-romania,l10n_ro_account_report_invoice,l10n_ro_config sale,1,sale,9,4,1,0,0,0,0,1,,False
+l10n-romania,l10n_ro_city,base_address_extended l10n_ro_config,1,base_address_extended,19,64,5,3,3,0,2,0,G17-01 G17-02 G17-07,False
+l10n-romania,l10n_ro_config,l10n_ro base_vat,0,l10n_ro base_vat,659,1259,29,19,10,9,4,5,G17-01 G17-02 G17-04 G17-07 G17-09 G17-10,False
+l10n-romania,l10n_ro_dvi,l10n_ro_stock_account_landed_cost,1,,51,54,22,17,3,14,0,5,G17-07 G17-09,False
+l10n-romania,l10n_ro_fiscal_validation,l10n_ro_partner_create_by_vat l10n_ro_vat_on_payment,2,,59,48,24,2,1,1,22,0,G17-01,False
+l10n-romania,l10n_ro_nondeductible_vat,l10n_ro_stock_account l10n_ro_vat_on_payment,2,,20,14,12,8,6,2,3,1,G17-01 G17-07 G17-09,False
+l10n-romania,l10n_ro_partner_unique,l10n_ro_config,1,,5,6,5,2,1,1,3,0,G17-01,False
+l10n-romania,l10n_ro_stock_account,sale_stock purchase_stock stock_dropshipping l10n_ro_config l10n_ro_stock,2,sale_stock purchase_stock stock_dropshipping,1,1,1,1,0,1,0,0,,False
+l10n-romania,l10n_ro_stock_account_landed_cost,stock_landed_costs l10n_ro_stock_account_tracking,1,stock_landed_costs,11,10,6,5,2,3,0,1,G17-01 G17-07,False
+l10n-romania,l10n_ro_stock_account_reception_in_progress,l10n_ro_stock_price_difference,1,,19,15,8,5,2,3,0,3,G17-01 G17-07,False
+l10n-romania,l10n_ro_stock_account_tracking,l10n_ro_stock_account,1,,26,26,23,23,6,17,0,0,G17-01 G17-04 G17-07,False
+l10n-romania,l10n_ro_stock_picking_comment_template,l10n_ro_stock_account base_comment_template,2,,6,6,6,6,2,4,0,0,G17-01 G17-07,False
+l10n-romania,l10n_ro_stock_picking_valued_report,l10n_ro_stock_account stock_landed_costs,1,stock_landed_costs,18,24,16,16,1,15,0,0,G17-01,False
+l10n-romania,l10n_ro_stock_price_difference,l10n_ro_stock_account_landed_cost l10n_ro_stock_account_notice stock_landed_costs purchase_stock,2,stock_landed_costs purchase_stock,13,7,5,5,0,5,0,0,,False
+l10n-romania,l10n_ro_vat_on_payment,l10n_ro_config,1,,14,9,7,5,3,2,0,2,G17-05,False
+l10n-russia,l10n_ru,account,0,account,1,1,1,1,1,0,0,0,G17-01,False
+l10n-spain,delivery_dhl_parcel,delivery_package_number delivery_state,2,,18,44,6,6,5,1,0,0,G17-07,False
+l10n-spain,delivery_gls_asm,delivery_package_number delivery_state,2,,36,72,12,11,7,4,0,1,G17-01 G17-07,False
+l10n-spain,delivery_seur_atlas,delivery delivery_package_number delivery_price_method delivery_state,3,delivery,37,15,18,9,2,7,9,0,G17-01 G17-07,False
+l10n-spain,l10n_es_account_asset,account_asset_management,1,,15,17,6,5,3,2,0,1,G17-01 G17-07,False
+l10n-spain,l10n_es_account_banking_sepa_fsdd,l10n_es account_banking_sepa_direct_debit,1,l10n_es,2,5,2,2,2,0,0,0,G17-01 G17-07,False
+l10n-spain,l10n_es_account_statement_import_n43,account_statement_import_file,1,,3,5,3,3,2,1,0,0,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat,l10n_es account_tax_balance,1,l10n_es,230,131,47,47,19,28,0,0,G17-01 G17-04 G17-07,False
+l10n-spain,l10n_es_aeat_mod111,l10n_es_aeat,1,,60,263,27,27,10,17,0,0,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat_mod115,l10n_es l10n_es_aeat,1,l10n_es,35,58,16,13,5,8,3,0,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat_mod123,l10n_es l10n_es_aeat,1,l10n_es,166,1232,43,41,16,25,2,0,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat_mod130,l10n_es_aeat,1,,14,24,10,10,6,4,0,0,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat_mod190,l10n_es l10n_es_aeat,1,l10n_es,59,406,31,29,17,12,2,0,G17-01 G17-02 G17-07,False
+l10n-spain,l10n_es_aeat_mod216,l10n_es_aeat,1,,28,50,14,11,3,8,3,0,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat_mod296,l10n_es_aeat l10n_es_aeat_mod216,2,,28,51,14,11,4,7,3,0,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat_mod303,l10n_es l10n_es_aeat,1,l10n_es,221,7725,40,40,12,28,0,0,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat_mod303_oss,l10n_es_aeat_mod303 l10n_eu_oss_oca,2,,47,180,14,11,1,10,3,0,G17-01,False
+l10n-spain,l10n_es_aeat_mod303_vat_prorate,l10n_es_vat_prorate l10n_es_aeat_mod303,2,,32,16,11,8,2,6,3,0,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat_mod347,account_tax_balance base_vat l10n_es l10n_es_aeat portal,2,base_vat l10n_es portal,113,167,23,22,11,11,0,0,G17-01 G17-06 G17-07,False
+l10n-spain,l10n_es_aeat_mod349,l10n_es_aeat l10n_es,1,l10n_es,153,128,29,26,5,21,2,1,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat_mod369,l10n_es_aeat l10n_eu_oss_oca,2,,106,47,20,20,3,17,0,0,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat_mod390,l10n_es_aeat_mod303,1,,407,7793,33,33,5,28,0,0,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat_mod390_oss,l10n_es_aeat_mod390 l10n_eu_oss_oca,2,,39,86,11,11,1,10,0,0,G17-01,False
+l10n-spain,l10n_es_aeat_mod592,l10n_es_aeat report_csv report_xlsx stock,3,stock,171,184,49,33,19,14,14,2,G17-01 G17-07 G17-09,False
+l10n-spain,l10n_es_aeat_partner_check,base base_vat l10n_es_aeat,1,base base_vat,40,31,12,8,5,3,3,1,G17-01 G17-10 G17-11,False
+l10n-spain,l10n_es_aeat_sii_invoice_summary,l10n_es_aeat_sii_oca,1,,343,338,26,26,2,24,0,0,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat_sii_match,l10n_es_aeat_sii_oca,1,,95,254,45,22,7,15,23,0,G17-01 G17-07,False
+l10n-spain,l10n_es_aeat_sii_oca,account_invoice_refund_link l10n_es_aeat,2,,712,738,99,79,15,64,20,0,G17-01 G17-02 G17-05 G17-07,False
+l10n-spain,l10n_es_aeat_sii_oss,l10n_es_aeat_sii_oca account_fiscal_position_partner_type l10n_eu_oss_oca,3,,1,1,1,1,1,0,0,0,G17-01,False
+l10n-spain,l10n_es_atc,l10n_es_aeat,1,,10,1,4,1,1,0,3,0,G17-01,False
+l10n-spain,l10n_es_atc_mod415,l10n_es_aeat_mod347 l10n_es_atc l10n_es_igic,3,,78,125,14,14,1,13,0,0,G17-01,False
+l10n-spain,l10n_es_atc_mod420,l10n_es_aeat l10n_es_igic l10n_es_atc,3,,134,693,17,16,2,14,0,1,G17-01 G17-07,False
+l10n-spain,l10n_es_atc_mod425,l10n_es_igic l10n_es_atc,2,,3935,1669,55,33,4,29,21,1,G17-01 G17-07 G17-11 G17-13,False
+l10n-spain,l10n_es_cnae,l10n_eu_nace,1,,1086,317,16,7,1,6,9,0,G17-01,True
+l10n-spain,l10n_es_digital_canon,l10n_es purchase sale,0,l10n_es purchase sale,167,163,11,10,1,9,0,0,G17-01,False
+l10n-spain,l10n_es_facturae,account_payment_partner l10n_es_partner l10n_es base_iso3166 base_vat report_xml report_qweb_parameter l10n_es_aeat,6,l10n_es base_vat,403,386,62,49,10,39,12,1,G17-01 G17-02 G17-04 G17-07 G17-09,False
+l10n-spain,l10n_es_facturae_face,l10n_es_facturae edi_account_oca edi_exchange_template_oca,3,,20,38,14,10,8,2,3,1,G17-01 G17-02 G17-07 G17-11,False
+l10n-spain,l10n_es_igic,l10n_es,0,l10n_es,3687,3028,30,22,1,21,8,0,G17-01,False
+l10n-spain,l10n_es_intrastat_report,intrastat_product l10n_es_aeat,2,,33,765,21,18,9,9,2,1,G17-01 G17-02 G17-04 G17-05 G17-07 G17-09,False
+l10n-spain,l10n_es_location_nuts,base_location_nuts,1,,9,13,2,2,1,1,0,0,G17-04,False
+l10n-spain,l10n_es_mis_report,l10n_es mis_builder,1,l10n_es,11,1,4,1,1,0,3,0,G17-01,False
+l10n-spain,l10n_es_partner,account base_bank_from_iban base_vat,1,account base_vat,38,24,15,12,7,5,3,0,G17-01 G17-03 G17-07,False
+l10n-spain,l10n_es_partner_mercantil,base,0,base,68,46,18,2,2,0,16,0,G17-01 G17-07,False
+l10n-spain,l10n_es_payment_order_confirming_aef,account_payment_order l10n_es,1,l10n_es,8,7,5,4,2,2,0,1,G17-01 G17-07,False
+l10n-spain,l10n_es_payment_order_confirming_sabadell,account_payment_order,1,,12,7,7,4,2,2,3,0,G17-01 G17-07,False
+l10n-spain,l10n_es_pos_oca,point_of_sale l10n_es,0,point_of_sale l10n_es,536,759,30,19,7,12,11,0,G17-01 G17-04 G17-07 G17-10 G17-12,False
+l10n-spain,l10n_es_pos_sii,point_of_sale l10n_es_pos_oca l10n_es_aeat_sii_oca,2,point_of_sale,157,177,27,21,9,12,6,0,G17-01 G17-05 G17-07 G17-13,False
+l10n-spain,l10n_es_reav,l10n_es,0,l10n_es,75,190,17,11,1,10,6,0,G17-01,False
+l10n-spain,l10n_es_toponyms,base_location_geonames_import,1,,11,3,2,2,2,0,0,0,G17-01 G17-11,False
+l10n-spain,l10n_es_vat_book,l10n_es_aeat report_xlsx,2,,149,207,25,15,4,11,0,10,G17-01 G17-07 G17-09,False
+l10n-spain,l10n_es_vat_book_igic,l10n_es_igic l10n_es_vat_book,2,,216,102,10,7,2,5,3,0,G17-01 G17-13,False
+l10n-spain,l10n_es_vat_book_invoice_summary,l10n_es_aeat_sii_invoice_summary l10n_es_vat_book,2,,2,1,1,1,1,0,0,0,G17-01,False
+l10n-spain,l10n_es_vat_book_oss,l10n_es_vat_book l10n_eu_oss_oca,2,,16,15,5,5,1,4,0,0,G17-01,False
+l10n-spain,l10n_es_vat_prorate,l10n_es_aeat,1,,170,337,20,14,4,10,6,0,G17-01 G17-07 G17-13,False
+l10n-spain,l10n_es_verifactu_oca,account_invoice_refund_link l10n_es_aeat,2,,184,362,46,43,16,27,0,3,G17-01 G17-03 G17-04 G17-05 G17-07,False
+l10n-spain,payment_redsys,payment website_sale,0,payment website_sale,41,50,7,4,2,2,3,0,G17-01 G17-07,False
+l10n-switzerland,ebill_postfinance,account account_invoice_export base_ebill_payment_contract l10n_ch sale,2,account l10n_ch sale,17,39,8,7,4,3,0,1,G17-01 G17-07,False
+l10n-switzerland,ebill_postfinance_server_env,server_environment ebill_postfinance,2,,1,1,1,1,1,0,0,0,G17-01,False
+l10n-switzerland,ebill_postfinance_stock,ebill_postfinance sale_stock,1,sale_stock,2,2,2,2,1,1,0,0,G17-01,False
+l10n-switzerland,l10n_ch_qr_no_amount,l10n_ch,0,l10n_ch,105,57,23,10,1,9,13,0,G17-01,False
+l10n-thailand,currency_rate_update_TH_BOT,currency_rate_update,1,,160,60,11,3,3,0,7,1,G17-01 G17-07 G17-10,False
+l10n-thailand,l10n_th_amount_to_text,base,0,base,8,6,5,1,1,0,4,0,G17-01,False
+l10n-thailand,l10n_th_base_sequence,base,0,base,7,15,5,3,0,3,1,1,,False
+l10n-thailand,l10n_th_fonts,web,0,web,1,1,1,1,1,0,0,0,G17-01,False
+l10n-thailand,l10n_th_mis_report,mis_builder,1,,1,1,1,1,1,0,0,0,G17-01,False
+l10n-thailand,l10n_th_partner,partner_company_type partner_firstname,2,,48,93,16,12,5,7,3,1,G17-01 G17-04 G17-07 G17-10,False
+l10n-thailand,l10n_th_tier_department,base_tier_validation_formula hr,1,hr,3,2,2,2,1,1,0,0,G17-01,False
+l10n-thailand,l10n_th_tier_department_demo,l10n_th_tier_department hr_expense_advance_clearing hr_expense_tier_validation purchase_request_tier_validation,4,,1,1,1,1,1,0,0,0,G17-01,False
+l10n-usa,account_banking_ach_base,account_payment_order account_banking_mandate l10n_us_partner_legal_number,3,,20,15,10,2,1,1,4,4,G17-01,False
+l10n-usa,account_banking_ach_credit_transfer,account_banking_ach_base,1,,91,89,9,4,2,2,4,1,G17-01 G17-13,False
+l10n-usa,l10n_us_form_1099,contacts account,0,contacts account,131,135,19,13,3,10,6,0,G17-01 G17-07,False
+l10n-usa,l10n_us_gaap,account,0,account,310,1598,15,12,1,11,3,0,G17-01,False
+l10n-usa,l10n_us_gaap_mis_report,mis_builder l10n_us_gaap,2,,1,1,1,1,1,0,0,0,G17-01,False
+l10n-usa,l10n_us_mis_financial_report,mis_template_financial_report,1,,1,1,1,1,1,0,0,0,G17-01,False
+l10n-usa,l10n_us_partner_legal_number,account,0,account,1,1,1,1,1,0,0,0,G17-01,False
+mail,mail_message_search,mail,0,mail,3,3,2,2,1,1,0,0,G17-01,False
+maintenance,base_maintenance,maintenance,0,maintenance,1,1,1,1,1,0,0,0,G17-01,False
+maintenance,maintenance_account,maintenance_product account,1,account,9,9,5,5,5,0,0,0,G17-01 G17-07 G17-09 G17-14,False
+maintenance,maintenance_equipment_category_hierarchy,maintenance,0,maintenance,11,2,5,2,1,1,3,0,G17-01,False
+maintenance,maintenance_equipment_contract,contract base_maintenance,2,,10,1,4,1,1,0,3,0,G17-01,False
+maintenance,maintenance_equipment_hierarchy,maintenance,0,maintenance,8,7,3,3,2,1,0,0,G17-01 G17-09,False
+maintenance,maintenance_equipment_sequence,maintenance,0,maintenance,116,11,8,3,3,0,0,5,G17-01 G17-07 G17-13,False
+maintenance,maintenance_equipment_status,base_maintenance,1,,12,3,6,3,2,1,3,0,G17-01 G17-07,False
+maintenance,maintenance_equipment_usage,maintenance,0,maintenance,40,40,9,9,6,3,0,0,G17-01 G17-07,False
+maintenance,maintenance_location,maintenance_plan,1,,24,5,4,1,1,0,3,0,G17-01,False
+maintenance,maintenance_plan,base_maintenance,1,,105,104,21,20,11,9,0,1,G17-01 G17-04 G17-06 G17-07 G17-11,False
+maintenance,maintenance_product,maintenance product,0,maintenance product,5,1,4,1,1,0,3,0,G17-01,False
+maintenance,maintenance_project,base_maintenance project,1,project,95,89,15,11,3,8,4,0,G17-01 G17-07 G17-11,False
+maintenance,maintenance_request_employee,hr_maintenance,0,hr_maintenance,130,154,10,3,1,2,6,0,G17-01,False
+maintenance,maintenance_request_purchase,base_maintenance purchase,1,purchase,33,10,5,2,2,0,3,0,G17-01 G17-07,False
+maintenance,maintenance_timesheet,maintenance_project hr_timesheet,1,hr_timesheet,50,51,6,6,2,4,0,0,G17-01 G17-07,False
+maintenance,maintenance_timesheet_time_control,maintenance_timesheet project_timesheet_time_control,2,,9,9,9,9,9,0,0,0,G17-01 G17-07,False
+management-system,document_page_environment_manual,mgmtsystem_manual,1,,10,1,4,1,1,0,3,0,G17-01,False
+management-system,document_page_environmental_aspect,document_page mgmtsystem,2,,10,1,4,1,1,0,3,0,G17-01,False
+management-system,document_page_health_safety_manual,mgmtsystem_manual,1,,11,1,4,1,1,0,3,0,G17-01,False
+management-system,document_page_procedure,document_page mgmtsystem,2,,1,1,1,1,1,0,0,0,G17-01,False
+management-system,document_page_quality_manual,document_page,1,,1,1,1,1,1,0,0,0,G17-01,False
+management-system,document_page_work_instruction,document_page mgmtsystem,2,,1,1,1,1,1,0,0,0,G17-01,False
+management-system,mgmtsystem_action,mgmtsystem mail,1,mail,22177,0,59,22,3,19,36,0,G17-01 G17-07 G17-11 G17-13,True
+management-system,mgmtsystem_action_efficacy,mgmtsystem_action,1,,4,1,4,1,1,0,3,0,G17-01,False
+management-system,mgmtsystem_action_template,mgmtsystem_action,1,,4,1,4,1,1,0,3,0,G17-01,False
+management-system,mgmtsystem_audit,mgmtsystem_nonconformity base_automation,1,base_automation,65,83,24,9,7,2,14,1,G17-01 G17-07,False
+management-system,mgmtsystem_hazard,mgmtsystem hr,1,hr,14,4,4,1,1,0,3,0,G17-01,False
+management-system,mgmtsystem_hazard_risk,mgmtsystem_hazard hr,1,hr,26,30,2,2,2,0,0,0,G17-01 G17-07 G17-10,False
+management-system,mgmtsystem_health_safety,mgmtsystem_manual mgmtsystem_audit document_page_health_safety_manual mgmtsystem_review mgmtsystem_hazard_risk,5,,134,68,24,3,1,2,20,0,G17-01,False
+management-system,mgmtsystem_info_security_manual,mgmtsystem_manual,1,,1,1,1,1,1,0,0,0,G17-01,False
+management-system,mgmtsystem_manual,document_page mgmtsystem,2,,2,2,2,1,1,0,1,0,G17-01,False
+management-system,mgmtsystem_nonconformity,mgmtsystem_action document_page_procedure,2,,8,8,3,3,3,0,0,0,G17-07,False
+management-system,mgmtsystem_nonconformity_hazard,mgmtsystem_hazard mgmtsystem_nonconformity,2,,5,2,5,2,2,0,3,0,G17-01 G17-07,False
+management-system,mgmtsystem_nonconformity_hr,hr mgmtsystem_nonconformity,1,hr,7,7,7,1,1,0,6,0,G17-01,False
+management-system,mgmtsystem_nonconformity_maintenance_equipment,maintenance mgmtsystem_nonconformity,1,maintenance,5,1,4,1,1,0,3,0,G17-01,False
+management-system,mgmtsystem_nonconformity_mrp,mgmtsystem_nonconformity mrp,1,mrp,4,1,4,1,1,0,3,0,G17-01,False
+management-system,mgmtsystem_nonconformity_product,product mgmtsystem_nonconformity,1,product,4,1,4,1,1,0,3,0,G17-01,False
+management-system,mgmtsystem_nonconformity_quality_control_oca,mgmtsystem_nonconformity quality_control_oca,2,,8,3,5,2,2,0,3,0,G17-01 G17-07,False
+management-system,mgmtsystem_nonconformity_repair,mgmtsystem_nonconformity repair,1,repair,5,1,4,1,1,0,3,0,G17-01,False
+management-system,mgmtsystem_nonconformity_type,mgmtsystem mgmtsystem_nonconformity mgmtsystem_partner,3,,29,15,6,3,2,1,3,0,G17-01 G17-07,False
+management-system,mgmtsystem_partner,mail contacts,0,mail contacts,4,1,4,1,1,0,3,0,G17-01,False
+management-system,mgmtsystem_quality,mgmtsystem_manual mgmtsystem_audit document_page_quality_manual mgmtsystem_review,4,,1,121,6,1,1,0,5,0,G17-01,False
+management-system,mgmtsystem_review,mgmtsystem_nonconformity mgmtsystem_survey,2,,884,1055,319,15,13,2,304,0,G17-01 G17-07 G17-09,False
+management-system,mgmtsystem_survey,mgmtsystem survey,1,survey,11,1,4,1,1,0,3,0,G17-01,False
+manufacture,account_move_line_mrp_info,account_move_line_stock_info mrp,1,mrp,15,13,10,7,4,3,0,3,G17-01 G17-04 G17-07,False
+manufacture,mrp_attachment_mgmt,mrp,0,mrp,23,67,11,9,4,5,2,0,G17-01 G17-07 G17-14,False
+manufacture,mrp_bom_attribute_match,mrp,0,mrp,71,34,15,14,1,13,0,1,G17-01,False
+manufacture,mrp_bom_component_menu,mrp,0,mrp,5,6,4,2,1,1,2,0,G17-01,False
+manufacture,mrp_bom_hierarchy,mrp,0,mrp,18,16,8,6,4,2,2,0,G17-01 G17-07 G17-09,False
+manufacture,mrp_bom_tracking,mrp,0,mrp,44,35,6,5,1,4,1,0,G17-01,False
+manufacture,mrp_bom_widget_section_and_note_one2many,mrp account,0,mrp account,16,16,4,1,1,0,3,0,G17-01,False
+manufacture,mrp_component_operation,mrp stock_restrict_lot,1,mrp,139,102,48,44,6,38,4,0,G17-01 G17-07,False
+manufacture,mrp_component_operation_scrap_reason,scrap_reason_code mrp_component_operation,2,,3,2,2,2,2,0,0,0,G17-01 G17-07,False
+manufacture,mrp_lot_number_propagation,mrp,0,mrp,44,60,17,15,3,12,2,0,G17-01 G17-07 G17-09,False
+manufacture,mrp_lot_production_date,mrp stock_lot_production_date,1,mrp,7,5,2,2,2,0,0,0,G17-01 G17-14,False
+manufacture,mrp_multi_level,mrp purchase_stock mrp_warehouse_calendar,1,mrp purchase_stock,58,73,47,44,12,32,0,3,G17-01 G17-03 G17-07 G17-09,False
+manufacture,mrp_multi_level_estimate,mrp_multi_level stock_demand_estimate,2,,6,5,5,4,1,3,0,1,G17-01,False
+manufacture,mrp_planned_order_matrix,mrp_multi_level web_widget_x2many_2d_matrix date_range,3,,1,1,1,1,1,0,0,0,G17-01,False
+manufacture,mrp_production_back_to_draft,mrp,0,mrp,23,8,6,6,2,4,0,0,G17-01 G17-07,False
+manufacture,mrp_production_generator_by_date_interval,mrp,0,mrp,26,45,15,5,2,3,10,0,G17-01 G17-14,False
+manufacture,mrp_production_note,mrp,0,mrp,10,1,4,1,1,0,3,0,G17-01,False
+manufacture,mrp_production_picking_type_from_route,mrp,0,mrp,19,22,4,4,1,3,0,0,G17-01,False
+manufacture,mrp_production_quant_manual_assign,mrp stock_quant_manual_assign,1,mrp,14,17,8,8,3,5,0,0,G17-01 G17-07 G17-09,False
+manufacture,mrp_production_serial_matrix,mrp web_widget_x2many_2d_matrix,1,mrp,125,41,22,22,4,18,0,0,G17-01 G17-07,False
+manufacture,mrp_sale_info,mrp sale_stock,0,mrp sale_stock,3,3,3,3,1,2,0,0,G17-01,False
+manufacture,mrp_subcontracting_bom_dual_use,mrp_subcontracting,0,mrp_subcontracting,19,34,8,5,2,3,2,1,G17-01 G17-07,False
+manufacture,mrp_subcontracting_purchase_link,purchase mrp_subcontracting,0,purchase mrp_subcontracting,4,4,3,3,3,0,0,0,G17-01 G17-04 G17-07,False
+manufacture,mrp_subcontracting_skip_no_negative,mrp_subcontracting stock_no_negative,1,mrp_subcontracting,56,50,11,5,1,4,5,1,G17-01,False
+manufacture,mrp_tag,mrp,0,mrp,13,13,6,3,2,1,3,0,G17-01 G17-03,False
+manufacture,mrp_warehouse_calendar,mrp stock_warehouse_calendar,1,mrp,33,29,10,9,1,8,0,1,G17-01,False
+manufacture,mrp_workorder_sequence,mrp,0,mrp,28,12,7,4,2,2,3,0,G17-01 G17-04,False
+manufacture,purchase_mrp_distribution,purchase_mrp,0,purchase_mrp,92,94,19,10,4,6,9,0,G17-01 G17-07 G17-09,False
+manufacture,quality_control_mrp_oca,quality_control_oca quality_control_stock_oca mrp,2,mrp,1,1,1,1,1,0,0,0,G17-01,False
+manufacture,quality_control_oca,product,0,product,79,66,26,23,15,8,3,0,G17-01 G17-03 G17-07 G17-09,False
+manufacture,quality_control_stock_oca,quality_control_oca stock,1,stock,17,11,9,4,2,2,5,0,G17-01 G17-04,False
+manufacture,stock_replenishment_mrp_bom_selection,stock mrp,0,stock mrp,26,16,9,3,1,2,6,0,G17-01,False
+manufacture-reporting,mrp_bom_current_stock,mrp report_xlsx,1,mrp,7,19,4,4,1,3,0,0,G17-01,False
+manufacture-reporting,mrp_bom_structure_report_level_1,mrp,0,mrp,77,60,11,5,1,4,6,0,G17-01,False
+manufacture-reporting,mrp_bom_structure_xlsx,report_xlsx mrp,1,mrp,1,1,1,1,1,0,0,0,G17-01,False
+manufacture-reporting,mrp_bom_structure_xlsx_level_1,mrp_bom_structure_xlsx,1,,13,7,5,3,1,2,2,0,G17-01,False
+manufacture-reporting,mrp_flattened_bom_xlsx,report_xlsx mrp,1,mrp,11,16,4,3,1,2,1,0,G17-01,False
+margin-analysis,account_invoice_margin,account,0,account,28,5,4,3,3,0,1,0,G17-01 G17-04 G17-13,False
+margin-analysis,account_invoice_margin_sale,sale_margin account_invoice_margin,1,sale_margin,3,1,2,1,1,0,1,0,G17-01,False
+margin-analysis,sale_margin_delivered,sale_stock sale_margin,0,sale_stock sale_margin,39,64,21,18,5,13,3,0,G17-01 G17-02 G17-07 G17-14,False
+margin-analysis,sale_margin_security,sale_margin product_cost_security,1,sale_margin,1,18,2,2,2,0,0,0,G17-01 G17-02,False
+margin-analysis,sale_report_margin,sale_margin,0,sale_margin,7,1,4,1,0,1,3,0,,False
+mis-builder,mis_builder,account board report_xlsx date_range,2,account board,1503,1483,79,39,25,14,40,0,G17-01 G17-02 G17-03 G17-07 G17-12,False
+mis-builder,mis_builder_budget,mis_builder account,1,account,25,23,9,9,6,3,0,0,G17-07 G17-09,False
+mis-builder,mis_builder_demo,mis_builder_budget purchase,1,purchase,160,152,28,2,1,1,26,0,G17-01,False
+mis-builder-contrib,mis_builder_analytic,mis_builder,1,,4,4,2,2,1,1,0,0,G17-01,False
+multi-company,account_invoice_inter_company,account base_setup,0,account base_setup,69,161,32,21,2,19,10,1,G17-01 G17-10,False
+multi-company,account_multicompany_easy_creation,account,0,account,201,219,26,18,4,14,8,0,G17-01 G17-07 G17-14,False
+multi-company,base_multi_company,,0,,40,36,11,7,3,4,4,0,G17-01 G17-04,False
+multi-company,crm_tag_multi_company,crm,0,crm,1,1,1,1,1,0,0,0,G17-01,False
+multi-company,mail_multicompany,mail,0,mail,22,10,7,4,1,3,3,0,G17-01,False
+multi-company,mail_template_multi_company,mail,0,mail,15,6,8,2,2,0,6,0,G17-01 G17-04,False
+multi-company,partner_multi_company,base_multi_company,1,,11,15,12,8,5,3,0,4,G17-01 G17-04 G17-07,False
+multi-company,product_multi_company,base_multi_company product,1,product,29,24,6,6,2,4,0,0,G17-01 G17-04,False
+multi-company,product_tax_multicompany_default,account,0,account,86,41,13,13,3,10,0,0,G17-01 G17-07 G17-14,False
+multi-company,purchase_sale_inter_company,sale purchase account_invoice_inter_company,1,sale purchase,175,44,20,13,3,10,7,0,G17-01 G17-07 G17-13,False
+multi-company,purchase_sale_stock_inter_company,purchase_sale_inter_company sale_stock purchase_stock,1,sale_stock purchase_stock,221,372,44,38,1,37,6,0,G17-07,False
+multi-company,res_company_active,base,0,base,24,13,9,5,3,2,3,1,G17-01 G17-07 G17-14,False
+operating-unit,account_financial_report_operating_unit,account_financial_report account_operating_unit,2,,17,13,9,6,1,5,3,0,G17-01,False
+operating-unit,account_operating_unit,account analytic_operating_unit base_view_inheritance_extension,2,account,192,285,37,37,3,34,0,0,G17-01 G17-07 G17-09,False
+operating-unit,account_operating_unit_access_all,account_operating_unit,1,,6,1,4,1,1,0,3,0,G17-01,False
+operating-unit,analytic_operating_unit,analytic operating_unit,1,analytic,39,3,5,5,1,4,0,0,G17-01,False
+operating-unit,analytic_operating_unit_access_all,analytic_operating_unit,1,,4,1,4,1,1,0,3,0,G17-01,False
+operating-unit,contract_operating_unit,contract account_operating_unit,2,,7,2,5,2,1,1,3,0,G17-01,False
+operating-unit,contract_operating_unit_access_all,contract_operating_unit,1,,4,1,4,1,1,0,3,0,G17-01,False
+operating-unit,crm_operating_unit,crm sales_team_operating_unit,1,crm,21,5,7,3,1,2,3,1,G17-01,False
+operating-unit,hr_operating_unit,hr operating_unit,1,hr,12,9,7,4,1,3,3,0,G17-01,False
+operating-unit,operating_unit,base,0,base,166,133,15,15,2,13,0,0,G17-01 G17-03,False
+operating-unit,operating_unit_access_all,operating_unit,1,,5,2,5,2,1,1,3,0,G17-01,False
+operating-unit,pos_operating_unit,point_of_sale operating_unit,1,point_of_sale,250,199,26,23,6,17,3,0,G17-01 G17-07 G17-10 G17-13,False
+operating-unit,product_operating_unit,product operating_unit,1,product,30,72,11,11,2,9,0,0,G17-01 G17-09,False
+operating-unit,project_operating_unit,operating_unit project,1,project,8,5,8,5,1,4,3,0,G17-01,False
+operating-unit,purchase_operating_unit,purchase account_operating_unit,1,purchase,79,123,12,12,2,10,0,0,G17-01 G17-07,False
+operating-unit,report_qweb_operating_unit,operating_unit,1,,433,269,11,11,1,10,0,0,G17-01,False
+operating-unit,res_partner_operating_unit,operating_unit,1,,58,100,17,17,4,13,0,0,G17-01 G17-02 G17-04 G17-13,False
+operating-unit,sale_operating_unit,sale account_operating_unit sales_team_operating_unit,2,sale,151,141,14,14,2,12,0,0,G17-01 G17-07,False
+operating-unit,sale_stock_operating_unit,sale_stock sale_operating_unit stock_operating_unit,2,sale_stock,52,184,5,4,1,3,0,1,G17-01,False
+operating-unit,sales_team_operating_unit,sales_team operating_unit,1,sales_team,15,22,6,6,3,3,0,0,G17-01 G17-07 G17-09,False
+operating-unit,stock_operating_unit,stock operating_unit,1,stock,104,157,31,31,2,29,0,0,G17-01 G17-07,False
+operating-unit,stock_operating_unit_access_all,stock_operating_unit,1,,8,7,5,5,1,4,0,0,G17-01,False
+partner-contact,account_partner_company_group,base_partner_company_group account,1,account,3,3,2,2,2,0,0,0,G17-01 G17-04,False
+partner-contact,animal,mail,0,mail,47,44,23,3,3,0,20,0,G17-01 G17-07 G17-14,False
+partner-contact,base_country_state_translatable,base,0,base,43,36,20,1,1,0,19,0,G17-01,False
+partner-contact,base_location,base_address_extended contacts,0,base_address_extended contacts,36,24,13,11,6,5,0,2,G17-01 G17-03 G17-06 G17-07 G17-09,False
+partner-contact,base_location_geonames_import,base_location,1,,13,7,5,4,4,0,1,0,G17-01 G17-11,False
+partner-contact,base_location_nuts,contacts,0,contacts,111,132,27,3,1,2,23,1,G17-01,False
+partner-contact,base_partner_company_group,base,0,base,29,6,5,5,2,3,0,0,G17-01 G17-07,False
+partner-contact,base_partner_sequence,base,0,base,525,428,9,3,1,2,2,4,G17-01,False
+partner-contact,crm_partner_company_group,base_partner_company_group crm,1,crm,3,47,3,2,2,0,1,0,G17-01 G17-04,False
+partner-contact,partner_address_split,base,0,base,86,78,18,3,1,2,15,0,G17-01,False
+partner-contact,partner_address_street3,,0,,9,11,8,7,4,3,1,0,G17-01 G17-04 G17-07,False
+partner-contact,partner_affiliate,base,0,base,13,8,7,2,1,1,5,0,G17-07,False
+partner-contact,partner_category_description,contacts,0,contacts,56,15,15,3,2,1,12,0,G17-01 G17-13 G17-14,False
+partner-contact,partner_category_security,contacts,0,contacts,11,13,10,3,1,2,7,0,G17-01,False
+partner-contact,partner_category_type,contacts,0,contacts,150,5,7,4,3,1,3,0,G17-01 G17-07 G17-13 G17-14,False
+partner-contact,partner_company_default,base,0,base,45,32,8,1,1,0,7,0,G17-01,False
+partner-contact,partner_company_group,account_partner_company_group crm_partner_company_group sale_partner_company_group,3,,1,1,1,1,1,0,0,0,G17-01,False
+partner-contact,partner_company_type,base contacts,0,base contacts,3,3,3,2,2,0,0,1,G17-01 G17-07,False
+partner-contact,partner_contact_access_link,base,0,base,1,1,1,1,1,0,0,0,G17-01,False
+partner-contact,partner_contact_address_default,base,0,base,10,8,6,3,3,0,3,0,G17-01 G17-07 G17-14,False
+partner-contact,partner_contact_age_range,contacts partner_contact_birthdate,1,contacts,37,28,19,6,2,4,13,0,G17-01 G17-07,False
+partner-contact,partner_contact_birthdate,partner_contact_personal_information_page,1,,21,6,9,3,2,1,5,1,G17-01 G17-07,False
+partner-contact,partner_contact_birthplace,partner_contact_personal_information_page,1,,544,30,9,1,1,0,8,0,G17-01,False
+partner-contact,partner_contact_department,contacts,0,contacts,3,3,3,3,3,0,0,0,G17-01 G17-07,False
+partner-contact,partner_contact_gender,partner_contact_personal_information_page,1,,13,6,7,3,2,1,3,1,G17-01 G17-04,False
+partner-contact,partner_contact_job_position,contacts,0,contacts,4,3,4,4,3,1,0,0,G17-01 G17-07,False
+partner-contact,partner_contact_lang,base,0,base,11,2,5,2,2,0,3,0,G17-01 G17-07,False
+partner-contact,partner_contact_nationality,partner_contact_personal_information_page,1,,16,8,5,2,1,1,3,0,G17-01,False
+partner-contact,partner_contact_personal_information_page,base,0,base,23,2,8,3,2,1,5,0,G17-01 G17-07,False
+partner-contact,partner_contact_role,contacts,0,contacts,2,6,2,2,2,0,0,0,G17-01 G17-07,False
+partner-contact,partner_country_lang,base,0,base,21,33,5,5,2,3,0,0,G17-01 G17-14,False
+partner-contact,partner_country_state_required,base,0,base,24,7,8,5,3,2,3,0,G17-01 G17-04 G17-14,False
+partner-contact,partner_data_vies_populator,base_vat,0,base_vat,22,4,5,2,2,0,3,0,G17-01 G17-11,False
+partner-contact,partner_deduplicate_acl,contacts,0,contacts,1,1,1,1,1,0,0,0,G17-01,False
+partner-contact,partner_deduplicate_by_website,partner_deduplicate_acl,1,,7,4,6,2,1,1,3,1,G17-01,False
+partner-contact,partner_deduplicate_filter,partner_deduplicate_acl,1,,17,11,8,5,1,4,3,0,G17-01,False
+partner-contact,partner_disable_gravatar,web,0,web,2,7,2,2,1,1,0,0,G17-01,False
+partner-contact,partner_display_name_line_break,base,0,base,87,23,9,4,2,2,5,0,G17-01 G17-03,False
+partner-contact,partner_duns,base web,0,base web,69,55,21,5,3,2,16,0,G17-01 G17-07,False
+partner-contact,partner_email_check,base_setup,0,base_setup,4,4,3,1,1,0,0,2,G17-01,False
+partner-contact,partner_email_duplicate_warn,base,0,base,8,12,2,2,2,0,0,0,G17-01 G17-07,False
+partner-contact,partner_employee_quantity,contacts,0,contacts,2,2,2,2,2,0,0,0,G17-01 G17-07,False
+partner-contact,partner_external_map,base,0,base,8,11,8,7,4,3,0,1,G17-01 G17-07,False
+partner-contact,partner_fax,base_setup,0,base_setup,594,427,2,1,1,0,1,0,G17-01,False
+partner-contact,partner_firstname,base_setup,0,base_setup,65,93,28,8,7,1,0,20,G17-01 G17-04 G17-07 G17-10,False
+partner-contact,partner_identification,contacts,0,contacts,8,9,9,3,2,1,3,3,G17-01 G17-06,False
+partner-contact,partner_identification_gln,partner_identification,1,,17,8,13,2,2,0,9,2,G17-01 G17-13,False
+partner-contact,partner_industry_secondary,base_setup contacts,0,base_setup contacts,39,59,9,9,7,2,0,0,G17-01 G17-03 G17-07 G17-09 G17-10 G17-13,False
+partner-contact,partner_lastname_uppercase,partner_firstname,1,,27,19,8,4,3,1,3,1,G17-01 G17-10 G17-14,False
+partner-contact,partner_manual_rank,account,0,account,23,1,5,4,1,3,1,0,G17-01,False
+partner-contact,partner_multi_relation,contacts sales_team,0,contacts sales_team,49,55,17,12,6,6,0,5,G17-01 G17-03 G17-07 G17-09,False
+partner-contact,partner_phonecall_schedule,resource,0,resource,18,20,9,6,2,4,3,0,G17-01 G17-11 G17-14,False
+partner-contact,partner_pricelist_search,product,0,product,7,10,3,3,1,2,0,0,G17-01,False
+partner-contact,partner_priority,contacts,0,contacts,16,16,10,3,1,2,7,0,G17-01,False
+partner-contact,partner_property,base,0,base,88,43,13,5,4,1,8,0,G17-01 G17-02 G17-07 G17-13,False
+partner-contact,partner_purchase_manager,base,0,base,10,1,4,1,1,0,3,0,G17-01,False
+partner-contact,partner_readonly_security,base,0,base,5,3,2,2,1,1,0,0,G17-01,False
+partner-contact,partner_ref_unique,base,0,base,1,1,1,1,1,0,0,0,G17-01,False
+partner-contact,partner_salesperson_propagate,base,0,base,1,1,1,1,1,0,0,0,G17-01,False
+partner-contact,partner_search_alias,base,0,base,15,2,4,4,2,2,0,0,G17-01 G17-13,False
+partner-contact,partner_second_lastname,partner_firstname,1,,135,142,29,11,5,6,18,0,G17-01 G17-07,False
+partner-contact,partner_shipping_policy,sale_stock,0,sale_stock,6,4,3,3,2,1,0,0,G17-01 G17-14,False
+partner-contact,partner_socialmedia,base,0,base,1,1,1,1,1,0,0,0,G17-01,False
+partner-contact,partner_stage,contacts,0,contacts,8,8,5,2,2,0,3,0,G17-01 G17-04,False
+partner-contact,partner_stage_only_confirmed,partner_stage,1,,30,23,5,2,1,1,3,0,G17-01,False
+partner-contact,partner_store,contacts,0,contacts,15,7,5,2,1,1,3,0,G17-01,False
+partner-contact,partner_subject_to_vat,base,0,base,14,5,5,2,1,1,3,0,G17-01,False
+partner-contact,partner_tier_validation,contacts base_tier_validation partner_stage,2,contacts,367,145,26,2,1,1,23,1,G17-01,False
+partner-contact,partner_tz,base,0,base,9,0,3,0,0,0,3,0,,False
+partner-contact,partner_vat_unique,base,0,base,2,2,2,1,1,0,0,1,G17-01,False
+partner-contact,sale_customer_rank,sale_management,0,sale_management,2,4,2,2,2,0,0,0,G17-01 G17-04,False
+partner-contact,sale_partner_company_group,base_partner_company_group sale,1,sale,15,10,5,5,2,3,0,0,G17-01 G17-04,False
+payroll,hr_payroll_document,hr base_vat,0,hr base_vat,305,219,40,21,4,17,19,0,G17-01 G17-05 G17-09,False
+payroll,payroll,hr_contract hr_holidays mail,0,hr_contract hr_holidays mail,207,258,100,68,33,35,9,23,G17-01 G17-02 G17-07 G17-09 G17-10,False
+payroll,payroll_account,payroll account,1,account,22,58,13,4,4,0,9,0,G17-01 G17-02 G17-14,False
+payroll,payroll_contract_advantages,hr_contract payroll,1,hr_contract,62,60,20,2,1,1,18,0,G17-01,False
+payroll,payroll_hr_public_holidays,payroll hr_holidays hr_holidays_public,2,hr_holidays,98,1,6,3,2,1,3,0,G17-01 G17-13,False
+pos,pos_cash_move_reason,point_of_sale,0,point_of_sale,65,91,23,8,5,3,14,1,G17-01 G17-07,False
+pos,pos_hide_cost_price_and_margin,point_of_sale,0,point_of_sale,179,127,21,9,2,7,12,0,G17-01 G17-10,False
+pos,pos_lot_barcode,point_of_sale,0,point_of_sale,267,300,16,13,3,10,3,0,G17-01 G17-12 G17-13,False
+pos,pos_lot_selection,point_of_sale,0,point_of_sale,247,121,18,14,2,12,4,0,G17-01 G17-13,False
+pos,pos_margin,point_of_sale,0,point_of_sale,89,72,10,6,2,4,3,1,G17-01 G17-12,False
+pos,pos_order_to_sale_order,point_of_sale sale_stock,0,point_of_sale sale_stock,282,288,33,18,4,14,13,0,G17-01 G17-10 G17-12,False
+pos,pos_partner_birthdate,point_of_sale partner_contact_birthdate,1,point_of_sale,20,22,4,4,1,3,0,0,G17-01,False
+pos,pos_partner_firstname,point_of_sale partner_firstname,1,point_of_sale,140,193,14,11,1,10,3,0,G17-01,False
+pos,pos_partner_sale_warning,sale_management point_of_sale,0,sale_management point_of_sale,151,131,16,5,1,4,11,0,G17-01,False
+pos,pos_payment_change,point_of_sale,0,point_of_sale,244,310,17,15,5,10,2,0,G17-01 G17-07 G17-09 G17-10 G17-13,False
+pos,pos_payment_description,point_of_sale,0,point_of_sale,149,37,17,4,2,2,13,0,G17-01 G17-13,False
+pos,pos_payment_method_cashdro,point_of_sale,0,point_of_sale,167,149,32,10,2,8,21,1,G17-01 G17-07,False
+pos,pos_product_multi_barcode,point_of_sale product_multi_barcode,1,point_of_sale,37,37,7,4,1,3,3,0,G17-01,False
+pos,pos_product_template,point_of_sale,0,point_of_sale,140,118,10,10,2,8,0,0,G17-01 G17-10,False
+pos,pos_receipt_hide_price,point_of_sale,0,point_of_sale,436,263,36,23,5,18,12,0,G17-01 G17-12,False
+pos,pos_screen_element_custom_size,point_of_sale,0,point_of_sale,78,40,21,8,3,5,13,0,G17-01 G17-10 G17-12,False
+pos,pos_show_clock,point_of_sale,0,point_of_sale,65,82,10,7,1,6,3,0,G17-01,False
+pos,pos_stock_available_online,point_of_sale stock_available base_automation,1,point_of_sale base_automation,304,286,22,12,3,9,10,0,G17-01 G17-07 G17-10 G17-12,False
+pos,pos_user_restriction,point_of_sale,0,point_of_sale,3,19,4,4,0,4,0,0,,False
+product-attribute,product_assortment,base product,0,base product,17,12,8,8,4,4,0,0,G17-01 G17-07,False
+product-attribute,product_attribute_company_favorite,product stock,0,product stock,28,42,8,5,2,3,3,0,G17-01 G17-10,False
+product-attribute,product_category_active,product,0,product,15,43,10,4,3,1,6,0,G17-01 G17-07 G17-14,False
+product-attribute,product_category_code,product,0,product,1,1,1,1,1,0,0,0,G17-01,False
+product-attribute,product_category_code_unique,product product_category_code,1,product,10,9,5,4,2,2,0,1,G17-01 G17-04,False
+product-attribute,product_category_description,product,0,product,10,1,4,1,1,0,3,0,G17-01,False
+product-attribute,product_category_product_link,product,0,product,11,4,5,1,1,0,3,1,G17-01,False
+product-attribute,product_code_mandatory,product,0,product,7,13,4,4,1,3,0,0,G17-01,False
+product-attribute,product_code_unique,product,0,product,3,3,2,2,1,1,0,0,G17-01,False
+product-attribute,product_company_default,product,0,product,50,28,11,5,2,3,6,0,G17-01 G17-13,False
+product-attribute,product_cost_security,product,0,product,42,26,11,3,2,1,8,0,G17-01 G17-14,False
+product-attribute,product_dimension,product,0,product,28,7,10,2,2,0,8,0,G17-01 G17-07,False
+product-attribute,product_form_pricelist,sale,0,sale,79,79,15,15,4,11,0,0,G17-01 G17-07 G17-10 G17-13,False
+product-attribute,product_logistics_uom,product,0,product,72,52,21,17,9,8,4,0,G17-01 G17-02 G17-04 G17-07 G17-10 G17-11,False
+product-attribute,product_lot_sequence,stock,0,stock,43,28,10,5,2,3,3,2,G17-01 G17-07,False
+product-attribute,product_main_supplierinfo,product purchase,0,product purchase,2,2,2,2,1,1,0,0,G17-01,False
+product-attribute,product_manufacturer,product,0,product,36,42,11,4,3,1,7,0,G17-01 G17-02 G17-14,False
+product-attribute,product_multi_category,base product,0,base product,1,1,1,1,1,0,0,0,G17-01,False
+product-attribute,product_net_weight,stock,0,stock,5,5,3,3,2,1,0,0,G17-01 G17-07,False
+product-attribute,product_origin,product,0,product,66,4,7,4,3,1,3,0,G17-01 G17-07 G17-14,False
+product-attribute,product_packaging_dimension,product product_logistics_uom,1,product,23,54,10,5,2,3,5,0,G17-01 G17-02,False
+product-attribute,product_packaging_level,product stock,0,product stock,26,25,8,8,4,4,0,0,G17-01 G17-03 G17-04 G17-09,False
+product-attribute,product_packaging_level_salable,product_packaging_level sale_stock,1,sale_stock,17,29,7,3,3,0,2,2,G17-01 G17-02 G17-13,False
+product-attribute,product_pricelist_assortment,product_assortment sales_team,1,sales_team,35,46,16,16,9,7,0,0,G17-01 G17-07 G17-09,False
+product-attribute,product_pricelist_by_contact,product,0,product,17,17,9,1,1,0,8,0,G17-01,False
+product-attribute,product_pricelist_direct_print,sale,0,sale,20,85,10,10,7,3,0,0,G17-01 G17-02 G17-07,False
+product-attribute,product_pricelist_fixed_currency_rate,product,0,product,128,69,20,3,3,0,17,0,G17-01 G17-07 G17-13,False
+product-attribute,product_pricelist_item_list_view,sale,0,sale,1,1,1,1,1,0,0,0,G17-01,False
+product-attribute,product_pricelist_revision,sale_management,0,sale_management,16,6,6,3,2,1,3,0,G17-01 G17-07,False
+product-attribute,product_pricelist_simulation,product,0,product,10,10,7,7,4,3,0,0,G17-01 G17-07 G17-09,False
+product-attribute,product_pricelist_supplierinfo,product,0,product,7,10,6,6,2,4,0,0,G17-01 G17-07,False
+product-attribute,product_print_category,sale_management product,0,sale_management product,56,116,23,9,8,1,14,0,G17-01 G17-02 G17-07,False
+product-attribute,product_product_template_link,product,0,product,1,1,1,1,1,0,0,0,G17-01,False
+product-attribute,product_profile,sale_management,0,sale_management,28,29,5,3,2,1,2,0,G17-01 G17-10,False
+product-attribute,product_readonly_security,product,0,product,10,14,2,2,2,0,0,0,G17-01 G17-14,False
+product-attribute,product_restricted_type,product,0,product,238,76,21,10,4,6,10,1,G17-01 G17-07 G17-13,False
+product-attribute,product_route_mto,stock_route_mto,1,,1,1,1,1,1,0,0,0,G17-01,False
+product-attribute,product_secondary_unit,product,0,product,16,13,12,6,2,4,4,2,G17-01 G17-07 G17-09,False
+product-attribute,product_sequence,product,0,product,19,31,12,5,3,2,3,4,G17-01 G17-04 G17-10,False
+product-attribute,product_set,product,0,product,34,23,10,7,5,2,3,0,G17-01 G17-03 G17-07,False
+product-attribute,product_state,product sale,0,product sale,7,10,9,3,3,0,3,3,G17-01 G17-04 G17-06,False
+product-attribute,product_status,product product_state,1,product,8,18,7,6,2,4,1,0,G17-01 G17-07,False
+product-attribute,product_supplierinfo_archive,product,0,product,2,2,2,1,1,0,1,0,G17-01,False
+product-attribute,product_supplierinfo_code,product,0,product,14,5,7,4,1,3,3,0,G17-01,False
+product-attribute,product_supplierinfo_for_customer,product,0,product,38,42,20,14,4,10,3,3,G17-01 G17-02 G17-03 G17-06 G17-07,False
+product-attribute,product_supplierinfo_revision,product,0,product,1,1,1,1,1,0,0,0,G17-01,False
+product-attribute,product_uom_measure_type,product,0,product,8,8,5,5,2,3,0,0,G17-01 G17-04,False
+product-attribute,product_usability,product,0,product,1,1,1,1,1,0,0,0,G17-01,False
+product-attribute,purchase_product_template_tags,purchase,0,purchase,3,3,2,2,1,1,0,0,G17-01,False
+product-attribute,sale_product_matrix_secondary_unit,sale_management sale_product_matrix sale_order_secondary_unit,1,sale_management sale_product_matrix,266,400,25,19,3,16,6,0,G17-01 G17-09 G17-13,False
+product-attribute,sale_product_template_tags,sale,0,sale,1,1,1,1,1,0,0,0,G17-01,False
+product-attribute,stock_product_template_tags,stock,0,stock,3,5,2,2,1,1,0,0,G17-01,False
+product-attribute,stock_production_lot_expired_date,product_expiry stock,0,product_expiry stock,13,17,3,2,2,0,0,1,G17-01 G17-07,False
+product-attribute,uom_alias,uom,0,uom,7,7,6,1,1,0,5,0,G17-01,False
+product-attribute,uom_category_active,uom,0,uom,2,2,2,2,2,0,0,0,G17-01 G17-07,False
+product-configurator,product_configurator,account,0,account,457,430,77,71,25,46,1,5,G17-01 G17-03 G17-04 G17-07 G17-09 G17-10 G17-13,False
+product-configurator,product_configurator_sale,sale_management product_configurator stock,1,sale_management stock,39,15,9,6,3,3,0,3,G17-01 G17-07 G17-09,False
+product-configurator,website_product_configurator,website_sale product_configurator product_configurator_sale,2,website_sale,1873,1947,66,62,3,59,3,1,G17-01 G17-10 G17-13,False
+product-pack,product_pack,product,0,product,69,24,12,6,3,3,6,0,G17-01 G17-07,False
+product-pack,sale_product_pack,product_pack sale,1,sale,18,9,10,5,2,3,4,1,G17-01 G17-07 G17-09,False
+product-pack,sale_product_pack_fixed_discount,sale_product_pack sale_fixed_discount,2,,6,6,2,2,1,1,0,0,G17-01,False
+product-pack,sale_stock_product_pack,sale_product_pack stock_product_pack,2,,5,4,3,3,1,2,0,0,G17-01,False
+product-pack,stock_product_pack,product_pack stock,1,stock,56,33,15,8,2,6,7,0,G17-01 G17-07,False
+product-pack,website_sale_product_pack,website_sale sale_product_pack,1,website_sale,126,276,11,9,1,8,0,2,G17-01,False
+product-variant,product_variant_attribute_tax,product account,0,product account,12,1,4,1,1,0,3,0,G17-01,False
+product-variant,product_variant_configurator,product,0,product,95,72,31,12,5,7,9,10,G17-01 G17-07 G17-09,False
+product-variant,product_variant_default_code,product,0,product,25,40,8,5,4,1,1,2,G17-01 G17-07 G17-10,False
+product-variant,product_variant_name,product,0,product,3,3,2,1,1,0,0,1,G17-04,False
+product-variant,product_variant_sale_price,account sale,0,account sale,54,45,18,5,2,3,13,0,G17-01 G17-07,False
+product-variant,purchase_variant_configurator,purchase product_variant_configurator,1,purchase,165,23,12,9,4,5,3,0,G17-01 G17-07 G17-09 G17-13,False
+product-variant,sale_variant_configurator,sale product_variant_configurator,1,sale,541,62,19,15,3,12,4,0,G17-01 G17-07 G17-09 G17-14,False
+project,project_administrator_restricted_visibility,project,0,project,1,1,1,1,1,0,0,0,G17-01,False
+project,project_analytic_code,project,0,project,73,65,12,5,3,2,7,0,G17-01 G17-03 G17-13,False
+project,project_department,project hr,0,project hr,21,13,6,3,2,1,3,0,G17-01 G17-07,False
+project,project_hr,project hr,0,project hr,50,51,12,6,2,4,6,0,G17-01 G17-14,False
+project,project_key,project,0,project,29,27,12,8,5,3,0,4,G17-01 G17-03 G17-04 G17-11,False
+project,project_merge,project,0,project,21,8,9,6,2,4,3,0,G17-01 G17-07,False
+project,project_milestone_status,project hr_timesheet,0,project hr_timesheet,72,41,19,13,2,11,6,0,G17-01 G17-06,False
+project,project_parent,project,0,project,19,12,7,4,1,3,3,0,G17-01,False
+project,project_parent_task_filter,project,0,project,49,167,28,7,2,5,21,0,G17-01 G17-07,False
+project,project_portal_task_visibility,project portal,0,project portal,3,4,3,3,2,1,0,0,G17-01 G17-04,False
+project,project_risk,project,0,project,15,12,5,2,2,0,3,0,G17-01 G17-07,False
+project,project_role,project mail,0,project mail,20,7,8,7,4,3,0,1,G17-01 G17-07 G17-09,False
+project,project_sequence,project,0,project,27,48,9,6,3,3,3,0,G17-01 G17-03 G17-10,False
+project,project_status,project,0,project,6,16,6,6,3,3,0,0,G17-01 G17-02 G17-14,False
+project,project_tag_hierarchy,project,0,project,19,21,5,5,3,2,0,0,G17-01 G17-03 G17-13,False
+project,project_task_add_very_high,project,0,project,7,5,5,2,2,0,3,0,G17-01 G17-04,False
+project,project_task_code,project,0,project,28,33,9,6,4,2,3,0,G17-01 G17-03 G17-04,False
+project,project_task_default_stage,project,0,project,3,6,3,2,1,1,0,1,G17-01,False
+project,project_task_description_template,project,0,project,7,5,3,3,1,2,0,0,G17-01,False
+project,project_task_material,project product,0,project product,1,1,1,1,1,0,0,0,G17-01,False
+project,project_task_name_with_id,project,0,project,24,23,4,4,3,1,0,0,G17-01 G17-03 G17-13,False
+project,project_task_note,project,0,project,7,7,3,1,1,0,2,0,G17-01,False
+project,project_task_pull_request,project,0,project,36,60,6,3,3,0,3,0,G17-01 G17-07 G17-14,False
+project,project_task_recurring_activity,project,0,project,184,167,31,24,4,20,5,2,G17-01 G17-07 G17-13,False
+project,project_task_stage_mgmt,project,0,project,4,7,4,2,1,1,2,0,G17-01,False
+project,project_task_stage_state,project,0,project,191,176,24,13,2,11,11,0,G17-01 G17-13 G17-14,False
+project,project_task_tag,project,0,project,1,1,1,1,1,0,0,0,G17-01,False
+project,project_template,project,0,project,2,2,2,2,2,0,0,0,G17-01 G17-07,False
+project,project_timeline,project web_timeline,1,project,20,59,11,8,4,4,3,0,G17-01 G17-02 G17-07,False
+project,project_timeline_hr_timesheet,project_timeline hr_timesheet,1,hr_timesheet,5,2,5,2,1,1,3,0,G17-01,False
+project,project_timesheet_time_control,hr_timesheet,0,hr_timesheet,53,34,34,31,31,0,3,0,G17-01 G17-04 G17-07,False
+project,project_type,project,0,project,1,2,2,1,1,0,1,0,G17-01,False
+project,project_version,project,0,project,40,17,7,1,1,0,6,0,G17-01,False
+purchase-reporting,purchase_comment_template,purchase base_comment_template,1,purchase,85,66,21,2,2,0,18,1,G17-01 G17-14,False
+purchase-reporting,purchase_order_report_grouped_by_vendor,purchase,0,purchase,6,7,3,2,1,1,0,1,G17-01,False
+purchase-reporting,purchase_packaging_report,purchase,0,purchase,93,18,15,3,2,1,12,0,G17-01 G17-13 G17-14,False
+purchase-reporting,purchase_report_date_format,purchase,0,purchase,22,3,5,1,1,0,4,0,G17-01,False
+purchase-reporting,purchase_report_payment_term,purchase,0,purchase,22,3,5,1,1,0,4,0,G17-01,False
+purchase-reporting,purchase_report_shipping_address,purchase_stock,0,purchase_stock,28,9,7,1,1,0,6,0,G17-01,False
+purchase-workflow,procurement_purchase_no_grouping,purchase_stock,0,purchase_stock,16,12,4,3,2,1,1,0,G17-01 G17-10,False
+purchase-workflow,procurement_purchase_sale_no_grouping,procurement_purchase_no_grouping sale_purchase,1,sale_purchase,5,7,4,3,1,2,0,1,G17-01,False
+purchase-workflow,product_supplier_code_purchase,purchase,0,purchase,4,4,4,3,1,2,0,1,G17-01,False
+purchase-workflow,purchase_advance_payment,purchase,0,purchase,4,6,5,4,2,2,1,0,G17-01 G17-07,False
+purchase-workflow,purchase_all_shipments,purchase_stock,0,purchase_stock,2,2,2,2,2,0,0,0,G17-01 G17-07,False
+purchase-workflow,purchase_allowed_product,purchase base_view_inheritance_extension,1,purchase,11,11,6,5,2,3,0,1,G17-01 G17-07,False
+purchase-workflow,purchase_blanket_order,purchase base_view_inheritance_extension,1,purchase,53,41,18,18,10,8,0,0,G17-01 G17-07 G17-10,False
+purchase-workflow,purchase_commercial_partner,purchase,0,purchase,11,2,5,0,0,0,5,0,,False
+purchase-workflow,purchase_default_terms_conditions,purchase,0,purchase,21,26,3,2,2,0,0,1,G17-01 G17-07 G17-10,False
+purchase-workflow,purchase_delivery_split_date,purchase_stock,0,purchase_stock,15,11,6,5,1,4,1,0,G17-01,False
+purchase-workflow,purchase_deposit,purchase,0,purchase,10,9,5,5,3,2,0,0,G17-01 G17-07,False
+purchase-workflow,purchase_exception,purchase base_exception,1,purchase,27,5,8,3,3,0,5,0,G17-01 G17-07,False
+purchase-workflow,purchase_fop_shipping,purchase,0,purchase,5,3,3,3,2,1,0,0,G17-01 G17-07,False
+purchase-workflow,purchase_force_invoiced,purchase,0,purchase,3,4,3,3,2,1,0,0,G17-01 G17-07,False
+purchase-workflow,purchase_invoice_method,purchase,0,purchase,1,1,1,1,1,0,0,0,G17-01,False
+purchase-workflow,purchase_invoice_status_line,purchase_force_invoiced purchase_order_line_menu,2,,13,7,5,4,2,2,0,1,G17-01 G17-07 G17-09,False
+purchase-workflow,purchase_last_price_info,purchase,0,purchase,7,7,5,5,5,0,0,0,G17-01 G17-07,False
+purchase-workflow,purchase_location_by_line,purchase_stock purchase_delivery_split_date,1,purchase_stock,13,4,7,2,2,0,5,0,G17-07,False
+purchase-workflow,purchase_lot,purchase sale_order_lot_selection,1,purchase,8,8,6,6,3,3,0,0,G17-01 G17-07,False
+purchase-workflow,purchase_manual_currency,purchase account_manual_currency,1,purchase,32,50,8,8,4,4,0,0,G17-01 G17-07 G17-10,False
+purchase-workflow,purchase_manual_delivery,purchase_stock,0,purchase_stock,246,141,33,26,10,16,5,2,G17-01 G17-07 G17-09 G17-10 G17-12 G17-13,False
+purchase-workflow,purchase_mass_mail,purchase,0,purchase,12,8,6,6,1,5,0,0,G17-01,False
+purchase-workflow,purchase_merge,purchase_order_approved,1,,51,15,9,5,2,3,0,4,G17-01 G17-13,False
+purchase-workflow,purchase_no_rfq,purchase,0,purchase,96,95,21,4,3,1,17,0,G17-01 G17-04 G17-07,False
+purchase-workflow,purchase_open_qty,purchase_stock,0,purchase_stock,49,21,15,10,3,7,5,0,G17-01 G17-04 G17-07 G17-09,False
+purchase-workflow,purchase_order_approved,purchase_stock,0,purchase_stock,47,32,7,4,3,1,1,2,G17-01 G17-07 G17-10,False
+purchase-workflow,purchase_order_archive,purchase,0,purchase,31,22,7,4,2,2,3,0,G17-01 G17-07,False
+purchase-workflow,purchase_order_general_discount,purchase,0,purchase,11,17,4,4,3,1,0,0,G17-01 G17-07 G17-10,False
+purchase-workflow,purchase_order_line_deep_sort,purchase,0,purchase,26,41,3,3,3,0,0,0,G17-01 G17-07 G17-10,False
+purchase-workflow,purchase_order_line_menu,purchase,0,purchase,1,3,3,1,1,0,1,1,G17-01,False
+purchase-workflow,purchase_order_line_sequence,purchase_stock stock_picking_line_sequence,1,purchase_stock,56,45,17,16,2,14,0,1,G17-01 G17-07 G17-09,False
+purchase-workflow,purchase_order_line_stock_available,purchase_stock,0,purchase_stock,2,2,2,2,1,1,0,0,G17-01,False
+purchase-workflow,purchase_order_product_recommendation,purchase_stock,0,purchase_stock,14,14,12,12,3,9,0,0,G17-01 G17-07,False
+purchase-workflow,purchase_order_qty_change_no_recompute,purchase,0,purchase,3,1,3,2,1,1,1,0,G17-01,False
+purchase-workflow,purchase_order_secondary_unit,purchase product_secondary_unit,1,purchase,6,4,4,4,4,0,0,0,G17-01 G17-07,False
+purchase-workflow,purchase_order_supplierinfo_update,purchase,0,purchase,19,17,7,5,2,3,2,0,G17-01 G17-14,False
+purchase-workflow,purchase_order_type,purchase,0,purchase,37,17,8,8,5,3,0,0,G17-01 G17-07 G17-09,False
+purchase-workflow,purchase_order_type_dashboard,purchase_order_type,1,,30,32,5,4,1,3,1,0,G17-01,False
+purchase-workflow,purchase_order_uninvoiced_amount,purchase,0,purchase,1,1,1,1,1,0,0,0,G17-01,False
+purchase-workflow,purchase_order_uninvoiced_amount_line,purchase purchase_order_line_menu,1,purchase,1,1,1,1,1,0,0,0,G17-01,False
+purchase-workflow,purchase_order_weight_volume,purchase,0,purchase,24,24,9,4,4,0,5,0,G17-01 G17-07 G17-10,False
+purchase-workflow,purchase_partner_incoterm,account purchase_stock,0,account purchase_stock,78,98,17,2,2,0,15,0,G17-01 G17-07,False
+purchase-workflow,purchase_partner_selectable_option,purchase,0,purchase,1,3,1,1,0,1,0,0,,False
+purchase-workflow,purchase_reception_notify,purchase_stock,0,purchase_stock,52,37,17,9,2,7,6,2,G17-01 G17-04,False
+purchase-workflow,purchase_reception_status,purchase,0,purchase,29,25,9,9,2,7,0,0,G17-01 G17-07,False
+purchase-workflow,purchase_reception_status_line,purchase_reception_status,1,,62,53,17,14,3,11,3,0,G17-01 G17-07 G17-09,False
+purchase-workflow,purchase_reorder_control,stock,0,stock,1,1,1,1,1,0,0,0,G17-01,False
+purchase-workflow,purchase_request,purchase_stock,0,purchase_stock,138,175,69,49,32,17,3,17,G17-01 G17-03 G17-07 G17-09,False
+purchase-workflow,purchase_request_department,hr purchase_request,1,hr,11,21,5,4,4,0,0,1,G17-01 G17-04 G17-07,False
+purchase-workflow,purchase_request_tier_validation,purchase_request base_tier_validation,2,,9,8,5,3,1,2,0,2,G17-01,False
+purchase-workflow,purchase_requisition_order_remaining_qty,purchase_requisition,0,purchase_requisition,33,20,11,7,2,5,4,0,G17-01 G17-14,False
+purchase-workflow,purchase_requisition_tier_validation,purchase_requisition base_tier_validation,1,purchase_requisition,6,5,4,1,1,0,3,0,G17-01,False
+purchase-workflow,purchase_sale_link_by_origin,sale_purchase_stock,0,sale_purchase_stock,18,15,5,1,1,0,4,0,G17-01,False
+purchase-workflow,purchase_security,purchase,0,purchase,13,6,7,1,0,1,6,0,,False
+purchase-workflow,purchase_start_end_dates,purchase account_invoice_start_end_dates,1,purchase,601,283,20,10,2,8,7,3,G17-01 G17-07,False
+purchase-workflow,purchase_stock_manual_currency,purchase_stock purchase_manual_currency,1,purchase_stock,14,14,5,4,1,3,0,1,G17-01,False
+purchase-workflow,purchase_stock_packaging,purchase_stock,0,purchase_stock,11,2,5,0,0,0,5,0,,False
+purchase-workflow,purchase_stock_price_unit_sync,purchase_stock,0,purchase_stock,2,2,2,2,1,1,0,0,G17-01,False
+purchase-workflow,purchase_stock_secondary_unit,purchase_order_secondary_unit stock_secondary_unit purchase_stock,2,purchase_stock,5,4,4,4,1,3,0,0,G17-01,False
+purchase-workflow,purchase_tag,purchase,0,purchase,1,1,1,1,1,0,0,0,G17-01,False
+purchase-workflow,purchase_tier_validation,purchase base_tier_validation,1,purchase,4,4,4,1,1,0,0,3,G17-01,False
+purchase-workflow,purchase_transport_mode,purchase purchase_exception,1,purchase,13,23,6,5,3,2,0,1,G17-01 G17-07 G17-10,False
+purchase-workflow,purchase_triple_discount,purchase account_invoice_triple_discount,1,purchase,608,885,21,20,7,13,1,0,G17-01 G17-02 G17-04 G17-07 G17-09,False
+purchase-workflow,purchase_v12_control_menu,purchase_stock,0,purchase_stock,7,18,8,2,1,1,6,0,G17-01,False
+purchase-workflow,purchase_warn_message,purchase,0,purchase,10,9,6,3,2,1,3,0,G17-01 G17-07,False
+purchase-workflow,sale_purchase_force_vendor,sale_purchase_stock,0,sale_purchase_stock,8,16,4,4,4,0,0,0,G17-01 G17-07 G17-09 G17-10,False
+purchase-workflow,supplier_calendar,purchase_stock resource,0,purchase_stock resource,28,14,13,4,2,2,7,2,G17-01 G17-07,False
+queue,base_import_async,base_import queue_job,1,base_import,56,57,8,8,1,7,0,0,G17-01,False
+queue,queue_job,mail base_sparse_field web,0,mail base_sparse_field web,92,158,42,37,14,23,4,1,G17-01 G17-02 G17-03 G17-04 G17-07 G17-12 G17-13,False
+queue,queue_job_cron,queue_job,1,,6,4,6,2,2,0,4,0,G17-01 G17-07,False
+queue,queue_job_cron_jobrunner,queue_job,1,,2,5,2,2,2,0,0,0,G17-01 G17-07,False
+queue,queue_job_subscribe,queue_job,1,,2,2,2,1,1,0,0,1,G17-01,False
+queue,test_queue_job,queue_job,1,,8,8,7,5,1,4,0,2,G17-01,False
+repair,repair_picking,stock_restrict_lot repair_stock,2,,131,119,41,34,3,31,6,1,G17-01 G17-07,False
+repair,repair_picking_after_done,repair_type repair_stock,2,,35,29,8,5,2,3,3,0,G17-01 G17-07,False
+repair,repair_refurbish,repair,0,repair,56,94,11,11,4,7,0,0,G17-01 G17-07,False
+repair,repair_stock,repair,0,repair,47,28,12,7,3,4,3,2,G17-01 G17-07 G17-13,False
+repair,repair_type,repair,0,repair,354,432,28,12,4,8,16,0,G17-01 G17-07 G17-13,False
+report-print-send,base_report_to_printer,web,0,web,28,27,11,11,5,6,0,0,G17-01 G17-07,False
+report-print-send,printer_zpl2,base_report_to_printer,1,,125,196,24,24,15,9,0,0,G17-01 G17-07 G17-11 G17-14,False
+reporting-engine,base_comment_template,base mail,0,base mail,22,25,11,9,5,4,0,2,G17-01 G17-03 G17-07 G17-13,False
+reporting-engine,bi_sql_editor,spreadsheet_dashboard sql_request_abstract,1,spreadsheet_dashboard,133,160,32,22,10,12,10,0,G17-01 G17-04 G17-07 G17-09,False
+reporting-engine,bi_view_editor,web spreadsheet_dashboard,0,web spreadsheet_dashboard,166,105,42,33,11,22,3,6,G17-01 G17-04 G17-07,False
+reporting-engine,bi_view_editor_spreadsheet_dashboard,bi_view_editor spreadsheet_dashboard,1,spreadsheet_dashboard,11,1,4,1,1,0,3,0,G17-01,False
+reporting-engine,kpi,base_external_dbsource spreadsheet_dashboard,1,spreadsheet_dashboard,84,91,36,33,13,20,1,1,G17-01 G17-07,False
+reporting-engine,report_async,queue_job spreadsheet_dashboard,1,spreadsheet_dashboard,34,46,17,17,7,10,0,0,G17-07 G17-09,False
+reporting-engine,report_csv,base web,0,base web,7,13,5,5,2,3,0,0,G17-01 G17-07,False
+reporting-engine,report_layout_config,web base,0,web base,21,40,14,8,2,6,6,0,G17-01 G17-02,False
+reporting-engine,report_py3o,web,0,web,63,90,6,3,1,2,3,0,G17-07,False
+reporting-engine,report_qweb_element_page_visibility,web,0,web,1,1,1,1,1,0,0,0,G17-01,False
+reporting-engine,report_qweb_field_option,uom,0,uom,14,14,10,4,1,3,6,0,G17-01,False
+reporting-engine,report_qweb_parameter,web,0,web,1,1,1,1,1,0,0,0,G17-01,False
+reporting-engine,report_qweb_pdf_watermark,web,0,web,41,22,13,4,2,2,8,1,G17-01 G17-07,False
+reporting-engine,report_qweb_signer,web_editor,0,web_editor,25,19,11,10,3,7,0,1,G17-01 G17-07,False
+reporting-engine,report_substitute,base mail,0,base mail,29,56,9,7,1,6,1,1,G17-01,False
+reporting-engine,report_text_format_option,base,0,base,6,11,3,3,2,1,0,0,G17-01 G17-07,False
+reporting-engine,report_wkhtmltopdf_param,web,0,web,26,4,7,1,1,0,6,0,G17-01,False
+reporting-engine,report_xlsx,base web,0,base web,103,100,32,6,1,5,26,0,G17-01,False
+reporting-engine,report_xlsx_helper,report_xlsx,1,,3,3,3,2,1,1,0,1,G17-01,False
+reporting-engine,report_xml,web,0,web,9,18,5,5,3,2,0,0,G17-01 G17-04 G17-07,False
+reporting-engine,sql_export,spreadsheet_dashboard sql_request_abstract,1,spreadsheet_dashboard,32,30,14,9,5,4,3,2,G17-01 G17-07,False
+reporting-engine,sql_export_excel,sql_export,1,,74,92,25,2,2,0,23,0,G17-01 G17-07,False
+reporting-engine,sql_export_mail,mail sql_export,1,mail,13,40,11,6,4,2,3,2,G17-01 G17-02 G17-07,False
+reporting-engine,sql_request_abstract,mail,0,mail,134,149,28,9,4,5,19,0,G17-01 G17-07,False
+rest-framework,api_log,web,0,web,25,36,16,7,4,3,9,0,G17-01 G17-07,False
+rest-framework,api_log_mail,api_log mail,1,mail,19,29,10,1,1,0,9,0,G17-01,False
+rest-framework,fastapi,endpoint_route_handler,1,,3556,3389,83,23,5,18,58,2,G17-01 G17-07 G17-09,False
+rest-framework,fastapi_auth_api_key,fastapi auth_api_key_group,2,,101,75,19,6,1,5,13,0,G17-01,False
+rest-framework,fastapi_log,api_log fastapi,2,,33,97,22,12,4,8,10,0,G17-01 G17-02 G17-07,False
+rest-framework,fastapi_log_mail,fastapi_log api_log_mail,2,,25,93,16,7,5,2,9,0,G17-01 G17-02 G17-07 G17-11,False
+rest-framework,graphql_base,base,0,base,161,158,22,3,1,2,18,1,G17-01,False
+rest-framework,graphql_demo,graphql_base,1,,68,34,21,1,1,0,18,2,G17-01,False
+rest-framework,pydantic,,0,,126,101,24,2,1,1,22,0,G17-01,False
+rma,product_warranty,sale_management,0,sale_management,13,3,6,2,2,0,3,0,G17-01 G17-07,False
+rma,rma,stock_account,0,stock_account,40,15,12,12,1,11,0,0,G17-07,False
+rma,rma_lot,rma stock_picking_return_lot,2,,29,18,16,5,2,3,11,0,G17-01 G17-07,False
+rma,rma_sale,rma sale_stock,1,sale_stock,236,347,43,32,7,25,11,0,G17-01 G17-07 G17-10 G17-14,False
+sale-promotion,coupon_chatter,loyalty,0,loyalty,5,20,5,1,1,0,4,0,G17-01,False
+sale-promotion,loyalty_incompatibility,loyalty,0,loyalty,25,38,13,10,4,6,3,0,G17-01 G17-02 G17-07 G17-14,False
+sale-promotion,loyalty_limit,loyalty,0,loyalty,163,76,3,2,2,0,1,0,G17-01 G17-02,False
+sale-promotion,loyalty_partner_applicability,loyalty,0,loyalty,40,66,7,4,3,1,1,2,G17-01 G17-02 G17-13,False
+sale-promotion,sale_loyalty_incompatibility,loyalty_incompatibility sale_loyalty,1,sale_loyalty,12,1,4,1,1,0,3,0,G17-01,False
+sale-promotion,sale_loyalty_limit,loyalty_limit sale_commercial_partner sale_loyalty_order_line_link,3,,73,2,3,2,1,1,1,0,G17-01,False
+sale-promotion,sale_loyalty_order_line_link,sale_loyalty,0,sale_loyalty,12,50,9,8,3,5,0,1,G17-01 G17-02 G17-07,False
+sale-promotion,sale_loyalty_partner_applicability,sale_loyalty loyalty_partner_applicability,1,sale_loyalty,12,10,3,3,2,1,0,0,G17-10 G17-13,False
+sale-reporting,sale_comment_template,sale account_comment_template,1,sale,41,19,7,4,1,3,3,0,G17-01,False
+sale-reporting,sale_layout_category_hide_detail,sale_management,0,sale_management,70,153,26,21,6,15,3,2,G17-01 G17-07 G17-12,False
+sale-reporting,sale_order_line_position,sale,0,sale,24,30,9,4,2,2,5,0,G17-01 G17-10,False
+sale-reporting,sale_order_report_product_image,sale,0,sale,25,31,15,1,1,0,14,0,G17-01,False
+sale-reporting,sale_order_weight,sale_management,0,sale_management,5,2,5,2,1,1,3,0,G17-01,False
+sale-reporting,sale_quotation_builder,website sale_management website_mail,0,website sale_management website_mail,756,85,23,18,6,12,5,0,G17-01 G17-04 G17-09 G17-13 G17-14,False
+sale-reporting,sale_report_salesman,sale sales_team,0,sale sales_team,12,12,6,3,2,1,3,0,G17-01 G17-04,False
+sale-reporting,sale_report_salesperson_from_partner,sale,0,sale,8,2,5,2,1,1,3,0,G17-01,False
+sale-workflow,partner_contact_sale_info_propagation,sales_team,0,sales_team,84,127,12,6,2,4,6,0,G17-01 G17-13,False
+sale-workflow,partner_sale_pivot,sale,0,sale,1,1,1,1,1,0,0,0,G17-01,False
+sale-workflow,portal_sale_personal_data_only,sale portal_account_personal_data_only,1,sale,8,8,6,3,2,1,3,0,G17-01 G17-04,False
+sale-workflow,product_form_sale_link,sale,0,sale,7,7,5,5,3,2,0,0,G17-01 G17-07,False
+sale-workflow,product_supplierinfo_for_customer_sale,sale product_supplierinfo_for_customer,1,sale,57,51,4,4,1,3,0,0,G17-01,False
+sale-workflow,sale_advance_payment,sale,0,sale,45,39,16,14,6,8,0,2,G17-01 G17-07,False
+sale-workflow,sale_attached_product,sale,0,sale,6,3,3,3,2,1,0,0,G17-01 G17-06,False
+sale-workflow,sale_auto_remove_zero_quantity_lines,sale,0,sale,16,20,4,4,2,2,0,0,G17-01 G17-10,False
+sale-workflow,sale_automatic_workflow,sale_stock sales_team,0,sale_stock sales_team,50,54,16,16,7,9,0,0,G17-01 G17-07,False
+sale-workflow,sale_blanket_order,uom sale_management,0,uom sale_management,135,124,36,32,16,16,3,1,G17-01 G17-03 G17-07 G17-09 G17-10,False
+sale-workflow,sale_block_no_stock,sale_stock mail_message_destiny_link_template,1,sale_stock,104,96,30,16,8,8,11,3,G17-01 G17-07 G17-09 G17-10,False
+sale-workflow,sale_cancel_reason,sale,0,sale,59,10,13,9,3,6,3,1,G17-01 G17-07 G17-13,False
+sale-workflow,sale_commercial_partner,sale,0,sale,10,1,4,1,1,0,3,0,G17-01,False
+sale-workflow,sale_delivery_split_date,sale_order_line_date sale_procurement_group_by_line,2,,7,4,3,1,1,0,0,2,G17-01,False
+sale-workflow,sale_delivery_state,sale,0,sale,4,11,3,3,2,1,0,0,G17-01 G17-07,False
+sale-workflow,sale_discount_display_amount,sale_management,0,sale_management,870,548,36,12,4,8,23,1,G17-01 G17-04 G17-07 G17-10,False
+sale-workflow,sale_elaboration,sale_stock,0,sale_stock,76,70,26,20,12,8,6,0,G17-01 G17-03 G17-04 G17-07 G17-09 G17-10,False
+sale-workflow,sale_exception,sale base_exception,1,sale,284,438,195,12,4,8,183,0,G17-01 G17-07 G17-09,False
+sale-workflow,sale_exception_holidays_public,sale_exception hr_holidays_public,2,,8,2,3,3,1,2,0,0,G17-01,False
+sale-workflow,sale_fixed_discount,sale account_invoice_fixed_discount,1,sale,113,98,36,3,1,2,32,1,G17-01,False
+sale-workflow,sale_force_invoiced,sale,0,sale,8,8,6,5,2,3,0,1,G17-01 G17-07,False
+sale-workflow,sale_force_invoiced_quantity,sale_force_invoiced,1,,3,3,3,3,2,1,0,0,G17-01 G17-07 G17-09,False
+sale-workflow,sale_force_whole_invoiceability,sale,0,sale,8,4,4,3,2,1,1,0,G17-01 G17-07,False
+sale-workflow,sale_global_discount,account_global_discount sale,1,sale,135,33,16,13,2,11,3,0,G17-01 G17-13,False
+sale-workflow,sale_invoice_blocking,sale sales_team,0,sale sales_team,91,2,4,4,2,2,0,0,G17-01 G17-13,False
+sale-workflow,sale_invoice_frequency,sale account,0,sale account,54,5,5,3,2,1,2,0,G17-01 G17-13,False
+sale-workflow,sale_invoice_plan,account sale_management,0,account sale_management,27,25,12,12,7,5,0,0,G17-01 G17-07 G17-09,False
+sale-workflow,sale_invoice_policy,sale_stock,0,sale_stock,16,29,10,10,3,7,0,0,G17-01 G17-07 G17-10,False
+sale-workflow,sale_last_price_info,sale_management,0,sale_management,15,14,3,3,2,1,0,0,G17-01 G17-14,False
+sale-workflow,sale_manual_delivery,stock_delivery sale_stock sales_team,0,stock_delivery sale_stock sales_team,29,46,23,19,4,15,3,1,G17-01 G17-04 G17-07 G17-09,False
+sale-workflow,sale_order_archive,sale,0,sale,12,4,4,4,3,1,0,0,G17-01 G17-07 G17-13,False
+sale-workflow,sale_order_carrier_auto_assign,delivery,0,delivery,14,15,4,4,2,2,0,0,G17-01 G17-10,False
+sale-workflow,sale_order_general_discount,sale,0,sale,18,8,9,7,1,6,2,0,G17-01,False
+sale-workflow,sale_order_invoice_amount,sale,0,sale,407,206,28,22,4,18,6,0,G17-01 G17-04 G17-10 G17-13,False
+sale-workflow,sale_order_invoicing_finished_task,sale_timesheet,0,sale_timesheet,14,10,9,6,3,3,3,0,G17-01 G17-07,False
+sale-workflow,sale_order_line_cancel,sale,0,sale,36,23,15,12,5,7,3,0,G17-01 G17-04 G17-07 G17-09 G17-10,False
+sale-workflow,sale_order_line_date,sale_stock,0,sale_stock,7,5,3,2,1,1,0,1,G17-01,False
+sale-workflow,sale_order_line_description,sale,0,sale,79,84,20,2,2,0,18,0,G17-01 G17-10,False
+sale-workflow,sale_order_line_input,sale_management,0,sale_management,89,63,19,12,8,4,7,0,G17-01 G17-07 G17-09,False
+sale-workflow,sale_order_line_menu,sale,0,sale,21,22,20,4,1,3,16,0,G17-01,False
+sale-workflow,sale_order_line_multi_warehouse,sale_stock,0,sale_stock,233,191,64,51,10,41,13,0,G17-01 G17-03 G17-07 G17-09 G17-10 G17-13,False
+sale-workflow,sale_order_line_note,sale,0,sale,18,23,5,2,2,0,3,0,G17-01 G17-07,False
+sale-workflow,sale_order_line_price_history,sale,0,sale,92,82,16,10,4,6,6,0,G17-01 G17-07 G17-09 G17-12,False
+sale-workflow,sale_order_line_sequence,sale,0,sale,9,4,4,2,1,1,1,1,G17-01,False
+sale-workflow,sale_order_line_tag,sale,0,sale,1,1,1,1,1,0,0,0,G17-01,False
+sale-workflow,sale_order_lot_generator,sale_order_lot_selection,1,,34,25,6,3,2,1,3,0,G17-01 G17-07,False
+sale-workflow,sale_order_lot_selection,sale_stock stock_restrict_lot,1,sale_stock,90,92,15,12,1,11,3,0,G17-01,False
+sale-workflow,sale_order_partner_no_autofollow,sale,0,sale,13,22,5,2,2,0,2,1,G17-01 G17-10,False
+sale-workflow,sale_order_price_recalculation,sale,0,sale,2,2,2,2,2,0,0,0,G17-07,False
+sale-workflow,sale_order_priority,sale_stock,0,sale_stock,14,4,7,4,2,2,3,0,G17-01 G17-07,False
+sale-workflow,sale_order_product_assortment,sale product_assortment base_view_inheritance_extension,2,sale,1,22,2,1,1,0,1,0,G17-01,False
+sale-workflow,sale_order_product_availability_inline,sale_stock base_view_inheritance_extension,1,sale_stock,19,9,4,1,1,0,3,0,G17-03,False
+sale-workflow,sale_order_product_recommendation,sale,0,sale,63,88,11,11,9,2,0,0,G17-01 G17-07 G17-09 G17-10,False
+sale-workflow,sale_order_qty_change_no_recompute,sale,0,sale,1,3,2,2,1,1,0,0,G17-01,False
+sale-workflow,sale_order_report_without_price,sale,0,sale,35,32,16,1,1,0,15,0,G17-01,False
+sale-workflow,sale_order_revision,base_revision sale_management,1,sale_management,11,15,9,6,4,2,3,0,G17-01 G17-07,False
+sale-workflow,sale_order_secondary_unit,sale product_secondary_unit,1,sale,297,160,12,12,6,6,0,0,G17-01 G17-07 G17-09 G17-13,False
+sale-workflow,sale_order_type,sale_stock account sale_management,0,sale_stock account sale_management,23,28,17,12,5,7,0,5,G17-01 G17-07 G17-09,False
+sale-workflow,sale_order_warn_message,sale,0,sale,17,4,7,2,2,0,5,0,G17-01 G17-07,False
+sale-workflow,sale_packaging_default,sale,0,sale,18,14,11,2,1,1,9,0,G17-01,False
+sale-workflow,sale_partner_address_restrict,sale,0,sale,36,26,7,4,1,3,3,0,G17-01,False
+sale-workflow,sale_partner_incoterm,sale_stock,0,sale_stock,12,26,10,4,1,3,6,0,G17-01,False
+sale-workflow,sale_partner_pricelist,sale,0,sale,43,328,18,8,3,5,10,0,G17-01 G17-07 G17-10,False
+sale-workflow,sale_partner_selectable_option,sale,0,sale,13,2,5,2,1,1,3,0,G17-01,False
+sale-workflow,sale_payment_sheet,sale account,0,sale account,72,53,31,25,11,14,6,0,G17-01 G17-07 G17-09 G17-14,False
+sale-workflow,sale_pricelist_global_rule,sale,0,sale,329,256,53,51,3,48,0,2,G17-01 G17-07,False
+sale-workflow,sale_procurement_group_by_line,sale_stock,0,sale_stock,7,6,4,3,1,2,0,1,G17-01,False
+sale-workflow,sale_product_multi_add,sale,0,sale,29,24,14,5,2,3,9,0,G17-01 G17-07,False
+sale-workflow,sale_product_set,sale sale_management product_set,1,sale sale_management,14,10,10,7,5,2,3,0,G17-01 G17-06 G17-07,False
+sale-workflow,sale_promotion_rule,sale,0,sale,29,31,20,18,4,14,0,2,G17-01 G17-07,False
+sale-workflow,sale_purchase_procurement_group_by_line,sale_purchase_stock sale_procurement_group_by_line,1,sale_purchase_stock,8,4,3,3,1,2,0,0,G17-01,False
+sale-workflow,sale_quotation_number,sale_management,0,sale_management,11,11,4,3,2,1,0,1,G17-01 G17-07 G17-10,False
+sale-workflow,sale_readonly_security,sale,0,sale,27,29,7,7,2,5,0,0,G17-01 G17-14,False
+sale-workflow,sale_resource_booking,sale resource_booking web_ir_actions_act_multi,2,sale,51,44,24,18,5,13,6,0,G17-01 G17-07 G17-09 G17-14,False
+sale-workflow,sale_restricted_qty,sale_management,0,sale_management,24,24,9,9,3,6,0,0,G17-01 G17-07 G17-09,False
+sale-workflow,sale_shipping_info_helper,sale delivery,0,sale delivery,28,10,4,4,1,3,0,0,G17-01,False
+sale-workflow,sale_sourced_by_line,sale_procurement_group_by_line,1,,20,21,9,6,4,2,0,3,G17-01 G17-07 G17-14,False
+sale-workflow,sale_start_end_dates,account_invoice_start_end_dates sale,1,sale,73,58,7,7,2,5,0,0,G17-07 G17-09,False
+sale-workflow,sale_stock_cancel_restriction,sale_stock,0,sale_stock,3,1,2,1,0,1,1,0,,False
+sale-workflow,sale_stock_delivery_state,sale_stock sale_delivery_state,1,sale_stock,5,10,3,3,3,0,0,0,G17-01 G17-04 G17-09,False
+sale-workflow,sale_stock_line_sequence,sale_stock sale_order_line_sequence stock_picking_line_sequence,2,sale_stock,65,70,20,10,4,6,10,0,G17-01 G17-13 G17-14,False
+sale-workflow,sale_stock_picking_blocking,sale_stock,0,sale_stock,13,8,11,5,4,1,6,0,G17-01 G17-07,False
+sale-workflow,sale_stock_picking_note,sale_stock,0,sale_stock,17,9,7,3,3,0,3,1,G17-01 G17-07,False
+sale-workflow,sale_stock_picking_validation_blocking,sale_stock,0,sale_stock,45,27,12,8,3,5,3,1,G17-01 G17-07,False
+sale-workflow,sale_stock_secondary_unit,sale_order_secondary_unit stock_secondary_unit,2,,2,3,2,2,1,1,0,0,G17-01,False
+sale-workflow,sale_substate,base_substate sale_management,1,sale_management,3,39,4,3,1,2,0,1,G17-01,False
+sale-workflow,sale_tier_validation,sale base_tier_validation,1,sale,14,11,10,4,1,3,6,0,G17-01,False
+sale-workflow,sale_triple_discount,sale account_invoice_triple_discount,1,sale,36,79,17,12,2,10,5,0,G17-01 G17-02,False
+sale-workflow,sale_validity_auto_cancel,sale_management,0,sale_management,49,49,12,4,3,1,7,1,G17-01 G17-10 G17-13,False
+sale-workflow,sales_team_invoiced_target_domain,sale,0,sale,54,107,7,7,4,3,0,0,G17-01 G17-02 G17-10 G17-14,False
+sale-workflow,sales_team_security,sales_team,0,sales_team,17,20,5,5,3,2,0,0,G17-04 G17-09,False
+sale-workflow,sales_team_security_crm,crm sales_team_security,1,crm,12,6,6,6,2,4,0,0,G17-01 G17-13,False
+sale-workflow,sales_team_security_sale,sale sales_team_security,1,sale,12,4,6,6,2,4,0,0,G17-01 G17-13,False
+server-auth,auth_admin_passkey,mail,0,mail,2,2,2,1,1,0,0,1,G17-01,False
+server-auth,auth_api_key,,0,,2,4,3,2,1,1,1,0,G17-01,False
+server-auth,auth_api_key_group,auth_api_key,1,,19,3,6,1,1,0,5,0,G17-01,False
+server-auth,auth_api_key_server_env,auth_api_key server_environment,2,,2,13,4,3,2,1,1,0,G17-01 G17-02,False
+server-auth,auth_jwt,,0,,232,203,30,7,3,4,21,2,G17-01 G17-07,False
+server-auth,auth_ldaps,auth_ldap,0,auth_ldap,8,5,5,1,1,0,4,0,G17-01,False
+server-auth,auth_oauth_autologin,auth_oauth,0,auth_oauth,29,33,5,5,1,4,0,0,G17-01,False
+server-auth,auth_oauth_multi_token,auth_oauth,0,auth_oauth,11,2,5,1,1,0,4,0,G17-01,False
+server-auth,auth_oidc,auth_oauth,0,auth_oauth,67,48,16,1,1,0,15,0,G17-01,False
+server-auth,auth_saml,base_setup web,0,base_setup web,17,20,9,8,4,4,0,1,G17-01 G17-06 G17-07 G17-10,False
+server-auth,auth_session_timeout,,0,,7,7,7,1,1,0,0,6,G17-01,False
+server-auth,auth_signup_verify_email,auth_signup,0,auth_signup,9,9,7,1,1,0,6,0,G17-01,False
+server-auth,auth_user_case_insensitive,mail,0,mail,16,20,5,3,1,2,0,2,G17-01,False
+server-auth,impersonate_login,web mail,0,web mail,508,234,31,23,3,20,8,0,G17-01 G17-04 G17-13,False
+server-auth,password_security,auth_signup auth_password_policy_signup,0,auth_signup auth_password_policy_signup,46,95,11,4,4,0,0,7,G17-01 G17-02 G17-10,False
+server-auth,user_log_view,base,0,base,1,1,1,1,1,0,0,0,G17-01,False
+server-auth,users_ldap_groups,auth_ldap,0,auth_ldap,4,2,2,2,2,0,0,0,G17-01 G17-07,False
+server-auth,users_ldap_mail,auth_ldap,0,auth_ldap,72,67,24,2,1,1,22,0,G17-01,False
+server-auth,users_ldap_populate,auth_ldap,0,auth_ldap,7,6,4,4,3,1,0,0,G17-01 G17-07,False
+server-backend,base_external_dbsource,base,0,base,87,60,7,6,2,4,0,1,G17-01 G17-11 G17-13,False
+server-backend,base_external_dbsource_mysql,base_external_dbsource,1,,13,4,2,2,2,0,0,0,G17-01 G17-14,False
+server-backend,base_external_dbsource_sqlite,base_external_dbsource,1,,19,15,7,3,1,2,4,0,G17-01,False
+server-backend,base_global_discount,product,0,product,26,15,10,9,7,2,0,1,G17-01 G17-03 G17-07 G17-13,False
+server-backend,base_import_match,base_import,0,base_import,13,16,7,6,4,2,0,1,G17-01 G17-03 G17-07 G17-09,False
+server-backend,base_user_role,base,0,base,8,8,6,3,2,1,0,3,G17-01 G17-07,False
+server-backend,base_user_role_company,base_user_role,1,,16,2,5,1,1,0,3,1,G17-01,False
+server-backend,base_user_role_history,mail base_user_role,1,mail,297,152,17,11,3,8,6,0,G17-01 G17-07 G17-13,False
+server-backend,server_action_navigate,base_automation,0,base_automation,76,78,18,4,2,2,14,0,G17-01 G17-07,False
+server-brand,disable_odoo_online,mail,0,mail,14,15,6,2,1,1,4,0,G17-01,False
+server-brand,hr_expense_remove_mobile_link,hr_expense,0,hr_expense,1,1,1,1,1,0,0,0,G17-01,False
+server-brand,portal_odoo_debranding,portal,0,portal,12,7,9,2,1,1,7,0,G17-01,False
+server-brand,remove_odoo_enterprise,base_setup,0,base_setup,29,33,10,10,1,9,0,0,G17-01,False
+server-env,data_encryption,base,0,base,2,3,2,2,1,1,0,0,G17-01,False
+server-env,mail_environment,mail server_environment,1,mail,1,1,1,1,1,0,0,0,G17-01,False
+server-env,mail_environment_office365,microsoft_outlook mail_environment server_environment_ir_config_parameter,2,microsoft_outlook,36,4,5,4,2,2,1,0,G17-01 G17-13,False
+server-env,server_environment,base base_sparse_field,0,base base_sparse_field,2,2,2,2,1,1,0,0,G17-01,False
+server-env,server_environment_data_encryption,server_environment data_encryption,2,,28,19,13,6,1,5,7,0,G17-01,False
+server-env,server_environment_ir_config_parameter,server_environment,1,,7,11,4,4,3,1,0,0,G17-01 G17-05,False
+server-tools,attachment_logging,mail,0,mail,157,323,18,14,2,12,3,1,G17-01 G17-10,False
+server-tools,attachment_queue,base mail queue_job,1,base mail,22,17,11,5,4,1,5,1,G17-01 G17-07 G17-14,False
+server-tools,auditlog,base,0,base,102,92,39,30,8,22,0,9,G17-01 G17-03 G17-07,False
+server-tools,auto_backup,mail,0,mail,68,64,10,7,4,3,3,0,G17-01 G17-07 G17-14,False
+server-tools,base_cron_exclusion,base,0,base,3,3,3,1,1,0,1,1,G17-01,False
+server-tools,base_exception,base_setup,0,base_setup,83,110,23,8,5,3,14,1,G17-01 G17-07,False
+server-tools,base_fontawesome,web,0,web,2,90,5,5,1,4,0,0,G17-01,False
+server-tools,base_force_record_noupdate,base,0,base,7,10,4,4,2,2,0,0,G17-01 G17-04,False
+server-tools,base_m2m_custom_field,base,0,base,6,3,6,1,1,0,5,0,G17-01,False
+server-tools,base_model_restrict_update,base_setup,0,base_setup,98,90,29,8,3,5,19,2,G17-01 G17-07 G17-10,False
+server-tools,base_name_search_improved,base,0,base,157,106,29,15,5,10,14,0,G17-01 G17-04 G17-07 G17-09 G17-13,False
+server-tools,base_partition,base,0,base,1,1,1,1,1,0,0,0,G17-01,False
+server-tools,base_search_fuzzy,base,0,base,44,111,20,8,1,7,12,0,G17-01,False
+server-tools,base_sequence_option,base,0,base,22,14,10,4,2,2,6,0,G17-01 G17-07 G17-09,False
+server-tools,base_sparse_field_list_support,base base_sparse_field,0,base base_sparse_field,2,2,2,2,1,1,0,0,G17-01,False
+server-tools,base_technical_user,base,0,base,1,1,1,1,1,0,0,0,G17-01,False
+server-tools,base_time_window,base,0,base,121,11,10,7,4,3,3,0,G17-01 G17-03 G17-13,False
+server-tools,base_view_inheritance_extension,base,0,base,1,1,1,1,1,0,0,0,G17-01,False
+server-tools,bus_alt_connection,bus,0,bus,363,245,20,3,2,1,17,0,G17-01 G17-11,False
+server-tools,database_cleanup,base,0,base,18,21,13,12,5,7,1,0,G17-01 G17-03 G17-07,False
+server-tools,dbfilter_from_header,web,0,web,1,1,1,1,1,0,0,0,G17-01,False
+server-tools,fetchmail_attach_from_folder,mail,0,mail,43,61,23,13,7,6,8,2,G17-01 G17-07 G17-09,False
+server-tools,fetchmail_notify_error_to_sender,mail,0,mail,9,50,10,7,3,4,3,0,G17-01 G17-02,False
+server-tools,fetchmail_notify_error_to_sender_test,fetchmail_notify_error_to_sender test_mail,1,test_mail,40,24,8,5,1,4,3,0,G17-01,False
+server-tools,html_text,base,0,base,1,1,1,1,1,0,0,0,G17-01,False
+server-tools,iap_alternative_provider,iap,0,iap,8,8,3,3,1,2,0,0,G17-01,False
+server-tools,jsonifier,base,0,base,9,7,10,6,1,5,4,0,G17-01,False
+server-tools,mail_template_attachment_per_lang,mail,0,mail,251,22,5,5,3,2,0,0,G17-01 G17-07 G17-11 G17-13,False
+server-tools,module_analysis,base,0,base,169,162,20,2,2,0,18,0,G17-01 G17-07,False
+server-tools,module_auto_update,base,0,base,28,25,16,9,5,4,7,0,G17-01 G17-11,False
+server-tools,module_change_auto_install,base,0,base,6,6,2,2,1,1,0,0,G17-01,False
+server-tools,onchange_helper,base,0,base,675,485,5,4,1,3,1,0,G17-01,False
+server-tools,rpc_helper,base_sparse_field,0,base_sparse_field,1,1,1,1,1,0,0,0,G17-01,False
+server-tools,scheduler_error_mailer,mail,0,mail,14,4,6,3,2,1,3,0,G17-01 G17-04,False
+server-tools,sentry,base,0,base,1,1,1,1,1,0,0,0,G17-01,False
+server-tools,sequence_python,base,0,base,18,4,5,4,4,0,0,1,G17-01 G17-07 G17-13,False
+server-tools,session_db,,0,,1,1,1,1,1,0,0,0,G17-01,False
+server-tools,slow_statement_logger,,0,,1,1,1,1,1,0,0,0,G17-01,False
+server-tools,tracking_manager,mail,0,mail,141,143,31,26,5,21,5,0,G17-01 G17-02 G17-07,False
+server-tools,upgrade_analysis,base,0,base,50,63,13,13,7,6,0,0,G17-01 G17-07,False
+server-ux,announcement,mail,0,mail,64,102,11,10,4,6,0,1,G17-01 G17-07 G17-12,False
+server-ux,barcode_action,barcodes,0,barcodes,27,16,8,5,2,3,3,0,G17-01 G17-07,False
+server-ux,base_cancel_confirm,base,0,base,8,8,4,4,3,1,0,0,G17-01 G17-07,False
+server-ux,base_export_manager,web,0,web,14,15,7,7,4,3,0,0,G17-01 G17-04 G17-07 G17-09,False
+server-ux,base_import_security_group,web web_tour base_import,0,web web_tour base_import,68,76,6,6,2,4,0,0,G17-01 G17-13,False
+server-ux,base_menu_visibility_restriction,web_tour,0,web_tour,3,19,6,4,1,3,1,1,G17-01,False
+server-ux,base_optional_quick_create,base,0,base,107,49,15,3,1,2,12,0,G17-01,False
+server-ux,base_revision,base,0,base,3,3,3,1,1,0,0,2,G17-01,False
+server-ux,base_search_custom_field_filter,web,0,web,36,1,3,3,2,1,0,0,G17-01 G17-13,False
+server-ux,base_substate,base mail,0,base mail,3,3,3,2,2,0,0,1,G17-01 G17-07,False
+server-ux,base_technical_features,,0,,2,2,2,2,2,0,0,0,G17-01 G17-07,False
+server-ux,base_tier_validation,mail,0,mail,462,902,55,50,15,35,3,2,G17-01 G17-07 G17-10 G17-12,False
+server-ux,base_tier_validation_formula,base_tier_validation,1,,20,23,11,3,2,1,5,3,G17-01 G17-07,False
+server-ux,base_tier_validation_server_action,base_tier_validation,1,,13,10,8,7,2,5,0,1,G17-01 G17-07,False
+server-ux,date_range,web,0,web,433,212,45,19,8,11,14,3,G17-01 G17-07 G17-09,False
+server-ux,date_range_account,account date_range,1,account,4,1,2,1,1,0,1,0,G17-01,False
+server-ux,document_quick_access,web barcode_action,1,web,38,44,6,6,2,4,0,0,G17-01 G17-07,False
+server-ux,mail_message_destiny_link_template,mail,0,mail,36,42,14,1,1,0,13,0,G17-01,False
+server-ux,mail_suggested_recipient_unchecked,mail,0,mail,19,26,4,4,1,3,0,0,G17-01,False
+server-ux,multi_step_wizard,base,0,base,16,16,6,2,2,0,3,1,G17-01 G17-07,False
+server-ux,sequence_reset_period,base,0,base,2,5,2,2,2,0,0,0,G17-01 G17-07,False
+server-ux,server_action_mass_edit,base,0,base,253,159,37,24,4,20,12,1,G17-01 G17-02 G17-07 G17-09,False
+shift-planning,hr_shift,hr base_sparse_field,0,hr base_sparse_field,360,338,89,38,13,25,51,0,G17-01 G17-03 G17-07 G17-09 G17-10 G17-13 G17-14,False
+shift-planning,hr_shift_holidays_public,hr_holidays_public hr_shift,2,,31,31,12,1,1,0,11,0,G17-01,False
+sign,maintenance_sign_oca,sign_oca maintenance,1,maintenance,26,46,15,3,3,0,12,0,G17-01 G17-07 G17-10,False
+sign,project_task_sign_oca,sign_oca project,1,project,32,31,10,5,4,1,5,0,G17-01 G17-07 G17-10,False
+sign,sign_oca,web_editor portal base_sparse_field,0,web_editor portal base_sparse_field,344,364,74,74,28,46,0,0,G17-01 G17-02 G17-03 G17-06 G17-07 G17-09 G17-10 G17-11 G17-12,False
+social,base_search_mail_content,mail,0,mail,31,88,14,7,1,6,7,0,G17-01,False
+social,base_user_signature,mail web,0,mail web,77,1,6,3,2,1,3,0,G17-01 G17-13,False
+social,mail_activity_board,calendar spreadsheet_dashboard,0,calendar spreadsheet_dashboard,63,76,10,8,4,4,1,1,G17-01 G17-07 G17-12,False
+social,mail_activity_done,mail,0,mail,12,12,9,8,7,1,0,1,G17-01 G17-03 G17-04 G17-07,False
+social,mail_activity_reminder,mail,0,mail,24,4,5,5,1,4,0,0,G17-01,False
+social,mail_activity_reply_creator,mail,0,mail,13,2,5,2,1,1,3,0,G17-01,False
+social,mail_activity_team,mail_activity_board,1,,134,220,27,13,8,5,14,0,G17-01 G17-03 G17-07 G17-12,False
+social,mail_attach_existing_attachment,mail,0,mail,98,77,23,2,0,2,19,2,,False
+social,mail_attach_existing_attachment_account,account mail_attach_existing_attachment,1,account,102,57,15,8,4,4,7,0,G17-01 G17-07 G17-14,False
+social,mail_autogenerated_header,mail,0,mail,29,43,14,13,1,12,0,1,G17-01,False
+social,mail_autosubscribe,mail,0,mail,152,60,27,8,3,5,14,5,G17-01 G17-07,False
+social,mail_composer_cc_bcc,mail account,0,mail account,459,462,28,22,5,17,5,1,G17-01 G17-07 G17-13,False
+social,mail_composer_cc_bcc_account,account mail_composer_cc_bcc,1,account,245,83,28,11,3,8,17,0,G17-01 G17-07,False
+social,mail_debrand,mail,0,mail,18,18,10,3,0,3,7,0,,False
+social,mail_forward,mail contacts,0,mail contacts,99,127,18,18,3,15,0,0,G17-01 G17-12,False
+social,mail_gateway,mail,0,mail,930,2182,163,83,9,74,80,0,G17-01 G17-03 G17-04 G17-07 G17-12,False
+social,mail_gateway_whatsapp,mail_gateway phone_validation,1,phone_validation,135,235,43,39,13,26,4,0,G17-01 G17-05 G17-07,False
+social,mail_layout_force,mail,0,mail,174,240,28,12,3,9,14,2,G17-01 G17-07 G17-13,False
+social,mail_layout_preview,mail,0,mail,13,8,4,4,1,3,0,0,G17-01,False
+social,mail_no_user_assign_notification,mail,0,mail,3,2,2,2,1,1,0,0,G17-01,False
+social,mail_notification_custom_subject,mail,0,mail,5,26,5,4,2,2,0,1,G17-01 G17-02,False
+social,mail_optional_autofollow,mail,0,mail,12,12,7,3,2,1,2,2,G17-01 G17-07,False
+social,mail_optional_follower_notification,mail,0,mail,11,11,4,4,2,2,0,0,G17-01 G17-07,False
+social,mail_outbound_static,base,0,base,14,25,10,2,1,1,8,0,G17-01,False
+social,mail_partner_forwarding,mail,0,mail,21,17,8,6,1,5,2,0,G17-01,False
+social,mail_partner_opt_out,mail,0,mail,5,5,3,3,2,1,0,0,G17-01 G17-07,False
+social,mail_quoted_reply,mail,0,mail,4,1,1,1,0,1,0,0,,False
+social,mail_restrict_follower_selection,mail,0,mail,9,7,4,3,1,2,0,1,G17-01,False
+social,mail_send_confirmation,mail,0,mail,42,43,5,2,1,1,3,0,G17-01,False
+social,mail_server_by_user,base mail,0,base mail,16,39,8,8,1,7,0,0,G17-01,False
+social,mail_show_follower,base mail,0,base mail,69,68,4,4,2,2,0,0,G17-01 G17-10,False
+social,mail_template_substitute,base mail,0,base mail,13,27,10,5,1,4,4,1,G17-01,False
+social,mail_tracking,mail,0,mail,1288,1370,105,89,8,81,8,7,G17-01 G17-03 G17-07 G17-12,False
+social,mail_tracking_mailgun,mail_tracking,1,,143,150,17,17,6,11,0,0,G17-01 G17-07 G17-10,False
+social,mail_tracking_mass_mailing,mass_mailing mail_tracking,1,mass_mailing,37,63,13,6,2,4,7,0,G17-01 G17-04,False
+social,mass_mailing_custom_unsubscribe,mass_mailing,0,mass_mailing,372,1387,43,29,4,25,14,0,G17-01 G17-07,False
+social,mass_mailing_event_registration_exclude,mass_mailing event,0,mass_mailing event,2,2,2,2,2,0,0,0,G17-01 G17-07,False
+social,mass_mailing_list_dynamic,mass_mailing_partner,1,,67,44,19,9,6,3,7,3,G17-01 G17-07 G17-14,False
+social,mass_mailing_partner,mass_mailing,0,mass_mailing,36,54,14,12,2,10,1,1,G17-01 G17-04,False
+social,mass_mailing_resend,mass_mailing,0,mass_mailing,8,22,9,5,3,2,4,0,G17-01 G17-07,False
+social,outgoing_email_by_model,mail,0,mail,10,7,4,4,3,1,0,0,G17-01 G17-07 G17-14,False
+spreadsheet,spreadsheet_dashboard_oca,spreadsheet_dashboard spreadsheet_oca base_view_inheritance_extension,2,spreadsheet_dashboard,12,16,1,1,1,0,0,0,G17-07,False
+spreadsheet,spreadsheet_oca,spreadsheet base_sparse_field bus,0,spreadsheet base_sparse_field bus,177,207,25,25,5,20,0,0,G17-01 G17-07,False
+stock-logistics-availability,sale_stock_available_info_popup,sale_stock stock_available,1,sale_stock,16,13,11,5,2,3,5,1,G17-01 G17-09,False
+stock-logistics-availability,stock_available,stock,0,stock,17,141,11,10,6,4,0,1,G17-01 G17-07 G17-10,False
+stock-logistics-availability,stock_available_base_exclude_location,stock,0,stock,15,4,5,2,2,0,3,0,G17-01 G17-14,False
+stock-logistics-availability,stock_available_immediately,stock_available,1,,5,5,5,5,1,4,0,0,G17-01,False
+stock-logistics-availability,stock_available_mrp,stock_available mrp,1,mrp,114,48,16,11,5,6,4,1,G17-01 G17-10 G17-11 G17-13,False
+stock-logistics-availability,stock_free_quantity,stock,0,stock,32,5,7,7,5,2,0,0,G17-01 G17-07,False
+stock-logistics-availability,stock_quant_available_quantity,stock,0,stock,12,6,6,1,1,0,5,0,G17-01,False
+stock-logistics-barcode,barcodes_generator_abstract,barcodes,0,barcodes,10,28,3,3,3,0,0,0,G17-01 G17-07,False
+stock-logistics-barcode,barcodes_generator_location,barcodes_generator_abstract stock,1,stock,7,15,3,3,3,0,0,0,G17-01 G17-04 G17-07,False
+stock-logistics-barcode,barcodes_generator_product,barcodes_generator_abstract product,1,product,65,71,17,15,8,7,2,0,G17-01 G17-07,False
+stock-logistics-barcode,product_multi_barcode,product,0,product,66,16,9,9,4,5,0,0,G17-01 G17-04 G17-07 G17-13,False
+stock-logistics-orderpoint,stock_orderpoint_generator,stock,0,stock,41,29,12,4,0,4,8,0,,False
+stock-logistics-reporting,delivery_line_sale_line_position,stock sale_order_line_position,1,stock,9,6,7,1,1,0,5,1,G17-01,False
+stock-logistics-reporting,stock_delivery_note,stock stock_delivery,0,stock stock_delivery,22,32,11,1,1,0,10,0,G17-01,False
+stock-logistics-reporting,stock_move_value_report,stock_account,0,stock_account,57,47,10,10,1,9,0,0,G17-01,False
+stock-logistics-reporting,stock_picking_comment_template,stock base_comment_template,1,stock,41,28,5,2,1,1,3,0,G17-01,False
+stock-logistics-reporting,stock_picking_operations_multilang,stock,0,stock,27,11,8,4,4,0,4,0,G17-01 G17-04 G17-07 G17-14,False
+stock-logistics-reporting,stock_picking_report_custom_description,sale_stock,0,sale_stock,1,1,1,1,1,0,0,0,G17-01,False
+stock-logistics-reporting,stock_picking_report_delivery_driver,delivery_driver,1,,25,14,13,4,1,3,9,0,G17-01,False
+stock-logistics-reporting,stock_picking_report_external_note,stock,0,stock,12,20,8,1,1,0,7,0,G17-01,False
+stock-logistics-reporting,stock_picking_report_header_repeater,stock,0,stock,11,1,4,1,1,0,3,0,G17-01,False
+stock-logistics-reporting,stock_picking_report_internal_delivery_address,stock,0,stock,11,1,4,1,1,0,3,0,G17-01,False
+stock-logistics-reporting,stock_picking_report_salesperson,sale_stock,0,sale_stock,22,12,11,1,1,0,10,0,G17-01,False
+stock-logistics-reporting,stock_picking_report_valued,sale_stock,0,sale_stock,60,48,21,8,1,7,12,1,G17-01,False
+stock-logistics-reporting,stock_quant_history,stock,0,stock,75,48,21,17,5,12,3,1,G17-01 G17-07 G17-13,False
+stock-logistics-reporting,stock_quant_history_queued,stock_quant_history queue_job,2,,8,7,5,2,1,1,3,0,G17-01,False
+stock-logistics-reporting,stock_quantity_history_location,stock,0,stock,86,50,17,13,4,9,4,0,G17-01 G17-07 G17-12 G17-13,False
+stock-logistics-request,stock_request,stock,0,stock,306,324,57,53,18,35,0,4,G17-01 G17-02 G17-03 G17-07 G17-09 G17-10,False
+stock-logistics-request,stock_request_analytic,stock_request stock_analytic,2,,99,371,23,17,4,13,6,0,G17-01 G17-07 G17-14,False
+stock-logistics-request,stock_request_direction,stock_request,1,,4,8,6,6,4,2,0,0,G17-01 G17-07 G17-09,False
+stock-logistics-request,stock_request_kanban,stock_request barcodes,1,barcodes,92,123,42,41,16,25,0,1,G17-01 G17-07 G17-09,False
+stock-logistics-request,stock_request_mrp,stock_request mrp,1,mrp,73,51,24,18,5,13,6,0,G17-01 G17-04 G17-07,False
+stock-logistics-request,stock_request_picking_type,stock_request,1,,207,180,5,5,2,3,0,0,G17-01 G17-07,False
+stock-logistics-request,stock_request_purchase,stock_request purchase_stock,1,purchase_stock,7,7,7,7,5,2,0,0,G17-01 G17-07,False
+stock-logistics-request,stock_request_stage,stock_request,1,,88,153,16,9,1,8,6,1,G17-01,False
+stock-logistics-request,stock_request_submit,stock_request,1,,92,29,12,9,4,5,3,0,G17-01 G17-04 G17-07,False
+stock-logistics-transport,shipment_advice,stock_delivery queue_job stock_dock,2,stock_delivery,136,127,77,70,5,65,7,0,G17-01 G17-07 G17-09,False
+stock-logistics-transport,stock_depot,stock,0,stock,10,1,4,1,1,0,3,0,G17-01,False
+stock-logistics-transport,stock_dock,stock,0,stock,2,2,2,2,2,0,0,0,G17-01 G17-07,False
+stock-logistics-transport,stock_location_address,stock,0,stock,12,3,5,2,2,0,3,0,G17-01 G17-14,False
+stock-logistics-transport,stock_location_address_purchase,purchase_stock stock_location_address,1,purchase_stock,35,33,6,5,2,3,1,0,G17-01 G17-14,False
+stock-logistics-warehouse,account_move_line_product,account,0,account,15,4,5,2,1,1,3,0,G17-01,False
+stock-logistics-warehouse,account_move_line_stock_info,stock_account,0,stock_account,82,41,16,6,2,4,8,2,G17-01 G17-07,False
+stock-logistics-warehouse,base_product_merge,product,0,product,6,8,4,3,3,0,0,1,G17-01 G17-07,False
+stock-logistics-warehouse,procurement_auto_create_group,stock,0,stock,4,7,3,3,2,1,0,0,G17-01 G17-07,False
+stock-logistics-warehouse,product_route_profile,stock,0,stock,31,24,7,6,3,3,0,1,G17-01 G17-04 G17-07,False
+stock-logistics-warehouse,scrap_reason_code,stock,0,stock,672,476,9,8,5,3,1,0,G17-01 G17-07,False
+stock-logistics-warehouse,stock_account_change_qty_reason,stock_account stock_change_qty_reason,1,stock_account,101,112,17,17,3,14,0,0,G17-01 G17-07,False
+stock-logistics-warehouse,stock_archive_constraint,stock,0,stock,27,38,15,6,2,4,3,6,G17-01 G17-14,False
+stock-logistics-warehouse,stock_change_qty_reason,stock,0,stock,25,55,7,5,3,2,0,2,G17-01 G17-07 G17-10,False
+stock-logistics-warehouse,stock_demand_estimate,stock,0,stock,2,2,2,1,1,0,1,0,G17-01,False
+stock-logistics-warehouse,stock_demand_estimate_matrix,stock_demand_estimate web_widget_x2many_2d_matrix date_range,3,,2,2,2,2,1,1,0,0,G17-01,False
+stock-logistics-warehouse,stock_exception,stock base_exception,1,stock,132,3,9,5,3,2,4,0,G17-07 G17-13,False
+stock-logistics-warehouse,stock_helper,stock,0,stock,3,3,3,2,1,1,1,0,G17-01,False
+stock-logistics-warehouse,stock_inventory,stock,0,stock,53,52,29,26,5,21,0,3,G17-01 G17-07,False
+stock-logistics-warehouse,stock_inventory_count_to_zero,stock,0,stock,4,1,2,1,1,0,1,0,G17-01,False
+stock-logistics-warehouse,stock_inventory_discrepancy,stock,0,stock,15,16,14,14,2,12,0,0,G17-01 G17-07 G17-09,False
+stock-logistics-warehouse,stock_inventory_preparation_filter,stock stock_inventory base_view_inheritance_extension,2,stock,63,25,10,3,2,1,7,0,G17-01 G17-07,False
+stock-logistics-warehouse,stock_location_lockdown,stock,0,stock,22,20,7,7,2,5,0,0,G17-01 G17-07,False
+stock-logistics-warehouse,stock_location_position,stock,0,stock,49,45,20,1,1,0,18,1,G17-01,False
+stock-logistics-warehouse,stock_location_zone,stock,0,stock,70,47,18,1,1,0,17,0,G17-01,False
+stock-logistics-warehouse,stock_move_location,stock,0,stock,74,101,32,24,2,22,3,5,G17-14,False
+stock-logistics-warehouse,stock_mts_mto_mrp_rule,mrp stock_mts_mto_rule,1,mrp,342,41,19,9,3,6,9,1,G17-01 G17-11 G17-13,False
+stock-logistics-warehouse,stock_mts_mto_rule,stock,0,stock,21,18,18,9,3,6,4,5,G17-01 G17-07,False
+stock-logistics-warehouse,stock_packaging_calculator,product,0,product,86,19,16,10,3,7,6,0,G17-01 G17-13 G17-14,False
+stock-logistics-warehouse,stock_picking_procure_method,stock,0,stock,225,6,9,6,4,2,3,0,G17-01 G17-07 G17-13 G17-14,False
+stock-logistics-warehouse,stock_picking_show_linked,stock,0,stock,9,8,6,4,3,1,2,0,G17-01 G17-07,False
+stock-logistics-warehouse,stock_picking_volume,product_dimension stock,1,stock,21,34,10,8,2,6,0,2,G17-01 G17-04,False
+stock-logistics-warehouse,stock_picking_volume_packaging,stock_picking_volume stock_packaging_calculator product_packaging_dimension,3,,106,86,19,1,1,0,18,0,G17-01,False
+stock-logistics-warehouse,stock_putaway_product_template,stock,0,stock,7,8,3,3,2,1,0,0,G17-01 G17-07,False
+stock-logistics-warehouse,stock_quant_manual_assign,stock,0,stock,8,75,17,14,3,11,3,0,G17-01 G17-07 G17-09,False
+stock-logistics-warehouse,stock_quant_reservation_info,stock,0,stock,24,6,5,5,4,1,0,0,G17-01 G17-07,False
+stock-logistics-warehouse,stock_quant_reservation_info_mrp,stock_quant_reservation_info mrp,1,mrp,7,7,4,3,3,0,1,0,G17-01 G17-07,False
+stock-logistics-warehouse,stock_removal_location_by_priority,stock,0,stock,30,30,14,13,3,10,0,1,G17-01 G17-04 G17-10,False
+stock-logistics-warehouse,stock_reserve,stock,0,stock,12,12,9,9,6,3,0,0,G17-01 G17-07,False
+stock-logistics-warehouse,stock_reserve_sale,sale_stock stock_reserve,1,sale_stock,282,200,48,31,7,24,17,0,G17-01 G17-07 G17-09,False
+stock-logistics-warehouse,stock_route_mto,stock,0,stock,3,2,1,1,1,0,0,0,G17-01,False
+stock-logistics-warehouse,stock_search_supplierinfo_code,stock,0,stock,1,1,1,1,1,0,0,0,G17-01,False
+stock-logistics-warehouse,stock_secondary_unit,stock product_secondary_unit,1,stock,59,48,12,12,10,2,0,0,G17-01 G17-07,False
+stock-logistics-warehouse,stock_vlm_mgmt,stock base_sparse_field,0,stock base_sparse_field,234,136,43,40,18,22,3,0,G17-01 G17-07 G17-13,False
+stock-logistics-warehouse,stock_vlm_mgmt_kardex,stock_vlm_mgmt,1,,1,1,1,1,1,0,0,0,G17-01,False
+stock-logistics-warehouse,stock_warehouse_calendar,stock resource,0,stock resource,1,1,1,1,1,0,0,0,G17-01,False
+stock-logistics-workflow,delivery_procurement_group_carrier,sale_stock delivery,0,sale_stock delivery,10,1,4,1,1,0,3,0,G17-01,False
+stock-logistics-workflow,product_cost_price_avco_sync,stock_account,0,stock_account,12,8,7,7,1,6,0,0,G17-01,False
+stock-logistics-workflow,purchase_stock_picking_invoice_link,stock_picking_invoice_link purchase,1,purchase,31,29,12,12,1,11,0,0,G17-01,False
+stock-logistics-workflow,sale_order_global_stock_route,sale_stock,0,sale_stock,3,3,3,2,1,1,0,1,G17-01,False
+stock-logistics-workflow,sale_planned_consumed_date,sale_stock stock_move_planned_consumed_date,1,sale_stock,11,39,7,4,1,3,3,0,G17-01,False
+stock-logistics-workflow,sale_stock_restocking_fee_invoicing,sale stock sale_stock stock_account stock_picking_kind,1,sale stock sale_stock stock_account,22,16,10,7,4,3,3,0,G17-01 G17-04 G17-07,False
+stock-logistics-workflow,stock_account_product_run_fifo_hook,stock_account,0,stock_account,59,58,13,13,1,12,0,0,G17-01,False
+stock-logistics-workflow,stock_auto_move,stock,0,stock,21,40,14,14,1,13,0,0,G17-01,False
+stock-logistics-workflow,stock_landed_costs_priority,stock_landed_costs,0,stock_landed_costs,18,4,6,3,1,2,3,0,G17-01,False
+stock-logistics-workflow,stock_lock_lot,stock product,0,stock product,152,143,12,12,0,12,0,0,,False
+stock-logistics-workflow,stock_lot_on_hand_first,base_view_inheritance_extension stock,1,stock,15,17,5,5,2,3,0,0,G17-01 G17-07,False
+stock-logistics-workflow,stock_lot_production_date,stock,0,stock,16,2,4,2,1,1,2,0,G17-01,False
+stock-logistics-workflow,stock_lot_scrap,stock,0,stock,11,4,8,5,1,4,3,0,G17-01,False
+stock-logistics-workflow,stock_move_actual_date,stock_account,0,stock_account,34,34,15,14,4,10,0,1,G17-01 G17-04 G17-07,False
+stock-logistics-workflow,stock_move_backdating,stock_account,0,stock_account,410,270,39,27,5,22,10,2,G17-01 G17-07,False
+stock-logistics-workflow,stock_move_forced_lot,stock,0,stock,11,13,10,10,1,9,0,0,G17-01,False
+stock-logistics-workflow,stock_move_line_qty_picked,stock,0,stock,20,30,11,3,1,2,8,0,G17-01,False
+stock-logistics-workflow,stock_move_line_reference_link,stock,0,stock,1,1,1,1,1,0,0,0,G17-01,False
+stock-logistics-workflow,stock_move_planned_consumed_date,stock,0,stock,33,76,10,7,2,5,3,0,G17-01 G17-07,False
+stock-logistics-workflow,stock_move_propagate_first_move,stock,0,stock,6,11,5,2,2,0,3,0,G17-01 G17-07,False
+stock-logistics-workflow,stock_move_quantity_product_uom,stock,0,stock,14,17,11,2,1,1,9,0,G17-01,False
+stock-logistics-workflow,stock_no_negative,stock,0,stock,115,172,26,5,3,2,21,0,G17-01 G17-07,False
+stock-logistics-workflow,stock_picking_auto_create_lot,stock,0,stock,15,25,9,9,2,7,0,0,G17-01 G17-07,False
+stock-logistics-workflow,stock_picking_auto_create_lot_sequence,product_lot_sequence stock_picking_auto_create_lot,2,,3,10,3,3,1,2,0,0,G17-01,False
+stock-logistics-workflow,stock_picking_back2draft,stock,0,stock,4,3,4,2,2,0,1,1,G17-01 G17-07,False
+stock-logistics-workflow,stock_picking_batch_print_pickings,stock_picking_batch,0,stock_picking_batch,46,57,19,6,5,1,12,1,G17-01 G17-02 G17-07 G17-14,False
+stock-logistics-workflow,stock_picking_filter_lot,stock,0,stock,58,62,16,4,1,3,9,3,G17-01,False
+stock-logistics-workflow,stock_picking_group_by_base,stock,0,stock,1,1,1,1,1,0,0,0,G17-01,False
+stock-logistics-workflow,stock_picking_group_by_partner_by_carrier,delivery_procurement_group_carrier stock_picking_group_by_base,2,,272,127,22,22,7,15,0,0,G17-01 G17-07 G17-13,False
+stock-logistics-workflow,stock_picking_import_serial_number,stock,0,stock,49,40,17,10,3,7,7,0,G17-01 G17-07 G17-10,False
+stock-logistics-workflow,stock_picking_invoice_link,sale_stock,0,sale_stock,69,46,32,24,5,19,8,0,G17-01 G17-07 G17-09,False
+stock-logistics-workflow,stock_picking_kind,stock,0,stock,9,6,6,3,2,1,3,0,G17-01 G17-04,False
+stock-logistics-workflow,stock_picking_line_sequence,stock sale sale_stock,0,stock sale sale_stock,40,41,10,9,2,7,0,1,G17-01 G17-04,False
+stock-logistics-workflow,stock_picking_mass_action,stock_account,0,stock_account,65,79,10,9,3,6,0,1,G17-01 G17-13 G17-14,False
+stock-logistics-workflow,stock_picking_origin_reference,stock,0,stock,7,12,5,5,2,3,0,0,G17-01 G17-07,False
+stock-logistics-workflow,stock_picking_origin_reference_purchase,stock_picking_origin_reference purchase,1,purchase,2,5,2,2,1,1,0,0,G17-01,False
+stock-logistics-workflow,stock_picking_origin_reference_sale,stock_picking_origin_reference sale,1,sale,2,2,2,2,1,1,0,0,G17-01,False
+stock-logistics-workflow,stock_picking_partner_note,sale_stock,0,sale_stock,23,17,7,4,2,2,3,0,G17-01 G17-10,False
+stock-logistics-workflow,stock_picking_portal,portal sale_stock,0,portal sale_stock,519,913,35,28,4,24,3,4,G17-01 G17-10 G17-14,False
+stock-logistics-workflow,stock_picking_purchase_order_link,purchase_stock,0,purchase_stock,30,31,11,2,2,0,8,1,G17-01 G17-07,False
+stock-logistics-workflow,stock_picking_return_lot,stock stock_restrict_lot,1,stock,27,23,14,11,2,9,3,0,G17-01 G17-07,False
+stock-logistics-workflow,stock_picking_return_restricted_qty,stock,0,stock,10,21,6,6,2,4,0,0,G17-01 G17-14,False
+stock-logistics-workflow,stock_picking_sale_order_link,sale_stock,0,sale_stock,59,76,14,2,2,0,12,0,G17-01 G17-07,False
+stock-logistics-workflow,stock_picking_send_by_mail,stock mail,0,stock mail,16,10,12,4,2,2,7,1,G17-01 G17-07,False
+stock-logistics-workflow,stock_picking_show_backorder,stock,0,stock,11,9,6,3,2,1,3,0,G17-01 G17-07,False
+stock-logistics-workflow,stock_picking_show_return,stock,0,stock,7,8,5,5,3,2,0,0,G17-01 G17-07,False
+stock-logistics-workflow,stock_picking_supplier_ref,stock,0,stock,2,2,2,2,2,0,0,0,G17-01 G17-07,False
+stock-logistics-workflow,stock_picking_tier_validation,stock base_tier_validation,1,stock,108,90,7,7,2,5,0,0,G17-01 G17-13 G17-14,False
+stock-logistics-workflow,stock_picking_warn_message,stock,0,stock,123,22,19,10,3,7,9,0,G17-01 G17-07,False
+stock-logistics-workflow,stock_production_lot_active,stock,0,stock,19,8,9,4,3,1,5,0,G17-01 G17-07 G17-09,False
+stock-logistics-workflow,stock_push_delay,stock,0,stock,3,3,2,2,1,1,0,0,G17-01,False
+stock-logistics-workflow,stock_putaway_hook,stock,0,stock,7,118,8,5,1,4,2,1,G17-01,False
+stock-logistics-workflow,stock_quant_package_dimension,stock product_packaging_dimension stock_quant_package_product_packaging,2,stock,2,4,3,3,1,2,0,0,G17-01,False
+stock-logistics-workflow,stock_quant_package_product_packaging,stock,0,stock,4,3,2,2,1,1,0,0,G17-01,False
+stock-logistics-workflow,stock_receipt_lot_info,stock product_expiry,0,stock product_expiry,19,13,5,5,3,2,0,0,G17-01 G17-07 G17-09,False
+stock-logistics-workflow,stock_restrict_by_planned_consumed_date,stock_move_planned_consumed_date product_expiry,1,product_expiry,48,79,13,10,1,9,3,0,G17-01,False
+stock-logistics-workflow,stock_restrict_lot,stock,0,stock,6,4,4,4,1,3,0,0,G17-01,False
+stock-logistics-workflow,stock_scrap_tier_validation,stock base_tier_validation,1,stock,3,3,3,3,1,2,0,0,G17-01,False
+stock-logistics-workflow,stock_split_picking,stock,0,stock,297,74,13,13,5,8,0,0,G17-01 G17-07 G17-13,False
+stock-logistics-workflow,stock_valuation_layer_usage,sale stock_account_product_run_fifo_hook,1,sale,18,19,12,9,2,7,0,3,G17-01 G17-07,False
+stock-weighing,web_widget_remote_measure,web uom,0,web uom,524,544,14,14,2,12,0,0,G17-01 G17-07,False
+stock-weighing,web_widget_remote_measure_utilcell,web_widget_remote_measure,1,,86,85,11,3,1,2,8,0,G17-01,False
+storage,fs_attachment,fs_storage,1,,7,12,8,7,3,4,1,0,G17-01 G17-04 G17-07,False
+storage,fs_base_multi_image,fs_image,1,,27,28,18,14,3,11,4,0,G17-01 G17-07 G17-12,False
+storage,fs_base_multi_media,fs_file,1,,6,19,3,2,2,0,1,0,G17-01 G17-07,False
+storage,fs_file,fs_attachment,1,,99,99,12,8,1,7,4,0,G17-01,False
+storage,fs_file_demo,fs_file fs_image,2,,2,3,3,2,1,1,1,0,G17-01,False
+storage,fs_image,fs_file web,1,web,52,53,17,13,4,9,4,0,G17-01 G17-12,False
+storage,fs_image_thumbnail,fs_image base_partition,2,,57,52,14,6,2,4,8,0,G17-01 G17-09,False
+storage,fs_product_brand_multi_image,fs_base_multi_image product_brand sales_team image_tag,3,sales_team,1,1,1,1,1,0,0,0,G17-01,False
+storage,fs_product_multi_image,fs_base_multi_image product sales_team image_tag,2,product sales_team,36,25,9,5,2,3,4,0,G17-01 G17-07,False
+storage,fs_product_multi_media,fs_base_multi_media product sales_team,1,product sales_team,5,6,5,3,2,1,1,1,G17-01 G17-07,False
+storage,fs_storage,base base_sparse_field server_environment,1,base base_sparse_field,925,643,7,6,1,5,1,0,G17-01,False
+storage,image_tag,server_environment,1,,1,2,2,1,1,0,1,0,G17-01,False
+storage,storage_backend,base component server_environment,2,base,2,2,2,2,2,0,0,0,G17-01 G17-07,False
+storage,storage_backend_sftp,storage_backend,1,,4,8,3,3,3,0,0,0,G17-01 G17-07,False
+survey,partner_survey,contacts survey,0,contacts survey,26,9,10,5,5,0,5,0,G17-01 G17-07,False
+survey,survey_answer_generation,survey,0,survey,28,23,12,7,4,3,5,0,G17-01 G17-07 G17-09,False
+survey,survey_certification_py3o,report_py3o survey,1,survey,54,10,8,8,3,5,0,0,G17-01 G17-05 G17-07,False
+survey,survey_certification_sending,survey,0,survey,10,50,8,8,4,4,0,0,G17-01 G17-02 G17-07,False
+survey,survey_contact_generation,survey,0,survey,133,126,18,13,3,10,5,0,G17-01 G17-06 G17-07 G17-09,False
+survey,survey_crm_generation,survey_result_mail crm,1,crm,40,23,6,6,3,3,0,0,G17-07,False
+survey,survey_crm_sale_generation,sale_crm survey_sale_generation survey_crm_generation,2,sale_crm,10,7,6,1,1,0,5,0,G17-01,False
+survey,survey_legal,survey,0,survey,160,25,13,8,4,4,5,0,G17-01 G17-07 G17-13,False
+survey,survey_multi_company,survey,0,survey,11,8,7,2,1,1,5,0,G17-01,False
+survey,survey_next_survey_update_partner,survey_contact_generation survey_answer_generation,2,,74,60,17,4,1,3,13,0,G17-01,False
+survey,survey_partner_representative,survey,0,survey,46,38,23,10,2,8,13,0,G17-01 G17-07,False
+survey,survey_question_type_binary,survey,0,survey,60,50,18,13,3,10,4,1,G17-01 G17-07,False
+survey,survey_resource_booking,resource_booking survey,1,survey,15,11,5,5,2,3,0,0,G17-01 G17-14,False
+survey,survey_result_mail,survey,0,survey,183,61,24,19,3,16,5,0,G17-01 G17-07 G17-13,False
+survey,survey_sale_generation,survey_result_mail sale_management,1,sale_management,137,126,21,16,7,9,5,0,G17-01 G17-02 G17-07 G17-09,False
+survey,survey_skip_start,survey,0,survey,28,53,13,4,1,3,9,0,G17-01,False
+sustainability,sustainability,account,0,account,423,604,57,37,31,6,1,18,G17-01 G17-02 G17-03 G17-07 G17-09 G17-12,False
+sustainability,sustainability_account_asset_management,account_asset_management sustainability,2,,15,23,7,2,0,2,5,0,,False
+sustainability,sustainability_employee_commuting,sustainability hr_contract,1,hr_contract,20,66,4,4,2,2,0,0,G17-01 G17-10,False
+sustainability,sustainability_hr_expense_report,hr_expense sustainability,1,hr_expense,14,30,6,3,2,1,3,0,G17-07,False
+sustainability,sustainability_mis_builder,mis_builder sustainability,2,,66,76,9,9,2,7,0,0,G17-01 G17-07,False
+timesheet,crm_timesheet,crm project_timesheet_time_control,1,crm,28,11,14,11,11,0,3,0,G17-01 G17-07,False
+timesheet,hr_timesheet_begin_end,hr_timesheet,0,hr_timesheet,20,16,9,4,1,3,4,1,G17-01,False
+timesheet,hr_timesheet_calendar,hr_timesheet project_timesheet_time_control,1,hr_timesheet,10,10,8,1,1,0,7,0,G17-01,False
+timesheet,hr_timesheet_date_order_desc,project_timesheet_time_control,1,,16,7,7,3,1,2,4,0,G17-01,False
+timesheet,hr_timesheet_day_week,hr_timesheet,0,hr_timesheet,33,54,14,3,2,1,11,0,G17-01 G17-09,False
+timesheet,hr_timesheet_editable_top,hr_timesheet,0,hr_timesheet,7,3,5,1,1,0,4,0,G17-01,False
+timesheet,hr_timesheet_employee_analytic_tag,hr_timesheet account_analytic_tag,1,hr_timesheet,15,39,8,6,2,4,2,0,G17-01 G17-14,False
+timesheet,hr_timesheet_portal,hr_timesheet portal website,0,hr_timesheet portal website,249,210,13,8,1,7,5,0,G17-01,False
+timesheet,hr_timesheet_report,hr_timesheet report_xlsx,1,hr_timesheet,100,88,31,11,2,9,20,0,G17-01 G17-07,False
+timesheet,hr_timesheet_sheet,hr_timesheet sale_timesheet web_widget_x2many_2d_matrix,1,hr_timesheet sale_timesheet,123,192,46,41,15,26,3,2,G17-01 G17-03 G17-07 G17-09 G17-10,False
+timesheet,hr_timesheet_sheet_autodraft,hr_timesheet_sheet,1,,25,26,9,2,2,0,6,0,G17-01 G17-10,False
+timesheet,hr_timesheet_task_domain,hr_timesheet,0,hr_timesheet,8,13,3,2,1,1,1,0,G17-01,False
+timesheet,hr_timesheet_task_required,hr_timesheet,0,hr_timesheet,18,46,7,6,5,1,1,0,G17-01 G17-07 G17-09 G17-10,False
+timesheet,hr_timesheet_task_stage,hr_timesheet,0,hr_timesheet,23,5,8,5,5,0,3,0,G17-01 G17-07,False
+timesheet,hr_timesheet_time_type,hr_timesheet,0,hr_timesheet,1,1,1,1,1,0,0,0,G17-01,False
+timesheet,hr_timesheet_type_non_billable,hr_timesheet hr_timesheet_time_type sale_timesheet_line_exclude,2,hr_timesheet,14,15,10,3,1,2,7,0,G17-01,False
+timesheet,project_task_analytic_propagation,sale_timesheet,0,sale_timesheet,31,20,18,6,4,2,12,0,G17-01 G17-11,False
+timesheet,project_timesheet_holidays_editable,project_timesheet_holidays,0,project_timesheet_holidays,22,32,14,4,1,3,10,0,G17-01,False
+timesheet,sale_timesheet_line_exclude,sale_timesheet,0,sale_timesheet,1,4,4,3,1,2,1,0,G17-01,False
+timesheet,sale_timesheet_rounded,project hr_timesheet sale_timesheet,0,project hr_timesheet sale_timesheet,116,64,24,14,5,9,9,1,G17-01 G17-04 G17-07,False
+timesheet,sale_timesheet_timeline,sale_timesheet project_timeline,1,sale_timesheet,17,8,6,6,3,3,0,0,G17-01 G17-07,False
+vertical-association,contract_membership_delegated_partner,membership_delegated_partner contract,2,,2,8,4,1,1,0,2,1,G17-01,False
+vertical-association,membership_delegated_partner,membership,0,membership,7,12,6,4,3,1,2,0,G17-01 G17-07 G17-14,False
+vertical-association,membership_extension,membership,0,membership,20,15,9,6,4,2,3,0,G17-01 G17-07,False
+vertical-association,membership_initial_fee,membership,0,membership,23,10,7,4,2,2,3,0,G17-01 G17-07,False
+vertical-association,membership_variable_period,membership_extension,1,,27,38,7,4,3,1,3,0,G17-01 G17-02 G17-07,False
+vertical-association,website_membership_gamification,gamification website_membership,0,gamification website_membership,5,8,3,3,2,1,0,0,G17-01 G17-07,False
+vertical-association,website_membership_random_order,website_membership,0,website_membership,7,20,8,3,1,2,5,0,G17-01,False
+vertical-hotel,hotel,sale_stock account,0,sale_stock account,978,899,283,60,21,39,198,25,G17-01 G17-03 G17-07 G17-09,False
+vertical-hotel,hotel_housekeeping,hotel product,1,product,559,432,105,23,5,18,79,3,G17-01 G17-03 G17-07,False
+vertical-hotel,hotel_reservation,hotel stock mail website_sale,1,stock mail website_sale,598,378,77,28,3,25,37,12,G17-01 G17-07,False
+vertical-hotel,hotel_restaurant,hotel,1,,539,586,73,61,4,57,3,8,G17-07 G17-13,False
+vertical-hotel,report_hotel_reservation,hotel_reservation,1,,69,56,25,4,1,3,21,0,G17-01,False
+vertical-hotel,report_hotel_restaurant,hotel_restaurant report_hotel_reservation,2,,63,45,24,4,1,3,20,0,G17-01,False
+vertical-rental,sale_rental,sale_start_end_dates sale_stock sale_management,1,sale_stock sale_management,253,246,71,19,6,13,48,3,G17-01 G17-07,False
+web,web_action_conditionable,base web,0,base web,17,12,6,2,1,1,4,0,G17-01,False
+web,web_calendar_slot_duration,web,0,web,46,22,13,6,1,5,5,0,G17-01,False
+web,web_chatter_position,web mail,0,web mail,116,126,13,6,1,5,7,0,G17-01,False
+web,web_company_color,web base_sparse_field,0,web base_sparse_field,75,47,15,11,3,8,4,0,G17-01 G17-02 G17-04,False
+web,web_dialog_size,web,0,web,47,189,14,10,3,7,3,1,G17-01 G17-12,False
+web,web_editor_class_selector,web_editor,0,web_editor,53,41,11,10,1,9,0,1,G17-01,False
+web,web_environment_ribbon,web,0,web,101,102,7,6,1,5,0,1,G17-01,False
+web,web_favicon,web,0,web,212,1101,63,14,4,10,22,0,G17-01 G17-05 G17-07 G17-11 G17-13,False
+web,web_field_tooltip,web,0,web,39,46,16,13,3,10,3,0,G17-01 G17-07,False
+web,web_font_size_report_layout,web,0,web,77,56,13,8,4,4,5,0,G17-01 G17-11 G17-13,False
+web,web_group_expand,web,0,web,25,12,6,3,1,2,3,0,G17-01,False
+web,web_ir_actions_act_multi,web,0,web,48,8,10,5,1,4,5,0,G17-01,False
+web,web_m2x_options,web,0,web,528,715,38,7,2,5,30,1,G17-01 G17-12,False
+web,web_m2x_options_manager,base_view_inheritance_extension web_m2x_options,2,,814,345,45,19,7,12,25,1,G17-01 G17-03 G17-04 G17-07 G17-13,False
+web,web_notify,web bus base mail,0,web bus base mail,25,6,14,11,1,10,3,0,G17-01,False
+web,web_pivot_computed_measure,web web_tour,0,web web_tour,333,289,51,19,1,18,32,0,G17-01,False
+web,web_refresher,web,0,web,300,87,24,9,3,6,15,0,G17-01 G17-12,False
+web,web_remember_tree_column_width,web,0,web,6,6,3,3,1,2,0,0,G17-01,False
+web,web_responsive,web mail,0,web mail,4116,2287,116,84,13,71,23,0,G17-01 G17-11 G17-12 G17-13,False
+web,web_save_discard_button,web,0,web,30,80,7,4,2,2,3,0,G17-01 G17-12,False
+web,web_search_with_and,web,0,web,14,4,4,4,1,3,0,0,G17-01,False
+web,web_theme_classic,web,0,web,54,74,15,2,1,1,11,0,G17-01,False
+web,web_time_range_menu_custom,web,0,web,43,55,10,10,4,6,0,0,G17-01 G17-12,False
+web,web_timeline,web,0,web,1669,1363,36,24,3,21,12,0,G17-01 G17-03 G17-13,False
+web,web_tree_duplicate,web,0,web,8,7,7,4,1,3,3,0,G17-01,False
+web,web_tree_dynamic_colored_field,web,0,web,119,247,24,5,1,4,19,0,G17-01,False
+web,web_tree_many2one_clickable,web,0,web,26,31,8,3,2,1,5,0,G17-01 G17-12,False
+web,web_widget_bokeh_chart,web,0,web,1484,1433,18,18,2,16,0,0,G17-01 G17-12,False
+web,web_widget_domain_editor_dialog,web,0,web,21,27,5,5,1,4,0,0,G17-01,False
+web,web_widget_dropdown_dynamic,web,0,web,164,124,22,16,1,15,6,0,G17-01,False
+web,web_widget_image_download,web,0,web,3,4,4,4,2,2,0,0,G17-01 G17-12,False
+web,web_widget_mpld3_chart,web,0,web,2097,2090,6,6,2,4,0,0,G17-01 G17-12,False
+web,web_widget_numeric_step,web,0,web,25,26,6,6,1,5,0,0,G17-01,False
+web,web_widget_open_tab,web,0,web,35,12,7,7,3,4,0,0,G17-01 G17-12 G17-13,False
+web,web_widget_plotly_chart,web,0,web,183,154,27,5,2,3,22,0,G17-01 G17-12,False
+web,web_widget_product_label_section_and_note,web account,0,web account,50,65,14,14,3,11,0,0,G17-01 G17-12,False
+web,web_widget_url_advanced,web,0,web,113,82,17,4,1,3,13,0,G17-01,False
+web,web_widget_x2many_2d_matrix,web,0,web,87,144,20,17,3,14,3,0,G17-01 G17-12,False
+web-api,endpoint,endpoint_route_handler rpc_helper,2,,41,22,8,7,4,3,0,1,G17-01 G17-07,False
+web-api,endpoint_auth_api_key,endpoint auth_api_key_group,2,,6,5,3,3,2,1,0,0,G17-01 G17-07,False
+web-api,endpoint_route_handler,,0,,27,38,22,18,2,16,4,0,G17-01 G17-04,False
+web-api,webservice,component server_environment,2,,72,53,15,13,5,8,0,2,G17-01 G17-07 G17-11,False
+website,website_breadcrumb,website,0,website,10,10,5,2,1,1,3,0,G17-01,False
+website,website_conditional_visibility_user_group,website,0,website,52,48,17,4,1,3,13,0,G17-01,False
+website,website_cookiebot,website,0,website,72,44,4,4,3,1,0,0,G17-01 G17-07 G17-10 G17-13,False
+website,website_cookiefirst,website,0,website,109,44,18,5,4,1,13,0,G17-01 G17-07 G17-10 G17-13,False
+website,website_crm_quick_answer,website_crm base_automation,0,website_crm base_automation,25,6,11,2,1,1,9,0,G17-01,False
+website,website_form_require_legal,web_editor website,0,web_editor website,69,64,11,4,1,3,7,0,G17-01,False
+website,website_forum_subscription,website_forum,0,website_forum,3,3,3,3,1,2,0,0,G17-01,False
+website,website_google_tag_manager,website,0,website,26,39,2,2,2,0,0,0,G17-01 G17-10,False
+website,website_legal_page,website,0,website,13,7,10,2,1,1,8,0,G17-01,False
+website,website_local_font,website,0,website,814,530,43,18,3,15,23,2,G17-01 G17-05 G17-07 G17-13,False
+website,website_menu_by_user_status,website,0,website,35,41,16,4,1,3,12,0,G17-01,False
+website,website_odoo_debranding,website,0,website,6,4,6,3,2,1,3,0,G17-01 G17-04,False
+website,website_require_login,website,0,website,20,14,9,2,1,1,7,0,G17-01,False
+website,website_snippet_big_button,website,0,website,3,3,2,2,1,1,0,0,G17-01,False
+website,website_snippet_marginless_gallery,website,0,website,48,56,20,17,1,16,3,0,G17-01,False
+website,website_whatsapp,website,0,website,8,14,4,4,3,1,0,0,G17-01 G17-07 G17-10,False
+wms,stock_picking_type_shipping_policy,stock,0,stock,6,6,4,2,1,1,2,0,G17-01,False
+wms,stock_warehouse_flow,stock delivery delivery_procurement_group_carrier,1,stock delivery,50,58,16,13,9,4,3,0,G17-01 G17-07 G17-09,False

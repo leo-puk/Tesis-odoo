@@ -1,0 +1,13 @@
+diff --git a/sale_blanket_order/tests/test_blanket_orders.py b/sale_blanket_order/tests/test_blanket_orders.py
+index b7bc6c9a..37a56cfe 100644
+--- a/sale_blanket_order/tests/test_blanket_orders.py
++++ b/sale_blanket_order/tests/test_blanket_orders.py
+@@ -99,7 +99,7 @@ class TestSaleBlanketOrders(common.TransactionCase):
+         blanket_order.line_ids[0].sudo().onchange_product()
+         blanket_order.pricelist_id.discount_policy = "with_discount"
+         blanket_order.line_ids[0].sudo().onchange_product()
+-        blanket_order.line_ids[0].sudo()._get_display_price(self.product)
++        blanket_order.line_ids[0].sudo()._get_display_price()
+ 
+         self.assertEqual(blanket_order.state, "draft")
+ 

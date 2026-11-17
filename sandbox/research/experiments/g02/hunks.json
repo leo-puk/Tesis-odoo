@@ -1,0 +1,1111 @@
+[
+  {
+    "id": 1,
+    "path": "product_variant_sale_price/README.rst",
+    "status": "M",
+    "header": "@@ -17,23 +17,24 @@ Product Variant Sale Price",
+    "removed": 7,
+    "added": 8,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 2,
+    "path": "product_variant_sale_price/README.rst",
+    "status": "M",
+    "header": "@@ -46,7 +47,7 @@ Bug Tracker",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 3,
+    "path": "product_variant_sale_price/README.rst",
+    "status": "M",
+    "header": "@@ -54,23 +55,24 @@ Credits",
+    "removed": 10,
+    "added": 11,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 4,
+    "path": "product_variant_sale_price/README.rst",
+    "status": "M",
+    "header": "@@ -82,6 +84,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 5,
+    "path": "product_variant_sale_price/__manifest__.py",
+    "status": "M",
+    "header": "@@ -5,7 +5,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-01"
+    ],
+    "state": "applied",
+    "commit": "dbd811b",
+    "casuistics": [
+      "C005"
+    ],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 6,
+    "path": "product_variant_sale_price/hooks.py",
+    "status": "M",
+    "header": "@@ -3,7 +3,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "7ddbedf",
+    "casuistics": [
+      "C041"
+    ],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 7,
+    "path": "product_variant_sale_price/hooks.py",
+    "status": "M",
+    "header": "@@ -19,6 +19,6 @@ def set_sale_price_on_variant(cr, registry, template_id=None):",
+    "removed": 2,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "7ddbedf",
+    "casuistics": [
+      "C041"
+    ],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 8,
+    "path": "product_variant_sale_price/pyproject.toml",
+    "status": "A",
+    "header": "@@ -0,0 +1,3 @@",
+    "removed": 0,
+    "added": 3,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 9,
+    "path": "product_variant_sale_price/readme/CONTRIBUTORS.md",
+    "status": "A",
+    "header": "@@ -0,0 +1,8 @@",
+    "removed": 0,
+    "added": 8,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 10,
+    "path": "product_variant_sale_price/readme/CONTRIBUTORS.rst",
+    "status": "D",
+    "header": "@@ -1,7 +0,0 @@",
+    "removed": 7,
+    "added": 0,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 11,
+    "path": "product_variant_sale_price/readme/DESCRIPTION.md",
+    "status": "A",
+    "header": "@@ -0,0 +1,7 @@",
+    "removed": 0,
+    "added": 7,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 12,
+    "path": "product_variant_sale_price/readme/DESCRIPTION.rst",
+    "status": "D",
+    "header": "@@ -1,6 +0,0 @@",
+    "removed": 6,
+    "added": 0,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 13,
+    "path": "product_variant_sale_price/static/description/index.html",
+    "status": "M",
+    "header": "@@ -368,12 +368,13 @@ ul.auto-toc {",
+    "removed": 5,
+    "added": 6,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 14,
+    "path": "product_variant_sale_price/static/description/index.html",
+    "status": "M",
+    "header": "@@ -391,7 +392,7 @@ allows setting absolute prices instead of relative ones.</p>",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 15,
+    "path": "product_variant_sale_price/static/description/index.html",
+    "status": "M",
+    "header": "@@ -412,6 +413,7 @@ If you spotted it first, help us to smash it by providing a detailed and welcome",
+    "removed": 0,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 16,
+    "path": "product_variant_sale_price/static/description/index.html",
+    "status": "M",
+    "header": "@@ -421,7 +423,7 @@ If you spotted it first, help us to smash it by providing a detailed and welcome",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 17,
+    "path": "product_variant_sale_price/tests/test_product_product.py",
+    "status": "M",
+    "header": "@@ -70,7 +70,7 @@ class TestProductVariantPrice(TransactionCase):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "7ddbedf",
+    "casuistics": [
+      "C041"
+    ],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 18,
+    "path": "product_variant_sale_price/views/product_views.xml",
+    "status": "M",
+    "header": "@@ -8,7 +8,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "e860de1",
+    "casuistics": [
+      "C012"
+    ],
+    "module": "product_variant_sale_price"
+  },
+  {
+    "id": 19,
+    "path": "product_cost_price_avco_sync/__manifest__.py",
+    "status": "M",
+    "header": "@@ -5,7 +5,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-01"
+    ],
+    "state": "applied",
+    "commit": "0d1bae1",
+    "casuistics": [
+      "C004"
+    ],
+    "module": "product_cost_price_avco_sync"
+  },
+  {
+    "id": 20,
+    "path": "product_cost_price_avco_sync/models/stock_picking.py",
+    "status": "M",
+    "header": "@@ -7,6 +7,8 @@ from odoo import models",
+    "removed": 2,
+    "added": 4,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "product_cost_price_avco_sync"
+  },
+  {
+    "id": 21,
+    "path": "product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py",
+    "status": "M",
+    "header": "@@ -312,7 +312,8 @@ class TestProductCostPriceAvcoSync(BaseCommon):",
+    "removed": 1,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "81b66dc",
+    "casuistics": [
+      "C042"
+    ],
+    "module": "product_cost_price_avco_sync"
+  },
+  {
+    "id": 22,
+    "path": "product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py",
+    "status": "M",
+    "header": "@@ -448,7 +449,8 @@ class TestProductCostPriceAvcoSync(BaseCommon):",
+    "removed": 1,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "81b66dc",
+    "casuistics": [
+      "C042"
+    ],
+    "module": "product_cost_price_avco_sync"
+  },
+  {
+    "id": 23,
+    "path": "product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py",
+    "status": "M",
+    "header": "@@ -460,7 +462,7 @@ class TestProductCostPriceAvcoSync(BaseCommon):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "81b66dc",
+    "casuistics": [
+      "C042"
+    ],
+    "module": "product_cost_price_avco_sync"
+  },
+  {
+    "id": 24,
+    "path": "product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py",
+    "status": "M",
+    "header": "@@ -473,7 +475,7 @@ class TestProductCostPriceAvcoSync(BaseCommon):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "81b66dc",
+    "casuistics": [
+      "C042"
+    ],
+    "module": "product_cost_price_avco_sync"
+  },
+  {
+    "id": 25,
+    "path": "product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py",
+    "status": "M",
+    "header": "@@ -482,7 +484,7 @@ class TestProductCostPriceAvcoSync(BaseCommon):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "81b66dc",
+    "casuistics": [
+      "C042"
+    ],
+    "module": "product_cost_price_avco_sync"
+  },
+  {
+    "id": 26,
+    "path": "account_credit_control/README.rst",
+    "status": "M",
+    "header": "@@ -7,7 +7,7 @@ Account Credit Control",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 27,
+    "path": "account_credit_control/README.rst",
+    "status": "M",
+    "header": "@@ -125,7 +125,9 @@ Contributors",
+    "removed": 1,
+    "added": 3,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 28,
+    "path": "account_credit_control/__manifest__.py",
+    "status": "M",
+    "header": "@@ -5,7 +5,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-01"
+    ],
+    "state": "applied",
+    "commit": "5475149",
+    "casuistics": [
+      "C001"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 29,
+    "path": "account_credit_control/data/data.xml",
+    "status": "M",
+    "header": "@@ -11,7 +11,10 @@",
+    "removed": 1,
+    "added": 4,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "695ddd0",
+    "casuistics": [
+      "C010"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 30,
+    "path": "account_credit_control/models/credit_control_communication.py",
+    "status": "M",
+    "header": "@@ -176,6 +176,7 @@ class CreditControlCommunication(models.Model):",
+    "removed": 0,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 31,
+    "path": "account_credit_control/models/credit_control_communication.py",
+    "status": "M",
+    "header": "@@ -218,12 +219,11 @@ class CreditControlCommunication(models.Model):",
+    "removed": 6,
+    "added": 5,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 32,
+    "path": "account_credit_control/models/credit_control_line.py",
+    "status": "M",
+    "header": "@@ -28,8 +28,7 @@ class CreditControlLine(models.Model):",
+    "removed": 2,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 33,
+    "path": "account_credit_control/models/credit_control_line.py",
+    "status": "M",
+    "header": "@@ -37,15 +36,12 @@ class CreditControlLine(models.Model):",
+    "removed": 5,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 34,
+    "path": "account_credit_control/models/credit_control_line.py",
+    "status": "M",
+    "header": "@@ -69,15 +65,13 @@ class CreditControlLine(models.Model):",
+    "removed": 4,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 35,
+    "path": "account_credit_control/models/credit_control_line.py",
+    "status": "M",
+    "header": "@@ -117,8 +111,7 @@ class CreditControlLine(models.Model):",
+    "removed": 2,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 36,
+    "path": "account_credit_control/models/credit_control_policy.py",
+    "status": "M",
+    "header": "@@ -224,9 +224,7 @@ class CreditControlPolicy(models.Model):",
+    "removed": 3,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 37,
+    "path": "account_credit_control/models/credit_control_policy.py",
+    "status": "M",
+    "header": "@@ -237,7 +235,7 @@ class CreditControlPolicy(models.Model):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 38,
+    "path": "account_credit_control/models/credit_control_run.py",
+    "status": "M",
+    "header": "@@ -22,8 +22,7 @@ class CreditControlRun(models.Model):",
+    "removed": 2,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 39,
+    "path": "account_credit_control/models/credit_control_run.py",
+    "status": "M",
+    "header": "@@ -31,8 +30,7 @@ class CreditControlRun(models.Model):",
+    "removed": 2,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 40,
+    "path": "account_credit_control/models/credit_control_run.py",
+    "status": "M",
+    "header": "@@ -69,8 +67,7 @@ class CreditControlRun(models.Model):",
+    "removed": 2,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 41,
+    "path": "account_credit_control/models/mail_message.py",
+    "status": "M",
+    "header": "@@ -7,8 +7,8 @@ from odoo import models",
+    "removed": 2,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 42,
+    "path": "account_credit_control/readme/CONTRIBUTORS.md",
+    "status": "M",
+    "header": "@@ -16,4 +16,5 @@",
+    "removed": 1,
+    "added": 2,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 43,
+    "path": "account_credit_control/static/description/index.html",
+    "status": "M",
+    "header": "@@ -367,7 +367,7 @@ ul.auto-toc {",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 44,
+    "path": "account_credit_control/static/description/index.html",
+    "status": "M",
+    "header": "@@ -466,7 +466,10 @@ If you spotted it first, help us to smash it by providing a detailed and welcome",
+    "removed": 1,
+    "added": 4,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 45,
+    "path": "account_credit_control/views/credit_control_line.xml",
+    "status": "M",
+    "header": "@@ -15,17 +15,17 @@",
+    "removed": 6,
+    "added": 6,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 46,
+    "path": "account_credit_control/views/credit_control_policy.xml",
+    "status": "M",
+    "header": "@@ -10,7 +10,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "57ad421",
+    "casuistics": [
+      "C006"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 47,
+    "path": "account_credit_control/views/credit_control_policy.xml",
+    "status": "M",
+    "header": "@@ -54,7 +54,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "57ad421",
+    "casuistics": [
+      "C006"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 48,
+    "path": "account_credit_control/views/credit_control_run.xml",
+    "status": "M",
+    "header": "@@ -5,8 +5,12 @@",
+    "removed": 2,
+    "added": 6,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "9c5bb47",
+    "casuistics": [
+      "C007"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 49,
+    "path": "account_credit_control/views/credit_control_run.xml",
+    "status": "M",
+    "header": "@@ -23,21 +27,21 @@",
+    "removed": 3,
+    "added": 3,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "9c5bb47",
+    "casuistics": [
+      "C007"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 50,
+    "path": "account_credit_control/views/credit_control_run.xml",
+    "status": "M",
+    "header": "@@ -52,7 +56,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "9c5bb47",
+    "casuistics": [
+      "C007"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 51,
+    "path": "account_credit_control/views/credit_control_run.xml",
+    "status": "M",
+    "header": "@@ -65,7 +69,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "9c5bb47",
+    "casuistics": [
+      "C007"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 52,
+    "path": "account_credit_control/views/credit_control_run.xml",
+    "status": "M",
+    "header": "@@ -80,21 +84,24 @@",
+    "removed": 5,
+    "added": 8,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "9c5bb47",
+    "casuistics": [
+      "C007"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 53,
+    "path": "account_credit_control/views/res_config_settings_view.xml",
+    "status": "M",
+    "header": "@@ -5,52 +5,41 @@",
+    "removed": 44,
+    "added": 33,
+    "tags": [
+      "G17-10"
+    ],
+    "state": "applied",
+    "commit": "9a05e56",
+    "casuistics": [
+      "C009"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 54,
+    "path": "account_credit_control/views/res_partner.xml",
+    "status": "M",
+    "header": "@@ -8,6 +8,9 @@",
+    "removed": 0,
+    "added": 3,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "99ead5d",
+    "casuistics": [
+      "C008"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 55,
+    "path": "account_credit_control/views/res_partner.xml",
+    "status": "M",
+    "header": "@@ -24,8 +27,7 @@",
+    "removed": 2,
+    "added": 1,
+    "tags": [
+      "G17-06",
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "99ead5d",
+    "casuistics": [
+      "C008"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 56,
+    "path": "account_credit_control/views/res_partner.xml",
+    "status": "M",
+    "header": "@@ -48,7 +50,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "99ead5d",
+    "casuistics": [
+      "C008"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 57,
+    "path": "account_credit_control/views/res_partner.xml",
+    "status": "M",
+    "header": "@@ -145,7 +147,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "99ead5d",
+    "casuistics": [
+      "C008"
+    ],
+    "module": "account_credit_control"
+  },
+  {
+    "id": 58,
+    "path": "hr_timesheet_employee_analytic_tag/__manifest__.py",
+    "status": "M",
+    "header": "@@ -2,7 +2,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-01"
+    ],
+    "state": "applied",
+    "commit": "9536875",
+    "casuistics": [
+      "C002"
+    ],
+    "module": "hr_timesheet_employee_analytic_tag"
+  },
+  {
+    "id": 59,
+    "path": "hr_timesheet_employee_analytic_tag/i18n/es.po",
+    "status": "M",
+    "header": "@@ -29,13 +29,4 @@ msgstr \"Etiquetas analíticas\"",
+    "removed": 10,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "hr_timesheet_employee_analytic_tag"
+  },
+  {
+    "id": 60,
+    "path": "hr_timesheet_employee_analytic_tag/i18n/it.po",
+    "status": "M",
+    "header": "@@ -29,13 +29,4 @@ msgstr \"Etichette analitiche\"",
+    "removed": 10,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "hr_timesheet_employee_analytic_tag"
+  },
+  {
+    "id": 61,
+    "path": "hr_timesheet_employee_analytic_tag/models/account_analytic_line.py",
+    "status": "M",
+    "header": "@@ -1,7 +1,7 @@",
+    "removed": 2,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "hr_timesheet_employee_analytic_tag"
+  },
+  {
+    "id": 62,
+    "path": "hr_timesheet_employee_analytic_tag/models/account_analytic_line.py",
+    "status": "M",
+    "header": "@@ -16,6 +16,7 @@ class AccountAnalyticLine(models.Model):",
+    "removed": 1,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "hr_timesheet_employee_analytic_tag"
+  },
+  {
+    "id": 63,
+    "path": "hr_timesheet_employee_analytic_tag/tests/test_hr_timesheet_employee_analytic_tag.py",
+    "status": "M",
+    "header": "@@ -1,24 +1,17 @@",
+    "removed": 13,
+    "added": 6,
+    "tags": [
+      "G17-14"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "hr_timesheet_employee_analytic_tag"
+  },
+  {
+    "id": 64,
+    "path": "hr_timesheet_employee_analytic_tag/tests/test_hr_timesheet_employee_analytic_tag.py",
+    "status": "M",
+    "header": "@@ -33,7 +26,7 @@ class TestHrTimesheetEmployeeAnalyticTag(common.TransactionCase):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "hr_timesheet_employee_analytic_tag"
+  },
+  {
+    "id": 65,
+    "path": "hr_timesheet_employee_analytic_tag/tests/test_hr_timesheet_employee_analytic_tag.py",
+    "status": "M",
+    "header": "@@ -53,7 +46,7 @@ class TestHrTimesheetEmployeeAnalyticTag(common.TransactionCase):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "hr_timesheet_employee_analytic_tag"
+  },
+  {
+    "id": 66,
+    "path": "mail_notification_custom_subject/__manifest__.py",
+    "status": "M",
+    "header": "@@ -5,7 +5,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-01"
+    ],
+    "state": "applied",
+    "commit": "62950eb",
+    "casuistics": [
+      "C003"
+    ],
+    "module": "mail_notification_custom_subject"
+  },
+  {
+    "id": 67,
+    "path": "mail_notification_custom_subject/migrations/15.0.1.0.0/post-migration.py",
+    "status": "D",
+    "header": "@@ -1,20 +0,0 @@",
+    "removed": 20,
+    "added": 0,
+    "tags": [
+      "G17-02"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "mail_notification_custom_subject"
+  },
+  {
+    "id": 68,
+    "path": "mail_notification_custom_subject/models/mail_thread.py",
+    "status": "M",
+    "header": "@@ -24,8 +24,7 @@ class MailThread(models.AbstractModel):",
+    "removed": 2,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "f6c472b",
+    "casuistics": [
+      "C011"
+    ],
+    "module": "mail_notification_custom_subject"
+  },
+  {
+    "id": 69,
+    "path": "mail_notification_custom_subject/models/mail_thread.py",
+    "status": "M",
+    "header": "@@ -81,7 +80,6 @@ class MailThread(models.AbstractModel):",
+    "removed": 2,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "f6c472b",
+    "casuistics": [
+      "C011"
+    ],
+    "module": "mail_notification_custom_subject"
+  },
+  {
+    "id": 70,
+    "path": "mail_notification_custom_subject/tests/test_mail_notification_custom_subject.py",
+    "status": "M",
+    "header": "@@ -90,7 +90,8 @@ class TestMailNotificationCustomSubject(common.TransactionCase):",
+    "removed": 1,
+    "added": 2,
+    "tags": [
+      "ESTILO"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "mail_notification_custom_subject"
+  }
+]

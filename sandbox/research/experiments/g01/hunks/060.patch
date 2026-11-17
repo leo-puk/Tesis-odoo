@@ -1,0 +1,18 @@
+diff --git a/sale_blanket_order/models/blanket_orders.py b/sale_blanket_order/models/blanket_orders.py
+index e18506b6..e63059c7 100644
+--- a/sale_blanket_order/models/blanket_orders.py
++++ b/sale_blanket_order/models/blanket_orders.py
+@@ -71,13 +67,11 @@ class BlanketOrder(models.Model):
+         string="Analytic Account",
+         copy=False,
+         check_company=True,
+-        states=READONLY_FIELD_STATES,
+         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
+     )
+     payment_term_id = fields.Many2one(
+         "account.payment.term",
+         string="Payment Terms",
+-        states=READONLY_FIELD_STATES,
+     )
+     confirmed = fields.Boolean(copy=False)
+     state = fields.Selection(

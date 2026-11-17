@@ -1,0 +1,52 @@
+{
+  "id": "sap_guiado",
+  "step": "16.0->17.0",
+  "prepared_at": "2026-10-13T21:06:26+00:00",
+  "modules": [
+    {
+      "repo": "sale-workflow",
+      "module": "sale_advance_payment",
+      "mig": {
+        "sha": "a33a0075353cf74e1a1abe166a7b7a94e7af16d9",
+        "date": "2024-07-23T14:07:24+03:00",
+        "subject": "[17.0][MIG] sale_advance_payment: Migration to 17.0",
+        "author": "Abraham Anes"
+      },
+      "s0": {
+        "sha": "1bc57ddb8260de1869376f8587d2acd783c8ef8a",
+        "source": "padre del [MIG]"
+      },
+      "rev16": "9cff701c8bdae8ffa62349a95b2a3f54d6b4bcda",
+      "s0_vs_16_files_differ": 2,
+      "depends": [
+        "sale"
+      ],
+      "hunks": [
+        1,
+        16
+      ],
+      "post_mig": {
+        "commits": 10,
+        "fix": [
+          "[FIX] sale_advance_payment: Use signed amount when computing residuals",
+          "[FIX]sale_advance_payment: Amount residual with signed invoice amount",
+          "[FIX] sale_advance_payment: posting many invoices did not reconcile advance payments",
+          "[FIX] sale_advance_payment: fix invoice paid amount"
+        ]
+      }
+    }
+  ],
+  "depends": {
+    "core": [
+      "sale"
+    ],
+    "oca": []
+  },
+  "hunks": 16,
+  "hunk_tags": {
+    "ESTILO": 2,
+    "G17-01": 1,
+    "G17-07": 5,
+    "SIN_GUIA": 8
+  }
+}

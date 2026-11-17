@@ -1,0 +1,13 @@
+diff --git a/account_credit_control/views/credit_control_run.xml b/account_credit_control/views/credit_control_run.xml
+index 2cd0363..652802e 100644
+--- a/account_credit_control/views/credit_control_run.xml
++++ b/account_credit_control/views/credit_control_run.xml
+@@ -65,7 +69,7 @@
+                             type="object"
+                             name="open_credit_communications"
+                             icon="fa-comments-o"
+-                            attrs="{'invisible': [('state', '=', 'draft')]}"
++                            invisible="state == 'draft'"
+                         >
+                             <field
+                                 string="Communications"

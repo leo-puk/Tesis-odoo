@@ -1,0 +1,14 @@
+diff --git a/account_credit_control/models/credit_control_run.py b/account_credit_control/models/credit_control_run.py
+index 8f864ec..77816fb 100644
+--- a/account_credit_control/models/credit_control_run.py
++++ b/account_credit_control/models/credit_control_run.py
+@@ -31,8 +30,7 @@ class CreditControlRun(models.Model):
+         column1="run_id",
+         column2="policy_id",
+         string="Policies",
+-        readonly=True,
+-        states={"draft": [("readonly", False)]},
++        readonly=False,
+         default=lambda self: self._default_policies(),
+     )
+     report = fields.Html(readonly=True, copy=False)

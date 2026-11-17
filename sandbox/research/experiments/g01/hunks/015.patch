@@ -1,0 +1,19 @@
+diff --git a/stock_quant_manual_assign/wizard/assign_manual_quants.py b/stock_quant_manual_assign/wizard/assign_manual_quants.py
+index 79e8c44..cb95794 100644
+--- a/stock_quant_manual_assign/wizard/assign_manual_quants.py
++++ b/stock_quant_manual_assign/wizard/assign_manual_quants.py
+@@ -199,12 +195,12 @@ class AssignManualQuantsLines(models.TransientModel):
+         for record in self.filtered("qty"):
+             quant = record.quant_id
+             move_lines = record.assign_wizard.move_id.move_line_ids.filtered(
+-                lambda ml: (
++                lambda ml, quant=quant: (
+                     ml.location_id == quant.location_id and ml.lot_id == quant.lot_id
+                 )
+             )
+             reserved = quant.reserved_quantity - sum(
+-                move_lines.mapped("reserved_uom_qty")
++                move_lines.mapped("quantity_product_uom")
+             )
+             if (
+                 float_compare(

@@ -1,0 +1,25 @@
+diff --git a/sale_blanket_order/views/sale_blanket_order_views.xml b/sale_blanket_order/views/sale_blanket_order_views.xml
+index 89e366f4..d52609be 100644
+--- a/sale_blanket_order/views/sale_blanket_order_views.xml
++++ b/sale_blanket_order/views/sale_blanket_order_views.xml
+@@ -214,17 +208,13 @@
+                                         domain="[('type_tax_use','=','sale')]"
+                                         context="{'default_type_tax_use': 'sale'}"
+                                         options="{'no_create': True}"
+-                                        attrs="{
+-                                            'required': [('display_type', '=', False)],
+-                                            'invisible': [('display_type', '=', True)],
+-                                        }"
++                                        required="not display_type"
++                                        invisible="display_type"
+                                     />
+                                     <field
+                                         name="price_subtotal"
+                                         widget="monetary"
+-                                        attrs="{
+-                                            'invisible': [('display_type', '=', True)],
+-                                        }"
++                                        invisible="display_type"
+                                     />
+                                     <field name="company_id" invisible="1" />
+                                 </tree>

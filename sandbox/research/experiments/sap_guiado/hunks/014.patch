@@ -1,0 +1,44 @@
+diff --git a/sale_advance_payment/wizard/sale_advance_payment_wzd.py b/sale_advance_payment/wizard/sale_advance_payment_wzd.py
+index f9913cbe..7177b672 100644
+--- a/sale_advance_payment/wizard/sale_advance_payment_wzd.py
++++ b/sale_advance_payment/wizard/sale_advance_payment_wzd.py
+@@ -99,24 +102,26 @@ class AccountVoucherWizard(models.TransientModel):
+                 {
+                     "order_id": sale.id,
+                     "amount_total": sale.amount_residual,
+-                    "currency_id": sale.pricelist_id.currency_id.id,
++                    "currency_id": sale.pricelist_id.currency_id.id
++                    or sale.currency_id.id,
+                 }
+             )
+ 
+         return res
+ 
+-    @api.onchange("journal_id", "date", "amount_advance")
+-    def onchange_date(self):
+-        if self.journal_currency_id != self.currency_id:
+-            amount_advance = self.journal_currency_id._convert(
+-                self.amount_advance,
+-                self.currency_id,
+-                self.order_id.company_id,
+-                self.date or fields.Date.today(),
+-            )
+-        else:
+-            amount_advance = self.amount_advance
+-        self.currency_amount = amount_advance
++    @api.depends("journal_id", "date", "amount_advance")
++    def _compute_currency_amount(self):
++        for wzd in self:
++            if wzd.journal_currency_id != wzd.currency_id:
++                amount_advance = wzd.journal_currency_id._convert(
++                    wzd.amount_advance,
++                    wzd.currency_id,
++                    wzd.order_id.company_id,
++                    wzd.date or fields.Date.today(),
++                )
++            else:
++                amount_advance = wzd.amount_advance
++            wzd.currency_amount = amount_advance
+ 
+     def _prepare_payment_vals(self, sale):
+         partner_id = sale.partner_invoice_id.commercial_partner_id.id

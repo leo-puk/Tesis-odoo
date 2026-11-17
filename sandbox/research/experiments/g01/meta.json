@@ -1,0 +1,208 @@
+{
+  "id": "g01",
+  "step": "16.0->17.0",
+  "prepared_at": "2026-10-13T19:58:42+00:00",
+  "modules": [
+    {
+      "repo": "stock-logistics-warehouse",
+      "module": "stock_quant_manual_assign",
+      "mig": {
+        "sha": "e5b0e65240e5b1e86d486151b4075e02bb74b25a",
+        "date": "2024-09-03T14:17:02-03:00",
+        "subject": "[MIG] stock_quant_manual_assign: Migration to 17.0",
+        "author": "mav-adhoc"
+      },
+      "s0": {
+        "sha": "3fa3170150ce8fe8f4ec121012904f51c0ed3a11",
+        "source": "padre del [MIG]"
+      },
+      "rev16": "0019e268a530ed059371cdc529b7f344f5073230",
+      "s0_vs_16_files_differ": 0,
+      "depends": [
+        "stock"
+      ],
+      "hunks": [
+        1,
+        17
+      ],
+      "post_mig": {
+        "commits": 4,
+        "fix": [
+          "[FIX] stock_quant_manual_assign: Correct handling of immediate transfers",
+          "[17.0][FIX] stock_quant_manual_assign: manual assign was shown in done transfers"
+        ]
+      }
+    },
+    {
+      "repo": "server-ux",
+      "module": "server_action_mass_edit",
+      "mig": {
+        "sha": "1475e6beec2cbe6a6c3bee517cd2727832f3a691",
+        "date": "2024-05-06T18:51:28Z",
+        "subject": "[MIG] server_action_mass_edit: Migration to 17.0",
+        "author": "Rocío Vega"
+      },
+      "s0": {
+        "sha": "3b9eeabf3f802feb449255c0a4ae25590e8bae82",
+        "source": "padre del [MIG]"
+      },
+      "rev16": "a38254ac44a879036149f8b700a9abd1035c6f06",
+      "s0_vs_16_files_differ": 1,
+      "depends": [
+        "base"
+      ],
+      "hunks": [
+        18,
+        54
+      ],
+      "post_mig": {
+        "commits": 4,
+        "fix": [
+          "[FIX] server_action_mess_edit: Application error when discard a x2many field"
+        ]
+      }
+    },
+    {
+      "repo": "sale-workflow",
+      "module": "sale_blanket_order",
+      "mig": {
+        "sha": "e48f1b6acd7c9dce17a47e1ca2fc8af3d88091c9",
+        "date": "2024-08-02T16:20:50+02:00",
+        "subject": "[MIG] sale_blanket_order: Migration to 17.0",
+        "author": "Chris Bergman"
+      },
+      "s0": {
+        "sha": "264dab6738b17cbd0da9797ddc9728f257d40814",
+        "source": "padre del [MIG]"
+      },
+      "rev16": "32fb202fe4809842ffd33b82a6832e7a2f6b6ece",
+      "s0_vs_16_files_differ": 3,
+      "depends": [
+        "sale_management",
+        "uom",
+        "web_action_conditionable"
+      ],
+      "hunks": [
+        55,
+        90
+      ],
+      "post_mig": {
+        "commits": 17,
+        "fix": [
+          "[FIX] sale_blanket_order: set analytic distribution on created sale lines",
+          "[FIX] sale_blanket_order: not require taxes on blanket orders",
+          "[17.0][FIX] sale_blanket_order: sale.blanket.order note field should be Html",
+          "[FIX] sale_blanket_order: SO blanket_order_id computation",
+          "[FIX] sale_blanket_order: filter default taxes by company for all users"
+        ]
+      }
+    },
+    {
+      "repo": "credit-control",
+      "module": "sale_financial_risk",
+      "mig": {
+        "sha": "0c79ab7987551d9a43be2422cf84577f2922ef78",
+        "date": "2024-06-18T08:38:37+02:00",
+        "subject": "[17.0][MIG] sale_financial_risk: Migration to 17.0",
+        "author": "sbiosca-s73"
+      },
+      "s0": {
+        "sha": "35e7fe3ec0d634ad0a6eea8ac1dc33de44d4f165",
+        "source": "padre del [MIG]"
+      },
+      "rev16": "4af0eee0c2c37c08b0c5c248151b91b16636191b",
+      "s0_vs_16_files_differ": 0,
+      "depends": [
+        "account_financial_risk",
+        "sale"
+      ],
+      "hunks": [
+        91,
+        105
+      ],
+      "post_mig": {
+        "commits": 5,
+        "fix": [
+          "[FIX] sale_financial_risk: Avoid test error when comparing expected tax amounts. The product product.product_product_2 does not have explicit taxes, but after this commit https://github.com/odoo/odoo/commit/2836416be880a1839ba96c03e06b8781df9abae4, an error occurs when comparing the expected amount. So, adapt the amount to compare without taxes and create a new product to avoid depending on demo data.",
+          "[FIX] sale_financial_risk: Salesman user only compute your own orders",
+          "[FIX] sale_financial_risk: Use the assert_called_once() method to avoid errors in tests"
+        ]
+      }
+    },
+    {
+      "repo": "field-service",
+      "module": "fieldservice_isp_flow",
+      "mig": {
+        "sha": "7664af532dc0529e0bad3a5069075ef925df86f1",
+        "date": "2024-04-19T10:57:06+02:00",
+        "subject": "[MIG] fieldservice_isp_flow: Migration to 17.0",
+        "author": "Antoni Marroig Campomar"
+      },
+      "s0": {
+        "sha": "a3a1fcdb1e3fa4857a0e3d5eadb1f29137066d78",
+        "source": "padre del [MIG]"
+      },
+      "rev16": "77cd48b932f009e49024c02b8dfb6e070105b71a",
+      "s0_vs_16_files_differ": 2,
+      "depends": [
+        "fieldservice"
+      ],
+      "hunks": [
+        106,
+        112
+      ],
+      "post_mig": {
+        "commits": 0,
+        "fix": []
+      }
+    }
+  ],
+  "depends": {
+    "core": [
+      "base",
+      "sale",
+      "sale_management",
+      "stock",
+      "uom"
+    ],
+    "oca": [
+      {
+        "module": "account_financial_risk",
+        "repo": "credit-control",
+        "sha16": "0d82ac81f034",
+        "sha17": "39f2a23028ac"
+      },
+      {
+        "module": "base_territory",
+        "repo": "field-service",
+        "sha16": "1fa6ff408a45",
+        "sha17": "26dfe3ddccc1"
+      },
+      {
+        "module": "fieldservice",
+        "repo": "field-service",
+        "sha16": "1fa6ff408a45",
+        "sha17": "26dfe3ddccc1"
+      },
+      {
+        "module": "web_action_conditionable",
+        "repo": "web",
+        "sha16": "780c00ce0300",
+        "sha17": "74f924a9d6b5"
+      }
+    ]
+  },
+  "hunks": 112,
+  "hunk_tags": {
+    "ADMIN": 18,
+    "ESTILO": 3,
+    "G17-01": 5,
+    "G17-02": 1,
+    "G17-03": 3,
+    "G17-04": 1,
+    "G17-07": 22,
+    "G17-09": 5,
+    "G17-10": 2,
+    "SIN_GUIA": 56
+  }
+}

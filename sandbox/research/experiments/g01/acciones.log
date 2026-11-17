@@ -1,0 +1,123 @@
+2026-10-10 01:12:13Z [g01] prepare (intento 1): account_manual_currency, stock_quant_manual_assign, server_action_mass_edit, sale_blanket_order, sale_financial_risk
+2026-10-10 01:12:14Z [g01] prepare fallo: account-invoicing/account_manual_currency no existe en la rama 16.0
+2026-10-10 01:12:33Z [g01] reemplazo: account_manual_currency -> fieldservice_isp_flow (tecnico)
+2026-10-10 01:12:33Z [g01] prepare (intento 2): stock_quant_manual_assign, server_action_mass_edit, sale_blanket_order, sale_financial_risk, fieldservice_isp_flow
+2026-10-10 01:16:33Z [g01] prepare: 112 hunks, deps core=['base', 'sale', 'sale_management', 'stock', 'uom'] oca=['account_financial_risk', 'base_territory', 'fieldservice', 'web_action_conditionable'], tags={'ADMIN': 18, 'ESTILO': 3, 'G17-01': 5, 'G17-02': 1, 'G17-03': 3, 'G17-04': 1, 'G17-07': 22, 'G17-09': 5, 'G17-10': 2, 'SIN_GUIA': 56}
+2026-10-10 01:16:34Z [g01] seed: instalando en 16.0 la BD x_g01_prod con base,sale,sale_management,stock,uom,account_financial_risk,base_territory,fieldservice,web_action_conditionable,stock_quant_manual_assign,server_action_mass_edit,sale_blanket_order,sale_financial_risk,fieldservice_isp_flow
+2026-10-10 01:17:43Z [g01] seed: x_g01_prod lista en 68s, {'tables': 483, 'modules': 575, 'installed': 70}
+2026-10-10 01:17:43Z [g01] seed: instalando en 16.0 la BD x_g01_base con base,sale,sale_management,stock,uom,account_financial_risk,base_territory,fieldservice,web_action_conditionable
+2026-10-10 01:18:53Z [g01] seed: x_g01_base lista en 70s, {'tables': 474, 'modules': 575, 'installed': 65}
+2026-10-10 01:18:56Z [g01] baseline: fase install sin los modulos del grupo
+2026-10-10 19:50:40Z [g01] baseline: install rc=0 66703s, 3 eventos (se descuentan)
+2026-10-10 19:50:46Z [g01] baseline: fase upgrade sin los modulos del grupo
+2026-10-10 19:51:49Z [g01] baseline: upgrade rc=255 61s, 15 eventos (se descuentan)
+2026-10-13 19:48:31Z [g01] baseline: fase install sin los modulos del grupo
+2026-10-13 19:49:58Z [g01] baseline: install rc=0 86s, 3 eventos (se descuentan)
+2026-10-13 19:50:00Z [g01] baseline: fase upgrade sin los modulos del grupo
+2026-10-13 19:52:13Z [g01] baseline: upgrade rc=0 130s, 832 eventos (se descuentan)
+2026-10-13 19:52:19Z [g01] === fase install ===
+2026-10-13 19:52:27Z [g01] iter 01 install: FALLA rc=255 4s | 2 errores y 0 avisos nuevos | log runs/exp-g01/01-install.log
+2026-10-13 19:52:36Z [g01]   C001 [A/manifest_version] cob=L fieldservice_isp_flow : Failed to load registry  -> hunks 106,107,108,109,110,111,112 (nivel 3, 14 lineas)
+2026-10-13 19:52:44Z [g01] iter 02 install: FALLA rc=255 4s | 2 errores y 0 avisos nuevos | log runs/exp-g01/02-install.log
+2026-10-13 19:52:44Z [g01]   C002 SIN RESOLVER [A/manifest_version] sale_blanket_order : Failed to load registry 
+2026-10-13 19:52:44Z [g01] fase install: sin_resolver
+2026-10-13 19:52:44Z [g01] === fase upgrade ===
+2026-10-13 19:53:07Z [g01] iter 03 upgrade: FALLA rc=255 15s | 2 errores y 1 avisos nuevos | log runs/exp-g01/03-upgrade.log
+2026-10-13 19:53:17Z [g01]   C003 [H/openupgrade] cob=L server_action_mass_edit : Failed to load registry  -> hunks 021,022,023,024,025,026,027,028,040,041,042,043,044,046,047,048,049,050,051,052,053 (nivel 2, 184 lineas)
+2026-10-13 19:53:33Z [g01] iter 04 upgrade: FALLA rc=137 12s | 0 errores y 0 avisos nuevos | log runs/exp-g01/04-upgrade.log
+2026-10-13 19:53:33Z [g01]   rc=137 sin eventos nuevos: no hay que corregir
+2026-10-13 19:53:33Z [g01] fase upgrade: falla_sin_evento
+2026-10-13 19:53:33Z [g01] === fase test ===
+2026-10-13 19:53:41Z [g01] iter 05 test: FALLA rc=255 5s | 2 errores y 0 avisos nuevos | log runs/exp-g01/05-test.log
+2026-10-13 19:53:52Z [g01]   C004 [A/manifest_version] cob=L sale_blanket_order : Failed to load registry  -> hunks 056,057,058,059,060,061,062,063,064,065,066,067,068,071,072,073,074,075,076,077,078,079,080,081,082,083,084,085,086,087,088,089,090 (nivel 3, 238 lineas)
+2026-10-13 19:53:58Z [g01] iter 06 test: FALLA rc=137 3s | 2 errores y 0 avisos nuevos | log runs/exp-g01/06-test.log
+2026-10-13 19:53:58Z [g01]   C005 SIN RESOLVER [A/manifest_version] sale_financial_risk : Failed to load registry 
+2026-10-13 19:53:58Z [g01] fase test: sin_resolver
+2026-10-13 19:58:47Z [g01] seed: instalando en 16.0 la BD x_g01_prod con base,sale,sale_management,stock,uom,account_financial_risk,base_territory,fieldservice,web_action_conditionable,stock_quant_manual_assign,server_action_mass_edit,sale_blanket_order,sale_financial_risk,fieldservice_isp_flow
+2026-10-13 20:00:01Z [g01] seed: x_g01_prod lista en 73s, {'tables': 483, 'modules': 575, 'installed': 70}
+2026-10-13 20:00:02Z [g01] seed: instalando en 16.0 la BD x_g01_base con base,sale,sale_management,stock,uom,account_financial_risk,base_territory,fieldservice,web_action_conditionable
+2026-10-13 20:01:12Z [g01] seed: x_g01_base lista en 70s, {'tables': 474, 'modules': 575, 'installed': 65}
+2026-10-13 20:01:18Z [g01] baseline: fase install sin los modulos del grupo
+2026-10-13 20:02:45Z [g01] baseline: install rc=0 87s, 3 eventos (se descuentan)
+2026-10-13 20:02:48Z [g01] baseline: fase upgrade sin los modulos del grupo
+2026-10-13 20:04:48Z [g01] baseline: upgrade rc=0 118s, 832 eventos (se descuentan)
+2026-10-13 20:04:56Z [g01] === fase install ===
+2026-10-13 20:05:02Z [g01] iter 01 install: FALLA rc=255 3s | 2 errores y 0 avisos nuevos | log runs/exp-g01/01-install.log
+2026-10-13 20:05:10Z [g01]   C001 [A/manifest_version] cob=L fieldservice_isp_flow : Failed to load registry  -> hunks 106 (nivel 2, 2 lineas)
+2026-10-13 20:05:17Z [g01] iter 02 install: FALLA rc=255 3s | 2 errores y 0 avisos nuevos | log runs/exp-g01/02-install.log
+2026-10-13 20:05:23Z [g01]   C002 [A/manifest_version] cob=L sale_blanket_order : Failed to load registry  -> hunks 056 (nivel 2, 4 lineas)
+2026-10-13 20:05:30Z [g01] iter 03 install: FALLA rc=255 3s | 2 errores y 0 avisos nuevos | log runs/exp-g01/03-install.log
+2026-10-13 20:05:35Z [g01]   C003 [A/manifest_version] cob=L sale_financial_risk : Failed to load registry  -> hunks 091 (nivel 2, 2 lineas)
+2026-10-13 20:05:41Z [g01] iter 04 install: FALLA rc=255 2s | 2 errores y 0 avisos nuevos | log runs/exp-g01/04-install.log
+2026-10-13 20:05:47Z [g01]   C004 [A/manifest_version] cob=L server_action_mass_edit : Failed to load registry  -> hunks 021,022 (nivel 2, 8 lineas)
+2026-10-13 20:05:54Z [g01] iter 05 install: FALLA rc=255 3s | 2 errores y 0 avisos nuevos | log runs/exp-g01/05-install.log
+2026-10-13 20:06:00Z [g01]   C005 [A/manifest_version] cob=L stock_quant_manual_assign : Failed to load registry  -> hunks 001,002 (nivel 2, 3 lineas)
+2026-10-13 20:06:18Z [g01] iter 06 install: FALLA rc=255 14s | 3 errores y 1 avisos nuevos | log runs/exp-g01/06-install.log
+2026-10-13 20:06:24Z [g01]   C006 [?/?] cob=L server_action_mass_edit : Couldn't load module server_action_mass_edit  -> hunks 023 (nivel 3, 20 lineas)
+2026-10-13 20:06:42Z [g01] iter 07 install: FALLA rc=255 14s | 3 errores y 1 avisos nuevos | log runs/exp-g01/07-install.log
+2026-10-13 20:06:47Z [g01]   C007 [?/?] cob=R server_action_mass_edit : Couldn't load module server_action_mass_edit  -> hunks 024 (nivel 3, 1 lineas)
+2026-10-13 20:07:10Z [g01] iter 08 install: FALLA rc=255 20s | 3 errores y 1 avisos nuevos | log runs/exp-g01/08-install.log
+2026-10-13 20:07:20Z [g01]   C008 [?/?] cob=R server_action_mass_edit : Couldn't load module server_action_mass_edit  -> hunks 025 (nivel 3, 12 lineas)
+2026-10-13 20:07:46Z [g01] iter 09 install: FALLA rc=255 21s | 3 errores y 1 avisos nuevos | log runs/exp-g01/09-install.log
+2026-10-13 20:07:54Z [g01]   C009 [?/?] cob=R server_action_mass_edit : Couldn't load module server_action_mass_edit  -> hunks 026,027 (nivel 3, 3 lineas)
+2026-10-13 20:08:20Z [g01] iter 10 install: FALLA rc=255 22s | 3 errores y 1 avisos nuevos | log runs/exp-g01/10-install.log
+2026-10-13 20:08:28Z [g01]   C010 [?/?] cob=R server_action_mass_edit : Couldn't load module server_action_mass_edit  -> hunks 028 (nivel 3, 7 lineas)
+2026-10-13 20:08:48Z [g01] iter 11 install: FALLA rc=255 17s | 3 errores y 1 avisos nuevos | log runs/exp-g01/11-install.log
+2026-10-13 20:08:55Z [g01]   C011 [?/?] cob=R server_action_mass_edit : Couldn't load module server_action_mass_edit  -> hunks 046,047,048,049,050,051,052,053 (nivel 3, 116 lineas)
+2026-10-13 20:09:14Z [g01] iter 12 install: FALLA rc=255 15s | 2 errores y 1 avisos nuevos | log runs/exp-g01/12-install.log
+2026-10-13 20:09:19Z [g01]   C012 [D/xpath_missing] cob=L server_action_mass_edit server_action_mass_edit/views/ir_actions_server.xml:4: Failed to load registry  -> hunks 045 (nivel 1, 72 lineas)
+2026-10-13 20:09:37Z [g01] iter 13 install: FALLA rc=255 14s | 2 errores y 1 avisos nuevos | log runs/exp-g01/13-install.log
+2026-10-13 20:09:43Z [g01]   C013 [D/attrs_states] cob=L server_action_mass_edit server_action_mass_edit/wizard/mass_editing_wizard.xml:9: Failed to load registry  -> hunks 054 (nivel 1, 14 lineas)
+2026-10-13 20:10:26Z [g01] iter 14 install: FALLA rc=255 38s | 2 errores y 2 avisos nuevos | log runs/exp-g01/14-install.log
+2026-10-13 20:10:32Z [g01]   C014 [D/attrs_states] cob=L fieldservice_isp_flow fieldservice_isp_flow/views/fsm_order.xml:4: Failed to load registry  -> hunks 107,108,109,110,111,112 (nivel 1, 12 lineas)
+2026-10-13 20:11:47Z [g01] iter 15 install: FALLA rc=255 71s | 2 errores y 2 avisos nuevos | log runs/exp-g01/15-install.log
+2026-10-13 20:11:56Z [g01]   C015 [D/xpath_missing] cob=R stock_quant_manual_assign stock_quant_manual_assign/views/stock_move_view.xml:3: Failed to load registry  -> hunks 011 (nivel 1, 2 lineas)
+2026-10-13 20:13:17Z [g01] iter 16 install: FALLA rc=255 76s | 2 errores y 2 avisos nuevos | log runs/exp-g01/16-install.log
+2026-10-13 20:13:23Z [g01]   C016 [B/attribute_error] cob=L sale_financial_risk sale_financial_risk/hooks.py:20: Failed to load registry  -> hunks 092 (nivel 1, 13 lineas)
+2026-10-13 20:14:37Z [g01] iter 17 install: FALLA rc=255 70s | 2 errores y 2 avisos nuevos | log runs/exp-g01/17-install.log
+2026-10-13 20:14:43Z [g01]   C017 [D/attrs_states] cob=L sale_financial_risk sale_financial_risk/views/res_partner_view.xml:5: Failed to load registry  -> hunks 104,105 (nivel 1, 7 lineas)
+2026-10-13 20:16:00Z [g01] iter 18 install: FALLA rc=255 72s | 3 errores y 3 avisos nuevos | log runs/exp-g01/18-install.log
+2026-10-13 20:16:07Z [g01]   C018 [?/?] cob=L sale_blanket_order : Couldn't load module sale_blanket_order  -> hunks 057,058,059,060,061,062,063,064,065,066,067 (nivel 3, 119 lineas)
+2026-10-13 20:17:35Z [g01] iter 19 install: FALLA rc=255 81s | 2 errores y 3 avisos nuevos | log runs/exp-g01/19-install.log
+2026-10-13 20:17:42Z [g01]   C019 [D/xpath_missing] cob=L sale_blanket_order sale_blanket_order/views/sale_config_settings.xml:5: Failed to load registry  -> hunks 087 (nivel 1, 30 lineas)
+2026-10-13 20:19:12Z [g01] iter 20 install: FALLA rc=255 84s | 2 errores y 3 avisos nuevos | log runs/exp-g01/20-install.log
+2026-10-13 20:19:22Z [g01]   C020 [D/attrs_states] cob=L sale_blanket_order sale_blanket_order/views/sale_blanket_order_views.xml:29: Failed to load registry  -> hunks 077,078,079,080,081,082,083,084,085,086 (nivel 1, 58 lineas)
+2026-10-13 20:20:52Z [g01] iter 21 install: OK rc=0 83s | 0 errores y 2 avisos nuevos | log runs/exp-g01/21-install.log
+2026-10-13 20:20:52Z [g01]   C021 aviso [B] fieldservice_isp_flow: /usr/lib/python3/dist-packages/odoo/addons/base/models/ir_module.py:194: DeprecationWarning: XML declarations in HTML module descriptions ar
+2026-10-13 20:20:52Z [g01]   C022 aviso [E] sale_financial_risk: Module sale_stock demo data failed to install, installed without demo data 
+2026-10-13 20:20:52Z [g01] fase install: ok
+2026-10-13 20:20:52Z [g01] === fase upgrade ===
+2026-10-13 20:23:20Z [g01] iter 22 upgrade: OK rc=0 142s | 0 errores y 13 avisos nuevos | log runs/exp-g01/22-upgrade.log
+2026-10-13 20:23:20Z [g01]   C023 aviso [?] sale_blanket_order: Can't render custom view sale_blanket_order.view_order_form for model sale.order. Assuming you are migrating between major versions of Odoo.
+2026-10-13 20:23:20Z [g01]   C024 aviso [?] sale_blanket_order: Can't render custom view sale_blanket_order.view_order_form_disable_adding_lines for model sale.order. Assuming you are migrating between ma
+2026-10-13 20:23:20Z [g01]   C025 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model sale.blanket.order.wizard.line 
+2026-10-13 20:23:21Z [g01]   C026 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model sale.blanket.order.wizard 
+2026-10-13 20:23:21Z [g01]   C027 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model sale.blanket.order.line 
+2026-10-13 20:23:21Z [g01]   C028 aviso [K] -: Module Unknown: Not dropping the column of field message_main_attachment_id of model sale.blanket.order.line 
+2026-10-13 20:23:21Z [g01]   C029 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model sale.blanket.order 
+2026-10-13 20:23:21Z [g01]   C030 aviso [K] -: Module Unknown: Not dropping the column of field message_main_attachment_id of model sale.blanket.order 
+2026-10-13 20:23:21Z [g01]   C031 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model assign.manual.quants.lines 
+2026-10-13 20:23:22Z [g01]   C032 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model assign.manual.quants 
+2026-10-13 20:23:22Z [g01]   C033 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model mass.editing.wizard 
+2026-10-13 20:23:22Z [g01]   C034 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model ir.actions.server.mass.edit.line 
+2026-10-13 20:23:22Z [g01] fase upgrade: ok
+2026-10-13 20:23:22Z [g01] === fase test ===
+2026-10-13 20:25:41Z [g01] iter 23 test: FALLA rc=1 133s | 12 errores y 5 avisos nuevos | log runs/exp-g01/23-test.log
+2026-10-13 20:25:49Z [g01]   C035 [C/unknown_field_orm] cob=C stock_quant_manual_assign stock_quant_manual_assign/wizard/assign_manual_quants.py:118: ERROR: TestStockQuantManualAssign.test_quant_assign_wizard -> hunks 013,014,015,016 (nivel 1, 11 lineas)
+2026-10-13 20:28:06Z [g01] iter 24 test: FALLA rc=1 132s | 13 errores y 5 avisos nuevos | log runs/exp-g01/24-test.log
+2026-10-13 20:28:12Z [g01]   C036 [B/attribute_error] cob=C stock_quant_manual_assign stock_quant_manual_assign/tests/test_stock_quant_manual_assign.py:103: ERROR: TestStockQuantManualAssign.test_quant_assign_wizard -> hunks 008,009,010 (nivel 1, 19 lineas)
+2026-10-13 20:30:14Z [g01] iter 25 test: FALLA rc=1 116s | 10 errores y 5 avisos nuevos | log runs/exp-g01/25-test.log
+2026-10-13 20:30:21Z [g01]   C037 [?/?] cob=C sale_financial_risk sale_financial_risk/models/res_partner.py:38: ERROR: TestPartnerSaleRisk.test_compute_risk_amount -> hunks 093 (nivel 1, 14 lineas)
+2026-10-13 20:32:20Z [g01] iter 26 test: FALLA rc=1 112s | 11 errores y 4 avisos nuevos | log runs/exp-g01/26-test.log
+2026-10-13 20:32:29Z [g01]   C038 [?/?] cob=C sale_financial_risk sale_financial_risk/tests/test_partner_sale_risk.py:127: FAIL: TestPartnerSaleRisk.test_compute_risk_amount -> hunks 095,096,097,098,099,100,101 (nivel 1, 37 lineas)
+2026-10-13 20:35:17Z [g01] iter 27 test: FALLA rc=1 159s | 8 errores y 4 avisos nuevos | log runs/exp-g01/27-test.log
+2026-10-13 20:35:25Z [g01]   C039 [B/type_error_sig] cob=C sale_blanket_order sale_blanket_order/tests/test_blanket_orders.py:102: ERROR: TestSaleBlanketOrders.test_01_create_blanket_order -> hunks 071,072,073,074 (nivel 1, 12 lineas)
+2026-10-13 20:38:35Z [g01] iter 28 test: FALLA rc=1 183s | 5 errores y 4 avisos nuevos | log runs/exp-g01/28-test.log
+2026-10-13 20:38:49Z [g01]   C040 [?/?] cob=C server_action_mass_edit server_action_mass_edit/tests/test_mass_editing.py:344: FAIL: TestMassEditing.test_mass_edit_m2m_categ -> hunks 040,041,042,043,044 (nivel 1, 17 lineas)
+2026-10-13 20:41:55Z [g01] iter 29 test: FALLA rc=1 180s | 2 errores y 4 avisos nuevos | log runs/exp-g01/29-test.log
+2026-10-13 20:42:05Z [g01]   C041 [B/attribute_error] cob=C sale_financial_risk sale_financial_risk/tests/test_payment_financial_risk.py:69: ERROR: TestRiskSalePayment.test_payment_risk_bypass -> hunks 102 (nivel 1, 30 lineas)
+2026-10-13 20:45:31Z [g01] iter 30 test: OK rc=0 193s | 0 errores y 4 avisos nuevos | log runs/exp-g01/30-test.log
+2026-10-13 20:45:31Z [g01]   C042 aviso [B] -: /usr/lib/python3/dist-packages/odoo/addons/base/models/ir_module.py:194: DeprecationWarning: XML declarations in HTML module descriptions ar
+2026-10-13 20:45:31Z [g01]   C043 aviso [D] -: Using active_id, active_ids and active_model in expressions is deprecated, found active_id 
+2026-10-13 20:45:31Z [g01]   C044 aviso [B] sale_blanket_order: /mnt/extra-addons/sale_blanket_order/tests/test_sale_order.py:148: DeprecationWarning: Since 17.0, deprecated method, read display_name inst
+2026-10-13 20:45:31Z [g01] fase test: ok

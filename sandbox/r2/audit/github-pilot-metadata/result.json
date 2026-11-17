@@ -1,0 +1,296 @@
+{
+  "case_id": "OCA/sale-workflow#3244",
+  "repository": "OCA/sale-workflow",
+  "pull": {
+    "number": 3244,
+    "title": "[17.0][MIG] sale_advance_payment: Migration to 17.0",
+    "html_url": "https://github.com/OCA/sale-workflow/pull/3244",
+    "state": "closed",
+    "created_at": "2024-07-22T14:28:14Z",
+    "updated_at": "2024-07-23T11:30:33Z",
+    "closed_at": "2024-07-23T11:30:27Z",
+    "merged_at": "2024-07-23T11:30:27Z",
+    "merge_commit_sha": "d19db836e3182d95c6b9ba4b119b18f548832742",
+    "author": "yankinmax",
+    "base": {
+      "ref": "17.0",
+      "sha": "4b399984af944a27454e0bf6288ff9db73ab43cb"
+    },
+    "head": {
+      "ref": "17.0-mig-sale_advance_payment",
+      "sha": "a33a0075353cf74e1a1abe166a7b7a94e7af16d9"
+    }
+  },
+  "reviews": [
+    {
+      "reviewer": "vvrossem",
+      "id": 2193470036,
+      "state": "APPROVED",
+      "submitted_at": "2024-07-23T09:34:34Z",
+      "commit_id": "774d4fe3cf363c5684d25ba1e2ca893482119b7e",
+      "html_url": "https://github.com/OCA/sale-workflow/pull/3244#pullrequestreview-2193470036",
+      "author_association": "CONTRIBUTOR"
+    },
+    {
+      "reviewer": "yankinmax",
+      "id": 2193505755,
+      "state": "COMMENTED",
+      "submitted_at": "2024-07-23T09:47:41Z",
+      "commit_id": "774d4fe3cf363c5684d25ba1e2ca893482119b7e",
+      "html_url": "https://github.com/OCA/sale-workflow/pull/3244#pullrequestreview-2193505755",
+      "author_association": "CONTRIBUTOR"
+    },
+    {
+      "reviewer": "gurneyalex",
+      "id": 2193625459,
+      "state": "APPROVED",
+      "submitted_at": "2024-07-23T10:45:54Z",
+      "commit_id": "774d4fe3cf363c5684d25ba1e2ca893482119b7e",
+      "html_url": "https://github.com/OCA/sale-workflow/pull/3244#pullrequestreview-2193625459",
+      "author_association": "MEMBER"
+    },
+    {
+      "reviewer": "gurneyalex",
+      "id": 2193688714,
+      "state": "APPROVED",
+      "submitted_at": "2024-07-23T11:19:11Z",
+      "commit_id": "a33a0075353cf74e1a1abe166a7b7a94e7af16d9",
+      "html_url": "https://github.com/OCA/sale-workflow/pull/3244#pullrequestreview-2193688714",
+      "author_association": "MEMBER"
+    }
+  ],
+  "files": [
+    {
+      "filename": "sale_advance_payment/README.rst",
+      "status": "added",
+      "additions": 101,
+      "deletions": 0,
+      "sha": "c58795735e2e641b7be75432befc5c843c1fee9c"
+    },
+    {
+      "filename": "sale_advance_payment/__init__.py",
+      "status": "added",
+      "additions": 2,
+      "deletions": 0,
+      "sha": "9b4296142f475392fb090e036775e999aa8e4a27"
+    },
+    {
+      "filename": "sale_advance_payment/__manifest__.py",
+      "status": "added",
+      "additions": 19,
+      "deletions": 0,
+      "sha": "65fa0d2d39397e80f5760429481b1d9df775b4cc"
+    },
+    {
+      "filename": "sale_advance_payment/i18n/es.po",
+      "status": "added",
+      "additions": 256,
+      "deletions": 0,
+      "sha": "c81cc994d88a59f6dff068a929804f1b0caf8866"
+    },
+    {
+      "filename": "sale_advance_payment/i18n/fr.po",
+      "status": "added",
+      "additions": 259,
+      "deletions": 0,
+      "sha": "75acb5331c811f47cd3a34ad2a78e0e722dc79fd"
+    },
+    {
+      "filename": "sale_advance_payment/i18n/hr.po",
+      "status": "added",
+      "additions": 251,
+      "deletions": 0,
+      "sha": "924266da7fba8f263eee489189ac606a7d6c1bd5"
+    },
+    {
+      "filename": "sale_advance_payment/i18n/it.po",
+      "status": "added",
+      "additions": 255,
+      "deletions": 0,
+      "sha": "e6bd06d942c630210b06b334fdcedcc4d71aef95"
+    },
+    {
+      "filename": "sale_advance_payment/i18n/sale_advance_payment.pot",
+      "status": "added",
+      "additions": 247,
+      "deletions": 0,
+      "sha": "caa946b5c13017be4044135c6a8ed21d01b516fa"
+    },
+    {
+      "filename": "sale_advance_payment/models/__init__.py",
+      "status": "added",
+      "additions": 3,
+      "deletions": 0,
+      "sha": "fad33e7989bf1bbfb80945daa3a7ebdd7a2d5362"
+    },
+    {
+      "filename": "sale_advance_payment/models/account_move.py",
+      "status": "added",
+      "additions": 21,
+      "deletions": 0,
+      "sha": "a638f4d8e0c6b69a4385e49e33075defde7cd0ff"
+    },
+    {
+      "filename": "sale_advance_payment/models/payment.py",
+      "status": "added",
+      "additions": 10,
+      "deletions": 0,
+      "sha": "f7d70016a51b37a785bbe538bda0cad7c18d61e6"
+    },
+    {
+      "filename": "sale_advance_payment/models/sale.py",
+      "status": "added",
+      "additions": 97,
+      "deletions": 0,
+      "sha": "8c2215149396668c8fe5d13c9205aee5834c1dfe"
+    },
+    {
+      "filename": "sale_advance_payment/pyproject.toml",
+      "status": "added",
+      "additions": 3,
+      "deletions": 0,
+      "sha": "4231d0cccb3d626788a7061c0f30e7654bae52a1"
+    },
+    {
+      "filename": "sale_advance_payment/readme/CONTRIBUTORS.md",
+      "status": "added",
+      "additions": 5,
+      "deletions": 0,
+      "sha": "c422679f9076bcad4ac32b03eb2831ab0f34351a"
+    },
+    {
+      "filename": "sale_advance_payment/readme/DESCRIPTION.md",
+      "status": "added",
+      "additions": 2,
+      "deletions": 0,
+      "sha": "02808e96b210e8f191744793274782668737aaeb"
+    },
+    {
+      "filename": "sale_advance_payment/readme/ROADMAP.md",
+      "status": "added",
+      "additions": 3,
+      "deletions": 0,
+      "sha": "2239b5e6522bba8c70193d2968ea11c10593c374"
+    },
+    {
+      "filename": "sale_advance_payment/readme/USAGE.md",
+      "status": "added",
+      "additions": 9,
+      "deletions": 0,
+      "sha": "2a4b64781f7a006d70b684f6e6aac62986761316"
+    },
+    {
+      "filename": "sale_advance_payment/security/ir.model.access.csv",
+      "status": "added",
+      "additions": 4,
+      "deletions": 0,
+      "sha": "0b97dbeee472c31228b9bff40b8ae5081ab60809"
+    },
+    {
+      "filename": "sale_advance_payment/static/description/icon.png",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "sha": "3a0328b516c4980e8e44cdb63fd945757ddd132d"
+    },
+    {
+      "filename": "sale_advance_payment/static/description/index.html",
+      "status": "added",
+      "additions": 448,
+      "deletions": 0,
+      "sha": "9bc1f0ce60c3cb1348214a13f27fde189d5e3d48"
+    },
+    {
+      "filename": "sale_advance_payment/tests/__init__.py",
+      "status": "added",
+      "additions": 1,
+      "deletions": 0,
+      "sha": "1d4adafb68403d922bfef374635e97781342042b"
+    },
+    {
+      "filename": "sale_advance_payment/tests/test_sale_advance_payment.py",
+      "status": "added",
+      "additions": 373,
+      "deletions": 0,
+      "sha": "79ed772988ae4bde7e15f4cd56486e74bce38353"
+    },
+    {
+      "filename": "sale_advance_payment/views/sale_view.xml",
+      "status": "added",
+      "additions": 97,
+      "deletions": 0,
+      "sha": "31e1f71c708d2aead9aab0aa2356835436433266"
+    },
+    {
+      "filename": "sale_advance_payment/wizard/__init__.py",
+      "status": "added",
+      "additions": 1,
+      "deletions": 0,
+      "sha": "06aef981fea1f52211359936b1a71d0fd2d2792f"
+    },
+    {
+      "filename": "sale_advance_payment/wizard/sale_advance_payment_wzd.py",
+      "status": "added",
+      "additions": 167,
+      "deletions": 0,
+      "sha": "7177b672863615dc8d4fca7d7b42d2702ae80b0b"
+    },
+    {
+      "filename": "sale_advance_payment/wizard/sale_advance_payment_wzd_view.xml",
+      "status": "added",
+      "additions": 59,
+      "deletions": 0,
+      "sha": "cc2adf7b985ef827e6a1efeb127c5efc42059e33"
+    }
+  ],
+  "extracted_at": "2026-11-14T19:04:12.083152+00:00",
+  "captures": [
+    {
+      "url": "https://api.github.com/repos/OCA/sale-workflow/pulls/3244",
+      "captured_at": "2026-11-14T19:04:10.253493+00:00",
+      "response_sha256": "6d5f8af0d76b22556bdacaf9148e315d48c8367d86384b07ffb4e7fcd69eac5c",
+      "stored_sha256": "df85fb07642b2fdb364a3f247aa4af61be973d522e0f48b8a5d9257aa7451476",
+      "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\github-pilot-metadata\\45e7e54aed3109d5df75-df85fb07642b.json",
+      "capture_form": "projected_metadata_only_no_code_or_review_bodies",
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "etag": "\"59df3962c808af98902a18f787242d898725fcc25083480623c2f60ca5f21d54\"",
+        "x-ratelimit-limit": "60",
+        "x-ratelimit-remaining": "49",
+        "x-ratelimit-reset": "1794683353"
+      }
+    },
+    {
+      "url": "https://api.github.com/repos/OCA/sale-workflow/pulls/3244/reviews?per_page=100",
+      "captured_at": "2026-11-14T19:04:10.987118+00:00",
+      "response_sha256": "cd0a2326bf7af4d0d77c28883635b79d1df65bb5f36d8c9e6aba75b63dc34d58",
+      "stored_sha256": "6edf5b57e34ba5dbc018d5d4e17d435a4ced959ef7963bdd620996e8ffb39244",
+      "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\github-pilot-metadata\\698f2da073f36a1d31b8-6edf5b57e34b.json",
+      "capture_form": "projected_metadata_only_no_code_or_review_bodies",
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "etag": "W/\"1e08d68727243a9af1d3efcbcf8cbe9d79928600c42f18ce02c6e0c76a069719\"",
+        "x-ratelimit-limit": "60",
+        "x-ratelimit-remaining": "58",
+        "x-ratelimit-reset": "1794686449"
+      }
+    },
+    {
+      "url": "https://api.github.com/repos/OCA/sale-workflow/pulls/3244/files?per_page=100",
+      "captured_at": "2026-11-14T19:04:12.011656+00:00",
+      "response_sha256": "7900e24dcc62c638ccdbb9e27e5a072bcbfcd55df433b0c48c3d984990a11ded",
+      "stored_sha256": "dbeee096a61dd2c0ace714ec56650565154317d1871ecba2bdf28ee47976f916",
+      "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\github-pilot-metadata\\3fb26b59bff203e5a06a-dbeee096a61d.json",
+      "capture_form": "projected_metadata_only_no_code_or_review_bodies",
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "etag": "W/\"56050f3ccda6945cbf00b3120893fd6858e9d838ee6994a3ef64a139b5f10fa4\"",
+        "x-ratelimit-limit": "60",
+        "x-ratelimit-remaining": "57",
+        "x-ratelimit-reset": "1794686449"
+      }
+    }
+  ],
+  "maintainer_status": "requires_identity_evidence_not_inferred_from_approval",
+  "criteria_status": "requires_six_criteria_review"
+}

@@ -1,0 +1,24 @@
+{
+  "windows": [
+    {
+      "query": "org:OCA is:pr is:merged \"[MIG]\" in:title base:17.0 created:2026-10-01..2026-10-31",
+      "captured_at": "2026-11-14T19:19:43.040250+00:00",
+      "items": 3,
+      "scope": "one monthly window, incomplete population frame"
+    },
+    {
+      "query": "org:OCA is:pr is:merged \"[MIG]\" in:title base:18.0 created:2026-10-01..2026-10-31",
+      "captured_at": "2026-11-14T19:19:45.504407+00:00",
+      "items": 11,
+      "scope": "one monthly window, incomplete population frame"
+    },
+    {
+      "query": "org:OCA is:pr is:merged \"[MIG]\" in:title base:19.0 created:2026-10-01..2026-10-31",
+      "captured_at": "2026-11-14T19:19:48.043458+00:00",
+      "items": 38,
+      "scope": "one monthly window, incomplete population frame"
+    }
+  ],
+  "candidate_count": 52,
+  "complete_population": false
+}

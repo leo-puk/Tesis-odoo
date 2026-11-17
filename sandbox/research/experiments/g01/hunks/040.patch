@@ -1,0 +1,29 @@
+diff --git a/server_action_mass_edit/tests/test_mass_editing.py b/server_action_mass_edit/tests/test_mass_editing.py
+index 4d12de1..ba41c36 100644
+--- a/server_action_mass_edit/tests/test_mass_editing.py
++++ b/server_action_mass_edit/tests/test_mass_editing.py
+@@ -133,19 +133,21 @@ class TestMassEditing(common.TransactionCase):
+         """Test whether fields_view_get method returns arch.
+         with dynamic fields.
+         """
++        view_id = self.env.ref("server_action_mass_edit.view_mass_editing_wizard_form")
++        view_id.mass_server_action_id = False
+         result = self.MassEditingWizard.with_context(
+             active_ids=[],
+-        ).get_view()
++        ).get_view(view_id=view_id.id)
+         arch = result.get("arch", "")
+         self.assertTrue(
+             "selection__email" not in arch,
+             "Fields view get must return architecture w/o fields" "created dynamicaly",
+         )
+-
++        view_id.mass_server_action_id = self.mass_editing_user
+         result = self.MassEditingWizard.with_context(
+             server_action_id=self.mass_editing_user.id,
+             active_ids=[],
+-        ).get_view()
++        ).get_view(view_id=view_id.id)
+         arch = result.get("arch", "")
+         self.assertTrue(
+             "selection__email" in arch,

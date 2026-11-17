@@ -1,0 +1,11 @@
+diff --git a/account_credit_control/readme/CONTRIBUTORS.md b/account_credit_control/readme/CONTRIBUTORS.md
+index cb2f93b..dd3c25a 100644
+--- a/account_credit_control/readme/CONTRIBUTORS.md
++++ b/account_credit_control/readme/CONTRIBUTORS.md
+@@ -16,4 +16,5 @@
+   - Víctor Martínez
+ - Enric Tobella \<<etobella@creublanca.es>\>
+ - Naglis Jonaitis (Versada UAB) \<<naglis@versada.eu>\>
+-- Andrea Stirpe \<<a.stirpe@onestein.nl>\>
++- [360ERP](https://www.360erp.com):
++  - Andrea Stirpe

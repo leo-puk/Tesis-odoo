@@ -1,0 +1,15 @@
+diff --git a/stock_quant_manual_assign/wizard/assign_manual_quants.py b/stock_quant_manual_assign/wizard/assign_manual_quants.py
+index 79e8c44..cb95794 100644
+--- a/stock_quant_manual_assign/wizard/assign_manual_quants.py
++++ b/stock_quant_manual_assign/wizard/assign_manual_quants.py
+@@ -63,10 +63,6 @@ class AssignManualQuants(models.TransientModel):
+         move._do_unreserve()
+         for line in self.quants_lines:
+             line._assign_quant_line()
+-        if move.picking_type_id.auto_fill_qty_done:
+-            # Auto-fill all lines as done
+-            for ml in move.move_line_ids:
+-                ml.qty_done = ml.reserved_uom_qty
+         move._recompute_state()
+         move.mapped("picking_id")._compute_state()
+         return {}

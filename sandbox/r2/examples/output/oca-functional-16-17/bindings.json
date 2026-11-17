@@ -1,0 +1,10 @@
+{
+  "sources": {
+    "core": {
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "from_revision": "local-core16-snapshot",
+      "to_revision": "local-core17-snapshot"
+    }
+  }
+}

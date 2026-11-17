@@ -1,0 +1,13 @@
+diff --git a/sale_blanket_order/views/sale_blanket_order_views.xml b/sale_blanket_order/views/sale_blanket_order_views.xml
+index 89e366f4..d52609be 100644
+--- a/sale_blanket_order/views/sale_blanket_order_views.xml
++++ b/sale_blanket_order/views/sale_blanket_order_views.xml
+@@ -100,7 +100,7 @@
+                             <field
+                                 name="partner_id"
+                                 context="{'res_partner_search_mode': 'customer', 'show_address': 1}"
+-                                attrs="{'required': [('state', '=', 'draft')]}"
++                                required="state == 'draft'"
+                                 options="{&quot;always_reload&quot;: True}"
+                             />
+                             <field name="payment_term_id" />

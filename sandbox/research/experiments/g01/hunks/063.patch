@@ -1,0 +1,42 @@
+diff --git a/sale_blanket_order/models/blanket_orders.py b/sale_blanket_order/models/blanket_orders.py
+index e18506b6..e63059c7 100644
+--- a/sale_blanket_order/models/blanket_orders.py
++++ b/sale_blanket_order/models/blanket_orders.py
+@@ -483,23 +472,29 @@ class BlanketOrderLine(models.Model):
+         default=False,
+         help="Technical field for UX purpose.",
+     )
++    pricelist_item_id = fields.Many2one(
++        comodel_name="product.pricelist.item", compute="_compute_pricelist_item_id"
++    )
+ 
+-    def name_get(self):
+-        result = []
++    @api.depends(
++        "order_id.name", "date_schedule", "remaining_uom_qty", "product_uom.name"
++    )
++    @api.depends_context("from_sale_order")
++    def _compute_display_name(self):
+         if self.env.context.get("from_sale_order"):
+             for record in self:
+-                res = "[%s]" % record.order_id.name
++                name = "[%s]" % record.order_id.name
+                 if record.date_schedule:
+                     formatted_date = format_date(record.env, record.date_schedule)
+-                    res += " - {}: {}".format(_("Date Scheduled"), formatted_date)
+-                res += " ({}: {} {})".format(
++                    name += " - {}: {}".format(_("Date Scheduled"), formatted_date)
++                name += " ({}: {} {})".format(
+                     _("remaining"),
+                     record.remaining_uom_qty,
+                     record.product_uom.name,
+                 )
+-                result.append((record.id, res))
+-            return result
+-        return super().name_get()
++                record.display_name = name
++        else:
++            return super()._compute_display_name()
+ 
+     def _get_real_price_currency(self, product, rule_id, qty, uom, pricelist_id):
+         """Retrieve the price before applying the pricelist

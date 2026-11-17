@@ -1,0 +1,631 @@
+{
+  "query": "org:OCA is:pr is:merged \"[MIG]\" in:title base:19.0 created:2026-10-01..2026-10-31",
+  "extracted_at": "2026-11-14T19:19:48.043458+00:00",
+  "items": [
+    {
+      "number": 5345,
+      "title": "[19.0][MIG] l10n_it_financial_statements_report: Migration to 19.0",
+      "html_url": "https://github.com/OCA/l10n-italy/pull/5345",
+      "created_at": "2026-10-01T14:55:48Z",
+      "closed_at": "2026-10-08T10:04:26Z",
+      "repository_url": "https://api.github.com/repos/OCA/l10n-italy",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/l10n-italy/pulls/5345",
+        "html_url": "https://github.com/OCA/l10n-italy/pull/5345",
+        "diff_url": "https://github.com/OCA/l10n-italy/pull/5345.diff",
+        "patch_url": "https://github.com/OCA/l10n-italy/pull/5345.patch",
+        "merged_at": "2026-10-08T10:04:26Z"
+      },
+      "author": "eLBati"
+    },
+    {
+      "number": 49,
+      "title": "[19.0][MIG] l10n_py_base: Migration to 19.0",
+      "html_url": "https://github.com/OCA/l10n-paraguay/pull/49",
+      "created_at": "2026-10-01T20:59:47Z",
+      "closed_at": "2026-10-02T23:04:41Z",
+      "repository_url": "https://api.github.com/repos/OCA/l10n-paraguay",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/l10n-paraguay/pulls/49",
+        "html_url": "https://github.com/OCA/l10n-paraguay/pull/49",
+        "diff_url": "https://github.com/OCA/l10n-paraguay/pull/49.diff",
+        "patch_url": "https://github.com/OCA/l10n-paraguay/pull/49.patch",
+        "merged_at": "2026-10-02T23:04:40Z"
+      },
+      "author": "sadamo"
+    },
+    {
+      "number": 364,
+      "title": "[19.0][MIG]edi_exchange_template_oca",
+      "html_url": "https://github.com/OCA/edi-framework/pull/364",
+      "created_at": "2026-10-02T07:15:46Z",
+      "closed_at": "2026-10-16T10:35:36Z",
+      "repository_url": "https://api.github.com/repos/OCA/edi-framework",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/edi-framework/pulls/364",
+        "html_url": "https://github.com/OCA/edi-framework/pull/364",
+        "diff_url": "https://github.com/OCA/edi-framework/pull/364.diff",
+        "patch_url": "https://github.com/OCA/edi-framework/pull/364.patch",
+        "merged_at": "2026-10-16T10:35:36Z"
+      },
+      "author": "etobella"
+    },
+    {
+      "number": 50,
+      "title": "[19.0][MIG] l10n_py: Migration to 19.0",
+      "html_url": "https://github.com/OCA/l10n-paraguay/pull/50",
+      "created_at": "2026-10-02T14:05:16Z",
+      "closed_at": "2026-10-02T20:13:50Z",
+      "repository_url": "https://api.github.com/repos/OCA/l10n-paraguay",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/l10n-paraguay/pulls/50",
+        "html_url": "https://github.com/OCA/l10n-paraguay/pull/50",
+        "diff_url": "https://github.com/OCA/l10n-paraguay/pull/50.diff",
+        "patch_url": "https://github.com/OCA/l10n-paraguay/pull/50.patch",
+        "merged_at": "2026-10-02T20:13:50Z"
+      },
+      "author": "sadamo"
+    },
+    {
+      "number": 51,
+      "title": "[19.0][MIG] l10n_py_account: Migration to 19.0",
+      "html_url": "https://github.com/OCA/l10n-paraguay/pull/51",
+      "created_at": "2026-10-02T14:08:13Z",
+      "closed_at": "2026-10-02T23:23:53Z",
+      "repository_url": "https://api.github.com/repos/OCA/l10n-paraguay",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/l10n-paraguay/pulls/51",
+        "html_url": "https://github.com/OCA/l10n-paraguay/pull/51",
+        "diff_url": "https://github.com/OCA/l10n-paraguay/pull/51.diff",
+        "patch_url": "https://github.com/OCA/l10n-paraguay/pull/51.patch",
+        "merged_at": "2026-10-02T23:23:53Z"
+      },
+      "author": "sadamo"
+    },
+    {
+      "number": 52,
+      "title": "[19.0][MIG] l10n_py_edi_base: Migration to 19.0",
+      "html_url": "https://github.com/OCA/l10n-paraguay/pull/52",
+      "created_at": "2026-10-02T14:12:53Z",
+      "closed_at": "2026-10-12T13:33:50Z",
+      "repository_url": "https://api.github.com/repos/OCA/l10n-paraguay",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/l10n-paraguay/pulls/52",
+        "html_url": "https://github.com/OCA/l10n-paraguay/pull/52",
+        "diff_url": "https://github.com/OCA/l10n-paraguay/pull/52.diff",
+        "patch_url": "https://github.com/OCA/l10n-paraguay/pull/52.patch",
+        "merged_at": "2026-10-12T13:33:50Z"
+      },
+      "author": "sadamo"
+    },
+    {
+      "number": 53,
+      "title": "[19.0][MIG] l10n_py_edi_sifen: Migration to 19.0",
+      "html_url": "https://github.com/OCA/l10n-paraguay/pull/53",
+      "created_at": "2026-10-02T17:09:15Z",
+      "closed_at": "2026-10-12T16:29:30Z",
+      "repository_url": "https://api.github.com/repos/OCA/l10n-paraguay",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/l10n-paraguay/pulls/53",
+        "html_url": "https://github.com/OCA/l10n-paraguay/pull/53",
+        "diff_url": "https://github.com/OCA/l10n-paraguay/pull/53.diff",
+        "patch_url": "https://github.com/OCA/l10n-paraguay/pull/53.patch",
+        "merged_at": "2026-10-12T16:29:30Z"
+      },
+      "author": "sadamo"
+    },
+    {
+      "number": 54,
+      "title": "[19.0][MIG] l10n_py_maquila_base: Migration to 19.0",
+      "html_url": "https://github.com/OCA/l10n-paraguay/pull/54",
+      "created_at": "2026-10-02T17:10:29Z",
+      "closed_at": "2026-10-12T13:33:26Z",
+      "repository_url": "https://api.github.com/repos/OCA/l10n-paraguay",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/l10n-paraguay/pulls/54",
+        "html_url": "https://github.com/OCA/l10n-paraguay/pull/54",
+        "diff_url": "https://github.com/OCA/l10n-paraguay/pull/54.diff",
+        "patch_url": "https://github.com/OCA/l10n-paraguay/pull/54.patch",
+        "merged_at": "2026-10-12T13:33:26Z"
+      },
+      "author": "sadamo"
+    },
+    {
+      "number": 72,
+      "title": "[19.0][MIG] l10n_py_maquila_ops: Migration to 19.0",
+      "html_url": "https://github.com/OCA/l10n-paraguay/pull/72",
+      "created_at": "2026-10-06T12:20:07Z",
+      "closed_at": "2026-10-12T16:45:00Z",
+      "repository_url": "https://api.github.com/repos/OCA/l10n-paraguay",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/l10n-paraguay/pulls/72",
+        "html_url": "https://github.com/OCA/l10n-paraguay/pull/72",
+        "diff_url": "https://github.com/OCA/l10n-paraguay/pull/72.diff",
+        "patch_url": "https://github.com/OCA/l10n-paraguay/pull/72.patch",
+        "merged_at": "2026-10-12T16:45:00Z"
+      },
+      "author": "sadamo"
+    },
+    {
+      "number": 73,
+      "title": "[19.0][MIG] l10n_py_maquila_mrp: Migration to 19.0",
+      "html_url": "https://github.com/OCA/l10n-paraguay/pull/73",
+      "created_at": "2026-10-06T12:20:08Z",
+      "closed_at": "2026-10-12T16:46:44Z",
+      "repository_url": "https://api.github.com/repos/OCA/l10n-paraguay",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/l10n-paraguay/pulls/73",
+        "html_url": "https://github.com/OCA/l10n-paraguay/pull/73",
+        "diff_url": "https://github.com/OCA/l10n-paraguay/pull/73.diff",
+        "patch_url": "https://github.com/OCA/l10n-paraguay/pull/73.patch",
+        "merged_at": "2026-10-12T16:46:44Z"
+      },
+      "author": "sadamo"
+    },
+    {
+      "number": 74,
+      "title": "[19.0][MIG] l10n_py_maquila_report: Migration to 19.0",
+      "html_url": "https://github.com/OCA/l10n-paraguay/pull/74",
+      "created_at": "2026-10-06T12:20:10Z",
+      "closed_at": "2026-10-12T16:49:18Z",
+      "repository_url": "https://api.github.com/repos/OCA/l10n-paraguay",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/l10n-paraguay/pulls/74",
+        "html_url": "https://github.com/OCA/l10n-paraguay/pull/74",
+        "diff_url": "https://github.com/OCA/l10n-paraguay/pull/74.diff",
+        "patch_url": "https://github.com/OCA/l10n-paraguay/pull/74.patch",
+        "merged_at": "2026-10-12T16:49:18Z"
+      },
+      "author": "sadamo"
+    },
+    {
+      "number": 75,
+      "title": "[19.0][MIG] l10n_py_libros: Migration to 19.0",
+      "html_url": "https://github.com/OCA/l10n-paraguay/pull/75",
+      "created_at": "2026-10-06T12:20:12Z",
+      "closed_at": "2026-10-12T16:51:36Z",
+      "repository_url": "https://api.github.com/repos/OCA/l10n-paraguay",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/l10n-paraguay/pulls/75",
+        "html_url": "https://github.com/OCA/l10n-paraguay/pull/75",
+        "diff_url": "https://github.com/OCA/l10n-paraguay/pull/75.diff",
+        "patch_url": "https://github.com/OCA/l10n-paraguay/pull/75.patch",
+        "merged_at": "2026-10-12T16:51:36Z"
+      },
+      "author": "sadamo"
+    },
+    {
+      "number": 2468,
+      "title": "[19.0][MIG] account_invoice_auto_send_by_email",
+      "html_url": "https://github.com/OCA/account-invoicing/pull/2468",
+      "created_at": "2026-10-06T18:47:28Z",
+      "closed_at": "2026-10-29T16:27:30Z",
+      "repository_url": "https://api.github.com/repos/OCA/account-invoicing",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/account-invoicing/pulls/2468",
+        "html_url": "https://github.com/OCA/account-invoicing/pull/2468",
+        "diff_url": "https://github.com/OCA/account-invoicing/pull/2468.diff",
+        "patch_url": "https://github.com/OCA/account-invoicing/pull/2468.patch",
+        "merged_at": "2026-10-29T16:27:30Z"
+      },
+      "author": "ivantodorovich"
+    },
+    {
+      "number": 1623,
+      "title": "[19.0][MIG] pos_product_display_default_code: Migration to 19.0",
+      "html_url": "https://github.com/OCA/pos/pull/1623",
+      "created_at": "2026-10-07T19:07:01Z",
+      "closed_at": "2026-10-07T19:18:21Z",
+      "repository_url": "https://api.github.com/repos/OCA/pos",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/pos/pulls/1623",
+        "html_url": "https://github.com/OCA/pos/pull/1623",
+        "diff_url": "https://github.com/OCA/pos/pull/1623.diff",
+        "patch_url": "https://github.com/OCA/pos/pull/1623.patch",
+        "merged_at": "2026-10-07T19:18:21Z"
+      },
+      "author": "moylop260"
+    },
+    {
+      "number": 2672,
+      "title": "[19.0][MIG] stock_quant_reservation_info: Migration to 19.0",
+      "html_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2672",
+      "created_at": "2026-10-13T11:20:05Z",
+      "closed_at": "2026-10-15T12:47:21Z",
+      "repository_url": "https://api.github.com/repos/OCA/stock-logistics-warehouse",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/stock-logistics-warehouse/pulls/2672",
+        "html_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2672",
+        "diff_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2672.diff",
+        "patch_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2672.patch",
+        "merged_at": "2026-10-15T12:47:21Z"
+      },
+      "author": "GuillermoNforgeflow"
+    },
+    {
+      "number": 4652,
+      "title": "[19.0][MIG] sale_invoice_policy: Migration to 19.0",
+      "html_url": "https://github.com/OCA/sale-workflow/pull/4652",
+      "created_at": "2026-10-13T12:21:24Z",
+      "closed_at": "2026-10-19T14:15:56Z",
+      "repository_url": "https://api.github.com/repos/OCA/sale-workflow",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/sale-workflow/pulls/4652",
+        "html_url": "https://github.com/OCA/sale-workflow/pull/4652",
+        "diff_url": "https://github.com/OCA/sale-workflow/pull/4652.diff",
+        "patch_url": "https://github.com/OCA/sale-workflow/pull/4652.patch",
+        "merged_at": "2026-10-19T14:15:55Z"
+      },
+      "author": "AndreuOForgeFlow"
+    },
+    {
+      "number": 647,
+      "title": "[19.0][MIG] ddmrp_product_replace: Migration to 19.0",
+      "html_url": "https://github.com/OCA/ddmrp/pull/647",
+      "created_at": "2026-10-14T16:35:02Z",
+      "closed_at": "2026-10-16T09:48:55Z",
+      "repository_url": "https://api.github.com/repos/OCA/ddmrp",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/ddmrp/pulls/647",
+        "html_url": "https://github.com/OCA/ddmrp/pull/647",
+        "diff_url": "https://github.com/OCA/ddmrp/pull/647.diff",
+        "patch_url": "https://github.com/OCA/ddmrp/pull/647.patch",
+        "merged_at": "2026-10-16T09:48:54Z"
+      },
+      "author": "LoisRForgeFlow"
+    },
+    {
+      "number": 4657,
+      "title": "[19.0][MIG] sale_start_end_dates",
+      "html_url": "https://github.com/OCA/sale-workflow/pull/4657",
+      "created_at": "2026-10-15T09:03:01Z",
+      "closed_at": "2026-10-16T13:57:07Z",
+      "repository_url": "https://api.github.com/repos/OCA/sale-workflow",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/sale-workflow/pulls/4657",
+        "html_url": "https://github.com/OCA/sale-workflow/pull/4657",
+        "diff_url": "https://github.com/OCA/sale-workflow/pull/4657.diff",
+        "patch_url": "https://github.com/OCA/sale-workflow/pull/4657.patch",
+        "merged_at": "2026-10-16T13:57:07Z"
+      },
+      "author": "chaule97"
+    },
+    {
+      "number": 648,
+      "title": "[19.0][MIG] ddmrp_adjustment_matrix: Migration to 19.0",
+      "html_url": "https://github.com/OCA/ddmrp/pull/648",
+      "created_at": "2026-10-15T15:29:46Z",
+      "closed_at": "2026-10-16T13:48:26Z",
+      "repository_url": "https://api.github.com/repos/OCA/ddmrp",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/ddmrp/pulls/648",
+        "html_url": "https://github.com/OCA/ddmrp/pull/648",
+        "diff_url": "https://github.com/OCA/ddmrp/pull/648.diff",
+        "patch_url": "https://github.com/OCA/ddmrp/pull/648.patch",
+        "merged_at": "2026-10-16T13:48:26Z"
+      },
+      "author": "LoisRForgeFlow"
+    },
+    {
+      "number": 649,
+      "title": "[19.0][MIG] ddmrp_exclude_moves_adu_calc_sales: Migration to 19.0",
+      "html_url": "https://github.com/OCA/ddmrp/pull/649",
+      "created_at": "2026-10-15T15:45:55Z",
+      "closed_at": "2026-10-19T14:33:01Z",
+      "repository_url": "https://api.github.com/repos/OCA/ddmrp",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/ddmrp/pulls/649",
+        "html_url": "https://github.com/OCA/ddmrp/pull/649",
+        "diff_url": "https://github.com/OCA/ddmrp/pull/649.diff",
+        "patch_url": "https://github.com/OCA/ddmrp/pull/649.patch",
+        "merged_at": "2026-10-19T14:33:01Z"
+      },
+      "author": "LoisRForgeFlow"
+    },
+    {
+      "number": 650,
+      "title": "[19.0][MIG] ddmrp_cron_actions_as_job: Migration to 19.0",
+      "html_url": "https://github.com/OCA/ddmrp/pull/650",
+      "created_at": "2026-10-15T16:02:56Z",
+      "closed_at": "2026-10-19T14:50:52Z",
+      "repository_url": "https://api.github.com/repos/OCA/ddmrp",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/ddmrp/pulls/650",
+        "html_url": "https://github.com/OCA/ddmrp/pull/650",
+        "diff_url": "https://github.com/OCA/ddmrp/pull/650.diff",
+        "patch_url": "https://github.com/OCA/ddmrp/pull/650.patch",
+        "merged_at": "2026-10-19T14:50:52Z"
+      },
+      "author": "LoisRForgeFlow"
+    },
+    {
+      "number": 244,
+      "title": "[19.0][MIG] fleet_vehicle_purchase_link: Migration to 19.0",
+      "html_url": "https://github.com/OCA/fleet/pull/244",
+      "created_at": "2026-10-15T16:40:14Z",
+      "closed_at": "2026-10-19T13:19:06Z",
+      "repository_url": "https://api.github.com/repos/OCA/fleet",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/fleet/pulls/244",
+        "html_url": "https://github.com/OCA/fleet/pull/244",
+        "diff_url": "https://github.com/OCA/fleet/pull/244.diff",
+        "patch_url": "https://github.com/OCA/fleet/pull/244.patch",
+        "merged_at": "2026-10-19T13:19:06Z"
+      },
+      "author": "WesleyOliveira98"
+    },
+    {
+      "number": 2675,
+      "title": "[19.0][MIG] account_move_line_product: Migration to 19.0",
+      "html_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2675",
+      "created_at": "2026-10-16T07:07:10Z",
+      "closed_at": "2026-11-12T08:56:12Z",
+      "repository_url": "https://api.github.com/repos/OCA/stock-logistics-warehouse",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/stock-logistics-warehouse/pulls/2675",
+        "html_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2675",
+        "diff_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2675.diff",
+        "patch_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2675.patch",
+        "merged_at": "2026-11-12T08:56:12Z"
+      },
+      "author": "AaronHForgeFlow"
+    },
+    {
+      "number": 371,
+      "title": "[19.0] [MIG] edi_account_oca",
+      "html_url": "https://github.com/OCA/edi-framework/pull/371",
+      "created_at": "2026-10-16T15:26:26Z",
+      "closed_at": "2026-10-20T06:24:46Z",
+      "repository_url": "https://api.github.com/repos/OCA/edi-framework",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/edi-framework/pulls/371",
+        "html_url": "https://github.com/OCA/edi-framework/pull/371",
+        "diff_url": "https://github.com/OCA/edi-framework/pull/371.diff",
+        "patch_url": "https://github.com/OCA/edi-framework/pull/371.patch",
+        "merged_at": "2026-10-20T06:24:46Z"
+      },
+      "author": "etobella"
+    },
+    {
+      "number": 1074,
+      "title": "[19.0][MIG] partner_multi_company: Migration to 19.0",
+      "html_url": "https://github.com/OCA/multi-company/pull/1074",
+      "created_at": "2026-10-16T16:23:58Z",
+      "closed_at": "2026-10-30T07:20:50Z",
+      "repository_url": "https://api.github.com/repos/OCA/multi-company",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/multi-company/pulls/1074",
+        "html_url": "https://github.com/OCA/multi-company/pull/1074",
+        "diff_url": "https://github.com/OCA/multi-company/pull/1074.diff",
+        "patch_url": "https://github.com/OCA/multi-company/pull/1074.patch",
+        "merged_at": "2026-10-30T07:20:50Z"
+      },
+      "author": "carlos-lopez-tecnativa"
+    },
+    {
+      "number": 1892,
+      "title": "[19.0][MIG] mrp_lot_number_propagation",
+      "html_url": "https://github.com/OCA/manufacture/pull/1892",
+      "created_at": "2026-10-19T07:16:38Z",
+      "closed_at": "2026-11-03T11:40:02Z",
+      "repository_url": "https://api.github.com/repos/OCA/manufacture",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/manufacture/pulls/1892",
+        "html_url": "https://github.com/OCA/manufacture/pull/1892",
+        "diff_url": "https://github.com/OCA/manufacture/pull/1892.diff",
+        "patch_url": "https://github.com/OCA/manufacture/pull/1892.patch",
+        "merged_at": "2026-11-03T11:40:02Z"
+      },
+      "author": "florentx"
+    },
+    {
+      "number": 1893,
+      "title": "[19.0][MIG] mrp_bom_hierarchy",
+      "html_url": "https://github.com/OCA/manufacture/pull/1893",
+      "created_at": "2026-10-19T07:19:42Z",
+      "closed_at": "2026-11-03T13:17:52Z",
+      "repository_url": "https://api.github.com/repos/OCA/manufacture",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/manufacture/pulls/1893",
+        "html_url": "https://github.com/OCA/manufacture/pull/1893",
+        "diff_url": "https://github.com/OCA/manufacture/pull/1893.diff",
+        "patch_url": "https://github.com/OCA/manufacture/pull/1893.patch",
+        "merged_at": "2026-11-03T13:17:52Z"
+      },
+      "author": "florentx"
+    },
+    {
+      "number": 56,
+      "title": "[19.0][MIG] sale_order_blanket_order: Migration to 19.0",
+      "html_url": "https://github.com/OCA/sale-blanket/pull/56",
+      "created_at": "2026-10-19T09:43:58Z",
+      "closed_at": "2026-11-09T11:41:42Z",
+      "repository_url": "https://api.github.com/repos/OCA/sale-blanket",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/sale-blanket/pulls/56",
+        "html_url": "https://github.com/OCA/sale-blanket/pull/56",
+        "diff_url": "https://github.com/OCA/sale-blanket/pull/56.diff",
+        "patch_url": "https://github.com/OCA/sale-blanket/pull/56.patch",
+        "merged_at": "2026-11-09T11:41:41Z"
+      },
+      "author": "vvrossem"
+    },
+    {
+      "number": 2677,
+      "title": "[19.0][MIG] stock_warehouse_out_pull: Migration to 19.0",
+      "html_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2677",
+      "created_at": "2026-10-19T13:25:39Z",
+      "closed_at": "2026-11-05T10:10:31Z",
+      "repository_url": "https://api.github.com/repos/OCA/stock-logistics-warehouse",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/stock-logistics-warehouse/pulls/2677",
+        "html_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2677",
+        "diff_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2677.diff",
+        "patch_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2677.patch",
+        "merged_at": "2026-11-05T10:10:31Z"
+      },
+      "author": "vvrossem"
+    },
+    {
+      "number": 74,
+      "title": "[19.0][MIG] stock_available_to_promise_release: Migration to 19.0",
+      "html_url": "https://github.com/OCA/stock-logistics-reservation/pull/74",
+      "created_at": "2026-10-19T13:26:06Z",
+      "closed_at": "2026-11-10T11:54:39Z",
+      "repository_url": "https://api.github.com/repos/OCA/stock-logistics-reservation",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/stock-logistics-reservation/pulls/74",
+        "html_url": "https://github.com/OCA/stock-logistics-reservation/pull/74",
+        "diff_url": "https://github.com/OCA/stock-logistics-reservation/pull/74.diff",
+        "patch_url": "https://github.com/OCA/stock-logistics-reservation/pull/74.patch",
+        "merged_at": "2026-11-10T11:54:39Z"
+      },
+      "author": "vvrossem"
+    },
+    {
+      "number": 21,
+      "title": "[19.0][MIG] sale_stock_prebook: Migration to 19.0",
+      "html_url": "https://github.com/OCA/sale-prebook/pull/21",
+      "created_at": "2026-10-20T07:25:50Z",
+      "closed_at": "2026-11-06T14:27:52Z",
+      "repository_url": "https://api.github.com/repos/OCA/sale-prebook",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/sale-prebook/pulls/21",
+        "html_url": "https://github.com/OCA/sale-prebook/pull/21",
+        "diff_url": "https://github.com/OCA/sale-prebook/pull/21.diff",
+        "patch_url": "https://github.com/OCA/sale-prebook/pull/21.patch",
+        "merged_at": "2026-11-06T14:27:52Z"
+      },
+      "author": "vvrossem"
+    },
+    {
+      "number": 1846,
+      "title": "[19.0] [MIG] project_group_hr_timesheet: Migration to 19.0",
+      "html_url": "https://github.com/OCA/project/pull/1846",
+      "created_at": "2026-10-21T08:37:49Z",
+      "closed_at": "2026-10-22T07:09:45Z",
+      "repository_url": "https://api.github.com/repos/OCA/project",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/project/pulls/1846",
+        "html_url": "https://github.com/OCA/project/pull/1846",
+        "diff_url": "https://github.com/OCA/project/pull/1846.diff",
+        "patch_url": "https://github.com/OCA/project/pull/1846.patch",
+        "merged_at": "2026-10-22T07:09:45Z"
+      },
+      "author": "luisDIXMIT"
+    },
+    {
+      "number": 312,
+      "title": "[19.0] [MIG] mail_gateway_telegram: Migration to 19.0",
+      "html_url": "https://github.com/OCA/mail/pull/312",
+      "created_at": "2026-10-22T13:40:32Z",
+      "closed_at": "2026-10-26T14:38:03Z",
+      "repository_url": "https://api.github.com/repos/OCA/mail",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/mail/pulls/312",
+        "html_url": "https://github.com/OCA/mail/pull/312",
+        "diff_url": "https://github.com/OCA/mail/pull/312.diff",
+        "patch_url": "https://github.com/OCA/mail/pull/312.patch",
+        "merged_at": "2026-10-26T14:38:03Z"
+      },
+      "author": "luisDIXMIT"
+    },
+    {
+      "number": 652,
+      "title": "[19.0][MIG] ddmrp_warning_as_job: Migration to 19.0",
+      "html_url": "https://github.com/OCA/ddmrp/pull/652",
+      "created_at": "2026-10-22T14:13:42Z",
+      "closed_at": "2026-10-23T07:55:37Z",
+      "repository_url": "https://api.github.com/repos/OCA/ddmrp",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/ddmrp/pulls/652",
+        "html_url": "https://github.com/OCA/ddmrp/pull/652",
+        "diff_url": "https://github.com/OCA/ddmrp/pull/652.diff",
+        "patch_url": "https://github.com/OCA/ddmrp/pull/652.patch",
+        "merged_at": "2026-10-23T07:55:37Z"
+      },
+      "author": "LoisRForgeFlow"
+    },
+    {
+      "number": 2688,
+      "title": "[19.0][MIG] stock_demand_estimate_matrix: Migration to 19.0",
+      "html_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2688",
+      "created_at": "2026-10-23T09:41:06Z",
+      "closed_at": "2026-10-27T14:40:53Z",
+      "repository_url": "https://api.github.com/repos/OCA/stock-logistics-warehouse",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/stock-logistics-warehouse/pulls/2688",
+        "html_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2688",
+        "diff_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2688.diff",
+        "patch_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2688.patch",
+        "merged_at": "2026-10-27T14:40:53Z"
+      },
+      "author": "LoisRForgeFlow"
+    },
+    {
+      "number": 1904,
+      "title": "[19.0][MIG] mrp_bom_component_mass_change: Migration to 19.0",
+      "html_url": "https://github.com/OCA/manufacture/pull/1904",
+      "created_at": "2026-10-26T16:29:07Z",
+      "closed_at": "2026-11-12T09:02:47Z",
+      "repository_url": "https://api.github.com/repos/OCA/manufacture",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/manufacture/pulls/1904",
+        "html_url": "https://github.com/OCA/manufacture/pull/1904",
+        "diff_url": "https://github.com/OCA/manufacture/pull/1904.diff",
+        "patch_url": "https://github.com/OCA/manufacture/pull/1904.patch",
+        "merged_at": "2026-11-12T09:02:47Z"
+      },
+      "author": "AndreuOForgeFlow"
+    },
+    {
+      "number": 1907,
+      "title": "[19.0][MIG] mrp_workorder_sequence: Migration to 19.0",
+      "html_url": "https://github.com/OCA/manufacture/pull/1907",
+      "created_at": "2026-10-27T17:13:56Z",
+      "closed_at": "2026-11-02T09:38:08Z",
+      "repository_url": "https://api.github.com/repos/OCA/manufacture",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/manufacture/pulls/1907",
+        "html_url": "https://github.com/OCA/manufacture/pull/1907",
+        "diff_url": "https://github.com/OCA/manufacture/pull/1907.diff",
+        "patch_url": "https://github.com/OCA/manufacture/pull/1907.patch",
+        "merged_at": "2026-11-02T09:38:07Z"
+      },
+      "author": "LoisRForgeFlow"
+    },
+    {
+      "number": 3249,
+      "title": "[19.0][MIG] purchase_order_line_import_sheet_file: Migration to 19.0",
+      "html_url": "https://github.com/OCA/purchase-workflow/pull/3249",
+      "created_at": "2026-10-29T15:58:19Z",
+      "closed_at": "2026-11-05T11:25:47Z",
+      "repository_url": "https://api.github.com/repos/OCA/purchase-workflow",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/purchase-workflow/pulls/3249",
+        "html_url": "https://github.com/OCA/purchase-workflow/pull/3249",
+        "diff_url": "https://github.com/OCA/purchase-workflow/pull/3249.diff",
+        "patch_url": "https://github.com/OCA/purchase-workflow/pull/3249.patch",
+        "merged_at": "2026-11-05T11:25:47Z"
+      },
+      "author": "AndreuOForgeFlow"
+    }
+  ],
+  "captures": [
+    {
+      "url": "https://api.github.com/search/issues?q=org%3AOCA+is%3Apr+is%3Amerged+%22%5BMIG%5D%22+in%3Atitle+base%3A19.0+created%3A2026-10-01..2026-10-31&per_page=100&sort=created&order=asc",
+      "captured_at": "2026-11-14T19:19:48.012015+00:00",
+      "status": 200,
+      "response_sha256": "c57ff19d2d00abe4e503403be42f978ad0035489c6d8a8f9da740b08816c4165",
+      "stored_sha256": "92cbfb0c789c5b9555db4cfc4f716d83802f1f983bd93d817061fb90ced8a11a",
+      "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\github-window-19\\2c708b624ddbfff162d2-92cbfb0c789c.json",
+      "capture_form": "projected_metadata_only_no_code_or_review_bodies",
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "x-ratelimit-limit": "10",
+        "x-ratelimit-remaining": "0",
+        "x-ratelimit-reset": "1794684021"
+      }
+    }
+  ]
+}

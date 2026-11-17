@@ -1,0 +1,15 @@
+diff --git a/account_credit_control/README.rst b/account_credit_control/README.rst
+index 087f6e4..229e342 100644
+--- a/account_credit_control/README.rst
++++ b/account_credit_control/README.rst
+@@ -125,7 +125,9 @@ Contributors
+ 
+ -  Enric Tobella <etobella@creublanca.es>
+ -  Naglis Jonaitis (Versada UAB) <naglis@versada.eu>
+--  Andrea Stirpe <a.stirpe@onestein.nl>
++-  `360ERP <https://www.360erp.com>`__:
++
++   -  Andrea Stirpe
+ 
+ Maintainers
+ -----------

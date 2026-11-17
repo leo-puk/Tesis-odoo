@@ -1,0 +1,23 @@
+{
+  "packets": [
+    {
+      "case_id": "OCA/l10n-brazil#5342",
+      "stratum": "17.0",
+      "blocked": "HTTP 403 for api.github.com/repos/OCA/l10n-brazil/pulls/5342",
+      "criteria_passed_automatically": 0
+    },
+    {
+      "case_id": "OCA/connector-shopify#28",
+      "stratum": "18.0",
+      "blocked": "Not requested after an API access/rate-limit failure",
+      "criteria_passed_automatically": 0
+    },
+    {
+      "case_id": "OCA/account-invoicing#2468",
+      "stratum": "19.0",
+      "blocked": "Not requested after an API access/rate-limit failure",
+      "criteria_passed_automatically": 0
+    }
+  ],
+  "scope": "partial frame and selection metadata only; no evaluation results"
+}

@@ -1,0 +1,39 @@
+diff --git a/server_action_mass_edit/wizard/mass_editing_wizard.py b/server_action_mass_edit/wizard/mass_editing_wizard.py
+index 664bcbb..30e3595 100644
+--- a/server_action_mass_edit/wizard/mass_editing_wizard.py
++++ b/server_action_mass_edit/wizard/mass_editing_wizard.py
+@@ -267,25 +297,23 @@ class MassEditingWizard(models.TransientModel):
+                         elif val == "remove_m2m":
+                             m2m_list = []
+                             if vals.get(split_key):
+-                                for m2m_id in vals.get(split_key)[0][2]:
+-                                    m2m_list.append((3, m2m_id))
++                                for m2m_id in vals.get(split_key, False):
++                                    m2m_list.append((3, m2m_id[1]))
+                             if m2m_list:
+                                 values.update({split_key: m2m_list})
+                             else:
+                                 values.update({split_key: [(5, 0, [])]})
+ 
+                         elif val == "add":
+-                            m2m_list = []
+-                            for m2m_id in vals.get(split_key, False)[0][2]:
+-                                m2m_list.append((4, m2m_id))
+-                            values.update({split_key: m2m_list})
++                            values.update({split_key: vals.get(split_key, False)})
+ 
+                 if values:
+-                    self.env[server_action.model_id.model].browse(
+-                        active_ids
+-                    ).with_context(
+-                        mass_edit=True,
+-                    ).write(values)
++                    for active_id in active_ids:
++                        self.env[server_action.model_id.model].browse(
++                            active_id
++                        ).with_context(
++                            mass_edit=True,
++                        ).write(values)
+         return super().create([{}])
+ 
+     def _prepare_create_values(self, vals_list):

@@ -1,0 +1,16 @@
+diff --git a/server_action_mass_edit/wizard/mass_editing_wizard.py b/server_action_mass_edit/wizard/mass_editing_wizard.py
+index 664bcbb..30e3595 100644
+--- a/server_action_mass_edit/wizard/mass_editing_wizard.py
++++ b/server_action_mass_edit/wizard/mass_editing_wizard.py
+@@ -8,11 +8,6 @@ from lxml import etree
+ 
+ from odoo import _, api, fields, models
+ 
+-from odoo.addons.base.models.ir_ui_view import (
+-    transfer_modifiers_to_node,
+-    transfer_node_to_modifiers,
+-)
+-
+ 
+ class MassEditingWizard(models.TransientModel):
+     _name = "mass.editing.wizard"

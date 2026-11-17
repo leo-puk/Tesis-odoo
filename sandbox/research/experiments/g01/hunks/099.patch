@@ -1,0 +1,26 @@
+diff --git a/sale_financial_risk/tests/test_partner_sale_risk.py b/sale_financial_risk/tests/test_partner_sale_risk.py
+index 63b3945..7d6ce78 100644
+--- a/sale_financial_risk/tests/test_partner_sale_risk.py
++++ b/sale_financial_risk/tests/test_partner_sale_risk.py
+@@ -114,17 +112,15 @@ class TestPartnerSaleRisk(TransactionCase):
+         self.partner.credit_limit = 100.0
+         wiz_dic = sale_order2.action_confirm()
+         wiz = self.env[wiz_dic["res_model"]].browse(wiz_dic["res_id"])
+-        self.assertEqual(
+-            wiz.exception_msg, "This sale order exceeds the financial risk.\n"
+-        )
++        self.assertEqual(wiz.exception_msg, "Financial risk exceeded.\n")
+         self.assertTrue(self.partner.risk_allow_edit)
+         wiz.button_continue()
+-        self.assertAlmostEqual(self.partner.risk_sale_order, 200.0)
++        self.assertAlmostEqual(self.partner.risk_sale_order, 230.0)
+ 
+     def test_compute_risk_amount(self):
+         self.sale_order.action_confirm()
+-        # Now the amount to be invoiced must 100
+-        self.assertEqual(self.partner.risk_sale_order, 100.0)
++        # Now the amount to be invoiced must 115
++        self.assertEqual(self.partner.risk_sale_order, 115.0)
+         self.assertFalse(self.partner.risk_exception)
+         # If we set a risk_sale_order_limit to 99, risk_exception must be True
+         self.partner.risk_sale_order_limit = 99.0

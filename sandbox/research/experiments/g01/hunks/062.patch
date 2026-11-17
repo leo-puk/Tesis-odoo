@@ -1,0 +1,13 @@
+diff --git a/sale_blanket_order/models/blanket_orders.py b/sale_blanket_order/models/blanket_orders.py
+index e18506b6..e63059c7 100644
+--- a/sale_blanket_order/models/blanket_orders.py
++++ b/sale_blanket_order/models/blanket_orders.py
+@@ -198,7 +187,7 @@ class BlanketOrder(models.Model):
+                 order.state = "expired"
+             elif float_is_zero(
+                 sum(
+-                    order.line_ids.filtered(lambda l: not l.display_type).mapped(
++                    order.line_ids.filtered(lambda line: not line.display_type).mapped(
+                         "remaining_uom_qty"
+                     )
+                 ),

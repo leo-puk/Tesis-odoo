@@ -136,6 +136,156 @@ def clean(all_: bool = typer.Option(False, "--all", help="tambien borra las DBs 
                 rprint(f"  drop {db}")
 
 
+@app.command(context_settings={"allow_extra_args": True, "ignore_unknown_options": True})
+def census(ctx: typer.Context):
+    """Censo OCA de [MIG] y [FIX] por modulo (ver odoolab.census --help)."""
+    from . import census as census_mod
+    raise typer.Exit(census_mod.main(ctx.args))
+
+
+# ---- experimento de casuisticas por modulo ---------------------------------
+exp_app = typer.Typer(help="Bucle error -> hunk humano -> casuistica, por modulo OCA (16.0->17.0).")
+app.add_typer(exp_app, name="exp")
+
+
+@exp_app.command("prepare")
+def exp_prepare(repo: str, module: str, force: bool = typer.Option(False, "--force"),
+                group: Optional[str] = typer.Option(None, "--group",
+                    help="id de grupo; con --extra repo/modulo,... agrega mas modulos"),
+                extra: str = typer.Option("", "--extra")):
+    """S0 (padre del [MIG]), hunks del [MIG] humano y dependencias."""
+    from . import experiment as ex
+    items = [(repo, module)] + [tuple(x.split("/", 1)) for x in extra.split(",") if x.strip()]
+    m = ex.prepare(group or module, items, force=force)
+    rprint({k: m[k] for k in ("depends", "hunks", "hunk_tags")})
+
+
+@exp_app.command("auto")
+def exp_auto(gid: str, phases: str = typer.Option("install,upgrade,test", "--phases"),
+             max_iter: int = typer.Option(15, "--max-iter")):
+    """Bucle automatico error -> hunks humanos, con registro de acciones."""
+    from . import experiment as ex
+    rprint(ex.auto(gid, phases=[p for p in phases.split(",") if p], max_iter=max_iter))
+
+
+# ---- lote: N grupos de K modulos ------------------------------------------
+lote_app = typer.Typer(help="Lote de grupos de modulos OCA migrados 16.0 -> 17.0.")
+app.add_typer(lote_app, name="lote")
+
+
+@lote_app.command("sample")
+def lote_sample(groups: int = typer.Option(10, "--groups"), size: int = typer.Option(5, "--size"),
+                seed: int = typer.Option(2026, "--seed"),
+                fixed: str = typer.Option("", "--fixed", help="primer grupo fijo: repo/mod,..."),
+                exclude: str = typer.Option("", "--exclude", help="modulos a excluir, csv")):
+    """Muestra estratificada y validada desde el censo."""
+    from . import batch
+    fx = [[tuple(x.split("/", 1)) for x in fixed.split(",") if x.strip()]] if fixed else []
+    d = batch.sample(groups, size, seed, fx, {x for x in exclude.split(",") if x})
+    for g in d["groups"]:
+        rprint(f"{g['id']}: " + ", ".join(f"{m['module']} ({m['stratum']})" for m in g["modules"]))
+    rprint(f"pools {d['pool_sizes']} · descartados al validar {len(d['rejected'])}")
+
+
+@lote_app.command("run")
+def lote_run(sample_path: str = typer.Argument("research/lote_170/muestra.json"),
+             parallel: int = typer.Option(2, "--parallel"),
+             phases: str = typer.Option("install,upgrade,test", "--phases"),
+             max_iter: int = typer.Option(15, "--max-iter"),
+             only: str = typer.Option("", "--only", help="csv de grupos")):
+    """prepare -> seed -> baseline -> auto -> report por grupo."""
+    from pathlib import Path as P
+    from . import batch
+    res = batch.run(P(sample_path), parallel, [p for p in phases.split(",") if p], max_iter,
+                    [x for x in only.split(",") if x] or None)
+    rprint(res)
+
+
+@lote_app.command("summary")
+def lote_summary(sample_path: str = typer.Argument("research/lote_170/muestra.json")):
+    """Agrega los grupos en RESULTADOS.md y casuisticas.csv."""
+    from pathlib import Path as P
+    from . import batch
+    rprint(f"[green]{batch.summary(P(sample_path))}[/green]")
+
+
+@exp_app.command("seed")
+def exp_seed(module: str, force: bool = typer.Option(False, "--force")):
+    """Plantillas de produccion v16 con y sin el modulo."""
+    from . import experiment as ex
+    rprint(ex.seed(module, force=force))
+
+
+@exp_app.command("baseline")
+def exp_baseline(module: str, phases: str = typer.Option("install,upgrade", "--phases")):
+    """Corre las fases sin el modulo: sus firmas se descuentan de cada iteracion."""
+    from . import experiment as ex
+    rprint(ex.baseline(module, [p for p in phases.split(",") if p]))
+
+
+@exp_app.command("run")
+def exp_run(module: str, phase: str = typer.Argument(..., help="install | upgrade | test"),
+            keep_db: bool = typer.Option(False, "--keep-db"),
+            show: int = typer.Option(15, "--show", help="eventos nuevos a listar")):
+    """Una iteracion: corre la fase sobre el codigo 17.0 actual y lista eventos nuevos."""
+    from . import experiment as ex
+    r = ex.run(module, phase, keep_db=keep_db)
+    rprint(f"[bold]iter {r['iteration']} {phase}[/bold] codigo {r['code_head']} -> "
+           f"{'[green]OK' if r['ok'] else '[red]FALLA'}[/] rc={r['returncode']} "
+           f"{r['seconds']}s, {len(r['events_new'])} eventos nuevos de {r['events_total']}")
+    t = Table("sig_id", "nivel", "cat", "regla", "guia", "ubicacion", "mensaje")
+    order = {"CRITICAL": 0, "ERROR": 1, "WARNING": 2}
+    for e in sorted(r["events_new"], key=lambda e: order.get(e["level"], 3))[:show]:
+        t.add_row(e["sig_id"], e["level"], e["category"], e["rule"], e["guide"],
+                  e["location"], e["message"][:90])
+    rprint(t)
+    rprint(f"log: {r['log']}")
+
+
+@exp_app.command("event")
+def exp_event(module: str, sig_id: str):
+    """Detalle completo (traceback) de un evento."""
+    from . import experiment as ex
+    _, e = ex._find_event(module, sig_id)
+    rprint(e)
+
+
+@exp_app.command("hunks")
+def exp_hunks(module: str, pending: bool = typer.Option(True, "--pending/--all")):
+    """Hunks del [MIG] humano con sus etiquetas de la guia."""
+    from . import experiment as ex
+    t = Table("id", "estado", "archivo", "lineas", "tags", "cabecera")
+    for h in ex._hunks(module):
+        if pending and h["state"] != "pending":
+            continue
+        t.add_row(f"{h['id']:03d}", h["state"], h["path"], f"-{h['removed']}+{h['added']}",
+                  ",".join(h["tags"]), h["header"][:50])
+    rprint(t)
+
+
+@exp_app.command("fix")
+def exp_fix(module: str,
+            hunks: str = typer.Option("", "--hunks", help="csv de ids de hunks humanos"),
+            event: Optional[str] = typer.Option(None, "--event", help="sig_id que resuelven"),
+            category: Optional[str] = typer.Option(None, "--cat"),
+            coverage: Optional[str] = typer.Option(None, "--cov", help="L A U C V R S"),
+            severity: str = typer.Option("bloqueante", "--sev"),
+            note: str = typer.Option("", "--note"),
+            minutes: Optional[float] = typer.Option(None, "--min")):
+    """Registra la casuistica y aplica los hunks que la resuelven (un commit)."""
+    from . import experiment as ex
+    ids = [int(x) for x in hunks.split(",") if x.strip()]
+    rprint(ex.fix(module, event=event, hunks=ids, category=category, coverage=coverage,
+                  severity=severity, note=note, minutes=minutes))
+
+
+@exp_app.command("report")
+def exp_report(module: str):
+    """Escribe research/experiments/<modulo>/report.md."""
+    from . import experiment as ex
+    rprint(f"[green]{ex.report(module)}[/green]")
+
+
 def main():
     app()
 

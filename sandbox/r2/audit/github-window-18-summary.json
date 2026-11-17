@@ -1,0 +1,199 @@
+{
+  "query": "org:OCA is:pr is:merged \"[MIG]\" in:title base:18.0 created:2026-10-01..2026-10-31",
+  "extracted_at": "2026-11-14T19:19:45.504407+00:00",
+  "items": [
+    {
+      "number": 5312,
+      "title": "[18.0][MIG] l10n_br_repair: Migration to 18.0",
+      "html_url": "https://github.com/OCA/l10n-brazil/pull/5312",
+      "created_at": "2026-10-03T10:41:53Z",
+      "closed_at": "2026-10-08T16:09:35Z",
+      "repository_url": "https://api.github.com/repos/OCA/l10n-brazil",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/l10n-brazil/pulls/5312",
+        "html_url": "https://github.com/OCA/l10n-brazil/pull/5312",
+        "diff_url": "https://github.com/OCA/l10n-brazil/pull/5312.diff",
+        "patch_url": "https://github.com/OCA/l10n-brazil/pull/5312.patch",
+        "merged_at": "2026-10-08T16:09:35Z"
+      },
+      "author": "mileo"
+    },
+    {
+      "number": 5349,
+      "title": "[18.0][MIG] l10n_br_fiscal_dfe_mock: Migration to 18.0",
+      "html_url": "https://github.com/OCA/l10n-brazil/pull/5349",
+      "created_at": "2026-10-09T16:45:45Z",
+      "closed_at": "2026-10-16T14:37:25Z",
+      "repository_url": "https://api.github.com/repos/OCA/l10n-brazil",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/l10n-brazil/pulls/5349",
+        "html_url": "https://github.com/OCA/l10n-brazil/pull/5349",
+        "diff_url": "https://github.com/OCA/l10n-brazil/pull/5349.diff",
+        "patch_url": "https://github.com/OCA/l10n-brazil/pull/5349.patch",
+        "merged_at": "2026-10-16T14:37:24Z"
+      },
+      "author": "medicegabriel"
+    },
+    {
+      "number": 1940,
+      "title": "[18.0][MIG] social_media_base",
+      "html_url": "https://github.com/OCA/social/pull/1940",
+      "created_at": "2026-10-26T21:00:16Z",
+      "closed_at": "2026-11-05T15:39:14Z",
+      "repository_url": "https://api.github.com/repos/OCA/social",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/social/pulls/1940",
+        "html_url": "https://github.com/OCA/social/pull/1940",
+        "diff_url": "https://github.com/OCA/social/pull/1940.diff",
+        "patch_url": "https://github.com/OCA/social/pull/1940.patch",
+        "merged_at": "2026-11-05T15:39:14Z"
+      },
+      "author": "edescalona"
+    },
+    {
+      "number": 1941,
+      "title": "[18.0][MIG] social_media_sync",
+      "html_url": "https://github.com/OCA/social/pull/1941",
+      "created_at": "2026-10-26T23:30:28Z",
+      "closed_at": "2026-11-05T17:13:42Z",
+      "repository_url": "https://api.github.com/repos/OCA/social",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/social/pulls/1941",
+        "html_url": "https://github.com/OCA/social/pull/1941",
+        "diff_url": "https://github.com/OCA/social/pull/1941.diff",
+        "patch_url": "https://github.com/OCA/social/pull/1941.patch",
+        "merged_at": "2026-11-05T17:13:42Z"
+      },
+      "author": "edescalona"
+    },
+    {
+      "number": 28,
+      "title": "[18.0][MIG] shopify_connector_website_sale: Migration to 18.0",
+      "html_url": "https://github.com/OCA/connector-shopify/pull/28",
+      "created_at": "2026-10-27T10:12:12Z",
+      "closed_at": "2026-10-30T15:00:36Z",
+      "repository_url": "https://api.github.com/repos/OCA/connector-shopify",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/connector-shopify/pulls/28",
+        "html_url": "https://github.com/OCA/connector-shopify/pull/28",
+        "diff_url": "https://github.com/OCA/connector-shopify/pull/28.diff",
+        "patch_url": "https://github.com/OCA/connector-shopify/pull/28.patch",
+        "merged_at": "2026-10-30T15:00:36Z"
+      },
+      "author": "oliverg09"
+    },
+    {
+      "number": 1942,
+      "title": "[18.0][MIG] social_media_calendar",
+      "html_url": "https://github.com/OCA/social/pull/1942",
+      "created_at": "2026-10-27T22:36:42Z",
+      "closed_at": "2026-11-05T16:39:07Z",
+      "repository_url": "https://api.github.com/repos/OCA/social",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/social/pulls/1942",
+        "html_url": "https://github.com/OCA/social/pull/1942",
+        "diff_url": "https://github.com/OCA/social/pull/1942.diff",
+        "patch_url": "https://github.com/OCA/social/pull/1942.patch",
+        "merged_at": "2026-11-05T16:39:07Z"
+      },
+      "author": "edescalona"
+    },
+    {
+      "number": 1944,
+      "title": "[18.0][MIG] social_media_linkedin",
+      "html_url": "https://github.com/OCA/social/pull/1944",
+      "created_at": "2026-10-28T00:17:20Z",
+      "closed_at": "2026-11-05T16:55:53Z",
+      "repository_url": "https://api.github.com/repos/OCA/social",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/social/pulls/1944",
+        "html_url": "https://github.com/OCA/social/pull/1944",
+        "diff_url": "https://github.com/OCA/social/pull/1944.diff",
+        "patch_url": "https://github.com/OCA/social/pull/1944.patch",
+        "merged_at": "2026-11-05T16:55:53Z"
+      },
+      "author": "edescalona"
+    },
+    {
+      "number": 246,
+      "title": "[18.0][MIG] currency_rate_update_frankfurter: Migration to 18.0",
+      "html_url": "https://github.com/OCA/currency/pull/246",
+      "created_at": "2026-10-28T10:23:25Z",
+      "closed_at": "2026-11-04T09:37:19Z",
+      "repository_url": "https://api.github.com/repos/OCA/currency",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/currency/pulls/246",
+        "html_url": "https://github.com/OCA/currency/pull/246",
+        "diff_url": "https://github.com/OCA/currency/pull/246.diff",
+        "patch_url": "https://github.com/OCA/currency/pull/246.patch",
+        "merged_at": "2026-11-04T09:37:19Z"
+      },
+      "author": "carlosdauden"
+    },
+    {
+      "number": 1945,
+      "title": "[18.0][MIG] social_media_linkedin_sync",
+      "html_url": "https://github.com/OCA/social/pull/1945",
+      "created_at": "2026-10-28T13:49:46Z",
+      "closed_at": "2026-11-05T20:46:17Z",
+      "repository_url": "https://api.github.com/repos/OCA/social",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/social/pulls/1945",
+        "html_url": "https://github.com/OCA/social/pull/1945",
+        "diff_url": "https://github.com/OCA/social/pull/1945.diff",
+        "patch_url": "https://github.com/OCA/social/pull/1945.patch",
+        "merged_at": "2026-11-05T20:46:17Z"
+      },
+      "author": "edescalona"
+    },
+    {
+      "number": 1946,
+      "title": "[18.0][MIG] social_media_advertising",
+      "html_url": "https://github.com/OCA/social/pull/1946",
+      "created_at": "2026-10-28T16:48:20Z",
+      "closed_at": "2026-11-11T21:00:57Z",
+      "repository_url": "https://api.github.com/repos/OCA/social",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/social/pulls/1946",
+        "html_url": "https://github.com/OCA/social/pull/1946",
+        "diff_url": "https://github.com/OCA/social/pull/1946.diff",
+        "patch_url": "https://github.com/OCA/social/pull/1946.patch",
+        "merged_at": "2026-11-11T21:00:57Z"
+      },
+      "author": "edescalona"
+    },
+    {
+      "number": 1947,
+      "title": "[18.0][MIG] social_media_advertising_linkedin",
+      "html_url": "https://github.com/OCA/social/pull/1947",
+      "created_at": "2026-10-28T20:01:15Z",
+      "closed_at": "2026-11-12T21:31:22Z",
+      "repository_url": "https://api.github.com/repos/OCA/social",
+      "pull_request": {
+        "url": "https://api.github.com/repos/OCA/social/pulls/1947",
+        "html_url": "https://github.com/OCA/social/pull/1947",
+        "diff_url": "https://github.com/OCA/social/pull/1947.diff",
+        "patch_url": "https://github.com/OCA/social/pull/1947.patch",
+        "merged_at": "2026-11-12T21:31:22Z"
+      },
+      "author": "edescalona"
+    }
+  ],
+  "captures": [
+    {
+      "url": "https://api.github.com/search/issues?q=org%3AOCA+is%3Apr+is%3Amerged+%22%5BMIG%5D%22+in%3Atitle+base%3A18.0+created%3A2026-10-01..2026-10-31&per_page=100&sort=created&order=asc",
+      "captured_at": "2026-11-14T19:19:45.467244+00:00",
+      "status": 200,
+      "response_sha256": "24f8906a59814a728bbf40bdb1e94b5ede1428d0dab07369c4bde6b7a931fb7b",
+      "stored_sha256": "e1dc18a3349fcbdb05039607d73fade3780c81df60a68e6fa919f579659eee97",
+      "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\github-window-18\\d2b5fb4fa63bc9dda41e-e1dc18a3349f.json",
+      "capture_form": "projected_metadata_only_no_code_or_review_bodies",
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "x-ratelimit-limit": "10",
+        "x-ratelimit-remaining": "1",
+        "x-ratelimit-reset": "1794684021"
+      }
+    }
+  ]
+}

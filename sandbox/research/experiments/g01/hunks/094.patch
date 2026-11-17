@@ -1,0 +1,13 @@
+diff --git a/sale_financial_risk/models/sale.py b/sale_financial_risk/models/sale.py
+index 0775df8..01aac02 100644
+--- a/sale_financial_risk/models/sale.py
++++ b/sale_financial_risk/models/sale.py
+@@ -49,7 +49,7 @@ class SaleOrder(models.Model):
+                             {
+                                 "exception_msg": exception_msg,
+                                 "partner_id": partner.id,
+-                                "origin_reference": "%s,%s" % ("sale.order", order.id),
++                                "origin_reference": f"{order._name},{order.id}",
+                                 "continue_method": "action_confirm",
+                             }
+                         )

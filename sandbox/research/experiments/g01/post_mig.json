@@ -1,0 +1,37 @@
+{
+  "stock_quant_manual_assign": {
+    "commits": 4,
+    "fix": [
+      "[FIX] stock_quant_manual_assign: Correct handling of immediate transfers",
+      "[17.0][FIX] stock_quant_manual_assign: manual assign was shown in done transfers"
+    ]
+  },
+  "server_action_mass_edit": {
+    "commits": 4,
+    "fix": [
+      "[FIX] server_action_mess_edit: Application error when discard a x2many field"
+    ]
+  },
+  "sale_blanket_order": {
+    "commits": 17,
+    "fix": [
+      "[FIX] sale_blanket_order: set analytic distribution on created sale lines",
+      "[FIX] sale_blanket_order: not require taxes on blanket orders",
+      "[17.0][FIX] sale_blanket_order: sale.blanket.order note field should be Html",
+      "[FIX] sale_blanket_order: SO blanket_order_id computation",
+      "[FIX] sale_blanket_order: filter default taxes by company for all users"
+    ]
+  },
+  "sale_financial_risk": {
+    "commits": 5,
+    "fix": [
+      "[FIX] sale_financial_risk: Avoid test error when comparing expected tax amounts. The product product.product_product_2 does not have explicit taxes, but after this commit https://github.com/odoo/odoo/commit/2836416be880a1839ba96c03e06b8781df9abae4, an error occurs when comparing the expected amount. So, adapt the amount to compare without taxes and create a new product to avoid depending on demo data.",
+      "[FIX] sale_financial_risk: Salesman user only compute your own orders",
+      "[FIX] sale_financial_risk: Use the assert_called_once() method to avoid errors in tests"
+    ]
+  },
+  "fieldservice_isp_flow": {
+    "commits": 0,
+    "fix": []
+  }
+}

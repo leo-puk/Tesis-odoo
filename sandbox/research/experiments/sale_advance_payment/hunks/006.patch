@@ -1,0 +1,20 @@
+diff --git a/sale_advance_payment/tests/test_sale_advance_payment.py b/sale_advance_payment/tests/test_sale_advance_payment.py
+index f418dcc3..79ed7729 100644
+--- a/sale_advance_payment/tests/test_sale_advance_payment.py
++++ b/sale_advance_payment/tests/test_sale_advance_payment.py
+@@ -90,12 +90,12 @@ class TestSaleAdvancePayment(common.TransactionCase):
+             ]
+         )
+         if cls.currency_rate:
+-            cls.currency_rate.write({"rate": 1.20})
++            cls.currency_rate.write({"inverse_company_rate": 1.20})
+         else:
+             cls.currency_rate = cls.env["res.currency.rate"].create(
+                 {
+-                    "rate": 1.20,
+-                    "currency_id": cls.currency_usd.id,
++                    "inverse_company_rate": 1.20,
++                    "currency_id": cls.currency_euro.id,
+                     "name": fields.Date.today(),
+                 }
+             )

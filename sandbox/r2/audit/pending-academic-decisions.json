@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-14",
+  "source": "Explicit user response",
+  "model_snapshot": null,
+  "documented_training_cutoff": null,
+  "criteria_reviewer": null,
+  "relevance_reviewer": null,
+  "status": "not_defined",
+  "consequence": "Keep illustrative cutoff unconfirmed; do not freeze academic evaluation or claim a final independent sample",
+  "work_allowed": [
+    "General-source corpus preparation",
+    "Coding and provenance review",
+    "Selection metadata and review instruments",
+    "Engineering tests"
+  ]
+}

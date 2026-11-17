@@ -1,0 +1,26 @@
+diff --git a/server_action_mass_edit/migrations/16.0.2.0.0/pre-migration.py b/server_action_mass_edit/migrations/16.0.2.0.0/pre-migration.py
+deleted file mode 100644
+index eb9e924..0000000
+--- a/server_action_mass_edit/migrations/16.0.2.0.0/pre-migration.py
++++ /dev/null
+@@ -1,20 +0,0 @@
+-# Copyright (C) 2022 - Today: GRAP (http://www.grap.coop)
+-# @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-
+-from openupgradelib import openupgrade
+-
+-
+-@openupgrade.migrate()
+-def migrate(env, version):
+-    cr = env.cr
+-
+-    if not openupgrade.table_exists(cr, "mass_editing_line"):
+-        return
+-
+-    openupgrade.rename_models(
+-        cr, [("mass.editing.line", "ir.actions.server.mass.edit.line")]
+-    )
+-    openupgrade.rename_tables(
+-        cr, [("mass_editing_line", "ir_actions_server_mass_edit_line")]
+-    )

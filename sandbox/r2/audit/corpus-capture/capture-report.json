@@ -1,0 +1,12 @@
+{
+  "captured_at": "2026-11-14T19:03:07.593617+00:00",
+  "sources_included": 8,
+  "failures": [
+    {
+      "id": "official-core-18.0-19.0",
+      "reason": "HTTP 404 for raw.githubusercontent.com/odoo/odoo/19.0/odoo/fields.py"
+    }
+  ],
+  "download_and_extraction_seconds": 3.9117773000034504,
+  "scope": "Progressive declared sources only; not a complete migration corpus"
+}

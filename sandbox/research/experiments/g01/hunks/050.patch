@@ -1,0 +1,13 @@
+diff --git a/server_action_mass_edit/wizard/mass_editing_wizard.py b/server_action_mass_edit/wizard/mass_editing_wizard.py
+index 664bcbb..30e3595 100644
+--- a/server_action_mass_edit/wizard/mass_editing_wizard.py
++++ b/server_action_mass_edit/wizard/mass_editing_wizard.py
+@@ -102,7 +123,7 @@ class MassEditingWizard(models.TransientModel):
+         if field.ttype == "many2many":
+             selection = [
+                 ("ignore", _("Don't touch")),
+-                ("set", _("Set")),
++                ("set_m2m", _("Set")),
+                 ("remove_m2m", _("Remove")),
+                 ("add", _("Add")),
+             ]

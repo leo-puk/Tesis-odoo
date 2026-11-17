@@ -1,0 +1,29 @@
+diff --git a/sale_financial_risk/views/res_config_settings.xml b/sale_financial_risk/views/res_config_settings.xml
+index 9466bee..25d963d 100644
+--- a/sale_financial_risk/views/res_config_settings.xml
++++ b/sale_financial_risk/views/res_config_settings.xml
+@@ -12,19 +12,15 @@
+                 expr="//field[@name='allow_overrisk_invoice_validation']/../.."
+                 position="inside"
+             >
+-                <div class="o_setting_left_pane">
+-
++                <setting
++                    id="include_risk_sale_order_done"
++                    string="Include orders in done state"
++                >
+                     <field name="include_risk_sale_order_done" />
+-                </div>
+-                <div class="o_setting_right_pane">
+-                    <label
+-                        string="Include orders in done state"
+-                        for="include_risk_sale_order_done"
+-                    />
+                     <div class="text-muted">
+                         Include locked sale orders into risk calculation
+                     </div>
+-                </div>
++                </setting>
+             </xpath>
+         </field>
+     </record>

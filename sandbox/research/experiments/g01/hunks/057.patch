@@ -1,0 +1,13 @@
+diff --git a/sale_blanket_order/models/blanket_orders.py b/sale_blanket_order/models/blanket_orders.py
+index e18506b6..e63059c7 100644
+--- a/sale_blanket_order/models/blanket_orders.py
++++ b/sale_blanket_order/models/blanket_orders.py
+@@ -6,8 +6,6 @@ from odoo.exceptions import UserError
+ from odoo.tools import float_is_zero
+ from odoo.tools.misc import format_date
+ 
+-from odoo.addons.sale.models.sale_order import READONLY_FIELD_STATES
+-
+ 
+ class BlanketOrder(models.Model):
+     _name = "sale.blanket.order"

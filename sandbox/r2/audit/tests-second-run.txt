@@ -1,0 +1,16 @@
+test_bfs_cycles_multiorigin_stable_and_depth (test_r2.R2Tests.test_bfs_cycles_multiorigin_stable_and_depth) ... ok
+test_empty_metrics_and_conformity (test_r2.R2Tests.test_empty_metrics_and_conformity) ... ok
+test_evaluation_formulas_require_judgments (test_r2.R2Tests.test_evaluation_formulas_require_judgments) ... ok
+test_explicit_semantic_grouping_preserves_both_evidences (test_r2.R2Tests.test_explicit_semantic_grouping_preserves_both_evidences) ... ok
+test_immutable_build_and_reviewed_filter (test_r2.R2Tests.test_immutable_build_and_reviewed_filter) ... ok
+test_no_execution_and_dynamic_references_warn (test_r2.R2Tests.test_no_execution_and_dynamic_references_warn) ... ok
+test_pipeline_traceability_determinism_baseline_and_versions (test_r2.R2Tests.test_pipeline_traceability_determinism_baseline_and_versions) ... ok
+test_review_narrows_path_to_actual_affected_element (test_r2.R2Tests.test_review_narrows_path_to_actual_affected_element) ... ok
+test_source_switch_filters_derivatives_and_reserved_solutions (test_r2.R2Tests.test_source_switch_filters_derivatives_and_reserved_solutions) ... ok
+test_ten_limit_and_full_summary (test_r2.R2Tests.test_ten_limit_and_full_summary) ... ok
+test_xml_references_and_reject_dtd_and_bad_syntax (test_r2.R2Tests.test_xml_references_and_reject_dtd_and_bad_syntax) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.470s
+
+OK

@@ -1,0 +1,13 @@
+diff --git a/sale_advance_payment/models/account_move.py b/sale_advance_payment/models/account_move.py
+index 72d484fb..a638f4d8 100644
+--- a/sale_advance_payment/models/account_move.py
++++ b/sale_advance_payment/models/account_move.py
+@@ -9,7 +9,7 @@ class AccountMove(models.Model):
+ 
+     def action_post(self):
+         # Automatic reconciliation of payment when invoice confirmed.
+-        res = super(AccountMove, self).action_post()
++        res = super().action_post()
+         sale_order = self.mapped("line_ids.sale_line_ids.order_id")
+         if sale_order and self.invoice_outstanding_credits_debits_widget is not False:
+             json_invoice_outstanding_data = (

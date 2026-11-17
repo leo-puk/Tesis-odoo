@@ -1,0 +1,27 @@
+diff --git a/sale_financial_risk/tests/test_partner_sale_risk.py b/sale_financial_risk/tests/test_partner_sale_risk.py
+index 63b3945..7d6ce78 100644
+--- a/sale_financial_risk/tests/test_partner_sale_risk.py
++++ b/sale_financial_risk/tests/test_partner_sale_risk.py
+@@ -158,18 +154,15 @@ class TestPartnerSaleRisk(TransactionCase):
+         ref_wiz_obj = self.env["account.move.reversal"].with_context(
+             active_model="account.move", active_ids=[invoice.id]
+         )
+-        ref_wiz = ref_wiz_obj.create(
+-            {"reason": "testing", "refund_method": "modify", "journal_id": journal.id}
+-        )
++        ref_wiz = ref_wiz_obj.create({"reason": "testing", "journal_id": journal.id})
+         res = ref_wiz.reverse_moves()
+-        self.assertAlmostEqual(self.partner.risk_invoice_draft, 100.0)
+-        self.assertAlmostEqual(self.partner.risk_sale_order, 0.0)
++        self.assertAlmostEqual(self.partner.risk_invoice_draft, -115.0)
++        self.assertAlmostEqual(self.partner.risk_sale_order, 115)
+         # The way to re-invoice a sale order is creating a refund with
+         # modify option and cancel or remove draft invoice
+         modify_invoice = invoice.browse(res["res_id"])
+         modify_invoice.unlink()
+-        self.assertAlmostEqual(self.partner.risk_sale_order, 100.0)
+-        self.assertTrue(self.partner.risk_exception)
++        self.assertAlmostEqual(self.partner.risk_sale_order, 0.0)
+         line = self.sale_order.order_line[:1]
+         line.product_uom_qty = 0.0
+         self.assertAlmostEqual(line.risk_amount, 0.0)

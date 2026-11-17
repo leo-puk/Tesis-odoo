@@ -1,0 +1,13 @@
+diff --git a/mail_notification_custom_subject/models/mail_thread.py b/mail_notification_custom_subject/models/mail_thread.py
+index 4af63ed..f9b116f 100644
+--- a/mail_notification_custom_subject/models/mail_thread.py
++++ b/mail_notification_custom_subject/models/mail_thread.py
+@@ -81,7 +80,6 @@ class MailThread(models.AbstractModel):
+             partner_ids=partner_ids,
+             attachments=attachments,
+             attachment_ids=attachment_ids,
+-            add_sign=add_sign,
+-            record_name=record_name,
++            body_is_html=body_is_html,
+             **kwargs,
+         )

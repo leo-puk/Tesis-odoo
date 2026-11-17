@@ -1,0 +1,34 @@
+diff --git a/account_credit_control/views/credit_control_run.xml b/account_credit_control/views/credit_control_run.xml
+index 2cd0363..652802e 100644
+--- a/account_credit_control/views/credit_control_run.xml
++++ b/account_credit_control/views/credit_control_run.xml
+@@ -80,21 +84,24 @@
+                             name="company_id"
+                             groups="base.group_multi_company"
+                             options="{'no_create': True}"
++                            readonly="state != 'draft'"
+                         />
+                         <field name="hide_change_state_button" invisible="1" />
+                     </group>
+                     <notebook>
+                         <page string="Policies">
+-                            <field name="policy_ids" colspan="4" nolabel="1" />
+-                            <separator
+-                                string="Report"
+-                                attrs="{'invisible': [('report', '=', False)]}"
++                            <field
++                                name="policy_ids"
++                                colspan="4"
++                                nolabel="1"
++                                readonly="state != 'draft'"
+                             />
++                            <separator string="Report" invisible="state == 'draft'" />
+                             <field
+                                 name="report"
+                                 colspan="4"
+                                 nolabel="1"
+-                                attrs="{'invisible': [('report', '=', False)]}"
++                                invisible="state == 'draft'"
+                             />
+                         </page>
+                         <page string="Manual Lines" groups="base.group_no_one">

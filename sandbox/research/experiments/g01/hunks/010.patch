@@ -1,0 +1,11 @@
+diff --git a/stock_quant_manual_assign/tests/test_stock_quant_manual_assign.py b/stock_quant_manual_assign/tests/test_stock_quant_manual_assign.py
+index b87b2b8..5982036 100644
+--- a/stock_quant_manual_assign/tests/test_stock_quant_manual_assign.py
++++ b/stock_quant_manual_assign/tests/test_stock_quant_manual_assign.py
+@@ -186,5 +171,5 @@ class TestStockQuantManualAssign(TransactionCase):
+         )
+         self.assertEqual(
+             sum(line.qty for line in wizard.quants_lines),
+-            self.move.reserved_availability,
++            self.move.quantity,
+         )

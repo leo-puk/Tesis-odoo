@@ -1,0 +1,13 @@
+diff --git a/mail_notification_custom_subject/__manifest__.py b/mail_notification_custom_subject/__manifest__.py
+index 3b28f21..902ca26 100644
+--- a/mail_notification_custom_subject/__manifest__.py
++++ b/mail_notification_custom_subject/__manifest__.py
+@@ -5,7 +5,7 @@
+ {
+     "name": "Mail Notification Custom Subject",
+     "summary": "Apply a custom subject to mail notifications",
+-    "version": "15.0.1.0.2",
++    "version": "17.0.1.0.0",
+     "category": "Social Network",
+     "website": "https://github.com/OCA/social",
+     "author": "Tecnativa, Odoo Community Association (OCA)",

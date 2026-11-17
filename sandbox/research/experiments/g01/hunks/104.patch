@@ -1,0 +1,16 @@
+diff --git a/sale_financial_risk/views/res_partner_view.xml b/sale_financial_risk/views/res_partner_view.xml
+index 2f79b38..0fb74e7 100644
+--- a/sale_financial_risk/views/res_partner_view.xml
++++ b/sale_financial_risk/views/res_partner_view.xml
+@@ -8,10 +8,7 @@
+         <field name="inherit_id" ref="account_financial_risk.res_partner_view_risk" />
+         <field name="arch" type="xml">
+             <field name="risk_invoice_draft_include" position="before">
+-                <field
+-                    name="risk_sale_order_include"
+-                    attrs="{'readonly': [('risk_allow_edit', '=', False)]}"
+-                />
++                <field name="risk_sale_order_include" readonly="not risk_allow_edit" />
+                 <button
+                     name="open_risk_pivot_info"
+                     type="object"

@@ -1,0 +1,20 @@
+diff --git a/sale_advance_payment/views/sale_view.xml b/sale_advance_payment/views/sale_view.xml
+index 148284b4..31e1f71c 100644
+--- a/sale_advance_payment/views/sale_view.xml
++++ b/sale_advance_payment/views/sale_view.xml
+@@ -31,13 +32,14 @@
+                 <field
+                     name="amount_residual"
+                     nolabel="1"
++                    readonly="True"
+                     class="oe_subtotal_footer_separator"
+                     widget="monetary"
+                     options="{'currency_field': 'currency_id'}"
+                 />
+             </field>
+             <field name="tag_ids" position="after">
+-                <field name="advance_payment_status" />
++                <field name="advance_payment_status" readonly="True" />
+             </field>
+         </field>
+     </record>

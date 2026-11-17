@@ -1,0 +1,52 @@
+[
+  {
+    "change_id": "chg-26b0f33eba2b670d8c0012e1",
+    "status": "verified",
+    "title": "Odoo 17 warns that the states field property is no longer supported",
+    "layer": "python",
+    "reviewer": "Mocked developer-review fixture; not an independent academic judgment",
+    "rationale": "Expected review input anchored to the explicit destination code in the captured diff.",
+    "reviewed_at": "2026-11-17T04:20:27.306507+00:00",
+    "category": "syntax",
+    "required_elements": [
+      "property:states"
+    ],
+    "affected_elements": [
+      "property:states"
+    ],
+    "destination_validity": {
+      "status": "checked",
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "explanation": "This functional fixture cites the actual warning/rejection in local Odoo 17 code; other hunk edits are not validated.",
+      "evidence_ids": [
+        "ev-26b0f33eba2b670d8c0012e1"
+      ]
+    }
+  },
+  {
+    "change_id": "chg-faf89221b784921283bfcd69",
+    "status": "verified",
+    "title": "Odoo 17 rejects attrs/states attributes in view validation",
+    "layer": "xml",
+    "reviewer": "Mocked developer-review fixture; not an independent academic judgment",
+    "rationale": "Expected review input anchored to the explicit destination code in the captured diff.",
+    "reviewed_at": "2026-11-17T04:20:27.306507+00:00",
+    "category": "syntax",
+    "required_elements": [
+      "xml-attribute:attrs"
+    ],
+    "affected_elements": [
+      "xml-attribute:attrs"
+    ],
+    "destination_validity": {
+      "status": "checked",
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "explanation": "This functional fixture cites the actual warning/rejection in local Odoo 17 code; other hunk edits are not validated.",
+      "evidence_ids": [
+        "ev-faf89221b784921283bfcd69"
+      ]
+    }
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "conformant": true,
+  "automatic_structural_conformant": true,
+  "conformance_scope": "automatic structural checks only",
+  "full_V1_determined": false,
+  "human_checks_pending": [
+    "English free text",
+    "semantic pertinence",
+    "upstream provenance authenticity"
+  ],
+  "errors": []
+}

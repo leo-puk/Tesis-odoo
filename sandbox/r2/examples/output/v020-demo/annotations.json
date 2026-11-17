@@ -1,0 +1,52 @@
+[
+  {
+    "change_id": "chg-22de5cc54367faaacace8269",
+    "title": "States field property is no longer supported in Odoo 17",
+    "status": "verified",
+    "reviewer": "Codex developer review; not an independent relevance judgment",
+    "reviewed_at": "2026-11-14T19:07:20.532015+00:00",
+    "category": "syntax",
+    "destination_validity": {
+      "status": "checked",
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "evidence_ids": [
+        "ev-22de5cc54367faaacace8269"
+      ],
+      "explanation": "The captured destination source explicitly implements the shown warning/rejection."
+    },
+    "rationale": "The added core code explicitly contains: states is no longer supported. Other changes in this block remain unclassified.",
+    "required_elements": [
+      "property:states"
+    ],
+    "affected_elements": [
+      "property:states"
+    ],
+    "layer": "python"
+  },
+  {
+    "change_id": "chg-daf91467861028fbbd16e986",
+    "title": "XML attrs/states are rejected by the Odoo 17 view validator",
+    "status": "verified",
+    "reviewer": "Codex developer review; not an independent relevance judgment",
+    "reviewed_at": "2026-11-14T19:07:20.532015+00:00",
+    "category": "syntax",
+    "destination_validity": {
+      "status": "checked",
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "evidence_ids": [
+        "ev-daf91467861028fbbd16e986"
+      ],
+      "explanation": "The captured destination source explicitly implements the shown warning/rejection."
+    },
+    "rationale": "The added core code explicitly contains: attributes are no longer used. Other changes in this block remain unclassified.",
+    "required_elements": [
+      "xml-attribute:attrs"
+    ],
+    "affected_elements": [
+      "xml-attribute:attrs"
+    ],
+    "layer": "xml"
+  }
+]

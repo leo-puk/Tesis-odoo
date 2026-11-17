@@ -1,0 +1,1846 @@
+[
+  {
+    "id": 1,
+    "path": "stock_quant_manual_assign/__manifest__.py",
+    "status": "M",
+    "header": "@@ -7,7 +7,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-01"
+    ],
+    "state": "applied",
+    "commit": "cb80fdd",
+    "casuistics": [
+      "C005"
+    ],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 2,
+    "path": "stock_quant_manual_assign/__manifest__.py",
+    "status": "M",
+    "header": "@@ -21,7 +21,6 @@",
+    "removed": 1,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "cb80fdd",
+    "casuistics": [
+      "C005"
+    ],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 3,
+    "path": "stock_quant_manual_assign/i18n/stock_quant_manual_assign.pot",
+    "status": "M",
+    "header": "@@ -23,11 +23,6 @@ msgstr \"\"",
+    "removed": 5,
+    "added": 0,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 4,
+    "path": "stock_quant_manual_assign/i18n/stock_quant_manual_assign.pot",
+    "status": "M",
+    "header": "@@ -168,13 +163,6 @@ msgstr \"\"",
+    "removed": 7,
+    "added": 0,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 5,
+    "path": "stock_quant_manual_assign/models/__init__.py",
+    "status": "M",
+    "header": "@@ -1 +0,0 @@",
+    "removed": 1,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 6,
+    "path": "stock_quant_manual_assign/models/stock_picking_type.py",
+    "status": "D",
+    "header": "@@ -1,14 +0,0 @@",
+    "removed": 14,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 7,
+    "path": "stock_quant_manual_assign/readme/CONFIGURATION.rst",
+    "status": "M",
+    "header": "@@ -1,3 +0,0 @@",
+    "removed": 3,
+    "added": 0,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 8,
+    "path": "stock_quant_manual_assign/tests/test_stock_quant_manual_assign.py",
+    "status": "M",
+    "header": "@@ -100,7 +100,7 @@ class TestStockQuantManualAssign(TransactionCase):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "c208e62",
+    "casuistics": [
+      "C036"
+    ],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 9,
+    "path": "stock_quant_manual_assign/tests/test_stock_quant_manual_assign.py",
+    "status": "M",
+    "header": "@@ -148,21 +148,6 @@ class TestStockQuantManualAssign(TransactionCase):",
+    "removed": 15,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "c208e62",
+    "casuistics": [
+      "C036"
+    ],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 10,
+    "path": "stock_quant_manual_assign/tests/test_stock_quant_manual_assign.py",
+    "status": "M",
+    "header": "@@ -186,5 +171,5 @@ class TestStockQuantManualAssign(TransactionCase):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "c208e62",
+    "casuistics": [
+      "C036"
+    ],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 11,
+    "path": "stock_quant_manual_assign/views/stock_move_view.xml",
+    "status": "M",
+    "header": "@@ -5,7 +5,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "a3b08e5",
+    "casuistics": [
+      "C015"
+    ],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 12,
+    "path": "stock_quant_manual_assign/views/stock_picking_type_views.xml",
+    "status": "D",
+    "header": "@@ -1,16 +0,0 @@",
+    "removed": 16,
+    "added": 0,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 13,
+    "path": "stock_quant_manual_assign/wizard/assign_manual_quants.py",
+    "status": "M",
+    "header": "@@ -63,10 +63,6 @@ class AssignManualQuants(models.TransientModel):",
+    "removed": 4,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "4b4b326",
+    "casuistics": [
+      "C035"
+    ],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 14,
+    "path": "stock_quant_manual_assign/wizard/assign_manual_quants.py",
+    "status": "M",
+    "header": "@@ -115,7 +111,7 @@ class AssignManualQuants(models.TransientModel):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "4b4b326",
+    "casuistics": [
+      "C035"
+    ],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 15,
+    "path": "stock_quant_manual_assign/wizard/assign_manual_quants.py",
+    "status": "M",
+    "header": "@@ -199,12 +195,12 @@ class AssignManualQuantsLines(models.TransientModel):",
+    "removed": 2,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "4b4b326",
+    "casuistics": [
+      "C035"
+    ],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 16,
+    "path": "stock_quant_manual_assign/wizard/assign_manual_quants.py",
+    "status": "M",
+    "header": "@@ -247,7 +243,6 @@ class AssignManualQuantsLines(models.TransientModel):",
+    "removed": 1,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "4b4b326",
+    "casuistics": [
+      "C035"
+    ],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 17,
+    "path": "stock_quant_manual_assign/wizard/assign_manual_quants_view.xml",
+    "status": "M",
+    "header": "@@ -8,7 +8,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-09"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "stock_quant_manual_assign"
+  },
+  {
+    "id": 18,
+    "path": "server_action_mass_edit/README.rst",
+    "status": "M",
+    "header": "@@ -62,7 +62,7 @@ Configuration",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 19,
+    "path": "server_action_mass_edit/README.rst",
+    "status": "M",
+    "header": "@@ -73,7 +73,7 @@ Configuration",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 20,
+    "path": "server_action_mass_edit/README.rst",
+    "status": "M",
+    "header": "@@ -81,20 +81,20 @@ Usage",
+    "removed": 6,
+    "added": 6,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 21,
+    "path": "server_action_mass_edit/__manifest__.py",
+    "status": "M",
+    "header": "@@ -2,7 +2,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-01"
+    ],
+    "state": "applied",
+    "commit": "3f91b66",
+    "casuistics": [
+      "C004"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 22,
+    "path": "server_action_mass_edit/__manifest__.py",
+    "status": "M",
+    "header": "@@ -20,5 +20,11 @@",
+    "removed": 0,
+    "added": 6,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "3f91b66",
+    "casuistics": [
+      "C004"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 23,
+    "path": "server_action_mass_edit/migrations/16.0.2.0.0/pre-migration.py",
+    "status": "D",
+    "header": "@@ -1,20 +0,0 @@",
+    "removed": 20,
+    "added": 0,
+    "tags": [
+      "G17-02"
+    ],
+    "state": "applied",
+    "commit": "92819e4",
+    "casuistics": [
+      "C006"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 24,
+    "path": "server_action_mass_edit/models/__init__.py",
+    "status": "M",
+    "header": "@@ -1,2 +1,3 @@",
+    "removed": 0,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "8b86d21",
+    "casuistics": [
+      "C007"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 25,
+    "path": "server_action_mass_edit/models/ir_actions_server.py",
+    "status": "M",
+    "header": "@@ -50,11 +50,23 @@ class IrActionsServer(models.Model):",
+    "removed": 0,
+    "added": 12,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "e9e1d8c",
+    "casuistics": [
+      "C008"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 26,
+    "path": "server_action_mass_edit/models/ir_actions_server_mass_edit_line.py",
+    "status": "M",
+    "header": "@@ -6,7 +6,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "9050634",
+    "casuistics": [
+      "C009"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 27,
+    "path": "server_action_mass_edit/models/ir_actions_server_mass_edit_line.py",
+    "status": "M",
+    "header": "@@ -33,6 +33,7 @@ class IrActionsServerMassEditLine(models.Model):",
+    "removed": 0,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "9050634",
+    "casuistics": [
+      "C009"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 28,
+    "path": "server_action_mass_edit/models/ir_ui_view.py",
+    "status": "A",
+    "header": "@@ -0,0 +1,7 @@",
+    "removed": 0,
+    "added": 7,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "b871a23",
+    "casuistics": [
+      "C010"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 29,
+    "path": "server_action_mass_edit/readme/CONFIGURE.md",
+    "status": "M",
+    "header": "@@ -3,7 +3,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 30,
+    "path": "server_action_mass_edit/readme/USAGE.md",
+    "status": "M",
+    "header": "@@ -1,13 +1,13 @@",
+    "removed": 3,
+    "added": 3,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 31,
+    "path": "server_action_mass_edit/static/description/index.html",
+    "status": "M",
+    "header": "@@ -8,10 +8,11 @@",
+    "removed": 1,
+    "added": 2,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 32,
+    "path": "server_action_mass_edit/static/description/index.html",
+    "status": "M",
+    "header": "@@ -274,7 +275,7 @@ pre.literal-block, pre.doctest-block, pre.math, pre.code {",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 33,
+    "path": "server_action_mass_edit/static/description/index.html",
+    "status": "M",
+    "header": "@@ -300,7 +301,7 @@ span.option {",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 34,
+    "path": "server_action_mass_edit/static/description/index.html",
+    "status": "M",
+    "header": "@@ -368,20 +369,22 @@ ul.auto-toc {",
+    "removed": 7,
+    "added": 9,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 35,
+    "path": "server_action_mass_edit/static/description/index.html",
+    "status": "M",
+    "header": "@@ -404,34 +407,39 @@ color fields, image fields, etc…)</li>",
+    "removed": 11,
+    "added": 16,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 36,
+    "path": "server_action_mass_edit/static/description/index.html",
+    "status": "M",
+    "header": "@@ -444,7 +452,7 @@ the mass editing action with a domain.</li>",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 37,
+    "path": "server_action_mass_edit/static/description/index.html",
+    "status": "M",
+    "header": "@@ -480,11 +488,13 @@ If you spotted it first, help us to smash it by providing a detailed and welcome",
+    "removed": 2,
+    "added": 4,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 38,
+    "path": "server_action_mass_edit/static/src/js/record.esm.js",
+    "status": "A",
+    "header": "@@ -0,0 +1,29 @@",
+    "removed": 0,
+    "added": 29,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 39,
+    "path": "server_action_mass_edit/static/src/js/static_list.esm.js",
+    "status": "A",
+    "header": "@@ -0,0 +1,31 @@",
+    "removed": 0,
+    "added": 31,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 40,
+    "path": "server_action_mass_edit/tests/test_mass_editing.py",
+    "status": "M",
+    "header": "@@ -133,19 +133,21 @@ class TestMassEditing(common.TransactionCase):",
+    "removed": 3,
+    "added": 5,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dba5f24",
+    "casuistics": [
+      "C040"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 41,
+    "path": "server_action_mass_edit/tests/test_mass_editing.py",
+    "status": "M",
+    "header": "@@ -163,7 +165,7 @@ class TestMassEditing(common.TransactionCase):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dba5f24",
+    "casuistics": [
+      "C040"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 42,
+    "path": "server_action_mass_edit/tests/test_mass_editing.py",
+    "status": "M",
+    "header": "@@ -325,7 +327,7 @@ class TestMassEditing(common.TransactionCase):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dba5f24",
+    "casuistics": [
+      "C040"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 43,
+    "path": "server_action_mass_edit/tests/test_mass_editing.py",
+    "status": "M",
+    "header": "@@ -338,7 +340,7 @@ class TestMassEditing(common.TransactionCase):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dba5f24",
+    "casuistics": [
+      "C040"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 44,
+    "path": "server_action_mass_edit/tests/test_mass_editing.py",
+    "status": "M",
+    "header": "@@ -382,9 +384,6 @@ class TestMassEditing(common.TransactionCase):",
+    "removed": 3,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dba5f24",
+    "casuistics": [
+      "C040"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 45,
+    "path": "server_action_mass_edit/views/ir_actions_server.xml",
+    "status": "M",
+    "header": "@@ -5,44 +5,40 @@",
+    "removed": 38,
+    "added": 34,
+    "tags": [
+      "G17-07",
+      "G17-09"
+    ],
+    "state": "applied",
+    "commit": "5609242",
+    "casuistics": [
+      "C012"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 46,
+    "path": "server_action_mass_edit/wizard/mass_editing_wizard.py",
+    "status": "M",
+    "header": "@@ -8,11 +8,6 @@ from lxml import etree",
+    "removed": 5,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "3e67832",
+    "casuistics": [
+      "C011"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 47,
+    "path": "server_action_mass_edit/wizard/mass_editing_wizard.py",
+    "status": "M",
+    "header": "@@ -26,15 +21,16 @@ class MassEditingWizard(models.TransientModel):",
+    "removed": 4,
+    "added": 5,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "3e67832",
+    "casuistics": [
+      "C011"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 48,
+    "path": "server_action_mass_edit/wizard/mass_editing_wizard.py",
+    "status": "M",
+    "header": "@@ -46,7 +42,8 @@ class MassEditingWizard(models.TransientModel):",
+    "removed": 1,
+    "added": 2,
+    "tags": [
+      "ESTILO"
+    ],
+    "state": "applied",
+    "commit": "3e67832",
+    "casuistics": [
+      "C011"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 49,
+    "path": "server_action_mass_edit/wizard/mass_editing_wizard.py",
+    "status": "M",
+    "header": "@@ -69,30 +66,54 @@ class MassEditingWizard(models.TransientModel):",
+    "removed": 11,
+    "added": 35,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "3e67832",
+    "casuistics": [
+      "C011"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 50,
+    "path": "server_action_mass_edit/wizard/mass_editing_wizard.py",
+    "status": "M",
+    "header": "@@ -102,7 +123,7 @@ class MassEditingWizard(models.TransientModel):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "3e67832",
+    "casuistics": [
+      "C011"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 51,
+    "path": "server_action_mass_edit/wizard/mass_editing_wizard.py",
+    "status": "M",
+    "header": "@@ -170,30 +191,39 @@ class MassEditingWizard(models.TransientModel):",
+    "removed": 10,
+    "added": 19,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "3e67832",
+    "casuistics": [
+      "C011"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 52,
+    "path": "server_action_mass_edit/wizard/mass_editing_wizard.py",
+    "status": "M",
+    "header": "@@ -256,7 +286,7 @@ class MassEditingWizard(models.TransientModel):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "3e67832",
+    "casuistics": [
+      "C011"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 53,
+    "path": "server_action_mass_edit/wizard/mass_editing_wizard.py",
+    "status": "M",
+    "header": "@@ -267,25 +297,23 @@ class MassEditingWizard(models.TransientModel):",
+    "removed": 11,
+    "added": 9,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "3e67832",
+    "casuistics": [
+      "C011"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 54,
+    "path": "server_action_mass_edit/wizard/mass_editing_wizard.xml",
+    "status": "M",
+    "header": "@@ -11,33 +11,27 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).",
+    "removed": 10,
+    "added": 4,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "0c17a25",
+    "casuistics": [
+      "C013"
+    ],
+    "module": "server_action_mass_edit"
+  },
+  {
+    "id": 55,
+    "path": "sale_blanket_order/README.rst",
+    "status": "M",
+    "header": "@@ -138,8 +138,10 @@ Contributors",
+    "removed": 2,
+    "added": 4,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 56,
+    "path": "sale_blanket_order/__manifest__.py",
+    "status": "M",
+    "header": "@@ -5,10 +5,10 @@",
+    "removed": 2,
+    "added": 2,
+    "tags": [
+      "G17-01"
+    ],
+    "state": "applied",
+    "commit": "790f99a",
+    "casuistics": [
+      "C002"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 57,
+    "path": "sale_blanket_order/models/blanket_orders.py",
+    "status": "M",
+    "header": "@@ -6,8 +6,6 @@ from odoo.exceptions import UserError",
+    "removed": 2,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dd9492a",
+    "casuistics": [
+      "C018"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 58,
+    "path": "sale_blanket_order/models/blanket_orders.py",
+    "status": "M",
+    "header": "@@ -44,7 +42,6 @@ class BlanketOrder(models.Model):",
+    "removed": 1,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dd9492a",
+    "casuistics": [
+      "C018"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 59,
+    "path": "sale_blanket_order/models/blanket_orders.py",
+    "status": "M",
+    "header": "@@ -63,7 +60,6 @@ class BlanketOrder(models.Model):",
+    "removed": 1,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dd9492a",
+    "casuistics": [
+      "C018"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 60,
+    "path": "sale_blanket_order/models/blanket_orders.py",
+    "status": "M",
+    "header": "@@ -71,13 +67,11 @@ class BlanketOrder(models.Model):",
+    "removed": 2,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dd9492a",
+    "casuistics": [
+      "C018"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 61,
+    "path": "sale_blanket_order/models/blanket_orders.py",
+    "status": "M",
+    "header": "@@ -91,26 +85,21 @@ class BlanketOrder(models.Model):",
+    "removed": 7,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dd9492a",
+    "casuistics": [
+      "C018"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 62,
+    "path": "sale_blanket_order/models/blanket_orders.py",
+    "status": "M",
+    "header": "@@ -198,7 +187,7 @@ class BlanketOrder(models.Model):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dd9492a",
+    "casuistics": [
+      "C018"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 63,
+    "path": "sale_blanket_order/models/blanket_orders.py",
+    "status": "M",
+    "header": "@@ -483,23 +472,29 @@ class BlanketOrderLine(models.Model):",
+    "removed": 8,
+    "added": 14,
+    "tags": [
+      "G17-03"
+    ],
+    "state": "applied",
+    "commit": "dd9492a",
+    "casuistics": [
+      "C018"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 64,
+    "path": "sale_blanket_order/models/blanket_orders.py",
+    "status": "M",
+    "header": "@@ -563,35 +558,43 @@ class BlanketOrderLine(models.Model):",
+    "removed": 25,
+    "added": 33,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dd9492a",
+    "casuistics": [
+      "C018"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 65,
+    "path": "sale_blanket_order/models/blanket_orders.py",
+    "status": "M",
+    "header": "@@ -605,7 +608,7 @@ class BlanketOrderLine(models.Model):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dd9492a",
+    "casuistics": [
+      "C018"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 66,
+    "path": "sale_blanket_order/models/blanket_orders.py",
+    "status": "M",
+    "header": "@@ -656,6 +659,24 @@ class BlanketOrderLine(models.Model):",
+    "removed": 0,
+    "added": 18,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "dd9492a",
+    "casuistics": [
+      "C018"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 67,
+    "path": "sale_blanket_order/models/blanket_orders.py",
+    "status": "M",
+    "header": "@@ -716,4 +737,4 @@ class BlanketOrderLine(models.Model):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ESTILO"
+    ],
+    "state": "applied",
+    "commit": "dd9492a",
+    "casuistics": [
+      "C018"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 68,
+    "path": "sale_blanket_order/models/sale_orders.py",
+    "status": "M",
+    "header": "@@ -61,14 +61,14 @@ class SaleOrderLine(models.Model):",
+    "removed": 2,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 69,
+    "path": "sale_blanket_order/readme/CONTRIBUTORS.md",
+    "status": "M",
+    "header": "@@ -7,8 +7,10 @@",
+    "removed": 2,
+    "added": 4,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 70,
+    "path": "sale_blanket_order/static/description/index.html",
+    "status": "M",
+    "header": "@@ -463,8 +463,13 @@ If you spotted it first, help us to smash it by providing a detailed and welcome",
+    "removed": 2,
+    "added": 7,
+    "tags": [
+      "ADMIN"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 71,
+    "path": "sale_blanket_order/tests/test_blanket_orders.py",
+    "status": "M",
+    "header": "@@ -99,7 +99,7 @@ class TestSaleBlanketOrders(common.TransactionCase):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "c16930f",
+    "casuistics": [
+      "C039"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 72,
+    "path": "sale_blanket_order/tests/test_blanket_orders.py",
+    "status": "M",
+    "header": "@@ -390,10 +390,10 @@ class TestSaleBlanketOrders(common.TransactionCase):",
+    "removed": 2,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "c16930f",
+    "casuistics": [
+      "C039"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 73,
+    "path": "sale_blanket_order/tests/test_blanket_orders.py",
+    "status": "M",
+    "header": "@@ -401,10 +401,10 @@ class TestSaleBlanketOrders(common.TransactionCase):",
+    "removed": 2,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "c16930f",
+    "casuistics": [
+      "C039"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 74,
+    "path": "sale_blanket_order/tests/test_blanket_orders.py",
+    "status": "M",
+    "header": "@@ -412,7 +412,7 @@ class TestSaleBlanketOrders(common.TransactionCase):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "c16930f",
+    "casuistics": [
+      "C039"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 75,
+    "path": "sale_blanket_order/tests/test_sale_order.py",
+    "status": "M",
+    "header": "@@ -145,7 +145,6 @@ class TestSaleOrder(common.TransactionCase):",
+    "removed": 1,
+    "added": 0,
+    "tags": [
+      "G17-03"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 76,
+    "path": "sale_blanket_order/tests/test_sale_order.py",
+    "status": "M",
+    "header": "@@ -180,11 +179,10 @@ class TestSaleOrder(common.TransactionCase):",
+    "removed": 2,
+    "added": 1,
+    "tags": [
+      "G17-03"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 77,
+    "path": "sale_blanket_order/views/sale_blanket_order_views.xml",
+    "status": "M",
+    "header": "@@ -37,25 +37,25 @@",
+    "removed": 4,
+    "added": 4,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "5a529ee",
+    "casuistics": [
+      "C020"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 78,
+    "path": "sale_blanket_order/views/sale_blanket_order_views.xml",
+    "status": "M",
+    "header": "@@ -84,7 +84,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "5a529ee",
+    "casuistics": [
+      "C020"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 79,
+    "path": "sale_blanket_order/views/sale_blanket_order_views.xml",
+    "status": "M",
+    "header": "@@ -100,7 +100,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "5a529ee",
+    "casuistics": [
+      "C020"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 80,
+    "path": "sale_blanket_order/views/sale_blanket_order_views.xml",
+    "status": "M",
+    "header": "@@ -112,17 +112,14 @@",
+    "removed": 5,
+    "added": 2,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "5a529ee",
+    "casuistics": [
+      "C020"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 81,
+    "path": "sale_blanket_order/views/sale_blanket_order_views.xml",
+    "status": "M",
+    "header": "@@ -142,14 +139,15 @@",
+    "removed": 5,
+    "added": 6,
+    "tags": [
+      "G17-07",
+      "G17-09"
+    ],
+    "state": "applied",
+    "commit": "5a529ee",
+    "casuistics": [
+      "C020"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 82,
+    "path": "sale_blanket_order/views/sale_blanket_order_views.xml",
+    "status": "M",
+    "header": "@@ -181,14 +179,12 @@",
+    "removed": 5,
+    "added": 3,
+    "tags": [
+      "G17-07",
+      "G17-09"
+    ],
+    "state": "applied",
+    "commit": "5a529ee",
+    "casuistics": [
+      "C020"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 83,
+    "path": "sale_blanket_order/views/sale_blanket_order_views.xml",
+    "status": "M",
+    "header": "@@ -198,10 +194,8 @@",
+    "removed": 4,
+    "added": 2,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "5a529ee",
+    "casuistics": [
+      "C020"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 84,
+    "path": "sale_blanket_order/views/sale_blanket_order_views.xml",
+    "status": "M",
+    "header": "@@ -214,17 +208,13 @@",
+    "removed": 7,
+    "added": 3,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "5a529ee",
+    "casuistics": [
+      "C020"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 85,
+    "path": "sale_blanket_order/views/sale_blanket_order_views.xml",
+    "status": "M",
+    "header": "@@ -266,7 +256,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "5a529ee",
+    "casuistics": [
+      "C020"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 86,
+    "path": "sale_blanket_order/views/sale_blanket_order_views.xml",
+    "status": "M",
+    "header": "@@ -284,7 +274,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "5a529ee",
+    "casuistics": [
+      "C020"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 87,
+    "path": "sale_blanket_order/views/sale_config_settings.xml",
+    "status": "M",
+    "header": "@@ -7,25 +7,17 @@",
+    "removed": 19,
+    "added": 11,
+    "tags": [
+      "G17-10"
+    ],
+    "state": "applied",
+    "commit": "2ebc1f4",
+    "casuistics": [
+      "C019"
+    ],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 88,
+    "path": "sale_blanket_order/views/sale_order_views.xml",
+    "status": "M",
+    "header": "@@ -15,7 +15,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07",
+      "G17-09"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 89,
+    "path": "sale_blanket_order/wizard/create_sale_orders.py",
+    "status": "M",
+    "header": "@@ -79,7 +79,8 @@ class BlanketOrderWizard(models.TransientModel):",
+    "removed": 1,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 90,
+    "path": "sale_blanket_order/wizard/create_sale_orders.py",
+    "status": "M",
+    "header": "@@ -137,7 +138,7 @@ class BlanketOrderWizard(models.TransientModel):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "sale_blanket_order"
+  },
+  {
+    "id": 91,
+    "path": "sale_financial_risk/__manifest__.py",
+    "status": "M",
+    "header": "@@ -4,7 +4,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-01"
+    ],
+    "state": "applied",
+    "commit": "9fec0eb",
+    "casuistics": [
+      "C003"
+    ],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 92,
+    "path": "sale_financial_risk/hooks.py",
+    "status": "M",
+    "header": "@@ -8,20 +8,19 @@ from odoo.tools import sql",
+    "removed": 7,
+    "added": 6,
+    "tags": [
+      "G17-04"
+    ],
+    "state": "applied",
+    "commit": "b24afee",
+    "casuistics": [
+      "C016"
+    ],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 93,
+    "path": "sale_financial_risk/models/res_partner.py",
+    "status": "M",
+    "header": "@@ -35,21 +35,15 @@ class ResPartner(models.Model):",
+    "removed": 10,
+    "added": 4,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "a5722c2",
+    "casuistics": [
+      "C037"
+    ],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 94,
+    "path": "sale_financial_risk/models/sale.py",
+    "status": "M",
+    "header": "@@ -49,7 +49,7 @@ class SaleOrder(models.Model):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 95,
+    "path": "sale_financial_risk/tests/test_partner_sale_risk.py",
+    "status": "M",
+    "header": "@@ -10,7 +10,7 @@ from odoo.addons.base.tests.common import DISABLED_MAIL_CONTEXT",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ESTILO"
+    ],
+    "state": "applied",
+    "commit": "4350a79",
+    "casuistics": [
+      "C038"
+    ],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 96,
+    "path": "sale_financial_risk/tests/test_partner_sale_risk.py",
+    "status": "M",
+    "header": "@@ -56,7 +56,7 @@ class TestPartnerSaleRisk(TransactionCase):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "4350a79",
+    "casuistics": [
+      "C038"
+    ],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 97,
+    "path": "sale_financial_risk/tests/test_partner_sale_risk.py",
+    "status": "M",
+    "header": "@@ -76,12 +76,10 @@ class TestPartnerSaleRisk(TransactionCase):",
+    "removed": 4,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "4350a79",
+    "casuistics": [
+      "C038"
+    ],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 98,
+    "path": "sale_financial_risk/tests/test_partner_sale_risk.py",
+    "status": "M",
+    "header": "@@ -95,7 +93,7 @@ class TestPartnerSaleRisk(TransactionCase):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "4350a79",
+    "casuistics": [
+      "C038"
+    ],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 99,
+    "path": "sale_financial_risk/tests/test_partner_sale_risk.py",
+    "status": "M",
+    "header": "@@ -114,17 +112,15 @@ class TestPartnerSaleRisk(TransactionCase):",
+    "removed": 6,
+    "added": 4,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "4350a79",
+    "casuistics": [
+      "C038"
+    ],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 100,
+    "path": "sale_financial_risk/tests/test_partner_sale_risk.py",
+    "status": "M",
+    "header": "@@ -138,13 +134,13 @@ class TestPartnerSaleRisk(TransactionCase):",
+    "removed": 2,
+    "added": 2,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "4350a79",
+    "casuistics": [
+      "C038"
+    ],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 101,
+    "path": "sale_financial_risk/tests/test_partner_sale_risk.py",
+    "status": "M",
+    "header": "@@ -158,18 +154,15 @@ class TestPartnerSaleRisk(TransactionCase):",
+    "removed": 7,
+    "added": 4,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "4350a79",
+    "casuistics": [
+      "C038"
+    ],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 102,
+    "path": "sale_financial_risk/tests/test_payment_financial_risk.py",
+    "status": "M",
+    "header": "@@ -66,22 +66,22 @@ class TestRiskSalePayment(AccountPaymentCommon, SaleCommon, PaymentHttpCommon):",
+    "removed": 15,
+    "added": 15,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "7629f6a",
+    "casuistics": [
+      "C041"
+    ],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 103,
+    "path": "sale_financial_risk/views/res_config_settings.xml",
+    "status": "M",
+    "header": "@@ -12,19 +12,15 @@",
+    "removed": 9,
+    "added": 5,
+    "tags": [
+      "G17-10"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 104,
+    "path": "sale_financial_risk/views/res_partner_view.xml",
+    "status": "M",
+    "header": "@@ -8,10 +8,7 @@",
+    "removed": 4,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "5f9cac0",
+    "casuistics": [
+      "C017"
+    ],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 105,
+    "path": "sale_financial_risk/views/res_partner_view.xml",
+    "status": "M",
+    "header": "@@ -29,7 +26,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "5f9cac0",
+    "casuistics": [
+      "C017"
+    ],
+    "module": "sale_financial_risk"
+  },
+  {
+    "id": 106,
+    "path": "fieldservice_isp_flow/__manifest__.py",
+    "status": "M",
+    "header": "@@ -4,7 +4,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-01"
+    ],
+    "state": "applied",
+    "commit": "f69680a",
+    "casuistics": [
+      "C001"
+    ],
+    "module": "fieldservice_isp_flow"
+  },
+  {
+    "id": 107,
+    "path": "fieldservice_isp_flow/views/fsm_order.xml",
+    "status": "M",
+    "header": "@@ -14,7 +14,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "df06331",
+    "casuistics": [
+      "C014"
+    ],
+    "module": "fieldservice_isp_flow"
+  },
+  {
+    "id": 108,
+    "path": "fieldservice_isp_flow/views/fsm_order.xml",
+    "status": "M",
+    "header": "@@ -23,7 +23,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "df06331",
+    "casuistics": [
+      "C014"
+    ],
+    "module": "fieldservice_isp_flow"
+  },
+  {
+    "id": 109,
+    "path": "fieldservice_isp_flow/views/fsm_order.xml",
+    "status": "M",
+    "header": "@@ -32,7 +32,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "df06331",
+    "casuistics": [
+      "C014"
+    ],
+    "module": "fieldservice_isp_flow"
+  },
+  {
+    "id": 110,
+    "path": "fieldservice_isp_flow/views/fsm_order.xml",
+    "status": "M",
+    "header": "@@ -41,7 +41,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "df06331",
+    "casuistics": [
+      "C014"
+    ],
+    "module": "fieldservice_isp_flow"
+  },
+  {
+    "id": 111,
+    "path": "fieldservice_isp_flow/views/fsm_order.xml",
+    "status": "M",
+    "header": "@@ -50,7 +50,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "df06331",
+    "casuistics": [
+      "C014"
+    ],
+    "module": "fieldservice_isp_flow"
+  },
+  {
+    "id": 112,
+    "path": "fieldservice_isp_flow/views/fsm_order.xml",
+    "status": "M",
+    "header": "@@ -59,7 +59,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "df06331",
+    "casuistics": [
+      "C014"
+    ],
+    "module": "fieldservice_isp_flow"
+  }
+]

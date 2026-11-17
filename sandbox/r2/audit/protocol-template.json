@@ -1,0 +1,23 @@
+{
+  "status": "verified",
+  "limit": 10,
+  "depth": 3,
+  "seed_policy": "explicit_declarations_and_references_v2_no_unresolved_or_generic_symbols",
+  "ranking": {
+    "version": "2",
+    "order": [
+      "verified_first",
+      "minimum_depth",
+      "typed_specificity",
+      "match_count",
+      "bm25",
+      "stable_id"
+    ]
+  },
+  "P1_aggregation": "macro_defined_queries",
+  "judgment_responsible": null,
+  "cache_state": "TO_BE_FIXED_BEFORE_MEASUREMENT",
+  "repeats": 3,
+  "draft": true,
+  "note": "Not frozen: reviewer, complete independent selection, queries and cache procedure still pending"
+}

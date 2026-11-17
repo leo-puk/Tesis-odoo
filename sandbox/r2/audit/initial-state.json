@@ -1,0 +1,54 @@
+{
+  "git_base": "9ee4dbd9f2279c3f45620d6691131a39c4db608a",
+  "git_status": [
+    " M sandbox/.gitignore",
+    " M sandbox/control/odoolab/cli.py",
+    "?? sandbox/control/odoolab/batch.py",
+    "?? sandbox/control/odoolab/casuistics.py",
+    "?? sandbox/control/odoolab/census.py",
+    "?? sandbox/control/odoolab/experiment.py",
+    "?? sandbox/docker-desbloquear.ps1",
+    "?? sandbox/r2/",
+    "?? sandbox/research/"
+  ],
+  "word_sha256": "317B8F1E37EE0D8A63181451C7205D43B06C4412B8A48A8A5414FD4831898D57",
+  "captured_at": "2026-11-14T18:48:32.2514770+00:00",
+  "files": [
+    {
+      "sha256": "4AB3B671EF8ECDE886544CED5B251FB783E9AE57DEA1742433ADFE9741C31E42",
+      "path": "__init__.py"
+    },
+    {
+      "sha256": "6D8B7D7846A845059D7A3107143F11131F63C5511D669B44085B15EC5E3D2279",
+      "path": "__main__.py"
+    },
+    {
+      "sha256": "F3C5F543767574F5B22195182B05E54A395423B9E4A3D09DDF38B4547EC4E6CF",
+      "path": "cli.py"
+    },
+    {
+      "sha256": "529CC56E0067A7D522F911AD32FF1805F7CBFFF307775955FC7FDF1AF55D252C",
+      "path": "collection.py"
+    },
+    {
+      "sha256": "74FF29244118E4012D076708BFB91B335AD56F20F269B92C25DFFCAB681A363F",
+      "path": "evaluate.py"
+    },
+    {
+      "sha256": "76FD958F8E1C74E3375389AF79DBD78E001CFAFD03E4F3C177ADAC3F260A9F93",
+      "path": "extract.py"
+    },
+    {
+      "sha256": "9D7F66637EB9A13E28F511C74C245DAF8290CE07432CA6EAE52A6F4A7976F76C",
+      "path": "graph.py"
+    },
+    {
+      "sha256": "012B218FABAE8843987A6749823FB5349398F44C4BD19404FF947ED374AE3BC1",
+      "path": "policy.py"
+    },
+    {
+      "sha256": "2568B64DC5DC07AACFB904D31E5F79927021D8D04D88D24252B8CF6418FDBEB8",
+      "path": "query.py"
+    }
+  ]
+}

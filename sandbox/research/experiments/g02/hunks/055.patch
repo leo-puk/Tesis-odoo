@@ -1,0 +1,14 @@
+diff --git a/account_credit_control/views/res_partner.xml b/account_credit_control/views/res_partner.xml
+index b110f81..1f36e78 100644
+--- a/account_credit_control/views/res_partner.xml
++++ b/account_credit_control/views/res_partner.xml
+@@ -24,8 +27,7 @@
+                     class="oe_stat_button"
+                     type="action"
+                     name="%(act_partner_credit_relation_relation)d"
+-                    context="{'search_default_partner_id': active_id, 'default_partner_id': active_id}"
+-                    attrs="{'invisible': [('credit_control_count', '=', 0)]}"
++                    invisible="credit_control_count == 0"
+                     icon="fa-tasks"
+                     groups="account_credit_control.group_account_credit_control_manager,account_credit_control.group_account_credit_control_user"
+                 >

@@ -4,3 +4,4 @@ custom-addons/*
 !custom-addons/.gitkeep
 __pycache__/
 *.pyc
+.cache/

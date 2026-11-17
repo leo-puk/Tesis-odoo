@@ -1,0 +1,73 @@
+diff --git a/sale_blanket_order/models/blanket_orders.py b/sale_blanket_order/models/blanket_orders.py
+index e18506b6..e63059c7 100644
+--- a/sale_blanket_order/models/blanket_orders.py
++++ b/sale_blanket_order/models/blanket_orders.py
+@@ -563,35 +558,43 @@ class BlanketOrderLine(models.Model):
+ 
+         return product[field_name] * uom_factor * cur_factor, currency_id.id
+ 
+-    def _get_display_price(self, product):
++    def _get_display_price(self):
+         # Copied and adapted from the sale module
+         self.ensure_one()
+-        pricelist = self.order_id.pricelist_id
+-        partner = self.order_id.partner_id
+-        if self.order_id.pricelist_id.discount_policy == "with_discount":
+-            return product.with_context(pricelist=pricelist.id).lst_price
+-        final_price, rule_id = pricelist._get_product_price_rule(
+-            self.product_id, self.original_uom_qty or 1.0, self.product_uom
++        self.product_id.ensure_one()
++
++        pricelist_price = self.pricelist_item_id._compute_price(
++            product=self.product_id,
++            quantity=self.original_uom_qty or 1.0,
++            uom=self.product_uom,
++            date=fields.Date.today(),
++            currency=self.currency_id,
+         )
+-        context_partner = dict(
+-            self.env.context, partner_id=partner.id, date=fields.Date.today()
+-        )
+-        base_price, currency_id = self.with_context(
+-            **context_partner
+-        )._get_real_price_currency(
+-            self.product_id,
+-            rule_id,
+-            self.original_uom_qty,
+-            self.product_uom,
+-            pricelist.id,
+-        )
+-        if currency_id != pricelist.currency_id.id:
+-            currency = self.env["res.currency"].browse(currency_id)
+-            base_price = currency.with_context(**context_partner).compute(
+-                base_price, pricelist.currency_id
+-            )
++
++        if self.order_id.pricelist_id.discount_policy == "with_discount":
++            return pricelist_price
++
++        if not self.pricelist_item_id:
++            # No pricelist rule found => no discount from pricelist
++            return pricelist_price
++
++        base_price = self._get_pricelist_price_before_discount()
++
+         # negative discounts (= surcharge) are included in the display price
+-        return max(base_price, final_price)
++        return max(base_price, pricelist_price)
++
++    def _get_pricelist_price_before_discount(self):
++        # Copied and adapted from the sale module
++        self.ensure_one()
++        self.product_id.ensure_one()
++
++        return self.pricelist_item_id._compute_price_before_discount(
++            product=self.product_id,
++            quantity=self.product_uom_qty or 1.0,
++            uom=self.product_uom,
++            date=fields.Date.today(),
++            currency=self.currency_id,
++        )
+ 
+     @api.onchange("product_id", "original_uom_qty")
+     def onchange_product(self):

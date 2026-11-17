@@ -1,0 +1,2280 @@
+{
+  "seed": 2026,
+  "cutoff": {
+    "evidence": "Thesis 1.3.4 uses this illustratively; no final model selected",
+    "date": "2025-08-01T00:00:00Z",
+    "status": "design_reference_requires_confirmation"
+  },
+  "excluded_modules": [
+    "account_credit_control",
+    "fieldservice_isp_flow",
+    "hr_timesheet_employee_analytic_tag",
+    "mail_notification_custom_subject",
+    "product_cost_price_avco_sync",
+    "product_variant_sale_price",
+    "sale_advance_payment",
+    "sale_blanket_order",
+    "sale_financial_risk",
+    "server_action_mass_edit",
+    "stock_quant_manual_assign"
+  ],
+  "frame_evidence": null,
+  "candidates": [
+    {
+      "case_id": "OCA/l10n-brazil#5341",
+      "repository": "OCA/l10n-brazil",
+      "number": 5341,
+      "module": "l10n_br_nfe_dfe",
+      "author": "medicegabriel",
+      "published_at": "2026-10-07T16:48:41Z",
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "metadata_url": "https://github.com/OCA/l10n-brazil/pull/5341",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-brazil#5342",
+      "repository": "OCA/l10n-brazil",
+      "number": 5342,
+      "module": "l10n_br_fiscal_dfe_mock",
+      "author": "medicegabriel",
+      "published_at": "2026-10-07T16:48:47Z",
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "metadata_url": "https://github.com/OCA/l10n-brazil/pull/5342",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/crm#778",
+      "repository": "OCA/crm",
+      "number": 778,
+      "module": null,
+      "author": "edescalona",
+      "published_at": "2026-10-21T15:19:30Z",
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "metadata_url": "https://github.com/OCA/crm/pull/778",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-brazil#5312",
+      "repository": "OCA/l10n-brazil",
+      "number": 5312,
+      "module": "l10n_br_repair",
+      "author": "mileo",
+      "published_at": "2026-10-03T10:41:53Z",
+      "from_version": "17.0",
+      "to_version": "18.0",
+      "metadata_url": "https://github.com/OCA/l10n-brazil/pull/5312",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-brazil#5349",
+      "repository": "OCA/l10n-brazil",
+      "number": 5349,
+      "module": "l10n_br_fiscal_dfe_mock",
+      "author": "medicegabriel",
+      "published_at": "2026-10-09T16:45:45Z",
+      "from_version": "17.0",
+      "to_version": "18.0",
+      "metadata_url": "https://github.com/OCA/l10n-brazil/pull/5349",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/social#1940",
+      "repository": "OCA/social",
+      "number": 1940,
+      "module": null,
+      "author": "edescalona",
+      "published_at": "2026-10-26T21:00:16Z",
+      "from_version": "17.0",
+      "to_version": "18.0",
+      "metadata_url": "https://github.com/OCA/social/pull/1940",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/social#1941",
+      "repository": "OCA/social",
+      "number": 1941,
+      "module": null,
+      "author": "edescalona",
+      "published_at": "2026-10-26T23:30:28Z",
+      "from_version": "17.0",
+      "to_version": "18.0",
+      "metadata_url": "https://github.com/OCA/social/pull/1941",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/connector-shopify#28",
+      "repository": "OCA/connector-shopify",
+      "number": 28,
+      "module": "shopify_connector_website_sale",
+      "author": "oliverg09",
+      "published_at": "2026-10-27T10:12:12Z",
+      "from_version": "17.0",
+      "to_version": "18.0",
+      "metadata_url": "https://github.com/OCA/connector-shopify/pull/28",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/social#1942",
+      "repository": "OCA/social",
+      "number": 1942,
+      "module": null,
+      "author": "edescalona",
+      "published_at": "2026-10-27T22:36:42Z",
+      "from_version": "17.0",
+      "to_version": "18.0",
+      "metadata_url": "https://github.com/OCA/social/pull/1942",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/social#1944",
+      "repository": "OCA/social",
+      "number": 1944,
+      "module": null,
+      "author": "edescalona",
+      "published_at": "2026-10-28T00:17:20Z",
+      "from_version": "17.0",
+      "to_version": "18.0",
+      "metadata_url": "https://github.com/OCA/social/pull/1944",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/currency#246",
+      "repository": "OCA/currency",
+      "number": 246,
+      "module": "currency_rate_update_frankfurter",
+      "author": "carlosdauden",
+      "published_at": "2026-10-28T10:23:25Z",
+      "from_version": "17.0",
+      "to_version": "18.0",
+      "metadata_url": "https://github.com/OCA/currency/pull/246",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/social#1945",
+      "repository": "OCA/social",
+      "number": 1945,
+      "module": null,
+      "author": "edescalona",
+      "published_at": "2026-10-28T13:49:46Z",
+      "from_version": "17.0",
+      "to_version": "18.0",
+      "metadata_url": "https://github.com/OCA/social/pull/1945",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/social#1946",
+      "repository": "OCA/social",
+      "number": 1946,
+      "module": null,
+      "author": "edescalona",
+      "published_at": "2026-10-28T16:48:20Z",
+      "from_version": "17.0",
+      "to_version": "18.0",
+      "metadata_url": "https://github.com/OCA/social/pull/1946",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/social#1947",
+      "repository": "OCA/social",
+      "number": 1947,
+      "module": null,
+      "author": "edescalona",
+      "published_at": "2026-10-28T20:01:15Z",
+      "from_version": "17.0",
+      "to_version": "18.0",
+      "metadata_url": "https://github.com/OCA/social/pull/1947",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-italy#5345",
+      "repository": "OCA/l10n-italy",
+      "number": 5345,
+      "module": "l10n_it_financial_statements_report",
+      "author": "eLBati",
+      "published_at": "2026-10-01T14:55:48Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/l10n-italy/pull/5345",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-paraguay#49",
+      "repository": "OCA/l10n-paraguay",
+      "number": 49,
+      "module": "l10n_py_base",
+      "author": "sadamo",
+      "published_at": "2026-10-01T20:59:47Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/l10n-paraguay/pull/49",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/edi-framework#364",
+      "repository": "OCA/edi-framework",
+      "number": 364,
+      "module": null,
+      "author": "etobella",
+      "published_at": "2026-10-02T07:15:46Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/edi-framework/pull/364",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-paraguay#50",
+      "repository": "OCA/l10n-paraguay",
+      "number": 50,
+      "module": "l10n_py",
+      "author": "sadamo",
+      "published_at": "2026-10-02T14:05:16Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/l10n-paraguay/pull/50",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-paraguay#51",
+      "repository": "OCA/l10n-paraguay",
+      "number": 51,
+      "module": "l10n_py_account",
+      "author": "sadamo",
+      "published_at": "2026-10-02T14:08:13Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/l10n-paraguay/pull/51",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-paraguay#52",
+      "repository": "OCA/l10n-paraguay",
+      "number": 52,
+      "module": "l10n_py_edi_base",
+      "author": "sadamo",
+      "published_at": "2026-10-02T14:12:53Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/l10n-paraguay/pull/52",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-paraguay#53",
+      "repository": "OCA/l10n-paraguay",
+      "number": 53,
+      "module": "l10n_py_edi_sifen",
+      "author": "sadamo",
+      "published_at": "2026-10-02T17:09:15Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/l10n-paraguay/pull/53",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-paraguay#54",
+      "repository": "OCA/l10n-paraguay",
+      "number": 54,
+      "module": "l10n_py_maquila_base",
+      "author": "sadamo",
+      "published_at": "2026-10-02T17:10:29Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/l10n-paraguay/pull/54",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-paraguay#72",
+      "repository": "OCA/l10n-paraguay",
+      "number": 72,
+      "module": "l10n_py_maquila_ops",
+      "author": "sadamo",
+      "published_at": "2026-10-06T12:20:07Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/l10n-paraguay/pull/72",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-paraguay#73",
+      "repository": "OCA/l10n-paraguay",
+      "number": 73,
+      "module": "l10n_py_maquila_mrp",
+      "author": "sadamo",
+      "published_at": "2026-10-06T12:20:08Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/l10n-paraguay/pull/73",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-paraguay#74",
+      "repository": "OCA/l10n-paraguay",
+      "number": 74,
+      "module": "l10n_py_maquila_report",
+      "author": "sadamo",
+      "published_at": "2026-10-06T12:20:10Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/l10n-paraguay/pull/74",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/l10n-paraguay#75",
+      "repository": "OCA/l10n-paraguay",
+      "number": 75,
+      "module": "l10n_py_libros",
+      "author": "sadamo",
+      "published_at": "2026-10-06T12:20:12Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/l10n-paraguay/pull/75",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/account-invoicing#2468",
+      "repository": "OCA/account-invoicing",
+      "number": 2468,
+      "module": null,
+      "author": "ivantodorovich",
+      "published_at": "2026-10-06T18:47:28Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/account-invoicing/pull/2468",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/pos#1623",
+      "repository": "OCA/pos",
+      "number": 1623,
+      "module": "pos_product_display_default_code",
+      "author": "moylop260",
+      "published_at": "2026-10-07T19:07:01Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/pos/pull/1623",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/stock-logistics-warehouse#2672",
+      "repository": "OCA/stock-logistics-warehouse",
+      "number": 2672,
+      "module": "stock_quant_reservation_info",
+      "author": "GuillermoNforgeflow",
+      "published_at": "2026-10-13T11:20:05Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2672",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/sale-workflow#4652",
+      "repository": "OCA/sale-workflow",
+      "number": 4652,
+      "module": "sale_invoice_policy",
+      "author": "AndreuOForgeFlow",
+      "published_at": "2026-10-13T12:21:24Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/sale-workflow/pull/4652",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/ddmrp#647",
+      "repository": "OCA/ddmrp",
+      "number": 647,
+      "module": "ddmrp_product_replace",
+      "author": "LoisRForgeFlow",
+      "published_at": "2026-10-14T16:35:02Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/ddmrp/pull/647",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/sale-workflow#4657",
+      "repository": "OCA/sale-workflow",
+      "number": 4657,
+      "module": null,
+      "author": "chaule97",
+      "published_at": "2026-10-15T09:03:01Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/sale-workflow/pull/4657",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/ddmrp#648",
+      "repository": "OCA/ddmrp",
+      "number": 648,
+      "module": "ddmrp_adjustment_matrix",
+      "author": "LoisRForgeFlow",
+      "published_at": "2026-10-15T15:29:46Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/ddmrp/pull/648",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/ddmrp#649",
+      "repository": "OCA/ddmrp",
+      "number": 649,
+      "module": "ddmrp_exclude_moves_adu_calc_sales",
+      "author": "LoisRForgeFlow",
+      "published_at": "2026-10-15T15:45:55Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/ddmrp/pull/649",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/ddmrp#650",
+      "repository": "OCA/ddmrp",
+      "number": 650,
+      "module": "ddmrp_cron_actions_as_job",
+      "author": "LoisRForgeFlow",
+      "published_at": "2026-10-15T16:02:56Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/ddmrp/pull/650",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/fleet#244",
+      "repository": "OCA/fleet",
+      "number": 244,
+      "module": "fleet_vehicle_purchase_link",
+      "author": "WesleyOliveira98",
+      "published_at": "2026-10-15T16:40:14Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/fleet/pull/244",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/stock-logistics-warehouse#2675",
+      "repository": "OCA/stock-logistics-warehouse",
+      "number": 2675,
+      "module": "account_move_line_product",
+      "author": "AaronHForgeFlow",
+      "published_at": "2026-10-16T07:07:10Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2675",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/edi-framework#371",
+      "repository": "OCA/edi-framework",
+      "number": 371,
+      "module": null,
+      "author": "etobella",
+      "published_at": "2026-10-16T15:26:26Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/edi-framework/pull/371",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/multi-company#1074",
+      "repository": "OCA/multi-company",
+      "number": 1074,
+      "module": "partner_multi_company",
+      "author": "carlos-lopez-tecnativa",
+      "published_at": "2026-10-16T16:23:58Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/multi-company/pull/1074",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/manufacture#1892",
+      "repository": "OCA/manufacture",
+      "number": 1892,
+      "module": null,
+      "author": "florentx",
+      "published_at": "2026-10-19T07:16:38Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/manufacture/pull/1892",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/manufacture#1893",
+      "repository": "OCA/manufacture",
+      "number": 1893,
+      "module": null,
+      "author": "florentx",
+      "published_at": "2026-10-19T07:19:42Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/manufacture/pull/1893",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/sale-blanket#56",
+      "repository": "OCA/sale-blanket",
+      "number": 56,
+      "module": "sale_order_blanket_order",
+      "author": "vvrossem",
+      "published_at": "2026-10-19T09:43:58Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/sale-blanket/pull/56",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/stock-logistics-warehouse#2677",
+      "repository": "OCA/stock-logistics-warehouse",
+      "number": 2677,
+      "module": "stock_warehouse_out_pull",
+      "author": "vvrossem",
+      "published_at": "2026-10-19T13:25:39Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2677",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/stock-logistics-reservation#74",
+      "repository": "OCA/stock-logistics-reservation",
+      "number": 74,
+      "module": "stock_available_to_promise_release",
+      "author": "vvrossem",
+      "published_at": "2026-10-19T13:26:06Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/stock-logistics-reservation/pull/74",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/sale-prebook#21",
+      "repository": "OCA/sale-prebook",
+      "number": 21,
+      "module": "sale_stock_prebook",
+      "author": "vvrossem",
+      "published_at": "2026-10-20T07:25:50Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/sale-prebook/pull/21",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/project#1846",
+      "repository": "OCA/project",
+      "number": 1846,
+      "module": "project_group_hr_timesheet",
+      "author": "luisDIXMIT",
+      "published_at": "2026-10-21T08:37:49Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/project/pull/1846",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/mail#312",
+      "repository": "OCA/mail",
+      "number": 312,
+      "module": "mail_gateway_telegram",
+      "author": "luisDIXMIT",
+      "published_at": "2026-10-22T13:40:32Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/mail/pull/312",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/ddmrp#652",
+      "repository": "OCA/ddmrp",
+      "number": 652,
+      "module": "ddmrp_warning_as_job",
+      "author": "LoisRForgeFlow",
+      "published_at": "2026-10-22T14:13:42Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/ddmrp/pull/652",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/stock-logistics-warehouse#2688",
+      "repository": "OCA/stock-logistics-warehouse",
+      "number": 2688,
+      "module": "stock_demand_estimate_matrix",
+      "author": "LoisRForgeFlow",
+      "published_at": "2026-10-23T09:41:06Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/stock-logistics-warehouse/pull/2688",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/manufacture#1904",
+      "repository": "OCA/manufacture",
+      "number": 1904,
+      "module": "mrp_bom_component_mass_change",
+      "author": "AndreuOForgeFlow",
+      "published_at": "2026-10-26T16:29:07Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/manufacture/pull/1904",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/manufacture#1907",
+      "repository": "OCA/manufacture",
+      "number": 1907,
+      "module": "mrp_workorder_sequence",
+      "author": "LoisRForgeFlow",
+      "published_at": "2026-10-27T17:13:56Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/manufacture/pull/1907",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    },
+    {
+      "case_id": "OCA/purchase-workflow#3249",
+      "repository": "OCA/purchase-workflow",
+      "number": 3249,
+      "module": "purchase_order_line_import_sheet_file",
+      "author": "AndreuOForgeFlow",
+      "published_at": "2026-10-29T15:58:19Z",
+      "from_version": "18.0",
+      "to_version": "19.0",
+      "metadata_url": "https://github.com/OCA/purchase-workflow/pull/3249",
+      "criteria": {
+        "independent_maintainer_review": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "single_module": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "consecutive_versions": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "automated_tests": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "public_community_dependencies": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        },
+        "no_migration_behavior_fix": {
+          "status": "pending",
+          "evidence": null,
+          "reviewer": null
+        }
+      }
+    }
+  ],
+  "partial_frame_captures": [
+    {
+      "query": "org:OCA is:pr is:merged \"[MIG]\" in:title base:17.0 created:2026-10-01..2026-10-31",
+      "captured_at": "2026-11-14T14:19:43.04025-05:00",
+      "items": 3,
+      "scope": "one monthly window, incomplete population frame"
+    },
+    {
+      "query": "org:OCA is:pr is:merged \"[MIG]\" in:title base:18.0 created:2026-10-01..2026-10-31",
+      "captured_at": "2026-11-14T14:19:45.504407-05:00",
+      "items": 11,
+      "scope": "one monthly window, incomplete population frame"
+    },
+    {
+      "query": "org:OCA is:pr is:merged \"[MIG]\" in:title base:19.0 created:2026-10-01..2026-10-31",
+      "captured_at": "2026-11-14T14:19:48.043458-05:00",
+      "items": 38,
+      "scope": "one monthly window, incomplete population frame"
+    }
+  ]
+}

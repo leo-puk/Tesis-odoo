@@ -1,0 +1,44 @@
+{
+  "case_id": "OCA/account-invoicing#2468",
+  "repository": "OCA/account-invoicing",
+  "number": 2468,
+  "module": null,
+  "author": "ivantodorovich",
+  "published_at": "2026-10-06T18:47:28Z",
+  "from_version": "18.0",
+  "to_version": "19.0",
+  "metadata_url": "https://github.com/OCA/account-invoicing/pull/2468",
+  "criteria": {
+    "independent_maintainer_review": {
+      "status": "pending",
+      "evidence": null,
+      "reviewer": null
+    },
+    "single_module": {
+      "status": "pending",
+      "evidence": null,
+      "reviewer": null
+    },
+    "consecutive_versions": {
+      "status": "pending",
+      "evidence": null,
+      "reviewer": null
+    },
+    "automated_tests": {
+      "status": "pending",
+      "evidence": null,
+      "reviewer": null
+    },
+    "public_community_dependencies": {
+      "status": "pending",
+      "evidence": null,
+      "reviewer": null
+    },
+    "no_migration_behavior_fix": {
+      "status": "pending",
+      "evidence": null,
+      "reviewer": null
+    }
+  },
+  "metadata_blocked": "Not requested after an API access/rate-limit failure"
+}

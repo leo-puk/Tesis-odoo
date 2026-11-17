@@ -1,0 +1,13 @@
+diff --git a/server_action_mass_edit/README.rst b/server_action_mass_edit/README.rst
+index e492995..e65635c 100644
+--- a/server_action_mass_edit/README.rst
++++ b/server_action_mass_edit/README.rst
+@@ -62,7 +62,7 @@ Configuration
+ -  Select the object and add the fields of that object on which you want
+    to apply mass editing.
+ 
+-|image|
++|Configuration|
+ 
+ -  *Add Action*: Click on *Create Contextual Action* to add mass editing
+    in *Action* menu.

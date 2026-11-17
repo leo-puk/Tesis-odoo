@@ -1,0 +1,6 @@
+{
+  "url": "https://api.github.com/repos/OCA/l10n-brazil/pulls/5342",
+  "captured_at": "2026-11-14T20:14:55.210699+00:00",
+  "status": 403,
+  "reason": "HTTP error; rate limits/authentication may require retry later"
+}

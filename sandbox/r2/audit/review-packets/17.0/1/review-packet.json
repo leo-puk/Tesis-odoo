@@ -1,0 +1,44 @@
+{
+  "case_id": "OCA/l10n-brazil#5342",
+  "repository": "OCA/l10n-brazil",
+  "number": 5342,
+  "module": "l10n_br_fiscal_dfe_mock",
+  "author": "medicegabriel",
+  "published_at": "2026-10-07T16:48:47Z",
+  "from_version": "16.0",
+  "to_version": "17.0",
+  "metadata_url": "https://github.com/OCA/l10n-brazil/pull/5342",
+  "criteria": {
+    "independent_maintainer_review": {
+      "status": "pending",
+      "evidence": null,
+      "reviewer": null
+    },
+    "single_module": {
+      "status": "pending",
+      "evidence": null,
+      "reviewer": null
+    },
+    "consecutive_versions": {
+      "status": "pending",
+      "evidence": null,
+      "reviewer": null
+    },
+    "automated_tests": {
+      "status": "pending",
+      "evidence": null,
+      "reviewer": null
+    },
+    "public_community_dependencies": {
+      "status": "pending",
+      "evidence": null,
+      "reviewer": null
+    },
+    "no_migration_behavior_fix": {
+      "status": "pending",
+      "evidence": null,
+      "reviewer": null
+    }
+  },
+  "metadata_blocked": "HTTP 403 for api.github.com/repos/OCA/l10n-brazil/pulls/5342"
+}

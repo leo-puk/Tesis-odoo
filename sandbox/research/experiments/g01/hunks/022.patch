@@ -1,0 +1,16 @@
+diff --git a/server_action_mass_edit/__manifest__.py b/server_action_mass_edit/__manifest__.py
+index 0d88db6..bc2aaeb 100644
+--- a/server_action_mass_edit/__manifest__.py
++++ b/server_action_mass_edit/__manifest__.py
+@@ -20,5 +20,11 @@
+         "views/ir_actions_server.xml",
+         "wizard/mass_editing_wizard.xml",
+     ],
++    "assets": {
++        "web.assets_backend": [
++            "/server_action_mass_edit/static/src/js/record.esm.js",
++            "/server_action_mass_edit/static/src/js/static_list.esm.js",
++        ]
++    },
+     "demo": ["demo/mass_editing.xml"],
+ }

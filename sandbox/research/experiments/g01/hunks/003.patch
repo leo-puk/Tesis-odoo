@@ -1,0 +1,16 @@
+diff --git a/stock_quant_manual_assign/i18n/stock_quant_manual_assign.pot b/stock_quant_manual_assign/i18n/stock_quant_manual_assign.pot
+index 83bf5ef..ab98d47 100644
+--- a/stock_quant_manual_assign/i18n/stock_quant_manual_assign.pot
++++ b/stock_quant_manual_assign/i18n/stock_quant_manual_assign.pot
+@@ -23,11 +23,6 @@ msgstr ""
+ msgid "Assign Manual Quants Lines"
+ msgstr ""
+ 
+-#. module: stock_quant_manual_assign
+-#: model:ir.model.fields,field_description:stock_quant_manual_assign.field_stock_picking_type__auto_fill_qty_done
+-msgid "Auto-fill Quantity Done"
+-msgstr ""
+-
+ #. module: stock_quant_manual_assign
+ #: model_terms:ir.ui.view,arch_db:stock_quant_manual_assign.assign_manual_quants_form_view
+ msgid "Cancel"

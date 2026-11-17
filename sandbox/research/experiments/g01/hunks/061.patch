@@ -1,0 +1,33 @@
+diff --git a/sale_blanket_order/models/blanket_orders.py b/sale_blanket_order/models/blanket_orders.py
+index e18506b6..e63059c7 100644
+--- a/sale_blanket_order/models/blanket_orders.py
++++ b/sale_blanket_order/models/blanket_orders.py
+@@ -91,26 +85,21 @@ class BlanketOrder(models.Model):
+         store=True,
+         copy=False,
+     )
+-    validity_date = fields.Date(
+-        states=READONLY_FIELD_STATES,
+-    )
++    validity_date = fields.Date()
+     client_order_ref = fields.Char(
+         string="Customer Reference",
+         copy=False,
+-        states=READONLY_FIELD_STATES,
+     )
+-    note = fields.Text(default=_default_note, states=READONLY_FIELD_STATES)
++    note = fields.Text(default=_default_note)
+     user_id = fields.Many2one(
+         "res.users",
+         string="Salesperson",
+-        states=READONLY_FIELD_STATES,
+     )
+     team_id = fields.Many2one(
+         "crm.team",
+         string="Sales Team",
+         change_default=True,
+         default=lambda self: self.env["crm.team"]._get_default_team_id(),
+-        states=READONLY_FIELD_STATES,
+     )
+     company_id = fields.Many2one(
+         comodel_name="res.company",

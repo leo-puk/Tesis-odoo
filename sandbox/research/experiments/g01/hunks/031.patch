@@ -1,0 +1,17 @@
+diff --git a/server_action_mass_edit/static/description/index.html b/server_action_mass_edit/static/description/index.html
+index e97c8d1..1652ca4 100644
+--- a/server_action_mass_edit/static/description/index.html
++++ b/server_action_mass_edit/static/description/index.html
+@@ -8,10 +8,11 @@
+ 
+ /*
+ :Author: David Goodger (goodger@python.org)
+-:Id: $Id: html4css1.css 8954 2022-01-20 10:10:25Z milde $
++:Id: $Id: html4css1.css 9511 2024-01-13 09:50:07Z milde $
+ :Copyright: This stylesheet has been placed in the public domain.
+ 
+ Default cascading style sheet for the HTML output of Docutils.
++Despite the name, some widely supported CSS2 features are used.
+ 
+ See https://docutils.sourceforge.io/docs/howto/html-stylesheets.html for how to
+ customize this style sheet.

@@ -1,0 +1,13 @@
+diff --git a/server_action_mass_edit/__manifest__.py b/server_action_mass_edit/__manifest__.py
+index 0d88db6..bc2aaeb 100644
+--- a/server_action_mass_edit/__manifest__.py
++++ b/server_action_mass_edit/__manifest__.py
+@@ -2,7 +2,7 @@
+ # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+ {
+     "name": "Mass Editing",
+-    "version": "16.0.2.0.3",
++    "version": "17.0.1.0.0",
+     "author": "Serpent Consulting Services Pvt. Ltd., "
+     "Tecnativa, "
+     "GRAP, "

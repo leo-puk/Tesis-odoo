@@ -1,0 +1,16 @@
+diff --git a/account_credit_control/static/description/index.html b/account_credit_control/static/description/index.html
+index 657ce43..98aa0a3 100644
+--- a/account_credit_control/static/description/index.html
++++ b/account_credit_control/static/description/index.html
+@@ -466,7 +466,10 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
+ </li>
+ <li>Enric Tobella &lt;<a class="reference external" href="mailto:etobella&#64;creublanca.es">etobella&#64;creublanca.es</a>&gt;</li>
+ <li>Naglis Jonaitis (Versada UAB) &lt;<a class="reference external" href="mailto:naglis&#64;versada.eu">naglis&#64;versada.eu</a>&gt;</li>
+-<li>Andrea Stirpe &lt;<a class="reference external" href="mailto:a.stirpe&#64;onestein.nl">a.stirpe&#64;onestein.nl</a>&gt;</li>
++<li><a class="reference external" href="https://www.360erp.com">360ERP</a>:<ul>
++<li>Andrea Stirpe</li>
++</ul>
++</li>
+ </ul>
+ </div>
+ <div class="section" id="maintainers">

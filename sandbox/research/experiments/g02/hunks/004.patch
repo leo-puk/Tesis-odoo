@@ -1,0 +1,12 @@
+diff --git a/product_variant_sale_price/README.rst b/product_variant_sale_price/README.rst
+index d9c7f1e..d890755 100644
+--- a/product_variant_sale_price/README.rst
++++ b/product_variant_sale_price/README.rst
+@@ -82,6 +84,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
+ mission is to support the collaborative development of Odoo features and
+ promote its widespread use.
+ 
+-This module is part of the `OCA/product-variant <https://github.com/OCA/product-variant/tree/16.0/product_variant_sale_price>`_ project on GitHub.
++This module is part of the `OCA/product-variant <https://github.com/OCA/product-variant/tree/17.0/product_variant_sale_price>`_ project on GitHub.
+ 
+ You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

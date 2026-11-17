@@ -1,0 +1,92 @@
+2026-10-10 01:12:13Z [g02] prepare (intento 1): product_variant_sale_price, product_cost_price_avco_sync, account_credit_control, hr_timesheet_employee_analytic_tag, mail_notification_custom_subject
+2026-10-10 01:14:42Z [g02] prepare: 70 hunks, deps core=['account', 'base', 'hr_timesheet', 'mail', 'sale', 'stock_account'] oca=['account_analytic_tag'], tags={'ADMIN': 20, 'ESTILO': 1, 'G17-01': 5, 'G17-02': 1, 'G17-06': 1, 'G17-07': 12, 'G17-10': 1, 'G17-14': 1, 'SIN_GUIA': 29}
+2026-10-10 01:14:43Z [g02] seed: instalando en 16.0 la BD x_g02_prod con account,base,hr_timesheet,mail,sale,stock_account,account_analytic_tag,product_variant_sale_price,product_cost_price_avco_sync,account_credit_control,hr_timesheet_employee_analytic_tag,mail_notification_custom_subject
+2026-10-10 01:16:05Z [g02] seed: x_g02_prod lista en 82s, {'tables': 500, 'modules': 572, 'installed': 74}
+2026-10-10 01:16:05Z [g02] seed: instalando en 16.0 la BD x_g02_base con account,base,hr_timesheet,mail,sale,stock_account,account_analytic_tag
+2026-10-10 01:17:21Z [g02] seed: x_g02_base lista en 75s, {'tables': 480, 'modules': 572, 'installed': 69}
+2026-10-10 01:17:24Z [g02] baseline: fase install sin los modulos del grupo
+2026-10-10 01:19:00Z [g02] baseline: install rc=0 96s, 0 eventos (se descuentan)
+2026-10-10 01:19:08Z [g02] baseline: fase upgrade sin los modulos del grupo
+2026-10-13 19:53:40Z [g02] baseline: fase install sin los modulos del grupo
+2026-10-13 20:12:50Z [g02] seed: instalando en 16.0 la BD x_g02_prod con account,base,hr_timesheet,mail,sale,stock_account,account_analytic_tag,product_variant_sale_price,product_cost_price_avco_sync,account_credit_control,hr_timesheet_employee_analytic_tag,mail_notification_custom_subject
+2026-10-13 20:14:06Z [g02] seed: x_g02_prod lista en 75s, {'tables': 500, 'modules': 572, 'installed': 74}
+2026-10-13 20:14:09Z [g02] seed: instalando en 16.0 la BD x_g02_base con account,base,hr_timesheet,mail,sale,stock_account,account_analytic_tag
+2026-10-13 20:15:19Z [g02] seed: x_g02_base lista en 70s, {'tables': 480, 'modules': 572, 'installed': 69}
+2026-10-13 20:15:24Z [g02] baseline: fase install sin los modulos del grupo
+2026-10-13 20:16:54Z [g02] baseline: install rc=0 87s, 0 eventos (se descuentan)
+2026-10-13 20:16:56Z [g02] baseline: fase upgrade sin los modulos del grupo
+2026-10-13 20:19:12Z [g02] baseline: upgrade rc=0 135s, 989 eventos (se descuentan)
+2026-10-13 20:19:18Z [g02] === fase install ===
+2026-10-13 20:19:24Z [g02] iter 01 install: FALLA rc=255 2s | 2 errores y 0 avisos nuevos | log runs/exp-g02/01-install.log
+2026-10-13 20:19:29Z [g02]   C001 [A/manifest_version] cob=L account_credit_control : Failed to load registry  -> hunks 028 (nivel 2, 2 lineas)
+2026-10-13 20:19:35Z [g02] iter 02 install: FALLA rc=255 2s | 2 errores y 0 avisos nuevos | log runs/exp-g02/02-install.log
+2026-10-13 20:19:39Z [g02]   C002 [A/manifest_version] cob=L hr_timesheet_employee_analytic_tag : Failed to load registry  -> hunks 058 (nivel 2, 2 lineas)
+2026-10-13 20:19:47Z [g02] iter 03 install: FALLA rc=255 4s | 2 errores y 0 avisos nuevos | log runs/exp-g02/03-install.log
+2026-10-13 20:19:51Z [g02]   C003 [A/manifest_version] cob=L mail_notification_custom_subject : Failed to load registry  -> hunks 066 (nivel 2, 2 lineas)
+2026-10-13 20:19:57Z [g02] iter 04 install: FALLA rc=255 3s | 2 errores y 0 avisos nuevos | log runs/exp-g02/04-install.log
+2026-10-13 20:20:01Z [g02]   C004 [A/manifest_version] cob=L product_cost_price_avco_sync : Failed to load registry  -> hunks 019 (nivel 2, 2 lineas)
+2026-10-13 20:20:07Z [g02] iter 05 install: FALLA rc=255 3s | 2 errores y 0 avisos nuevos | log runs/exp-g02/05-install.log
+2026-10-13 20:20:10Z [g02]   C005 [A/manifest_version] cob=L product_variant_sale_price : Failed to load registry  -> hunks 005 (nivel 2, 2 lineas)
+2026-10-13 20:21:27Z [g02] iter 06 install: FALLA rc=255 70s | 2 errores y 12 avisos nuevos | log runs/exp-g02/06-install.log
+2026-10-13 20:21:31Z [g02]   C006 [D/attrs_states] cob=L account_credit_control account_credit_control/views/credit_control_policy.xml:3: Failed to load registry  -> hunks 046,047 (nivel 1, 4 lineas)
+2026-10-13 20:23:03Z [g02] iter 07 install: FALLA rc=255 85s | 2 errores y 12 avisos nuevos | log runs/exp-g02/07-install.log
+2026-10-13 20:23:08Z [g02]   C007 [D/attrs_states] cob=L account_credit_control account_credit_control/views/credit_control_run.xml:14: Failed to load registry  -> hunks 048,049,050,051,052 (nivel 1, 31 lineas)
+2026-10-13 20:24:35Z [g02] iter 08 install: FALLA rc=255 80s | 2 errores y 13 avisos nuevos | log runs/exp-g02/08-install.log
+2026-10-13 20:24:40Z [g02]   C008 [D/attrs_states] cob=L account_credit_control account_credit_control/views/res_partner.xml:18: Failed to load registry  -> hunks 054,055,056,057 (nivel 1, 10 lineas)
+2026-10-13 20:26:09Z [g02] iter 09 install: FALLA rc=255 81s | 2 errores y 12 avisos nuevos | log runs/exp-g02/09-install.log
+2026-10-13 20:26:16Z [g02]   C009 [D/xpath_missing] cob=L account_credit_control account_credit_control/views/res_config_settings_view.xml:3: Failed to load registry  -> hunks 053 (nivel 1, 77 lineas)
+2026-10-13 20:27:43Z [g02] iter 10 install: FALLA rc=255 79s | 2 errores y 12 avisos nuevos | log runs/exp-g02/10-install.log
+2026-10-13 20:27:47Z [g02]   C010 [C/unknown_field_orm] cob=R account_credit_control account_credit_control/data/data.xml:4: Failed to load registry  -> hunks 029 (nivel 1, 5 lineas)
+2026-10-13 20:29:08Z [g02] iter 11 install: FALLA rc=255 76s | 2 errores y 12 avisos nuevos | log runs/exp-g02/11-install.log
+2026-10-13 20:29:11Z [g02]   C011 [?/?] cob=R mail_notification_custom_subject mail_notification_custom_subject/models/mail_thread.py:72: Failed to load registry  -> hunks 068,069 (nivel 1, 6 lineas)
+2026-10-13 20:30:46Z [g02] iter 12 install: FALLA rc=255 89s | 2 errores y 11 avisos nuevos | log runs/exp-g02/12-install.log
+2026-10-13 20:30:49Z [g02]   C012 [D/attrs_states] cob=L product_variant_sale_price product_variant_sale_price/views/product_views.xml:3: Failed to load registry  -> hunks 018 (nivel 1, 2 lineas)
+2026-10-13 20:32:22Z [g02] iter 13 install: FALLA rc=255 89s | 2 errores y 11 avisos nuevos | log runs/exp-g02/13-install.log
+2026-10-13 20:32:22Z [g02]   C013 SIN RESOLVER [B/type_error_sig] ? : Failed to load registry 
+2026-10-13 20:32:22Z [g02] fase install: sin_resolver
+2026-10-13 20:32:22Z [g02] === fase upgrade ===
+2026-10-13 20:35:40Z [g02] iter 14 upgrade: OK rc=0 191s | 0 errores y 26 avisos nuevos | log runs/exp-g02/14-upgrade.log
+2026-10-13 20:35:40Z [g02]   C014 aviso [?] -: /usr/lib/python3/dist-packages/odoo/fields.py:540: UserWarning: Since Odoo 17, property credit.control.line.date.states is no longer support
+2026-10-13 20:35:41Z [g02]   C015 aviso [?] -: /usr/lib/python3/dist-packages/odoo/fields.py:540: UserWarning: Since Odoo 17, property credit.control.line.date_due.states is no longer sup
+2026-10-13 20:35:41Z [g02]   C016 aviso [?] -: /usr/lib/python3/dist-packages/odoo/fields.py:540: UserWarning: Since Odoo 17, property credit.control.line.date_sent.states is no longer su
+2026-10-13 20:35:41Z [g02]   C017 aviso [?] -: /usr/lib/python3/dist-packages/odoo/fields.py:540: UserWarning: Since Odoo 17, property credit.control.line.channel.states is no longer supp
+2026-10-13 20:35:41Z [g02]   C018 aviso [?] -: /usr/lib/python3/dist-packages/odoo/fields.py:540: UserWarning: Since Odoo 17, property credit.control.line.partner_id.states is no longer s
+2026-10-13 20:35:41Z [g02]   C019 aviso [?] -: /usr/lib/python3/dist-packages/odoo/fields.py:540: UserWarning: Since Odoo 17, property credit.control.line.policy_level_id.states is no lon
+2026-10-13 20:35:41Z [g02]   C020 aviso [?] -: /usr/lib/python3/dist-packages/odoo/fields.py:540: UserWarning: Since Odoo 17, property credit.control.run.date.states is no longer supporte
+2026-10-13 20:35:41Z [g02]   C021 aviso [?] -: /usr/lib/python3/dist-packages/odoo/fields.py:540: UserWarning: Since Odoo 17, property credit.control.run.policy_ids.states is no longer su
+2026-10-13 20:35:42Z [g02]   C022 aviso [?] -: /usr/lib/python3/dist-packages/odoo/fields.py:540: UserWarning: Since Odoo 17, property credit.control.run.company_id.states is no longer su
+2026-10-13 20:35:42Z [g02]   C023 aviso [B] account_credit_control: /usr/lib/python3/dist-packages/odoo/addons/base/models/ir_module.py:194: DeprecationWarning: XML declarations in HTML module descriptions ar
+2026-10-13 20:35:42Z [g02]   C024 aviso [D] account_credit_control: Can't render custom view account_credit_control.partner_view_buttons for model res.partner. Assuming you are migrating between major version
+2026-10-13 20:35:42Z [g02]   C025 aviso [D] hr_timesheet_employee_analytic_tag: Can't render custom view hr_timesheet_employee_analytic_tag.hr_employee_view_form_inherit_timesheet for model hr.employee. Assuming you are 
+2026-10-13 20:35:42Z [g02]   C026 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model credit.control.analysis 
+2026-10-13 20:35:42Z [g02]   C027 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model credit.control.policy.changer 
+2026-10-13 20:35:43Z [g02]   C028 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model credit.control.printer 
+2026-10-13 20:35:43Z [g02]   C029 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model credit.control.marker 
+2026-10-13 20:35:43Z [g02]   C030 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model credit.control.emailer 
+2026-10-13 20:35:43Z [g02]   C031 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model res.partner.payment.action.type 
+2026-10-13 20:35:43Z [g02]   C032 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model credit.control.run 
+2026-10-13 20:35:43Z [g02]   C033 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model credit.control.line 
+2026-10-13 20:35:43Z [g02]   C034 aviso [K] -: Module Unknown: Not dropping the column of field message_main_attachment_id of model credit.control.line 
+2026-10-13 20:35:43Z [g02]   C035 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model credit.control.policy.level 
+2026-10-13 20:35:43Z [g02]   C036 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model credit.control.policy 
+2026-10-13 20:35:44Z [g02]   C037 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model credit.control.communication 
+2026-10-13 20:35:44Z [g02]   C038 aviso [K] -: Module Unknown: Not dropping the column of field message_main_attachment_id of model credit.control.communication 
+2026-10-13 20:35:44Z [g02]   C039 aviso [K] -: Module Unknown: Not dropping the column of field __last_update of model mail.message.custom.subject 
+2026-10-13 20:35:44Z [g02] fase upgrade: ok
+2026-10-13 20:35:44Z [g02] === fase test ===
+2026-10-13 20:38:18Z [g02] iter 15 test: FALLA rc=255 145s | 2 errores y 11 avisos nuevos | log runs/exp-g02/15-test.log
+2026-10-13 20:38:18Z [g02]   C040 SIN RESOLVER [B/type_error_sig] ? : Failed to load registry 
+2026-10-13 20:38:19Z [g02] fase test: sin_resolver
+2026-10-13 20:38:33Z [g02] === fase install ===
+2026-10-13 20:41:04Z [g02] iter 16 install: FALLA rc=255 143s | 2 errores y 11 avisos nuevos | log runs/exp-g02/16-install.log
+2026-10-13 20:41:10Z [g02]   C041 [B/type_error_sig] cob=R product_variant_sale_price : Failed to load registry  -> hunks 006,007,017 (nivel 2, 8 lineas)
+2026-10-13 20:43:53Z [g02] iter 17 install: OK rc=0 156s | 0 errores y 10 avisos nuevos | log runs/exp-g02/17-install.log
+2026-10-13 20:43:53Z [g02] fase install: ok
+2026-10-13 20:43:53Z [g02] === fase upgrade ===
+2026-10-13 20:47:16Z [g02] iter 18 upgrade: OK rc=0 195s | 0 errores y 26 avisos nuevos | log runs/exp-g02/18-upgrade.log
+2026-10-13 20:47:17Z [g02] fase upgrade: ok
+2026-10-13 20:47:17Z [g02] === fase test ===
+2026-10-13 20:49:22Z [g02] iter 19 test: FALLA rc=1 120s | 2 errores y 10 avisos nuevos | log runs/exp-g02/19-test.log
+2026-10-13 20:49:26Z [g02]   C042 [B/attribute_error] cob=C product_cost_price_avco_sync product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py:315: ERROR: TestProductCostPriceAvcoSync.test_change_quantiy_price_xx -> hunks 021,022,023,024,025 (nivel 1, 12 lineas)
+2026-10-13 20:51:24Z [g02] iter 20 test: OK rc=0 113s | 0 errores y 10 avisos nuevos | log runs/exp-g02/20-test.log
+2026-10-13 20:51:24Z [g02] fase test: ok

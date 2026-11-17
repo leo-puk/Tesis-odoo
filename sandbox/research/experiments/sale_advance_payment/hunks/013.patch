@@ -1,0 +1,14 @@
+diff --git a/sale_advance_payment/wizard/sale_advance_payment_wzd.py b/sale_advance_payment/wizard/sale_advance_payment_wzd.py
+index f9913cbe..7177b672 100644
+--- a/sale_advance_payment/wizard/sale_advance_payment_wzd.py
++++ b/sale_advance_payment/wizard/sale_advance_payment_wzd.py
+@@ -66,7 +68,8 @@ class AccountVoucherWizard(models.TransientModel):
+                 ):
+                     raise exceptions.ValidationError(
+                         _(
+-                            "Inbound amount of advance is greater than residual amount on sale"
++                            "Inbound amount of advance is greater than residual "
++                            "amount on sale"
+                         )
+                     )
+             else:

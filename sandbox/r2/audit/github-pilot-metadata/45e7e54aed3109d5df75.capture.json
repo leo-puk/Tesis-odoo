@@ -1,0 +1,15 @@
+{
+  "url": "https://api.github.com/repos/OCA/sale-workflow/pulls/3244",
+  "captured_at": "2026-11-14T19:04:10.253493+00:00",
+  "response_sha256": "6d5f8af0d76b22556bdacaf9148e315d48c8367d86384b07ffb4e7fcd69eac5c",
+  "stored_sha256": "df85fb07642b2fdb364a3f247aa4af61be973d522e0f48b8a5d9257aa7451476",
+  "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\github-pilot-metadata\\45e7e54aed3109d5df75-df85fb07642b.json",
+  "capture_form": "projected_metadata_only_no_code_or_review_bodies",
+  "headers": {
+    "content-type": "application/json; charset=utf-8",
+    "etag": "\"59df3962c808af98902a18f787242d898725fcc25083480623c2f60ca5f21d54\"",
+    "x-ratelimit-limit": "60",
+    "x-ratelimit-remaining": "49",
+    "x-ratelimit-reset": "1794683353"
+  }
+}

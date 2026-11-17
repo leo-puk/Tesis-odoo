@@ -1,0 +1,12 @@
+diff --git a/sale_advance_payment/views/sale_view.xml b/sale_advance_payment/views/sale_view.xml
+index 148284b4..31e1f71c 100644
+--- a/sale_advance_payment/views/sale_view.xml
++++ b/sale_advance_payment/views/sale_view.xml
+@@ -20,6 +20,7 @@
+                         name="account_payment_ids"
+                         nolabel="1"
+                         colspan="4"
++                        readonly="True"
+                         context="{'form_view_ref': 'account.view_account_payment_form','tree_view_ref': 'account.view_account_payment_tree'}"
+                     />
+                 </page>

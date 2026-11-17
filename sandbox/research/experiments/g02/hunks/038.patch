@@ -1,0 +1,14 @@
+diff --git a/account_credit_control/models/credit_control_run.py b/account_credit_control/models/credit_control_run.py
+index 8f864ec..77816fb 100644
+--- a/account_credit_control/models/credit_control_run.py
++++ b/account_credit_control/models/credit_control_run.py
+@@ -22,8 +22,7 @@ class CreditControlRun(models.Model):
+     date = fields.Date(
+         string="Controlling Date",
+         required=True,
+-        readonly=True,
+-        states={"draft": [("readonly", False)]},
++        readonly=False,
+     )
+     policy_ids = fields.Many2many(
+         comodel_name="credit.control.policy",

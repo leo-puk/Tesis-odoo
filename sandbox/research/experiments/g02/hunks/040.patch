@@ -1,0 +1,14 @@
+diff --git a/account_credit_control/models/credit_control_run.py b/account_credit_control/models/credit_control_run.py
+index 8f864ec..77816fb 100644
+--- a/account_credit_control/models/credit_control_run.py
++++ b/account_credit_control/models/credit_control_run.py
+@@ -69,8 +67,7 @@ class CreditControlRun(models.Model):
+     company_id = fields.Many2one(
+         comodel_name="res.company",
+         default=lambda self: self.env.company,
+-        readonly=True,
+-        states={"draft": [("readonly", False)]},
++        readonly=False,
+         index=True,
+     )
+ 

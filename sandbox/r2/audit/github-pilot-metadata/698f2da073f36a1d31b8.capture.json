@@ -1,0 +1,15 @@
+{
+  "url": "https://api.github.com/repos/OCA/sale-workflow/pulls/3244/reviews?per_page=100",
+  "captured_at": "2026-11-14T19:04:10.987118+00:00",
+  "response_sha256": "cd0a2326bf7af4d0d77c28883635b79d1df65bb5f36d8c9e6aba75b63dc34d58",
+  "stored_sha256": "6edf5b57e34ba5dbc018d5d4e17d435a4ced959ef7963bdd620996e8ffb39244",
+  "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\github-pilot-metadata\\698f2da073f36a1d31b8-6edf5b57e34b.json",
+  "capture_form": "projected_metadata_only_no_code_or_review_bodies",
+  "headers": {
+    "content-type": "application/json; charset=utf-8",
+    "etag": "W/\"1e08d68727243a9af1d3efcbcf8cbe9d79928600c42f18ce02c6e0c76a069719\"",
+    "x-ratelimit-limit": "60",
+    "x-ratelimit-remaining": "58",
+    "x-ratelimit-reset": "1794686449"
+  }
+}

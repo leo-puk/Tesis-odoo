@@ -1,0 +1,12 @@
+diff --git a/stock_quant_manual_assign/__manifest__.py b/stock_quant_manual_assign/__manifest__.py
+index 72c653e..586d108 100644
+--- a/stock_quant_manual_assign/__manifest__.py
++++ b/stock_quant_manual_assign/__manifest__.py
+@@ -21,7 +21,6 @@
+         "wizard/assign_manual_quants_view.xml",
+         "views/stock_move_view.xml",
+         "security/ir.model.access.csv",
+-        "views/stock_picking_type_views.xml",
+     ],
+     "installable": True,
+ }

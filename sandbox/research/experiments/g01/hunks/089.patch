@@ -1,0 +1,14 @@
+diff --git a/sale_blanket_order/wizard/create_sale_orders.py b/sale_blanket_order/wizard/create_sale_orders.py
+index 13eff934..08cbfdb6 100644
+--- a/sale_blanket_order/wizard/create_sale_orders.py
++++ b/sale_blanket_order/wizard/create_sale_orders.py
+@@ -79,7 +79,8 @@ class BlanketOrderWizard(models.TransientModel):
+                 },
+             )
+             for bol in bo_lines.filtered(
+-                lambda l: not l.display_type and l.remaining_uom_qty != 0.0
++                lambda bo_line: not bo_line.display_type
++                and bo_line.remaining_uom_qty != 0.0
+             )
+         ]
+         return lines

@@ -1,0 +1,18 @@
+diff --git a/stock_quant_manual_assign/i18n/stock_quant_manual_assign.pot b/stock_quant_manual_assign/i18n/stock_quant_manual_assign.pot
+index 83bf5ef..ab98d47 100644
+--- a/stock_quant_manual_assign/i18n/stock_quant_manual_assign.pot
++++ b/stock_quant_manual_assign/i18n/stock_quant_manual_assign.pot
+@@ -168,13 +163,6 @@ msgstr ""
+ msgid "Select"
+ msgstr ""
+ 
+-#. module: stock_quant_manual_assign
+-#: model:ir.model.fields,help:stock_quant_manual_assign.field_stock_picking_type__auto_fill_qty_done
+-msgid ""
+-"Select this in case done quantity of the stock move line should be auto-"
+-"filled when quants are manually assigned."
+-msgstr ""
+-
+ #. module: stock_quant_manual_assign
+ #. odoo-python
+ #: code:addons/stock_quant_manual_assign/wizard/assign_manual_quants.py:0

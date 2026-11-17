@@ -1,0 +1,13 @@
+diff --git a/server_action_mass_edit/readme/CONFIGURE.md b/server_action_mass_edit/readme/CONFIGURE.md
+index 3696ed9..c479c5d 100644
+--- a/server_action_mass_edit/readme/CONFIGURE.md
++++ b/server_action_mass_edit/readme/CONFIGURE.md
+@@ -3,7 +3,7 @@
+ - Select the object and add the fields of that object on which you want
+   to apply mass editing.
+ 
+-![image](../static/description/mass_editing_form.png)
++![Configuration](../static/description/mass_editing_form.png)
+ 
+ - *Add Action*: Click on *Create Contextual Action* to add mass editing
+   in *Action* menu.

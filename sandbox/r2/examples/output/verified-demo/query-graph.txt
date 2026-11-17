@@ -1,0 +1,23 @@
+Collection: ba125116734f6ef057550c1fc1acf77a3727b9a3a035b5acadb0e00a6392417d
+Engine: graph
+Graph implementation: stdlib_bfs_fallback
+Changes found / shown: 2 / 2
+Matching migrations: 0
+Methods with documented changes: 2
+Changes by layer: {'python': 1, 'xml': 1}
+New findings by depth: {'0': 2}
+
+1. [verified] XML attrs/states are rejected by the Odoo 17 view validator
+   ID: chg-db1a79adc2958ca26c85422d | Layer: xml | Depth: 0
+   Source: odoo-core-images-16-17 sha256:be70a4830d88c60e1eeee05ad8229b3913ca698cf0c10ad050f6115d8ffa1198 -> sha256:3452d5fa4f76606d63952420b1d8acd65e6eb67e1cb1146042df2ea55f1ed8a7
+   File: odoo/addons/base/models/ir_ui_view.py:449 -> 388
+   Path: xml-attribute:attrs
+
+2. [verified] States field property is no longer supported in Odoo 17
+   ID: chg-4566102902fb6dad078d2dd7 | Layer: python | Depth: 0
+   Source: odoo-core-images-16-17 sha256:be70a4830d88c60e1eeee05ad8229b3913ca698cf0c10ad050f6115d8ffa1198 -> sha256:3452d5fa4f76606d63952420b1d8acd65e6eb67e1cb1146042df2ea55f1ed8a7
+   File: odoo/fields.py:537 -> 529
+   Path: property:states
+
+Time to first view and summary: 0.171634s
+Warning: Static analysis cannot resolve all dynamic references or prove functional incompatibility

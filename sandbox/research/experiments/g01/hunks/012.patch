@@ -1,0 +1,22 @@
+diff --git a/stock_quant_manual_assign/views/stock_picking_type_views.xml b/stock_quant_manual_assign/views/stock_picking_type_views.xml
+deleted file mode 100644
+index 8c1d405..0000000
+--- a/stock_quant_manual_assign/views/stock_picking_type_views.xml
++++ /dev/null
+@@ -1,16 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8" ?>
+-<odoo>
+-    <record model="ir.ui.view" id="view_picking_type_form">
+-        <field name="name">Operation Types</field>
+-        <field name="model">stock.picking.type</field>
+-        <field name="inherit_id" ref="stock.view_picking_type_form" />
+-        <field name="arch" type="xml">
+-            <xpath expr="//field[@name='show_reserved']" position="after">
+-                <field
+-                    name="auto_fill_qty_done"
+-                    attrs="{'invisible':[('code','=','incoming')]}"
+-                />
+-            </xpath>
+-        </field>
+-    </record>
+-</odoo>

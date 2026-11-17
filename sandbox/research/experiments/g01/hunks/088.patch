@@ -1,0 +1,13 @@
+diff --git a/sale_blanket_order/views/sale_order_views.xml b/sale_blanket_order/views/sale_order_views.xml
+index 40202c52..3e8cc4dc 100644
+--- a/sale_blanket_order/views/sale_order_views.xml
++++ b/sale_blanket_order/views/sale_order_views.xml
+@@ -15,7 +15,7 @@
+                 <field
+                     name="blanket_order_line"
+                     context="{'from_sale_order': True}"
+-                    attrs="{'column_invisible': [('parent.blanket_order_id', '=', False)]}"
++                    column_invisible="not parent.blanket_order_id"
+                 />
+             </xpath>
+             <xpath expr="//field[@name='order_line']" position="attributes">

@@ -1,0 +1,5 @@
+{
+  "install": "sin_resolver",
+  "upgrade": "falla_sin_evento",
+  "test": "sin_resolver"
+}

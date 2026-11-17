@@ -1,0 +1,41 @@
+{
+  "product_variant_sale_price": {
+    "commits": 3,
+    "fix": [
+      "[FIX] product_variant_sale_price: edit Sales Price",
+      "[17.0][FIX] product_variant_sale_price: remove deprecated arg. from _get_combination_info",
+      "[FIX] product_variant_sale_price: Avoid side effects with other modules"
+    ]
+  },
+  "product_cost_price_avco_sync": {
+    "commits": 0,
+    "fix": []
+  },
+  "account_credit_control": {
+    "commits": 18,
+    "fix": [
+      "[FIX] account_credit_control: add access group on contact form",
+      "[FIX] account_credit_control: fix _generate_emails() method The method _generate_emails sets the credit.control.line record(s) with state 'to_be_sent' to state 'queued' after sending the mail(s), which is not right. The state 'queued' is now set (from 'to_be_sent') before sending the emails!",
+      "[FIX] account_credit_control: Render invoice details in emails correctly",
+      "[FIX] account_credit_control: Avoid error when opening or creating a mail template",
+      "[FIX] account_credit_control: Defining the right data in the communication email",
+      "[FIX] account_credit_control: Change class=text-right to class=text-end in the report for correct visualization",
+      "[FIX] account_credit_control: put the credit lines in error if mail was blacklisted",
+      "[FIX] account_credit_control: Use _for_xml_id() to avoid access errors",
+      "[FIX] account_credit_control: Freeze test execution date to avoid time-dependent failures",
+      "[FIX] account_credit_control: more flexible tests",
+      "[FIX] account_credit_control: correctly update control lines status",
+      "[FIX] account_credit_control: Apply sudo() to avoid access error"
+    ]
+  },
+  "hr_timesheet_employee_analytic_tag": {
+    "commits": 0,
+    "fix": []
+  },
+  "mail_notification_custom_subject": {
+    "commits": 6,
+    "fix": [
+      "[FIX] mail_notification_custom_subject: Public user can not post messages in portal for models that have a customised subject defined"
+    ]
+  }
+}

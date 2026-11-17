@@ -1,0 +1,12 @@
+diff --git a/sale_blanket_order/tests/test_sale_order.py b/sale_blanket_order/tests/test_sale_order.py
+index 49f302c1..ec0b8a57 100644
+--- a/sale_blanket_order/tests/test_sale_order.py
++++ b/sale_blanket_order/tests/test_sale_order.py
+@@ -145,7 +145,6 @@ class TestSaleOrder(common.TransactionCase):
+             }
+         )
+         so_line = so.order_line[0]
+-        so_line.with_context(from_sale_order=True).name_get()
+         so_line.onchange_product_id()
+         self.assertEqual(so_line._get_eligible_bo_lines(), bo_lines)
+         bo_line_assigned = self.blanket_order_line_obj.search(

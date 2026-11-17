@@ -1,0 +1,10 @@
+diff --git a/sale_blanket_order/models/blanket_orders.py b/sale_blanket_order/models/blanket_orders.py
+index e18506b6..e63059c7 100644
+--- a/sale_blanket_order/models/blanket_orders.py
++++ b/sale_blanket_order/models/blanket_orders.py
+@@ -716,4 +737,4 @@ class BlanketOrderLine(models.Model):
+                     """
+                 )
+             )
+-        return super(BlanketOrderLine, self).write(values)
++        return super().write(values)

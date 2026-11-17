@@ -1,0 +1,13 @@
+diff --git a/sale_advance_payment/views/sale_view.xml b/sale_advance_payment/views/sale_view.xml
+index 148284b4..31e1f71c 100644
+--- a/sale_advance_payment/views/sale_view.xml
++++ b/sale_advance_payment/views/sale_view.xml
+@@ -11,7 +11,7 @@
+                     string="Pay sale advanced"
+                     type="action"
+                     groups="account.group_account_invoice"
+-                    attrs="{'invisible': [('state', 'in', ['done','cancel'])]}"
++                    invisible="state in ('cancel', 'done')"
+                 />
+             </button>
+             <notebook position="inside">

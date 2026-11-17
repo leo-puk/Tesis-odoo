@@ -1,0 +1,48 @@
+{
+  "git_base": "9ee4dbd9f2279c3f45620d6691131a39c4db608a",
+  "git_status": [
+    " M sandbox/.gitignore",
+    " M sandbox/control/odoolab/cli.py",
+    "?? sandbox/control/odoolab/batch.py",
+    "?? sandbox/control/odoolab/casuistics.py",
+    "?? sandbox/control/odoolab/census.py",
+    "?? sandbox/control/odoolab/experiment.py",
+    "?? sandbox/docker-desbloquear.ps1",
+    "?? sandbox/r2/",
+    "?? sandbox/research/"
+  ],
+  "code_revision": "3674c96f890aab33e0b7771758086e2e4c303f81525036394b57cd089e276b91",
+  "package_version": "0.2.0",
+  "files": {
+    "pyproject.toml": "59dcd303bfefeec16fe957a40b02d50009afa453b5c15bd3e2305c1445b0521b",
+    "r2\\__init__.py": "00ddd1584119d772a003aee32d468cf4de18d8e470fd9a959aeaea3f7a616117",
+    "r2\\__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+    "r2\\acquire.py": "5e700e9f43472064a768eb9dfd68844601252bbe3fbb4a77af34c98527ba6fde",
+    "r2\\cli.py": "d8d3b55bb65ff26a92ef190bfd7b7eee4f9f101a3919530ebf93a6d604a94f50",
+    "r2\\collection.py": "3cd06b079e43eb7c908a779723373acba1822e8aca861ca3438947bf2b2e51a0",
+    "r2\\evaluate.py": "6d44e1278c0d1684b782570566f6fbd1c5065ec05c89cfe4984bb84c1ba7ecff",
+    "r2\\extract.py": "e44e207a5fc4b491ac30c213e548f0d8385336712e422da72dc6142afcf6101f",
+    "r2\\graph.py": "bc0542ac579d7a785689714776ba3c7889fbf0f0978e5b8a4e48470081279fef",
+    "r2\\policy.py": "012b218fabae8843987a6749823fb5349398f44c4bd19404ff947ed374ae3bc1",
+    "r2\\query.py": "9dcaa36675670ea3b90e62edf6f612e4f994074856c304eee0206e3db334764a",
+    "r2\\review.py": "592456c83352e5fa3d64619c262585c08dde0befa4ca26cb3908df62ad1f9bb2",
+    "r2\\selection.py": "ececb9c6ed37dde6d2173f70d9f0bdfcf6a92d6bfc7acdc4811f253899dde801",
+    "requirements-lock.txt": "3b8d3fbd3b4484d1dc6cc86a3c8e24316bf034db8601c3a1acd5be0a5564ad01",
+    "tests\\test_methodology.py": "9f7eb7ff8dcb5a3ff8914d41fce567e8e3824beff98fac8dab74e7d6656a095d",
+    "tests\\test_r2.py": "3b34a3213b02aca399bd5b228310b1ec349c7586b85350eb5783325e9cdbad03",
+    "tests\\test_review_packets.py": "5bbfe877dc594c2a19e59be2826949393b26e924b7175c3d12780a5da3160f5d"
+  },
+  "collection_revision": "f649243c090c3de899c6d849605400468923d80146d243615297f57d34a29c4d",
+  "collection_counts": {
+    "sources": 9,
+    "comparisons": 9,
+    "evidence": 432,
+    "changes": 432,
+    "elements": 36263,
+    "relations": 31715,
+    "change_evidence": 432
+  },
+  "note": "No new Git commit: R2 remains untracked/modified; content hashes identify the delivered state.",
+  "word_sha256_final": "317B8F1E37EE0D8A63181451C7205D43B06C4412B8A48A8A5414FD4831898D57",
+  "word_unchanged": true
+}

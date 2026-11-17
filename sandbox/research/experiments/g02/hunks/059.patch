@@ -1,0 +1,20 @@
+diff --git a/hr_timesheet_employee_analytic_tag/i18n/es.po b/hr_timesheet_employee_analytic_tag/i18n/es.po
+index 5ec62ae..d82811f 100644
+--- a/hr_timesheet_employee_analytic_tag/i18n/es.po
++++ b/hr_timesheet_employee_analytic_tag/i18n/es.po
+@@ -29,13 +29,4 @@ msgstr "Etiquetas analíticas"
+ #. module: hr_timesheet_employee_analytic_tag
+ #: model:ir.model,name:hr_timesheet_employee_analytic_tag.model_hr_employee
+ msgid "Employee"
+-msgstr "Empleado"
+-
+-#~ msgid "Display Name"
+-#~ msgstr "Nombre mostrado"
+-
+-#~ msgid "ID"
+-#~ msgstr "ID"
+-
+-#~ msgid "Last Modified on"
+-#~ msgstr "Última modificación el"
++msgstr "Empleado"
+\ No newline at end of file

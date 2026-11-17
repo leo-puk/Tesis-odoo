@@ -1,0 +1,13 @@
+diff --git a/sale_advance_payment/__manifest__.py b/sale_advance_payment/__manifest__.py
+index 124dedff..65fa0d2d 100644
+--- a/sale_advance_payment/__manifest__.py
++++ b/sale_advance_payment/__manifest__.py
+@@ -3,7 +3,7 @@
+ 
+ {
+     "name": "Sale Advance Payment",
+-    "version": "16.0.1.0.0",
++    "version": "17.0.1.0.0",
+     "author": "Comunitea, Odoo Community Association (OCA)",
+     "website": "https://github.com/OCA/sale-workflow",
+     "category": "Sales",

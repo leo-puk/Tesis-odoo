@@ -1,0 +1,12 @@
+2026-10-13 19:48:29Z [sale_advance_payment] === fase upgrade ===
+2026-10-13 19:50:04Z [sale_advance_payment] iter 04 upgrade: FALLA rc=0 86s | 1 errores y 3 avisos nuevos | log runs/exp-sale_advance_payment/04-upgrade.log
+2026-10-13 19:50:04Z [sale_advance_payment]   C003 SIN RESOLVER [?/?] ? : FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/odoo/filestore/x_sale_advance_payment_u/d5/d5cce68bf4bb4ab57beaf766f3fb775cf8df0c83'
+2026-10-13 19:50:04Z [sale_advance_payment] fase upgrade: sin_resolver
+2026-10-13 19:50:04Z [sale_advance_payment] === fase test ===
+2026-10-13 19:51:21Z [sale_advance_payment] iter 05 test: FALLA rc=1 71s | 4 errores y 1 avisos nuevos | log runs/exp-sale_advance_payment/05-test.log
+2026-10-13 19:51:24Z [sale_advance_payment]   C004 [?/?] cob=C sale_advance_payment sale_advance_payment/tests/test_sale_advance_payment.py:156: FAIL: TestSaleAdvancePayment.test_01_sale_advance_payment -> hunks 006,007 (nivel 1, 12 lineas)
+2026-10-13 19:52:39Z [sale_advance_payment] iter 06 test: FALLA rc=1 71s | 4 errores y 1 avisos nuevos | log runs/exp-sale_advance_payment/06-test.log
+2026-10-13 19:52:41Z [sale_advance_payment]   C005 [?/?] cob=L sale_advance_payment sale_advance_payment/tests/test_sale_advance_payment.py:156: FAIL: TestSaleAdvancePayment.test_01_sale_advance_payment -> hunks 002,003,004,005,009,010,011,012,013,014,015,016 (nivel 3, 68 lineas)
+2026-10-13 19:53:33Z [sale_advance_payment] iter 07 test: FALLA rc=137 49s | 0 errores y 0 avisos nuevos | log runs/exp-sale_advance_payment/07-test.log
+2026-10-13 19:53:33Z [sale_advance_payment]   rc=137 sin eventos nuevos: no hay que corregir
+2026-10-13 19:53:33Z [sale_advance_payment] fase test: falla_sin_evento

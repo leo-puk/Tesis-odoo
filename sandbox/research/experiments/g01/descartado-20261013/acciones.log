@@ -1,0 +1,35 @@
+2026-10-10 01:12:13Z [g01] prepare (intento 1): account_manual_currency, stock_quant_manual_assign, server_action_mass_edit, sale_blanket_order, sale_financial_risk
+2026-10-10 01:12:14Z [g01] prepare fallo: account-invoicing/account_manual_currency no existe en la rama 16.0
+2026-10-10 01:12:33Z [g01] reemplazo: account_manual_currency -> fieldservice_isp_flow (tecnico)
+2026-10-10 01:12:33Z [g01] prepare (intento 2): stock_quant_manual_assign, server_action_mass_edit, sale_blanket_order, sale_financial_risk, fieldservice_isp_flow
+2026-10-10 01:16:33Z [g01] prepare: 112 hunks, deps core=['base', 'sale', 'sale_management', 'stock', 'uom'] oca=['account_financial_risk', 'base_territory', 'fieldservice', 'web_action_conditionable'], tags={'ADMIN': 18, 'ESTILO': 3, 'G17-01': 5, 'G17-02': 1, 'G17-03': 3, 'G17-04': 1, 'G17-07': 22, 'G17-09': 5, 'G17-10': 2, 'SIN_GUIA': 56}
+2026-10-10 01:16:34Z [g01] seed: instalando en 16.0 la BD x_g01_prod con base,sale,sale_management,stock,uom,account_financial_risk,base_territory,fieldservice,web_action_conditionable,stock_quant_manual_assign,server_action_mass_edit,sale_blanket_order,sale_financial_risk,fieldservice_isp_flow
+2026-10-10 01:17:43Z [g01] seed: x_g01_prod lista en 68s, {'tables': 483, 'modules': 575, 'installed': 70}
+2026-10-10 01:17:43Z [g01] seed: instalando en 16.0 la BD x_g01_base con base,sale,sale_management,stock,uom,account_financial_risk,base_territory,fieldservice,web_action_conditionable
+2026-10-10 01:18:53Z [g01] seed: x_g01_base lista en 70s, {'tables': 474, 'modules': 575, 'installed': 65}
+2026-10-10 01:18:56Z [g01] baseline: fase install sin los modulos del grupo
+2026-10-10 19:50:40Z [g01] baseline: install rc=0 66703s, 3 eventos (se descuentan)
+2026-10-10 19:50:46Z [g01] baseline: fase upgrade sin los modulos del grupo
+2026-10-10 19:51:49Z [g01] baseline: upgrade rc=255 61s, 15 eventos (se descuentan)
+2026-10-13 19:48:31Z [g01] baseline: fase install sin los modulos del grupo
+2026-10-13 19:49:58Z [g01] baseline: install rc=0 86s, 3 eventos (se descuentan)
+2026-10-13 19:50:00Z [g01] baseline: fase upgrade sin los modulos del grupo
+2026-10-13 19:52:13Z [g01] baseline: upgrade rc=0 130s, 832 eventos (se descuentan)
+2026-10-13 19:52:19Z [g01] === fase install ===
+2026-10-13 19:52:27Z [g01] iter 01 install: FALLA rc=255 4s | 2 errores y 0 avisos nuevos | log runs/exp-g01/01-install.log
+2026-10-13 19:52:36Z [g01]   C001 [A/manifest_version] cob=L fieldservice_isp_flow : Failed to load registry  -> hunks 106,107,108,109,110,111,112 (nivel 3, 14 lineas)
+2026-10-13 19:52:44Z [g01] iter 02 install: FALLA rc=255 4s | 2 errores y 0 avisos nuevos | log runs/exp-g01/02-install.log
+2026-10-13 19:52:44Z [g01]   C002 SIN RESOLVER [A/manifest_version] sale_blanket_order : Failed to load registry 
+2026-10-13 19:52:44Z [g01] fase install: sin_resolver
+2026-10-13 19:52:44Z [g01] === fase upgrade ===
+2026-10-13 19:53:07Z [g01] iter 03 upgrade: FALLA rc=255 15s | 2 errores y 1 avisos nuevos | log runs/exp-g01/03-upgrade.log
+2026-10-13 19:53:17Z [g01]   C003 [H/openupgrade] cob=L server_action_mass_edit : Failed to load registry  -> hunks 021,022,023,024,025,026,027,028,040,041,042,043,044,046,047,048,049,050,051,052,053 (nivel 2, 184 lineas)
+2026-10-13 19:53:33Z [g01] iter 04 upgrade: FALLA rc=137 12s | 0 errores y 0 avisos nuevos | log runs/exp-g01/04-upgrade.log
+2026-10-13 19:53:33Z [g01]   rc=137 sin eventos nuevos: no hay que corregir
+2026-10-13 19:53:33Z [g01] fase upgrade: falla_sin_evento
+2026-10-13 19:53:33Z [g01] === fase test ===
+2026-10-13 19:53:41Z [g01] iter 05 test: FALLA rc=255 5s | 2 errores y 0 avisos nuevos | log runs/exp-g01/05-test.log
+2026-10-13 19:53:52Z [g01]   C004 [A/manifest_version] cob=L sale_blanket_order : Failed to load registry  -> hunks 056,057,058,059,060,061,062,063,064,065,066,067,068,071,072,073,074,075,076,077,078,079,080,081,082,083,084,085,086,087,088,089,090 (nivel 3, 238 lineas)
+2026-10-13 19:53:58Z [g01] iter 06 test: FALLA rc=137 3s | 2 errores y 0 avisos nuevos | log runs/exp-g01/06-test.log
+2026-10-13 19:53:58Z [g01]   C005 SIN RESOLVER [A/manifest_version] sale_financial_risk : Failed to load registry 
+2026-10-13 19:53:58Z [g01] fase test: sin_resolver

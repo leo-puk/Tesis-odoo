@@ -1,0 +1,19 @@
+diff --git a/account_credit_control/views/credit_control_run.xml b/account_credit_control/views/credit_control_run.xml
+index 2cd0363..652802e 100644
+--- a/account_credit_control/views/credit_control_run.xml
++++ b/account_credit_control/views/credit_control_run.xml
+@@ -5,8 +5,12 @@
+         <field name="model">credit.control.run</field>
+         <field name="arch" type="xml">
+             <tree>
+-                <field name="date" />
+-                <field name="company_id" groups="base.group_multi_company" />
++                <field name="date" readonly="state != 'draft'" />
++                <field
++                    name="company_id"
++                    groups="base.group_multi_company"
++                    readonly="state != 'draft'"
++                />
+                 <field name="state" />
+             </tree>
+         </field>

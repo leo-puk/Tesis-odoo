@@ -1,0 +1,74 @@
+[
+  {
+    "metadata_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\research\\experiments\\g01\\meta.json",
+    "reason": "Present in historical laboratory; conservatively excluded from final evaluation",
+    "module": "stock_quant_manual_assign",
+    "metadata_sha256": "72442D24CEB21081DD0056017FE96A8E4F7F8603FC3AFF0F7CAE2E549C5A0A4E"
+  },
+  {
+    "metadata_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\research\\experiments\\g01\\meta.json",
+    "reason": "Present in historical laboratory; conservatively excluded from final evaluation",
+    "module": "server_action_mass_edit",
+    "metadata_sha256": "72442D24CEB21081DD0056017FE96A8E4F7F8603FC3AFF0F7CAE2E549C5A0A4E"
+  },
+  {
+    "metadata_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\research\\experiments\\g01\\meta.json",
+    "reason": "Present in historical laboratory; conservatively excluded from final evaluation",
+    "module": "sale_blanket_order",
+    "metadata_sha256": "72442D24CEB21081DD0056017FE96A8E4F7F8603FC3AFF0F7CAE2E549C5A0A4E"
+  },
+  {
+    "metadata_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\research\\experiments\\g01\\meta.json",
+    "reason": "Present in historical laboratory; conservatively excluded from final evaluation",
+    "module": "sale_financial_risk",
+    "metadata_sha256": "72442D24CEB21081DD0056017FE96A8E4F7F8603FC3AFF0F7CAE2E549C5A0A4E"
+  },
+  {
+    "metadata_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\research\\experiments\\g01\\meta.json",
+    "reason": "Present in historical laboratory; conservatively excluded from final evaluation",
+    "module": "fieldservice_isp_flow",
+    "metadata_sha256": "72442D24CEB21081DD0056017FE96A8E4F7F8603FC3AFF0F7CAE2E549C5A0A4E"
+  },
+  {
+    "metadata_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\research\\experiments\\g02\\meta.json",
+    "reason": "Present in historical laboratory; conservatively excluded from final evaluation",
+    "module": "product_variant_sale_price",
+    "metadata_sha256": "F0719EB4B71B8DFCF573CE396E48D8764F9324F94F6B4B7A3CEABF5284F8FF58"
+  },
+  {
+    "metadata_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\research\\experiments\\g02\\meta.json",
+    "reason": "Present in historical laboratory; conservatively excluded from final evaluation",
+    "module": "product_cost_price_avco_sync",
+    "metadata_sha256": "F0719EB4B71B8DFCF573CE396E48D8764F9324F94F6B4B7A3CEABF5284F8FF58"
+  },
+  {
+    "metadata_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\research\\experiments\\g02\\meta.json",
+    "reason": "Present in historical laboratory; conservatively excluded from final evaluation",
+    "module": "account_credit_control",
+    "metadata_sha256": "F0719EB4B71B8DFCF573CE396E48D8764F9324F94F6B4B7A3CEABF5284F8FF58"
+  },
+  {
+    "metadata_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\research\\experiments\\g02\\meta.json",
+    "reason": "Present in historical laboratory; conservatively excluded from final evaluation",
+    "module": "hr_timesheet_employee_analytic_tag",
+    "metadata_sha256": "F0719EB4B71B8DFCF573CE396E48D8764F9324F94F6B4B7A3CEABF5284F8FF58"
+  },
+  {
+    "metadata_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\research\\experiments\\g02\\meta.json",
+    "reason": "Present in historical laboratory; conservatively excluded from final evaluation",
+    "module": "mail_notification_custom_subject",
+    "metadata_sha256": "F0719EB4B71B8DFCF573CE396E48D8764F9324F94F6B4B7A3CEABF5284F8FF58"
+  },
+  {
+    "metadata_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\research\\experiments\\sale_advance_payment\\meta.json",
+    "reason": "Present in historical laboratory; conservatively excluded from final evaluation",
+    "module": "sale_advance_payment",
+    "metadata_sha256": "70E6111A02F65C4B3DFABC4F932B570ED4EE9753877A7DD92D63CBEDCF1670B9"
+  },
+  {
+    "metadata_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\research\\experiments\\sap_guiado\\meta.json",
+    "reason": "Present in historical laboratory; conservatively excluded from final evaluation",
+    "module": "sale_advance_payment",
+    "metadata_sha256": "F39E4B182926E643BC7BBE7E8F2CE2FC5DDD97CEEB752B4617530BA3FCBFD967"
+  }
+]

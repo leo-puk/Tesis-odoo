@@ -1,0 +1,4 @@
+{
+  "upgrade": "sin_resolver",
+  "test": "falla_sin_evento"
+}

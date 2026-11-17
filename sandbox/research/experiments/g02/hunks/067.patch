@@ -1,0 +1,26 @@
+diff --git a/mail_notification_custom_subject/migrations/15.0.1.0.0/post-migration.py b/mail_notification_custom_subject/migrations/15.0.1.0.0/post-migration.py
+deleted file mode 100644
+index 1428aa9..0000000
+--- a/mail_notification_custom_subject/migrations/15.0.1.0.0/post-migration.py
++++ /dev/null
+@@ -1,20 +0,0 @@
+-# pylint: disable=C7902
+-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-from openupgradelib import openupgrade
+-
+-
+-@openupgrade.migrate()
+-def migrate(env, version):
+-    env.cr.execute(
+-        """
+-        UPDATE mail_message_custom_subject
+-        SET subject_template=REPLACE(
+-                REPLACE(
+-                subject_template,
+-                '${',
+-                '{{'),
+-                '}',
+-                '}}'
+-            )
+-        """
+-    )

@@ -1,0 +1,15 @@
+{
+  "url": "https://api.github.com/search/issues?q=org%3AOCA+is%3Apr+is%3Amerged+%22%5BMIG%5D%22+in%3Atitle+base%3A19.0+created%3A2026-10-01..2026-10-31&per_page=100&sort=created&order=asc",
+  "captured_at": "2026-11-14T19:19:48.012015+00:00",
+  "status": 200,
+  "response_sha256": "c57ff19d2d00abe4e503403be42f978ad0035489c6d8a8f9da740b08816c4165",
+  "stored_sha256": "92cbfb0c789c5b9555db4cfc4f716d83802f1f983bd93d817061fb90ced8a11a",
+  "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\github-window-19\\2c708b624ddbfff162d2-92cbfb0c789c.json",
+  "capture_form": "projected_metadata_only_no_code_or_review_bodies",
+  "headers": {
+    "content-type": "application/json; charset=utf-8",
+    "x-ratelimit-limit": "10",
+    "x-ratelimit-remaining": "0",
+    "x-ratelimit-reset": "1794684021"
+  }
+}

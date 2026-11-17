@@ -1,0 +1,13 @@
+diff --git a/server_action_mass_edit/models/ir_ui_view.py b/server_action_mass_edit/models/ir_ui_view.py
+new file mode 100644
+index 0000000..abc7a8b
+--- /dev/null
++++ b/server_action_mass_edit/models/ir_ui_view.py
+@@ -0,0 +1,7 @@
++from odoo import fields, models
++
++
++class View(models.Model):
++    _inherit = "ir.ui.view"
++
++    mass_server_action_id = fields.Many2one("ir.actions.server")

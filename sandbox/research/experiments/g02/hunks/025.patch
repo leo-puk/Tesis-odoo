@@ -1,0 +1,13 @@
+diff --git a/product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py b/product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py
+index ae14021..3fc9a76 100644
+--- a/product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py
++++ b/product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py
+@@ -482,7 +484,7 @@ class TestProductCostPriceAvcoSync(BaseCommon):
+ 
+         # Restore to initial values
+         move_in_01.stock_valuation_layer_ids.unit_cost = 2.0
+-        move_in_01.move_line_ids.qty_done = 10.0
++        move_in_01.move_line_ids.quantity = 10.0
+         self.print_svl(
+             "After restore initial values Quant:{} Standard Price:{}".format(
+                 quant.quantity, quant.product_id.standard_price

@@ -1,0 +1,26 @@
+diff --git a/sale_advance_payment/models/sale.py b/sale_advance_payment/models/sale.py
+index 9f849c66..8c221514 100644
+--- a/sale_advance_payment/models/sale.py
++++ b/sale_advance_payment/models/sale.py
+@@ -9,16 +9,17 @@ class SaleOrder(models.Model):
+     _inherit = "sale.order"
+ 
+     account_payment_ids = fields.One2many(
+-        "account.payment", "sale_id", string="Pay sale advanced", readonly=True
++        comodel_name="account.payment",
++        inverse_name="sale_id",
++        string="Pay sale advanced",
+     )
+     amount_residual = fields.Float(
+-        "Residual amount",
+-        readonly=True,
++        string="Residual amount",
+         compute="_compute_advance_payment",
+         store=True,
+     )
+     payment_line_ids = fields.Many2many(
+-        "account.move.line",
++        comodel_name="account.move.line",
+         string="Payment move lines",
+         compute="_compute_advance_payment",
+         store=True,

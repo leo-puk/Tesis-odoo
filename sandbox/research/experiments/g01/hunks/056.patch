@@ -1,0 +1,17 @@
+diff --git a/sale_blanket_order/__manifest__.py b/sale_blanket_order/__manifest__.py
+index b103aa0e..4758d8ad 100644
+--- a/sale_blanket_order/__manifest__.py
++++ b/sale_blanket_order/__manifest__.py
+@@ -5,10 +5,10 @@
+     "category": "Sale",
+     "license": "AGPL-3",
+     "author": "Acsone SA/NV, Odoo Community Association (OCA)",
+-    "version": "16.0.1.0.0",
++    "version": "17.0.1.0.0",
+     "website": "https://github.com/OCA/sale-workflow",
+     "summary": "Blanket Orders",
+-    "depends": ["uom", "sale_management", "web_action_conditionable"],
++    "depends": ["uom", "sale_management"],
+     "data": [
+         "security/security.xml",
+         "security/ir.model.access.csv",

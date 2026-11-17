@@ -1,0 +1,13 @@
+diff --git a/server_action_mass_edit/tests/test_mass_editing.py b/server_action_mass_edit/tests/test_mass_editing.py
+index 4d12de1..ba41c36 100644
+--- a/server_action_mass_edit/tests/test_mass_editing.py
++++ b/server_action_mass_edit/tests/test_mass_editing.py
+@@ -338,7 +340,7 @@ class TestMassEditing(common.TransactionCase):
+         # Remove one m2m category
+         vals = {
+             "selection__category_id": "remove_m2m",
+-            "category_id": [[6, 0, [vend_categ_id]]],
++            "category_id": [[4, vend_categ_id]],
+         }
+         self._create_wizard_and_apply_values(self.mass_editing_user, self.user, vals)
+         self.assertTrue(

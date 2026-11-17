@@ -1,0 +1,22 @@
+{
+  "prod": {
+    "db": "x_sale_advance_payment_prod",
+    "created": true,
+    "seconds": 53.5,
+    "fingerprint": {
+      "tables": 367,
+      "modules": 567,
+      "installed": 52
+    }
+  },
+  "base": {
+    "db": "x_sale_advance_payment_base",
+    "created": true,
+    "seconds": 48.9,
+    "fingerprint": {
+      "tables": 365,
+      "modules": 567,
+      "installed": 51
+    }
+  }
+}

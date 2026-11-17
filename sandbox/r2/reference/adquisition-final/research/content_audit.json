@@ -1,0 +1,639 @@
+{
+  "16.0": {
+    "files_scanned": 783,
+    "oca_specific_names_from_apriori": [
+      "account_balance_line",
+      "account_bank_statement_import_qif",
+      "account_bank_statement_reopen_skip_undo_reconciliation",
+      "account_invoice_report_due_list",
+      "account_invoice_search_by_reference",
+      "account_move_force_removal",
+      "account_reconcile_oca",
+      "account_reconciliation_widget",
+      "account_statement_base",
+      "account_statement_import",
+      "account_statement_import_file",
+      "account_statement_import_file_reconcile_oca",
+      "account_statement_import_file_reconciliation_widget",
+      "account_statement_import_qif",
+      "account_statement_import_sheet_file",
+      "account_statement_import_txt_xlsx",
+      "assets_management",
+      "base_partner_company_group",
+      "commission_delegated_partner",
+      "coupon_commercial_partner_applicability",
+      "coupon_criteria_multi_product",
+      "coupon_incompatibility",
+      "coupon_limit",
+      "coupon_mass_mailing",
+      "coupon_multi_gift",
+      "crm_lead_to_task",
+      "crm_project",
+      "document_knowledge",
+      "knowledge",
+      "l10n_es_aeat_sii_oca",
+      "l10n_es_irnr",
+      "l10n_es_irnr_sii",
+      "l10n_it_account_balance_eu",
+      "l10n_it_asset_management",
+      "l10n_it_financial_statement_eu",
+      "l10n_it_riba_oca",
+      "l10n_it_ricevute_bancarie",
+      "loyalty_criteria_multi_product",
+      "loyalty_incompatibility",
+      "loyalty_limit",
+      "loyalty_mass_mailing",
+      "loyalty_multi_gift",
+      "loyalty_partner_applicability",
+      "mail_preview_audio",
+      "mail_preview_base",
+      "mass_editing",
+      "mrp_analytic",
+      "mrp_stock_analytic",
+      "partner_category_multi_company",
+      "partner_company_group",
+      "pos_cashback",
+      "pos_cashback_warning",
+      "pos_margin_account_invoice_margin",
+      "pos_order_line_no_unlink",
+      "pos_picking_load",
+      "pos_product_sort",
+      "pos_sale_order_load",
+      "product_form_purchase_link",
+      "product_packaging_level",
+      "product_packaging_type",
+      "project_stage_mgmt",
+      "project_task_milestone",
+      "project_task_stage_mgmt",
+      "purchase_order_line_price_history",
+      "purchase_picking_state",
+      "purchase_variant_configurator",
+      "purchase_variant_configurator_on_confirm",
+      "queue_job",
+      "queue_job_context",
+      "res_partner_category_multi_company",
+      "sale_by_packaging",
+      "sale_commission_delegated_partner",
+      "sale_coupon_criteria_multi_product",
+      "sale_coupon_incompatibility",
+      "sale_coupon_limit",
+      "sale_coupon_multi_gift",
+      "sale_coupon_order_line_link",
+      "sale_coupon_order_suggestion",
+      "sale_coupon_partner",
+      "sale_coupon_selection_wizard",
+      "sale_loyalty_criteria_multi_product",
+      "sale_loyalty_incompatibility",
+      "sale_loyalty_limit",
+      "sale_loyalty_multi_gift",
+      "sale_loyalty_order_line_link",
+      "sale_loyalty_order_suggestion",
+      "sale_loyalty_partner",
+      "sale_product_set",
+      "sale_product_set_layout",
+      "sell_only_by_packaging",
+      "server_action_mass_edit",
+      "stock_picking_backorder_strategy",
+      "survey_placeholder",
+      "web_drop_target",
+      "web_ir_actions_act_view_reload",
+      "web_tree_image_tooltip",
+      "website_sale_coupon_page",
+      "website_sale_coupon_selection_wizard",
+      "website_sale_loyalty_page",
+      "website_sale_loyalty_suggestion_wizard",
+      "website_sale_require_login"
+    ],
+    "hits": [
+      {
+        "path": "openupgrade_scripts/scripts/base/16.0.1.3/pre-migration.py",
+        "oca_names": [
+          "coupon_commercial_partner_applicability",
+          "loyalty_partner_applicability",
+          "website_sale_require_login"
+        ],
+        "lines": [
+          {
+            "line": 16,
+            "text": "    \"\"\"Check before merging `coupon_commercial_partner_applicability` into"
+          },
+          {
+            "line": 17,
+            "text": "    `loyalty_partner_applicability` if it was installed in v15 to set the parameter"
+          },
+          {
+            "line": 19,
+            "text": "    if openupgrade.is_module_installed(cr, \"coupon_commercial_partner_applicability\"):"
+          },
+          {
+            "line": 25,
+            "text": "            VALUES ('loyalty_partner_applicability.allow_coupon_sharing', 'true')"
+          },
+          {
+            "line": 31,
+            "text": "    \"\"\"The website_sale_require_login module is merged into website_sale. Check if the"
+          },
+          {
+            "line": 36,
+            "text": "    if openupgrade.is_module_installed(cr, \"website_sale_require_login\"):"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/mass_mailing/16.0.2.5/noupdate_changes.xml",
+        "oca_names": [
+          "knowledge"
+        ],
+        "lines": [
+          {
+            "line": 7,
+            "text": "                    https://www.htmlemailcheck.com/knowledge-base/dpi-scaling-in-outlook-2007-2013/):"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/stock/16.0.1.1/post-migration.py",
+        "oca_names": [
+          "stock_picking_backorder_strategy"
+        ],
+        "lines": [
+          {
+            "line": 27,
+            "text": "    # Handle the merge of OCA/stock-logistics-workflow/stock_picking_backorder_strategy"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/stock/16.0.1.1/pre-migration.py",
+        "oca_names": [
+          "stock_picking_backorder_strategy"
+        ],
+        "lines": [
+          {
+            "line": 116,
+            "text": "    # Handle the merge of OCA/stock-logistics-workflow/stock_picking_backorder_strategy"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/stock/16.0.1.1/upgrade_analysis_work.txt",
+        "oca_names": [
+          "stock_picking_backorder_strategy"
+        ],
+        "lines": [
+          {
+            "line": 122,
+            "text": "# - If stock_picking_backorder_strategy was installed, data are populated with the field backorder_strategy"
+          }
+        ]
+      }
+    ]
+  },
+  "17.0": {
+    "files_scanned": 828,
+    "oca_specific_names_from_apriori": [
+      "account_invoice_fiscal_position_update",
+      "account_invoice_force_number",
+      "base_maintenance_config",
+      "base_vat_optional_vies",
+      "delivery_carrier_customer_info",
+      "hr_attendance_geolocation",
+      "l10n_de_mis_reports",
+      "l10n_de_skr03_mis_reports",
+      "l10n_de_skr04_mis_reports",
+      "l10n_es_aeat_sii_oca",
+      "l10n_es_dua",
+      "l10n_es_dua_sii",
+      "l10n_es_irnr",
+      "l10n_es_irnr_sii",
+      "l10n_es_pos_oca",
+      "loyalty_initial_date_validity",
+      "mail_activity_cancel_tracking",
+      "mail_activity_plan",
+      "mail_activity_unlink_log",
+      "mail_template_attachment_i18n",
+      "mail_template_attachment_per_lang",
+      "mail_template_multi_attachment",
+      "maintenance_plan",
+      "maintenance_plan_activity",
+      "maintenance_plan_employee",
+      "mass_mailing_custom_unsubscribe_event",
+      "partner_delivery_info",
+      "product_catalog",
+      "product_catalog_sale",
+      "project_list",
+      "purchase_discount",
+      "purchase_fully_received",
+      "purchase_reception_status",
+      "sale_loyalty_initial_date_validity",
+      "sale_report_country_state",
+      "stock_lot_filter_available",
+      "stock_procurement_group_hook",
+      "web_advanced_search",
+      "web_listview_range_select",
+      "web_pwa_oca",
+      "website_sale_invoice_address"
+    ],
+    "hits": [
+      {
+        "path": "openupgrade_scripts/scripts/base/17.0.1.3/pre-migration.py",
+        "oca_names": [
+          "l10n_de_mis_reports",
+          "l10n_de_skr03_mis_reports",
+          "l10n_de_skr04_mis_reports"
+        ],
+        "lines": [
+          {
+            "line": 50,
+            "text": "    name of l10n_de_skr03_mis_reports/l10n_de_skr04_mis_reports into"
+          },
+          {
+            "line": 51,
+            "text": "    l10n_de_mis_reports."
+          },
+          {
+            "line": 54,
+            "text": "        cr, \"l10n_de_skr03_mis_reports\""
+          },
+          {
+            "line": 55,
+            "text": "    ) and not openupgrade.is_module_installed(cr, \"l10n_de_skr04_mis_reports\"):"
+          },
+          {
+            "line": 68,
+            "text": "                        f\"l10n_de_mis_reports.{report}_{coa}{'_' if name else ''}{name}\",  # noqa: E501"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/base_vat/17.0.1.0/pre-migration.py",
+        "oca_names": [
+          "base_vat_optional_vies"
+        ],
+        "lines": [
+          {
+            "line": 8,
+            "text": "        # coming from base_vat_optional_vies module"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/hr/17.0.1.1/pre-migration.py",
+        "oca_names": [
+          "mail_activity_plan"
+        ],
+        "lines": [
+          {
+            "line": 35,
+            "text": "        ALTER TABLE mail_activity_plan ADD COLUMN IF NOT EXISTS department_id INTEGER,"
+          },
+          {
+            "line": 39,
+            "text": "        INSERT INTO mail_activity_plan ("
+          },
+          {
+            "line": 67,
+            "text": "        JOIN mail_activity_plan map ON hpat.plan_id = map.hr_plan_legacy_id"
+          },
+          {
+            "line": 77,
+            "text": "        JOIN mail_activity_plan map ON"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/hr_attendance/17.0.2.0/pre-migration.py",
+        "oca_names": [
+          "hr_attendance_geolocation"
+        ],
+        "lines": [
+          {
+            "line": 15,
+            "text": "    \"\"\"Rename the fields if the hr_attendance_geolocation module was installed.\"\"\""
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/l10n_es/17.0.5.4/pre-migration.py",
+        "oca_names": [
+          "l10n_es_dua"
+        ],
+        "lines": [
+          {
+            "line": 69,
+            "text": "    \"\"\"Handle if you had l10n_es_dua module from OCA/l10n-spain installed.\"\"\""
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/mail/17.0.1.15/post-migration.py",
+        "oca_names": [
+          "mail_activity_plan",
+          "mail_template_multi_attachment"
+        ],
+        "lines": [
+          {
+            "line": 115,
+            "text": "    \"\"\"If the OCA mail_activity_plan module was installed, we create the"
+          },
+          {
+            "line": 155,
+            "text": "    \"\"\"OCA module mail_template_multi_attachment got its functionality implemented in"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/mail/17.0.1.15/pre-migration.py",
+        "oca_names": [
+          "mail_activity_plan"
+        ],
+        "lines": [
+          {
+            "line": 110,
+            "text": "    \"\"\"If the OCA mail_activity_plan module is installed, we convert the existing data"
+          },
+          {
+            "line": 113,
+            "text": "    if not openupgrade.table_exists(env.cr, \"mail_activity_plan\"):"
+          },
+          {
+            "line": 118,
+            "text": "            \"mail_activity_plan\","
+          },
+          {
+            "line": 124,
+            "text": "            \"mail_activity_plan\","
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/mail/17.0.1.15/upgrade_analysis_work.txt",
+        "oca_names": [
+          "mail_activity_plan"
+        ],
+        "lines": [
+          {
+            "line": 82,
+            "text": "# NOTHING TO DO: new feature like the existing OCA module https://github.com/OCA/social/tree/16.0/mail_activity_plan"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/maintenance/17.0.1.0/post-migration.py",
+        "oca_names": [
+          "maintenance_plan"
+        ],
+        "lines": [
+          {
+            "line": 9,
+            "text": "    \"\"\"Compatibility with maintenance_plan, we convert the request and"
+          },
+          {
+            "line": 26,
+            "text": "            FROM maintenance_plan mp"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/maintenance/17.0.1.0/pre-migration.py",
+        "oca_names": [
+          "maintenance_plan"
+        ],
+        "lines": [
+          {
+            "line": 7,
+            "text": "    \"\"\"Rename the fields if the maintenance_plan module was installed.\"\"\""
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/maintenance/17.0.1.0/upgrade_analysis_work.txt",
+        "oca_names": [
+          "maintenance_plan"
+        ],
+        "lines": [
+          {
+            "line": 28,
+            "text": "# DONE: post-migration: maintenance_plan compatibility"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/project/17.0.1.3/pre-migration.py",
+        "oca_names": [
+          "project_list"
+        ],
+        "lines": [
+          {
+            "line": 75,
+            "text": "    \"\"\"OCA module project_list got its functionality implemented in core"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/web/17.0.1.0/pre-migration.py",
+        "oca_names": [
+          "web_pwa_oca"
+        ],
+        "lines": [
+          {
+            "line": 18,
+            "text": "                    \"web_pwa_oca\","
+          },
+          {
+            "line": 32,
+            "text": "        # values previously defined in web_pwa_oca and the values that web will now use."
+          }
+        ]
+      }
+    ]
+  },
+  "18.0": {
+    "files_scanned": 837,
+    "oca_specific_names_from_apriori": [
+      "account_commission",
+      "account_commission_oca",
+      "account_invoice_mass_sending",
+      "account_invoice_supplierinfo_update",
+      "account_invoice_supplierinfo_update_discount",
+      "account_invoice_view_payment",
+      "account_reconcile_due_date",
+      "account_reconciliation_widget_due_date",
+      "account_vat_period_end_statement",
+      "commission",
+      "commission_formula",
+      "commission_formula_oca",
+      "commission_oca",
+      "coupon_chatter",
+      "currency_rate_update_boi",
+      "document_page_access_group",
+      "document_page_group",
+      "hr_attendance_autoclose",
+      "hr_commission",
+      "hr_commission_oca",
+      "hr_expense_employee_analytic_default",
+      "hr_expense_remove_mobile_link",
+      "l10n_fr_pos_cert_update_draft_order_line",
+      "l10n_it_account_vat_period_end_settlement",
+      "l10n_it_currency_rate_update_boi",
+      "l10n_it_vat_settlement_communication",
+      "l10n_it_vat_statement_communication",
+      "loyalty_program_chatter",
+      "pdf_helper",
+      "pdf_xml_attachment",
+      "procurement_mto_analytic",
+      "product_customerinfo",
+      "product_customerinfo_elaboration",
+      "product_customerinfo_invoice",
+      "product_customerinfo_picking",
+      "product_customerinfo_sale",
+      "product_packaging_calculator",
+      "product_packaging_level_vendor",
+      "product_packaging_type_vendor",
+      "product_set_sell_only_by_packaging",
+      "product_supplierinfo_for_customer",
+      "product_supplierinfo_for_customer_elaboration",
+      "product_supplierinfo_for_customer_invoice",
+      "product_supplierinfo_for_customer_picking",
+      "product_supplierinfo_for_customer_sale",
+      "product_supplierinfo_import",
+      "product_supplierinfo_import_by_barcode",
+      "product_supplierinfo_import_by_barcode_margin",
+      "product_supplierinfo_import_margin",
+      "product_tags_code",
+      "product_template_tags_code",
+      "project_stock_product_set",
+      "project_task_stock",
+      "project_task_stock_product_set",
+      "sale_commercial_partner",
+      "sale_commission",
+      "sale_commission_margin",
+      "sale_commission_margin_oca",
+      "sale_commission_oca",
+      "sale_commission_oca_product_criteria",
+      "sale_commission_oca_product_criteria_semaphore",
+      "sale_commission_pricelist",
+      "sale_commission_pricelist_oca",
+      "sale_commission_product_criteria",
+      "sale_commission_product_criteria_semaphore",
+      "sale_order_qty_change_no_recompute",
+      "sale_partner_shipping_invoice_domain",
+      "sale_product_configurator_widget_product_label",
+      "sale_product_set_sale_by_packaging",
+      "stock_move_line_auto_fill",
+      "stock_packaging_calculator",
+      "stock_picking_batch_account",
+      "stock_picking_batch_account_sale_type",
+      "stock_picking_batch_extended_account",
+      "stock_picking_batch_extended_account_sale_type",
+      "stock_picking_type_force_move_type",
+      "stock_picking_type_shipping_policy",
+      "web_widget_product_label_section_and_note",
+      "web_widget_product_label_section_and_note_name_visibility",
+      "website_sale_filter_product_brand",
+      "website_sale_product_attachment",
+      "website_sale_product_attribute_filter_collapse",
+      "website_sale_product_brand"
+    ],
+    "hits": [
+      {
+        "path": "openupgrade_scripts/scripts/hr_attendance/18.0.2.0/post-migration.py",
+        "oca_names": [
+          "hr_attendance_autoclose"
+        ],
+        "lines": [
+          {
+            "line": 7,
+            "text": "    \"\"\"If the hr_attendance_autoclose module was installed, we will define"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/website_sale/18.0.1.1/post-migration.py",
+        "oca_names": [
+          "website_sale_product_attachment"
+        ],
+        "lines": [
+          {
+            "line": 23,
+            "text": "    \"\"\"Compatibility with website_sale_product_attachment to create the necessary"
+          }
+        ]
+      }
+    ]
+  },
+  "19.0": {
+    "files_scanned": 758,
+    "oca_specific_names_from_apriori": [
+      "account_payment_mode",
+      "account_payment_partner",
+      "account_reconcile_model_oca",
+      "account_reconcile_oca",
+      "account_tax_legal_notes_translate",
+      "edi_account_core_oca",
+      "edi_account_oca",
+      "hr_employee_calendar_planning",
+      "hr_employee_document_from_applicant",
+      "hr_holidays_calendar_planning",
+      "hr_timesheet_time_control",
+      "mail_debrand",
+      "mail_debranding",
+      "membership_extension",
+      "partner_contact_lang",
+      "portal_debranding",
+      "portal_odoo_debranding",
+      "project_task_add_very_high",
+      "project_timesheet_time_control",
+      "purchase_order_qty_change_no_recompute",
+      "sale_order_warn_message",
+      "sales_team_invoiced_target_domain",
+      "sales_team_invoiced_target_report",
+      "stock_move_valuation_usage",
+      "stock_picking_mass_action",
+      "stock_picking_show_return",
+      "stock_valuation_layer_usage",
+      "website_debranding",
+      "website_login_page_editable",
+      "website_odoo_debranding",
+      "website_sale_category_breadcrumb"
+    ],
+    "hits": [
+      {
+        "path": "openupgrade_scripts/scripts/account/19.0.1.5/pre-migration.py",
+        "oca_names": [
+          "account_reconcile_oca"
+        ],
+        "lines": [
+          {
+            "line": 138,
+            "text": "    integrated into account_reconcile_oca; in any case, they must be archived"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/account/19.0.1.5/upgrade_analysis_work.txt",
+        "oca_names": [
+          "account_reconcile_model_oca"
+        ],
+        "lines": [
+          {
+            "line": 183,
+            "text": "# NOTHING TO DO: account_reconcile_model_oca will have to bring them back, so we just leave the columns untouched"
+          }
+        ]
+      },
+      {
+        "path": "openupgrade_scripts/scripts/project/19.0.1.4/post-migration.py",
+        "oca_names": [
+          "project_task_add_very_high"
+        ],
+        "lines": [
+          {
+            "line": 58,
+            "text": "    existing priorities of \"2\" or \"3\", pointing to project_task_add_very_high"
+          }
+        ]
+      }
+    ]
+  }
+}

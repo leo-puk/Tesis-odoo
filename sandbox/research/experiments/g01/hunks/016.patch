@@ -1,0 +1,12 @@
+diff --git a/stock_quant_manual_assign/wizard/assign_manual_quants.py b/stock_quant_manual_assign/wizard/assign_manual_quants.py
+index 79e8c44..cb95794 100644
+--- a/stock_quant_manual_assign/wizard/assign_manual_quants.py
++++ b/stock_quant_manual_assign/wizard/assign_manual_quants.py
+@@ -247,7 +243,6 @@ class AssignManualQuantsLines(models.TransientModel):
+                 return
+             move._update_reserved_quantity(
+                 self.qty,
+-                available_quantity,
+                 self.quant_id.location_id,
+                 lot_id=self.quant_id.lot_id,
+                 package_id=self.quant_id.package_id,

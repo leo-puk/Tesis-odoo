@@ -1,0 +1,14 @@
+diff --git a/product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py b/product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py
+index ae14021..3fc9a76 100644
+--- a/product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py
++++ b/product_cost_price_avco_sync/tests/test_product_cost_price_avco_sync.py
+@@ -312,7 +312,8 @@ class TestProductCostPriceAvcoSync(BaseCommon):
+         if confirmed:
+             picking.action_assign()
+             move = picking.move_ids[:1]
+-            picking.move_line_ids.qty_done = move.product_uom_qty
++            picking.move_line_ids.quantity = move.product_uom_qty
++            picking.move_line_ids.picked = True
+             picking._action_done()
+         return picking, move
+ 

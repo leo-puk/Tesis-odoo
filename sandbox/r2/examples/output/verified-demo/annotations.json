@@ -1,0 +1,30 @@
+[
+  {
+    "change_id": "chg-4566102902fb6dad078d2dd7",
+    "title": "States field property is no longer supported in Odoo 17",
+    "status": "verified",
+    "reviewer": "development review; not an independent relevance judgment",
+    "rationale": "The added core code explicitly contains: states is no longer supported. Other changes in this block remain unclassified.",
+    "required_elements": [
+      "property:states"
+    ],
+    "affected_elements": [
+      "property:states"
+    ],
+    "layer": "python"
+  },
+  {
+    "change_id": "chg-db1a79adc2958ca26c85422d",
+    "title": "XML attrs/states are rejected by the Odoo 17 view validator",
+    "status": "verified",
+    "reviewer": "development review; not an independent relevance judgment",
+    "rationale": "The added core code explicitly contains: attributes are no longer used. Other changes in this block remain unclassified.",
+    "required_elements": [
+      "xml-attribute:attrs"
+    ],
+    "affected_elements": [
+      "xml-attribute:attrs"
+    ],
+    "layer": "xml"
+  }
+]

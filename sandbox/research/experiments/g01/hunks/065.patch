@@ -1,0 +1,13 @@
+diff --git a/sale_blanket_order/models/blanket_orders.py b/sale_blanket_order/models/blanket_orders.py
+index e18506b6..e63059c7 100644
+--- a/sale_blanket_order/models/blanket_orders.py
++++ b/sale_blanket_order/models/blanket_orders.py
+@@ -605,7 +608,7 @@ class BlanketOrderLine(models.Model):
+             if self.order_id.partner_id and float_is_zero(
+                 self.price_unit, precision_digits=precision
+             ):
+-                self.price_unit = self._get_display_price(self.product_id)
++                self.price_unit = self._get_display_price()
+             if self.product_id.code:
+                 name = f"[{name}] {self.product_id.code}"
+             if self.product_id.description_sale:

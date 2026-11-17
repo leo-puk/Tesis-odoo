@@ -1,0 +1,10 @@
+2026-10-10 01:12:13Z [g02] prepare (intento 1): product_variant_sale_price, product_cost_price_avco_sync, account_credit_control, hr_timesheet_employee_analytic_tag, mail_notification_custom_subject
+2026-10-10 01:14:42Z [g02] prepare: 70 hunks, deps core=['account', 'base', 'hr_timesheet', 'mail', 'sale', 'stock_account'] oca=['account_analytic_tag'], tags={'ADMIN': 20, 'ESTILO': 1, 'G17-01': 5, 'G17-02': 1, 'G17-06': 1, 'G17-07': 12, 'G17-10': 1, 'G17-14': 1, 'SIN_GUIA': 29}
+2026-10-10 01:14:43Z [g02] seed: instalando en 16.0 la BD x_g02_prod con account,base,hr_timesheet,mail,sale,stock_account,account_analytic_tag,product_variant_sale_price,product_cost_price_avco_sync,account_credit_control,hr_timesheet_employee_analytic_tag,mail_notification_custom_subject
+2026-10-10 01:16:05Z [g02] seed: x_g02_prod lista en 82s, {'tables': 500, 'modules': 572, 'installed': 74}
+2026-10-10 01:16:05Z [g02] seed: instalando en 16.0 la BD x_g02_base con account,base,hr_timesheet,mail,sale,stock_account,account_analytic_tag
+2026-10-10 01:17:21Z [g02] seed: x_g02_base lista en 75s, {'tables': 480, 'modules': 572, 'installed': 69}
+2026-10-10 01:17:24Z [g02] baseline: fase install sin los modulos del grupo
+2026-10-10 01:19:00Z [g02] baseline: install rc=0 96s, 0 eventos (se descuentan)
+2026-10-10 01:19:08Z [g02] baseline: fase upgrade sin los modulos del grupo
+2026-10-13 19:53:40Z [g02] baseline: fase install sin los modulos del grupo

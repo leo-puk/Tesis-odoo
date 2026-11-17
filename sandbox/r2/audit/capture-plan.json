@@ -1,0 +1,146 @@
+[
+  {
+    "id": "official-core-16.0-17.0",
+    "after": {
+      "odoo/fields.py": "https://raw.githubusercontent.com/odoo/odoo/17.0/odoo/fields.py",
+      "odoo/addons/base/models/ir_ui_view.py": "https://raw.githubusercontent.com/odoo/odoo/17.0/odoo/addons/base/models/ir_ui_view.py"
+    },
+    "url": "https://github.com/odoo/odoo",
+    "before": {
+      "odoo/fields.py": "https://raw.githubusercontent.com/odoo/odoo/16.0/odoo/fields.py",
+      "odoo/addons/base/models/ir_ui_view.py": "https://raw.githubusercontent.com/odoo/odoo/16.0/odoo/addons/base/models/ir_ui_view.py"
+    },
+    "scope": "Only fields and view validator; explicitly partial core corpus",
+    "from_version": "16.0",
+    "license": {
+      "note": "Preserve upstream headers; verify root license at a pinned upstream revision",
+      "status": "not_verified_in_capture"
+    },
+    "kind": "official_code",
+    "to_version": "17.0"
+  },
+  {
+    "to_version": "17.0",
+    "from_version": "16.0",
+    "after": {
+      "orm-changelog.rst": "https://raw.githubusercontent.com/odoo/documentation/17.0/content/developer/reference/backend/orm/changelog.rst"
+    },
+    "scope": "Only ORM changelog; paths may move upstream and failures must be reported",
+    "kind": "official_documentation",
+    "url": "https://github.com/odoo/documentation",
+    "before": {
+      "orm-changelog.rst": "https://raw.githubusercontent.com/odoo/documentation/16.0/content/developer/reference/backend/orm/changelog.rst"
+    },
+    "id": "official-docs-16.0-17.0"
+  },
+  {
+    "to_version": "17.0",
+    "from_version": "16.0",
+    "after": {
+      "migration-guide.md": "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-17.0.md"
+    },
+    "scope": "Guide comparison is documentary evidence, not an automatically verified incompatibility",
+    "kind": "oca_guidance",
+    "url": "https://github.com/OCA/maintainer-tools/wiki",
+    "before": {
+      "migration-guide.md": "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-16.0.md"
+    },
+    "id": "oca-guide-16.0-17.0"
+  },
+  {
+    "id": "official-core-17.0-18.0",
+    "after": {
+      "odoo/fields.py": "https://raw.githubusercontent.com/odoo/odoo/18.0/odoo/fields.py",
+      "odoo/addons/base/models/ir_ui_view.py": "https://raw.githubusercontent.com/odoo/odoo/18.0/odoo/addons/base/models/ir_ui_view.py"
+    },
+    "url": "https://github.com/odoo/odoo",
+    "before": {
+      "odoo/fields.py": "https://raw.githubusercontent.com/odoo/odoo/17.0/odoo/fields.py",
+      "odoo/addons/base/models/ir_ui_view.py": "https://raw.githubusercontent.com/odoo/odoo/17.0/odoo/addons/base/models/ir_ui_view.py"
+    },
+    "scope": "Only fields and view validator; explicitly partial core corpus",
+    "from_version": "17.0",
+    "license": {
+      "note": "Preserve upstream headers; verify root license at a pinned upstream revision",
+      "status": "not_verified_in_capture"
+    },
+    "kind": "official_code",
+    "to_version": "18.0"
+  },
+  {
+    "to_version": "18.0",
+    "from_version": "17.0",
+    "after": {
+      "orm-changelog.rst": "https://raw.githubusercontent.com/odoo/documentation/18.0/content/developer/reference/backend/orm/changelog.rst"
+    },
+    "scope": "Only ORM changelog; paths may move upstream and failures must be reported",
+    "kind": "official_documentation",
+    "url": "https://github.com/odoo/documentation",
+    "before": {
+      "orm-changelog.rst": "https://raw.githubusercontent.com/odoo/documentation/17.0/content/developer/reference/backend/orm/changelog.rst"
+    },
+    "id": "official-docs-17.0-18.0"
+  },
+  {
+    "to_version": "18.0",
+    "from_version": "17.0",
+    "after": {
+      "migration-guide.md": "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-18.0.md"
+    },
+    "scope": "Guide comparison is documentary evidence, not an automatically verified incompatibility",
+    "kind": "oca_guidance",
+    "url": "https://github.com/OCA/maintainer-tools/wiki",
+    "before": {
+      "migration-guide.md": "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-17.0.md"
+    },
+    "id": "oca-guide-17.0-18.0"
+  },
+  {
+    "id": "official-core-18.0-19.0",
+    "after": {
+      "odoo/fields.py": "https://raw.githubusercontent.com/odoo/odoo/19.0/odoo/fields.py",
+      "odoo/addons/base/models/ir_ui_view.py": "https://raw.githubusercontent.com/odoo/odoo/19.0/odoo/addons/base/models/ir_ui_view.py"
+    },
+    "url": "https://github.com/odoo/odoo",
+    "before": {
+      "odoo/fields.py": "https://raw.githubusercontent.com/odoo/odoo/18.0/odoo/fields.py",
+      "odoo/addons/base/models/ir_ui_view.py": "https://raw.githubusercontent.com/odoo/odoo/18.0/odoo/addons/base/models/ir_ui_view.py"
+    },
+    "scope": "Only fields and view validator; explicitly partial core corpus",
+    "from_version": "18.0",
+    "license": {
+      "note": "Preserve upstream headers; verify root license at a pinned upstream revision",
+      "status": "not_verified_in_capture"
+    },
+    "kind": "official_code",
+    "to_version": "19.0"
+  },
+  {
+    "to_version": "19.0",
+    "from_version": "18.0",
+    "after": {
+      "orm-changelog.rst": "https://raw.githubusercontent.com/odoo/documentation/19.0/content/developer/reference/backend/orm/changelog.rst"
+    },
+    "scope": "Only ORM changelog; paths may move upstream and failures must be reported",
+    "kind": "official_documentation",
+    "url": "https://github.com/odoo/documentation",
+    "before": {
+      "orm-changelog.rst": "https://raw.githubusercontent.com/odoo/documentation/18.0/content/developer/reference/backend/orm/changelog.rst"
+    },
+    "id": "official-docs-18.0-19.0"
+  },
+  {
+    "to_version": "19.0",
+    "from_version": "18.0",
+    "after": {
+      "migration-guide.md": "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-19.0.md"
+    },
+    "scope": "Guide comparison is documentary evidence, not an automatically verified incompatibility",
+    "kind": "oca_guidance",
+    "url": "https://github.com/OCA/maintainer-tools/wiki",
+    "before": {
+      "migration-guide.md": "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-18.0.md"
+    },
+    "id": "oca-guide-18.0-19.0"
+  }
+]

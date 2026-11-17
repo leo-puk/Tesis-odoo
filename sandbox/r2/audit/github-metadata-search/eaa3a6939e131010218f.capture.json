@@ -1,0 +1,14 @@
+{
+  "url": "https://api.github.com/search/issues?q=repo%3AOCA%2Fsale-workflow+is%3Apr+is%3Amerged+%5BMIG%5D+in%3Atitle+base%3A17.0+sale_advance_payment&per_page=100&sort=created&order=asc",
+  "captured_at": "2026-11-14T19:03:28.476955+00:00",
+  "response_sha256": "9bda551754101637d3da245660f11d064cdb0fe7ed8f6104f77b05f261413a34",
+  "stored_sha256": "5d431d46c077d5aefba32dad3c7fea7208fe20ca2ffc067d7fce8a3266af0682",
+  "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\github-metadata-search\\eaa3a6939e131010218f-5d431d46c077.json",
+  "capture_form": "projected_metadata_only_no_code_or_review_bodies",
+  "headers": {
+    "content-type": "application/json; charset=utf-8",
+    "x-ratelimit-limit": "10",
+    "x-ratelimit-remaining": "9",
+    "x-ratelimit-reset": "1794683068"
+  }
+}

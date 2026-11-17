@@ -1,0 +1,10 @@
+source_id,kind,jump,captured_at,scope,license_status,captured_files
+oca-guide-16.0-17.0,oca_guidance,16.0->17.0,2026-11-14T14:03:05.678229-05:00,"Guide comparison is documentary evidence, not an automatically verified incompatibility",not_verified,2
+oca-guide-17.0-18.0,oca_guidance,17.0->18.0,2026-11-14T14:03:06.949911-05:00,"Guide comparison is documentary evidence, not an automatically verified incompatibility",not_verified,2
+oca-guide-18.0-19.0,oca_guidance,18.0->19.0,2026-11-14T14:03:07.569116-05:00,"Guide comparison is documentary evidence, not an automatically verified incompatibility",not_verified,2
+official-core-16.0-17.0,official_code,16.0->17.0,2026-11-14T14:03:04.863832-05:00,Only fields and view validator; explicitly partial core corpus,not_verified_in_capture,4
+official-core-17.0-18.0,official_code,17.0->18.0,2026-11-14T14:03:06.55028-05:00,Only fields and view validator; explicitly partial core corpus,not_verified_in_capture,4
+official-core-18.0-19.0,official_code,18.0->19.0,2026-11-14T14:04:08.046827-05:00,"Partial core: fields.py moved/split into orm/fields*.py in 19; only base Field and view validator included. File moves are represented explicitly, no complete field coverage claimed.",not_verified_in_capture,4
+official-docs-16.0-17.0,official_documentation,16.0->17.0,2026-11-14T14:03:05.2652-05:00,Only ORM changelog; paths may move upstream and failures must be reported,not_verified,2
+official-docs-17.0-18.0,official_documentation,17.0->18.0,2026-11-14T14:03:06.740368-05:00,Only ORM changelog; paths may move upstream and failures must be reported,not_verified,2
+official-docs-18.0-19.0,official_documentation,18.0->19.0,2026-11-14T14:03:07.362178-05:00,Only ORM changelog; paths may move upstream and failures must be reported,not_verified,2

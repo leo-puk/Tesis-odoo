@@ -1,0 +1,14 @@
+diff --git a/account_credit_control/views/res_partner.xml b/account_credit_control/views/res_partner.xml
+index b110f81..1f36e78 100644
+--- a/account_credit_control/views/res_partner.xml
++++ b/account_credit_control/views/res_partner.xml
+@@ -8,6 +8,9 @@
+             eval="[(4, ref('account_credit_control.group_account_credit_control_manager')), (4, ref('account_credit_control.group_account_credit_control_user'))]"
+         />
+         <field name="domain">[('partner_id', '=', active_id)]</field>
++        <field
++            name="context"
++        >{'search_default_partner_id': active_id, 'default_partner_id': active_id}</field>
+         <field name="res_model">credit.control.line</field>
+         <field name="binding_model_id" ref="base.model_res_partner" />
+         <field name="binding_view_types">form</field>

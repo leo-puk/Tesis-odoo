@@ -1,0 +1,12 @@
+diff --git a/product_variant_sale_price/static/description/index.html b/product_variant_sale_price/static/description/index.html
+index a583e80..98d47be 100644
+--- a/product_variant_sale_price/static/description/index.html
++++ b/product_variant_sale_price/static/description/index.html
+@@ -412,6 +413,7 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
+ <li>Vicent Cubells &lt;<a class="reference external" href="mailto:info&#64;obertix.net">info&#64;obertix.net</a>&gt;</li>
+ <li>RabbitJon-S73 &lt;<a class="reference external" href="mailto:roger&#64;studio73.es">roger&#64;studio73.es</a>&gt;</li>
+ <li>Emanuel Cino &lt;<a class="reference external" href="mailto:ecino&#64;compassion.ch">ecino&#64;compassion.ch</a>&gt;</li>
++<li>Pedroguirao &lt;<a class="reference external" href="mailto:pguirao&#64;puntsistemes.es">pguirao&#64;puntsistemes.es</a>&gt;</li>
+ </ul>
+ </div>
+ <div class="section" id="maintainers">

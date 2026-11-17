@@ -1,0 +1,270 @@
+[
+  {
+    "id": 1,
+    "path": "sale_advance_payment/__manifest__.py",
+    "status": "M",
+    "header": "@@ -3,7 +3,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-01"
+    ],
+    "state": "applied",
+    "commit": "ff204d9",
+    "casuistics": [
+      "C001"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 2,
+    "path": "sale_advance_payment/models/account_move.py",
+    "status": "M",
+    "header": "@@ -9,7 +9,7 @@ class AccountMove(models.Model):",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "ESTILO"
+    ],
+    "state": "applied",
+    "commit": "5278e1b",
+    "casuistics": [
+      "C007"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 3,
+    "path": "sale_advance_payment/models/payment.py",
+    "status": "M",
+    "header": "@@ -7,6 +7,4 @@ from odoo import fields, models",
+    "removed": 3,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "d96f1e9",
+    "casuistics": [
+      "C008"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 4,
+    "path": "sale_advance_payment/models/sale.py",
+    "status": "M",
+    "header": "@@ -9,16 +9,17 @@ class SaleOrder(models.Model):",
+    "removed": 4,
+    "added": 5,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "1d9adb4",
+    "casuistics": [
+      "C009"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 5,
+    "path": "sale_advance_payment/models/sale.py",
+    "status": "M",
+    "header": "@@ -30,7 +31,6 @@ class SaleOrder(models.Model):",
+    "removed": 1,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "1d9adb4",
+    "casuistics": [
+      "C009"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 6,
+    "path": "sale_advance_payment/tests/test_sale_advance_payment.py",
+    "status": "M",
+    "header": "@@ -90,12 +90,12 @@ class TestSaleAdvancePayment(common.TransactionCase):",
+    "removed": 3,
+    "added": 3,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "bf409e6",
+    "casuistics": [
+      "C006"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 7,
+    "path": "sale_advance_payment/tests/test_sale_advance_payment.py",
+    "status": "M",
+    "header": "@@ -253,16 +253,12 @@ class TestSaleAdvancePayment(common.TransactionCase):",
+    "removed": 5,
+    "added": 1,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "bf409e6",
+    "casuistics": [
+      "C006"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 8,
+    "path": "sale_advance_payment/views/sale_view.xml",
+    "status": "M",
+    "header": "@@ -11,7 +11,7 @@",
+    "removed": 1,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "24133fc",
+    "casuistics": [
+      "C002"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 9,
+    "path": "sale_advance_payment/views/sale_view.xml",
+    "status": "M",
+    "header": "@@ -20,6 +20,7 @@",
+    "removed": 0,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "24133fc",
+    "casuistics": [
+      "C002"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 10,
+    "path": "sale_advance_payment/views/sale_view.xml",
+    "status": "M",
+    "header": "@@ -31,13 +32,14 @@",
+    "removed": 1,
+    "added": 2,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "applied",
+    "commit": "24133fc",
+    "casuistics": [
+      "C002"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 11,
+    "path": "sale_advance_payment/wizard/sale_advance_payment_wzd.py",
+    "status": "M",
+    "header": "@@ -25,14 +25,17 @@ class AccountVoucherWizard(models.TransientModel):",
+    "removed": 3,
+    "added": 6,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "d437ee4",
+    "casuistics": [
+      "C010"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 12,
+    "path": "sale_advance_payment/wizard/sale_advance_payment_wzd.py",
+    "status": "M",
+    "header": "@@ -54,7 +57,6 @@ class AccountVoucherWizard(models.TransientModel):",
+    "removed": 1,
+    "added": 0,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "d437ee4",
+    "casuistics": [
+      "C010"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 13,
+    "path": "sale_advance_payment/wizard/sale_advance_payment_wzd.py",
+    "status": "M",
+    "header": "@@ -66,7 +68,8 @@ class AccountVoucherWizard(models.TransientModel):",
+    "removed": 1,
+    "added": 2,
+    "tags": [
+      "ESTILO"
+    ],
+    "state": "applied",
+    "commit": "d437ee4",
+    "casuistics": [
+      "C010"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 14,
+    "path": "sale_advance_payment/wizard/sale_advance_payment_wzd.py",
+    "status": "M",
+    "header": "@@ -99,24 +102,26 @@ class AccountVoucherWizard(models.TransientModel):",
+    "removed": 13,
+    "added": 15,
+    "tags": [
+      "SIN_GUIA"
+    ],
+    "state": "applied",
+    "commit": "d437ee4",
+    "casuistics": [
+      "C010"
+    ],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 15,
+    "path": "sale_advance_payment/wizard/sale_advance_payment_wzd_view.xml",
+    "status": "M",
+    "header": "@@ -20,7 +20,11 @@",
+    "removed": 1,
+    "added": 5,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "sale_advance_payment"
+  },
+  {
+    "id": 16,
+    "path": "sale_advance_payment/wizard/sale_advance_payment_wzd_view.xml",
+    "status": "M",
+    "header": "@@ -29,6 +33,7 @@",
+    "removed": 0,
+    "added": 1,
+    "tags": [
+      "G17-07"
+    ],
+    "state": "pending",
+    "commit": "",
+    "casuistics": [],
+    "module": "sale_advance_payment"
+  }
+]

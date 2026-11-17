@@ -1,0 +1,13 @@
+diff --git a/fieldservice_isp_flow/views/fsm_order.xml b/fieldservice_isp_flow/views/fsm_order.xml
+index aae015b..b856846 100644
+--- a/fieldservice_isp_flow/views/fsm_order.xml
++++ b/fieldservice_isp_flow/views/fsm_order.xml
+@@ -23,7 +23,7 @@
+                     class="oe_highlight"
+                     type="object"
+                     groups="fieldservice.group_fsm_dispatcher"
+-                    attrs="{'invisible': [('stage_id', 'not in', (%(fieldservice_isp_flow.fsm_stage_confirmed)d, %(fieldservice_isp_flow.fsm_stage_requested)d))]}"
++                    invisible="stage_id not in (%(fieldservice_isp_flow.fsm_stage_confirmed)d, %(fieldservice_isp_flow.fsm_stage_requested)d)"
+                 />
+                 <button
+                     id="action_assign"

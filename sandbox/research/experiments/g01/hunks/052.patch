@@ -1,0 +1,13 @@
+diff --git a/server_action_mass_edit/wizard/mass_editing_wizard.py b/server_action_mass_edit/wizard/mass_editing_wizard.py
+index 664bcbb..30e3595 100644
+--- a/server_action_mass_edit/wizard/mass_editing_wizard.py
++++ b/server_action_mass_edit/wizard/mass_editing_wizard.py
+@@ -256,7 +286,7 @@ class MassEditingWizard(models.TransientModel):
+                         if val == "set" or val == "add_o2m":
+                             values.update({split_key: vals.get(split_key, False)})
+ 
+-                        elif val == "set_o2m":
++                        elif val == "set_o2m" or val == "set_m2m":
+                             values.update(
+                                 {split_key: [(6, 0, [])] + vals.get(split_key, [])}
+                             )

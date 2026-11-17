@@ -1,0 +1,22 @@
+{
+  "prod": {
+    "db": "x_g01_prod",
+    "created": true,
+    "seconds": 72.9,
+    "fingerprint": {
+      "tables": 483,
+      "modules": 575,
+      "installed": 70
+    }
+  },
+  "base": {
+    "db": "x_g01_base",
+    "created": true,
+    "seconds": 69.7,
+    "fingerprint": {
+      "tables": 474,
+      "modules": 575,
+      "installed": 65
+    }
+  }
+}

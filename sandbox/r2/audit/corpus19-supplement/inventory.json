@@ -1,0 +1,100 @@
+[
+  {
+    "id": "official-core-18.0-19.0",
+    "url": "https://github.com/odoo/odoo",
+    "scope": "Partial core: fields.py moved/split into orm/fields*.py in 19; only base Field and view validator included. File moves are represented explicitly, no complete field coverage claimed.",
+    "from_version": "18.0",
+    "license": {
+      "note": "Preserve upstream headers; verify root license at a pinned upstream revision",
+      "status": "not_verified_in_capture"
+    },
+    "kind": "official_code",
+    "to_version": "19.0",
+    "format": "snapshot",
+    "split": "construction",
+    "parent_ids": [],
+    "captures": [
+      {
+        "url": "https://raw.githubusercontent.com/odoo/odoo/18.0/odoo/fields.py",
+        "captured_at": "2026-11-14T19:04:07.399216+00:00",
+        "response_sha256": "08fb03091904495cf48418c2302965936ed83fac820c2c9cbd81bd28df674958",
+        "stored_sha256": "08fb03091904495cf48418c2302965936ed83fac820c2c9cbd81bd28df674958",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus19-supplement\\captures\\43781660f25403062644-08fb03091904.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"34114e1ab3ee717ecf9a64440ed8c167f5094bf3d27106959c6783d506d79250\""
+        },
+        "side": "before",
+        "file_path": "odoo/fields.py",
+        "normalized_sha256": "08fb03091904495cf48418c2302965936ed83fac820c2c9cbd81bd28df674958",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus19-supplement\\official-core-18.0-19.0\\before\\odoo\\fields.py",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/odoo/odoo/18.0/odoo/addons/base/models/ir_ui_view.py",
+        "captured_at": "2026-11-14T19:04:07.472438+00:00",
+        "response_sha256": "a5d6aad64f0950292f291248a3ca35e16b0364f7f4dfae956eb151858218227a",
+        "stored_sha256": "a5d6aad64f0950292f291248a3ca35e16b0364f7f4dfae956eb151858218227a",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus19-supplement\\captures\\3c018d05b4deb2fe3929-a5d6aad64f09.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"55f142fc5fb73f10be25ba4eddf7e44d2fb173ddf2f02e8861bc165b833eddb8\""
+        },
+        "side": "before",
+        "file_path": "odoo/addons/base/models/ir_ui_view.py",
+        "normalized_sha256": "a5d6aad64f0950292f291248a3ca35e16b0364f7f4dfae956eb151858218227a",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus19-supplement\\official-core-18.0-19.0\\before\\odoo\\addons\\base\\models\\ir_ui_view.py",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/odoo/odoo/19.0/odoo/orm/fields.py",
+        "captured_at": "2026-11-14T19:04:07.705949+00:00",
+        "response_sha256": "a21483829a42fe958faff5a8ee6118f0a2946a031604ec4df055c0a74174ed14",
+        "stored_sha256": "a21483829a42fe958faff5a8ee6118f0a2946a031604ec4df055c0a74174ed14",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus19-supplement\\captures\\27b1e8ee48f4a7561a97-a21483829a42.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"fba7da9ac6b86bf71014f6b4ababb4618b81e0cd184d7afcfdb4cf5fe428c776\""
+        },
+        "side": "after",
+        "file_path": "odoo/orm/fields.py",
+        "normalized_sha256": "a21483829a42fe958faff5a8ee6118f0a2946a031604ec4df055c0a74174ed14",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus19-supplement\\official-core-18.0-19.0\\after\\odoo\\orm\\fields.py",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/odoo/odoo/19.0/odoo/addons/base/models/ir_ui_view.py",
+        "captured_at": "2026-11-14T19:04:08.046827+00:00",
+        "response_sha256": "6688e8e2b8b50b3ab6adf936d917df275b7692305cd7481fd168d1dba16f56eb",
+        "stored_sha256": "6688e8e2b8b50b3ab6adf936d917df275b7692305cd7481fd168d1dba16f56eb",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus19-supplement\\captures\\094070cd3eb43584ba98-6688e8e2b8b5.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"d5bae917d39ded2aecfc8be012f6faf1de35451c3c96363b5ffee91763fb962a\""
+        },
+        "side": "after",
+        "file_path": "odoo/addons/base/models/ir_ui_view.py",
+        "normalized_sha256": "6688e8e2b8b50b3ab6adf936d917df275b7692305cd7481fd168d1dba16f56eb",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus19-supplement\\official-core-18.0-19.0\\after\\odoo\\addons\\base\\models\\ir_ui_view.py",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      }
+    ],
+    "before_dir": "official-core-18.0-19.0/before",
+    "after_dir": "official-core-18.0-19.0/after",
+    "captured_at": "2026-11-14T19:04:08.046827+00:00",
+    "assignment": {
+      "rule": "general_public_source_capture_v1",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/odoo/odoo/18.0/odoo/addons/base/models/ir_ui_view.py",
+        "https://raw.githubusercontent.com/odoo/odoo/18.0/odoo/fields.py",
+        "https://raw.githubusercontent.com/odoo/odoo/19.0/odoo/addons/base/models/ir_ui_view.py",
+        "https://raw.githubusercontent.com/odoo/odoo/19.0/odoo/orm/fields.py"
+      ],
+      "reason": "General framework/documentation source; not a case solution. Hidden-copy audit remains necessary."
+    }
+  }
+]

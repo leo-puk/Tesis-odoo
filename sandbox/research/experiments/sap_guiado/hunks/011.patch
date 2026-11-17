@@ -1,0 +1,25 @@
+diff --git a/sale_advance_payment/wizard/sale_advance_payment_wzd.py b/sale_advance_payment/wizard/sale_advance_payment_wzd.py
+index f9913cbe..7177b672 100644
+--- a/sale_advance_payment/wizard/sale_advance_payment_wzd.py
++++ b/sale_advance_payment/wizard/sale_advance_payment_wzd.py
+@@ -25,14 +25,17 @@ class AccountVoucherWizard(models.TransientModel):
+         readonly=False,
+         compute="_compute_get_journal_currency",
+     )
+-    currency_id = fields.Many2one("res.currency", "Currency", readonly=True)
+-    amount_total = fields.Monetary(readonly=True)
++    currency_id = fields.Many2one("res.currency", "Currency")
++    amount_total = fields.Monetary()
+     amount_advance = fields.Monetary(
+         "Amount advanced", required=True, currency_field="journal_currency_id"
+     )
+     date = fields.Date(required=True, default=fields.Date.context_today)
+     currency_amount = fields.Monetary(
+-        "Curr. amount", readonly=True, currency_field="currency_id"
++        "Curr. amount",
++        currency_field="currency_id",
++        compute="_compute_currency_amount",
++        store=True,
+     )
+     payment_ref = fields.Char("Ref.")
+     payment_type = fields.Selection(

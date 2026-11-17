@@ -1,0 +1,14 @@
+diff --git a/mail_notification_custom_subject/models/mail_thread.py b/mail_notification_custom_subject/models/mail_thread.py
+index 4af63ed..f9b116f 100644
+--- a/mail_notification_custom_subject/models/mail_thread.py
++++ b/mail_notification_custom_subject/models/mail_thread.py
+@@ -24,8 +24,7 @@ class MailThread(models.AbstractModel):
+         partner_ids=None,
+         attachments=None,
+         attachment_ids=None,
+-        add_sign=True,
+-        record_name=False,
++        body_is_html=False,
+         **kwargs,
+     ):
+         if subtype_xmlid:

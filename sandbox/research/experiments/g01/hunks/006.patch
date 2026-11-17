@@ -1,0 +1,20 @@
+diff --git a/stock_quant_manual_assign/models/stock_picking_type.py b/stock_quant_manual_assign/models/stock_picking_type.py
+deleted file mode 100644
+index 013c0d9..0000000
+--- a/stock_quant_manual_assign/models/stock_picking_type.py
++++ /dev/null
+@@ -1,14 +0,0 @@
+-# Copyright 2021 Quartile Limited
+-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-
+-from odoo import fields, models
+-
+-
+-class StockPickingType(models.Model):
+-    _inherit = "stock.picking.type"
+-
+-    auto_fill_qty_done = fields.Boolean(
+-        "Auto-fill Quantity Done",
+-        help="Select this in case done quantity of the stock move line should "
+-        "be auto-filled when quants are manually assigned.",
+-    )

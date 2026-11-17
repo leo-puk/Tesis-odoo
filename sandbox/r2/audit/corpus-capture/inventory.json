@@ -1,0 +1,564 @@
+[
+  {
+    "id": "official-core-16.0-17.0",
+    "url": "https://github.com/odoo/odoo",
+    "scope": "Only fields and view validator; explicitly partial core corpus",
+    "from_version": "16.0",
+    "license": {
+      "note": "Preserve upstream headers; verify root license at a pinned upstream revision",
+      "status": "not_verified_in_capture"
+    },
+    "kind": "official_code",
+    "to_version": "17.0",
+    "format": "snapshot",
+    "split": "construction",
+    "parent_ids": [],
+    "captures": [
+      {
+        "url": "https://raw.githubusercontent.com/odoo/odoo/16.0/odoo/fields.py",
+        "captured_at": "2026-11-14T19:03:04.050319+00:00",
+        "response_sha256": "117f994f569103b16718da84f02983326063190a1158d3b3072397d6b1c48e7f",
+        "stored_sha256": "117f994f569103b16718da84f02983326063190a1158d3b3072397d6b1c48e7f",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\e7c09bdcff8384ca048e-117f994f5691.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"e3dab3c2ce93370ddc5e244ef140b74a9824522f32f4ee271b1a34f4d6197fc9\""
+        },
+        "side": "before",
+        "file_path": "odoo/fields.py",
+        "normalized_sha256": "117f994f569103b16718da84f02983326063190a1158d3b3072397d6b1c48e7f",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-core-16.0-17.0\\before\\odoo\\fields.py",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/odoo/odoo/16.0/odoo/addons/base/models/ir_ui_view.py",
+        "captured_at": "2026-11-14T19:03:04.282900+00:00",
+        "response_sha256": "fae67c29b2b5a9d1bfa1fa3e65a2f57cb77328bb5570112b76de7fa8851f4110",
+        "stored_sha256": "fae67c29b2b5a9d1bfa1fa3e65a2f57cb77328bb5570112b76de7fa8851f4110",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\632a54ff012e078ffcbc-fae67c29b2b5.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"8c074519cd61d4044d8fdb2df7f7e06579e86bfa6f6262e73de8f15f34601cc0\""
+        },
+        "side": "before",
+        "file_path": "odoo/addons/base/models/ir_ui_view.py",
+        "normalized_sha256": "fae67c29b2b5a9d1bfa1fa3e65a2f57cb77328bb5570112b76de7fa8851f4110",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-core-16.0-17.0\\before\\odoo\\addons\\base\\models\\ir_ui_view.py",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/odoo/odoo/17.0/odoo/fields.py",
+        "captured_at": "2026-11-14T19:03:04.529528+00:00",
+        "response_sha256": "498bdee1e3acf88fbdc41930fb1067e5ad806b95e5372736ee01fde416616a30",
+        "stored_sha256": "498bdee1e3acf88fbdc41930fb1067e5ad806b95e5372736ee01fde416616a30",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\285a6027d0e119168f48-498bdee1e3ac.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"d4b6a7ae3a257f5606416bebed368f5b990add9d4272b24ccb7b589931c1c537\""
+        },
+        "side": "after",
+        "file_path": "odoo/fields.py",
+        "normalized_sha256": "498bdee1e3acf88fbdc41930fb1067e5ad806b95e5372736ee01fde416616a30",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-core-16.0-17.0\\after\\odoo\\fields.py",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/odoo/odoo/17.0/odoo/addons/base/models/ir_ui_view.py",
+        "captured_at": "2026-11-14T19:03:04.863832+00:00",
+        "response_sha256": "b8229687677dfb6f1ca8923c67057cc20a1eaa3a587fa9b14b40e632de5bbfa7",
+        "stored_sha256": "b8229687677dfb6f1ca8923c67057cc20a1eaa3a587fa9b14b40e632de5bbfa7",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\94177f138d2419f00a85-b8229687677d.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"9f0ec81585dbb0e86a85b0bdd6b3b1564337c581ba2637d828db11709b3712d4\""
+        },
+        "side": "after",
+        "file_path": "odoo/addons/base/models/ir_ui_view.py",
+        "normalized_sha256": "b8229687677dfb6f1ca8923c67057cc20a1eaa3a587fa9b14b40e632de5bbfa7",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-core-16.0-17.0\\after\\odoo\\addons\\base\\models\\ir_ui_view.py",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      }
+    ],
+    "before_dir": "official-core-16.0-17.0/before",
+    "after_dir": "official-core-16.0-17.0/after",
+    "captured_at": "2026-11-14T19:03:04.863832+00:00",
+    "assignment": {
+      "rule": "general_public_source_capture_v1",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/odoo/odoo/16.0/odoo/addons/base/models/ir_ui_view.py",
+        "https://raw.githubusercontent.com/odoo/odoo/16.0/odoo/fields.py",
+        "https://raw.githubusercontent.com/odoo/odoo/17.0/odoo/addons/base/models/ir_ui_view.py",
+        "https://raw.githubusercontent.com/odoo/odoo/17.0/odoo/fields.py"
+      ],
+      "reason": "General framework/documentation source; not a case solution. Hidden-copy audit remains necessary."
+    }
+  },
+  {
+    "to_version": "17.0",
+    "from_version": "16.0",
+    "scope": "Only ORM changelog; paths may move upstream and failures must be reported",
+    "kind": "official_documentation",
+    "url": "https://github.com/odoo/documentation",
+    "id": "official-docs-16.0-17.0",
+    "format": "snapshot",
+    "split": "construction",
+    "parent_ids": [],
+    "captures": [
+      {
+        "url": "https://raw.githubusercontent.com/odoo/documentation/16.0/content/developer/reference/backend/orm/changelog.rst",
+        "captured_at": "2026-11-14T19:03:05.067688+00:00",
+        "response_sha256": "089f6640ce624073555e62391465d4405559a79a0240853fce0c0a905b0a671c",
+        "stored_sha256": "089f6640ce624073555e62391465d4405559a79a0240853fce0c0a905b0a671c",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\33743ab46aff73274d31-089f6640ce62.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"ce4473a3d65e6670ddc1a95b63d2411888282de35b22d5dfbbb43b4f51b9b2dd\""
+        },
+        "side": "before",
+        "file_path": "orm-changelog.rst",
+        "normalized_sha256": "089f6640ce624073555e62391465d4405559a79a0240853fce0c0a905b0a671c",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-docs-16.0-17.0\\before\\orm-changelog.rst",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/odoo/documentation/17.0/content/developer/reference/backend/orm/changelog.rst",
+        "captured_at": "2026-11-14T19:03:05.265200+00:00",
+        "response_sha256": "21358c05f1a7818dc2830276fbced6913635361019e75f045ef0532245768895",
+        "stored_sha256": "21358c05f1a7818dc2830276fbced6913635361019e75f045ef0532245768895",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\323cdc37621e5cef9232-21358c05f1a7.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"7662581e654251e9251e1baee54c0adf029ebb7b7e60a848aa309363a263870c\""
+        },
+        "side": "after",
+        "file_path": "orm-changelog.rst",
+        "normalized_sha256": "21358c05f1a7818dc2830276fbced6913635361019e75f045ef0532245768895",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-docs-16.0-17.0\\after\\orm-changelog.rst",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      }
+    ],
+    "before_dir": "official-docs-16.0-17.0/before",
+    "after_dir": "official-docs-16.0-17.0/after",
+    "captured_at": "2026-11-14T19:03:05.265200+00:00",
+    "license": {
+      "status": "not_verified"
+    },
+    "assignment": {
+      "rule": "general_public_source_capture_v1",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/odoo/documentation/16.0/content/developer/reference/backend/orm/changelog.rst",
+        "https://raw.githubusercontent.com/odoo/documentation/17.0/content/developer/reference/backend/orm/changelog.rst"
+      ],
+      "reason": "General framework/documentation source; not a case solution. Hidden-copy audit remains necessary."
+    }
+  },
+  {
+    "to_version": "17.0",
+    "from_version": "16.0",
+    "scope": "Guide comparison is documentary evidence, not an automatically verified incompatibility",
+    "kind": "oca_guidance",
+    "url": "https://github.com/OCA/maintainer-tools/wiki",
+    "id": "oca-guide-16.0-17.0",
+    "format": "snapshot",
+    "split": "construction",
+    "parent_ids": [],
+    "captures": [
+      {
+        "url": "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-16.0.md",
+        "captured_at": "2026-11-14T19:03:05.470156+00:00",
+        "response_sha256": "683e19b1ef58f8dc78c1d94fed5558558c7f4b5dad8a1c6e3c0c73cccd76aed2",
+        "stored_sha256": "683e19b1ef58f8dc78c1d94fed5558558c7f4b5dad8a1c6e3c0c73cccd76aed2",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\692ada6a2184c2a2f916-683e19b1ef58.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"0133477814b3f5880f6f1aa83b07952b9217abb658454b9f500808dd19a54ad2\""
+        },
+        "side": "before",
+        "file_path": "migration-guide.md",
+        "normalized_sha256": "683e19b1ef58f8dc78c1d94fed5558558c7f4b5dad8a1c6e3c0c73cccd76aed2",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\oca-guide-16.0-17.0\\before\\migration-guide.md",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-17.0.md",
+        "captured_at": "2026-11-14T19:03:05.678229+00:00",
+        "response_sha256": "d5a71a09e0d9b323f3a8c38cc6069cd9f3efb114ccf1e28ad851f83624153eae",
+        "stored_sha256": "d5a71a09e0d9b323f3a8c38cc6069cd9f3efb114ccf1e28ad851f83624153eae",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\5177bb4b3bfeb1468c6f-d5a71a09e0d9.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"e06ae35f5357662df97a991928b042b32a5d8531186e2e891b2dc267ebbc19db\""
+        },
+        "side": "after",
+        "file_path": "migration-guide.md",
+        "normalized_sha256": "c46719d2f73745d495e3c2da6993503ef702504d3e83170be62d542f33449c66",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\oca-guide-16.0-17.0\\after\\migration-guide.md",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      }
+    ],
+    "before_dir": "oca-guide-16.0-17.0/before",
+    "after_dir": "oca-guide-16.0-17.0/after",
+    "captured_at": "2026-11-14T19:03:05.678229+00:00",
+    "license": {
+      "status": "not_verified"
+    },
+    "assignment": {
+      "rule": "general_public_source_capture_v1",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-16.0.md",
+        "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-17.0.md"
+      ],
+      "reason": "General framework/documentation source; not a case solution. Hidden-copy audit remains necessary."
+    }
+  },
+  {
+    "id": "official-core-17.0-18.0",
+    "url": "https://github.com/odoo/odoo",
+    "scope": "Only fields and view validator; explicitly partial core corpus",
+    "from_version": "17.0",
+    "license": {
+      "note": "Preserve upstream headers; verify root license at a pinned upstream revision",
+      "status": "not_verified_in_capture"
+    },
+    "kind": "official_code",
+    "to_version": "18.0",
+    "format": "snapshot",
+    "split": "construction",
+    "parent_ids": [],
+    "captures": [
+      {
+        "url": "https://raw.githubusercontent.com/odoo/odoo/17.0/odoo/fields.py",
+        "captured_at": "2026-11-14T19:03:04.529528+00:00",
+        "response_sha256": "498bdee1e3acf88fbdc41930fb1067e5ad806b95e5372736ee01fde416616a30",
+        "stored_sha256": "498bdee1e3acf88fbdc41930fb1067e5ad806b95e5372736ee01fde416616a30",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\285a6027d0e119168f48-498bdee1e3ac.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"d4b6a7ae3a257f5606416bebed368f5b990add9d4272b24ccb7b589931c1c537\""
+        },
+        "side": "before",
+        "file_path": "odoo/fields.py",
+        "normalized_sha256": "498bdee1e3acf88fbdc41930fb1067e5ad806b95e5372736ee01fde416616a30",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-core-17.0-18.0\\before\\odoo\\fields.py",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/odoo/odoo/17.0/odoo/addons/base/models/ir_ui_view.py",
+        "captured_at": "2026-11-14T19:03:04.863832+00:00",
+        "response_sha256": "b8229687677dfb6f1ca8923c67057cc20a1eaa3a587fa9b14b40e632de5bbfa7",
+        "stored_sha256": "b8229687677dfb6f1ca8923c67057cc20a1eaa3a587fa9b14b40e632de5bbfa7",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\94177f138d2419f00a85-b8229687677d.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"9f0ec81585dbb0e86a85b0bdd6b3b1564337c581ba2637d828db11709b3712d4\""
+        },
+        "side": "before",
+        "file_path": "odoo/addons/base/models/ir_ui_view.py",
+        "normalized_sha256": "b8229687677dfb6f1ca8923c67057cc20a1eaa3a587fa9b14b40e632de5bbfa7",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-core-17.0-18.0\\before\\odoo\\addons\\base\\models\\ir_ui_view.py",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/odoo/odoo/18.0/odoo/fields.py",
+        "captured_at": "2026-11-14T19:03:06.304803+00:00",
+        "response_sha256": "08fb03091904495cf48418c2302965936ed83fac820c2c9cbd81bd28df674958",
+        "stored_sha256": "08fb03091904495cf48418c2302965936ed83fac820c2c9cbd81bd28df674958",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\43781660f25403062644-08fb03091904.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"34114e1ab3ee717ecf9a64440ed8c167f5094bf3d27106959c6783d506d79250\""
+        },
+        "side": "after",
+        "file_path": "odoo/fields.py",
+        "normalized_sha256": "08fb03091904495cf48418c2302965936ed83fac820c2c9cbd81bd28df674958",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-core-17.0-18.0\\after\\odoo\\fields.py",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/odoo/odoo/18.0/odoo/addons/base/models/ir_ui_view.py",
+        "captured_at": "2026-11-14T19:03:06.550280+00:00",
+        "response_sha256": "a5d6aad64f0950292f291248a3ca35e16b0364f7f4dfae956eb151858218227a",
+        "stored_sha256": "a5d6aad64f0950292f291248a3ca35e16b0364f7f4dfae956eb151858218227a",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\3c018d05b4deb2fe3929-a5d6aad64f09.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"55f142fc5fb73f10be25ba4eddf7e44d2fb173ddf2f02e8861bc165b833eddb8\""
+        },
+        "side": "after",
+        "file_path": "odoo/addons/base/models/ir_ui_view.py",
+        "normalized_sha256": "a5d6aad64f0950292f291248a3ca35e16b0364f7f4dfae956eb151858218227a",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-core-17.0-18.0\\after\\odoo\\addons\\base\\models\\ir_ui_view.py",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      }
+    ],
+    "before_dir": "official-core-17.0-18.0/before",
+    "after_dir": "official-core-17.0-18.0/after",
+    "captured_at": "2026-11-14T19:03:06.550280+00:00",
+    "assignment": {
+      "rule": "general_public_source_capture_v1",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/odoo/odoo/17.0/odoo/addons/base/models/ir_ui_view.py",
+        "https://raw.githubusercontent.com/odoo/odoo/17.0/odoo/fields.py",
+        "https://raw.githubusercontent.com/odoo/odoo/18.0/odoo/addons/base/models/ir_ui_view.py",
+        "https://raw.githubusercontent.com/odoo/odoo/18.0/odoo/fields.py"
+      ],
+      "reason": "General framework/documentation source; not a case solution. Hidden-copy audit remains necessary."
+    }
+  },
+  {
+    "to_version": "18.0",
+    "from_version": "17.0",
+    "scope": "Only ORM changelog; paths may move upstream and failures must be reported",
+    "kind": "official_documentation",
+    "url": "https://github.com/odoo/documentation",
+    "id": "official-docs-17.0-18.0",
+    "format": "snapshot",
+    "split": "construction",
+    "parent_ids": [],
+    "captures": [
+      {
+        "url": "https://raw.githubusercontent.com/odoo/documentation/17.0/content/developer/reference/backend/orm/changelog.rst",
+        "captured_at": "2026-11-14T19:03:05.265200+00:00",
+        "response_sha256": "21358c05f1a7818dc2830276fbced6913635361019e75f045ef0532245768895",
+        "stored_sha256": "21358c05f1a7818dc2830276fbced6913635361019e75f045ef0532245768895",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\323cdc37621e5cef9232-21358c05f1a7.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"7662581e654251e9251e1baee54c0adf029ebb7b7e60a848aa309363a263870c\""
+        },
+        "side": "before",
+        "file_path": "orm-changelog.rst",
+        "normalized_sha256": "21358c05f1a7818dc2830276fbced6913635361019e75f045ef0532245768895",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-docs-17.0-18.0\\before\\orm-changelog.rst",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/odoo/documentation/18.0/content/developer/reference/backend/orm/changelog.rst",
+        "captured_at": "2026-11-14T19:03:06.740368+00:00",
+        "response_sha256": "b2f9138c8481dc68ac64c104bf220faac3f371419ee6a16ef64a242615f50e03",
+        "stored_sha256": "b2f9138c8481dc68ac64c104bf220faac3f371419ee6a16ef64a242615f50e03",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\95c3648ed8b70ca9dbd2-b2f9138c8481.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"1978bb23d07ec9064ac9cb64bd4d3b608d97a941a22f89d21ff272f959b06256\""
+        },
+        "side": "after",
+        "file_path": "orm-changelog.rst",
+        "normalized_sha256": "b2f9138c8481dc68ac64c104bf220faac3f371419ee6a16ef64a242615f50e03",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-docs-17.0-18.0\\after\\orm-changelog.rst",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      }
+    ],
+    "before_dir": "official-docs-17.0-18.0/before",
+    "after_dir": "official-docs-17.0-18.0/after",
+    "captured_at": "2026-11-14T19:03:06.740368+00:00",
+    "license": {
+      "status": "not_verified"
+    },
+    "assignment": {
+      "rule": "general_public_source_capture_v1",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/odoo/documentation/17.0/content/developer/reference/backend/orm/changelog.rst",
+        "https://raw.githubusercontent.com/odoo/documentation/18.0/content/developer/reference/backend/orm/changelog.rst"
+      ],
+      "reason": "General framework/documentation source; not a case solution. Hidden-copy audit remains necessary."
+    }
+  },
+  {
+    "to_version": "18.0",
+    "from_version": "17.0",
+    "scope": "Guide comparison is documentary evidence, not an automatically verified incompatibility",
+    "kind": "oca_guidance",
+    "url": "https://github.com/OCA/maintainer-tools/wiki",
+    "id": "oca-guide-17.0-18.0",
+    "format": "snapshot",
+    "split": "construction",
+    "parent_ids": [],
+    "captures": [
+      {
+        "url": "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-17.0.md",
+        "captured_at": "2026-11-14T19:03:05.678229+00:00",
+        "response_sha256": "d5a71a09e0d9b323f3a8c38cc6069cd9f3efb114ccf1e28ad851f83624153eae",
+        "stored_sha256": "d5a71a09e0d9b323f3a8c38cc6069cd9f3efb114ccf1e28ad851f83624153eae",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\5177bb4b3bfeb1468c6f-d5a71a09e0d9.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"e06ae35f5357662df97a991928b042b32a5d8531186e2e891b2dc267ebbc19db\""
+        },
+        "side": "before",
+        "file_path": "migration-guide.md",
+        "normalized_sha256": "c46719d2f73745d495e3c2da6993503ef702504d3e83170be62d542f33449c66",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\oca-guide-17.0-18.0\\before\\migration-guide.md",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-18.0.md",
+        "captured_at": "2026-11-14T19:03:06.949911+00:00",
+        "response_sha256": "e7c16121ec7b94ac243c5f53fa54d5bd5d9d68fcfddbf4ee8713290f69cbeca1",
+        "stored_sha256": "e7c16121ec7b94ac243c5f53fa54d5bd5d9d68fcfddbf4ee8713290f69cbeca1",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\d775eda3fdcd5c3436b6-e7c16121ec7b.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"3f80477fc56493c8803ce7952c0e1d3d31f179fa01c9eb60c7439fac09c9474b\""
+        },
+        "side": "after",
+        "file_path": "migration-guide.md",
+        "normalized_sha256": "e7c16121ec7b94ac243c5f53fa54d5bd5d9d68fcfddbf4ee8713290f69cbeca1",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\oca-guide-17.0-18.0\\after\\migration-guide.md",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      }
+    ],
+    "before_dir": "oca-guide-17.0-18.0/before",
+    "after_dir": "oca-guide-17.0-18.0/after",
+    "captured_at": "2026-11-14T19:03:06.949911+00:00",
+    "license": {
+      "status": "not_verified"
+    },
+    "assignment": {
+      "rule": "general_public_source_capture_v1",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-17.0.md",
+        "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-18.0.md"
+      ],
+      "reason": "General framework/documentation source; not a case solution. Hidden-copy audit remains necessary."
+    }
+  },
+  {
+    "to_version": "19.0",
+    "from_version": "18.0",
+    "scope": "Only ORM changelog; paths may move upstream and failures must be reported",
+    "kind": "official_documentation",
+    "url": "https://github.com/odoo/documentation",
+    "id": "official-docs-18.0-19.0",
+    "format": "snapshot",
+    "split": "construction",
+    "parent_ids": [],
+    "captures": [
+      {
+        "url": "https://raw.githubusercontent.com/odoo/documentation/18.0/content/developer/reference/backend/orm/changelog.rst",
+        "captured_at": "2026-11-14T19:03:06.740368+00:00",
+        "response_sha256": "b2f9138c8481dc68ac64c104bf220faac3f371419ee6a16ef64a242615f50e03",
+        "stored_sha256": "b2f9138c8481dc68ac64c104bf220faac3f371419ee6a16ef64a242615f50e03",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\95c3648ed8b70ca9dbd2-b2f9138c8481.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"1978bb23d07ec9064ac9cb64bd4d3b608d97a941a22f89d21ff272f959b06256\""
+        },
+        "side": "before",
+        "file_path": "orm-changelog.rst",
+        "normalized_sha256": "b2f9138c8481dc68ac64c104bf220faac3f371419ee6a16ef64a242615f50e03",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-docs-18.0-19.0\\before\\orm-changelog.rst",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/odoo/documentation/19.0/content/developer/reference/backend/orm/changelog.rst",
+        "captured_at": "2026-11-14T19:03:07.362178+00:00",
+        "response_sha256": "f31c80959e79efe4c738e7a6e651d3fdf5399897823a9c07619899ecb82196cf",
+        "stored_sha256": "f31c80959e79efe4c738e7a6e651d3fdf5399897823a9c07619899ecb82196cf",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\b3334969598ae8176a78-f31c80959e79.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"0896b21943b3eb1c56c4c0905e917ab7c8e25d9aa2251357f243a3b9144f19c6\""
+        },
+        "side": "after",
+        "file_path": "orm-changelog.rst",
+        "normalized_sha256": "f31c80959e79efe4c738e7a6e651d3fdf5399897823a9c07619899ecb82196cf",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\official-docs-18.0-19.0\\after\\orm-changelog.rst",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      }
+    ],
+    "before_dir": "official-docs-18.0-19.0/before",
+    "after_dir": "official-docs-18.0-19.0/after",
+    "captured_at": "2026-11-14T19:03:07.362178+00:00",
+    "license": {
+      "status": "not_verified"
+    },
+    "assignment": {
+      "rule": "general_public_source_capture_v1",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/odoo/documentation/18.0/content/developer/reference/backend/orm/changelog.rst",
+        "https://raw.githubusercontent.com/odoo/documentation/19.0/content/developer/reference/backend/orm/changelog.rst"
+      ],
+      "reason": "General framework/documentation source; not a case solution. Hidden-copy audit remains necessary."
+    }
+  },
+  {
+    "to_version": "19.0",
+    "from_version": "18.0",
+    "scope": "Guide comparison is documentary evidence, not an automatically verified incompatibility",
+    "kind": "oca_guidance",
+    "url": "https://github.com/OCA/maintainer-tools/wiki",
+    "id": "oca-guide-18.0-19.0",
+    "format": "snapshot",
+    "split": "construction",
+    "parent_ids": [],
+    "captures": [
+      {
+        "url": "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-18.0.md",
+        "captured_at": "2026-11-14T19:03:06.949911+00:00",
+        "response_sha256": "e7c16121ec7b94ac243c5f53fa54d5bd5d9d68fcfddbf4ee8713290f69cbeca1",
+        "stored_sha256": "e7c16121ec7b94ac243c5f53fa54d5bd5d9d68fcfddbf4ee8713290f69cbeca1",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\d775eda3fdcd5c3436b6-e7c16121ec7b.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"3f80477fc56493c8803ce7952c0e1d3d31f179fa01c9eb60c7439fac09c9474b\""
+        },
+        "side": "before",
+        "file_path": "migration-guide.md",
+        "normalized_sha256": "e7c16121ec7b94ac243c5f53fa54d5bd5d9d68fcfddbf4ee8713290f69cbeca1",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\oca-guide-18.0-19.0\\before\\migration-guide.md",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-19.0.md",
+        "captured_at": "2026-11-14T19:03:07.569116+00:00",
+        "response_sha256": "f46ee7929835fdc83fc9f89ee9451a15757526e1cc4485ef28db85d666e61ba1",
+        "stored_sha256": "f46ee7929835fdc83fc9f89ee9451a15757526e1cc4485ef28db85d666e61ba1",
+        "stored_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\captures\\0e0b651abc295ceb7e4b-f46ee7929835.bin",
+        "capture_form": "original_bytes",
+        "headers": {
+          "content-type": "text/plain; charset=utf-8",
+          "etag": "\"f273c5913e2fb1854b5f22c1032df9cba51be2fc72335a1b90573beba85163a1\""
+        },
+        "side": "after",
+        "file_path": "migration-guide.md",
+        "normalized_sha256": "6fe7f6a52f19445ba22d4dfe292d26d9e56f2d89e691f6d3024c44c2b8dcf31a",
+        "normalized_file": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\audit\\corpus-capture\\oca-guide-18.0-19.0\\after\\migration-guide.md",
+        "extraction": "utf8-newlines-v1/html-text-v1"
+      }
+    ],
+    "before_dir": "oca-guide-18.0-19.0/before",
+    "after_dir": "oca-guide-18.0-19.0/after",
+    "captured_at": "2026-11-14T19:03:07.569116+00:00",
+    "license": {
+      "status": "not_verified"
+    },
+    "assignment": {
+      "rule": "general_public_source_capture_v1",
+      "evidence_urls": [
+        "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-18.0.md",
+        "https://raw.githubusercontent.com/wiki/OCA/maintainer-tools/Migration-to-version-19.0.md"
+      ],
+      "reason": "General framework/documentation source; not a case solution. Hidden-copy audit remains necessary."
+    }
+  }
+]

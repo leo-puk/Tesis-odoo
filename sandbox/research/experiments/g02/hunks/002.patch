@@ -1,0 +1,13 @@
+diff --git a/product_variant_sale_price/README.rst b/product_variant_sale_price/README.rst
+index d9c7f1e..d890755 100644
+--- a/product_variant_sale_price/README.rst
++++ b/product_variant_sale_price/README.rst
+@@ -46,7 +47,7 @@ Bug Tracker
+ Bugs are tracked on `GitHub Issues <https://github.com/OCA/product-variant/issues>`_.
+ In case of trouble, please check there if your issue has already been reported.
+ If you spotted it first, help us to smash it by providing a detailed and welcomed
+-`feedback <https://github.com/OCA/product-variant/issues/new?body=module:%20product_variant_sale_price%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
++`feedback <https://github.com/OCA/product-variant/issues/new?body=module:%20product_variant_sale_price%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+ 
+ Do not contact contributors directly about support or help with technical issues.
+ 

@@ -1,0 +1,12 @@
+diff --git a/sale_advance_payment/models/sale.py b/sale_advance_payment/models/sale.py
+index 9f849c66..8c221514 100644
+--- a/sale_advance_payment/models/sale.py
++++ b/sale_advance_payment/models/sale.py
+@@ -30,7 +31,6 @@ class SaleOrder(models.Model):
+             ("partial", "Partially Paid"),
+         ],
+         store=True,
+-        readonly=True,
+         copy=False,
+         tracking=True,
+         compute="_compute_advance_payment",

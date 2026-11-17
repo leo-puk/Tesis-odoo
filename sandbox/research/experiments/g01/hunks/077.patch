@@ -1,0 +1,34 @@
+diff --git a/sale_blanket_order/views/sale_blanket_order_views.xml b/sale_blanket_order/views/sale_blanket_order_views.xml
+index 89e366f4..d52609be 100644
+--- a/sale_blanket_order/views/sale_blanket_order_views.xml
++++ b/sale_blanket_order/views/sale_blanket_order_views.xml
+@@ -37,25 +37,25 @@
+                         string="Create Sale Order"
+                         type="action"
+                         class="btn-primary"
+-                        attrs="{'invisible': [('state', '!=', 'open')]}"
++                        invisible="state != 'open'"
+                     />
+                     <button
+                         name="set_to_draft"
+-                        states="expired,done"
++                        invisible="state not in ['expired', 'done']"
+                         string="To Draft"
+                         class="btn-secondary"
+                         type="object"
+                     />
+                     <button
+                         name="action_cancel"
+-                        states="open"
++                        invisible="state != 'open'"
+                         string="Cancel"
+                         class="btn-secondary"
+                         type="object"
+                     />
+                     <button
+                         name="action_confirm"
+-                        states="draft"
++                        invisible="state != 'draft'"
+                         string="Confirm"
+                         class="btn-primary o_sale_confirm"
+                         type="object"

@@ -1,0 +1,195 @@
+{
+  "id": "g02",
+  "step": "16.0->17.0",
+  "prepared_at": "2026-10-13T20:12:45+00:00",
+  "modules": [
+    {
+      "repo": "product-variant",
+      "module": "product_variant_sale_price",
+      "mig": {
+        "sha": "779e7d509bcb833dead06951f787bb5509d8b191",
+        "date": "2024-03-05T16:21:35Z",
+        "subject": "[MIG][17.0] product_variant_sale_price: Migration to 17.0",
+        "author": "pedroguirao"
+      },
+      "s0": {
+        "sha": "95d2a0829186e6dfbe14909a68b856eafd56f611",
+        "source": "padre del [MIG]"
+      },
+      "rev16": "f6257a22fcc2b37210c81da5ecb46f429cca44af",
+      "s0_vs_16_files_differ": 0,
+      "depends": [
+        "account",
+        "sale"
+      ],
+      "hunks": [
+        1,
+        18
+      ],
+      "post_mig": {
+        "commits": 3,
+        "fix": [
+          "[FIX] product_variant_sale_price: edit Sales Price",
+          "[17.0][FIX] product_variant_sale_price: remove deprecated arg. from _get_combination_info",
+          "[FIX] product_variant_sale_price: Avoid side effects with other modules"
+        ]
+      }
+    },
+    {
+      "repo": "stock-logistics-workflow",
+      "module": "product_cost_price_avco_sync",
+      "mig": {
+        "sha": "a44ffaeefec315e2adcbd7683335e196d11ca785",
+        "date": "2025-04-14T13:22:28+02:00",
+        "subject": "[MIG] product_cost_price_avco_sync: Migration to 17.0",
+        "author": "LauraCForgeFlow"
+      },
+      "s0": {
+        "sha": "f3e1acda5673c4a15bcb0e158a64f82c4a6f554d",
+        "source": "padre del [MIG]"
+      },
+      "rev16": "3b0c4876fd0cee6627932086e50535f348b7478a",
+      "s0_vs_16_files_differ": 1,
+      "depends": [
+        "stock_account"
+      ],
+      "hunks": [
+        19,
+        25
+      ],
+      "post_mig": {
+        "commits": 0,
+        "fix": []
+      }
+    },
+    {
+      "repo": "credit-control",
+      "module": "account_credit_control",
+      "mig": {
+        "sha": "0c8e247ddcdacce97def6da9ebfb7848fdf06823",
+        "date": "2024-09-14T10:35:36+02:00",
+        "subject": "[MIG] account_credit_control: migrate to V17",
+        "author": "andrea"
+      },
+      "s0": {
+        "sha": "e551dc151ace90345ee0f0133c9390d63b952905",
+        "source": "padre del [MIG]"
+      },
+      "rev16": "97d78251c32051e3c1ab6d2e7c8a1722c7943aa9",
+      "s0_vs_16_files_differ": 4,
+      "depends": [
+        "account",
+        "base",
+        "mail"
+      ],
+      "hunks": [
+        26,
+        57
+      ],
+      "post_mig": {
+        "commits": 18,
+        "fix": [
+          "[FIX] account_credit_control: add access group on contact form",
+          "[FIX] account_credit_control: fix _generate_emails() method The method _generate_emails sets the credit.control.line record(s) with state 'to_be_sent' to state 'queued' after sending the mail(s), which is not right. The state 'queued' is now set (from 'to_be_sent') before sending the emails!",
+          "[FIX] account_credit_control: Render invoice details in emails correctly",
+          "[FIX] account_credit_control: Avoid error when opening or creating a mail template",
+          "[FIX] account_credit_control: Defining the right data in the communication email",
+          "[FIX] account_credit_control: Change class=text-right to class=text-end in the report for correct visualization",
+          "[FIX] account_credit_control: put the credit lines in error if mail was blacklisted",
+          "[FIX] account_credit_control: Use _for_xml_id() to avoid access errors",
+          "[FIX] account_credit_control: Freeze test execution date to avoid time-dependent failures",
+          "[FIX] account_credit_control: more flexible tests",
+          "[FIX] account_credit_control: correctly update control lines status",
+          "[FIX] account_credit_control: Apply sudo() to avoid access error"
+        ]
+      }
+    },
+    {
+      "repo": "timesheet",
+      "module": "hr_timesheet_employee_analytic_tag",
+      "mig": {
+        "sha": "ff75647ec0ba160c86d6fbf8a90d02892f0113b9",
+        "date": "2025-06-30T09:13:16+02:00",
+        "subject": "[MIG] hr_timesheet_employee_analytic_tag: Migration to 17.0",
+        "author": "JordiToledo"
+      },
+      "s0": {
+        "sha": "1dd534a8da1af57ee0846a165d304e182ee45c02",
+        "source": "padre del [MIG]"
+      },
+      "rev16": "ff7eb4539081d122837a5aa7f5af4c206614c740",
+      "s0_vs_16_files_differ": 0,
+      "depends": [
+        "account_analytic_tag",
+        "hr_timesheet"
+      ],
+      "hunks": [
+        58,
+        65
+      ],
+      "post_mig": {
+        "commits": 0,
+        "fix": []
+      }
+    },
+    {
+      "repo": "social",
+      "module": "mail_notification_custom_subject",
+      "mig": {
+        "sha": "fde4ba078acac07b8dafe2597fbcd55bff1f9452",
+        "date": "2024-04-09T12:14:08+02:00",
+        "subject": "[MIG] mail_notification_custom_subject: migration to 17.0",
+        "author": "maciej-wichowski"
+      },
+      "s0": {
+        "sha": "f7b15d4e6f1f741cde97d014914ddcb7e22b0adb",
+        "source": "padre del [MIG]"
+      },
+      "rev16": "6c45db63e251232730f6608f7572c1363b1bd296",
+      "s0_vs_16_files_differ": 3,
+      "depends": [
+        "mail"
+      ],
+      "hunks": [
+        66,
+        70
+      ],
+      "post_mig": {
+        "commits": 6,
+        "fix": [
+          "[FIX] mail_notification_custom_subject: Public user can not post messages in portal for models that have a customised subject defined"
+        ]
+      }
+    }
+  ],
+  "depends": {
+    "core": [
+      "account",
+      "base",
+      "hr_timesheet",
+      "mail",
+      "sale",
+      "stock_account"
+    ],
+    "oca": [
+      {
+        "module": "account_analytic_tag",
+        "repo": "account-analytic",
+        "sha16": "cdc63a6c30d4",
+        "sha17": "2bc5781714ea"
+      }
+    ]
+  },
+  "hunks": 70,
+  "hunk_tags": {
+    "ADMIN": 20,
+    "ESTILO": 1,
+    "G17-01": 5,
+    "G17-02": 1,
+    "G17-06": 1,
+    "G17-07": 12,
+    "G17-10": 1,
+    "G17-14": 1,
+    "SIN_GUIA": 29
+  }
+}

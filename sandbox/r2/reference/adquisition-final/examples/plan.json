@@ -1,0 +1,9 @@
+[
+  {
+    "id": "odoo-diff",
+    "kind": "github_diff",
+    "files": {
+      "changes.diff": "https://github.com/odoo/odoo/compare/16.0...17.0"
+    }
+  }
+]

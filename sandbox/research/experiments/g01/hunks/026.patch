@@ -1,0 +1,13 @@
+diff --git a/server_action_mass_edit/models/ir_actions_server_mass_edit_line.py b/server_action_mass_edit/models/ir_actions_server_mass_edit_line.py
+index b9a2141..7af26d6 100644
+--- a/server_action_mass_edit/models/ir_actions_server_mass_edit_line.py
++++ b/server_action_mass_edit/models/ir_actions_server_mass_edit_line.py
+@@ -6,7 +6,7 @@
+ from odoo import _, api, fields, models
+ from odoo.exceptions import ValidationError
+ 
+-MAGIC_FIELDS = models.MAGIC_COLUMNS + [models.BaseModel.CONCURRENCY_CHECK_FIELD]
++MAGIC_FIELDS = models.MAGIC_COLUMNS
+ 
+ 
+ class IrActionsServerMassEditLine(models.Model):

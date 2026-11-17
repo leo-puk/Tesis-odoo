@@ -1,0 +1,36 @@
+diff --git a/product_variant_sale_price/README.rst b/product_variant_sale_price/README.rst
+index d9c7f1e..d890755 100644
+--- a/product_variant_sale_price/README.rst
++++ b/product_variant_sale_price/README.rst
+@@ -17,23 +17,24 @@ Product Variant Sale Price
+     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+     :alt: License: AGPL-3
+ .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproduct--variant-lightgray.png?logo=github
+-    :target: https://github.com/OCA/product-variant/tree/16.0/product_variant_sale_price
++    :target: https://github.com/OCA/product-variant/tree/17.0/product_variant_sale_price
+     :alt: OCA/product-variant
+ .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
+-    :target: https://translation.odoo-community.org/projects/product-variant-16-0/product-variant-16-0-product_variant_sale_price
++    :target: https://translation.odoo-community.org/projects/product-variant-17-0/product-variant-17-0-product_variant_sale_price
+     :alt: Translate me on Weblate
+ .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
+-    :target: https://runboat.odoo-community.org/builds?repo=OCA/product-variant&target_branch=16.0
++    :target: https://runboat.odoo-community.org/builds?repo=OCA/product-variant&target_branch=17.0
+     :alt: Try me on Runboat
+ 
+ |badge1| |badge2| |badge3| |badge4| |badge5|
+ 
+ This module allows to handle sale price at product variant level
+-(product.product) instead of product level (product.template), which is the
+-default.
++(product.product) instead of product level (product.template), which is
++the default.
+ 
+-It replaces the extra price configuration with a fix price that can be modified on each variant independently, which
+-allows setting absolute prices instead of relative ones.
++It replaces the extra price configuration with a fix price that can be
++modified on each variant independently, which allows setting absolute
++prices instead of relative ones.
+ 
+ **Table of contents**
+ 

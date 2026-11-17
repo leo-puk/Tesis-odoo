@@ -1,0 +1,1055 @@
+{
+  "version": "17.0",
+  "seed": 2026,
+  "size": 5,
+  "groups": [
+    {
+      "id": "g01",
+      "origin": "muestra propuesta",
+      "modules": [
+        {
+          "repo": "stock-logistics-warehouse",
+          "module": "stock_quant_manual_assign",
+          "stratum": "fijo"
+        },
+        {
+          "repo": "server-ux",
+          "module": "server_action_mass_edit",
+          "stratum": "fijo"
+        },
+        {
+          "repo": "sale-workflow",
+          "module": "sale_blanket_order",
+          "stratum": "fijo"
+        },
+        {
+          "repo": "credit-control",
+          "module": "sale_financial_risk",
+          "stratum": "fijo"
+        },
+        {
+          "repo": "field-service",
+          "module": "fieldservice_isp_flow",
+          "stratum": "tecnico"
+        }
+      ]
+    },
+    {
+      "id": "g02",
+      "origin": "aleatorio semilla 2026",
+      "modules": [
+        {
+          "repo": "product-variant",
+          "module": "product_variant_sale_price",
+          "stratum": "sale"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "product_cost_price_avco_sync",
+          "stratum": "stock"
+        },
+        {
+          "repo": "credit-control",
+          "module": "account_credit_control",
+          "stratum": "account"
+        },
+        {
+          "repo": "timesheet",
+          "module": "hr_timesheet_employee_analytic_tag",
+          "stratum": "negocio"
+        },
+        {
+          "repo": "social",
+          "module": "mail_notification_custom_subject",
+          "stratum": "tecnico"
+        }
+      ]
+    },
+    {
+      "id": "g03",
+      "origin": "aleatorio semilla 2026",
+      "modules": [
+        {
+          "repo": "sale-workflow",
+          "module": "sale_force_invoiced",
+          "stratum": "sale"
+        },
+        {
+          "repo": "stock-logistics-request",
+          "module": "stock_request",
+          "stratum": "stock"
+        },
+        {
+          "repo": "account-invoicing",
+          "module": "account_global_discount",
+          "stratum": "account"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_order_archive",
+          "stratum": "negocio"
+        },
+        {
+          "repo": "server-tools",
+          "module": "module_auto_update",
+          "stratum": "tecnico"
+        }
+      ]
+    },
+    {
+      "id": "g04",
+      "origin": "aleatorio semilla 2026",
+      "modules": [
+        {
+          "repo": "timesheet",
+          "module": "hr_timesheet_sheet",
+          "stratum": "sale"
+        },
+        {
+          "repo": "stock-logistics-warehouse",
+          "module": "stock_exception",
+          "stratum": "stock"
+        },
+        {
+          "repo": "contract",
+          "module": "contract",
+          "stratum": "account"
+        },
+        {
+          "repo": "e-commerce",
+          "module": "website_sale_product_detail_attribute_image",
+          "stratum": "negocio"
+        },
+        {
+          "repo": "account-financial-reporting",
+          "module": "mis_template_financial_report",
+          "stratum": "tecnico"
+        }
+      ]
+    },
+    {
+      "id": "g05",
+      "origin": "aleatorio semilla 2026",
+      "modules": [
+        {
+          "repo": "sale-workflow",
+          "module": "sale_order_product_recommendation",
+          "stratum": "sale"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_picking_origin_reference",
+          "stratum": "stock"
+        },
+        {
+          "repo": "account-analytic",
+          "module": "account_analytic_distribution_manual",
+          "stratum": "account"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "product_supplier_code_purchase",
+          "stratum": "negocio"
+        },
+        {
+          "repo": "server-tools",
+          "module": "bus_alt_connection",
+          "stratum": "tecnico"
+        }
+      ]
+    },
+    {
+      "id": "g06",
+      "origin": "aleatorio semilla 2026",
+      "modules": [
+        {
+          "repo": "stock-logistics-availability",
+          "module": "sale_stock_available_info_popup",
+          "stratum": "sale"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_picking_send_by_mail",
+          "stratum": "stock"
+        },
+        {
+          "repo": "multi-company",
+          "module": "product_tax_multicompany_default",
+          "stratum": "account"
+        },
+        {
+          "repo": "product-attribute",
+          "module": "product_cost_security",
+          "stratum": "negocio"
+        },
+        {
+          "repo": "server-tools",
+          "module": "tracking_manager",
+          "stratum": "tecnico"
+        }
+      ]
+    },
+    {
+      "id": "g07",
+      "origin": "aleatorio semilla 2026",
+      "modules": [
+        {
+          "repo": "brand",
+          "module": "product_brand",
+          "stratum": "sale"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_picking_return_lot",
+          "stratum": "stock"
+        },
+        {
+          "repo": "account-closing",
+          "module": "account_invoice_start_end_dates",
+          "stratum": "account"
+        },
+        {
+          "repo": "hr-expense",
+          "module": "hr_expense_journal",
+          "stratum": "negocio"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_country_lang",
+          "stratum": "tecnico"
+        }
+      ]
+    },
+    {
+      "id": "g08",
+      "origin": "aleatorio semilla 2026",
+      "modules": [
+        {
+          "repo": "pos",
+          "module": "pos_order_to_sale_order",
+          "stratum": "sale"
+        },
+        {
+          "repo": "delivery-carrier",
+          "module": "delivery_carrier_manual_price",
+          "stratum": "stock"
+        },
+        {
+          "repo": "account-invoice-reporting",
+          "module": "partner_time_to_pay",
+          "stratum": "account"
+        },
+        {
+          "repo": "hr-attendance",
+          "module": "hr_attendance_reason",
+          "stratum": "negocio"
+        },
+        {
+          "repo": "web",
+          "module": "web_company_color",
+          "stratum": "tecnico"
+        }
+      ]
+    },
+    {
+      "id": "g09",
+      "origin": "aleatorio semilla 2026",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "sale_stock_restocking_fee_invoicing",
+          "stratum": "sale"
+        },
+        {
+          "repo": "stock-logistics-warehouse",
+          "module": "stock_move_location",
+          "stratum": "stock"
+        },
+        {
+          "repo": "maintenance",
+          "module": "maintenance_account",
+          "stratum": "account"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "base_location",
+          "stratum": "negocio"
+        },
+        {
+          "repo": "social",
+          "module": "mail_template_substitute",
+          "stratum": "tecnico"
+        }
+      ]
+    },
+    {
+      "id": "g10",
+      "origin": "aleatorio semilla 2026",
+      "modules": [
+        {
+          "repo": "sale-workflow",
+          "module": "sale_order_line_cancel",
+          "stratum": "sale"
+        },
+        {
+          "repo": "stock-logistics-warehouse",
+          "module": "stock_picking_volume",
+          "stratum": "stock"
+        },
+        {
+          "repo": "account-budgeting",
+          "module": "account_budget_oca",
+          "stratum": "account"
+        },
+        {
+          "repo": "stock-logistics-warehouse",
+          "module": "stock_packaging_calculator",
+          "stratum": "negocio"
+        },
+        {
+          "repo": "social",
+          "module": "mail_tracking_mailgun",
+          "stratum": "tecnico"
+        }
+      ]
+    }
+  ],
+  "reserves": {
+    "sale": [
+      {
+        "repo": "sale-workflow",
+        "module": "sale_auto_remove_zero_quantity_lines",
+        "stratum": "sale",
+        "depends": [
+          "sale"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "sale_order_invoicing_finished_task",
+        "stratum": "sale",
+        "depends": [
+          "sale_timesheet"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "sale_tier_validation",
+        "stratum": "sale",
+        "depends": [
+          "sale",
+          "base_tier_validation"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "sale_readonly_security",
+        "stratum": "sale",
+        "depends": [
+          "sale"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "sale_exception",
+        "stratum": "sale",
+        "depends": [
+          "sale",
+          "base_exception"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "sale_shipping_info_helper",
+        "stratum": "sale",
+        "depends": [
+          "sale",
+          "delivery"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "sale_start_end_dates",
+        "stratum": "sale",
+        "depends": [
+          "account_invoice_start_end_dates",
+          "sale"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "sale_product_set",
+        "stratum": "sale",
+        "depends": [
+          "sale",
+          "sale_management",
+          "product_set"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "sales_team_invoiced_target_domain",
+        "stratum": "sale",
+        "depends": [
+          "sale"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "sale_invoice_policy",
+        "stratum": "sale",
+        "depends": [
+          "sale_stock"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "sale_order_general_discount",
+        "stratum": "sale",
+        "depends": [
+          "sale"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "sale_stock_picking_blocking",
+        "stratum": "sale",
+        "depends": [
+          "sale_stock"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "portal_sale_personal_data_only",
+        "stratum": "sale",
+        "depends": [
+          "sale",
+          "portal_account_personal_data_only"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "sale_last_price_info",
+        "stratum": "sale",
+        "depends": [
+          "sale_management"
+        ]
+      },
+      {
+        "repo": "sale-workflow",
+        "module": "sale_order_line_price_history",
+        "stratum": "sale",
+        "depends": [
+          "sale"
+        ]
+      }
+    ],
+    "stock": [
+      {
+        "repo": "stock-logistics-workflow",
+        "module": "stock_picking_show_return",
+        "stratum": "stock",
+        "depends": [
+          "stock"
+        ]
+      },
+      {
+        "repo": "stock-logistics-warehouse",
+        "module": "stock_account_change_qty_reason",
+        "stratum": "stock",
+        "depends": [
+          "stock_account",
+          "stock_change_qty_reason"
+        ]
+      },
+      {
+        "repo": "stock-logistics-workflow",
+        "module": "stock_split_picking",
+        "stratum": "stock",
+        "depends": [
+          "stock"
+        ]
+      },
+      {
+        "repo": "stock-logistics-workflow",
+        "module": "stock_move_forced_lot",
+        "stratum": "stock",
+        "depends": [
+          "stock"
+        ]
+      },
+      {
+        "repo": "stock-logistics-warehouse",
+        "module": "procurement_auto_create_group",
+        "stratum": "stock",
+        "depends": [
+          "stock"
+        ]
+      },
+      {
+        "repo": "product-attribute",
+        "module": "product_attribute_company_favorite",
+        "stratum": "stock",
+        "depends": [
+          "product",
+          "stock"
+        ]
+      },
+      {
+        "repo": "stock-logistics-workflow",
+        "module": "stock_receipt_lot_info",
+        "stratum": "stock",
+        "depends": [
+          "stock",
+          "product_expiry"
+        ]
+      },
+      {
+        "repo": "rma",
+        "module": "rma",
+        "stratum": "stock",
+        "depends": [
+          "stock_account"
+        ]
+      },
+      {
+        "repo": "stock-logistics-warehouse",
+        "module": "stock_change_qty_reason",
+        "stratum": "stock",
+        "depends": [
+          "stock"
+        ]
+      },
+      {
+        "repo": "stock-logistics-workflow",
+        "module": "stock_lot_scrap",
+        "stratum": "stock",
+        "depends": [
+          "stock"
+        ]
+      },
+      {
+        "repo": "stock-logistics-warehouse",
+        "module": "stock_vlm_mgmt",
+        "stratum": "stock",
+        "depends": [
+          "stock",
+          "base_sparse_field"
+        ]
+      },
+      {
+        "repo": "stock-logistics-warehouse",
+        "module": "stock_secondary_unit",
+        "stratum": "stock",
+        "depends": [
+          "stock",
+          "product_secondary_unit"
+        ]
+      },
+      {
+        "repo": "stock-logistics-warehouse",
+        "module": "product_route_profile",
+        "stratum": "stock",
+        "depends": [
+          "stock"
+        ]
+      },
+      {
+        "repo": "product-attribute",
+        "module": "product_lot_sequence",
+        "stratum": "stock",
+        "depends": [
+          "stock"
+        ]
+      },
+      {
+        "repo": "stock-logistics-workflow",
+        "module": "stock_picking_batch_print_pickings",
+        "stratum": "stock",
+        "depends": [
+          "stock_picking_batch"
+        ]
+      }
+    ],
+    "account": [
+      {
+        "repo": "commission",
+        "module": "account_commission",
+        "stratum": "account",
+        "depends": [
+          "account",
+          "commission"
+        ]
+      },
+      {
+        "repo": "account-invoicing",
+        "module": "account_invoice_refund_link",
+        "stratum": "account",
+        "depends": [
+          "account"
+        ]
+      },
+      {
+        "repo": "social",
+        "module": "mail_composer_cc_bcc",
+        "stratum": "account",
+        "depends": [
+          "mail",
+          "account"
+        ]
+      },
+      {
+        "repo": "agreement",
+        "module": "agreement_account",
+        "stratum": "account",
+        "depends": [
+          "agreement",
+          "account"
+        ]
+      },
+      {
+        "repo": "account-fiscal-rule",
+        "module": "account_ecotax",
+        "stratum": "account",
+        "depends": [
+          "account"
+        ]
+      },
+      {
+        "repo": "account-invoicing",
+        "module": "account_invoice_supplier_ref_unique",
+        "stratum": "account",
+        "depends": [
+          "account"
+        ]
+      },
+      {
+        "repo": "account-invoicing",
+        "module": "account_invoice_transmit_method",
+        "stratum": "account",
+        "depends": [
+          "account",
+          "base_view_inheritance_extension"
+        ]
+      },
+      {
+        "repo": "credit-control",
+        "module": "account_financial_risk",
+        "stratum": "account",
+        "depends": [
+          "account"
+        ]
+      },
+      {
+        "repo": "account-analytic",
+        "module": "account_analytic_document_date",
+        "stratum": "account",
+        "depends": [
+          "account",
+          "account_reconcile_oca"
+        ]
+      },
+      {
+        "repo": "social",
+        "module": "mail_composer_cc_bcc_account",
+        "stratum": "account",
+        "depends": [
+          "account",
+          "mail_composer_cc_bcc"
+        ]
+      },
+      {
+        "repo": "field-service",
+        "module": "fieldservice_account",
+        "stratum": "account",
+        "depends": [
+          "fieldservice",
+          "account"
+        ]
+      },
+      {
+        "repo": "account-payment",
+        "module": "partner_aging",
+        "stratum": "account",
+        "depends": [
+          "account"
+        ]
+      },
+      {
+        "repo": "account-fiscal-rule",
+        "module": "account_fiscal_position_partner_type",
+        "stratum": "account",
+        "depends": [
+          "account"
+        ]
+      },
+      {
+        "repo": "currency",
+        "module": "currency_rate_update",
+        "stratum": "account",
+        "depends": [
+          "base",
+          "mail",
+          "account"
+        ]
+      },
+      {
+        "repo": "account-analytic",
+        "module": "account_analytic_tag",
+        "stratum": "account",
+        "depends": [
+          "account",
+          "analytic"
+        ]
+      }
+    ],
+    "negocio": [
+      {
+        "repo": "e-commerce",
+        "module": "website_sale_stock_provisioning_date",
+        "stratum": "negocio",
+        "depends": [
+          "website_sale_stock"
+        ]
+      },
+      {
+        "repo": "account-analytic",
+        "module": "pos_analytic_by_config",
+        "stratum": "negocio",
+        "depends": [
+          "point_of_sale"
+        ]
+      },
+      {
+        "repo": "manufacture",
+        "module": "mrp_production_serial_matrix",
+        "stratum": "negocio",
+        "depends": [
+          "mrp",
+          "web_widget_x2many_2d_matrix"
+        ]
+      },
+      {
+        "repo": "manufacture",
+        "module": "mrp_bom_attribute_match",
+        "stratum": "negocio",
+        "depends": [
+          "mrp"
+        ]
+      },
+      {
+        "repo": "e-commerce",
+        "module": "website_sale_suggest_create_account",
+        "stratum": "negocio",
+        "depends": [
+          "website_sale"
+        ]
+      },
+      {
+        "repo": "partner-contact",
+        "module": "partner_contact_department",
+        "stratum": "negocio",
+        "depends": [
+          "contacts"
+        ]
+      },
+      {
+        "repo": "event",
+        "module": "website_event_crm_invitation",
+        "stratum": "negocio",
+        "depends": [
+          "crm_event",
+          "website_event"
+        ]
+      },
+      {
+        "repo": "purchase-workflow",
+        "module": "purchase_transport_mode",
+        "stratum": "negocio",
+        "depends": [
+          "purchase",
+          "purchase_exception"
+        ]
+      },
+      {
+        "repo": "stock-logistics-availability",
+        "module": "stock_available_mrp",
+        "stratum": "negocio",
+        "depends": [
+          "stock_available",
+          "mrp"
+        ]
+      },
+      {
+        "repo": "survey",
+        "module": "survey_resource_booking",
+        "stratum": "negocio",
+        "depends": [
+          "resource_booking",
+          "survey"
+        ]
+      },
+      {
+        "repo": "product-attribute",
+        "module": "product_sequence",
+        "stratum": "negocio",
+        "depends": [
+          "product"
+        ]
+      },
+      {
+        "repo": "hr-attendance",
+        "module": "hr_attendance_report_theoretical_time",
+        "stratum": "negocio",
+        "depends": [
+          "hr_attendance",
+          "hr_holidays_public"
+        ]
+      },
+      {
+        "repo": "sign",
+        "module": "project_task_sign_oca",
+        "stratum": "negocio",
+        "depends": [
+          "sign_oca",
+          "project"
+        ]
+      },
+      {
+        "repo": "pos",
+        "module": "pos_lot_selection",
+        "stratum": "negocio",
+        "depends": [
+          "point_of_sale"
+        ]
+      },
+      {
+        "repo": "website",
+        "module": "website_menu_by_user_status",
+        "stratum": "negocio",
+        "depends": [
+          "website"
+        ]
+      }
+    ],
+    "tecnico": [
+      {
+        "repo": "social",
+        "module": "base_search_mail_content",
+        "stratum": "tecnico",
+        "depends": [
+          "mail"
+        ]
+      },
+      {
+        "repo": "server-ux",
+        "module": "base_export_manager",
+        "stratum": "tecnico",
+        "depends": [
+          "web"
+        ]
+      },
+      {
+        "repo": "server-auth",
+        "module": "auth_saml",
+        "stratum": "tecnico",
+        "depends": [
+          "base_setup",
+          "web"
+        ]
+      },
+      {
+        "repo": "contract",
+        "module": "contract_invoice_auto_validate",
+        "stratum": "tecnico",
+        "depends": [
+          "contract"
+        ]
+      },
+      {
+        "repo": "stock-logistics-availability",
+        "module": "stock_available_immediately",
+        "stratum": "tecnico",
+        "depends": [
+          "stock_available"
+        ]
+      },
+      {
+        "repo": "dms",
+        "module": "dms_attachment_link",
+        "stratum": "tecnico",
+        "depends": [
+          "dms"
+        ]
+      },
+      {
+        "repo": "data-protection",
+        "module": "privacy_consent",
+        "stratum": "tecnico",
+        "depends": [
+          "privacy"
+        ]
+      },
+      {
+        "repo": "server-backend",
+        "module": "base_import_match",
+        "stratum": "tecnico",
+        "depends": [
+          "base_import"
+        ]
+      },
+      {
+        "repo": "operating-unit",
+        "module": "report_qweb_operating_unit",
+        "stratum": "tecnico",
+        "depends": [
+          "operating_unit"
+        ]
+      },
+      {
+        "repo": "field-service",
+        "module": "fieldservice_portal",
+        "stratum": "tecnico",
+        "depends": [
+          "fieldservice",
+          "portal"
+        ]
+      },
+      {
+        "repo": "agreement",
+        "module": "agreement",
+        "stratum": "tecnico",
+        "depends": [
+          "mail"
+        ]
+      },
+      {
+        "repo": "server-auth",
+        "module": "auth_user_case_insensitive",
+        "stratum": "tecnico",
+        "depends": [
+          "mail"
+        ]
+      },
+      {
+        "repo": "social",
+        "module": "mail_activity_team",
+        "stratum": "tecnico",
+        "depends": [
+          "mail_activity_board"
+        ]
+      }
+    ]
+  },
+  "pool_sizes": {
+    "sale": 114,
+    "stock": 65,
+    "account": 57,
+    "negocio": 272,
+    "tecnico": 206
+  },
+  "rejected": [
+    {
+      "repo": "contract",
+      "module": "product_contract",
+      "stratum": "sale",
+      "depends": [
+        "product",
+        "contract",
+        "sale"
+      ],
+      "motivo": "product_contract: dependencias Python externas ['dateutil']"
+    },
+    {
+      "repo": "account-financial-tools",
+      "module": "account_tax_repartition_line_tax_group_account",
+      "stratum": "account",
+      "depends": [
+        "account"
+      ],
+      "motivo": "account-financial-tools/account_tax_repartition_line_tax_group_account no existe en la rama 16.0"
+    },
+    {
+      "repo": "sale-workflow",
+      "module": "sale_force_whole_invoiceability",
+      "stratum": "sale",
+      "depends": [
+        "sale"
+      ],
+      "motivo": "sale-workflow/sale_force_whole_invoiceability no existe en la rama 16.0"
+    },
+    {
+      "repo": "stock-logistics-workflow",
+      "module": "stock_picking_import_serial_number",
+      "stratum": "stock",
+      "depends": [
+        "stock"
+      ],
+      "motivo": "stock_picking_import_serial_number: dependencias Python externas ['xlrd']"
+    },
+    {
+      "repo": "reporting-engine",
+      "module": "report_xml",
+      "stratum": "tecnico",
+      "depends": [
+        "web"
+      ],
+      "motivo": "report_xml: dependencias Python externas ['lxml']"
+    },
+    {
+      "repo": "report-print-send",
+      "module": "base_report_to_printer",
+      "stratum": "tecnico",
+      "depends": [
+        "web"
+      ],
+      "motivo": "base_report_to_printer: dependencias Python externas ['pycups']"
+    },
+    {
+      "repo": "stock-logistics-workflow",
+      "module": "sale_planned_consumed_date",
+      "stratum": "sale",
+      "depends": [
+        "sale_stock",
+        "stock_move_planned_consumed_date"
+      ],
+      "motivo": "stock-logistics-workflow/sale_planned_consumed_date no existe en la rama 16.0"
+    },
+    {
+      "repo": "stock-logistics-workflow",
+      "module": "stock_move_planned_consumed_date",
+      "stratum": "stock",
+      "depends": [
+        "stock"
+      ],
+      "motivo": "stock-logistics-workflow/stock_move_planned_consumed_date no existe en la rama 16.0"
+    },
+    {
+      "repo": "project",
+      "module": "project_analytic_code",
+      "stratum": "negocio",
+      "depends": [
+        "project"
+      ],
+      "motivo": "project/project_analytic_code no existe en la rama 16.0"
+    },
+    {
+      "repo": "shift-planning",
+      "module": "hr_shift",
+      "stratum": "negocio",
+      "depends": [
+        "hr",
+        "base_sparse_field"
+      ],
+      "motivo": "shift-planning/hr_shift no existe en la rama 16.0"
+    }
+  ],
+  "replacements": [
+    {
+      "group": "g01",
+      "out": "account_manual_currency",
+      "in": "fieldservice_isp_flow",
+      "reason": "no instala en 16.0 o no se puede preparar"
+    }
+  ]
+}

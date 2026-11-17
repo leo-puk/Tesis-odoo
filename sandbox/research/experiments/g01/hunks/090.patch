@@ -1,0 +1,13 @@
+diff --git a/sale_blanket_order/wizard/create_sale_orders.py b/sale_blanket_order/wizard/create_sale_orders.py
+index 13eff934..08cbfdb6 100644
+--- a/sale_blanket_order/wizard/create_sale_orders.py
++++ b/sale_blanket_order/wizard/create_sale_orders.py
+@@ -137,7 +138,7 @@ class BlanketOrderWizard(models.TransientModel):
+         pricelist_id = 0
+         user_id = 0
+         payment_term_id = 0
+-        for line in self.line_ids.filtered(lambda l: l.qty != 0.0):
++        for line in self.line_ids.filtered(lambda line: line.qty != 0.0):
+             if line.qty > line.remaining_uom_qty:
+                 raise UserError(_("You can't order more than the remaining quantities"))
+             vals = self._prepare_so_line_vals(line)

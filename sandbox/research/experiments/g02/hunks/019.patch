@@ -1,0 +1,13 @@
+diff --git a/product_cost_price_avco_sync/__manifest__.py b/product_cost_price_avco_sync/__manifest__.py
+index 8133201..3bf0a6e 100644
+--- a/product_cost_price_avco_sync/__manifest__.py
++++ b/product_cost_price_avco_sync/__manifest__.py
+@@ -5,7 +5,7 @@
+ {
+     "name": "Product cost price avco sync",
+     "summary": "Set product cost price from updated moves",
+-    "version": "16.0.1.0.0",
++    "version": "17.0.1.0.0",
+     "development_status": "Production/Stable",
+     "category": "Stock",
+     "website": "https://github.com/OCA/stock-logistics-workflow",

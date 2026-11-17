@@ -1,0 +1,12 @@
+diff --git a/sale_advance_payment/wizard/sale_advance_payment_wzd_view.xml b/sale_advance_payment/wizard/sale_advance_payment_wzd_view.xml
+index 38bfbcf2..cc2adf7b 100644
+--- a/sale_advance_payment/wizard/sale_advance_payment_wzd_view.xml
++++ b/sale_advance_payment/wizard/sale_advance_payment_wzd_view.xml
+@@ -29,6 +33,7 @@
+                         <field
+                             name="currency_amount"
+                             string="Amount in Order Currency"
++                            readonly="True"
+                         />
+                     </group>
+                 </group>

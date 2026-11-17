@@ -1,0 +1,14 @@
+diff --git a/account_credit_control/models/credit_control_line.py b/account_credit_control/models/credit_control_line.py
+index 6c066b0..2eebf36 100644
+--- a/account_credit_control/models/credit_control_line.py
++++ b/account_credit_control/models/credit_control_line.py
+@@ -117,8 +111,7 @@ class CreditControlLine(models.Model):
+         comodel_name="credit.control.policy.level",
+         string="Overdue Level",
+         required=True,
+-        readonly=True,
+-        states={"draft": [("readonly", False)]},
++        readonly=False,
+     )
+     policy_id = fields.Many2one(
+         comodel_name="credit.control.policy",

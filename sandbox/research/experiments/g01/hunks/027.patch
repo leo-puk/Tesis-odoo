@@ -1,0 +1,12 @@
+diff --git a/server_action_mass_edit/models/ir_actions_server_mass_edit_line.py b/server_action_mass_edit/models/ir_actions_server_mass_edit_line.py
+index b9a2141..7af26d6 100644
+--- a/server_action_mass_edit/models/ir_actions_server_mass_edit_line.py
++++ b/server_action_mass_edit/models/ir_actions_server_mass_edit_line.py
+@@ -33,6 +33,7 @@ class IrActionsServerMassEditLine(models.Model):
+                 ("name", "not in", %s),
+                 ("ttype", "not in", ["reference", "function"]),
+                 ("model_id", "=", model_id),
++                ("readonly", "!=", True),
+             ]
+         """
+         % str(MAGIC_FIELDS),

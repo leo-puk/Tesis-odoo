@@ -1,0 +1,34 @@
+diff --git a/server_action_mass_edit/static/description/index.html b/server_action_mass_edit/static/description/index.html
+index e97c8d1..1652ca4 100644
+--- a/server_action_mass_edit/static/description/index.html
++++ b/server_action_mass_edit/static/description/index.html
+@@ -368,20 +369,22 @@ ul.auto-toc {
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ !! source digest: sha256:8afe692d402310ce2e539cf8b85f2356ca255171f2be7e9e8c6cce86fb08043b
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/server-ux/tree/16.0/server_action_mass_edit"><img alt="OCA/server-ux" src="https://img.shields.io/badge/github-OCA%2Fserver--ux-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/server-ux-16-0/server-ux-16-0-server_action_mass_edit"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/server-ux&amp;target_branch=16.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
++<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/server-ux/tree/17.0/server_action_mass_edit"><img alt="OCA/server-ux" src="https://img.shields.io/badge/github-OCA%2Fserver--ux-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/server-ux-17-0/server-ux-17-0-server_action_mass_edit"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/server-ux&amp;target_branch=17.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+ <p>This module provides the following features:</p>
+ <ul class="simple">
+-<li>You can add, update or remove the values of more than one records on the fly at the same time.</li>
++<li>You can add, update or remove the values of more than one records on
++the fly at the same time.</li>
+ <li>You can configure mass editing for any Odoo model.</li>
+ </ul>
+ <p><strong>Difference between the Odoo 13.0 CE Feature</strong></p>
+-<p>Since Odoo V13, a limited “mass Editing feature” is available in Odoo CE.</p>
+-<p>This module provides the following extra features that are not in the Core
+-for the time being:</p>
++<p>Since Odoo V13, a limited “mass Editing feature” is available in Odoo
++CE.</p>
++<p>This module provides the following extra features that are not in the
++Core for the time being:</p>
+ <ul class="simple">
+ <li>Possibility to mass edit many fields in a single action</li>
+-<li>Possibility to add a group to limit the usage of this function to given
+-people</li>
++<li>Possibility to add a group to limit the usage of this function to
++given people</li>
+ <li>Possibility to filter the items the user can mass update</li>
+ <li>Possibility to mass edit any fields with any widget. (For exemple
+ color fields, image fields, etc…)</li>
