@@ -1,0 +1,3 @@
+# Acquisition temporary data at any depth; keep it local.
+temp_data/
+data_temp/
