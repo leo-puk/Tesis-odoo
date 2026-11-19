@@ -1,0 +1,747 @@
+{
+  "synthetic": true,
+  "scope": "Exact ID handoff with point evidence; mocked HTTP; no semantic verdict.",
+  "positive": {
+    "collection": {
+      "normalization_rules_version": "normalization-3",
+      "revision": "0f1a8ef2527e9c1c011f71dcf4a596e4bdf5a3c76ba34d048ec45a9a211c8168",
+      "schema_version": 4
+    },
+    "component": "crossing",
+    "input": {
+      "entities": [
+        {
+          "context": {
+            "manifest_key": "depends",
+            "module": "demo",
+            "origin": "code"
+          },
+          "location": {
+            "artifact_line": 1,
+            "artifact_path": "__manifest__.py",
+            "code_path": "__manifest__.py",
+            "line_end": 1,
+            "line_start": 1
+          },
+          "lookup_keys": [
+            "module:base"
+          ],
+          "name": "base",
+          "rule": "manifest_literal_value_v1",
+          "type": "module"
+        },
+        {
+          "context": {
+            "module": "demo",
+            "origin": "code",
+            "role": "declaration"
+          },
+          "location": {
+            "artifact_line": 1,
+            "artifact_path": "__manifest__.py",
+            "code_path": "__manifest__.py",
+            "line_end": 1,
+            "line_start": 1
+          },
+          "lookup_keys": [
+            "manifest:name"
+          ],
+          "name": "name",
+          "rule": "manifest_literal_key_v1",
+          "type": "manifest_key"
+        },
+        {
+          "context": {
+            "module": "demo",
+            "origin": "code",
+            "role": "declaration"
+          },
+          "location": {
+            "artifact_line": 1,
+            "artifact_path": "__manifest__.py",
+            "code_path": "__manifest__.py",
+            "line_end": 1,
+            "line_start": 1
+          },
+          "lookup_keys": [
+            "manifest:depends"
+          ],
+          "name": "depends",
+          "rule": "manifest_literal_key_v1",
+          "type": "manifest_key"
+        },
+        {
+          "context": {
+            "model": "res.partner",
+            "module": "demo",
+            "origin": "code",
+            "qualified_name": "Partner",
+            "role": "declaration",
+            "scope": "class",
+            "syntax": "python"
+          },
+          "location": {
+            "artifact_line": 1,
+            "artifact_path": "model.py",
+            "code_path": "model.py",
+            "content_line": 1,
+            "line_end": 3,
+            "line_start": 1
+          },
+          "lookup_keys": [],
+          "name": "Partner",
+          "rule": "python_class_v2_scopes",
+          "type": "class"
+        },
+        {
+          "context": {
+            "model": "res.partner",
+            "module": "demo",
+            "origin": "code",
+            "role": "reference",
+            "syntax": "python"
+          },
+          "location": {
+            "artifact_line": 2,
+            "artifact_path": "model.py",
+            "code_path": "model.py",
+            "content_line": 2,
+            "line_end": 3,
+            "line_start": 1
+          },
+          "lookup_keys": [
+            "model:res.partner"
+          ],
+          "name": "res.partner",
+          "rule": "odoo_model_literal_v1",
+          "type": "model"
+        },
+        {
+          "context": {
+            "model": "res.partner",
+            "module": "demo",
+            "origin": "code",
+            "role": "declaration",
+            "syntax": "python"
+          },
+          "location": {
+            "artifact_line": 3,
+            "artifact_path": "model.py",
+            "code_path": "model.py",
+            "content_line": 3,
+            "line_end": 3,
+            "line_start": 1
+          },
+          "lookup_keys": [
+            "field:res.partner.name"
+          ],
+          "name": "name",
+          "rule": "odoo_field_assignment_v1",
+          "type": "field"
+        },
+        {
+          "context": {
+            "model": "res.partner",
+            "module": "demo",
+            "origin": "code",
+            "role": "reference",
+            "syntax": "python"
+          },
+          "location": {
+            "artifact_line": 3,
+            "artifact_path": "model.py",
+            "code_path": "model.py",
+            "content_line": 3,
+            "line_end": 3,
+            "line_start": 1
+          },
+          "lookup_keys": [],
+          "name": "partner_id.name",
+          "rule": "odoo_related_literal_v1",
+          "type": "field_path"
+        },
+        {
+          "context": {
+            "model": "res.partner",
+            "module": "demo",
+            "origin": "code",
+            "role": "reference",
+            "syntax": "python"
+          },
+          "location": {
+            "artifact_line": 3,
+            "artifact_path": "model.py",
+            "code_path": "model.py",
+            "content_line": 3,
+            "line_end": 3,
+            "line_start": 1
+          },
+          "lookup_keys": [
+            "property:related"
+          ],
+          "name": "related",
+          "rule": "odoo_field_keyword_v1",
+          "type": "field_option"
+        }
+      ],
+      "errors": [],
+      "files": [
+        {
+          "content_sha256": "94c3fb8f5d26001dcc88eff2f42b41adbf31298c7c0cd6580804060f65f3b4f2",
+          "encoding": "utf-8",
+          "path": "__manifest__.py"
+        },
+        {
+          "content_sha256": "87af0c39a09613ccda4e6a005048ef1456f68b5e11072e1294044067da945d21",
+          "encoding": "utf-8",
+          "path": "model.py"
+        }
+      ],
+      "input_kind": "directory",
+      "input_path": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\temp_data\\crossing-corrections-demo-20261118\\partner",
+      "input_revision": "f8a8d106ee279ae3ac40c5bcd59de6d7eed58e91752f40edb4efd0e4f9871e0e",
+      "limitations": [],
+      "module_name": "demo",
+      "module_path": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\temp_data\\crossing-corrections-demo-20261118\\partner"
+    },
+    "limits": [
+      "Exact initial crossing only; no unit-to-unit relationship expansion or memory",
+      "Matching is not proof of migration applicability or incompatibility",
+      "A typed document/comment match does not validate the assertion it contains",
+      "No matches is not proof that the module has no migration problems"
+    ],
+    "matched_unit_ids": [
+      "unit-168279d9f7d517ac378e196dc0099510",
+      "unit-4e46ebb4dbf311d1e45d7a3d603c279a",
+      "unit-668489d17d34b8c1a9ba15447ccf1490"
+    ],
+    "outcome": "matches",
+    "rejected_candidates": [
+      {
+        "input_entity": {
+          "context": {
+            "module": "demo",
+            "origin": "code",
+            "role": "declaration"
+          },
+          "location": {
+            "artifact_line": 1,
+            "artifact_path": "__manifest__.py",
+            "code_path": "__manifest__.py",
+            "line_end": 1,
+            "line_start": 1
+          },
+          "lookup_keys": [
+            "manifest:depends"
+          ],
+          "name": "depends",
+          "rule": "manifest_literal_key_v1",
+          "type": "manifest_key"
+        },
+        "reason": "unknown_manifest_owner",
+        "unit_entity": {
+          "context": {
+            "origin": "code",
+            "role": "declaration"
+          },
+          "location": {
+            "artifact_line": 1,
+            "artifact_path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py",
+            "line_end": 1,
+            "line_start": 1
+          },
+          "lookup_keys": [
+            "manifest:depends"
+          ],
+          "name": "depends",
+          "rule": "manifest_literal_key_v1",
+          "type": "manifest_key"
+        },
+        "unit_id": "unit-668489d17d34b8c1a9ba15447ccf1490"
+      },
+      {
+        "input_entity": {
+          "context": {
+            "module": "demo",
+            "origin": "code",
+            "role": "declaration"
+          },
+          "location": {
+            "artifact_line": 1,
+            "artifact_path": "__manifest__.py",
+            "code_path": "__manifest__.py",
+            "line_end": 1,
+            "line_start": 1
+          },
+          "lookup_keys": [
+            "manifest:name"
+          ],
+          "name": "name",
+          "rule": "manifest_literal_key_v1",
+          "type": "manifest_key"
+        },
+        "reason": "unknown_manifest_owner",
+        "unit_entity": {
+          "context": {
+            "origin": "code",
+            "role": "declaration"
+          },
+          "location": {
+            "artifact_line": 1,
+            "artifact_path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py",
+            "line_end": 1,
+            "line_start": 1
+          },
+          "lookup_keys": [
+            "manifest:name"
+          ],
+          "name": "name",
+          "rule": "manifest_literal_key_v1",
+          "type": "manifest_key"
+        },
+        "unit_id": "unit-668489d17d34b8c1a9ba15447ccf1490"
+      }
+    ],
+    "result_id": "cross-e15e04272d519cd8430053b7e91776ef",
+    "results": [
+      {
+        "evidences": [
+          {
+            "id": "cross-evidence-632427d1d1974d0cff1f31f1a7b7b61b",
+            "identity": [
+              "field_option",
+              "related"
+            ],
+            "information_unit_id": "unit-168279d9f7d517ac378e196dc0099510",
+            "input_entity": {
+              "context": {
+                "model": "res.partner",
+                "module": "demo",
+                "origin": "code",
+                "role": "reference",
+                "syntax": "python"
+              },
+              "location": {
+                "artifact_line": 3,
+                "artifact_path": "model.py",
+                "code_path": "model.py",
+                "content_line": 3,
+                "line_end": 3,
+                "line_start": 1
+              },
+              "lookup_keys": [
+                "property:related"
+              ],
+              "name": "related",
+              "rule": "odoo_field_keyword_v1",
+              "type": "field_option"
+            },
+            "match_rule": "exact_typed_scoped_identity_v1",
+            "unit_entity": {
+              "context": {
+                "model": null,
+                "module": null,
+                "origin": "code",
+                "role": "reference",
+                "syntax": "python"
+              },
+              "location": {
+                "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+                "code_line": 3,
+                "code_path": "odoo/fields.py",
+                "content_line": 3,
+                "json_pointer": "/diff",
+                "line_end": 8,
+                "line_start": 3,
+                "lines_in": "decoded_json_string",
+                "side": "after"
+              },
+              "lookup_keys": [
+                "property:related"
+              ],
+              "name": "related",
+              "rule": "odoo_field_self_attribute_v1",
+              "type": "field_option"
+            }
+          },
+          {
+            "id": "cross-evidence-fbc22f9b93df826e8fa5c53d61e0c496",
+            "identity": [
+              "field_option",
+              "related"
+            ],
+            "information_unit_id": "unit-168279d9f7d517ac378e196dc0099510",
+            "input_entity": {
+              "context": {
+                "model": "res.partner",
+                "module": "demo",
+                "origin": "code",
+                "role": "reference",
+                "syntax": "python"
+              },
+              "location": {
+                "artifact_line": 3,
+                "artifact_path": "model.py",
+                "code_path": "model.py",
+                "content_line": 3,
+                "line_end": 3,
+                "line_start": 1
+              },
+              "lookup_keys": [
+                "property:related"
+              ],
+              "name": "related",
+              "rule": "odoo_field_keyword_v1",
+              "type": "field_option"
+            },
+            "match_rule": "exact_typed_scoped_identity_v1",
+            "unit_entity": {
+              "context": {
+                "model": null,
+                "module": null,
+                "origin": "code",
+                "role": "reference",
+                "syntax": "python"
+              },
+              "location": {
+                "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+                "code_line": 4,
+                "code_path": "odoo/fields.py",
+                "content_line": 4,
+                "json_pointer": "/diff",
+                "line_end": 8,
+                "line_start": 3,
+                "lines_in": "decoded_json_string",
+                "side": "after"
+              },
+              "lookup_keys": [
+                "property:related"
+              ],
+              "name": "related",
+              "rule": "odoo_field_self_attribute_v1",
+              "type": "field_option"
+            }
+          }
+        ],
+        "information_unit_id": "unit-168279d9f7d517ac378e196dc0099510"
+      },
+      {
+        "evidences": [
+          {
+            "id": "cross-evidence-5d2de154ed8442e12a208634f13175a7",
+            "identity": [
+              "field_option",
+              "related"
+            ],
+            "information_unit_id": "unit-4e46ebb4dbf311d1e45d7a3d603c279a",
+            "input_entity": {
+              "context": {
+                "model": "res.partner",
+                "module": "demo",
+                "origin": "code",
+                "role": "reference",
+                "syntax": "python"
+              },
+              "location": {
+                "artifact_line": 3,
+                "artifact_path": "model.py",
+                "code_path": "model.py",
+                "content_line": 3,
+                "line_end": 3,
+                "line_start": 1
+              },
+              "lookup_keys": [
+                "property:related"
+              ],
+              "name": "related",
+              "rule": "odoo_field_keyword_v1",
+              "type": "field_option"
+            },
+            "match_rule": "exact_typed_scoped_identity_v1",
+            "unit_entity": {
+              "context": {
+                "model": null,
+                "module": null,
+                "origin": "code",
+                "role": "reference",
+                "syntax": "python"
+              },
+              "location": {
+                "artifact_path": "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff",
+                "code_line": 4,
+                "code_path": "odoo/fields.py",
+                "content_line": 4,
+                "line_end": 8,
+                "line_start": 3,
+                "side": "after"
+              },
+              "lookup_keys": [
+                "property:related"
+              ],
+              "name": "related",
+              "rule": "odoo_field_self_attribute_v1",
+              "type": "field_option"
+            }
+          },
+          {
+            "id": "cross-evidence-90bb241411931d27b8e94db2c47e2918",
+            "identity": [
+              "field_option",
+              "related"
+            ],
+            "information_unit_id": "unit-4e46ebb4dbf311d1e45d7a3d603c279a",
+            "input_entity": {
+              "context": {
+                "model": "res.partner",
+                "module": "demo",
+                "origin": "code",
+                "role": "reference",
+                "syntax": "python"
+              },
+              "location": {
+                "artifact_line": 3,
+                "artifact_path": "model.py",
+                "code_path": "model.py",
+                "content_line": 3,
+                "line_end": 3,
+                "line_start": 1
+              },
+              "lookup_keys": [
+                "property:related"
+              ],
+              "name": "related",
+              "rule": "odoo_field_keyword_v1",
+              "type": "field_option"
+            },
+            "match_rule": "exact_typed_scoped_identity_v1",
+            "unit_entity": {
+              "context": {
+                "model": null,
+                "module": null,
+                "origin": "code",
+                "role": "reference",
+                "syntax": "python"
+              },
+              "location": {
+                "artifact_path": "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff",
+                "code_line": 3,
+                "code_path": "odoo/fields.py",
+                "content_line": 3,
+                "line_end": 8,
+                "line_start": 3,
+                "side": "after"
+              },
+              "lookup_keys": [
+                "property:related"
+              ],
+              "name": "related",
+              "rule": "odoo_field_self_attribute_v1",
+              "type": "field_option"
+            }
+          }
+        ],
+        "information_unit_id": "unit-4e46ebb4dbf311d1e45d7a3d603c279a"
+      },
+      {
+        "evidences": [
+          {
+            "id": "cross-evidence-a4c73bcc67e13974815faf80bd9f8c24",
+            "identity": [
+              "module",
+              "base"
+            ],
+            "information_unit_id": "unit-668489d17d34b8c1a9ba15447ccf1490",
+            "input_entity": {
+              "context": {
+                "manifest_key": "depends",
+                "module": "demo",
+                "origin": "code"
+              },
+              "location": {
+                "artifact_line": 1,
+                "artifact_path": "__manifest__.py",
+                "code_path": "__manifest__.py",
+                "line_end": 1,
+                "line_start": 1
+              },
+              "lookup_keys": [
+                "module:base"
+              ],
+              "name": "base",
+              "rule": "manifest_literal_value_v1",
+              "type": "module"
+            },
+            "match_rule": "exact_typed_scoped_identity_v1",
+            "unit_entity": {
+              "context": {
+                "manifest_key": "depends",
+                "origin": "code"
+              },
+              "location": {
+                "artifact_line": 1,
+                "artifact_path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py",
+                "line_end": 1,
+                "line_start": 1
+              },
+              "lookup_keys": [
+                "module:base"
+              ],
+              "name": "base",
+              "rule": "manifest_literal_value_v1",
+              "type": "module"
+            }
+          }
+        ],
+        "information_unit_id": "unit-668489d17d34b8c1a9ba15447ccf1490"
+      }
+    ],
+    "rules_version": "crossing-2",
+    "schema_version": 2,
+    "status": "complete",
+    "summary": {
+      "eligible_observations": 8,
+      "entities_observed": 8,
+      "errors": 0,
+      "evidences": 5,
+      "files_read": 2,
+      "indexed_candidates_examined": 7,
+      "rejection_reasons": {
+        "unknown_manifest_owner": 2
+      },
+      "units_matched": 3,
+      "unresolved_observations": 0
+    },
+    "unresolved": []
+  },
+  "negative": {
+    "collection": {
+      "normalization_rules_version": "normalization-3",
+      "revision": "0f1a8ef2527e9c1c011f71dcf4a596e4bdf5a3c76ba34d048ec45a9a211c8168",
+      "schema_version": 4
+    },
+    "component": "crossing",
+    "input": {
+      "entities": [
+        {
+          "context": {
+            "model": "x.unrelated",
+            "module": "unrelated",
+            "origin": "code",
+            "qualified_name": "Other",
+            "role": "declaration",
+            "scope": "class",
+            "syntax": "python"
+          },
+          "location": {
+            "artifact_line": 1,
+            "artifact_path": "model.py",
+            "code_path": "model.py",
+            "content_line": 1,
+            "line_end": 3,
+            "line_start": 1
+          },
+          "lookup_keys": [],
+          "name": "Other",
+          "rule": "python_class_v2_scopes",
+          "type": "class"
+        },
+        {
+          "context": {
+            "model": "x.unrelated",
+            "module": "unrelated",
+            "origin": "code",
+            "role": "reference",
+            "syntax": "python"
+          },
+          "location": {
+            "artifact_line": 2,
+            "artifact_path": "model.py",
+            "code_path": "model.py",
+            "content_line": 2,
+            "line_end": 3,
+            "line_start": 1
+          },
+          "lookup_keys": [
+            "model:x.unrelated"
+          ],
+          "name": "x.unrelated",
+          "rule": "odoo_model_literal_v1",
+          "type": "model"
+        },
+        {
+          "context": {
+            "model": "x.unrelated",
+            "module": "unrelated",
+            "origin": "code",
+            "role": "declaration",
+            "syntax": "python"
+          },
+          "location": {
+            "artifact_line": 3,
+            "artifact_path": "model.py",
+            "code_path": "model.py",
+            "content_line": 3,
+            "line_end": 3,
+            "line_start": 1
+          },
+          "lookup_keys": [
+            "field:x.unrelated.name"
+          ],
+          "name": "name",
+          "rule": "odoo_field_assignment_v1",
+          "type": "field"
+        }
+      ],
+      "errors": [],
+      "files": [
+        {
+          "content_sha256": "fdfdd4ecf26e487ff403c070d7617090b99f254edfdf9cb3e8014bb8962f5850",
+          "encoding": "utf-8",
+          "path": "model.py"
+        }
+      ],
+      "input_kind": "directory",
+      "input_path": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\temp_data\\crossing-corrections-demo-20261118\\unrelated",
+      "input_revision": "2c68b46ce7e26baef3371d7718f7ff0d822b840dd05579b565d1a6702cc56304",
+      "limitations": [],
+      "module_name": "unrelated",
+      "module_path": "C:\\Users\\USUARIO\\Documents\\ChatGPT\\tesis 3\\repo odo\\sandbox\\r2\\temp_data\\crossing-corrections-demo-20261118\\unrelated"
+    },
+    "limits": [
+      "Exact initial crossing only; no unit-to-unit relationship expansion or memory",
+      "Matching is not proof of migration applicability or incompatibility",
+      "A typed document/comment match does not validate the assertion it contains",
+      "No matches is not proof that the module has no migration problems"
+    ],
+    "matched_unit_ids": [],
+    "outcome": "no_matches",
+    "rejected_candidates": [],
+    "result_id": "cross-6d26d4d570ffe4e08d54766be1d277ce",
+    "results": [],
+    "rules_version": "crossing-2",
+    "schema_version": 2,
+    "status": "complete",
+    "summary": {
+      "eligible_observations": 3,
+      "entities_observed": 3,
+      "errors": 0,
+      "evidences": 0,
+      "files_read": 1,
+      "indexed_candidates_examined": 0,
+      "rejection_reasons": {},
+      "units_matched": 0,
+      "unresolved_observations": 0
+    },
+    "unresolved": []
+  },
+  "report": {
+    "synthetic": true,
+    "http": "mocked; no live upstream claims",
+    "normalized_units": 11,
+    "matched_units": 3,
+    "negative_units": 0,
+    "reprocessing_identical": true,
+    "matched_result_id": "cross-e15e04272d519cd8430053b7e91776ef",
+    "negative_result_id": "cross-6d26d4d570ffe4e08d54766be1d277ce"
+  }
+}

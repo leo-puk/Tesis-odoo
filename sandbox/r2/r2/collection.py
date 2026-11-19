@@ -14,6 +14,7 @@ from .extract import extract, layer_for, tokens, resolve_references
 from .policy import select_sources
 from .review import apply_reviews, search_document
 from .selection import assign_sources
+from . import __version__
 
 
 def canonical(value):
@@ -168,7 +169,7 @@ def meta(con):
 
 
 def load(con, table):
-    if table not in {"sources", "changes", "relations", "elements", "evidence", "comparisons", "artifacts", "documents"}:
+    if table not in {"sources", "changes", "relations", "elements", "evidence", "comparisons", "artifacts", "documents", "information_units"}:
         raise ValueError("Unknown collection table")
     return [json.loads(r[0]) for r in con.execute(f"SELECT payload FROM {table} ORDER BY id")]
 
@@ -218,20 +219,64 @@ def build(manifest, destination, include_oca_migrations=False, annotations=None,
                             registry, selection["excluded"], audited, warnings, start)
 
 
+def compatibility_views(converted):
+    """Keep existing diff consumers working; never create search relations.
+
+    These are projections of information units, not a second normalization.
+    Non-diff units remain available through information_units and documents.
+    """
+    changes, elements, documents = {}, {}, {}
+    sources = {s['id']:s for s in converted['sources']}
+    for unit in converted['units'].values():
+        source=sources[unit['source_id']]
+        if unit['kind']!='diff_hunk':
+            documents[unit['id']]=dict(id=unit['id'],source_id=unit['source_id'],artifact_id=unit['artifact_id'],
+                                      kind=unit['kind'],text=unit['text'],role='context_only',source_locator=unit['source_locator'])
+        for entity in unit['entities']:
+            if entity['context'].get('origin')!='code': continue
+            for key in entity.get('lookup_keys',[]):
+                kind=key.split(':',1)[0]
+                side=entity['location'].get('side','after')
+                line=entity['location'].get('code_line') or entity['location'].get('artifact_line') or 1
+                row=dict(key=key,kind=kind,name=entity['name'],path=unit['data'].get('file_path',
+                    '__manifest__.py' if unit['kind']=='manifest' else unit['source_locator']['artifact_path']),
+                    line=line,end_line=line,layer=unit['layers'][0],module=entity['context'].get('module'),
+                    role=entity['context'].get('role','reference'),version=unit['version_from'] if side=='before' else unit['version_to'],
+                    side=side,source_id=unit['source_id'],artifact_id=unit['artifact_id'],information_unit_id=unit['id'])
+                elements[digest(row)]=row
+        if unit['kind']!='diff_hunk': continue
+        # Unknown intervals are retained in information_units, not fabricated
+        # into an applicable migration interval for the legacy diff query.
+        if not unit['version_from'] or not unit['version_to']: continue
+        data=unit['data']
+        keys=sorted({k for e in unit['entities'] if e['context'].get('origin')=='code' for k in e.get('lookup_keys',[])})
+        cid='chg-'+unit['id'][5:]
+        changes[cid]=dict(**{k:v for k,v in data.items() if k not in {'pr_id','pr_url','resource_id','provenance_references'}},
+            id=cid,information_unit_id=unit['id'],source_locator=unit['source_locator'],source_id=unit['source_id'],
+            artifact_id=unit['artifact_id'],layer=unit['layers'][0],source_layer=unit['layers'][0],
+            from_version=unit['version_from'],to_version=unit['version_to'],from_revision=source.get('from_revision'),
+            to_revision=source.get('to_revision'),comparison_id='cmp-'+digest([unit['source_id'],source.get('from_revision'),source.get('to_revision')])[:24],
+            elements=keys,required_elements=[],status='candidate',classification='observed_diff_hunk',
+            origin_kind=source['kind'],matching_migration=None,title=f"Observed diff in {data['file_path']}",
+            evidence_scope='partial_source_hunk')
+    return elements,changes,documents
+
+
 def build_session(inventory, bindings, destination, annotations=None):
-    """Build schema 3 from final acquisition units; no network or temp deletion."""
-    from .ingestion import read_session
-    from .conversion import convert_units
+    """Build schema 4 from validated normalized units, without downloading."""
+    from .normalization import normalize_session
     start = time.perf_counter()
-    units, excluded = read_session(inventory, bindings)
-    converted = convert_units(units)
-    return write_collection(converted["sources"], converted["elements"], converted["relations"],
-                            converted["changes"], destination, annotations, None, excluded, False,
-                            converted["warnings"], start, converted["artifacts"], converted["documents"], schema=3)
+    converted = normalize_session(inventory, bindings)
+    elements,changes,documents=compatibility_views(converted)
+    return write_collection(converted["sources"], elements, {},
+                            changes, destination, annotations, None, converted["excluded"], False,
+                            converted["warnings"], start, converted["artifacts"], documents, schema=4,
+                            normalized_units=converted['units'],normalization=converted['normalization'],issues=converted['issues'])
 
 
 def write_collection(sources, elements, relations, changes, destination, annotations,
-                     registry, excluded, audited, warnings, start, artifacts=None, documents=None, schema=2):
+                     registry, excluded, audited, warnings, start, artifacts=None, documents=None, schema=2,
+                     normalized_units=None,normalization=None,issues=None):
     include_oca_migrations = False
     artifacts, documents = artifacts or {}, documents or {}
     review = json.loads(Path(annotations).read_text(encoding="utf-8-sig")) if annotations else []
@@ -240,9 +285,15 @@ def write_collection(sources, elements, relations, changes, destination, annotat
                     from_revision=c["from_revision"], to_revision=c["to_revision"],
                     from_version=c["from_version"], to_version=c["to_version"])
                    for c in evidence.values()}
-    payload = dict(schema_version=schema, engine_version="0.3.0" if schema == 3 else "0.2.0", include_oca_migrations=include_oca_migrations,
+    payload = dict(schema_version=schema, engine_version=__version__ if schema >= 3 else "0.2.0", include_oca_migrations=include_oca_migrations,
                    sources=sources, elements=elements, relations=relations, changes=changes,
                    evidence=evidence, comparisons=comparisons, artifacts=artifacts, documents=documents, assignment_registry=registry, excluded=excluded)
+    if schema==4:
+        from .normalization.schema import validate_collection
+        validate_collection(dict(sources=sources,artifacts=artifacts,units=normalized_units or {}))
+        if relations:
+            raise ValueError('Normalized collections cannot contain precomputed search relations')
+        payload.update(information_units=normalized_units or {},normalization=normalization,normalization_issues=issues or [])
     revision = digest(payload)
     destination = Path(destination).resolve()
     if destination.exists():
@@ -257,6 +308,16 @@ def write_collection(sources, elements, relations, changes, destination, annotat
             con.execute("CREATE TABLE metadata(key TEXT PRIMARY KEY,value TEXT NOT NULL)")
             for table in ("sources", "elements", "relations", "changes", "evidence", "comparisons", "artifacts", "documents"):
                 con.execute(f"CREATE TABLE {table}(id TEXT PRIMARY KEY,payload TEXT NOT NULL)")
+            if schema==4:
+                con.execute('CREATE TABLE information_units(id TEXT PRIMARY KEY,payload TEXT NOT NULL)')
+                con.execute('CREATE TABLE unit_terms(unit_id TEXT,term TEXT,frequency INTEGER,tfidf REAL,PRIMARY KEY(unit_id,term))')
+                con.execute('CREATE INDEX unit_term_lookup ON unit_terms(term)')
+                con.execute('CREATE TABLE unit_entities(unit_id TEXT,ordinal INTEGER,name TEXT,type TEXT,payload TEXT,PRIMARY KEY(unit_id,ordinal))')
+                con.execute('CREATE INDEX unit_entity_lookup ON unit_entities(name,type)')
+                for uid,unit in sorted((normalized_units or {}).items()):
+                    con.execute('INSERT INTO information_units VALUES (?,?)',(uid,canonical(unit)))
+                    con.executemany('INSERT INTO unit_terms VALUES (?,?,?,?)',[(uid,t['term'],t['frequency'],t['tfidf']) for t in unit['terms']])
+                    con.executemany('INSERT INTO unit_entities VALUES (?,?,?,?,?)',[(uid,i,e['name'],e['type'],canonical(e)) for i,e in enumerate(unit['entities'])])
             con.execute("CREATE TABLE change_evidence(change_id TEXT,evidence_id TEXT,PRIMARY KEY(change_id,evidence_id))")
             con.execute("CREATE VIRTUAL TABLE search USING fts5(change_id UNINDEXED, text, tokenize='unicode61')")
             for table, rows in (("sources", {r['id']: r for r in sources}), ("elements", elements),
@@ -267,15 +328,20 @@ def write_collection(sources, elements, relations, changes, destination, annotat
                 text = " ".join(re.findall(r"[a-zA-Z_][a-zA-Z_0-9]*", search_document(c).lower()))
                 con.execute("INSERT INTO search VALUES (?,?)", (key, text))
                 con.executemany("INSERT INTO change_evidence VALUES (?,?)", [(key, e) for e in c["evidence_ids"]])
-            metadata = dict(schema_version=schema, engine_version="0.3.0" if schema == 3 else "0.2.0", collection_revision=revision,
+            metadata = dict(schema_version=schema, engine_version=__version__ if schema >= 3 else "0.2.0", collection_revision=revision,
                             include_oca_migrations=include_oca_migrations, excluded=excluded,
                             assignment_audited=audited, assignment_revision=digest(registry) if registry else None,
                             bm25_fields=["title", "affected_elements", "removed", "added"],
                             warnings=sorted(set(warnings)), preparation_seconds=time.perf_counter()-start,
                             source_count=len(sources), change_count=len(changes),
                             artifact_count=len(artifacts), document_count=len(documents),
-                            source_policy="final_catalog_admitted_units_v1" if schema == 3 else "historical_local_import",
+                            source_policy="normalized_capture_units_v1" if schema==4 else "final_catalog_admitted_units_v1" if schema == 3 else "historical_local_import",
                             review_count=len(review), bm25="SQLite FTS5 k1=1.2 b=0.75 unicode61; identifier tokens")
+            if schema==4:
+                metadata.update(information_unit_count=len(normalized_units or {}),normalization=normalization,
+                                normalization_issues=issues or [],normalization_issue_count=len(issues or []),
+                                search_relations_precomputed=False,
+                                query_scope='Existing diff consumers only; document retrieval and dynamic unit relationships pending')
             con.executemany("INSERT INTO metadata VALUES (?,?)", [(k, canonical(v)) for k, v in sorted(metadata.items())])
         con.close()
         os.replace(temp, destination)

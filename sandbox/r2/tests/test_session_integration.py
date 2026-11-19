@@ -73,6 +73,34 @@ class SessionIntegrationTests(unittest.TestCase):
         self.result = result
         return result
 
+    def test_normalization_pipeline_preserves_records_and_exclusions(self):
+        from r2.conversion import convert_units
+        from r2.normalization import normalize_session
+
+        self.capture()
+        rows = json.loads(self.inventory.read_text(encoding="utf-8"))
+        rows.append(dict(id="f" * 32, status="excluded"))
+        self.inventory.write_text(json.dumps(rows), encoding="utf-8")
+        units, excluded = read_session(self.inventory, self.bindings)
+        expected = {**convert_units(units), "excluded": excluded}
+        with patch("r2.adquisition.http.request.build_opener", side_effect=AssertionError("unexpected network")):
+            actual = normalize_session(self.inventory, self.bindings)
+        self.assertEqual(actual, expected)
+        self.assertEqual(len(actual["units"]), 3)
+        self.assertEqual(sum(u['kind']=='diff_hunk' for u in actual['units'].values()), 1)
+        self.assertNotIn('relations',actual)
+        self.assertEqual(len(actual["artifacts"]), 3)
+        self.assertEqual(actual["excluded"], [dict(id="f" * 32, reason="excluded")])
+
+    def test_normalization_pipeline_rejects_invalid_binding(self):
+        from r2.normalization import normalize_session
+
+        self.capture()
+        self.config["sources"]["core"]["from_version"] = "18.0"
+        self.bindings.write_text(json.dumps(self.config), encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "destination must follow origin"):
+            normalize_session(self.inventory, self.bindings)
+
     def test_cli_capture_build_query_export_delete_and_offline_retrieval(self):
         with patch("r2.adquisition.http.request.build_opener") as opener:
             opener.return_value.open.side_effect = self.transport
@@ -130,13 +158,15 @@ class SessionIntegrationTests(unittest.TestCase):
         self.assertTrue(report["development_only"])
         self.assertEqual(len(report["queries"]), 2)
 
-    def test_missing_version_binding_fails_without_creating_database(self):
+    def test_missing_version_binding_preserves_unknown_interval(self):
         self.capture()
         del self.config["sources"]["core"]["from_version"]
         self.bindings.write_text(json.dumps(self.config))
-        with self.assertRaises(ValueError):
-            build_session(self.inventory, self.bindings, self.db)
-        self.assertFalse(self.db.exists())
+        build_session(self.inventory, self.bindings, self.db)
+        with connect(self.db) as con:
+            unit = next(u for u in load(con,'information_units') if u['kind']=='diff_hunk')
+            self.assertIsNone(unit['version_from'])
+            self.assertEqual(load(con,'changes'),[])
 
     def test_pr_json_preserves_comments_but_only_diff_creates_changes(self):
         self.plan.write_text(json.dumps([dict(id="core", kind="github_pr", files={"pr.json": PR})]))
@@ -200,15 +230,19 @@ class SessionIntegrationTests(unittest.TestCase):
     def test_truncated_diff_cannot_create_candidates(self):
         self.diff = "--- a/x.py\n+++ b/x.py\n@@ -1,2 +1,2 @@\n-old\n+new\n"
         self.capture()
-        with self.assertRaisesRegex(ValueError, "Truncated"):
-            build_session(self.inventory, self.bindings, self.db)
-        self.assertFalse(self.db.exists())
+        report = build_session(self.inventory, self.bindings, self.db)
+        self.assertEqual(report['normalization_issue_count'],1)
+        self.assertIn('Truncated',report['normalization_issues'][0]['detail'])
+        with connect(self.db) as con:
+            self.assertEqual(load(con,'changes'),[])
+            self.assertTrue(load(con,'artifacts'))
 
-    def test_final_component_files_are_unchanged(self):
+    def test_original_delivery_is_preserved_after_authorized_active_changes(self):
         root = Path(__file__).resolve().parents[1]
         baseline = json.loads((root / "audit/adquisition-final-baseline.json").read_text())
-        actual = {p.relative_to(root / "r2/adquisition").as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
-                  for p in (root / "r2/adquisition").rglob("*") if p.is_file() and "__pycache__" not in p.parts}
+        reference = root / "reference/adquisition-final/adquisition"
+        actual = {p.relative_to(reference).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+                  for p in reference.rglob("*") if p.is_file() and "__pycache__" not in p.parts}
         self.assertEqual(actual, baseline)
 
     def test_removed_switch_is_rejected_by_cli(self):

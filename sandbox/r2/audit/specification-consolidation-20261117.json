@@ -1,0 +1,47 @@
+[
+  {
+    "original": "BACKLOG.md",
+    "archived": "archive/specifications-pre-20261117/BACKLOG.md",
+    "sha256": "7ae1fc8815e8851119558640dab1ac2d5043b001feec4d5d7525b6fde0f32115"
+  },
+  {
+    "original": "PENDIENTES.md",
+    "archived": "archive/specifications-pre-20261117/PENDIENTES.md",
+    "sha256": "dc635d0461e296adca4e75594d1500ab7b14030afd866b106c9688c39f7bcfdd"
+  },
+  {
+    "original": "VERIFICACION.md",
+    "archived": "archive/specifications-pre-20261117/VERIFICACION.md",
+    "sha256": "af583fa58b069eca3e80c9c2a45daca3210c3156644c26355e8122c27a171857"
+  },
+  {
+    "original": "docs/INTEGRACION_ADQUISITION.md",
+    "archived": "archive/specifications-pre-20261117/docs/INTEGRACION_ADQUISITION.md",
+    "sha256": "c4847c627797b3cbd86595b94c8595650a402b3ccf18adcce10a91b2b6bf60c7"
+  },
+  {
+    "original": "docs/MANUAL_CODIFICACION.md",
+    "archived": "archive/specifications-pre-20261117/docs/MANUAL_CODIFICACION.md",
+    "sha256": "1468ee1cf9970213ad3ea56d4b3f41554e7fa418509716aabc12b33f78aa0c2c"
+  },
+  {
+    "original": "docs/PROTOCOLO_EVALUACION.md",
+    "archived": "archive/specifications-pre-20261117/docs/PROTOCOLO_EVALUACION.md",
+    "sha256": "2cc6a8a8508a6ceb71e5a459966b56f075395f33bf0a9f66c8f2389ff426d884"
+  },
+  {
+    "original": "docs/README-v010-historical.md",
+    "archived": "archive/specifications-pre-20261117/docs/README-v010-historical.md",
+    "sha256": "d4ef67d4fa120e19d42d4223a4a1cad17a0de65f5c1c6b352e47d1c090ca3160"
+  },
+  {
+    "original": "docs/REPRODUCCION-v020-historical.md",
+    "archived": "archive/specifications-pre-20261117/docs/REPRODUCCION-v020-historical.md",
+    "sha256": "00ed61b44b603d34f6df71c2a80bcdc6d57e476324934ddd83c4b5f5854dc3bf"
+  },
+  {
+    "original": "docs/REPRODUCCION.md",
+    "archived": "archive/specifications-pre-20261117/docs/REPRODUCCION.md",
+    "sha256": "636a470d912ad9b1a4b61c985476a1ba99b4bf567a215ee426ff4f11b8edcde3"
+  }
+]

@@ -15,7 +15,7 @@ def validate_source_origin(kind, url):
     allowed = {
         "official_code": host == "raw.githubusercontent.com" and path.startswith("/odoo/odoo/"),
         "official_documentation": (host == "raw.githubusercontent.com" and path.startswith("/odoo/documentation/")) or (host in {"odoo.com", "www.odoo.com"} and path.startswith("/documentation/")),
-        "oca_guidance": (host == "raw.githubusercontent.com" and path.startswith("/wiki/oca/maintainer-tools/")) or (host == "github.com" and path.startswith("/oca/maintainer-tools/wiki/")),
+        "oca_guidance": (host == "raw.githubusercontent.com" and path.startswith(("/wiki/oca/maintainer-tools/", "/oca/maintainer-tools/"))) or (host == "github.com" and path.startswith("/oca/maintainer-tools/wiki/")),
         "openupgrade_analysis": (host == "raw.githubusercontent.com" and path.startswith("/oca/openupgrade/")) or host == "oca.github.io",
     }
     if parsed.scheme != "https" or not allowed.get(kind):

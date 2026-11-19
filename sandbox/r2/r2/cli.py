@@ -2,6 +2,7 @@ import argparse
 import json
 import sys
 import time
+from sqlite3 import DatabaseError
 from pathlib import Path
 from . import __version__
 from .collection import build, build_session, canonical, connect, load, meta
@@ -13,11 +14,11 @@ def parser():
     p = argparse.ArgumentParser(prog="r2", description="Deterministic local Odoo migration evidence; no AI connection")
     p.add_argument("--version", action="version", version=__version__)
     sub = p.add_subparsers(dest="command", required=True)
-    b = sub.add_parser("build", help="Build schema 3 from accepted acquisition units")
+    b = sub.add_parser("build", help="Normalize accepted captures and build SQLite schema 4")
     b.add_argument("manifest", type=Path)
     b.add_argument("--db", required=True, type=Path)
     b.add_argument("--annotations", type=Path, help="Explicit reviewed changes with English titles")
-    b.add_argument("--bindings", required=True, type=Path)
+    b.add_argument("--bindings", type=Path, help="Optional explicit processing metadata; missing versions remain unknown")
     legacy = sub.add_parser("build-legacy", help="Explicit historical local Git/snapshot reconstruction (schema 2)")
     legacy.add_argument("manifest", type=Path)
     legacy.add_argument("--db", required=True, type=Path)
@@ -39,6 +40,11 @@ def parser():
     q.add_argument("--log", type=Path, help="Append structured query output as JSONL")
     s = sub.add_parser("scan", help="Inspect a module without importing or executing it")
     s.add_argument("module", type=Path)
+    s = sub.add_parser('cross', help='Cross partner code against indexed normalized units; no graph expansion')
+    s.add_argument('module',type=Path,help='Partner code file or directory')
+    s.add_argument('--db',type=Path,required=True)
+    s.add_argument('--module-name',help='Explicit technical addon name for namespace-sensitive identifiers')
+    s.add_argument('--output',type=Path,help='Save a new JSON report; never overwrite an existing file')
     for name in ("inventory", "export", "show"):
         s = sub.add_parser(name)
         s.add_argument("--db", type=Path, required=True)
@@ -84,6 +90,9 @@ def main(argv=None):
             output = build(args.manifest, args.db, annotations=args.annotations, assignment_registry=args.audit_registry)
         elif args.command == "scan":
             output = scan_module(args.module)
+        elif args.command == 'cross':
+            from .crossing import cross_module
+            output = cross_module(args.db,args.module,module_name=args.module_name,output=args.output)
         elif args.command == "query":
             from .evaluate import measure
             output, timing = measure(args.db, args.module, args.from_version, args.to_version,
@@ -111,6 +120,9 @@ def main(argv=None):
                     output["sources"] = load(con, "sources")
                 elif args.command == "export":
                     output = {"metadata": output, **{t: load(con, t) for t in (("sources", "comparisons", "evidence", "changes", "elements", "relations", "artifacts", "documents") if meta(con)["schema_version"] == 3 else ("sources", "comparisons", "evidence", "changes", "elements", "relations"))}}
+                    if output['metadata']['schema_version']==4:
+                        for table in ('artifacts','documents','information_units'):
+                            output[table]=load(con,table)
                 else:
                     output = next((r for r in load(con, "changes") if r["id"] == args.change_id), None)
                     if output is None:
@@ -163,7 +175,7 @@ def main(argv=None):
             output = {**environment(), "git": subprocess.check_output(["git", "--version"], text=True).strip(),
                       "fts5": True, "networkx_bfs_layers_probe": list(nx.bfs_layers(nx.path_graph(3), [0]))}
         print(json.dumps(output, ensure_ascii=False, indent=2))
-    except (ValueError, OSError, KeyError, TypeError) as exc:
+    except (ValueError, OSError, KeyError, TypeError, DatabaseError) as exc:
         p.error(str(exc))
 
 

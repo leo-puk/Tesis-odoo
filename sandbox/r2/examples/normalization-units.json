@@ -1,0 +1,1935 @@
+{
+  "synthetic": true,
+  "note": "Mocked HTTP captures; normalization-3 rules; not live upstream evidence.",
+  "sources": [
+    {
+      "id": "src-34d398f2b62e9f3d05da5f99caa7050e",
+      "source_id": "diff",
+      "kind": "github_diff",
+      "urls": [
+        "https://github.com/odoo/odoo/compare/16.0...17.0"
+      ],
+      "status": "accepted",
+      "files": [
+        "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff"
+      ],
+      "captures": [
+        {
+          "id": "1fb84610915c483cbdfbf65f8d59e62f",
+          "url": "https://api.github.com/repos/odoo/odoo/compare/16.0...17.0",
+          "captured_at": "2026-11-19T02:32:43.856104+00:00",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          }
+        }
+      ],
+      "file_metadata": [
+        {
+          "path": "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff",
+          "representation": "original_bytes",
+          "decode_state": "decoded",
+          "screening_encoding": "utf-8",
+          "text_conversion": "not_performed",
+          "url": "https://github.com/odoo/odoo/compare/16.0...17.0"
+        }
+      ],
+      "storage_form": "original",
+      "created_at": "2026-11-19T02:32:43.854976+00:00",
+      "captured_at": "2026-11-19T02:32:43.857966+00:00",
+      "unit_id": "dc4ded1f473646b59ac914ec48fdf65b",
+      "session_id": "2076b1ff579a46ac8266d8b6856aea62",
+      "plan_source_id": "diff",
+      "binding": {
+        "from_version": "16.0",
+        "to_version": "17.0",
+        "from_revision": "16.0",
+        "to_revision": "17.0"
+      },
+      "url": "https://github.com/odoo/odoo/compare/16.0...17.0",
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "from_revision": "16.0",
+      "to_revision": "17.0",
+      "reference_basis": "processing binding; immutable upstream revisions not asserted",
+      "acquisition_source_id": "2076b1ff579a46ac8266d8b6856aea62:dc4ded1f473646b59ac914ec48fdf65b",
+      "artifact_path": "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff"
+    },
+    {
+      "id": "src-b598ab832b1c8d9503ec8eecd00e7395",
+      "source_id": "manifest",
+      "kind": "official_manifest",
+      "urls": [
+        "https://raw.githubusercontent.com/odoo/odoo/17.0/addons/sale/__manifest__.py"
+      ],
+      "status": "accepted",
+      "files": [
+        "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py"
+      ],
+      "captures": [
+        {
+          "id": "e423e51c064141fd810a0b5c523ffdc5",
+          "url": "https://raw.githubusercontent.com/odoo/odoo/17.0/addons/sale/__manifest__.py",
+          "captured_at": "2026-11-19T02:32:43.873305+00:00",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          }
+        }
+      ],
+      "file_metadata": [
+        {
+          "path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py",
+          "decode_state": "decoded",
+          "declared_charset": "utf-8",
+          "screening_encoding": "utf-8",
+          "attempted_encodings": [
+            "utf-8"
+          ],
+          "fallback_used": false,
+          "decode_errors": [],
+          "purpose": "admission_only",
+          "text_conversion": "not_performed",
+          "representation": "original_bytes",
+          "content_type": "text/plain; charset=utf-8",
+          "url": "https://raw.githubusercontent.com/odoo/odoo/17.0/addons/sale/__manifest__.py"
+        }
+      ],
+      "storage_form": "original",
+      "created_at": "2026-11-19T02:32:43.873305+00:00",
+      "captured_at": "2026-11-19T02:32:43.875433+00:00",
+      "unit_id": "bf4d38216c3e4bceb6e4e1972965a3a2",
+      "session_id": "2076b1ff579a46ac8266d8b6856aea62",
+      "plan_source_id": "manifest",
+      "binding": {
+        "from_version": "16.0",
+        "to_version": "17.0",
+        "from_revision": "16.0",
+        "to_revision": "17.0"
+      },
+      "url": "https://raw.githubusercontent.com/odoo/odoo/17.0/addons/sale/__manifest__.py",
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "from_revision": "16.0",
+      "to_revision": "17.0",
+      "reference_basis": "processing binding; immutable upstream revisions not asserted",
+      "acquisition_source_id": "2076b1ff579a46ac8266d8b6856aea62:bf4d38216c3e4bceb6e4e1972965a3a2",
+      "artifact_path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py"
+    },
+    {
+      "id": "src-c0d5a43bdfba189b5006fcd787fa7e90",
+      "source_id": "markdown",
+      "kind": "oca_guidance",
+      "urls": [
+        "https://raw.githubusercontent.com/OCA/maintainer-tools/master/normalization-demo.md"
+      ],
+      "status": "accepted",
+      "files": [
+        "52154eb570c542d1b2827dfc975061ad/001-guide.md"
+      ],
+      "captures": [
+        {
+          "id": "e00d185bc0a1472d96312de1c1836d13",
+          "url": "https://raw.githubusercontent.com/OCA/maintainer-tools/master/normalization-demo.md",
+          "captured_at": "2026-11-19T02:32:43.860007+00:00",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          }
+        }
+      ],
+      "file_metadata": [
+        {
+          "path": "52154eb570c542d1b2827dfc975061ad/001-guide.md",
+          "decode_state": "decoded",
+          "declared_charset": "utf-8",
+          "screening_encoding": "utf-8",
+          "attempted_encodings": [
+            "utf-8"
+          ],
+          "fallback_used": false,
+          "decode_errors": [],
+          "purpose": "admission_only",
+          "text_conversion": "not_performed",
+          "representation": "original_bytes",
+          "content_type": "text/plain; charset=utf-8",
+          "url": "https://raw.githubusercontent.com/OCA/maintainer-tools/master/normalization-demo.md"
+        }
+      ],
+      "storage_form": "original",
+      "created_at": "2026-11-19T02:32:43.860007+00:00",
+      "captured_at": "2026-11-19T02:32:43.860007+00:00",
+      "unit_id": "52154eb570c542d1b2827dfc975061ad",
+      "session_id": "2076b1ff579a46ac8266d8b6856aea62",
+      "plan_source_id": "markdown",
+      "binding": {
+        "from_version": "16.0",
+        "to_version": "17.0",
+        "from_revision": "16.0",
+        "to_revision": "17.0"
+      },
+      "url": "https://raw.githubusercontent.com/OCA/maintainer-tools/master/normalization-demo.md",
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "from_revision": "16.0",
+      "to_revision": "17.0",
+      "reference_basis": "processing binding; immutable upstream revisions not asserted",
+      "acquisition_source_id": "2076b1ff579a46ac8266d8b6856aea62:52154eb570c542d1b2827dfc975061ad",
+      "artifact_path": "52154eb570c542d1b2827dfc975061ad/001-guide.md"
+    },
+    {
+      "id": "src-d07fa541f499b2665316afa1a0d0870b",
+      "source_id": "pr",
+      "kind": "github_pr",
+      "urls": [
+        "https://github.com/odoo/odoo/pull/1"
+      ],
+      "status": "accepted",
+      "files": [
+        "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json"
+      ],
+      "captures": [
+        {
+          "id": "53738e66f524462ea397b4e8c549f6d3",
+          "url": "https://api.github.com/repos/odoo/odoo/pulls/1",
+          "captured_at": "2026-11-19T02:32:43.880408+00:00",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          }
+        },
+        {
+          "id": "57e16abb82ac497fb180658842044a38",
+          "url": "https://api.github.com/repos/odoo/odoo/pulls/1/files?per_page=100&page=1",
+          "captured_at": "2026-11-19T02:32:43.880408+00:00",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          }
+        },
+        {
+          "id": "1f2f510bb6c743549ce9de8f9a44da93",
+          "url": "https://api.github.com/repos/odoo/odoo/pulls/1/commits?per_page=100&page=1",
+          "captured_at": "2026-11-19T02:32:43.880408+00:00",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          }
+        },
+        {
+          "id": "87e783b2b0814cfe8fcde5e6e92034ef",
+          "url": "https://api.github.com/repos/odoo/odoo/issues/1/comments?per_page=100&page=1",
+          "captured_at": "2026-11-19T02:32:43.881407+00:00",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          }
+        },
+        {
+          "id": "cda442da416a4ed8906ecd0c5917b217",
+          "url": "https://api.github.com/repos/odoo/odoo/pulls/1/reviews?per_page=100&page=1",
+          "captured_at": "2026-11-19T02:32:43.881407+00:00",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          }
+        },
+        {
+          "id": "b849309d913a4ae5957db6cb4a521862",
+          "url": "https://api.github.com/repos/odoo/odoo/pulls/1/comments?per_page=100&page=1",
+          "captured_at": "2026-11-19T02:32:43.881407+00:00",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          }
+        },
+        {
+          "id": "4dd80c2aba2a46518cabfaa71fb438d6",
+          "url": "https://api.github.com/repos/odoo/odoo/pulls/1",
+          "captured_at": "2026-11-19T02:32:43.881407+00:00",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          }
+        }
+      ],
+      "file_metadata": [
+        {
+          "path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+          "representation": "github_resource_bundle",
+          "decode_state": "decoded",
+          "screening_encoding": "utf-8",
+          "text_conversion": "not_performed",
+          "url": "https://github.com/odoo/odoo/pull/1"
+        }
+      ],
+      "storage_form": "original",
+      "created_at": "2026-11-19T02:32:43.879302+00:00",
+      "captured_at": "2026-11-19T02:32:43.886117+00:00",
+      "unit_id": "86b1e8a6a19440bcab39bc252df00cb9",
+      "session_id": "2076b1ff579a46ac8266d8b6856aea62",
+      "plan_source_id": "pr",
+      "binding": {
+        "from_version": "16.0",
+        "to_version": "17.0",
+        "from_revision": "16.0",
+        "to_revision": "17.0"
+      },
+      "url": "https://github.com/odoo/odoo/pull/1",
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "from_revision": "16.0",
+      "to_revision": "17.0",
+      "reference_basis": "processing binding; immutable upstream revisions not asserted",
+      "acquisition_source_id": "2076b1ff579a46ac8266d8b6856aea62:86b1e8a6a19440bcab39bc252df00cb9",
+      "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json"
+    },
+    {
+      "id": "src-db440984faabdf19d13e836200a19d7c",
+      "source_id": "text",
+      "kind": "official_documentation",
+      "urls": [
+        "https://www.odoo.com/documentation/17.0/normalization-demo.txt"
+      ],
+      "status": "accepted",
+      "files": [
+        "6b01a7fef0564804be90a6e5ca17c89d/001-guide.txt"
+      ],
+      "captures": [
+        {
+          "id": "04ee0167d23a45d88887cd36f04bcd08",
+          "url": "https://www.odoo.com/documentation/17.0/normalization-demo.txt",
+          "captured_at": "2026-11-19T02:32:43.860007+00:00",
+          "status": 200,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          }
+        }
+      ],
+      "file_metadata": [
+        {
+          "path": "6b01a7fef0564804be90a6e5ca17c89d/001-guide.txt",
+          "decode_state": "decoded",
+          "declared_charset": "utf-8",
+          "screening_encoding": "utf-8",
+          "attempted_encodings": [
+            "utf-8"
+          ],
+          "fallback_used": false,
+          "decode_errors": [],
+          "purpose": "admission_only",
+          "text_conversion": "not_performed",
+          "representation": "original_bytes",
+          "content_type": "text/plain; charset=utf-8",
+          "url": "https://www.odoo.com/documentation/17.0/normalization-demo.txt"
+        }
+      ],
+      "storage_form": "original",
+      "created_at": "2026-11-19T02:32:43.860007+00:00",
+      "captured_at": "2026-11-19T02:32:43.869616+00:00",
+      "unit_id": "6b01a7fef0564804be90a6e5ca17c89d",
+      "session_id": "2076b1ff579a46ac8266d8b6856aea62",
+      "plan_source_id": "text",
+      "binding": {
+        "from_version": "16.0",
+        "to_version": "17.0",
+        "from_revision": "16.0",
+        "to_revision": "17.0"
+      },
+      "url": "https://www.odoo.com/documentation/17.0/normalization-demo.txt",
+      "from_version": "16.0",
+      "to_version": "17.0",
+      "from_revision": "16.0",
+      "to_revision": "17.0",
+      "reference_basis": "processing binding; immutable upstream revisions not asserted",
+      "acquisition_source_id": "2076b1ff579a46ac8266d8b6856aea62:6b01a7fef0564804be90a6e5ca17c89d",
+      "artifact_path": "6b01a7fef0564804be90a6e5ca17c89d/001-guide.txt"
+    }
+  ],
+  "artifacts": {
+    "artifact-eadbf9b60067bb4f08b8d3225064dc5f": {
+      "path": "52154eb570c542d1b2827dfc975061ad/001-guide.md",
+      "text": "# Preparation\nRead `res.partner`.\n\n## Field options\nInspect `related`.\n",
+      "metadata": {
+        "path": "52154eb570c542d1b2827dfc975061ad/001-guide.md",
+        "decode_state": "decoded",
+        "declared_charset": "utf-8",
+        "screening_encoding": "utf-8",
+        "attempted_encodings": [
+          "utf-8"
+        ],
+        "fallback_used": false,
+        "decode_errors": [],
+        "purpose": "admission_only",
+        "text_conversion": "not_performed",
+        "representation": "original_bytes",
+        "content_type": "text/plain; charset=utf-8",
+        "url": "https://raw.githubusercontent.com/OCA/maintainer-tools/master/normalization-demo.md"
+      },
+      "decoding": {
+        "status": "decoded",
+        "encoding": "utf-8",
+        "declared_charset": "utf-8"
+      },
+      "source_url": "https://raw.githubusercontent.com/OCA/maintainer-tools/master/normalization-demo.md",
+      "artifact_sha256": "f2485fa1d52ad66646d9a2ca78fb4471e73d871e3a34fce989adad293c422a72",
+      "hash_scope": "stored acquisition artifact; not original HTTP response",
+      "id": "artifact-eadbf9b60067bb4f08b8d3225064dc5f",
+      "source_id": "src-c0d5a43bdfba189b5006fcd787fa7e90",
+      "original_base64": "IyBQcmVwYXJhdGlvbgpSZWFkIGByZXMucGFydG5lcmAuCgojIyBGaWVsZCBvcHRpb25zCkluc3BlY3QgYHJlbGF0ZWRgLgo="
+    },
+    "artifact-24de7c1b5180a8be0057a6a970cfafed": {
+      "path": "6b01a7fef0564804be90a6e5ca17c89d/001-guide.txt",
+      "text": "Documento íntegro sin límites estructurales verificables.\r\n",
+      "metadata": {
+        "path": "6b01a7fef0564804be90a6e5ca17c89d/001-guide.txt",
+        "decode_state": "decoded",
+        "declared_charset": "utf-8",
+        "screening_encoding": "utf-8",
+        "attempted_encodings": [
+          "utf-8"
+        ],
+        "fallback_used": false,
+        "decode_errors": [],
+        "purpose": "admission_only",
+        "text_conversion": "not_performed",
+        "representation": "original_bytes",
+        "content_type": "text/plain; charset=utf-8",
+        "url": "https://www.odoo.com/documentation/17.0/normalization-demo.txt"
+      },
+      "decoding": {
+        "status": "decoded",
+        "encoding": "utf-8",
+        "declared_charset": "utf-8"
+      },
+      "source_url": "https://www.odoo.com/documentation/17.0/normalization-demo.txt",
+      "artifact_sha256": "9f4a653a4b3a62d5a4fae4be59ea4105823e909b6497f0eea50d6bc57b69fc59",
+      "hash_scope": "stored acquisition artifact; not original HTTP response",
+      "id": "artifact-24de7c1b5180a8be0057a6a970cfafed",
+      "source_id": "src-db440984faabdf19d13e836200a19d7c",
+      "original_base64": "RG9jdW1lbnRvIMOtbnRlZ3JvIHNpbiBsw61taXRlcyBlc3RydWN0dXJhbGVzIHZlcmlmaWNhYmxlcy4NCg=="
+    },
+    "artifact-338a7485fb24171fa351afdacebd7ed0": {
+      "path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+      "text": "{\n  \"pull\": {\n    \"number\": 1,\n    \"id\": 101,\n    \"html_url\": \"https://github.com/odoo/odoo/pull/1\",\n    \"merged_at\": \"2026-01-01\",\n    \"changed_files\": 1,\n    \"commits\": 1,\n    \"body\": \"Describe `res.partner` without declaring a technical relationship.\"\n  },\n  \"files\": [\n    {\n      \"filename\": \"odoo/fields.py\",\n      \"patch\": \"--- a/odoo/fields.py\\n+++ b/odoo/fields.py\\n@@ -1,3 +1,4 @@\\n class Field:\\n     def setup(self):\\n-        pass\\n+        if self.related:\\n+            return self.related\\n\"\n    }\n  ],\n  \"commits\": [\n    {\n      \"sha\": \"fixture\",\n      \"commit\": {\n        \"message\": \"Document `related` behavior\"\n      }\n    }\n  ],\n  \"comments\": [\n    {\n      \"id\": 201,\n      \"body\": \"Comment mentions `_compute_total`; this is commentary.\"\n    }\n  ],\n  \"reviews\": [\n    {\n      \"id\": 201,\n      \"body\": \"Comment mentions `_compute_total`; this is commentary.\"\n    }\n  ],\n  \"review_comments\": [\n    {\n      \"id\": 201,\n      \"body\": \"Comment mentions `_compute_total`; this is commentary.\"\n    }\n  ],\n  \"diff\": \"--- a/odoo/fields.py\\n+++ b/odoo/fields.py\\n@@ -1,3 +1,4 @@\\n class Field:\\n     def setup(self):\\n-        pass\\n+        if self.related:\\n+            return self.related\\n\"\n}",
+      "metadata": {
+        "path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+        "representation": "github_resource_bundle",
+        "decode_state": "decoded",
+        "screening_encoding": "utf-8",
+        "text_conversion": "not_performed",
+        "url": "https://github.com/odoo/odoo/pull/1"
+      },
+      "decoding": {
+        "status": "decoded",
+        "encoding": "utf-8",
+        "declared_charset": null
+      },
+      "source_url": "https://github.com/odoo/odoo/pull/1",
+      "artifact_sha256": "00daa3f9568421ce4f977c12dded029a9c1220311c92bae194ac32dce98d6ad6",
+      "hash_scope": "stored acquisition artifact; not original HTTP response",
+      "id": "artifact-338a7485fb24171fa351afdacebd7ed0",
+      "source_id": "src-d07fa541f499b2665316afa1a0d0870b",
+      "original_base64": "ewogICJwdWxsIjogewogICAgIm51bWJlciI6IDEsCiAgICAiaWQiOiAxMDEsCiAgICAiaHRtbF91cmwiOiAiaHR0cHM6Ly9naXRodWIuY29tL29kb28vb2Rvby9wdWxsLzEiLAogICAgIm1lcmdlZF9hdCI6ICIyMDI2LTAxLTAxIiwKICAgICJjaGFuZ2VkX2ZpbGVzIjogMSwKICAgICJjb21taXRzIjogMSwKICAgICJib2R5IjogIkRlc2NyaWJlIGByZXMucGFydG5lcmAgd2l0aG91dCBkZWNsYXJpbmcgYSB0ZWNobmljYWwgcmVsYXRpb25zaGlwLiIKICB9LAogICJmaWxlcyI6IFsKICAgIHsKICAgICAgImZpbGVuYW1lIjogIm9kb28vZmllbGRzLnB5IiwKICAgICAgInBhdGNoIjogIi0tLSBhL29kb28vZmllbGRzLnB5XG4rKysgYi9vZG9vL2ZpZWxkcy5weVxuQEAgLTEsMyArMSw0IEBAXG4gY2xhc3MgRmllbGQ6XG4gICAgIGRlZiBzZXR1cChzZWxmKTpcbi0gICAgICAgIHBhc3NcbisgICAgICAgIGlmIHNlbGYucmVsYXRlZDpcbisgICAgICAgICAgICByZXR1cm4gc2VsZi5yZWxhdGVkXG4iCiAgICB9CiAgXSwKICAiY29tbWl0cyI6IFsKICAgIHsKICAgICAgInNoYSI6ICJmaXh0dXJlIiwKICAgICAgImNvbW1pdCI6IHsKICAgICAgICAibWVzc2FnZSI6ICJEb2N1bWVudCBgcmVsYXRlZGAgYmVoYXZpb3IiCiAgICAgIH0KICAgIH0KICBdLAogICJjb21tZW50cyI6IFsKICAgIHsKICAgICAgImlkIjogMjAxLAogICAgICAiYm9keSI6ICJDb21tZW50IG1lbnRpb25zIGBfY29tcHV0ZV90b3RhbGA7IHRoaXMgaXMgY29tbWVudGFyeS4iCiAgICB9CiAgXSwKICAicmV2aWV3cyI6IFsKICAgIHsKICAgICAgImlkIjogMjAxLAogICAgICAiYm9keSI6ICJDb21tZW50IG1lbnRpb25zIGBfY29tcHV0ZV90b3RhbGA7IHRoaXMgaXMgY29tbWVudGFyeS4iCiAgICB9CiAgXSwKICAicmV2aWV3X2NvbW1lbnRzIjogWwogICAgewogICAgICAiaWQiOiAyMDEsCiAgICAgICJib2R5IjogIkNvbW1lbnQgbWVudGlvbnMgYF9jb21wdXRlX3RvdGFsYDsgdGhpcyBpcyBjb21tZW50YXJ5LiIKICAgIH0KICBdLAogICJkaWZmIjogIi0tLSBhL29kb28vZmllbGRzLnB5XG4rKysgYi9vZG9vL2ZpZWxkcy5weVxuQEAgLTEsMyArMSw0IEBAXG4gY2xhc3MgRmllbGQ6XG4gICAgIGRlZiBzZXR1cChzZWxmKTpcbi0gICAgICAgIHBhc3NcbisgICAgICAgIGlmIHNlbGYucmVsYXRlZDpcbisgICAgICAgICAgICByZXR1cm4gc2VsZi5yZWxhdGVkXG4iCn0="
+    },
+    "artifact-5670899e186fa9aaf216b1b30a96760d": {
+      "path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py",
+      "text": "{'name':'Fixture','version':'17.0.1.0.0','depends':['base'],'data':['views/demo.xml']}\n",
+      "metadata": {
+        "path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py",
+        "decode_state": "decoded",
+        "declared_charset": "utf-8",
+        "screening_encoding": "utf-8",
+        "attempted_encodings": [
+          "utf-8"
+        ],
+        "fallback_used": false,
+        "decode_errors": [],
+        "purpose": "admission_only",
+        "text_conversion": "not_performed",
+        "representation": "original_bytes",
+        "content_type": "text/plain; charset=utf-8",
+        "url": "https://raw.githubusercontent.com/odoo/odoo/17.0/addons/sale/__manifest__.py"
+      },
+      "decoding": {
+        "status": "decoded",
+        "encoding": "utf-8",
+        "declared_charset": "utf-8"
+      },
+      "source_url": "https://raw.githubusercontent.com/odoo/odoo/17.0/addons/sale/__manifest__.py",
+      "artifact_sha256": "27c5c351e4addb6def71693857c38c43bb89572809fcad26fde0ff19d17f3f0f",
+      "hash_scope": "stored acquisition artifact; not original HTTP response",
+      "id": "artifact-5670899e186fa9aaf216b1b30a96760d",
+      "source_id": "src-b598ab832b1c8d9503ec8eecd00e7395",
+      "original_base64": "eyduYW1lJzonRml4dHVyZScsJ3ZlcnNpb24nOicxNy4wLjEuMC4wJywnZGVwZW5kcyc6WydiYXNlJ10sJ2RhdGEnOlsndmlld3MvZGVtby54bWwnXX0K"
+    },
+    "artifact-3ad5f12e1fb2b3b615a156688e053861": {
+      "path": "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff",
+      "text": "--- a/odoo/fields.py\n+++ b/odoo/fields.py\n@@ -1,3 +1,4 @@\n class Field:\n     def setup(self):\n-        pass\n+        if self.related:\n+            return self.related\n",
+      "metadata": {
+        "path": "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff",
+        "representation": "original_bytes",
+        "decode_state": "decoded",
+        "screening_encoding": "utf-8",
+        "text_conversion": "not_performed",
+        "url": "https://github.com/odoo/odoo/compare/16.0...17.0"
+      },
+      "decoding": {
+        "status": "decoded",
+        "encoding": "utf-8",
+        "declared_charset": null
+      },
+      "source_url": "https://github.com/odoo/odoo/compare/16.0...17.0",
+      "artifact_sha256": "01bc31ddcbd409d488bd44dba6dd9d8b13cde95deeab97de97a98984caedba33",
+      "hash_scope": "stored acquisition artifact; not original HTTP response",
+      "id": "artifact-3ad5f12e1fb2b3b615a156688e053861",
+      "source_id": "src-34d398f2b62e9f3d05da5f99caa7050e",
+      "original_base64": "LS0tIGEvb2Rvby9maWVsZHMucHkKKysrIGIvb2Rvby9maWVsZHMucHkKQEAgLTEsMyArMSw0IEBACiBjbGFzcyBGaWVsZDoKICAgICBkZWYgc2V0dXAoc2VsZik6Ci0gICAgICAgIHBhc3MKKyAgICAgICAgaWYgc2VsZi5yZWxhdGVkOgorICAgICAgICAgICAgcmV0dXJuIHNlbGYucmVsYXRlZAo="
+    }
+  },
+  "units": [
+    {
+      "id": "unit-d0b1ee817097e37b4456c09f683c01fc",
+      "source_id": "src-c0d5a43bdfba189b5006fcd787fa7e90",
+      "source_url": "https://raw.githubusercontent.com/OCA/maintainer-tools/master/normalization-demo.md",
+      "source_locator": {
+        "artifact_path": "52154eb570c542d1b2827dfc975061ad/001-guide.md",
+        "line_start": 1,
+        "line_end": 3
+      },
+      "kind": "markdown_section",
+      "text": "# Preparation\nRead `res.partner`.\n\n",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "layers": [
+        "documentation"
+      ],
+      "entities": [
+        {
+          "name": "res.partner",
+          "type": "identifier_mention",
+          "location": {
+            "artifact_path": "52154eb570c542d1b2827dfc975061ad/001-guide.md",
+            "line_start": 1,
+            "line_end": 3,
+            "content_line": 2,
+            "artifact_line": 2
+          },
+          "rule": "backtick_mention_v1",
+          "context": {
+            "origin": "documentation",
+            "syntax": null,
+            "module": null
+          },
+          "lookup_keys": []
+        }
+      ],
+      "terms": [
+        {
+          "term": "partner",
+          "frequency": 1,
+          "tfidf": 0.45944132869911597
+        },
+        {
+          "term": "preparation",
+          "frequency": 1,
+          "tfidf": 0.5375068980796348
+        },
+        {
+          "term": "read",
+          "frequency": 1,
+          "tfidf": 0.5375068980796348
+        },
+        {
+          "term": "res",
+          "frequency": 1,
+          "tfidf": 0.45944132869911597
+        }
+      ],
+      "extraction_rule": "markdown_headings_v1",
+      "schema_version": 1,
+      "rules_version": "normalization-3",
+      "warnings": [],
+      "artifact_id": "artifact-eadbf9b60067bb4f08b8d3225064dc5f",
+      "data": {
+        "heading": "# Preparation"
+      },
+      "normalization_status": "valid",
+      "encoding": "utf-8",
+      "terms_corpus_id": "corpus-dc8813c073b6c750ea38de237116ef05"
+    },
+    {
+      "id": "unit-5c32f219d49634d587bfdee81fb1cfcd",
+      "source_id": "src-c0d5a43bdfba189b5006fcd787fa7e90",
+      "source_url": "https://raw.githubusercontent.com/OCA/maintainer-tools/master/normalization-demo.md",
+      "source_locator": {
+        "artifact_path": "52154eb570c542d1b2827dfc975061ad/001-guide.md",
+        "line_start": 4,
+        "line_end": 5
+      },
+      "kind": "markdown_section",
+      "text": "## Field options\nInspect `related`.\n",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "layers": [
+        "documentation"
+      ],
+      "entities": [
+        {
+          "name": "related",
+          "type": "identifier_mention",
+          "location": {
+            "artifact_path": "52154eb570c542d1b2827dfc975061ad/001-guide.md",
+            "line_start": 4,
+            "line_end": 5,
+            "content_line": 2,
+            "artifact_line": 5
+          },
+          "rule": "backtick_mention_v1",
+          "context": {
+            "origin": "documentation",
+            "syntax": null,
+            "module": null
+          },
+          "lookup_keys": []
+        }
+      ],
+      "terms": [
+        {
+          "term": "field",
+          "frequency": 1,
+          "tfidf": 0.43282411908380314
+        },
+        {
+          "term": "inspect",
+          "frequency": 1,
+          "tfidf": 0.5757808812457567
+        },
+        {
+          "term": "options",
+          "frequency": 1,
+          "tfidf": 0.5757808812457567
+        },
+        {
+          "term": "related",
+          "frequency": 1,
+          "tfidf": 0.38680232098973955
+        }
+      ],
+      "extraction_rule": "markdown_headings_v1",
+      "schema_version": 1,
+      "rules_version": "normalization-3",
+      "warnings": [],
+      "artifact_id": "artifact-eadbf9b60067bb4f08b8d3225064dc5f",
+      "data": {
+        "heading": "## Field options"
+      },
+      "normalization_status": "valid",
+      "encoding": "utf-8",
+      "terms_corpus_id": "corpus-dc8813c073b6c750ea38de237116ef05"
+    },
+    {
+      "id": "unit-1e3968ebcfbeb3a1be9d3744b30871dc",
+      "source_id": "src-db440984faabdf19d13e836200a19d7c",
+      "source_url": "https://www.odoo.com/documentation/17.0/normalization-demo.txt",
+      "source_locator": {
+        "artifact_path": "6b01a7fef0564804be90a6e5ca17c89d/001-guide.txt",
+        "line_start": 1,
+        "line_end": 1
+      },
+      "kind": "text",
+      "text": "Documento íntegro sin límites estructurales verificables.\r\n",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "layers": [
+        "unknown"
+      ],
+      "entities": [],
+      "terms": [
+        {
+          "term": "documento",
+          "frequency": 1,
+          "tfidf": 0.408248290463863
+        },
+        {
+          "term": "estructurales",
+          "frequency": 1,
+          "tfidf": 0.408248290463863
+        },
+        {
+          "term": "límites",
+          "frequency": 1,
+          "tfidf": 0.408248290463863
+        },
+        {
+          "term": "sin",
+          "frequency": 1,
+          "tfidf": 0.408248290463863
+        },
+        {
+          "term": "verificables",
+          "frequency": 1,
+          "tfidf": 0.408248290463863
+        },
+        {
+          "term": "íntegro",
+          "frequency": 1,
+          "tfidf": 0.408248290463863
+        }
+      ],
+      "extraction_rule": "whole_text_no_verified_boundaries_v1",
+      "schema_version": 1,
+      "rules_version": "normalization-3",
+      "warnings": [],
+      "artifact_id": "artifact-24de7c1b5180a8be0057a6a970cfafed",
+      "data": {
+        "language": null
+      },
+      "normalization_status": "valid",
+      "encoding": "utf-8",
+      "terms_corpus_id": "corpus-dc8813c073b6c750ea38de237116ef05"
+    },
+    {
+      "id": "unit-f942f01b2f0b55000c8b679301e10bc4",
+      "source_id": "src-d07fa541f499b2665316afa1a0d0870b",
+      "source_url": "https://github.com/odoo/odoo/pull/1",
+      "source_locator": {
+        "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+        "json_pointer": "/pull/body"
+      },
+      "kind": "pr_description",
+      "text": "Describe `res.partner` without declaring a technical relationship.",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "layers": [
+        "documentation"
+      ],
+      "entities": [
+        {
+          "name": "res.partner",
+          "type": "identifier_mention",
+          "location": {
+            "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+            "json_pointer": "/pull/body",
+            "content_line": 1,
+            "artifact_line": null
+          },
+          "rule": "backtick_mention_v1",
+          "context": {
+            "origin": "documentation",
+            "syntax": null,
+            "module": null
+          },
+          "lookup_keys": []
+        }
+      ],
+      "terms": [
+        {
+          "term": "declaring",
+          "frequency": 1,
+          "tfidf": 0.3934069332237504
+        },
+        {
+          "term": "describe",
+          "frequency": 1,
+          "tfidf": 0.3934069332237504
+        },
+        {
+          "term": "partner",
+          "frequency": 1,
+          "tfidf": 0.3362699246568283
+        },
+        {
+          "term": "relationship",
+          "frequency": 1,
+          "tfidf": 0.3934069332237504
+        },
+        {
+          "term": "res",
+          "frequency": 1,
+          "tfidf": 0.3362699246568283
+        },
+        {
+          "term": "technical",
+          "frequency": 1,
+          "tfidf": 0.3934069332237504
+        },
+        {
+          "term": "without",
+          "frequency": 1,
+          "tfidf": 0.3934069332237504
+        }
+      ],
+      "extraction_rule": "github_pr_resource_v1",
+      "schema_version": 1,
+      "rules_version": "normalization-3",
+      "warnings": [],
+      "artifact_id": "artifact-338a7485fb24171fa351afdacebd7ed0",
+      "data": {
+        "pr_id": 1,
+        "pr_url": "https://github.com/odoo/odoo/pull/1",
+        "pr_title": null,
+        "resource_id": 101,
+        "resource": null,
+        "body_missing": false
+      },
+      "normalization_status": "valid",
+      "encoding": "utf-8",
+      "terms_corpus_id": "corpus-dc8813c073b6c750ea38de237116ef05"
+    },
+    {
+      "id": "unit-71aa516d1271d5c411ba207f7568b25b",
+      "source_id": "src-d07fa541f499b2665316afa1a0d0870b",
+      "source_url": "https://github.com/odoo/odoo/pull/1",
+      "source_locator": {
+        "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+        "json_pointer": "/comments/0/body"
+      },
+      "kind": "pr_comment",
+      "text": "Comment mentions `_compute_total`; this is commentary.",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "layers": [
+        "documentation"
+      ],
+      "entities": [
+        {
+          "name": "_compute_total",
+          "type": "identifier_mention",
+          "location": {
+            "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+            "json_pointer": "/comments/0/body",
+            "content_line": 1,
+            "artifact_line": null
+          },
+          "rule": "backtick_mention_v1",
+          "context": {
+            "origin": "comment",
+            "syntax": null,
+            "module": null
+          },
+          "lookup_keys": []
+        }
+      ],
+      "terms": [
+        {
+          "term": "_compute_total",
+          "frequency": 1,
+          "tfidf": 0.5
+        },
+        {
+          "term": "comment",
+          "frequency": 1,
+          "tfidf": 0.5
+        },
+        {
+          "term": "commentary",
+          "frequency": 1,
+          "tfidf": 0.5
+        },
+        {
+          "term": "mentions",
+          "frequency": 1,
+          "tfidf": 0.5
+        }
+      ],
+      "extraction_rule": "github_pr_resource_v1",
+      "schema_version": 1,
+      "rules_version": "normalization-3",
+      "warnings": [],
+      "artifact_id": "artifact-338a7485fb24171fa351afdacebd7ed0",
+      "data": {
+        "pr_id": 1,
+        "pr_url": "https://github.com/odoo/odoo/pull/1",
+        "pr_title": null,
+        "resource_id": 201,
+        "resource": {
+          "id": 201,
+          "body": "Comment mentions `_compute_total`; this is commentary."
+        },
+        "body_missing": false
+      },
+      "normalization_status": "valid",
+      "encoding": "utf-8",
+      "terms_corpus_id": "corpus-dc8813c073b6c750ea38de237116ef05"
+    },
+    {
+      "id": "unit-606c40ffdfb08a14546b492184d47aa6",
+      "source_id": "src-d07fa541f499b2665316afa1a0d0870b",
+      "source_url": "https://github.com/odoo/odoo/pull/1",
+      "source_locator": {
+        "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+        "json_pointer": "/reviews/0/body"
+      },
+      "kind": "pr_review",
+      "text": "Comment mentions `_compute_total`; this is commentary.",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "layers": [
+        "documentation"
+      ],
+      "entities": [
+        {
+          "name": "_compute_total",
+          "type": "identifier_mention",
+          "location": {
+            "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+            "json_pointer": "/reviews/0/body",
+            "content_line": 1,
+            "artifact_line": null
+          },
+          "rule": "backtick_mention_v1",
+          "context": {
+            "origin": "comment",
+            "syntax": null,
+            "module": null
+          },
+          "lookup_keys": []
+        }
+      ],
+      "terms": [
+        {
+          "term": "_compute_total",
+          "frequency": 1,
+          "tfidf": 0.5
+        },
+        {
+          "term": "comment",
+          "frequency": 1,
+          "tfidf": 0.5
+        },
+        {
+          "term": "commentary",
+          "frequency": 1,
+          "tfidf": 0.5
+        },
+        {
+          "term": "mentions",
+          "frequency": 1,
+          "tfidf": 0.5
+        }
+      ],
+      "extraction_rule": "github_pr_resource_v1",
+      "schema_version": 1,
+      "rules_version": "normalization-3",
+      "warnings": [],
+      "artifact_id": "artifact-338a7485fb24171fa351afdacebd7ed0",
+      "data": {
+        "pr_id": 1,
+        "pr_url": "https://github.com/odoo/odoo/pull/1",
+        "pr_title": null,
+        "resource_id": 201,
+        "resource": {
+          "id": 201,
+          "body": "Comment mentions `_compute_total`; this is commentary."
+        },
+        "body_missing": false
+      },
+      "normalization_status": "valid",
+      "encoding": "utf-8",
+      "terms_corpus_id": "corpus-dc8813c073b6c750ea38de237116ef05"
+    },
+    {
+      "id": "unit-2d537a8034222567c8d7ed9022bd3864",
+      "source_id": "src-d07fa541f499b2665316afa1a0d0870b",
+      "source_url": "https://github.com/odoo/odoo/pull/1",
+      "source_locator": {
+        "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+        "json_pointer": "/review_comments/0/body"
+      },
+      "kind": "pr_review_comment",
+      "text": "Comment mentions `_compute_total`; this is commentary.",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "layers": [
+        "documentation"
+      ],
+      "entities": [
+        {
+          "name": "_compute_total",
+          "type": "identifier_mention",
+          "location": {
+            "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+            "json_pointer": "/review_comments/0/body",
+            "content_line": 1,
+            "artifact_line": null
+          },
+          "rule": "backtick_mention_v1",
+          "context": {
+            "origin": "comment",
+            "syntax": null,
+            "module": null
+          },
+          "lookup_keys": []
+        }
+      ],
+      "terms": [
+        {
+          "term": "_compute_total",
+          "frequency": 1,
+          "tfidf": 0.5
+        },
+        {
+          "term": "comment",
+          "frequency": 1,
+          "tfidf": 0.5
+        },
+        {
+          "term": "commentary",
+          "frequency": 1,
+          "tfidf": 0.5
+        },
+        {
+          "term": "mentions",
+          "frequency": 1,
+          "tfidf": 0.5
+        }
+      ],
+      "extraction_rule": "github_pr_resource_v1",
+      "schema_version": 1,
+      "rules_version": "normalization-3",
+      "warnings": [],
+      "artifact_id": "artifact-338a7485fb24171fa351afdacebd7ed0",
+      "data": {
+        "pr_id": 1,
+        "pr_url": "https://github.com/odoo/odoo/pull/1",
+        "pr_title": null,
+        "resource_id": 201,
+        "resource": {
+          "id": 201,
+          "body": "Comment mentions `_compute_total`; this is commentary."
+        },
+        "body_missing": false
+      },
+      "normalization_status": "valid",
+      "encoding": "utf-8",
+      "terms_corpus_id": "corpus-dc8813c073b6c750ea38de237116ef05"
+    },
+    {
+      "id": "unit-39c67db75e1716755bcaf850b8b32160",
+      "source_id": "src-d07fa541f499b2665316afa1a0d0870b",
+      "source_url": "https://github.com/odoo/odoo/pull/1",
+      "source_locator": {
+        "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+        "json_pointer": "/commits/0/commit/message"
+      },
+      "kind": "pr_commit",
+      "text": "Document `related` behavior",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "layers": [
+        "documentation"
+      ],
+      "entities": [
+        {
+          "name": "related",
+          "type": "identifier_mention",
+          "location": {
+            "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+            "json_pointer": "/commits/0/commit/message",
+            "content_line": 1,
+            "artifact_line": null
+          },
+          "rule": "backtick_mention_v1",
+          "context": {
+            "origin": "comment",
+            "syntax": null,
+            "module": null
+          },
+          "lookup_keys": []
+        }
+      ],
+      "terms": [
+        {
+          "term": "behavior",
+          "frequency": 1,
+          "tfidf": 0.6387073607656696
+        },
+        {
+          "term": "document",
+          "frequency": 1,
+          "tfidf": 0.6387073607656696
+        },
+        {
+          "term": "related",
+          "frequency": 1,
+          "tfidf": 0.42907553485080674
+        }
+      ],
+      "extraction_rule": "github_pr_resource_v1",
+      "schema_version": 1,
+      "rules_version": "normalization-3",
+      "warnings": [],
+      "artifact_id": "artifact-338a7485fb24171fa351afdacebd7ed0",
+      "data": {
+        "pr_id": 1,
+        "pr_url": "https://github.com/odoo/odoo/pull/1",
+        "pr_title": null,
+        "resource_id": "fixture",
+        "resource": {
+          "sha": "fixture",
+          "commit": {
+            "message": "Document `related` behavior"
+          }
+        },
+        "body_missing": false
+      },
+      "normalization_status": "valid",
+      "encoding": "utf-8",
+      "terms_corpus_id": "corpus-dc8813c073b6c750ea38de237116ef05"
+    },
+    {
+      "id": "unit-168279d9f7d517ac378e196dc0099510",
+      "source_id": "src-d07fa541f499b2665316afa1a0d0870b",
+      "source_url": "https://github.com/odoo/odoo/pull/1",
+      "source_locator": {
+        "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+        "line_start": 3,
+        "line_end": 8,
+        "json_pointer": "/diff",
+        "lines_in": "decoded_json_string"
+      },
+      "kind": "diff_hunk",
+      "text": "@@ -1,3 +1,4 @@\n class Field:\n     def setup(self):\n-        pass\n+        if self.related:\n+            return self.related",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "layers": [
+        "python"
+      ],
+      "entities": [
+        {
+          "name": "Field",
+          "type": "class",
+          "location": {
+            "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+            "line_start": 3,
+            "line_end": 8,
+            "json_pointer": "/diff",
+            "lines_in": "decoded_json_string",
+            "content_line": 1,
+            "side": "after",
+            "code_line": 1,
+            "code_path": "odoo/fields.py"
+          },
+          "rule": "python_class_v2_scopes",
+          "context": {
+            "origin": "code",
+            "syntax": "python",
+            "module": null,
+            "model": null,
+            "role": "declaration",
+            "scope": "class",
+            "qualified_name": "Field"
+          },
+          "lookup_keys": []
+        },
+        {
+          "name": "Field",
+          "type": "class",
+          "location": {
+            "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+            "line_start": 3,
+            "line_end": 8,
+            "json_pointer": "/diff",
+            "lines_in": "decoded_json_string",
+            "content_line": 1,
+            "side": "before",
+            "code_line": 1,
+            "code_path": "odoo/fields.py"
+          },
+          "rule": "python_class_v2_scopes",
+          "context": {
+            "origin": "code",
+            "syntax": "python",
+            "module": null,
+            "model": null,
+            "role": "declaration",
+            "scope": "class",
+            "qualified_name": "Field"
+          },
+          "lookup_keys": []
+        },
+        {
+          "name": "setup",
+          "type": "method",
+          "location": {
+            "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+            "line_start": 3,
+            "line_end": 8,
+            "json_pointer": "/diff",
+            "lines_in": "decoded_json_string",
+            "content_line": 2,
+            "side": "after",
+            "code_line": 2,
+            "code_path": "odoo/fields.py"
+          },
+          "rule": "python_callable_declaration_v2_scopes",
+          "context": {
+            "origin": "code",
+            "syntax": "python",
+            "module": null,
+            "model": null,
+            "role": "declaration",
+            "scope": "class",
+            "qualified_name": "Field.setup"
+          },
+          "lookup_keys": []
+        },
+        {
+          "name": "setup",
+          "type": "method",
+          "location": {
+            "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+            "line_start": 3,
+            "line_end": 8,
+            "json_pointer": "/diff",
+            "lines_in": "decoded_json_string",
+            "content_line": 2,
+            "side": "before",
+            "code_line": 2,
+            "code_path": "odoo/fields.py"
+          },
+          "rule": "python_callable_declaration_v2_scopes",
+          "context": {
+            "origin": "code",
+            "syntax": "python",
+            "module": null,
+            "model": null,
+            "role": "declaration",
+            "scope": "class",
+            "qualified_name": "Field.setup"
+          },
+          "lookup_keys": []
+        },
+        {
+          "name": "related",
+          "type": "field_option",
+          "location": {
+            "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+            "line_start": 3,
+            "line_end": 8,
+            "json_pointer": "/diff",
+            "lines_in": "decoded_json_string",
+            "content_line": 3,
+            "side": "after",
+            "code_line": 3,
+            "code_path": "odoo/fields.py"
+          },
+          "rule": "odoo_field_self_attribute_v1",
+          "context": {
+            "origin": "code",
+            "syntax": "python",
+            "module": null,
+            "model": null,
+            "role": "reference"
+          },
+          "lookup_keys": [
+            "property:related"
+          ]
+        },
+        {
+          "name": "related",
+          "type": "field_option",
+          "location": {
+            "artifact_path": "86b1e8a6a19440bcab39bc252df00cb9/001-pr.json",
+            "line_start": 3,
+            "line_end": 8,
+            "json_pointer": "/diff",
+            "lines_in": "decoded_json_string",
+            "content_line": 4,
+            "side": "after",
+            "code_line": 4,
+            "code_path": "odoo/fields.py"
+          },
+          "rule": "odoo_field_self_attribute_v1",
+          "context": {
+            "origin": "code",
+            "syntax": "python",
+            "module": null,
+            "model": null,
+            "role": "reference"
+          },
+          "lookup_keys": [
+            "property:related"
+          ]
+        }
+      ],
+      "terms": [
+        {
+          "term": "class",
+          "frequency": 1,
+          "tfidf": 0.23411957823940927
+        },
+        {
+          "term": "def",
+          "frequency": 1,
+          "tfidf": 0.23411957823940927
+        },
+        {
+          "term": "field",
+          "frequency": 1,
+          "tfidf": 0.2058950613621864
+        },
+        {
+          "term": "if",
+          "frequency": 1,
+          "tfidf": 0.23411957823940927
+        },
+        {
+          "term": "pass",
+          "frequency": 1,
+          "tfidf": 0.23411957823940927
+        },
+        {
+          "term": "related",
+          "frequency": 2,
+          "tfidf": 0.36800485048661796
+        },
+        {
+          "term": "return",
+          "frequency": 1,
+          "tfidf": 0.23411957823940927
+        },
+        {
+          "term": "self",
+          "frequency": 3,
+          "tfidf": 0.7023587347182279
+        },
+        {
+          "term": "setup",
+          "frequency": 1,
+          "tfidf": 0.23411957823940927
+        }
+      ],
+      "extraction_rule": "unified_diff_hunk_v1",
+      "schema_version": 1,
+      "rules_version": "normalization-3",
+      "warnings": [
+        "Observed diff block; not a verified incompatibility or solution"
+      ],
+      "artifact_id": "artifact-338a7485fb24171fa351afdacebd7ed0",
+      "data": {
+        "file_path": "odoo/fields.py",
+        "old_path": "odoo/fields.py",
+        "new_path": "odoo/fields.py",
+        "before_start": 1,
+        "before_end": 3,
+        "after_start": 1,
+        "after_end": 4,
+        "before": "class Field:\n    def setup(self):\n        pass",
+        "after": "class Field:\n    def setup(self):\n        if self.related:\n            return self.related",
+        "removed": "        pass",
+        "added": "        if self.related:\n            return self.related",
+        "diff_header": "@@ -1,3 +1,4 @@",
+        "diff_body": " class Field:\n     def setup(self):\n-        pass\n+        if self.related:\n+            return self.related",
+        "pr_id": 1,
+        "pr_url": "https://github.com/odoo/odoo/pull/1",
+        "pr_title": null,
+        "provenance_references": [
+          {
+            "json_pointer": "/diff"
+          },
+          {
+            "json_pointer": "/files/0/patch"
+          }
+        ]
+      },
+      "normalization_status": "valid",
+      "encoding": "utf-8",
+      "terms_corpus_id": "corpus-dc8813c073b6c750ea38de237116ef05"
+    },
+    {
+      "id": "unit-668489d17d34b8c1a9ba15447ccf1490",
+      "source_id": "src-b598ab832b1c8d9503ec8eecd00e7395",
+      "source_url": "https://raw.githubusercontent.com/odoo/odoo/17.0/addons/sale/__manifest__.py",
+      "source_locator": {
+        "artifact_path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py",
+        "line_start": 1,
+        "line_end": 1
+      },
+      "kind": "manifest",
+      "text": "{'name':'Fixture','version':'17.0.1.0.0','depends':['base'],'data':['views/demo.xml']}\n",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "layers": [
+        "manifest"
+      ],
+      "entities": [
+        {
+          "name": "base",
+          "type": "module",
+          "location": {
+            "artifact_path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py",
+            "line_start": 1,
+            "line_end": 1,
+            "artifact_line": 1
+          },
+          "rule": "manifest_literal_value_v1",
+          "context": {
+            "origin": "code",
+            "manifest_key": "depends"
+          },
+          "lookup_keys": [
+            "module:base"
+          ]
+        },
+        {
+          "name": "data",
+          "type": "manifest_key",
+          "location": {
+            "artifact_path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py",
+            "line_start": 1,
+            "line_end": 1,
+            "artifact_line": 1
+          },
+          "rule": "manifest_literal_key_v1",
+          "context": {
+            "origin": "code",
+            "role": "declaration"
+          },
+          "lookup_keys": [
+            "manifest:data"
+          ]
+        },
+        {
+          "name": "depends",
+          "type": "manifest_key",
+          "location": {
+            "artifact_path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py",
+            "line_start": 1,
+            "line_end": 1,
+            "artifact_line": 1
+          },
+          "rule": "manifest_literal_key_v1",
+          "context": {
+            "origin": "code",
+            "role": "declaration"
+          },
+          "lookup_keys": [
+            "manifest:depends"
+          ]
+        },
+        {
+          "name": "name",
+          "type": "manifest_key",
+          "location": {
+            "artifact_path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py",
+            "line_start": 1,
+            "line_end": 1,
+            "artifact_line": 1
+          },
+          "rule": "manifest_literal_key_v1",
+          "context": {
+            "origin": "code",
+            "role": "declaration"
+          },
+          "lookup_keys": [
+            "manifest:name"
+          ]
+        },
+        {
+          "name": "version",
+          "type": "manifest_key",
+          "location": {
+            "artifact_path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py",
+            "line_start": 1,
+            "line_end": 1,
+            "artifact_line": 1
+          },
+          "rule": "manifest_literal_key_v1",
+          "context": {
+            "origin": "code",
+            "role": "declaration"
+          },
+          "lookup_keys": [
+            "manifest:version"
+          ]
+        },
+        {
+          "name": "views/demo.xml",
+          "type": "path",
+          "location": {
+            "artifact_path": "bf4d38216c3e4bceb6e4e1972965a3a2/001-__manifest__.py",
+            "line_start": 1,
+            "line_end": 1,
+            "artifact_line": 1
+          },
+          "rule": "manifest_literal_value_v1",
+          "context": {
+            "origin": "code",
+            "manifest_key": "data"
+          },
+          "lookup_keys": [
+            "file:views/demo.xml"
+          ]
+        }
+      ],
+      "terms": [
+        {
+          "term": "base",
+          "frequency": 1,
+          "tfidf": 0.3333333333333333
+        },
+        {
+          "term": "data",
+          "frequency": 1,
+          "tfidf": 0.3333333333333333
+        },
+        {
+          "term": "demo",
+          "frequency": 1,
+          "tfidf": 0.3333333333333333
+        },
+        {
+          "term": "depends",
+          "frequency": 1,
+          "tfidf": 0.3333333333333333
+        },
+        {
+          "term": "fixture",
+          "frequency": 1,
+          "tfidf": 0.3333333333333333
+        },
+        {
+          "term": "name",
+          "frequency": 1,
+          "tfidf": 0.3333333333333333
+        },
+        {
+          "term": "version",
+          "frequency": 1,
+          "tfidf": 0.3333333333333333
+        },
+        {
+          "term": "views",
+          "frequency": 1,
+          "tfidf": 0.3333333333333333
+        },
+        {
+          "term": "xml",
+          "frequency": 1,
+          "tfidf": 0.3333333333333333
+        }
+      ],
+      "extraction_rule": "literal_manifest_v1",
+      "schema_version": 1,
+      "rules_version": "normalization-3",
+      "warnings": [],
+      "artifact_id": "artifact-5670899e186fa9aaf216b1b30a96760d",
+      "data": {
+        "manifest": {
+          "name": "Fixture",
+          "version": "17.0.1.0.0",
+          "depends": [
+            "base"
+          ],
+          "data": [
+            "views/demo.xml"
+          ]
+        }
+      },
+      "normalization_status": "valid",
+      "encoding": "utf-8",
+      "terms_corpus_id": "corpus-dc8813c073b6c750ea38de237116ef05"
+    },
+    {
+      "id": "unit-4e46ebb4dbf311d1e45d7a3d603c279a",
+      "source_id": "src-34d398f2b62e9f3d05da5f99caa7050e",
+      "source_url": "https://github.com/odoo/odoo/compare/16.0...17.0",
+      "source_locator": {
+        "artifact_path": "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff",
+        "line_start": 3,
+        "line_end": 8
+      },
+      "kind": "diff_hunk",
+      "text": "@@ -1,3 +1,4 @@\n class Field:\n     def setup(self):\n-        pass\n+        if self.related:\n+            return self.related",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "layers": [
+        "python"
+      ],
+      "entities": [
+        {
+          "name": "Field",
+          "type": "class",
+          "location": {
+            "artifact_path": "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff",
+            "line_start": 3,
+            "line_end": 8,
+            "content_line": 1,
+            "side": "after",
+            "code_line": 1,
+            "code_path": "odoo/fields.py"
+          },
+          "rule": "python_class_v2_scopes",
+          "context": {
+            "origin": "code",
+            "syntax": "python",
+            "module": null,
+            "model": null,
+            "role": "declaration",
+            "scope": "class",
+            "qualified_name": "Field"
+          },
+          "lookup_keys": []
+        },
+        {
+          "name": "Field",
+          "type": "class",
+          "location": {
+            "artifact_path": "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff",
+            "line_start": 3,
+            "line_end": 8,
+            "content_line": 1,
+            "side": "before",
+            "code_line": 1,
+            "code_path": "odoo/fields.py"
+          },
+          "rule": "python_class_v2_scopes",
+          "context": {
+            "origin": "code",
+            "syntax": "python",
+            "module": null,
+            "model": null,
+            "role": "declaration",
+            "scope": "class",
+            "qualified_name": "Field"
+          },
+          "lookup_keys": []
+        },
+        {
+          "name": "setup",
+          "type": "method",
+          "location": {
+            "artifact_path": "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff",
+            "line_start": 3,
+            "line_end": 8,
+            "content_line": 2,
+            "side": "before",
+            "code_line": 2,
+            "code_path": "odoo/fields.py"
+          },
+          "rule": "python_callable_declaration_v2_scopes",
+          "context": {
+            "origin": "code",
+            "syntax": "python",
+            "module": null,
+            "model": null,
+            "role": "declaration",
+            "scope": "class",
+            "qualified_name": "Field.setup"
+          },
+          "lookup_keys": []
+        },
+        {
+          "name": "setup",
+          "type": "method",
+          "location": {
+            "artifact_path": "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff",
+            "line_start": 3,
+            "line_end": 8,
+            "content_line": 2,
+            "side": "after",
+            "code_line": 2,
+            "code_path": "odoo/fields.py"
+          },
+          "rule": "python_callable_declaration_v2_scopes",
+          "context": {
+            "origin": "code",
+            "syntax": "python",
+            "module": null,
+            "model": null,
+            "role": "declaration",
+            "scope": "class",
+            "qualified_name": "Field.setup"
+          },
+          "lookup_keys": []
+        },
+        {
+          "name": "related",
+          "type": "field_option",
+          "location": {
+            "artifact_path": "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff",
+            "line_start": 3,
+            "line_end": 8,
+            "content_line": 3,
+            "side": "after",
+            "code_line": 3,
+            "code_path": "odoo/fields.py"
+          },
+          "rule": "odoo_field_self_attribute_v1",
+          "context": {
+            "origin": "code",
+            "syntax": "python",
+            "module": null,
+            "model": null,
+            "role": "reference"
+          },
+          "lookup_keys": [
+            "property:related"
+          ]
+        },
+        {
+          "name": "related",
+          "type": "field_option",
+          "location": {
+            "artifact_path": "dc4ded1f473646b59ac914ec48fdf65b/001-change.diff",
+            "line_start": 3,
+            "line_end": 8,
+            "content_line": 4,
+            "side": "after",
+            "code_line": 4,
+            "code_path": "odoo/fields.py"
+          },
+          "rule": "odoo_field_self_attribute_v1",
+          "context": {
+            "origin": "code",
+            "syntax": "python",
+            "module": null,
+            "model": null,
+            "role": "reference"
+          },
+          "lookup_keys": [
+            "property:related"
+          ]
+        }
+      ],
+      "terms": [
+        {
+          "term": "class",
+          "frequency": 1,
+          "tfidf": 0.23411957823940927
+        },
+        {
+          "term": "def",
+          "frequency": 1,
+          "tfidf": 0.23411957823940927
+        },
+        {
+          "term": "field",
+          "frequency": 1,
+          "tfidf": 0.2058950613621864
+        },
+        {
+          "term": "if",
+          "frequency": 1,
+          "tfidf": 0.23411957823940927
+        },
+        {
+          "term": "pass",
+          "frequency": 1,
+          "tfidf": 0.23411957823940927
+        },
+        {
+          "term": "related",
+          "frequency": 2,
+          "tfidf": 0.36800485048661796
+        },
+        {
+          "term": "return",
+          "frequency": 1,
+          "tfidf": 0.23411957823940927
+        },
+        {
+          "term": "self",
+          "frequency": 3,
+          "tfidf": 0.7023587347182279
+        },
+        {
+          "term": "setup",
+          "frequency": 1,
+          "tfidf": 0.23411957823940927
+        }
+      ],
+      "extraction_rule": "unified_diff_hunk_v1",
+      "schema_version": 1,
+      "rules_version": "normalization-3",
+      "warnings": [
+        "Observed diff block; not a verified incompatibility or solution"
+      ],
+      "artifact_id": "artifact-3ad5f12e1fb2b3b615a156688e053861",
+      "data": {
+        "file_path": "odoo/fields.py",
+        "old_path": "odoo/fields.py",
+        "new_path": "odoo/fields.py",
+        "before_start": 1,
+        "before_end": 3,
+        "after_start": 1,
+        "after_end": 4,
+        "before": "class Field:\n    def setup(self):\n        pass",
+        "after": "class Field:\n    def setup(self):\n        if self.related:\n            return self.related",
+        "removed": "        pass",
+        "added": "        if self.related:\n            return self.related",
+        "diff_header": "@@ -1,3 +1,4 @@",
+        "diff_body": " class Field:\n     def setup(self):\n-        pass\n+        if self.related:\n+            return self.related"
+      },
+      "normalization_status": "valid",
+      "encoding": "utf-8",
+      "terms_corpus_id": "corpus-dc8813c073b6c750ea38de237116ef05"
+    }
+  ],
+  "normalization": {
+    "rules_version": "normalization-3",
+    "unit_schema_version": 1,
+    "terms": {
+      "corpus_id": "corpus-dc8813c073b6c750ea38de237116ef05",
+      "scope": {
+        "unit_ids": [
+          "unit-168279d9f7d517ac378e196dc0099510",
+          "unit-1e3968ebcfbeb3a1be9d3744b30871dc",
+          "unit-2d537a8034222567c8d7ed9022bd3864",
+          "unit-39c67db75e1716755bcaf850b8b32160",
+          "unit-4e46ebb4dbf311d1e45d7a3d603c279a",
+          "unit-5c32f219d49634d587bfdee81fb1cfcd",
+          "unit-606c40ffdfb08a14546b492184d47aa6",
+          "unit-668489d17d34b8c1a9ba15447ccf1490",
+          "unit-71aa516d1271d5c411ba207f7568b25b",
+          "unit-d0b1ee817097e37b4456c09f683c01fc",
+          "unit-f942f01b2f0b55000c8b679301e10bc4"
+        ],
+        "text_revision": "ecee2610eb50204bb4a6c92dc696299218c9a91ed3dbad1169b1a244bf98b1c9"
+      },
+      "document_count": 11,
+      "config": {
+        "token_pattern": "[^\\W\\d]\\w*",
+        "lowercase": true,
+        "stop_words": [
+          "a",
+          "al",
+          "an",
+          "and",
+          "are",
+          "as",
+          "at",
+          "be",
+          "by",
+          "con",
+          "de",
+          "del",
+          "el",
+          "en",
+          "es",
+          "for",
+          "from",
+          "in",
+          "is",
+          "it",
+          "la",
+          "las",
+          "los",
+          "o",
+          "of",
+          "on",
+          "or",
+          "para",
+          "por",
+          "que",
+          "that",
+          "the",
+          "this",
+          "to",
+          "un",
+          "una",
+          "was",
+          "were",
+          "with",
+          "y"
+        ],
+        "stemming": false,
+        "norm": "l2",
+        "use_idf": true,
+        "smooth_idf": true,
+        "sublinear_tf": false,
+        "library": "scikit-learn",
+        "library_version": "1.7.2"
+      },
+      "vocabulary": [
+        "_compute_total",
+        "base",
+        "behavior",
+        "class",
+        "comment",
+        "commentary",
+        "data",
+        "declaring",
+        "def",
+        "demo",
+        "depends",
+        "describe",
+        "document",
+        "documento",
+        "estructurales",
+        "field",
+        "fixture",
+        "if",
+        "inspect",
+        "límites",
+        "mentions",
+        "name",
+        "options",
+        "partner",
+        "pass",
+        "preparation",
+        "read",
+        "related",
+        "relationship",
+        "res",
+        "return",
+        "self",
+        "setup",
+        "sin",
+        "technical",
+        "verificables",
+        "version",
+        "views",
+        "without",
+        "xml",
+        "íntegro"
+      ],
+      "idf": [
+        2.09861228866811,
+        2.791759469228055,
+        2.791759469228055,
+        2.386294361119891,
+        2.09861228866811,
+        2.09861228866811,
+        2.791759469228055,
+        2.791759469228055,
+        2.386294361119891,
+        2.791759469228055,
+        2.791759469228055,
+        2.791759469228055,
+        2.791759469228055,
+        2.791759469228055,
+        2.791759469228055,
+        2.09861228866811,
+        2.791759469228055,
+        2.386294361119891,
+        2.791759469228055,
+        2.791759469228055,
+        2.09861228866811,
+        2.791759469228055,
+        2.791759469228055,
+        2.386294361119891,
+        2.386294361119891,
+        2.791759469228055,
+        2.791759469228055,
+        1.8754687373538999,
+        2.791759469228055,
+        2.386294361119891,
+        2.386294361119891,
+        2.386294361119891,
+        2.386294361119891,
+        2.791759469228055,
+        2.791759469228055,
+        2.791759469228055,
+        2.791759469228055,
+        2.791759469228055,
+        2.791759469228055,
+        2.791759469228055,
+        2.791759469228055
+      ]
+    }
+  },
+  "issues": []
+}

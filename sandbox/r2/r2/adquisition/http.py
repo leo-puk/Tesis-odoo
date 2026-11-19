@@ -2,6 +2,7 @@
 import json
 import os
 import time
+from http.client import IncompleteRead
 from urllib import request, error, parse
 from uuid import uuid4
 from pathlib import Path
@@ -44,7 +45,7 @@ class HttpCapture:
                     time.sleep(attempt+1)
                     continue
                 raise ValueError(f'HTTP {exc.code}; capture not completed') from None
-            except (error.URLError,TimeoutError):
+            except (error.URLError,TimeoutError,ConnectionError,IncompleteRead):
                 if attempt<2:
                     time.sleep(attempt+1)
                     continue

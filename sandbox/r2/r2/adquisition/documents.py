@@ -1,40 +1,52 @@
-"""Deterministic HTML-to-text conversion; no summarization."""
-from html.parser import HTMLParser
-import re
+"""Lossless admission decoding; raw downloads are not converted into documents."""
+import codecs
+from email.message import Message
 
 
-class TextParser(HTMLParser):
-    def __init__(self):
-        super().__init__(convert_charrefs=True)
-        self.parts = []
-        self.hidden = 0
+class ScreeningDecodeError(ValueError):
+    """Keep original bytes isolated when admission cannot inspect their text."""
 
-    def handle_starttag(self, tag, attrs):
-        if tag in {"script", "style"}:
-            self.hidden += 1
-        if tag in {"p", "div", "section", "h1", "h2", "h3", "li", "br", "tr", "pre"}:
-            self.parts.append("\n")
-        if not self.hidden:
-            for name, value in attrs:
-                if name == "href" and value:
-                    self.parts.append(f" [{value}] ")
-
-    def handle_endtag(self, tag):
-        if tag in {"script", "style"}:
-            self.hidden = max(0, self.hidden - 1)
-        if tag in {"p", "div", "li", "pre"}:
-            self.parts.append("\n")
-
-    def handle_data(self, data):
-        if not self.hidden:
-            self.parts.append(data)
+    def __init__(self, details):
+        super().__init__("Cannot decode for admission; original retained in quarantine")
+        self.details = details
 
 
-def document_text(raw, content_type):
-    charset = re.search(r"charset=[\"']?([\w.-]+)", content_type, re.I)
-    text = raw.decode(charset.group(1) if charset else "utf-8")
-    if "html" in content_type.lower() or text.lstrip().lower().startswith(("<!doctype html", "<html")):
-        parser = TextParser()
-        parser.feed(text)
-        return "".join(parser.parts).replace("\r\n", "\n")
-    return text.replace("\r\n", "\n")
+def decode_for_screening(raw, content_type=""):
+    message = Message()
+    message["Content-Type"] = content_type or "text/plain"
+    declared = message.get_content_charset()
+    candidates = []
+    # UTF-32 signatures precede their overlapping UTF-16 prefixes.
+    for markers, encoding in (
+        ((codecs.BOM_UTF32_LE, codecs.BOM_UTF32_BE), "utf-32"),
+        ((codecs.BOM_UTF16_LE, codecs.BOM_UTF16_BE), "utf-16"),
+        ((codecs.BOM_UTF8,), "utf-8-sig"),
+    ):
+        if raw.startswith(markers):
+            candidates.append(encoding)
+            break
+    if declared:
+        candidates.append(declared)
+    candidates.append("utf-8")
+    attempted, errors = [], []
+    for encoding in dict.fromkeys(candidates):
+        attempted.append(encoding)
+        try:
+            text = raw.decode(encoding, errors="strict")
+            if "\x00" in text:
+                raise ValueError("Embedded NULs prevent reliable textual screening")
+        except (LookupError, UnicodeError, ValueError) as exc:
+            errors.append(dict(encoding=encoding, error=type(exc).__name__))
+            continue
+        return text, dict(decode_state="decoded", declared_charset=declared,
+                          screening_encoding=encoding, attempted_encodings=attempted,
+                          fallback_used=bool(errors), decode_errors=errors,
+                          purpose="admission_only", text_conversion="not_performed")
+    raise ScreeningDecodeError(dict(decode_state="unreadable", declared_charset=declared,
+        attempted_encodings=attempted, decode_errors=errors, purpose="admission_only",
+        text_conversion="not_performed"))
+
+
+def document_text(raw, content_type=""):
+    """Compatibility admission helper. HTML remains HTML; conversion is pending."""
+    return decode_for_screening(raw, content_type)[0]

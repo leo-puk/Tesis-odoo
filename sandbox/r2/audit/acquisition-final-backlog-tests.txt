@@ -1,0 +1,40 @@
+test_allowed_but_oca_repository_rejected (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_allowed_but_oca_repository_rejected) ... ok
+test_binary_document_rejected (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_binary_document_rejected) ... ok
+test_catalog_is_required (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_catalog_is_required) ... ok
+test_deletion_does_not_touch_other_units (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_deletion_does_not_touch_other_units) ... ok
+test_diff_saved_through_api (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_diff_saved_through_api) ... ok
+test_document_conversion_and_deletion (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_document_conversion_and_deletion) ... ok
+test_document_link_to_excluded_repository (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_document_link_to_excluded_repository) ... ok
+test_explicit_exclusion_overrides_allowlist (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_explicit_exclusion_overrides_allowlist) ... ok
+test_html_encoded_identifier_excluded (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_html_encoded_identifier_excluded) ... ok
+test_merged_pr_full_content (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_merged_pr_full_content) ... ok
+test_mixed_content_not_written (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_mixed_content_not_written) ... ok
+test_mixed_second_file_discards_whole_unit (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_mixed_second_file_discards_whole_unit) ... ok
+test_network_failure_logged_without_token (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_network_failure_logged_without_token) ... ok
+test_pagination_collects_second_page (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_pagination_collects_second_page) ... ok
+test_path_escape_fails_before_network (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_path_escape_fails_before_network) ... ok
+test_pr_incomplete_files (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_pr_incomplete_files) ... ok
+test_pr_mixed_comment_excludes_entire_unit (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_pr_mixed_comment_excludes_entire_unit) ... ok
+test_repeated_url_downloaded_once_with_independent_units (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_repeated_url_downloaded_once_with_independent_units) ... ok
+test_transient_http_error_retries (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_transient_http_error_retries) ... ok
+test_unknown_url_rejected_without_network (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_unknown_url_rejected_without_network) ... ok
+test_unmerged_pr_excluded (test_final_adquisition.load_tests.<locals>.CurrentContractTests.test_unmerged_pr_excluded) ... ok
+test_closed_response_connection_is_retried_without_saving_partial_body (test_acquisition_originals.AcquisitionOriginalTests.test_closed_response_connection_is_retried_without_saving_partial_body) ... ok
+test_conservative_catalog_rejection_is_kept (test_acquisition_originals.AcquisitionOriginalTests.test_conservative_catalog_rejection_is_kept) ... ok
+test_declared_latin1_is_screened_without_reencoding_original (test_acquisition_originals.AcquisitionOriginalTests.test_declared_latin1_is_screened_without_reencoding_original) ... ok
+test_exhausted_network_retries_are_reported_and_next_source_is_processed (test_acquisition_originals.AcquisitionOriginalTests.test_exhausted_network_retries_are_reported_and_next_source_is_processed) ... ok
+test_explicit_odoo_code_and_oca_tool_are_downloaded_without_execution (test_acquisition_originals.AcquisitionOriginalTests.test_explicit_odoo_code_and_oca_tool_are_downloaded_without_execution) ... ok
+test_html_is_stored_byte_for_byte_without_conversion (test_acquisition_originals.AcquisitionOriginalTests.test_html_is_stored_byte_for_byte_without_conversion) ... ok
+test_invalid_utf8_is_quarantined_without_replacement_characters (test_acquisition_originals.AcquisitionOriginalTests.test_invalid_utf8_is_quarantined_without_replacement_characters) ... ok
+test_legacy_before_after_keys_are_rejected_without_network (test_acquisition_originals.AcquisitionOriginalTests.test_legacy_before_after_keys_are_rejected_without_network) ... ok
+test_nontext_codec_header_is_not_applied_as_a_transformation (test_acquisition_originals.AcquisitionOriginalTests.test_nontext_codec_header_is_not_applied_as_a_transformation) ... ok
+test_unicode_boms_take_precedence_and_preserve_target_exclusion (test_acquisition_originals.AcquisitionOriginalTests.test_unicode_boms_take_precedence_and_preserve_target_exclusion) ... ok
+test_unknown_charset_cannot_bypass_html_entity_filter (test_acquisition_originals.AcquisitionOriginalTests.test_unknown_charset_cannot_bypass_html_entity_filter) ... ok
+test_unknown_charset_does_not_abort_and_utf8_fallback_is_lossless (test_acquisition_originals.AcquisitionOriginalTests.test_unknown_charset_does_not_abort_and_utf8_fallback_is_lossless) ... ok
+test_unreadable_original_quarantined_next_unit_continues_and_is_not_admitted (test_acquisition_originals.AcquisitionOriginalTests.test_unreadable_original_quarantined_next_unit_continues_and_is_not_admitted) ... ok
+test_visible_excluded_identifier_is_rejected_even_with_invalid_bytes (test_acquisition_originals.AcquisitionOriginalTests.test_visible_excluded_identifier_is_rejected_even_with_invalid_bytes) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 1.486s
+
+OK

@@ -4,11 +4,19 @@ from pathlib import Path
 import re
 import shutil
 from uuid import uuid4
-from .documents import document_text
+from .documents import decode_for_screening, ScreeningDecodeError
 from .github import GitHubMetadata, Incomplete
 from .http import HttpCapture
 from .policy import SourcePolicy, Excluded
 from .provenance import save, utcnow, validate_source_origin
+from urllib.parse import urlparse
+
+
+def _original_suffix(name, url, content_type):
+    if 'html' in content_type.lower():
+        return '.html'
+    suffix = Path(urlparse(url).path).suffix.lower() or Path(name).suffix.lower()
+    return suffix if suffix in {'.txt', '.md', '.rst', '.py', '.xml', '.csv', '.json', '.sh'} else '.txt'
 
 
 def _log(folder, event, **fields):
@@ -34,12 +42,14 @@ def capture_plan(plan_path, output='temp_data', *, catalog_path, transport=None)
         raise ValueError('Plan must be an array')
     ids = set()
     for entry in plan:
-        if not isinstance(entry, dict) or not re.fullmatch(r'[\w-]+', entry.get('id', '')):
+        if not isinstance(entry, dict) or not isinstance(entry.get('id'), str) or not re.fullmatch(r'[\w-]+', entry['id']):
             raise ValueError('Entry requires a simple id')
+        if 'before' in entry or 'after' in entry:
+            raise ValueError('Acquisition accepts files, not before/after source states')
         if entry['id'] in ids:
             raise ValueError('Duplicate entry id')
         ids.add(entry['id'])
-        if entry.get('kind') not in {'official_manifest', 'official_documentation', 'oca_guidance', 'openupgrade_analysis', 'github_diff', 'github_pr'}:
+        if entry.get('kind') not in {'official_code', 'official_manifest', 'official_documentation', 'oca_guidance', 'openupgrade_analysis', 'github_diff', 'github_pr'}:
             raise ValueError('Unknown source kind; entire source repositories are not supported')
         if not isinstance(entry.get('files'), dict) or not entry['files']:
             raise ValueError('Each entry needs a nonempty files mapping')
@@ -56,7 +66,8 @@ def capture_plan(plan_path, output='temp_data', *, catalog_path, transport=None)
     for entry in plan:
         unit_id = uuid4().hex
         unit = dict(id=unit_id, source_id=entry['id'], kind=entry['kind'],
-                    urls=list(entry['files'].values()), status='pending', files=[], captures=[])
+                    urls=list(entry['files'].values()), status='pending', files=[], captures=[],
+                    file_metadata=[], storage_form='original', created_at=utcnow())
         payloads = []
         try:
             # Validate all URLs before making the first request for this unit.
@@ -66,17 +77,21 @@ def capture_plan(plan_path, output='temp_data', *, catalog_path, transport=None)
                 kind = entry['kind']
                 cached = cache.get((kind, url))
                 if cached is not None:
-                    raw, records, suffix = cached
-                    payloads.append((f'{i+1:03d}-{Path(name).stem}{suffix}', raw))
+                    raw, records, suffix, details = cached
+                    payloads.append((f'{i+1:03d}-{Path(name).stem}{suffix}', raw, details))
                     unit['captures'].extend(records)
                     continue
                 if kind == 'github_pr':
                     value, records = github.pull(url)
                     raw = json.dumps(value, ensure_ascii=False, indent=2).encode('utf-8')
                     suffix = '.json'
+                    details = dict(representation='github_resource_bundle', decode_state='decoded',
+                                   screening_encoding='utf-8', text_conversion='not_performed')
                 elif kind == 'github_diff':
                     raw, records = github.diff_bytes(url)
                     suffix = '.diff'
+                    details = dict(representation='original_bytes', decode_state='decoded',
+                                   screening_encoding='utf-8', text_conversion='not_performed')
                 else:
                     validate_source_origin('official_code' if kind == 'official_manifest' else kind, url)
                     if kind == 'official_manifest' and not url.endswith('/__manifest__.py'):
@@ -85,32 +100,42 @@ def capture_plan(plan_path, output='temp_data', *, catalog_path, transport=None)
                         cache[url] = http.get(url, persist=False)
                     raw, record = cache[url]
                     records = [record]
-                    # Scan original markup as well as converted text, including links.
+                    ctype = record.get('headers', {}).get('content-type', '')
+                    if any(x in ctype.lower() for x in ('pdf', 'image/', 'zip', 'octet-stream')):
+                        raise Excluded('Binary document cannot be screened by this component')
+                    # Positive rejection only: visible forbidden ASCII identifiers
+                    # must not be hidden by an unrelated invalid byte. This view
+                    # is never persisted or sufficient to admit unreadable data.
                     policy.content(raw.decode('utf-8', errors='replace'))
-                    if kind != 'official_manifest':
-                        ctype = record.get('headers', {}).get('content-type', '')
-                        if any(x in ctype.lower() for x in ('pdf', 'image/', 'zip', 'octet-stream')):
-                            raise Excluded('Binary document cannot be screened or converted by this component')
-                        else:
-                            raw = document_text(raw, ctype).encode('utf-8')
-                            suffix = '.md' if Path(name).suffix.lower() == '.md' else '.txt'
-                    else:
-                        suffix = '.txt'
-                policy.content(raw.decode('utf-8', errors='replace'))
-                cache[(kind, url)] = raw, records, suffix
-                payloads.append((f'{i+1:03d}-{Path(name).stem}{suffix}', raw))
+                    try:
+                        text, details = decode_for_screening(raw, ctype)
+                        policy.content(text)  # Includes original HTML, links and scripts.
+                    except ScreeningDecodeError as exc:
+                        details = exc.details
+                    details = {**details, 'representation': 'original_bytes', 'content_type': ctype}
+                    suffix = '.py' if kind == 'official_manifest' else _original_suffix(name, url, ctype)
+                if kind in {'github_pr', 'github_diff'}:
+                    policy.content(raw.decode('utf-8'))
+                details = {**details, 'url': url}
+                cache[(kind, url)] = raw, records, suffix, details
+                payloads.append((f'{i+1:03d}-{Path(name).stem}{suffix}', raw, details))
                 unit['captures'].extend(records)
             folder = session / unit_id
             folder.mkdir()
             try:
-                for name, raw in payloads:
+                for name, raw, details in payloads:
                     (folder / name).write_bytes(raw)
                     unit['files'].append(f'{unit_id}/{name}')
+                    unit['file_metadata'].append(dict(path=f'{unit_id}/{name}', **details))
             except OSError:
                 # This exact directory was created above, inside the resolved session.
                 shutil.rmtree(folder)
+                unit.update(files=[], file_metadata=[])
                 raise
-            unit.update(status='accepted', captured_at=utcnow())
+            unreadable = any(details['decode_state'] != 'decoded' for _, _, details in payloads)
+            unit.update(status='quarantined' if unreadable else 'accepted', captured_at=utcnow())
+            if unreadable:
+                unit['reason'] = 'Original retained; decoding required before admission; not indexable'
         except Excluded as exc:
             unit.update(status='excluded', reason=str(exc), captures=[])
         except (ValueError, OSError, UnicodeError) as exc:
@@ -121,7 +146,10 @@ def capture_plan(plan_path, output='temp_data', *, catalog_path, transport=None)
     save(session / 'inventory.json', inventory)
     _log(session, 'finished', accepted=sum(x['status']=='accepted' for x in inventory))
     return dict(session_id=session.name, directory=str(session), inventory=str(session/'inventory.json'),
-                included=sum(x['status']=='accepted' for x in inventory))
+                included=sum(x['status']=='accepted' for x in inventory),
+                quarantined=sum(x['status']=='quarantined' for x in inventory),
+                counts={status: sum(x['status']==status for x in inventory)
+                        for status in sorted({x['status'] for x in inventory})})
 
 
 def delete_units(session_id, unit_ids, output='temp_data'):
@@ -149,7 +177,7 @@ def delete_units(session_id, unit_ids, output='temp_data'):
                 if folder.exists():
                     shutil.rmtree(folder)
                 status = 'deleted'
-                unit.update(status='deleted', files=[])
+                unit.update(status='deleted', files=[], file_metadata=[])
             except (OSError, ValueError) as exc:
                 status = 'failed'
                 _log(session, 'delete_failed', id=unit_id, reason=str(exc))

@@ -1,0 +1,49 @@
+test_clean_absence_is_separate_from_failed_analysis (test_crossing.CrossingTests.test_clean_absence_is_separate_from_failed_analysis) ... ok
+test_cli_saves_and_prints_the_same_structured_result (test_crossing.CrossingTests.test_cli_saves_and_prints_the_same_structured_result) ... ok
+test_distinct_units_with_identical_identifiers_are_preserved (test_crossing.CrossingTests.test_distinct_units_with_identical_identifiers_are_preserved) ... ok
+test_document_and_comment_mentions_are_not_technical_matches (test_crossing.CrossingTests.test_document_and_comment_mentions_are_not_technical_matches) ... ok
+test_exact_model_field_and_method_matches_keep_both_locations (test_crossing.CrossingTests.test_exact_model_field_and_method_matches_keep_both_locations) ... ok
+test_explicit_external_id_namespaces_match_without_confusing_modules (test_crossing.CrossingTests.test_explicit_external_id_namespaces_match_without_confusing_modules) ... ok
+test_global_functions_require_matching_module_file_and_scope (test_crossing.CrossingTests.test_global_functions_require_matching_module_file_and_scope) ... ok
+test_incomplete_diff_with_a_local_pattern_can_match_only_that_pattern (test_crossing.CrossingTests.test_incomplete_diff_with_a_local_pattern_can_match_only_that_pattern) ... ok
+test_incomplete_partner_python_reports_error_separately_from_no_matches (test_crossing.CrossingTests.test_incomplete_partner_python_reports_error_separately_from_no_matches) ... ok
+test_input_is_read_without_executing_imports_or_top_level_code (test_crossing.CrossingTests.test_input_is_read_without_executing_imports_or_top_level_code) ... ok
+test_invalid_code_encoding_is_an_error_and_valid_files_continue (test_crossing.CrossingTests.test_invalid_code_encoding_is_an_error_and_valid_files_continue) ... ok
+test_local_helper_never_matches_a_model_method (test_crossing.CrossingTests.test_local_helper_never_matches_a_model_method) ... ok
+test_lookup_uses_the_existing_index_and_does_not_scan_unit_text (test_crossing.CrossingTests.test_lookup_uses_the_existing_index_and_does_not_scan_unit_text) ... ok
+test_manifest_is_literal_not_executed (test_crossing.CrossingTests.test_manifest_is_literal_not_executed) ... ok
+test_model_identifier_case_and_underscores_are_preserved (test_crossing.CrossingTests.test_model_identifier_case_and_underscores_are_preserved) ... ok
+test_old_rules_missing_indexes_and_corrupt_index_are_rejected (test_crossing.CrossingTests.test_old_rules_missing_indexes_and_corrupt_index_are_rejected) ... ERROR
+test_reproducibility_persistence_and_inputs_stay_unchanged (test_crossing.CrossingTests.test_reproducibility_persistence_and_inputs_stay_unchanged) ... ok
+test_same_names_in_different_models_are_rejected (test_crossing.CrossingTests.test_same_names_in_different_models_are_rejected) ... ok
+test_units_are_deduplicated_while_occurrences_keep_distinct_evidences (test_crossing.CrossingTests.test_units_are_deduplicated_while_occurrences_keep_distinct_evidences) ... ok
+test_unknown_owner_is_not_guessed_from_a_method_name (test_crossing.CrossingTests.test_unknown_owner_is_not_guessed_from_a_method_name) ... ok
+
+======================================================================
+ERROR: test_old_rules_missing_indexes_and_corrupt_index_are_rejected (test_crossing.CrossingTests.test_old_rules_missing_indexes_and_corrupt_index_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\dependencies\python\Lib\shutil.py", line 633, in _rmtree_unsafe
+    os.unlink(fullname)
+PermissionError: [WinError 32] El proceso no tiene acceso al archivo porque est� siendo utilizado por otro proceso: 'C:\\Users\\USUARIO\\AppData\\Local\\Packages\\openai.codex_2p2nqsd0c76g0\\AC\\#!sandbox.{002bc2d3-105a-4395-9b1d-49813952a289}\\Temp\\tmppv43prbl\\collection-2.sqlite'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\dependencies\python\Lib\tempfile.py", line 954, in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+  File "C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\dependencies\python\Lib\tempfile.py", line 934, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+  File "C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\dependencies\python\Lib\shutil.py", line 781, in rmtree
+    return _rmtree_unsafe(path, onexc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\dependencies\python\Lib\shutil.py", line 635, in _rmtree_unsafe
+    onexc(os.unlink, fullname, err)
+  File "C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\dependencies\python\Lib\tempfile.py", line 909, in onexc
+    _os.unlink(path)
+PermissionError: [WinError 32] El proceso no tiene acceso al archivo porque est� siendo utilizado por otro proceso: 'C:\\Users\\USUARIO\\AppData\\Local\\Packages\\openai.codex_2p2nqsd0c76g0\\AC\\#!sandbox.{002bc2d3-105a-4395-9b1d-49813952a289}\\Temp\\tmppv43prbl\\collection-2.sqlite'
+
+----------------------------------------------------------------------
+Ran 20 tests in 1.728s
+
+FAILED (errors=1)

@@ -46,7 +46,7 @@ def retrieve(database, module, from_version, to_version, *, layer="all", depth=3
     with connect(database) as con:
         metadata = meta(con)
         sources = {s["id"]: s for s in load(con, "sources")}
-        if metadata["schema_version"] not in {2, 3}:
+        if metadata["schema_version"] not in {2, 3, 4}:
             raise ValueError("Collection schema changed; rebuild from the frozen inventory")
         resolve_references(data, [e for e in load(con, "elements") if e["version"] == from_version])
         seeds = sorted({e["key"] for e in data["elements"] if e.get("role") in {"declaration", "reference"} and e["kind"] not in {"symbol", "xpath"}})
@@ -61,7 +61,7 @@ def retrieve(database, module, from_version, to_version, *, layer="all", depth=3
                    (status == "all" or c["status"] == status) and
                    set(c["required_elements"]) <= seed_set]
         allowed_ids = {c["id"] for c in changes}
-        documents = {d["id"]: d for d in load(con, "documents")} if metadata["schema_version"] == 3 else {}
+        documents = {d["id"]: d for d in load(con, "documents")} if metadata["schema_version"] >= 3 else {}
         relations = load(con, "relations")
         graph = new_graph()
         graph.add_nodes_from(seeds)
@@ -110,8 +110,14 @@ def retrieve(database, module, from_version, to_version, *, layer="all", depth=3
             result["source_citations"] = [{k: sources[s].get(k) for k in
                 ("id", "url", "repo", "from_revision", "to_revision", "captured_at", "scope", "captures", "unit_id", "session_id", "plan_source_id", "reference_basis")}
                 for s in sorted(used_sources)]
-            if metadata["schema_version"] == 3:
+            if metadata["schema_version"] >= 3:
                 context_ids = {d for s in used_sources for d in sources[s].get("context_document_ids", [])}
+                if metadata['schema_version']==4:
+                    # Preserve existing explicit binding-based citations, resolving
+                    # them at query time rather than linking units in normalization.
+                    refs={ref for sid in used_sources for ref in sources[sid].get('binding',{}).get('context_units',[])}
+                    contextual_sources={s['id'] for s in sources.values() if s.get('unit_id') in refs or s.get('plan_source_id') in refs}
+                    context_ids.update(k for k,d in documents.items() if d['source_id'] in contextual_sources)
                 result["context_documents"] = [documents[k] for k in sorted(context_ids)]
             # Verified status, minimum depth, exact semantic matches, lexical tie
             # breaker, stable ID. No learned weights and no random sampling.
@@ -141,9 +147,11 @@ def retrieve(database, module, from_version, to_version, *, layer="all", depth=3
             warnings.append("Lexical baseline: structural depth and paths are not assigned")
         if int(to_version[:2])-int(from_version[:2]) > 1:
             warnings.append("Intermediate changes are checked against the original module, not a transformed intermediate module")
-        if metadata["schema_version"] == 3:
+        if metadata["schema_version"] >= 3:
             warnings.extend(metadata.get("warnings", []))
             warnings.append("Diff hunks are partial source; absent anchors do not prove absence of impact")
+        if metadata['schema_version']==4:
+            warnings.append(metadata['query_scope'])
         warnings.append("Static analysis cannot resolve all dynamic references or prove functional incompatibility")
         return dict(schema_version=metadata["schema_version"], engine_version=metadata["engine_version"],
                     collection_revision=metadata["collection_revision"], engine=engine,
@@ -192,8 +200,10 @@ def validate_output(output):
             for block in r.get("evidence_blocks", [r]):
                 if (block["from_version"], block["to_version"]) != (r["from_version"], r["to_version"]):
                     errors.append("Grouped evidence has an incompatible jump")
-                if not block.get("source_id") or not block.get("from_revision") or not block.get("to_revision"):
+                if not block.get("source_id") or (output['schema_version']<4 and (not block.get("from_revision") or not block.get("to_revision"))):
                     errors.append("Grouped evidence lacks source revisions")
+                if output['schema_version']==4 and (not block.get('source_locator') or not block.get('information_unit_id')):
+                    errors.append('Normalized evidence lacks a source locator or information-unit ID')
             if output["engine"] == "graph":
                 path = r["path"]
                 if not path or path[0] not in query["elements"] or path[-1] not in r["elements"] or len(path)-1 != r["depth"]:
