@@ -10,6 +10,9 @@ ALLOWED_KINDS = {
 
 
 def select_sources(records, *, include_oca_migrations=False):
+    # Inputs: records, include_oca_migrations.
+    # Does: Apply the legacy source admission policy to source ancestry.
+    # Output: The selected and excluded source records.
     """Historical local imports: reserved and OCA-specific evidence are excluded.
 
     Records require id, kind, split and parent_ids. A derived record must name
@@ -26,6 +29,9 @@ def select_sources(records, *, include_oca_migrations=False):
     decisions = {}
 
     def decide(key, visiting):
+        # Inputs: key, visiting.
+        # Does: Evaluate the legacy rules for a source and its ancestors.
+        # Output: The admission decision for the requested source.
         if key in decisions:
             return decisions[key]
         if key not in by_id:
@@ -68,6 +74,9 @@ def select_sources(records, *, include_oca_migrations=False):
 
 
 def main():
+    # Inputs: No explicit arguments.
+    # Does: Dispatch the selected command and handle terminal output.
+    # Output: CLI output and exit status.
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("manifest", type=Path, help="JSON array of source records")
     args = parser.parse_args()

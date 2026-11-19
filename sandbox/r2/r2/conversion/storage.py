@@ -18,6 +18,9 @@ from ..records import canonical, connect, load, meta, fingerprint as digest
 
 
 def git(repo, *args, binary=False):
+    # Inputs: repo, binary, args.
+    # Does: Read a Git revision or diff from the specified repository.
+    # Output: Git command output.
     env = {**os.environ, "GIT_NO_LAZY_FETCH": "1", "GIT_TERMINAL_PROMPT": "0"}
     result = subprocess.run(["git", "--no-optional-locks", "-C", str(repo), *args],
                             capture_output=True, env=env, timeout=120)
@@ -27,10 +30,16 @@ def git(repo, *args, binary=False):
 
 
 def within(base, value):
+    # Inputs: base, value.
+    # Does: Resolve a path and enforce containment in its base.
+    # Output: A validated path.
     return (base / value).resolve()
 
 
 def read_source(record, base, excluded_modules=()):
+    # Inputs: record, base, excluded_modules.
+    # Does: Read the legacy source and its provenance under the extraction policy.
+    # Output: Source snapshots, metadata and warnings.
     """Materialize sources once, then queries never read remote or source files."""
     record = dict(record)
     fmt = record.get("format")
@@ -98,12 +107,18 @@ def read_source(record, base, excluded_modules=()):
 
 
 def changed_ranges(group, side):
+    # Inputs: group, side.
+    # Does: Extract affected line spans for the selected side of a diff.
+    # Output: The affected ranges by path.
     offset = 1 if side == "old" else 3
     return [(op[offset] + 1, max(op[offset] + 1, op[offset + 1]))
             for op in group if op[0] != "equal"]
 
 
 def impacted(data, ranges):
+    # Inputs: data, ranges.
+    # Does: Select extracted observations intersecting changed lines.
+    # Output: The affected observations.
     hits = [e for e in data["elements"] if any(e["line"] <= hi and e["end_line"] >= lo for lo, hi in ranges)]
     # Classes/models provide context but should not seed every edit when a more
     # specific field, method or property location is available.
@@ -112,6 +127,9 @@ def impacted(data, ranges):
 
 
 def changes_for(source, before, after, old_data, new_data):
+    # Inputs: source, before, after, old_data, new_data.
+    # Does: Combine before and after snapshots and observations into legacy changes.
+    # Output: The changes derived for one source.
     for path in sorted(set(before) | set(after)):
         a, b = before.get(path, ""), after.get(path, "")
         if a == b:
@@ -145,6 +163,9 @@ def changes_for(source, before, after, old_data, new_data):
 
 
 def build(manifest, destination, include_oca_migrations=False, annotations=None, assignment_registry=None):
+    # Inputs: manifest, destination, include_oca_migrations, annotations, assignment_registry.
+    # Does: Build the archived snapshot-based migration collection.
+    # Output: A persisted SQLite collection and build summary.
     start = time.perf_counter()
     manifest = Path(manifest).resolve()
     records = json.loads(manifest.read_text(encoding="utf-8-sig"))
@@ -162,6 +183,9 @@ def build(manifest, destination, include_oca_migrations=False, annotations=None,
         for side, files in (("before", before), ("after", after)):
             version = source["from_version"] if side == "before" else source["to_version"]
             def module_for(p):
+                # Inputs: p.
+                # Does: Infer an addon namespace from the legacy source path.
+                # Output: The inferred addon name or no value.
                 parts = Path(p).parts
                 if "addons" in parts and parts.index("addons") + 1 < len(parts):
                     return parts[parts.index("addons") + 1]
@@ -190,6 +214,9 @@ def build(manifest, destination, include_oca_migrations=False, annotations=None,
 
 
 def compatibility_views(converted):
+    # Inputs: converted.
+    # Does: Project normalized units into the legacy query representation.
+    # Output: The legacy source, change and document structures.
     """Keep existing diff consumers working; never create search relations.
 
     These are projections of information units, not a second normalization.
@@ -233,6 +260,9 @@ def compatibility_views(converted):
 
 
 def build_session(inventory, bindings, destination, annotations=None):
+    # Inputs: inventory, bindings, destination, annotations.
+    # Does: Normalize a session and write its legacy compatibility views.
+    # Output: A persisted collection and build summary.
     """Build schema 4 from validated normalized units, without downloading."""
     from ..normalization import normalize_session
     start = time.perf_counter()
@@ -247,6 +277,9 @@ def build_session(inventory, bindings, destination, annotations=None):
 def write_collection(sources, elements, relations, changes, destination, annotations,
                      registry, excluded, audited, warnings, start, artifacts=None, documents=None, schema=2,
                      normalized_units=None,normalization=None,issues=None):
+    # Inputs: sources, elements, relations, changes, destination, annotations, registry, excluded, audited, warnings, start, artifacts, documents, schema, normalized_units, normalization, issues.
+    # Does: Write the supplied legacy collection and metadata to SQLite.
+    # Output: The stored database and its build summary.
     include_oca_migrations = False
     artifacts, documents = artifacts or {}, documents or {}
     review = json.loads(Path(annotations).read_text(encoding="utf-8-sig")) if annotations else []

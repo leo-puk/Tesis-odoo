@@ -4,6 +4,9 @@ from email.message import Message
 
 
 def decode_artifact(raw, metadata):
+    # Inputs: raw, metadata.
+    # Does: Decode stored bytes and keep any conversion diagnostics.
+    # Output: The available text and decoding metadata.
     message = Message()
     message["Content-Type"] = metadata.get("content_type", "text/plain")
     declared = message.get_content_charset()

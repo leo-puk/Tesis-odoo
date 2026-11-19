@@ -7,9 +7,15 @@ from .provenance import utcnow
 
 class GitHubMetadata:
     def __init__(self, directory, transport=None):
+        # Inputs: directory, transport.
+        # Does: Configure GitHub retrieval and its acquisition context.
+        # Output: A GitHub client instance.
         self.http = HttpCapture(directory, transport)
 
     def pages(self, path, projection):
+        # Inputs: path, projection.
+        # Does: Fetch and project successive result pages for evaluation.
+        # Output: Accumulated results and capture provenance.
         url = "https://api.github.com" + path
         seen = set()
         while url:
@@ -23,6 +29,9 @@ class GitHubMetadata:
             url = match.group(1) if match else None
 
     def search(self, query):
+        # Inputs: query.
+        # Does: Search GitHub metadata for evaluation cases.
+        # Output: Search results and capture provenance.
         path = "/search/issues?" + parse.urlencode(dict(q=query, per_page=100, sort="created", order="asc"))
         result, captures = [], []
         for page, capture in self.pages(path, lambda x: {
@@ -36,10 +45,16 @@ class GitHubMetadata:
         return dict(query=query, extracted_at=utcnow(), items=result, captures=captures)
 
     def pull(self, repository, number):
+        # Inputs: repository, number.
+        # Does: Collect a pull request for evaluation evidence.
+        # Output: The projected pull request data and provenance.
         if not re.fullmatch(r"[\w.-]+/[\w.-]+", repository) or int(number) < 1:
             raise ValueError("Invalid repository/pull number")
         path = f"/repos/{repository}/pulls/{int(number)}"
         def project(pr):
+            # Inputs: pr.
+            # Does: Select the evaluation fields from a GitHub pull request.
+            # Output: A projected pull request record.
             return {**{k: pr.get(k) for k in ("number", "title", "html_url", "state", "created_at", "updated_at", "closed_at", "merged_at", "merge_commit_sha", "changed_files")},
                     "author": pr["user"]["login"], "base": {k: pr["base"].get(k) for k in ("ref", "sha")},
                     "head": {k: pr["head"].get(k) for k in ("ref", "sha")}}

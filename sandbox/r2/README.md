@@ -1,13 +1,22 @@
 # R2 — Evidencia de migración de Odoo
 
-**R2.1** implementa adquisición → normalización y SQLite → cruce → extracción y recorrido de relaciones → reporte. **R2.2** expone el mismo flujo con una CLI local en inglés y lo verifica con pruebas y una comparación con BM25. El plan y el catálogo de fuentes se preparan antes de la adquisición.
+**R2.1** implementa planificación → adquisición → normalización y SQLite → cruce → extracción y recorrido de relaciones → reporte. **R2.2** expone el mismo flujo con una CLI local en inglés y lo verifica con pruebas y una comparación con BM25.
 
 ## Uso
 
 Desde `sandbox/r2`, con Python 3.12 y las dependencias de `pyproject.toml`:
 
 ```powershell
-python -m r2 run ruta/al/modulo --from 16.0 --to 17.0 --plan plan.json --catalog catalog.json --bindings bindings.json --output-dir salida-nueva
+python -m r2 plan ruta/al/modulo --from 16.0 --to 17.0 --catalog reference/adquisition-final/examples/catalog.json --output-dir plan-nuevo
+python -m r2 run ruta/al/modulo --from 16.0 --to 17.0 --catalog reference/adquisition-final/examples/catalog.json --output-dir salida-nueva
+```
+
+`plan` inspecciona una carpeta local o un repositorio ya clonado. Lee Python, XML, CSV y manifiestos para detectar dependencias, referencias e importaciones de addons. También examina archivos de texto, documentación y configuración para localizar URLs revisadas. No ejecuta el código ni descarga los enlaces durante la planificación. Cada salto incluye candidatos de fuentes oficiales y guías de mantenimiento. El catálogo conserva las exclusiones de adquisición. Las URLs adicionales deben figurar en `allowed_urls` y las de diffs fijados o PRs que no codifican las versiones pueden declarar `source_bindings` por URL, con `from_version` y `to_version`. `planning.json` registra las URLs propuestas, sus motivos y los avisos de cobertura. Una URL planificada puede fallar o no aportar candidatos al capturarse.
+
+`run` guarda los archivos del planner en `planning/` cuando lo invoca automáticamente. Para ejecutar un plan preparado por separado:
+
+```powershell
+python -m r2 run ruta/al/modulo --from 16.0 --to 17.0 --plan plan-nuevo/plan.json --catalog plan-nuevo/catalog.json --bindings plan-nuevo/bindings.json --output-dir salida-manual
 ```
 
 La ejecución guarda las capturas en `temp_data/` y deja `collection.sqlite`, `crossing.json`, `relations.json`, `report.txt` y `report.json` en la salida indicada. El módulo se inspecciona de forma estática. Los datos de entrada se conservan.

@@ -7,6 +7,9 @@ from ..extract_relations import FIELD_OPTIONS, layer_for
 
 
 def partial_anchors(code, path, module):
+    # Inputs: code, path, module.
+    # Does: Detect supported anchors in incomplete code fragments.
+    # Output: The recoverable code observations.
     if not path.endswith(".py"):
         return []
     # Indentation is irrelevant to the two local token patterns below. Removing
@@ -23,6 +26,9 @@ def partial_anchors(code, path, module):
     elements = {}
 
     def add(key, kind, name, line):
+        # Inputs: key, kind, name, line.
+        # Does: Register a partial code anchor at its observed line.
+        # Output: An entry in the current anchor collection.
         elements[key, line] = dict(key=key, kind=kind, name=name, path=path,
                                    line=line, end_line=line, layer=layer_for(path),
                                    module=module or "__unknown__", role="reference",

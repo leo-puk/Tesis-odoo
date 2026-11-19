@@ -7,6 +7,9 @@ HEADER = re.compile(r"^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@(?:.*)$")
 
 
 def filename(value):
+    # Inputs: value.
+    # Does: Decode a path recorded in a unified diff header.
+    # Output: The artifact path or no path for a null side.
     value = value.split("\t", 1)[0]
     if value.startswith('"'):
         try:
@@ -24,6 +27,9 @@ def filename(value):
 
 
 def parse_diff(text):
+    # Inputs: text.
+    # Does: Read unified diff file headers and changed blocks.
+    # Output: Located diff hunks and parser warnings.
     lines = text.splitlines()
     hunks, warnings = [], []
     old_path = new_path = None

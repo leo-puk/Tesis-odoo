@@ -21,10 +21,16 @@ LAYERS = {"python", "xml", "data", "manifest", "documentation", "unknown"}
 
 
 def unit_id(source_id, locator, rule):
+    # Inputs: source_id, locator, rule.
+    # Does: Hash the source, location and rule for a normalized unit.
+    # Output: A stable unit identifier.
     return "unit-" + fingerprint([source_id, locator, rule, SCHEMA_VERSION, RULE_VERSION])[:32]
 
 
 def validate_units(units):
+    # Inputs: units.
+    # Does: Check that normalized units satisfy the record contract.
+    # Output: Successful validation or a validation error.
     seen = set()
     for unit in units:
         missing = FIELDS - unit.keys()
@@ -99,6 +105,9 @@ def validate_units(units):
 
 
 def validate_collection(collection):
+    # Inputs: collection.
+    # Does: Reconstruct and validate units against the retained artifacts.
+    # Output: Successful validation or a validation error.
     """Verify content, format data and entity evidence against retained sources.
 
     Reparse each referenced artifact once. Canonical parts preserve the actual

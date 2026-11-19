@@ -5,6 +5,9 @@ from . import capture_plan, delete_units
 
 
 def main():
+    # Inputs: No explicit arguments.
+    # Does: Dispatch the selected command and handle terminal output.
+    # Output: CLI output and exit status.
     parser = argparse.ArgumentParser(description='Acquire reviewed sources into temp_data')
     commands = parser.add_subparsers(dest='command', required=True)
     capture = commands.add_parser('capture')

@@ -9,6 +9,9 @@ from ..report import render_report, search_units
 
 
 def coverage(references, units):
+    # Inputs: references, units.
+    # Does: Check which reference changes have admitted evidence in the corpus.
+    # Output: The reference coverage result.
     covered = set()
     for ref_id, reference in references.items():
         for unit_id in reference["available_unit_ids"]:
@@ -22,6 +25,9 @@ def coverage(references, units):
 
 
 def score(report, judgments, expected):
+    # Inputs: report, judgments, expected.
+    # Does: Apply reviewed judgments to ranked candidates.
+    # Output: Precision and reference coverage metrics where defined.
     shown = [result["change_id"] for result in report["results"]]
     unjudged = [uid for uid in shown if uid not in judgments]
     relevant = [uid for uid in shown if uid in judgments and judgments[uid]["relevant"]]
@@ -33,6 +39,9 @@ def score(report, judgments, expected):
 
 
 def evaluate(database, specification, base, *, repeats=1):
+    # Inputs: database, specification, base, repeats.
+    # Does: Compare graph and BM25 on the same corpus and reviewed judgments.
+    # Output: Coverage, per-query scores and timing.
     if type(repeats) is not int or repeats < 1:
         raise ValueError("Repetitions must be positive")
     reviewer = specification["reviewer"]

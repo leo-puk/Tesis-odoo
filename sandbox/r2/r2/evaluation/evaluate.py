@@ -16,12 +16,18 @@ from ..selection import fingerprint, code_revision
 
 
 def environment():
+    # Inputs: No explicit arguments.
+    # Does: Record software and system details for legacy measurements.
+    # Output: The evaluation environment metadata.
     return dict(python=sys.version, executable=sys.executable, platform=platform.platform(),
                 processor=platform.processor(), cpu_count=os.cpu_count(), sqlite=sqlite3.sqlite_version,
                 packages={p: version(p) for p in ("networkx", "lxml", "pandas", "scikit-learn")})
 
 
 def measure(database, module, from_version, to_version, **options):
+    # Inputs: database, module, from_version, to_version, options.
+    # Does: Measure legacy query performance for both comparison engines.
+    # Output: A measurement record for the query.
     start = time.perf_counter()
     output = retrieve(database, module, from_version, to_version, **options)
     validation = validate_output(output)
@@ -35,6 +41,9 @@ def measure(database, module, from_version, to_version, **options):
 
 
 def query_identity(q, base):
+    # Inputs: q, base.
+    # Does: Resolve the legacy evaluation query and its module path.
+    # Output: The normalized query identity.
     root = (Path(base)/q["module"]).resolve()
     files = {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
              for p in sorted(root.rglob("*")) if p.is_file() and p.suffix in {".py", ".xml", ".csv"} and ".git" not in p.parts}
@@ -42,6 +51,9 @@ def query_identity(q, base):
 
 
 def checked_refs(specification, changes):
+    # Inputs: specification, changes.
+    # Does: Check reference changes against the legacy collection.
+    # Output: Validated reference declarations.
     references = specification["references"]
     if len({r["id"] for r in references}) != len(references):
         raise ValueError("Reference IDs must be unique")
@@ -68,6 +80,9 @@ def checked_refs(specification, changes):
 
 def evaluate(database, specification, base, *, include_oca_migrations=False, repeats=1,
              development=False, output_dir=None):
+    # Inputs: database, specification, base, include_oca_migrations, repeats, development, output_dir.
+    # Does: Run the historical evaluation against its reviewed collection.
+    # Output: Metrics and any requested legacy artifacts.
     if include_oca_migrations:
         raise ValueError("The OCA inclusion switch was removed")
     if not 1 <= repeats <= 100 or not specification.get("reviewer"):

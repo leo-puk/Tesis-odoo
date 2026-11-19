@@ -7,11 +7,17 @@ class ScreeningDecodeError(ValueError):
     """Keep original bytes isolated when admission cannot inspect their text."""
 
     def __init__(self, details):
+        # Inputs: details.
+        # Does: Record the diagnostic for undecodable screening input.
+        # Output: A configured decoding exception.
         super().__init__("Cannot decode for admission; original retained in quarantine")
         self.details = details
 
 
 def decode_for_screening(raw, content_type=""):
+    # Inputs: raw, content_type.
+    # Does: Decode retained bytes using available encoding evidence.
+    # Output: Decoded text and decoding metadata or a screening error.
     message = Message()
     message["Content-Type"] = content_type or "text/plain"
     declared = message.get_content_charset()
@@ -48,5 +54,8 @@ def decode_for_screening(raw, content_type=""):
 
 
 def document_text(raw, content_type=""):
+    # Inputs: raw, content_type.
+    # Does: Produce the textual representation of a document.
+    # Output: Text and its representation metadata.
     """Compatibility admission helper. HTML remains HTML; conversion is pending."""
     return decode_for_screening(raw, content_type)[0]

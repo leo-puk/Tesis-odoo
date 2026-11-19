@@ -13,6 +13,9 @@ FIELD_OPTIONS = {"states", "readonly", "required", "store", "compute", "inverse"
 
 
 def layer_for(path):
+    # Inputs: path.
+    # Does: Infer a code layer from a file path.
+    # Output: The layer label.
     p = Path(path)
     if p.name == "__manifest__.py":
         return "manifest"
@@ -26,29 +29,47 @@ def layer_for(path):
 
 
 def tokens(text):
+    # Inputs: text.
+    # Does: Extract lexical tokens from the supplied text.
+    # Output: The token sequence.
     """Stable lexical representation shared by BM25 corpus and queries."""
     return sorted(set(re.findall(r"[a-zA-Z_][a-zA-Z_0-9]*", text.lower())))
 
 
 def extract(text, path, module=None):
+    # Inputs: text, path, module.
+    # Does: Extract legacy code entities and their relations.
+    # Output: A code observation and relation record.
     layer = layer_for(path)
     module = module or (Path(path).parts[0] if len(Path(path).parts) > 1 else "__unknown__")
     elements, relations, warnings = [], [], []
 
     def add(key, kind, name, start=1, end=None, role="reference"):
+        # Inputs: key, kind, name, start, end, role.
+        # Does: Register a localized legacy code entity.
+        # Output: An entry in the current entity collection.
         elements.append(dict(key=key, kind=kind, name=name, path=path,
                              line=start or 1, end_line=end or start or 1, layer=layer,
                              module=module, role=role))
         return key
 
     def xmlid(value):
+        # Inputs: value.
+        # Does: Apply the addon namespace to an XML identifier when available.
+        # Output: The normalized XML identifier.
         return value if "." in value else f"{module}.{value}"
 
     def edge(a, b, kind, line=1):
+        # Inputs: a, b, kind, line.
+        # Does: Register a relation between two legacy code entities.
+        # Output: An entry in the current relation collection.
         if a != b:
             relations.append(dict(source=a, target=b, kind=kind, path=path, line=line or 1))
 
     def literal(node, fallback=None):
+        # Inputs: node, fallback.
+        # Does: Read the value of an AST literal or use its fallback.
+        # Output: A literal value or the fallback.
         try:
             return ast.literal_eval(node)
         except (ValueError, TypeError, SyntaxError, RecursionError):
@@ -227,6 +248,9 @@ def extract(text, path, module=None):
 
 
 def module_files(directory):
+    # Inputs: directory.
+    # Does: Enumerate files supported by the legacy module scanner.
+    # Output: The module paths to scan.
     root = Path(directory).resolve()
     if not root.is_dir():
         raise ValueError("Module directory does not exist")
@@ -238,6 +262,9 @@ def module_files(directory):
 
 
 def resolve_references(data, declarations=()):
+    # Inputs: data, declarations.
+    # Does: Resolve legacy references against known declarations.
+    # Output: The enriched legacy observations.
     known = {e["key"] for e in [*data["elements"], *declarations] if e.get("role") == "declaration"}
     mapping = {}
     for element in data["elements"]:
@@ -258,6 +285,9 @@ def resolve_references(data, declarations=()):
 
 
 def scan_module(directory, module_name=None):
+    # Inputs: directory, module_name.
+    # Does: Aggregate legacy observations across module files.
+    # Output: The module scan and associated diagnostics.
     data = dict(elements=[], relations=[], warnings=[])
     for path, text in module_files(directory):
         for kind, values in extract(text, path, module_name or Path(directory).resolve().name).items():

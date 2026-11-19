@@ -13,10 +13,16 @@ TOKEN_PATTERN = r'[^\W\d]\w*'
 
 
 def term_counts(text):
+    # Inputs: text.
+    # Does: Tokenize text and count its normalized terms.
+    # Output: Term frequencies.
     return Counter(t for t in re.findall(TOKEN_PATTERN,text.lower(),re.UNICODE) if t not in STOP_WORDS)
 
 
 def attach_terms(units):
+    # Inputs: units.
+    # Does: Attach corpus-level term statistics to each normalized unit.
+    # Output: The corpus term metadata and updated units.
     ordered = sorted(units,key=lambda u:u['id'])
     counts = [term_counts(u['text']) for u in ordered]
     vocabulary = sorted({t for row in counts for t in row})

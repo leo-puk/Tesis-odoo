@@ -7,6 +7,9 @@ TRAVERSAL_VERSION = 'shortest-predecessors-1'
 
 
 def traverse_relations(extracted, *, maximum_hops=None):
+    # Inputs: extracted, maximum_hops.
+    # Does: Explain minimum distances and preceding edges from the seeds.
+    # Output: Reached nodes and edge identifiers.
     """Return reached nodes and the IDs of relations between them.
 
     Each predecessor references a registered edge from the previous level.

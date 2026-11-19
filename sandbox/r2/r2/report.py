@@ -12,18 +12,27 @@ from .relations.traversal import traverse_relations
 
 
 def version_key(version):
+    # Inputs: version.
+    # Does: Validate a major.minor version string and make it comparable.
+    # Output: The numeric version pair.
     if not isinstance(version, str) or not re.fullmatch(r"[0-9]+\.[0-9]+", version):
         raise ValueError("Versions must use major.minor format")
     return tuple(map(int, version.split(".")))
 
 
 def citation(unit):
+    # Inputs: unit.
+    # Does: Project the provenance and locator of a normalized unit.
+    # Output: A source citation.
     return dict(unit_id=unit["id"], source_id=unit["source_id"], url=unit["source_url"],
                 artifact_id=unit["artifact_id"], locator=unit["source_locator"],
                 from_version=unit["version_from"], to_version=unit["version_to"])
 
 
 def graph_hits(graph, units, admissible):
+    # Inputs: graph, units, admissible.
+    # Does: Recompute admissible traversal paths under a query scope.
+    # Output: One explained path per reachable unit.
     seeds = [uid for uid in graph["seeds"] if admissible(units[uid], context=True)]
     allowed = {node["unit_id"] for node in graph["nodes"] if admissible(units[node["unit_id"]], context=True)}
     edges = [edge for edge in graph["edges"] if {edge["left"], edge["right"]} <= allowed]
@@ -42,6 +51,9 @@ def graph_hits(graph, units, admissible):
 
 
 def changed_observations(unit):
+    # Inputs: unit.
+    # Does: Locate observations on added or removed code lines.
+    # Output: The observations on changed lines.
     data = unit["data"]
     lines = {"before": data["before_start"], "after": data["after_start"]}
     changed = set()
@@ -58,6 +70,9 @@ def changed_observations(unit):
 
 
 def diff_key(unit):
+    # Inputs: unit.
+    # Does: Build a key for deduplicating identical diff hunks.
+    # Output: The transition, path and diff content tuple.
     data = unit["data"]
     return (unit["version_from"], unit["version_to"], data["old_path"], data["new_path"],
             data["before_start"], data["after_start"], data["diff_body"])
@@ -65,6 +80,9 @@ def diff_key(unit):
 
 def search_units(database, module, from_version, to_version, *, layer="all", maximum_hops=3,
                  limit=10, module_name=None, engine="graph"):
+    # Inputs: database, module, from_version, to_version, layer, maximum_hops, limit, module_name, engine.
+    # Does: Retrieve scoped changes by graph or BM25 and validate the result.
+    # Output: The report and optional crossing and graph handoffs.
     """Return report and its intermediate evidence. BM25 uses the same corpus and filters."""
     first, last = version_key(from_version), version_key(to_version)
     if first >= last:
@@ -75,6 +93,9 @@ def search_units(database, module, from_version, to_version, *, layer="all", max
         raise ValueError("Choose graph or bm25 and a depth from 0 to 3")
 
     def admissible(unit, *, context=False):
+        # Inputs: unit, context.
+        # Does: Apply the query's version bounds to a result or context unit.
+        # Output: A boolean eligibility decision.
         origin, target = unit["version_from"], unit["version_to"]
         if origin and target:
             return first <= version_key(origin) < version_key(target) <= last
@@ -175,6 +196,9 @@ def search_units(database, module, from_version, to_version, *, layer="all", max
 
 
 def validate_report(report):
+    # Inputs: report.
+    # Does: Check the report scope, counts and traceable evidence.
+    # Output: True or a validation error.
     query, summary = report["query"], report["summary"]
     results = report["results"]
     if report["schema_version"] != 1 or report["engine"] not in {"graph", "bm25"}:
@@ -212,6 +236,9 @@ def validate_report(report):
 
 
 def render_report(report):
+    # Inputs: report.
+    # Does: Format the report summary, evidence and warnings for the terminal.
+    # Output: The rendered report text.
     summary = report["summary"]
     lines = [f"Changes found / shown: {summary['changes_found']} / {summary['changes_shown']}",
              f"Matching migrations: {summary['matching_migrations']}",

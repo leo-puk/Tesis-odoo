@@ -12,10 +12,16 @@ CRITERIA = ("independent_maintainer_review", "single_module", "consecutive_versi
 
 
 def code_revision():
+    # Inputs: No explicit arguments.
+    # Does: Read the current Git revision for the evaluation protocol.
+    # Output: The revision identifier when available.
     return fingerprint({p.relative_to(Path(__file__).parent).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(Path(__file__).parent.rglob("*.py")) if "__pycache__" not in p.parts})
 
 
 def date(value):
+    # Inputs: value.
+    # Does: Parse the protocol date value.
+    # Output: A date for comparison.
     result = datetime.fromisoformat(value.replace("Z", "+00:00"))
     if result.tzinfo is None:
         raise ValueError("Temporal cut and publication dates require a timezone")
@@ -23,6 +29,9 @@ def date(value):
 
 
 def eligible(case, cutoff, excluded_modules):
+    # Inputs: case, cutoff, excluded_modules.
+    # Does: Apply cutoff and exclusion rules to a historical migration case.
+    # Output: The eligibility decision.
     reasons = []
     if case.get("module") in excluded_modules or case.get("inspected_for_development"):
         return "excluded", ["used_for_construction_or_inspected"]
@@ -47,6 +56,9 @@ def eligible(case, cutoff, excluded_modules):
 
 
 def sample_cases(spec):
+    # Inputs: spec.
+    # Does: Select the protocol cases for the evaluation sample.
+    # Output: The selected cases and selection metadata.
     cutoff = spec.get("cutoff", {})
     if not cutoff.get("date"):
         raise ValueError("A recorded temporal cutoff is required")
@@ -87,6 +99,9 @@ def sample_cases(spec):
 
 
 def assign_sources(records, registry):
+    # Inputs: records, registry.
+    # Does: Match source records to the audited assignment registry.
+    # Output: The assigned source records and audit status.
     """Run before opening any source content. Stronger than a manual split label."""
     if not registry:
         return records, [], False
@@ -129,6 +144,9 @@ def assign_sources(records, registry):
 
 
 def freeze_protocol(spec, collection_revision, directory, selection=None):
+    # Inputs: spec, collection_revision, directory, selection.
+    # Does: Persist the selected cases and collection revision for repeatable evaluation.
+    # Output: The written protocol artifacts.
     required = ("status", "limit", "depth", "seed_policy", "ranking", "P1_aggregation", "judgment_responsible", "cache_state", "repeats")
     missing = [key for key in required if key not in spec]
     if missing:

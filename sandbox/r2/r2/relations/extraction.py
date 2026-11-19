@@ -12,6 +12,9 @@ from .store import UnitStore, collection_contract
 
 
 def checked_crossing(value):
+    # Inputs: value.
+    # Does: Validate a crossing handoff from memory or disk.
+    # Output: An isolated and validated crossing result.
     if isinstance(value, (str, Path)):
         value = json.loads(Path(value).read_text(encoding='utf-8-sig'))
     value = deepcopy(value)
@@ -36,6 +39,9 @@ def checked_crossing(value):
 
 
 def _extract(database, seeds, maximum, crossing_context, expected_collection):
+    # Inputs: database, seeds, maximum, crossing_context, expected_collection.
+    # Does: Find evidenced relations around the seeds with an indexed search.
+    # Output: The reached units, edges and diagnostics.
     if type(maximum) is not int or not 0 <= maximum <= 3:
         raise ValueError('maximum_hops must be an integer from zero through three')
     with connect(database) as con:
@@ -54,6 +60,9 @@ def _extract(database, seeds, maximum, crossing_context, expected_collection):
         edge_map = {}
 
         def extract_frontier(boundary=False):
+            # Inputs: boundary.
+            # Does: Scan the current frontier for entailed relation edges.
+            # Output: Neighbor IDs and updated edge evidence.
             neighbors = set()
             for uid in sorted(frontier):
                 for ordinal, entity, module, identity in store.entities(uid):
@@ -105,6 +114,9 @@ def _extract(database, seeds, maximum, crossing_context, expected_collection):
 
 
 def extract_relations(crossing, database, *, maximum_hops=3):
+    # Inputs: crossing, database, maximum_hops.
+    # Does: Resolve the crossing handoff and extract indexed relations.
+    # Output: The evidenced neighborhood of the crossing seeds.
     """Form evidenced, undirected edges from indexed normalized observations."""
     handoff = checked_crossing(crossing)
     context = {key: handoff[key] for key in ('result_id', 'schema_version', 'rules_version', 'status')}

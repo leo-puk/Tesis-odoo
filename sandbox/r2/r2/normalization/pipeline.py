@@ -5,6 +5,9 @@ from .schema import validate_collection
 
 
 def normalize_session(inventory, bindings=None):
+    # Inputs: inventory, bindings.
+    # Does: Read, convert and validate an acquisition session.
+    # Output: The normalized collection in memory.
     """Return converted records and exclusions without network or persistence.
 
     ``inventory`` and ``bindings`` are paths to the existing session inventory

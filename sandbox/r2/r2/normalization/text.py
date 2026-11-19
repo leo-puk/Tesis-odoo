@@ -3,6 +3,9 @@ from lxml import html
 
 
 def normalize(raw, content_type=""):
+    # Inputs: raw, content_type.
+    # Does: Decode and normalize text according to its content type.
+    # Output: Normalized text.
     text = raw.decode("utf-8-sig")
     if "html" in content_type or text.lstrip().lower().startswith(("<!doctype html", "<html")):
         root = html.fromstring(raw)

@@ -7,14 +7,23 @@ from urllib import parse
 
 
 def utcnow():
+    # Inputs: No explicit arguments.
+    # Does: Read the current UTC time.
+    # Output: An ISO-formatted timestamp.
     return datetime.now(timezone.utc).isoformat()
 
 
 def sha(data):
+    # Inputs: data.
+    # Does: Compute the SHA-256 of the supplied bytes.
+    # Output: A hexadecimal digest.
     return hashlib.sha256(data).hexdigest()
 
 
 def validate_source_origin(kind, url):
+    # Inputs: kind, url.
+    # Does: Check that the URL belongs to the declared source origin.
+    # Output: Successful validation or a source-origin error.
     parsed = parse.urlparse(url)
     host, path = parsed.hostname, parsed.path.lower()
     allowed = {
@@ -28,5 +37,8 @@ def validate_source_origin(kind, url):
 
 
 def save(path, value):
+    # Inputs: path, value.
+    # Does: Serialize a value as UTF-8 JSON.
+    # Output: A written JSON file.
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding="utf-8")

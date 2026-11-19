@@ -11,16 +11,25 @@ from .provenance import save, utcnow
 
 class SameHostRedirect(request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
+        # Inputs: req, fp, code, msg, headers, newurl.
+        # Does: Apply the HTTP client's redirect policy.
+        # Output: A redirect request or a policy error.
         raise ValueError('Redirect requires a separately reviewed explicit URL')
 
 
 class HttpCapture:
     def __init__(self, directory, transport=None):
+        # Inputs: directory, transport.
+        # Does: Configure HTTPS access for the capture directory.
+        # Output: An HTTP client instance.
         self.directory = Path(directory)
         self.directory.mkdir(parents=True, exist_ok=True)
         self.transport = transport or request.build_opener(SameHostRedirect()).open
 
     def get(self, url, projection=None, *, accept='application/vnd.github+json', persist=False):
+        # Inputs: url, projection, accept, persist.
+        # Does: Fetch a resource with bounded retries and optional projection.
+        # Output: The response payload and capture metadata.
         parsed = parse.urlparse(url)
         if parsed.scheme != 'https' or parsed.username or parsed.password or any(
                 k.lower() in {'token','access_token','key'} for k,_ in parse.parse_qsl(parsed.query)):

@@ -12,6 +12,9 @@ from .terms import term_counts
 
 
 def build_normalized(inventory, bindings, destination):
+    # Inputs: inventory, bindings, destination.
+    # Does: Normalize the admitted inventory and write its search indexes.
+    # Output: An indexed SQLite database and build summary.
     started = time.perf_counter()
     corpus = normalize_session(inventory, bindings)
     destination = Path(destination).resolve()

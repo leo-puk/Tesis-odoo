@@ -10,10 +10,16 @@ CATEGORIES = {"api_refactoring", "behavior", "syntax", "data", "security", "mani
 
 
 def key(value):
+    # Inputs: value.
+    # Does: Produce a stable review key for the supplied value.
+    # Output: The normalized key.
     return hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:24]
 
 
 def apply_reviews(candidates, annotations):
+    # Inputs: candidates, annotations.
+    # Does: Attach applicable review annotations to change candidates.
+    # Output: The annotated candidates.
     evidence = {"ev-" + c["id"][4:]: {**deepcopy(c), "evidence_id": "ev-"+c["id"][4:]} for c in candidates.values()}
     changes = deepcopy(candidates)
     for c in changes.values():
@@ -105,6 +111,9 @@ def apply_reviews(candidates, annotations):
 
 
 def search_document(change):
+    # Inputs: change.
+    # Does: Construct the searchable text of a legacy change.
+    # Output: A text document for indexing.
     """Content-only whitelist, independent of administrative JSON and timing."""
     return "\n".join([change["title"], " ".join(change.get("affected_elements", change["elements"])),
                       *[b.get(field, "") for b in change.get("evidence_blocks", [change]) for field in ("removed", "added")]])

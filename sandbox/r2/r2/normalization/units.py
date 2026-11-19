@@ -9,6 +9,9 @@ from .terms import attach_terms
 
 
 def layer_for_path(path):
+    # Inputs: path.
+    # Does: Infer the normalized evidence layer from an artifact path.
+    # Output: The layer label.
     if path.endswith('__manifest__.py'): return 'manifest'
     if path.endswith('.py'): return 'python'
     if path.endswith('.xml'): return 'data' if any(p in path.split('/') for p in ('data','security')) else 'xml'
@@ -17,6 +20,9 @@ def layer_for_path(path):
 
 
 def convert_units(captured):
+    # Inputs: captured.
+    # Does: Convert captured artifacts into located searchable units.
+    # Output: Sources, artifacts, units and normalization diagnostics.
     sources, artifacts, records, issues, warnings = {}, {}, {}, [], []
     for group in sorted(captured,key=lambda u:u['source']['id']):
         for file in sorted(group['files'],key=lambda f:f['path']):

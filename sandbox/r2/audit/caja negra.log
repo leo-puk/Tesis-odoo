@@ -1,0 +1,10 @@
+R2 black-box verification | Python 3.12.3 | Upstream HTTP fixtures
+test_r21_auto_plan_through_traceable_report_and_r22_query (test_caja_negra.CajaNegraR2.test_r21_auto_plan_through_traceable_report_and_r22_query) ... ok
+test_r21_reports_no_eligible_changes_when_only_manifests_are_admitted (test_caja_negra.CajaNegraR2.test_r21_reports_no_eligible_changes_when_only_manifests_are_admitted) ... ok
+test_r22_plan_is_offline_and_writes_reusable_acquisition_inputs (test_caja_negra.CajaNegraR2.test_r22_plan_is_offline_and_writes_reusable_acquisition_inputs) ... ok
+test_r22_rejects_reversed_versions_without_output (test_caja_negra.CajaNegraR2.test_r22_rejects_reversed_versions_without_output) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.353s
+
+OK

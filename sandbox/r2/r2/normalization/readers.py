@@ -11,6 +11,9 @@ STATES = {"accepted", "excluded", "incomplete", "failed", "deleted", "quarantine
 
 
 def read_session(inventory, bindings=None):
+    # Inputs: inventory, bindings.
+    # Does: Read admitted files and attach processing bindings.
+    # Output: Captured groups and skipped acquisition records.
     inventory = Path(inventory).absolute()
     folder = inventory.parent
     if any(p.is_symlink() or p.is_junction() for p in [inventory, *inventory.parents]):

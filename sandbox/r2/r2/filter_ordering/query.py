@@ -11,6 +11,9 @@ RANKING = {"version": "2", "order": ["verified_first", "minimum_depth", "typed_s
 
 
 def paths_by_depth(graph, seeds, maximum):
+    # Inputs: graph, seeds, maximum.
+    # Does: Traverse the legacy graph from its seeds up to the requested depth.
+    # Output: Reachable paths indexed by node.
     """Stable multiorigin BFS; store one lexicographically stable shortest path."""
     seeds = sorted(set(seeds) & set(graph))
     paths = {key: [key] for key in seeds}
@@ -29,6 +32,9 @@ def paths_by_depth(graph, seeds, maximum):
 
 def retrieve(database, module, from_version, to_version, *, layer="all", depth=3,
              limit=10, engine="graph", status="all", include_oca_migrations=False, module_name=None):
+    # Inputs: database, module, from_version, to_version, layer, depth, limit, engine, status, include_oca_migrations, module_name.
+    # Does: Query the legacy collection with the given migration scope.
+    # Output: A legacy evidence report.
     if include_oca_migrations:
         raise ValueError("The OCA inclusion switch was removed")
     start = time.perf_counter()
@@ -68,6 +74,9 @@ def retrieve(database, module, from_version, to_version, *, layer="all", depth=3
         # Only source-version relations can explain the ORIGINAL module. No
         # implicit propagation through an unexecuted intermediate transformation.
         def add_relation(r):
+            # Inputs: r.
+            # Does: Add a stored relation to the legacy graph.
+            # Output: An updated graph and relation lookup.
             a, b = r["source"], r["target"]
             if not graph.has_edge(a, b):
                 graph.add_edge(a, b, evidences=[])
@@ -165,6 +174,9 @@ def retrieve(database, module, from_version, to_version, *, layer="all", depth=3
 
 
 def validate_output(output):
+    # Inputs: output.
+    # Does: Check the legacy output against its report contract.
+    # Output: Successful validation or a validation error.
     """V1 structural and accounting checks, without asserting pertinence."""
     errors = []
     try:
@@ -226,6 +238,9 @@ def validate_output(output):
 
 
 def render_text(output):
+    # Inputs: output.
+    # Does: Format a legacy result for the terminal.
+    # Output: The rendered report text.
     s = output["summary"]
     lines = [f"Collection: {output['collection_revision']}", f"Engine: {output['engine']}",
              f"Graph implementation: {output['graph_implementation']}",

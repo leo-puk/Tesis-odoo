@@ -21,6 +21,9 @@ CONTEXT_FIELDS = ('origin', 'syntax', 'model', 'module', 'scope', 'qualified_nam
 
 
 def rule_catalog():
+    # Inputs: No explicit arguments.
+    # Does: Describe the active technical identity rules.
+    # Output: The relation-rule definitions.
     return [dict(id='shared_'+family+'_identity_v1', family=family,
                  admitted_types=list(FAMILIES[family]), scope=list(SCOPES[family]),
                  comparison='exact_case_sensitive_identity_tuple', direction='undirected',
@@ -29,6 +32,9 @@ def rule_catalog():
 
 
 def identity_for(entity, module=None):
+    # Inputs: entity, module.
+    # Does: Check that an observation can support a technical relation.
+    # Output: The scoped identity or its exclusion reason.
     family = FAMILY.get(entity.get('type'))
     if family not in FAMILIES_ALLOWED:
         return None, 'family_not_enabled'
@@ -51,6 +57,9 @@ def identity_for(entity, module=None):
 
 
 def point_observation(unit_id, ordinal, entity, module):
+    # Inputs: unit_id, ordinal, entity, module.
+    # Does: Copy one localized observation into an edge evidence record.
+    # Output: A compact endpoint record.
     """Do not carry arbitrary context fields, unit text or corpus terms into a graph."""
     observation = dict(name=entity['name'], type=entity['type'], rule=entity['rule'],
         location={k: deepcopy(entity['location'][k]) for k in LOCATION_FIELDS if k in entity['location']},
@@ -59,4 +68,7 @@ def point_observation(unit_id, ordinal, entity, module):
 
 
 def names_for(entity, module):
+    # Inputs: entity, module.
+    # Does: Translate a relation observation to names for index lookup.
+    # Output: Exact names to search.
     return lookup_names(entity, module)

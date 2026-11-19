@@ -7,6 +7,9 @@ from .rules import identity_for, names_for, FAMILIES_ALLOWED
 
 
 def collection_contract(metadata):
+    # Inputs: metadata.
+    # Does: Read the normalized collection revision and rule version.
+    # Output: The graph collection contract.
     normalization = metadata.get('normalization', {})
     if metadata.get('schema_version') != 4 or not isinstance(normalization, dict):
         raise ValueError('Unit relations require normalized SQLite schema 4')
@@ -22,6 +25,9 @@ def collection_contract(metadata):
 
 class UnitStore:
     def __init__(self, con):
+        # Inputs: con.
+        # Does: Verify normalized tables and initialize query caches.
+        # Output: An indexed unit store.
         self.con = con
         for table in ('information_units', 'unit_entities', 'sources'):
             if not con.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,)).fetchone():
@@ -35,6 +41,9 @@ class UnitStore:
         self.ignored = set()
 
     def unit(self, uid):
+        # Inputs: uid.
+        # Does: Load and validate a stored unit and its source namespace.
+        # Output: The cached normalized unit.
         if uid not in self.units:
             row = self.con.execute('SELECT payload FROM information_units WHERE id=?', (uid,)).fetchone()
             if row is None:
@@ -60,6 +69,9 @@ class UnitStore:
         return self.units[uid]
 
     def check_row(self, row):
+        # Inputs: row.
+        # Does: Confirm a stored indexed entity matches the unit payload.
+        # Output: The unit, observation and source namespace.
         uid, ordinal = row['unit_id'], row['ordinal']
         unit = self.unit(uid)
         entity = json.loads(row['payload'])
@@ -70,6 +82,9 @@ class UnitStore:
         return unit, entity, self.modules[unit['source_id']]
 
     def entities(self, uid):
+        # Inputs: uid.
+        # Does: Collect indexed observations that can form technical relations.
+        # Output: The scoped observations and their ordinals.
         if uid not in self.observations:
             unit = self.unit(uid)
             rows = self.con.execute('SELECT unit_id,ordinal,name,type,payload FROM unit_entities '
@@ -88,6 +103,9 @@ class UnitStore:
         return self.observations[uid]
 
     def candidates(self, entity, module):
+        # Inputs: entity, module.
+        # Does: Yield same-name and same-family candidate index rows.
+        # Output: An iterator of potential entity matches.
         family = FAMILY.get(entity['type'])
         if family not in FAMILIES_ALLOWED:
             return

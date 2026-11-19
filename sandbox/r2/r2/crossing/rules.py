@@ -13,6 +13,9 @@ FAMILY = {kind:family for family,kinds in FAMILIES.items() for kind in kinds}
 
 
 def partner_identity(entity, module_name=None):
+    # Inputs: entity, module_name.
+    # Does: Apply the input-side rules for technical identities.
+    # Output: A scoped identity or a rejection reason.
     """Only identifiers observed in partner instructions can become seeds."""
     if entity.get('context',{}).get('origin') != 'code':
         return None, 'non_code_mention'
@@ -20,6 +23,9 @@ def partner_identity(entity, module_name=None):
 
 
 def unit_identity(entity, module_name=None):
+    # Inputs: entity, module_name.
+    # Does: Apply the source-side rules for technical identities.
+    # Output: A scoped identity or a rejection reason.
     """Typed observations can cross regardless of code/document/comment origin."""
     if entity.get('context',{}).get('origin') not in {'code','documentation','comment'}:
         return None, 'unknown_observation_origin'
@@ -27,6 +33,9 @@ def unit_identity(entity, module_name=None):
 
 
 def technical_identity(entity, module_name=None):
+    # Inputs: entity, module_name.
+    # Does: Construct an explicit type, name and scope identity.
+    # Output: A typed identity or its unresolved reason.
     """Build identity from explicit type/scope; origin eligibility is side-specific."""
     context = entity.get('context',{})
     family = FAMILY.get(entity.get('type'))
@@ -71,6 +80,9 @@ def technical_identity(entity, module_name=None):
 
 
 def lookup_names(entity, module_name=None):
+    # Inputs: entity, module_name.
+    # Does: Derive indexed spellings for a technical observation.
+    # Output: Sorted exact candidate names.
     """Exact spelling alternatives only for an explicitly known XML-ID namespace."""
     names = {entity['name']}
     if FAMILY.get(entity['type']) == 'external_id':

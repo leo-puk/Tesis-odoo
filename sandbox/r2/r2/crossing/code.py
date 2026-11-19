@@ -17,6 +17,9 @@ IGNORED = {'.git', '__pycache__', '.venv', '.venv-repro', 'node_modules'}
 
 
 def read_code(directory, module_name=None):
+    # Inputs: directory, module_name.
+    # Does: Read Python, XML and CSV data and extract module entities.
+    # Output: A code inventory, observations and analysis diagnostics.
     entry = Path(directory).absolute()
     if any(p.is_symlink() or p.is_junction() for p in (entry, *entry.parents)):
         raise ValueError('Partner module paths cannot contain links or junctions')
@@ -34,6 +37,9 @@ def read_code(directory, module_name=None):
     entities, files, errors, limitations = [], [], [], []
 
     def walk_error(exc):
+        # Inputs: exc.
+        # Does: Record an error raised while walking the input directory.
+        # Output: An appended reading error.
         errors.append(dict(stage='reading', file=str(exc.filename), error=type(exc).__name__, detail=str(exc)))
 
     walk = [(str(root), [], [entry.name])] if single_file else os.walk(root, followlinks=False,onerror=walk_error)

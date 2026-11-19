@@ -5,6 +5,9 @@ from .entities import extract_entities, manifest_entities
 
 
 def part_entities(part, source, locator, artifact_path):
+    # Inputs: part, source, locator, artifact_path.
+    # Does: Apply the relevant entity rules to a normalized artifact part.
+    # Output: Observations and warnings in source coordinates.
     """Return observations and limits, without trusting a unit's derived data."""
     entities, warnings = [], []
     module = source.get('binding', {}).get('module')

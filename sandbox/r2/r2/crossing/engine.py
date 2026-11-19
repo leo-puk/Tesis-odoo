@@ -10,6 +10,9 @@ from .rules import FAMILY, FAMILIES, RULE_VERSION, partner_identity, unit_identi
 
 
 def _candidates(con, name, kinds):
+    # Inputs: con, name, kinds.
+    # Does: Fetch indexed candidates for an exact name and entity types.
+    # Output: Matching SQLite rows.
     placeholders = ','.join('?' for _ in kinds)
     return con.execute(
         'SELECT e.unit_id,e.ordinal,e.name,e.type,e.payload AS entity_payload,u.payload AS unit_payload '
@@ -20,6 +23,9 @@ def _candidates(con, name, kinds):
 
 
 def cross_module(database, module, *, module_name=None, output=None):
+    # Inputs: database, module, module_name, output.
+    # Does: Join module observations to exact scoped identities in the collection.
+    # Output: An ID-only crossing handoff and diagnostic counts.
     """Return exact typed matches; no graph, relevance ranking or code execution.
 
     Requires a normalized SQLite schema-4 collection with corrected scope rules.
@@ -114,6 +120,9 @@ def cross_module(database, module, *, module_name=None, output=None):
 
 
 def validate_result(result):
+    # Inputs: result.
+    # Does: Check crossing structure, evidence and reproducible counts.
+    # Output: True or a validation error.
     """Check the ID-only handoff and its accounting before returning or saving."""
     if result.get('schema_version') != 2 or result.get('component') != 'crossing':
         raise ValueError('Expected crossing output schema 2')
@@ -147,6 +156,9 @@ def validate_result(result):
 
 
 def save_result(result, destination):
+    # Inputs: result, destination.
+    # Does: Validate and write a crossing handoff exclusively.
+    # Output: A new crossing JSON file.
     """Persist a reproducible JSON report; never overwrite a collection or report."""
     validate_result(result)
     payload = json.dumps(result,ensure_ascii=False,sort_keys=True,indent=2,allow_nan=False)+'\n'

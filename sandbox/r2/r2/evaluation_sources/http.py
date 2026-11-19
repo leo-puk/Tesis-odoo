@@ -10,6 +10,9 @@ from .provenance import save, sha, utcnow
 
 class SameHostRedirect(request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
+        # Inputs: req, fp, code, msg, headers, newurl.
+        # Does: Apply the HTTP client's redirect policy.
+        # Output: A redirect request or a policy error.
         if parse.urlparse(req.full_url).hostname != parse.urlparse(newurl).hostname:
             raise ValueError("Cross-host redirects require a new explicit source URL")
         return super().redirect_request(req, fp, code, msg, headers, newurl)
@@ -17,11 +20,17 @@ class SameHostRedirect(request.HTTPRedirectHandler):
 
 class HttpCapture:
     def __init__(self, directory, transport=None):
+        # Inputs: directory, transport.
+        # Does: Configure HTTPS access for the capture directory.
+        # Output: An HTTP client instance.
         self.directory = Path(directory)
         self.directory.mkdir(parents=True, exist_ok=True)
         self.transport = transport or request.build_opener(SameHostRedirect()).open
 
     def get(self, url, projection=None):
+        # Inputs: url, projection.
+        # Does: Fetch and record a resource for evidence preparation.
+        # Output: The projected payload and capture record.
         parsed = parse.urlparse(url)
         if parsed.scheme != "https" or parsed.username or parsed.password or any(
                 k.lower() in {"token", "access_token", "key"} for k, _ in parse.parse_qsl(parsed.query)):

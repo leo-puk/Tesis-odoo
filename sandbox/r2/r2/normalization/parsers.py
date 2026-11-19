@@ -8,6 +8,9 @@ from .diff import parse_diff
 
 
 def sections(text, rst=False):
+    # Inputs: text, rst.
+    # Does: Locate Markdown or reStructuredText sections.
+    # Output: An iterator of text sections and original line ranges.
     lines = text.splitlines(keepends=True)
     starts, fenced = [], None
     for i, line in enumerate(lines):
@@ -37,6 +40,9 @@ def sections(text, rst=False):
 
 
 def diff_parts(text, pointer=None):
+    # Inputs: text, pointer.
+    # Does: Convert parsed hunks into located normalized artifact parts.
+    # Output: Diff parts and parser warnings.
     hunks, warnings = parse_diff(text)
     parts = []
     for hunk in hunks:
@@ -51,6 +57,9 @@ def diff_parts(text, pointer=None):
 
 
 def pr_parts(text):
+    # Inputs: text.
+    # Does: Extract localized discussion, commit and diff parts from a PR bundle.
+    # Output: Artifact parts and extraction warnings.
     bundle = json.loads(text)
     if not isinstance(bundle, dict):
         raise ValueError('PR bundle must be an object')
@@ -61,6 +70,9 @@ def pr_parts(text):
     context = dict(pr_id=pull.get('number') or pull.get('id'), pr_url=pull.get('html_url'),pr_title=pull.get('title'))
 
     def prose(value, pointer, kind, resource_id=None, resource=None, resource_pointer=None):
+        # Inputs: value, pointer, kind, resource_id, resource, resource_pointer.
+        # Does: Record an individual pull request prose resource and its JSON location.
+        # Output: A new artifact part for the current PR.
         if value is not None and not isinstance(value, str):
             raise ValueError('PR prose must be text or null')
         locator=dict(json_pointer=pointer)
@@ -118,11 +130,17 @@ def pr_parts(text):
 
 
 def html_text(text):
+    # Inputs: text.
+    # Does: Read document text and preserve relevant link targets.
+    # Output: Normalized document text.
     root = html.fromstring(text, parser=html.HTMLParser(no_network=True))
     for node in root.xpath('//script|//style|//nav|//footer'):
         node.drop_tree()
     blocks = {'p','div','h1','h2','h3','h4','h5','h6','li','tr','pre','section','br'}
     def render(node):
+        # Inputs: node.
+        # Does: Render a subtree of the parsed HTML document.
+        # Output: Text for the subtree.
         body = node.text or ''
         for child in node:
             body += render(child) + (child.tail or '')
@@ -135,6 +153,9 @@ def html_text(text):
 
 
 def parse_artifact(artifact, source):
+    # Inputs: artifact, source.
+    # Does: Choose the parser for an admitted artifact and source kind.
+    # Output: Located parts and parser warnings.
     text = artifact['text']
     suffix = PurePosixPath(artifact['path']).suffix.lower()
     kind = source['kind']

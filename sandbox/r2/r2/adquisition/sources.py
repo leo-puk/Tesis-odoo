@@ -13,6 +13,9 @@ from urllib.parse import urlparse
 
 
 def _original_suffix(name, url, content_type):
+    # Inputs: name, url, content_type.
+    # Does: Choose a storage extension from the capture metadata.
+    # Output: The extension for the retained artifact.
     if 'html' in content_type.lower():
         return '.html'
     suffix = Path(urlparse(url).path).suffix.lower() or Path(name).suffix.lower()
@@ -20,11 +23,17 @@ def _original_suffix(name, url, content_type):
 
 
 def _log(folder, event, **fields):
+    # Inputs: folder, event, fields.
+    # Does: Append an event and its fields to the capture ledger.
+    # Output: An appended JSONL record.
     with (folder / 'acquisition.jsonl').open('a', encoding='utf-8') as stream:
         stream.write(json.dumps(dict(time=utcnow(), event=event, **fields), ensure_ascii=False) + '\n')
 
 
 def _root(base):
+    # Inputs: base.
+    # Does: Validate and prepare the acquisition storage root.
+    # Output: The resolved storage directory.
     path = Path(base).absolute()
     if path.name != 'temp_data':
         path /= 'temp_data'
@@ -36,6 +45,9 @@ def _root(base):
 
 
 def capture_plan(plan_path, output='temp_data', *, catalog_path, transport=None):
+    # Inputs: plan_path, output, catalog_path, transport.
+    # Does: Download and admit complete sources from a reviewed plan.
+    # Output: An acquisition inventory and status summary.
     plan = json.loads(Path(plan_path).read_text(encoding='utf-8-sig'))
     policy = SourcePolicy(json.loads(Path(catalog_path).read_text(encoding='utf-8-sig')))
     if not isinstance(plan, list):
@@ -153,6 +165,9 @@ def capture_plan(plan_path, output='temp_data', *, catalog_path, transport=None)
 
 
 def delete_units(session_id, unit_ids, output='temp_data'):
+    # Inputs: session_id, unit_ids, output.
+    # Does: Delete selected stored acquisition artifacts and update their status.
+    # Output: Deletion outcomes for the requested units.
     root = _root(output)
     if not re.fullmatch(r'[a-f0-9]{32}', session_id):
         raise ValueError('Invalid session id')

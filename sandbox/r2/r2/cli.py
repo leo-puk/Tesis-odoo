@@ -6,6 +6,7 @@ from sqlite3 import DatabaseError
 
 from . import __version__
 from .adquisition import capture_plan, delete_units
+from .adquisition.planner import write_plan
 from .records import connect, load, meta
 from .crossing import cross_module, save_result
 from .normalization.schema import LAYERS
@@ -16,6 +17,9 @@ from .workflow import run_workflow
 
 
 def query_arguments(command, *, baseline=False):
+    # Inputs: command, baseline.
+    # Does: Register the shared CLI options for a migration query.
+    # Output: An updated argument parser.
     command.add_argument("module", type=Path)
     command.add_argument("--from", dest="from_version", required=True)
     command.add_argument("--to", dest="to_version", required=True)
@@ -29,15 +33,24 @@ def query_arguments(command, *, baseline=False):
 
 
 def parser():
+    # Inputs: No explicit arguments.
+    # Does: Define the public commands and argument contracts.
+    # Output: The CLI argument parser.
     cli = argparse.ArgumentParser(prog="r2", description="Local Odoo migration evidence from normalized units")
     cli.add_argument("--version", action="version", version=__version__)
     commands = cli.add_subparsers(dest="command", required=True)
     run = commands.add_parser("run", help="Acquire, normalize, cross, extract relations and write a report")
-    run.add_argument("--plan", required=True, type=Path)
+    run.add_argument("--plan", type=Path, help="Use an existing capture plan instead of planning from the module")
     run.add_argument("--catalog", required=True, type=Path)
     run.add_argument("--bindings", type=Path)
     run.add_argument("--output-dir", required=True, type=Path)
     query_arguments(run)
+    planner = commands.add_parser("plan", help="Plan acquisition URLs from a local module or repository")
+    planner.add_argument("module", type=Path)
+    planner.add_argument("--from", dest="from_version", required=True)
+    planner.add_argument("--to", dest="to_version", required=True)
+    planner.add_argument("--catalog", required=True, type=Path)
+    planner.add_argument("--output-dir", required=True, type=Path)
     search = commands.add_parser("query", aliases=["search-units"], help="Query a normalized collection")
     query_arguments(search, baseline=True)
     search.add_argument("--db", type=Path, required=True)
@@ -76,10 +89,16 @@ def parser():
 
 
 def json_text(value):
+    # Inputs: value.
+    # Does: Serialize a value for CLI output.
+    # Output: Indented JSON text.
     return json.dumps(value, indent=2, ensure_ascii=False, allow_nan=False)
 
 
 def write_report(output, report, crossing, graph):
+    # Inputs: output, report, crossing, graph.
+    # Does: Save the report and available crossing and graph artifacts.
+    # Output: The report files in the selected directory.
     if crossing is not None:
         save_result(crossing, output / "crossing.json")
     if graph is not None:
@@ -91,6 +110,9 @@ def write_report(output, report, crossing, graph):
 
 
 def run_query(args):
+    # Inputs: args.
+    # Does: Run or query the normalized workflow using parsed CLI options.
+    # Output: The report formatted as JSON or text.
     output = args.output_dir
     if output is not None and output.exists():
         raise ValueError("Choose a new output directory")
@@ -110,13 +132,18 @@ def run_query(args):
 
 
 def main(argv=None):
+    # Inputs: argv.
+    # Does: Dispatch the selected command and handle terminal output.
+    # Output: CLI output and exit status.
     cli = parser()
     args = cli.parse_args(argv)
     try:
         if args.command in {"run", "query", "search-units"}:
             print(run_query(args))
             return
-        if args.command == "build":
+        if args.command == "plan":
+            result = write_plan(args.module, args.from_version, args.to_version, args.catalog, args.output_dir)
+        elif args.command == "build":
             result = build_normalized(args.inventory, args.bindings, args.db)
         elif args.command == "capture-plan":
             result = capture_plan(args.plan, args.output, catalog_path=args.catalog)

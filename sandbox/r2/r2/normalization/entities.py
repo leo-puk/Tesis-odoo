@@ -13,9 +13,15 @@ ENTITY_RULE_VERSION = 'observed_entities_v2_scopes'
 
 
 def extract_entities(text, path, locator, origin='code', module=None, side=None, start=1):
+    # Inputs: text, path, locator, origin, module, side, start.
+    # Does: Extract typed and unresolved observations from located content.
+    # Output: Observations and extraction diagnostics.
     entities, warnings = [], []
 
     def add(name, kind, line, rule, context=None, lookup=None):
+        # Inputs: name, kind, line, rule, context, lookup.
+        # Does: Register a normalized observation with type, rule and coordinates.
+        # Output: An entry in the current observation collection.
         if not isinstance(name,str) or not name:
             return
         location={**locator,'content_line':line}
@@ -30,6 +36,9 @@ def extract_entities(text, path, locator, origin='code', module=None, side=None,
             entities.append(item)
 
     def mentions(value, line, mention_origin):
+        # Inputs: value, line, mention_origin.
+        # Does: Collect identifier mentions in prose or comments.
+        # Output: Additional observations at the supplied location.
         for span in re.findall(r'`+([^`\n]+)`+',value):
             if re.fullmatch(r'(?:[\w.-]+/)+[\w.-]+',span):
                 add(span,'path_mention',line,'backtick_path_mention_v1',dict(origin=mention_origin))
@@ -61,12 +70,18 @@ def extract_entities(text, path, locator, origin='code', module=None, side=None,
             return entities,warnings
 
         def literal(node):
+            # Inputs: node.
+            # Does: Read a supported literal from the AST expression.
+            # Output: The literal value or no value.
             try:
                 return ast.literal_eval(node)
             except (ValueError,TypeError,SyntaxError,RecursionError):
                 return None
 
         def visit(node, model=None, class_name=None, scope='module', qualname=()):
+            # Inputs: node, model, class_name, scope, qualname.
+            # Does: Visit an AST node with its model, class and lexical context.
+            # Output: The observations accumulated for the node and its children.
             if isinstance(node,ast.ClassDef):
                 declared,inherited=None,None
                 for stmt in node.body:
@@ -194,6 +209,9 @@ def extract_entities(text, path, locator, origin='code', module=None, side=None,
 
 
 def manifest_entities(value, locator, text):
+    # Inputs: value, locator, text.
+    # Does: Extract dependencies and other literal manifest observations.
+    # Output: Localized manifest entities.
     tree=ast.parse(text).body[0].value
     locations={ast.literal_eval(key):(key.lineno,node) for key,node in zip(tree.keys,tree.values)}
     result=[]

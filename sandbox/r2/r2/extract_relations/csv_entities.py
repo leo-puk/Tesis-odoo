@@ -7,6 +7,9 @@ XML_ID = re.compile(r'[A-Za-z_][A-Za-z_0-9]*(?:\.[A-Za-z_][A-Za-z_0-9]*)*\Z')
 
 
 def extract_csv_entities(text, locator, module=None, side=None, start=1, path=None):
+    # Inputs: text, locator, module, side, start, path.
+    # Does: Read scoped references and identifiers from CSV rows.
+    # Output: Localized entities and extraction warnings.
     entities, warnings = [], []
     if side is not None and start != 1:
         return [], ['CSV fragment has no verified file header; no identifiers inferred']

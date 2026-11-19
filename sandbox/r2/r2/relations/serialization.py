@@ -12,10 +12,16 @@ from .rules import (RULE_VERSION, EDGE_TYPE, rule_catalog, identity_for,
 
 
 def _ids(values):
+    # Inputs: values.
+    # Does: Check the sorted unique string identifiers in a graph field.
+    # Output: Successful validation or a validation error.
     return isinstance(values,list) and all(isinstance(v,str) and v.strip() for v in values) and values==sorted(set(values))
 
 
 def _point(value, uid):
+    # Inputs: value, uid.
+    # Does: Validate one edge endpoint and its localized provenance.
+    # Output: The checked point observation.
     if not isinstance(value,dict) or set(value)!={'unit_id','entity_ordinal','source_module','observation'}:
         raise ValueError('Graph evidence must contain only one localized observation')
     if value['unit_id']!=uid or type(value['entity_ordinal']) is not int or value['entity_ordinal']<0:
@@ -35,6 +41,9 @@ def _point(value, uid):
 
 
 def _networkx(report):
+    # Inputs: report.
+    # Does: Convert the report nodes and edges into a NetworkX object.
+    # Output: A NetworkX graph.
     graph=nx.Graph()
     graph.graph.update(deepcopy({k:v for k,v in report.items() if k not in {'nodes','edges'}}))
     for node in report['nodes']:
@@ -45,6 +54,9 @@ def _networkx(report):
 
 
 def validate_graph(report, *, database=None, crossing=None):
+    # Inputs: report, database, crossing.
+    # Does: Check graph structure, traversal and optional collection provenance.
+    # Output: True or a validation error.
     from .engine import graph_id, graph_counts, query_report
     from .extraction import checked_crossing, _extract
     expected={'schema_version','component','rules_version','rule_catalog','collection','crossing','seeds',
@@ -154,6 +166,9 @@ def validate_graph(report, *, database=None, crossing=None):
 
 
 def save_graph(report, destination):
+    # Inputs: report, destination.
+    # Does: Validate and save a graph artifact without overwriting a file.
+    # Output: A new JSON graph file.
     validate_graph(report)
     payload=json.dumps(report,ensure_ascii=False,sort_keys=True,indent=2,allow_nan=False)+'\n'
     path=Path(destination)
@@ -163,11 +178,17 @@ def save_graph(report, destination):
 
 
 def load_graph(path, *, database=None, crossing=None):
+    # Inputs: path, database, crossing.
+    # Does: Read and validate a graph artifact.
+    # Output: The decoded graph report.
     report=json.loads(Path(path).read_text(encoding='utf-8-sig'))
     validate_graph(report,database=database,crossing=crossing)
     return report
 
 
 def to_networkx(report):
+    # Inputs: report.
+    # Does: Validate and translate a graph report.
+    # Output: A NetworkX graph.
     validate_graph(report)
     return _networkx(report)
