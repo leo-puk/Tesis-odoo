@@ -5,7 +5,7 @@ import base64
 import binascii
 from pathlib import PurePosixPath
 from lxml.etree import LxmlError
-from ..selection import fingerprint
+from ..records import fingerprint
 from .decoding import decode_artifact
 from .observations import part_entities
 from .parsers import parse_artifact

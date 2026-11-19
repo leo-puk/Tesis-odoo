@@ -4,7 +4,7 @@ import re
 from importlib.metadata import version
 from scipy.sparse import csr_matrix
 from sklearn.feature_extraction.text import TfidfTransformer
-from ..selection import fingerprint
+from ..records import fingerprint
 
 STOP_WORDS = tuple(sorted({'a','an','and','are','as','at','be','by','for','from','in','is','it',
     'of','on','or','that','the','this','to','was','were','with',

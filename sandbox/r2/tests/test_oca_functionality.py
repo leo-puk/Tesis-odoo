@@ -11,5 +11,7 @@ class OCAFunctionalityTests(unittest.TestCase):
             result = run(Path(directory) / "run")
             self.assertTrue(result["passed"])
             self.assertTrue(all(result["checks"].values()))
-            self.assertEqual(result["reviewed_query_summaries"]["graph"]["changes_found"], 2)
-            self.assertEqual(result["reviewed_query_summaries"]["bm25"]["changes_found"], 2)
+            self.assertEqual(set(result["expected_targets"]), {"python", "xml"})
+            for summary in result["query_summaries"].values():
+                self.assertGreater(summary["eligible_units"], 0)
+                self.assertLessEqual(summary["changes_shown"], 10)

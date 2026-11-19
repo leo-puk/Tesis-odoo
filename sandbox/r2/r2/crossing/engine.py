@@ -2,9 +2,9 @@
 from collections import Counter
 import json
 from pathlib import Path
-from ..collection import connect, meta
+from ..records import connect, meta
 from ..normalization.schema import RULE_VERSION as NORMALIZATION_RULES, SCHEMA_VERSION
-from ..selection import fingerprint
+from ..records import fingerprint
 from .code import read_code
 from .rules import FAMILY, FAMILIES, RULE_VERSION, partner_identity, unit_identity, lookup_names
 

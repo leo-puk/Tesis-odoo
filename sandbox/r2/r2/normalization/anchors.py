@@ -3,7 +3,7 @@ import ast
 import io
 import re
 import tokenize
-from ..extract import FIELD_OPTIONS, layer_for
+from ..extract_relations import FIELD_OPTIONS, layer_for
 
 
 def partial_anchors(code, path, module):

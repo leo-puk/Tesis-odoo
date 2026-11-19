@@ -76,7 +76,7 @@ Una coincidencia documental o en comentario **no valida la afirmación que conti
 
 ## CSV explícito en ambos lados
 
-Se revisó el extractor CSV histórico de `extract.py`: sus convenciones `id`/`:id` son pertinentes, pero también genera relaciones de seguridad, fuera de este alcance. Se conserva intacto y se comparte una extracción pura en `r2/csv_entities.py`, usada por los extractores corregidos de normalización y por el lector de crossing.
+Se revisó el extractor CSV histórico, hoy ubicado en `r2/extract_relations/core.py`: sus convenciones `id`/`:id` son pertinentes, pero también genera relaciones de seguridad, fuera de este alcance. Se conserva intacto y se comparte una extracción pura en `r2/csv_entities.py`, usada por los extractores corregidos de normalización y por el lector de crossing.
 
 - Solo `id` y columnas terminadas en `:id` producen observaciones `external_id`.
 - Se conservan fila lógica, inicio/fin de líneas físicas, número/nombre de columna y valor original.

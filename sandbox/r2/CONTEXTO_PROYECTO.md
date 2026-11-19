@@ -2,7 +2,21 @@
 
 Documento global de contexto, implementación, evidencias y pendientes. Debe consultarse junto con REQUISITOS.md. Este archivo puede actualizarse conforme avanza el trabajo. **No altera requisitos: REQUISITOS.md solo se edita por indicación expresa del usuario.** Ambos constituyen las dos fuentes activas de especificación del proyecto; README es únicamente un índice y los documentos de archive/reference/audit son antecedentes o evidencias.
 
-## Propósito y límites
+## Estado vigente del flujo consolidado
+
+R2.1 usa una sola ruta operativa. Adquisición recibe el plan y el catálogo. Normalización valida las capturas admitidas y persiste los originales, las unidades, las entidades y el índice BM25 por unidad en SQLite. El cruce extrae coincidencias técnicas del módulo original. La extracción y el recorrido de relaciones usan esas coincidencias para llegar a nuevas unidades. El reporte filtra por salto y capa, deduplica los bloques de diff idénticos y conserva la evidencia, el camino y los conteos antes del límite de presentación.
+
+El constructor activo es `r2.normalization.storage.build_normalized`. Conserva el esquema 4 y distingue el diseño mediante `layout=normalized-units`. Las bases nuevas prescinden de las proyecciones de cambios, elementos y relaciones precalculadas. El código que importaba snapshots y proyectaba diffs se conserva para reproducir pruebas y entregas históricas. La CLI activa usa `run` para todo el flujo, `query` para una base existente y el mismo reporte para comparar con BM25. Los comandos anteriores de construcción del esquema 2 y de consultas sobre proyecciones salen de la CLI.
+
+`r2.extract_relations` contiene el extractor estático compartido. `r2.relations` identifica conexiones entre unidades y recorre su vecindario. La relación activa expresa una identidad técnica compartida. La aplicabilidad de un cambio al módulo todavía requiere comprobar lo descrito por la fuente y sus condiciones. El reporte muestra bloques candidatos y registra el mismo ID de cambio para copias exactas en la comparación de motores. La unidad de cambio semántico queda definida por el protocolo y los juicios de evaluación.
+
+Para R2.2, las pruebas integran captura con transporte simulado, normalización real, SQLite, cruce, relaciones, reporte y comparación léxica. Cubren exclusiones, filtro de versión, deduplicación, conteos antes del límite, trazabilidad y resultados sin juicios. C1, P1 y C2 dependen de referencias y revisiones independientes. V1 tiene una comprobación estructural y T1 separa la preparación de la consulta. La evaluación de tesis requiere el conjunto reservado de MIG, sus juicios y parámetros congelados. Consulta el [README](README.md) para ejecutar el flujo y preparar los insumos.
+
+## Historial de implementación
+
+Las secciones siguientes preservan decisiones, pruebas y pendientes tal como se registraron en cada revisión. Sus comandos y estados corresponden a esas instantáneas.
+
+### Propósito y límites de la entrega anterior
 
 R2 construye y consulta información de migración de Odoo 16–19 de manera determinista. No conecta IA, no ejecuta código de módulos analizados ni acredita por sí solo una migración o equivalencia funcional. La tesis Word permanece intacta. R4, modelo/snapshot/corte y revisores académicos continúan pendientes.
 
@@ -352,7 +366,7 @@ Se sustituyó el archivo r2/normalization.py por el paquete r2/normalization/. L
 | partial_anchors(code, path, module) | Reconocer referencias locales conservadoras en fragmentos Python. | Lista de elementos con ubicación y fundamento de extracción. | r2/conversion/anchors.py | r2/normalization/anchors.py |
 | partial_anchors.add(key, kind, name, line) | Auxiliar interno que registra una referencia usando el contexto de partial_anchors. | None; actualiza el diccionario local de elementos. | Interno en r2/conversion/anchors.py | Interno en r2/normalization/anchors.py |
 
-normalize_session es una función nueva en r2/normalization/pipeline.py, no una función trasladada. Los archivos anteriores de ingestion y conversion solo reexportan las mismas funciones para mantener compatibilidad sin lógica duplicada. El import histórico from r2.normalization import normalize permanece válido. El extractor compartido r2/extract.py conserva su ubicación.
+normalize_session es una función nueva en r2/normalization/pipeline.py, no una función trasladada. Los archivos anteriores de ingestion y conversion solo reexportan las mismas funciones para mantener compatibilidad sin lógica duplicada. El import histórico from r2.normalization import normalize permanece válido. El extractor compartido vive en `r2/extract_relations/`.
 
 Límite de esta entrega: la rutina HTML antigua queda disponible por compatibilidad, pero no se incorpora automáticamente al lector de sesiones; este continúa exigiendo UTF-8 como antes. No se agregaron adaptadores, reglas de codificación, atributos de registros, CLI normalize ni cambios en búsqueda. Las propuestas siguientes no se consideran completadas por este traslado.
 
@@ -428,7 +442,7 @@ r2/normalization/ sería el único propietario del pipeline: pipeline.py, schema
 
 - Integrar la lectura útil de ingestion/session.py.
 - Mover/adaptar conversion/units.py, diff.py y anchors.py bajo ese componente.
-- Reutilizar extract.py como biblioteca estática compartida; no duplicar reglas.
+- Reutilizar `r2/extract_relations/` como biblioteca estática compartida; no duplicar reglas.
 - Sustituir normalization.py por el paquete y una entrada de compatibilidad para sus consumidores históricos.
 - Adaptar collection.build_session para consumir registros normalizados. El índice de registros documentales debe diferenciarse del índice de cambios utilizado por el evaluador actual; no cambiar sus unidades silenciosamente.
 - Adaptar la CLI con una operación normalize que permita inspeccionar registros antes de construir el índice. Las antiguas rutas podrán conservar puentes temporales, sin lógica duplicada.
@@ -870,3 +884,17 @@ Procedencia: T30. Se corrigió su interpretación. No se ejecutó otra migració
 - El corpus sigue parcial y sin codificación independiente completa. La evaluación final y los treinta MIG elegibles continúan pendientes.
 - El piloto histórico conserva sus limitaciones. Documentarlas no equivale a haberlas eliminado experimentalmente.
 - Este registro no modifica la tesis ni acredita resultados académicos nuevos.
+
+## 2026-11-19 — Traslado del extractor estático compartido
+
+La implementación de 266 líneas pasó a `r2/extract_relations/core.py` con el mismo SHA-256. La API pública se declara en `r2/extract_relations/__init__.py`. Se retiró el módulo anterior `r2.extract` y se eliminó su caché Python 3.12. Los consumidores externos deben importar desde `r2.extract_relations`.
+
+Se actualizaron ocho sentencias de import en `r2/query.py`, `r2/cli.py`, `r2/collection.py`, `r2/normalization/anchors.py`, `r2/normalization/entities.py`, `tests/test_r2.py` y `tests/test_methodology.py`. Se actualizaron dos referencias de este documento y una en `r2/crossing/README.md`.
+
+Pasaron 164 pruebas antes y después del traslado. La CLI respondió a `--version` y `doctor`. Se regeneraron `build/lib/r2/` y el manifiesto de fuentes, y se comprobó el import público directamente desde el wheel reconstruido sin dependencias. Los registros de la línea base y de la ejecución final quedaron en `.cache/extract-relations-refactor/`. Los archivos históricos protegidos conservan sus hashes.
+
+## 2026-11-19 — Integración de los componentes y prueba de CLI
+
+La lógica de almacenamiento de colección pasó a `r2/conversion/storage.py`. La consulta y la revisión pasaron a `r2/filter_ordering/`. El grafo histórico quedó en `r2/relations/legacy_graph.py` y la extracción de relaciones entre unidades se integró en `r2/relations/` con operaciones distintas de identificación y recorrido. Las funciones de evaluación y selección están en `r2/evaluation/`. La política histórica de fuentes está en `r2/adquisition/legacy_policy.py` y el extractor CSV compartido en `r2/extract_relations/csv_entities.py`. Los módulos antiguos conservan importaciones de compatibilidad para consumidores actuales; `r2/extract.py` sigue retirado según el cambio anterior.
+
+La CLI incorpora `extract-relations` para consumir un resultado de cruce y `search-units` para ejecutar cruce y extracción de relaciones en orden. La suite completa y la prueba del CLI documentan el comportamiento. `examples/run_evaluation_demo.py` ejecuta el evaluador existente con juicios sintéticos y `--development`. Su reporte en `temp_data/evaluation-cli-demo/metrics/report.json` verifica la ruta de ingeniería, pero no representa evaluación académica. C1 y C2 permanecen indefinidos sin las referencias y revisiones externas requeridas.

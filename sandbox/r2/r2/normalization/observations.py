@@ -1,6 +1,6 @@
 """Apply entity rules to a source part with its actual coordinate system."""
 import textwrap
-from ..selection import fingerprint
+from ..records import fingerprint
 from .entities import extract_entities, manifest_entities
 
 

@@ -113,26 +113,28 @@ class SessionIntegrationTests(unittest.TestCase):
                 main(["build", str(self.inventory), "--bindings", str(self.bindings), "--db", str(self.db)])
             with connect(self.db) as con:
                 sources = load(con, "sources")
-                changes = load(con, "changes")
-                self.assertEqual(len(changes), 1)
-                self.assertEqual(changes[0]["classification"], "observed_diff_hunk")
-                self.assertEqual(len(load(con, "documents")), 2)
+                units = load(con, "information_units")
+                self.assertEqual(len(units), 3)
                 self.assertEqual(len(load(con, "artifacts")), 3)
-                self.assertTrue(any(e["path"] == "__manifest__.py" for e in load(con, "elements")))
-            output = retrieve(self.db, self.module, "16.0", "17.0")
-            self.assertTrue(validate_output(output)["conformant"])
-            self.assertEqual(output["summary"]["changes_found"], 1)
-            self.assertEqual(retrieve(self.db, self.module, "16.0", "17.0", engine="bm25")["summary"]["changes_found"], 1)
-            self.assertEqual(len(output["results"][0]["context_documents"]), 1)
-            self.assertTrue(output["results"][0]["source_citations"][0]["unit_id"])
+                self.assertEqual(sum(unit["kind"] == "diff_hunk" for unit in units), 1)
+                tables = {row[0] for row in con.execute("SELECT name FROM sqlite_master")}
+                self.assertIn("unit_search", tables)
+                self.assertFalse({"changes", "elements", "relations"} & tables)
+            query = ["query", str(self.module), "--db", str(self.db), "--from", "16.0", "--to", "17.0",
+                     "--format", "json"]
+            with redirect_stdout(io.StringIO()) as stdout:
+                main(query)
+            before = json.loads(stdout.getvalue())
             with redirect_stdout(io.StringIO()) as stdout:
                 main(["export", "--db", str(self.db)])
             self.assertEqual(len(json.loads(stdout.getvalue())["artifacts"]), 3)
-            unit_ids = [s["unit_id"] for s in sources]
+            unit_ids = [source["unit_id"] for source in sources]
             with redirect_stdout(io.StringIO()):
                 main(["delete-units", self.result["session_id"], *unit_ids, "--output", str(self.root)])
-            self.assertTrue(all(u["status"] == "deleted" for u in json.loads(self.inventory.read_text())))
-            self.assertEqual(retrieve(self.db, self.module, "16.0", "17.0")["summary"]["changes_found"], 1)
+            self.assertTrue(all(unit["status"] == "deleted" for unit in json.loads(self.inventory.read_text())))
+            with redirect_stdout(io.StringIO()) as stdout:
+                main(query)
+            self.assertEqual(before, json.loads(stdout.getvalue()))
 
     def test_reviewed_native_collection_is_evaluable_and_reproducible(self):
         self.capture()

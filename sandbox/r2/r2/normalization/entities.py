@@ -5,7 +5,7 @@ import re
 import tokenize
 from pathlib import PurePosixPath
 from lxml import etree
-from ..extract import FIELD_OPTIONS
+from ..extract_relations import FIELD_OPTIONS
 from ..csv_entities import extract_csv_entities
 from .anchors import partial_anchors
 

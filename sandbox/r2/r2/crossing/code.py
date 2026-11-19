@@ -10,7 +10,7 @@ import tokenize
 from ..normalization.decoding import decode_artifact
 from ..normalization.entities import extract_entities, manifest_entities
 from ..normalization.parsers import parse_artifact
-from ..selection import fingerprint
+from ..records import fingerprint
 
 EXTENSIONS = {'.py', '.xml', '.csv'}
 IGNORED = {'.git', '__pycache__', '.venv', '.venv-repro', 'node_modules'}

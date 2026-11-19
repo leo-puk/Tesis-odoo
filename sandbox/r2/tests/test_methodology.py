@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 from r2.collection import build, connect, load
-from r2.extract import extract, scan_module
+from r2.extract_relations import extract, scan_module
 from r2.review import apply_reviews, search_document
 from r2.query import retrieve, validate_output
 from r2.selection import sample_cases, freeze_protocol, CRITERIA

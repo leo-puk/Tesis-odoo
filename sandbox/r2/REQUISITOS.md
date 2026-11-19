@@ -6,6 +6,12 @@ Documento global de requisitos. Creado el 17 de noviembre de 2026 por instrucci�
 
 Las aclaraciones más recientes del usuario prevalecen sobre los textos históricos incorporados literalmente al final. Los bloques originales se preservan sin reescritura; sus estados y propuestas antiguas no describen por sí solos la implementación actual. La tesis Word no se modifica mediante este documento. Si aparece una contradicción o falta una decisión, debe registrarse en contexto, no resolverse inventando un requisito.
 
+## Alcance operativo indicado el 19 de noviembre de 2026
+
+> se supone que debe ser así empieza con adquisiton, normalization, cross, Extract_relations y el reporte (para el r2.1) para el r2.2 sería implementarle el CLI y las pruebas, estas pruebas hazlas como tu veas más acertado y siguiendo lo que te dice la tesis.
+
+R2.1 produce la base local y el reporte sobre el mismo flujo. R2.2 expone la consulta y el reporte por CLI y aporta pruebas y mediciones según la sección 1.3.3.1 de la tesis. La CLI consulta la colección normalizada. El detalle de la implementación y sus límites se registran en [CONTEXTO_PROYECTO.md](CONTEXTO_PROYECTO.md).
+
 ## Aclaraciones vigentes del usuario: transcripción literal
 
 ### Origen de enlaces y control documental

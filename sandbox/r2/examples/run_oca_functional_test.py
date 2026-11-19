@@ -1,4 +1,4 @@
-"""Mock HTTP and reviewer inputs around real local OCA/Odoo source snapshots."""
+"""Exercise the normalized CLI on local OCA/Odoo snapshots with simulated HTTP."""
 import argparse
 import ast
 import difflib
@@ -6,13 +6,12 @@ import hashlib
 import io
 import json
 from contextlib import redirect_stdout
-from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
 
 from r2.cli import main as cli
-from r2.collection import connect, load
-from r2.query import validate_output
+from r2.records import connect, load
+from r2.report import validate_report
 
 COMPARE = "https://github.com/odoo/odoo/compare/16.0...17.0"
 API_COMPARE = "https://api.github.com/repos/odoo/odoo/compare/16.0...17.0"
@@ -93,89 +92,57 @@ def run(output):
         raw_db = output / "candidates.sqlite"
         built = command(["build", capture["inventory"], "--bindings", str(output / "bindings.json"), "--db", str(raw_db)])
         with connect(raw_db) as con:
-            candidates = load(con, "changes")
-            assert all(s["kind"] == "github_diff" for s in load(con, "sources"))
-        query_args = ["query", str(module), "--module-name", "sale_advance_payment", "--from", "16.0", "--to", "17.0", "--format", "json"]
-        candidate_output = command(query_args + ["--db", str(raw_db)])
-        save("query-candidates.json", candidate_output)
-        specifications = [
-            ("states is no longer supported", "property:states", "python",
-             "Odoo 17 warns that the states field property is no longer supported"),
-            ("attributes are no longer used", "xml-attribute:attrs", "xml",
-             "Odoo 17 rejects attrs/states attributes in view validation"),
-        ]
-        annotations, targets = [], []
-        for phrase, element, layer, title in specifications:
-            matches = [c for c in candidates if phrase in c["added"]]
-            assert len(matches) == 1, (phrase, len(matches))
-            change = matches[0]
-            assert element in change["elements"], (phrase, change["elements"])
-            eid = "ev-" + change["id"][4:]
-            annotations.append(dict(change_id=change["id"], status="verified", title=title, layer=layer,
-                reviewer="Mocked developer-review fixture; not an independent academic judgment",
-                rationale="Expected review input anchored to the explicit destination code in the captured diff.",
-                reviewed_at=datetime.now(timezone.utc).isoformat(), category="syntax",
-                required_elements=[element], affected_elements=[element],
-                destination_validity=dict(status="checked", from_version="16.0", to_version="17.0",
-                    explanation="This functional fixture cites the actual warning/rejection in local Odoo 17 code; other hunk edits are not validated.", evidence_ids=[eid])))
-            targets.append(dict(id=change["id"], element=element, title=title, core_file=change["file_path"],
-                                destination_start=change["after_start"], destination_end=change["after_end"]))
-        save("mock-review.json", annotations)
-        reviewed_db = output / "reviewed.sqlite"
-        command(["build", capture["inventory"], "--bindings", str(output / "bindings.json"),
-                 "--annotations", str(output / "mock-review.json"), "--db", str(reviewed_db)])
-        outputs = {}
-        for engine in ("graph", "bm25"):
-            result = command(query_args + ["--db", str(reviewed_db), "--status", "verified", "--engine", engine])
+            units = load(con, "information_units")
+            assert all(source["kind"] == "github_diff" for source in load(con, "sources"))
+        targets = {}
+        for layer, phrase in (("python", "states is no longer supported"),
+                              ("xml", "attributes are no longer used")):
+            matches = [unit["id"] for unit in units
+                       if unit["kind"] == "diff_hunk" and phrase in unit["data"]["added"]]
+            assert len(matches) == 1, (phrase, matches)
+            targets[layer] = matches[0]
+        scope = ["--db", str(raw_db), "--format", "json"]
+        query = ["query", str(module), "--module-name", "sale_advance_payment",
+                 "--from", "16.0", "--to", "17.0", *scope]
+        outputs = {engine: command(query + ["--engine", engine]) for engine in ("graph", "bm25")}
+        for engine, result in outputs.items():
+            assert validate_report(result)
             save(f"query-{engine}.json", result)
-            assert validate_output(result)["conformant"]
-            assert {r["id"] for r in result["results"]} == {t["id"] for t in targets}
-            assert result["summary"]["changes_found"] == 2
-            assert all(r["source_citations"][0]["unit_id"] for r in result["results"])
-            outputs[engine] = result["summary"]
-        checks.update(both_expected_findings_retrieved=True, graph_and_bm25_conformant=True,
-                      no_oca_solution_indexed=True, versions_and_provenance_preserved=True)
-        control = output / "unrelated_module"
-        control.mkdir()
-        (control / "models.py").write_text("from odoo import fields, models\nclass Unrelated(models.Model):\n    _name = 'functional.unrelated'\n    name = fields.Char()\n", encoding="utf-8")
-        negative = command(["query", str(control), "--db", str(reviewed_db), "--from", "16.0", "--to", "17.0", "--status", "verified", "--format", "json"])
-        save("query-negative-control.json", negative)
-        assert negative["summary"]["changes_found"] == 0
-        wrong_jump = command(["query", str(module), "--module-name", "sale_advance_payment", "--db", str(reviewed_db), "--from", "17.0", "--to", "18.0", "--status", "verified", "--format", "json"])
-        save("query-wrong-jump.json", wrong_jump)
-        assert wrong_jump["summary"]["changes_found"] == 0
-        checks.update(unrelated_module_has_no_verified_findings=True, wrong_jump_has_no_findings=True)
-        accepted = [r["id"] for r in inventory if r["status"] == "accepted"]
+        graph, bm25 = outputs["graph"], outputs["bm25"]
+        assert graph["collection_revision"] == bm25["collection_revision"]
+        assert graph["query"] == bm25["query"]
+        assert graph["summary"]["eligible_units"] == bm25["summary"]["eligible_units"]
+        xml = command(query + ["--layer", "xml"])
+        assert any(row["source"]["unit_id"] == targets["xml"] and row["source_layers"] == ["python"]
+                   for row in xml["results"])
+        checks.update(expected_hunks_in_collection=True, shared_corpus_and_query=True,
+                      graph_and_bm25_conformant=True, no_oca_solution_indexed=True,
+                      xml_change_located_in_python_evidence=True)
+        control = output / "unrelated_module.py"
+        control.write_text("class Unrelated:\n    _name = 'functional.unrelated'\n", encoding="utf-8")
+        negative = command(["query", str(control), "--from", "16.0", "--to", "17.0", *scope])
+        wrong_jump = command(["query", str(module), "--from", "17.0", "--to", "18.0", *scope])
+        assert negative["summary"]["changes_found"] == wrong_jump["summary"]["changes_found"] == 0
+        checks.update(unrelated_module_has_no_findings=True, wrong_jump_has_no_findings=True)
+        accepted = [row["id"] for row in inventory if row["status"] == "accepted"]
         command(["delete-units", capture["session_id"], *accepted, "--output", str(output)])
-        after_delete = command(query_args + ["--db", str(reviewed_db), "--status", "verified"])
-        assert after_delete["summary"]["changes_found"] == 2
+        assert command(query) == graph
         checks["retrieval_survives_temporary_unit_deletion"] = True
     assert hashes(module) == module_before
     assert hashes(project / "r2/adquisition") == final_before
     checks.update(oca_input_unchanged=True, final_adquisition_unchanged=True)
-    report = dict(passed=True, scope="functional engineering test; not a migration or academic evaluation",
+    report = dict(passed=True, scope="Functional engineering test with local snapshots and simulated HTTP",
                   module="sale_advance_payment", module_version=manifest["version"], jump="16.0->17.0",
                   module_path=str(module), module_repository=manifest["website"], module_hashes=module_before,
-                  input_code="real unchanged local OCA snapshot", http="mocked; no live downloads",
-                  review="injected mocked developer-review annotations, not automatic verification",
-                  diff="computed from two real local Odoo snapshots, not a live GitHub compare response",
                   snapshot_provenance=json.loads((project / "examples/manifest.json").read_text(encoding="utf-8")),
-                  core_files=provenance, candidate_hunks=built["change_count"],
-                  raw_graph_summary=candidate_output["summary"], expected_targets=targets,
-                  reviewed_query_summaries=outputs, checks=checks, http_calls=calls,
-                  final_adquisition_hashes=final_before, output=str(output))
+                  core_files=provenance, candidate_hunks=graph["summary"]["eligible_units"],
+                  collection_revision=built["collection_revision"], expected_targets=targets,
+                  query_summaries={engine: result["summary"] for engine, result in outputs.items()},
+                  targets_shown={engine: sorted(set(targets.values()) &
+                                                {row["source"]["unit_id"] for row in result["results"]})
+                                 for engine, result in outputs.items()},
+                  checks=checks, http_calls=calls, final_acquisition_hashes=final_before, output=str(output))
     save("report.json", report)
-    summary = ["# Prueba funcional con módulo OCA real", "", "Resultado: aprobada.", "",
-        f"Entrada: sale_advance_payment {manifest['version']}; salto consultado 16→17.", "",
-        "HTTP y revisión se simularon. El código OCA y los dos snapshots del núcleo son copias reales locales sin modificar.", "",
-        f"La colección produjo {built['change_count']} hunks candidatos; no son incompatibilidades confirmadas.", "",
-        "Las dos anotaciones de revisión simuladas permiten comprobar que grafo y BM25 recuperan exactamente los cambios esperados:", ""]
-    summary.extend("- " + target["title"] for target in targets)
-    summary.extend(["", "El control sin esas condiciones y el salto 17→18 devolvieron cero hallazgos revisados. La consulta siguió funcionando después de borrar los temporales.", "",
-        "El módulo OCA se usó solo como entrada; la unidad de solución OCA de control se excluyó antes de la red. No se ejecutó Odoo ni se migró o modificó el módulo. No se prueba equivalencia funcional ni cobertura de todas las incompatibilidades.", "",
-        "La revisión es una entrada mock del test, no una capacidad de verificación automática ni un juicio independiente. Este módulo ya estaba reservado como caso de desarrollo y continúa excluido de evaluación final.", "",
-        "report.json conserva comprobaciones, hashes y procedencia; query-graph.json y query-bm25.json contienen los resultados. mock-response.diff conserva la respuesta simulada.", ""])
-    (output / "REPORT.md").write_text("\n".join(summary), encoding="utf-8")
     return report
 
 
@@ -185,7 +152,7 @@ def main():
     args = parser.parse_args()
     result = run(args.output)
     print(json.dumps(dict(passed=result["passed"], module=result["module"], candidate_hunks=result["candidate_hunks"],
-                          verified_findings=result["reviewed_query_summaries"]["graph"]["changes_found"], output=result["output"])))
+                          candidates_found=result["query_summaries"]["graph"]["changes_found"], output=result["output"])))
 
 
 if __name__ == "__main__":

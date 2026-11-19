@@ -1,7 +1,7 @@
 """Build normalized information units and attributes, never search relations."""
 import base64
 from lxml.etree import LxmlError
-from ..selection import fingerprint
+from ..records import fingerprint
 from .observations import part_entities
 from .parsers import parse_artifact
 from .schema import RULE_VERSION, SCHEMA_VERSION, unit_id
