@@ -9,7 +9,7 @@ from pathlib import Path
 import yaml
 
 # Cadena oficial de versiones soportadas. La migracion salta de una a la siguiente.
-VERSION_CHAIN = ["13.0", "14.0", "15.0", "16.0", "17.0", "18.0"]
+VERSION_CHAIN = ["13.0", "14.0", "15.0", "16.0", "17.0", "18.0", "19.0"]
 
 
 @dataclass

@@ -189,6 +189,11 @@ def run_group(sample_: dict, sample_path: Path, gid: str, phases, max_iter: int)
 def run(sample_path: Path, parallel: int = 2, phases=ex.PHASES, max_iter: int = 15,
         only: list[str] | None = None) -> list[dict]:
     sample_ = json.loads(sample_path.read_text(encoding="utf-8"))
+    if sample_.get("schema") == "odoolab.migration-plan.v1":
+        from . import migration_plan
+        if parallel != 1:
+            raise ValueError("el plan multiversion usa --parallel 1; no cambia globals")
+        return migration_plan.run(sample_path, only, phases, max_iter)
     gids = [g["id"] for g in sample_["groups"] if not only or g["id"] in only]
 
     def one(gid):
@@ -207,6 +212,9 @@ def run(sample_path: Path, parallel: int = 2, phases=ex.PHASES, max_iter: int = 
 # ------------------------------------------------------------------ agregar
 def summary(sample_path: Path) -> Path:
     sample_ = json.loads(sample_path.read_text(encoding="utf-8"))
+    if sample_.get("schema") == "odoolab.migration-plan.v1":
+        from . import migration_plan
+        return migration_plan.summary(sample_path)
     out = sample_path.parent
     allc, rows, its_total = [], [], 0
     for g in sample_["groups"]:

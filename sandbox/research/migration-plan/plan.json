@@ -1,0 +1,971 @@
+{
+  "schema": "odoolab.migration-plan.v1",
+  "seed": 20261120,
+  "version": "16.0-19.0",
+  "size": 5,
+  "replacements": [],
+  "validation_status": "pending_branch_dependency_and_scope_validation",
+  "execution_mode": "independent_adjacent_steps_same_addons_not_database_chain",
+  "groups": [
+    {
+      "id": "g01",
+      "variant_id": "g01",
+      "origin": "historical",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "status": "existing_metadata",
+      "modules": [
+        {
+          "repo": "stock-logistics-warehouse",
+          "module": "stock_quant_manual_assign"
+        },
+        {
+          "repo": "server-ux",
+          "module": "server_action_mass_edit"
+        },
+        {
+          "repo": "sale-workflow",
+          "module": "sale_blanket_order"
+        },
+        {
+          "repo": "credit-control",
+          "module": "sale_financial_risk"
+        },
+        {
+          "repo": "field-service",
+          "module": "fieldservice_isp_flow"
+        }
+      ]
+    },
+    {
+      "id": "g02",
+      "variant_id": "g02",
+      "origin": "historical",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "status": "existing_metadata",
+      "modules": [
+        {
+          "repo": "product-variant",
+          "module": "product_variant_sale_price"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "product_cost_price_avco_sync"
+        },
+        {
+          "repo": "credit-control",
+          "module": "account_credit_control"
+        },
+        {
+          "repo": "timesheet",
+          "module": "hr_timesheet_employee_analytic_tag"
+        },
+        {
+          "repo": "social",
+          "module": "mail_notification_custom_subject"
+        }
+      ]
+    },
+    {
+      "id": "oca_v01_1617",
+      "variant_id": "oca_v01",
+      "origin": "random_seed_20261120",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_picking_auto_create_package"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "product_supplier_code_purchase"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_age_range"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "purchase_stock_picking_invoice_link"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_affiliate"
+        }
+      ]
+    },
+    {
+      "id": "oca_v01_1718",
+      "variant_id": "oca_v01",
+      "origin": "random_seed_20261120",
+      "version_from": "17.0",
+      "version_to": "18.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_picking_auto_create_package"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "product_supplier_code_purchase"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_age_range"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "purchase_stock_picking_invoice_link"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_affiliate"
+        }
+      ]
+    },
+    {
+      "id": "oca_v01_1819",
+      "variant_id": "oca_v01",
+      "origin": "random_seed_20261120",
+      "version_from": "18.0",
+      "version_to": "19.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_picking_auto_create_package"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "product_supplier_code_purchase"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_age_range"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "purchase_stock_picking_invoice_link"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_affiliate"
+        }
+      ]
+    },
+    {
+      "id": "oca_v02_1617",
+      "variant_id": "oca_v02",
+      "origin": "random_seed_20261120",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_nationality"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_employee_quantity"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_identification"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_delivery_split_date"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_all_shipments"
+        }
+      ]
+    },
+    {
+      "id": "oca_v02_1718",
+      "variant_id": "oca_v02",
+      "origin": "random_seed_20261120",
+      "version_from": "17.0",
+      "version_to": "18.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_nationality"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_employee_quantity"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_identification"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_delivery_split_date"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_all_shipments"
+        }
+      ]
+    },
+    {
+      "id": "oca_v02_1819",
+      "variant_id": "oca_v02",
+      "origin": "random_seed_20261120",
+      "version_from": "18.0",
+      "version_to": "19.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_nationality"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_employee_quantity"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_identification"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_delivery_split_date"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_all_shipments"
+        }
+      ]
+    },
+    {
+      "id": "oca_v03_1617",
+      "variant_id": "oca_v03",
+      "origin": "random_seed_20261120",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_default_terms_conditions"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_bank_code"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_address_default"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_address_street3"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_order_line_menu"
+        }
+      ]
+    },
+    {
+      "id": "oca_v03_1718",
+      "variant_id": "oca_v03",
+      "origin": "random_seed_20261120",
+      "version_from": "17.0",
+      "version_to": "18.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_default_terms_conditions"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_bank_code"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_address_default"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_address_street3"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_order_line_menu"
+        }
+      ]
+    },
+    {
+      "id": "oca_v03_1819",
+      "variant_id": "oca_v03",
+      "origin": "random_seed_20261120",
+      "version_from": "18.0",
+      "version_to": "19.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_default_terms_conditions"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_bank_code"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_address_default"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_address_street3"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_order_line_menu"
+        }
+      ]
+    },
+    {
+      "id": "oca_v04_1617",
+      "variant_id": "oca_v04",
+      "origin": "random_seed_20261120",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_picking_auto_create_lot"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_lot_scrap"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "sale_line_returned_qty"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_no_negative"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "partner_supplierinfo_smartbutton"
+        }
+      ]
+    },
+    {
+      "id": "oca_v04_1718",
+      "variant_id": "oca_v04",
+      "origin": "random_seed_20261120",
+      "version_from": "17.0",
+      "version_to": "18.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_picking_auto_create_lot"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_lot_scrap"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "sale_line_returned_qty"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_no_negative"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "partner_supplierinfo_smartbutton"
+        }
+      ]
+    },
+    {
+      "id": "oca_v04_1819",
+      "variant_id": "oca_v04",
+      "origin": "random_seed_20261120",
+      "version_from": "18.0",
+      "version_to": "19.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_picking_auto_create_lot"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_lot_scrap"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "sale_line_returned_qty"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_no_negative"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "partner_supplierinfo_smartbutton"
+        }
+      ]
+    },
+    {
+      "id": "oca_v05_1617",
+      "variant_id": "oca_v05",
+      "origin": "random_seed_20261120",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_order_type"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "product_main_seller"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_last_price_info"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_company_type"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_firstname"
+        }
+      ]
+    },
+    {
+      "id": "oca_v05_1718",
+      "variant_id": "oca_v05",
+      "origin": "random_seed_20261120",
+      "version_from": "17.0",
+      "version_to": "18.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_order_type"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "product_main_seller"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_last_price_info"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_company_type"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_firstname"
+        }
+      ]
+    },
+    {
+      "id": "oca_v05_1819",
+      "variant_id": "oca_v05",
+      "origin": "random_seed_20261120",
+      "version_from": "18.0",
+      "version_to": "19.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_order_type"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "product_main_seller"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_last_price_info"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_company_type"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_firstname"
+        }
+      ]
+    },
+    {
+      "id": "oca_v06_1617",
+      "variant_id": "oca_v06",
+      "origin": "random_seed_20261120",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_birthplace"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "sale_order_global_stock_route"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "sale_stock_picking_invoice_link"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_access_link"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_advance_payment"
+        }
+      ]
+    },
+    {
+      "id": "oca_v06_1718",
+      "variant_id": "oca_v06",
+      "origin": "random_seed_20261120",
+      "version_from": "17.0",
+      "version_to": "18.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_birthplace"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "sale_order_global_stock_route"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "sale_stock_picking_invoice_link"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_access_link"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_advance_payment"
+        }
+      ]
+    },
+    {
+      "id": "oca_v06_1819",
+      "variant_id": "oca_v06",
+      "origin": "random_seed_20261120",
+      "version_from": "18.0",
+      "version_to": "19.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_birthplace"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "sale_order_global_stock_route"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "sale_stock_picking_invoice_link"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_access_link"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_advance_payment"
+        }
+      ]
+    },
+    {
+      "id": "oca_v07_1617",
+      "variant_id": "oca_v07",
+      "origin": "random_seed_20261120",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "product_customerinfo_picking"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_exception"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "procurement_purchase_no_grouping"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_industry_secondary"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_allowed_product"
+        }
+      ]
+    },
+    {
+      "id": "oca_v07_1718",
+      "variant_id": "oca_v07",
+      "origin": "random_seed_20261120",
+      "version_from": "17.0",
+      "version_to": "18.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "product_customerinfo_picking"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_exception"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "procurement_purchase_no_grouping"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_industry_secondary"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_allowed_product"
+        }
+      ]
+    },
+    {
+      "id": "oca_v07_1819",
+      "variant_id": "oca_v07",
+      "origin": "random_seed_20261120",
+      "version_from": "18.0",
+      "version_to": "19.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "product_customerinfo_picking"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_exception"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "procurement_purchase_no_grouping"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_industry_secondary"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_allowed_product"
+        }
+      ]
+    },
+    {
+      "id": "oca_v08_1617",
+      "variant_id": "oca_v08",
+      "origin": "random_seed_20261120",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_move_line_expiration_date_required"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_order_line_sequence"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_email_check"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_job_position"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_picking_back2draft"
+        }
+      ]
+    },
+    {
+      "id": "oca_v08_1718",
+      "variant_id": "oca_v08",
+      "origin": "random_seed_20261120",
+      "version_from": "17.0",
+      "version_to": "18.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_move_line_expiration_date_required"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_order_line_sequence"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_email_check"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_job_position"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_picking_back2draft"
+        }
+      ]
+    },
+    {
+      "id": "oca_v08_1819",
+      "variant_id": "oca_v08",
+      "origin": "random_seed_20261120",
+      "version_from": "18.0",
+      "version_to": "19.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_move_line_expiration_date_required"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_order_line_sequence"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_email_check"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_job_position"
+        },
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "stock_picking_back2draft"
+        }
+      ]
+    },
+    {
+      "id": "oca_v09_1617",
+      "variant_id": "oca_v09",
+      "origin": "random_seed_20261120",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "scrap_reason_code"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_order_owner"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_force_invoiced"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_fax"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_gender"
+        }
+      ]
+    },
+    {
+      "id": "oca_v09_1718",
+      "variant_id": "oca_v09",
+      "origin": "random_seed_20261120",
+      "version_from": "17.0",
+      "version_to": "18.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "scrap_reason_code"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_order_owner"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_force_invoiced"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_fax"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_gender"
+        }
+      ]
+    },
+    {
+      "id": "oca_v09_1819",
+      "variant_id": "oca_v09",
+      "origin": "random_seed_20261120",
+      "version_from": "18.0",
+      "version_to": "19.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "stock-logistics-workflow",
+          "module": "scrap_reason_code"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_order_owner"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_force_invoiced"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_fax"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_gender"
+        }
+      ]
+    },
+    {
+      "id": "oca_v10_1617",
+      "variant_id": "oca_v10",
+      "origin": "random_seed_20261120",
+      "version_from": "16.0",
+      "version_to": "17.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_department"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_invoice_method"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_country_state_required"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_birthdate"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "product_supplierinfo_purchase_contact"
+        }
+      ]
+    },
+    {
+      "id": "oca_v10_1718",
+      "variant_id": "oca_v10",
+      "origin": "random_seed_20261120",
+      "version_from": "17.0",
+      "version_to": "18.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_department"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_invoice_method"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_country_state_required"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_birthdate"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "product_supplierinfo_purchase_contact"
+        }
+      ]
+    },
+    {
+      "id": "oca_v10_1819",
+      "variant_id": "oca_v10",
+      "origin": "random_seed_20261120",
+      "version_from": "18.0",
+      "version_to": "19.0",
+      "status": "planned_pending_validation",
+      "modules": [
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_department"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "purchase_invoice_method"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_country_state_required"
+        },
+        {
+          "repo": "partner-contact",
+          "module": "partner_contact_birthdate"
+        },
+        {
+          "repo": "purchase-workflow",
+          "module": "product_supplierinfo_purchase_contact"
+        }
+      ]
+    }
+  ]
+}

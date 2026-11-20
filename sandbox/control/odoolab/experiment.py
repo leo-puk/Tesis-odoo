@@ -53,7 +53,40 @@ def _root() -> Path:
     return ROOT
 
 
+
+def validate_gid(gid: str) -> str:
+    if not re.fullmatch(r"[a-z0-9][a-z0-9_-]{0,40}", gid):
+        raise ValueError(f"id de experimento invalido: {gid!r}")
+    return gid
+
+
+def validate_step(source: str, target: str) -> tuple[str, str]:
+    if source not in ("16.0", "17.0", "18.0") or target != f"{int(source.split('.')[0]) + 1}.0":
+        raise ValueError(f"salto no soportado: {source}->{target}")
+    return source, target
+
+
+def versions_of(gid: str) -> tuple[str, str]:
+    m = meta(gid)
+    source, target = m.get("step", "16.0->17.0").split("->")
+    pair = validate_step(source, target)
+    if (m.get("version_from", source), m.get("version_to", target)) != pair:
+        raise ValueError(f"versiones inconsistentes en {gid}")
+    return pair
+
+
+def dependency_index(rows: list[dict]) -> dict[str, str]:
+    index = {}
+    for row in rows:
+        name, repo = row["module"], row["repo"]
+        if name in index and index[name] != repo:
+            raise ValueError(f"addon ambiguo {name}: {index[name]} / {repo}")
+        index[name] = repo
+    return index
+
+
 def exp_dir(gid: str) -> Path:
+    validate_gid(gid)
     return _root() / "research" / "experiments" / gid
 
 
@@ -124,8 +157,8 @@ def act(gid: str, msg: str) -> None:
 
 
 # ---------------------------------------------------------------- prepare
-def _census_rows() -> list[dict]:
-    p = census_dir() / f"modules_{DST.replace('.', '')}.csv"
+def _census_rows(target: str = DST) -> list[dict]:
+    p = census_dir() / f"modules_{target.replace('.', '')}.csv"
     if not p.exists():
         raise SystemExit(f"falta el censo {p}: corre `odoolab census` primero")
     with p.open(encoding="utf-8") as f:
@@ -149,21 +182,34 @@ def manifest(gitdir: Path, rev: str, module: str) -> dict:
     raise RuntimeError(f"{module}@{rev}: sin manifest")
 
 
-def _resolve_oca_deps(depends: list[str], index: dict[str, str], seen: set[str]) -> list[str]:
-    """Dependencias OCA transitivas (las que estan en el censo), leidas de 17.0."""
+def _resolve_oca_deps(depends: list[str], index: dict[str, str], seen: set[str],
+                      *, source: str = SRC, target: str = DST) -> list[str]:
+    """Dependencias OCA transitivas, leidas en la version destino."""
+    DST = target
     out = []
     for dep in depends:
         if dep in seen or dep not in index:
             continue
         seen.add(dep)
-        gd = census.sync_repo(index[dep], DST, cache_dir())
-        sub = manifest(gd, DST, dep).get("depends", [])
-        out += _resolve_oca_deps(sub, index, seen) + [dep]
+        sub = set()
+        for version in (source, target):
+            gd = census.sync_repo(index[dep], version, cache_dir())
+            if gd is None:
+                raise RuntimeError(f"{dep}: falta rama {version}")
+            info = manifest(gd, version, dep)
+            if not info.get("installable", True):
+                raise RuntimeError(f"{dep}: no instalable en {version}")
+            if any((info.get("external_dependencies") or {}).values()):
+                raise RuntimeError(f"{dep}: dependencias externas requieren revision")
+            sub.update(info.get("depends", []))
+        out += _resolve_oca_deps(sorted(sub), index, seen, source=source, target=target) + [dep]
     return out
 
 
-def _module_source(repo: str, module: str, rows: list[dict]) -> dict:
-    """Ubica S0, la v16 y el [MIG] de un modulo; falla temprano si no sirve."""
+def _module_source(repo: str, module: str, rows: list[dict],
+                   *, source: str = SRC, target: str = DST) -> dict:
+    """Ubica S0, el origen y el [MIG]; valida antes de escribir."""
+    SRC, DST = source, target
     row = next((r for r in rows if r["repo"] == repo and r["module"] == module), None)
     if not row or row["migrated"] != "True":
         raise RuntimeError(f"{repo}/{module} no tiene commit [MIG] a {DST} en el censo")
@@ -171,6 +217,8 @@ def _module_source(repo: str, module: str, rows: list[dict]) -> dict:
     gd16 = census.sync_repo(repo, SRC, cache_dir())
     if gd16 is None or not _git_ok("cat-file", "-e", f"{SRC}:{module}", cwd=gd16):
         raise RuntimeError(f"{repo}/{module} no existe en la rama {SRC}")
+    if gd17 is None:
+        raise RuntimeError(f"{repo}: no existe la rama {DST}")
     mig = row["mig_sha"]
     parent = _git("rev-parse", f"{mig}^", cwd=gd17).strip()
     if not _git_ok("cat-file", "-e", f"{parent}:{module}", cwd=gd17):
@@ -179,7 +227,12 @@ def _module_source(repo: str, module: str, rows: list[dict]) -> dict:
     rev16 = (_git("rev-list", "-1", f"--before={mig_iso}", SRC, "--", module, cwd=gd16).strip()
              or _git("rev-parse", SRC, cwd=gd16).strip())
     m17 = manifest(gd17, mig, module)
-    ext = (m17.get("external_dependencies") or {}).get("python") or []
+    m16 = manifest(gd16, rev16, module)
+    for version, info in ((SRC, m16), (DST, m17)):
+        if not info.get("installable", True):
+            raise RuntimeError(f"{module}: no instalable en {version}")
+    ext = sorted(set((m17.get("external_dependencies") or {}).get("python") or [])
+                 | set((m16.get("external_dependencies") or {}).get("python") or []))
     if ext:
         raise RuntimeError(f"{module}: dependencias Python externas {ext}")
     return {"repo": repo, "module": module, "gd16": gd16, "gd17": gd17, "parent": parent,
@@ -189,19 +242,41 @@ def _module_source(repo: str, module: str, rows: list[dict]) -> dict:
                               | set(m17.get("depends", [])))}
 
 
-def prepare(gid: str, items: list[tuple[str, str]], force: bool = False) -> dict:
-    """items = [(repo, modulo), ...]. Rehace por completo el codigo de trabajo del grupo."""
+def prepare(gid: str, items: list[tuple[str, str]], force: bool = False,
+            *, source: str = SRC, target: str = DST) -> dict:
+    """Prepara un salto sin cambiar las versiones de otros grupos."""
+    SRC, DST = validate_step(source, target)
+    validate_gid(gid)
+    if not items or len({m for _, m in items}) != len(items):
+        raise ValueError("grupo vacio o addons duplicados")
     ed = exp_dir(gid)
     if (ed / "meta.json").exists() and not force:
         raise SystemExit(f"{ed} ya existe (usa --force para rehacerlo; borra el registro)")
-    rows = _census_rows()
-    index = {r["module"]: r["repo"] for r in rows}
-    srcs = [_module_source(repo, mod, rows) for repo, mod in items]
+    rows = _census_rows(DST)
+    index = dependency_index(rows)
+    srcs = [_module_source(repo, mod, rows, source=SRC, target=DST) for repo, mod in items]
     group = {s["module"] for s in srcs}
     for s in srcs:
         inside = group & set(s["depends"])
         if inside:
             raise RuntimeError(f"{s['module']} depende de otro modulo del grupo: {inside}")
+
+    # Resolve all dependencies BEFORE deleting/recreating work directories.
+    deps_all = sorted({d for s in srcs for d in s["depends"]})
+    oca_deps = _resolve_oca_deps(deps_all, index, set(group), source=SRC, target=DST)
+    prepared_deps = []
+    for dep in oca_deps:
+        drepo = index[dep]
+        origins = []
+        for version in (SRC, DST):
+            gd = census.sync_repo(drepo, version, cache_dir())
+            if gd is None or not _git_ok("cat-file", "-e", f"{version}:{dep}", cwd=gd):
+                raise RuntimeError(f"la dependencia OCA {dep} no existe en {version}")
+            info = manifest(gd, version, dep)
+            if not info.get("installable", True):
+                raise RuntimeError(f"dependencia {dep}: no instalable en {version}")
+            origins.append(gd)
+        prepared_deps.append((dep, drepo, *origins))
 
     # La linea base no puede tener los modulos en el addons-path: Odoo lee todos los
     # manifests al inicializar una BD, y uno invalido tumba el arranque entero.
@@ -211,21 +286,18 @@ def prepare(gid: str, items: list[tuple[str, str]], force: bool = False) -> dict
             shutil.rmtree(w)
         w.mkdir(parents=True)
 
-    deps_all = sorted({d for s in srcs for d in s["depends"]})
-    oca_deps = _resolve_oca_deps(deps_all, index, set(group))
     dep_info = []
-    for dep in oca_deps:
-        drepo = index[dep]
-        g17 = census.sync_repo(drepo, DST, cache_dir())
-        g16 = census.sync_repo(drepo, SRC, cache_dir())
-        if g16 is None or not _git_ok("cat-file", "-e", f"{SRC}:{dep}", cwd=g16):
-            raise RuntimeError(f"la dependencia OCA {dep} no existe en {SRC}")
+    for dep, drepo, g16, g17 in prepared_deps:
         _export(g16, SRC, dep, w16)
         _export(g17, DST, dep, w17)
         _export(g17, DST, dep, w17b)
-        dep_info.append({"module": dep, "repo": drepo,
-                         "sha16": _git("rev-parse", SRC, cwd=g16).strip()[:12],
-                         "sha17": _git("rev-parse", DST, cwd=g17).strip()[:12]})
+        entry = {"module": dep, "repo": drepo,
+                 "source_version": SRC, "target_version": DST,
+                 "source_sha": _git("rev-parse", SRC, cwd=g16).strip(),
+                 "target_sha": _git("rev-parse", DST, cwd=g17).strip()}
+        if (SRC, DST) == ("16.0", "17.0"):
+            entry.update(sha16=entry["source_sha"][:12], sha17=entry["target_sha"][:12])
+        dep_info.append(entry)
     core_deps = [d for d in deps_all if d not in index and d not in group]
 
     hunks: list[dict] = []
@@ -244,6 +316,10 @@ def prepare(gid: str, items: list[tuple[str, str]], force: bool = False) -> dict
             h.id = len(hunks) + 1
             (ed / "hunks" / f"{h.id:03d}.patch").write_text(h.patch, encoding="utf-8", newline="\n")
             d = h.summary()
+            if DST != "17.0":
+                d["tags"] = [t for t in d["tags"] if not t.startswith("G17-")]
+                if not d["tags"] or d["tags"] == ["SIN_GUIA"]:
+                    d["tags"] = ["GUIA_PENDIENTE"]
             d["module"] = mod
             hunks.append(d)
         cmp = filecmp.dircmp(w16 / mod, w17 / mod)
@@ -260,7 +336,9 @@ def prepare(gid: str, items: list[tuple[str, str]], force: bool = False) -> dict
                 post = [r for r in csv.DictReader(f) if r["repo"] == s["repo"] and r["module"] == mod]
         mods.append({"repo": s["repo"], "module": mod, "mig": s["mig"],
                      "s0": {"sha": s["parent"], "source": "padre del [MIG]"},
-                     "rev16": s["rev16"], "s0_vs_16_files_differ": _ndiff(cmp),
+                     "source_revision": s["rev16"], "source_vs_s0_files_differ": _ndiff(cmp),
+                     **({"rev16": s["rev16"], "s0_vs_16_files_differ": _ndiff(cmp)}
+                        if SRC == "16.0" else {}),
                      "depends": s["depends"], "hunks": [first, len(hunks)],
                      "post_mig": {"commits": len(post),
                                   "fix": [r["subject"] for r in post if r["tag"] == "FIX"]}})
@@ -272,7 +350,10 @@ def prepare(gid: str, items: list[tuple[str, str]], force: bool = False) -> dict
     _git("-c", "user.name=odolab", "-c", "user.email=odolab@local", "commit", "-q", "-m",
          "S0: modulos tras los pasos mecanicos de la guia (padres de los [MIG])", cwd=w17)
 
-    meta_ = {"id": gid, "step": f"{SRC}->{DST}", "prepared_at": _now(),
+    meta_ = {"id": gid, "step": f"{SRC}->{DST}",
+             "version_from": SRC, "version_to": DST,
+             "guide_status": "implemented" if DST == "17.0" else "pending",
+             "prepared_at": _now(),
              "modules": mods, "depends": {"core": core_deps, "oca": dep_info},
              "hunks": len(hunks), "hunk_tags": _count_tags(hunks)}
     _jdump(ed / "meta.json", meta_)
@@ -388,6 +469,7 @@ class SeedError(RuntimeError):
 
 def seed(gid: str, force: bool = False) -> dict:
     """Plantillas de produccion v16: con los modulos (prod) y sin ellos (base)."""
+    SRC, DST = versions_of(gid)
     from . import pg
     m = meta(gid)
     mods = ",".join(modules_of(gid))
@@ -457,6 +539,7 @@ def _phase(gid: str, phase: str, *, baseline: bool, fork: _Fork, tag: str):
 
 
 def baseline(gid: str, phases=("install", "upgrade")) -> dict:
+    SRC, DST = versions_of(gid)
     from . import pg, oca
     out = {}
     if not work_dir(gid, f"{DST}-base").exists():
@@ -486,6 +569,7 @@ def _iterations(gid: str) -> list[dict]:
 
 
 def run(gid: str, phase: str, keep_db=False) -> dict:
+    SRC, DST = versions_of(gid)
     from . import pg
     base = _jload(exp_dir(gid) / "baseline.json", {})
     if phase != "test" and phase not in base:
@@ -502,6 +586,8 @@ def run(gid: str, phase: str, keep_db=False) -> dict:
             continue
         seen.add(e.signature)
         d = e.dict()
+        if DST != "17.0":
+            d["guide"] = ""
         d["sig_id"] = cz.sig_id(e.signature)
         d["module"] = _event_module(gid, d)
         d["detail"] = d["detail"][-3000:]
@@ -519,6 +605,7 @@ def run(gid: str, phase: str, keep_db=False) -> dict:
 
 
 def _event_module(gid: str, e: dict) -> str:
+    SRC, DST = versions_of(gid)
     mods = modules_of(gid)
     if e.get("location"):
         top = e["location"].split("/", 1)[0]
@@ -553,6 +640,7 @@ def _hunks(gid: str) -> list[dict]:
 
 
 def apply_hunks(gid: str, ids: list[int]) -> str:
+    SRC, DST = versions_of(gid)
     w = work_dir(gid, DST)
     ed = exp_dir(gid)
     patches = [str((ed / "hunks" / f"{i:03d}.patch").resolve()) for i in ids]
@@ -590,6 +678,7 @@ def fix(gid: str, *, event: str | None, hunks: list[int], category: str | None =
         minutes: float | None = None, auto_level: int | None = None,
         resolved: bool = True) -> dict:
     """Registra una casuistica y aplica los hunks humanos que la resuelven."""
+    SRC, DST = versions_of(gid)
     hs = {h["id"]: h for h in _hunks(gid)}
     for i in hunks:
         if i not in hs:
@@ -601,7 +690,7 @@ def fix(gid: str, *, event: str | None, hunks: list[int], category: str | None =
     tags = sorted({t for i in hunks for t in hs[i]["tags"]})
     guide = sorted(t for t in tags if t.startswith("G17-")) or ([ev["guide"]] if ev.get("guide") else [])
     if not coverage:
-        coverage = "L" if guide else "C" if it.get("phase") == "test" else "R"
+        coverage = ("L" if guide else "C" if it.get("phase") == "test" else "R") if DST == "17.0" else "?"
     mods = sorted({hs[i]["module"] for i in hunks}) or ([ev["module"]] if ev.get("module") else [])
     cas = _casuistics(gid)
     rec = {

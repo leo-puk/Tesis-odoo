@@ -152,11 +152,13 @@ app.add_typer(exp_app, name="exp")
 def exp_prepare(repo: str, module: str, force: bool = typer.Option(False, "--force"),
                 group: Optional[str] = typer.Option(None, "--group",
                     help="id de grupo; con --extra repo/modulo,... agrega mas modulos"),
-                extra: str = typer.Option("", "--extra")):
+                extra: str = typer.Option("", "--extra"),
+                source: str = typer.Option("16.0", "--version-inicio"),
+                target: str = typer.Option("17.0", "--version-fin")):
     """S0 (padre del [MIG]), hunks del [MIG] humano y dependencias."""
     from . import experiment as ex
     items = [(repo, module)] + [tuple(x.split("/", 1)) for x in extra.split(",") if x.strip()]
-    m = ex.prepare(group or module, items, force=force)
+    m = ex.prepare(group or module, items, force=force, source=source, target=target)
     rprint({k: m[k] for k in ("depends", "hunks", "hunk_tags")})
 
 
@@ -284,6 +286,13 @@ def exp_report(module: str):
     """Escribe research/experiments/<modulo>/report.md."""
     from . import experiment as ex
     rprint(f"[green]{ex.report(module)}[/green]")
+
+
+@app.command("plan", context_settings={"allow_extra_args": True, "ignore_unknown_options": True})
+def migration_plan_command(ctx: typer.Context):
+    """Catalogo de 32 casos: list/check/prepare/run/summary. Use plan --help."""
+    from . import migration_plan
+    raise typer.Exit(migration_plan.main(ctx.args))
 
 
 def main():
