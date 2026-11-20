@@ -4,6 +4,27 @@
 
 ## Paso a paso en Windows
 
+### Inicio asistido de R2.2
+
+El partner ya no necesita escribir manualmente la ruta de cada addon ni descargar el diff desde una URL. Desde `sandbox/r2` puede ejecutar:
+
+```powershell
+& .\.venv\Scripts\python.exe -m r2 start
+```
+
+El asistente solicita o reutiliza la ruta del checkout local de Odoo, comprueba que contenga `odoo-bin` y Git, pregunta la carpeta que contiene los addons, muestra todos los `__manifest__.py` encontrados y permite escoger por número, rango, nombre o `all`. Después muestra las versiones disponibles localmente, solicita el salto, obtiene `git diff` desde la máquina, construye una sola colección y genera un reporte independiente para cada addon seleccionado. La configuración se conserva en `%USERPROFILE%\.r2\config.json` para no volver a escribir las rutas.
+
+También puede usarse sin preguntas:
+
+```powershell
+& .\.venv\Scripts\python.exe -m r2 start `
+  --odoo "C:\ruta\odoo" `
+  --addons "C:\ruta\addons-personalizados" `
+  --from 16.0 --to 17.0 --select "1,3-5"
+```
+
+Si solo se quiere revisar qué detectó, se añade `--list-only`. La versión origen y destino deben existir como ramas, etiquetas o ramas remotas ya descargadas; el asistente no altera el checkout ni ejecuta `git fetch` automáticamente.
+
 Los comandos de esta guía se ejecutan en PowerShell. El ejemplo usa el módulo incluido `sale_advance_payment` y la migración 16.0 a 17.0. Usa Python 3.12, según el rango declarado en `pyproject.toml`. Para trabajar con tu módulo, cambia la variable `$modulo`, su nombre técnico y las versiones.
 
 ### 1. Integrar la entrega en dev

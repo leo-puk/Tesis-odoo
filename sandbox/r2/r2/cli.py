@@ -14,6 +14,7 @@ from .normalization.storage import build_normalized
 from .relations import execute_query, save_graph
 from .report import render_report, search_units, validate_report
 from .workflow import run_workflow
+from .assistant import start as start_assistant
 
 
 def query_arguments(command, *, baseline=False):
@@ -39,6 +40,18 @@ def parser():
     cli = argparse.ArgumentParser(prog="r2", description="Local Odoo migration evidence from normalized units")
     cli.add_argument("--version", action="version", version=__version__)
     commands = cli.add_subparsers(dest="command", required=True)
+    start = commands.add_parser("start", help="Interactively select local Odoo versions and addons")
+    start.add_argument("--odoo", type=Path, help="Local Odoo Git checkout containing odoo-bin")
+    start.add_argument("--addons", type=Path, help="Addon folder or repository to scan")
+    start.add_argument("--from", dest="from_version")
+    start.add_argument("--to", dest="to_version")
+    start.add_argument("--select", help="Addon names, indexes, ranges or 'all'")
+    start.add_argument("--output-dir", type=Path)
+    start.add_argument("--config", type=Path, help="Reusable assistant configuration file")
+    start.add_argument("--list-only", action="store_true", help="Detect and select without running analysis")
+    start.add_argument("--layer", choices=sorted(LAYERS | {"all"}), default="all")
+    start.add_argument("--depth", "--max-hops", dest="maximum_hops", type=int, choices=range(4), default=3)
+    start.add_argument("--limit", type=int, choices=range(1, 11), default=10, metavar="1-10")
     run = commands.add_parser("run", help="Acquire, normalize, cross, extract relations and write a report")
     run.add_argument("--plan", type=Path, help="Use an existing capture plan instead of planning from the module")
     run.add_argument("--catalog", required=True, type=Path)
@@ -138,6 +151,9 @@ def main(argv=None):
     cli = parser()
     args = cli.parse_args(argv)
     try:
+        if args.command == "start":
+            print(json_text(start_assistant(args)))
+            return
         if args.command in {"run", "query", "search-units"}:
             print(run_query(args))
             return
