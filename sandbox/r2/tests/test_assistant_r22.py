@@ -27,10 +27,14 @@ class AssistantR22Tests(unittest.TestCase):
         code = self.odoo / "odoo" / "models.py"
         code.parent.mkdir()
         code.write_text("class Model:\n    old_api = True\n", encoding="utf-8")
+        for index in range(3):
+            (code.parent / f"extra_{index}.py").write_text("class Model:\n    old_api = True\n", encoding="utf-8")
         subprocess.run(["git", "-C", str(self.odoo), "add", "."], check=True)
         subprocess.run(["git", "-C", str(self.odoo), "commit", "-qm", "16"], check=True)
         subprocess.run(["git", "-C", str(self.odoo), "branch", "16.0"], check=True)
         code.write_text("class Model:\n    new_api = True\n", encoding="utf-8")
+        for index in range(3):
+            (code.parent / f"extra_{index}.py").write_text("class Model:\n    new_api = True\n", encoding="utf-8")
         subprocess.run(["git", "-C", str(self.odoo), "commit", "-qam", "17"], check=True)
         subprocess.run(["git", "-C", str(self.odoo), "branch", "17.0"], check=True)
         self.addons = self.root / "addons"
@@ -81,6 +85,16 @@ class AssistantR22Tests(unittest.TestCase):
         result = run_local_analysis(self.odoo, selected, "16.0", "17.0", output)
         self.assertTrue(Path(result["collection"]["database"]).is_file())
         self.assertTrue((output / "local-source.json").is_file())
+        source = json.loads((output / "local-source.json").read_text(encoding="utf-8"))
+        inventory = json.loads(Path(result["collection"]["inventory"]).read_text(encoding="utf-8"))
+        self.assertEqual(len(inventory), 1)
+        self.assertEqual(source["diff_file"]["bytes"], source["diff_bytes"])
+        self.assertEqual(source["scope"]["selected_addons"], ["alpha_addon", "beta_addon"])
+        self.assertIn("odoo/models.py", source["scope"]["pathspecs"])
+        diff_path = Path(result["collection"]["inventory"]).parent / inventory[0]["files"][0]
+        diff_text = diff_path.read_text(encoding="utf-8")
+        self.assertIn("odoo/models.py", diff_text)
+        self.assertNotIn("odoo/extra_0.py", diff_text)
         self.assertTrue((output / "summary.json").is_file())
         self.assertEqual([item["addon"] for item in result["addons"]],
                          ["alpha_addon", "beta_addon"])

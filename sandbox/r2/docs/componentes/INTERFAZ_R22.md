@@ -12,7 +12,7 @@ Permitir que un partner use R2 sin construir manualmente URL, nombres técnicos 
 | UI-04 | Descubrir addons por manifiesto | `discover_addons` |
 | UI-05 | Elegir números, rangos, nombres o todos | `select_addons` |
 | UI-06 | Mostrar versiones disponibles | `available_versions` |
-| UI-07 | Resolver refs y generar diff local por SHA | `resolve_version_ref`, `local_diff` |
+| UI-07 | Resolver refs y generar un diff local por SHA filtrado mediante análisis estático previo | `resolve_version_ref`, `relevant_diff_scope`, `write_relevant_local_diff` |
 | UI-08 | Construir una colección y consultar varios addons | `run_local_analysis` |
 | UI-09 | Guardar un reporte separado por addon | `_save_report` |
 | UI-10 | Reutilizar rutas y versiones | `load_config`, `save_config` |
@@ -21,6 +21,6 @@ Permitir que un partner use R2 sin construir manualmente URL, nombres técnicos 
 
 **Comandos:** `start`, `run`, `plan`, `query`/`search-units`, `build`, `capture-plan`, `delete-units`, `cross`, `extract-relations`, `export`, `validate-output`, `evaluate`.
 
-**Límites:** interfaz de terminal, sin GUI ni dashboard; no ejecuta `git fetch`; el asistente local compara extremos directamente.
+**Límites:** interfaz de terminal, sin GUI ni dashboard; no ejecuta `git fetch`; el asistente local compara extremos directamente y limita el diff a las rutas justificadas por los addons seleccionados.
 
 **Pruebas:** `test_assistant_r22.py`, `test_caja_negra.py`, pruebas CLI de componentes y suite integral.

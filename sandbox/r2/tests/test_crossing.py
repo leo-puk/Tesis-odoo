@@ -181,7 +181,9 @@ class CrossingTests(unittest.TestCase):
             cross_module(database,self.module)
         self.assertTrue(any('JOIN information_units' in q for q in statements))
         self.assertFalse(any('FROM changes' in q or 'FROM unit_terms' in q or 'FROM search ' in q for q in statements))
-        self.assertFalse(any('SELECT payload FROM information_units' in q for q in statements))
+        self.assertTrue(any('SELECT payload FROM information_units WHERE id=' in q for q in statements))
+        self.assertFalse(any('SELECT payload FROM information_units' in q and 'WHERE id=' not in q
+                             for q in statements))
 
     def test_reproducibility_persistence_and_inputs_stay_unchanged(self):
         self.code(PARTNER)

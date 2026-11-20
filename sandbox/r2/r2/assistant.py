@@ -1,7 +1,9 @@
 """Interactive R2.2 front end for local Odoo checkouts and addon selection."""
 from __future__ import annotations
 
+import ast
 import json
+import hashlib
 import os
 from pathlib import Path
 import re
@@ -13,6 +15,7 @@ from .normalization.storage import build_normalized
 from .report import render_report, search_units
 from .crossing import save_result
 from .relations import save_graph
+from .crossing.code import read_code
 
 
 DEFAULT_CONFIG = Path.home() / ".r2" / "config.json"
@@ -26,6 +29,7 @@ def _git(repo, *arguments, check=True):
     process = subprocess.run(
         ["git", "-C", os.fspath(repo), *arguments], capture_output=True, text=True,
         encoding="utf-8", errors="replace", check=False,
+        env={**os.environ, "GIT_CONFIG_NOSYSTEM": "1"},
     )
     if check and process.returncode:
         raise ValueError(process.stderr.strip() or "Git command failed")
@@ -106,6 +110,7 @@ def resolve_version_ref(repo, version):
         process = subprocess.run(
             ["git", "-C", os.fspath(repo), "rev-parse", "--verify", "--quiet", f"{candidate}^{{commit}}"],
             capture_output=True, text=True, encoding="utf-8", errors="replace", check=False,
+            env={**os.environ, "GIT_CONFIG_NOSYSTEM": "1"},
         )
         if process.returncode == 0:
             return candidate
@@ -134,46 +139,161 @@ def local_diff(repo, origin, destination):
     last = resolve_version_ref(repo, destination)
     first_sha = _git(repo, "rev-parse", f"{first}^{{commit}}").strip()
     last_sha = _git(repo, "rev-parse", f"{last}^{{commit}}").strip()
-    text = _git(repo, "diff", "--no-ext-diff", "--no-color", "--unified=3", f"{first_sha}..{last_sha}")
+    text = _git(repo, "diff", "--no-ext-diff", "--no-textconv", "--no-color", "--unified=3", f"{first_sha}..{last_sha}")
     return text, dict(from_ref=first, to_ref=last, from_revision=first_sha, to_revision=last_sha)
 
 
-def prepare_local_collection(repo, origin, destination, output):
+def _manifest_dependencies(path):
+    # Read literal addon dependencies without importing partner code.
+    try:
+        value = ast.literal_eval((Path(path) / "__manifest__.py").read_text(encoding="utf-8-sig"))
+    except (OSError, UnicodeError, SyntaxError, ValueError) as exc:
+        raise ValueError(f"Cannot read literal addon manifest: {path}") from exc
+    dependencies = value.get("depends", []) if isinstance(value, dict) else None
+    if not isinstance(dependencies, (list, tuple)) or not all(
+        isinstance(item, str) and item for item in dependencies
+    ):
+        raise ValueError(f"Addon manifest has invalid dependencies: {path}")
+    return dependencies
+
+
+def _core_addon_paths(repo, revisions):
+    # Find addon roots in both revisions because modules may move between versions.
+    paths = {}
+    pattern = re.compile(r"^(addons|odoo/addons)/([^/]+)/__manifest__\.py$")
+    for revision in revisions:
+        for name in _git(repo, "ls-tree", "-r", "--name-only", revision).splitlines():
+            match = pattern.fullmatch(name)
+            if match:
+                paths.setdefault(match.group(2), set()).add(name.rsplit("/", 1)[0])
+    return paths
+
+
+def relevant_diff_scope(repo, addons, revisions):
+    # Resolve partner dependencies and technical identifiers before generating the Git diff.
+    selected = {addon["name"]: Path(addon["path"]).resolve() for addon in addons}
+    available = dict(selected)
+    for parent in sorted({path.parent for path in selected.values()}, key=os.fspath):
+        available.update({item["name"]: Path(item["path"]) for item in discover_addons(parent)})
+    partner = {}
+    pending = list(selected)
+    dependencies = set()
+    while pending:
+        name = pending.pop(0)
+        if name in partner:
+            continue
+        path = available[name]
+        partner[name] = path
+        for dependency in _manifest_dependencies(path):
+            dependencies.add(dependency)
+            if dependency in available and dependency not in partner:
+                pending.append(dependency)
+
+    core = _core_addon_paths(repo, (revisions["from_revision"], revisions["to_revision"]))
+    core_modules = set(dependencies) & core.keys()
+    identifiers = set()
+    observations = {}
+    for name, path in sorted(partner.items()):
+        code = read_code(path, name)
+        observations[name] = dict(files=len(code["files"]), entities=len(code["entities"]),
+                                  errors=code["errors"], limitations=code["limitations"])
+        for entity in code["entities"]:
+            value = entity.get("name")
+            if isinstance(value, str) and "." in value and re.fullmatch(r"[A-Za-z_][A-Za-z0-9_.-]*", value):
+                identifiers.add(value)
+                namespace = value.split(".", 1)[0]
+                if namespace in core:
+                    core_modules.add(namespace)
+
+    addon_roots = {path for module in core_modules for path in core[module]}
+    pathspecs = set(addon_roots)
+    pathspecs.update({"odoo/api.py", "odoo/fields.py", "odoo/models.py",
+                      "odoo/exceptions.py"})
+    framework_components = {"api", "exceptions", "fields", "http", "models", "osv", "tools"}
+    for identifier in identifiers:
+        if identifier.startswith("odoo."):
+            component = identifier.split(".", 2)[1]
+            if component in framework_components:
+                pathspecs.update({f"odoo/{component}.py", f"odoo/{component}"})
+    changed = set(_git(repo, "diff", "--name-only",
+                       f"{revisions['from_revision']}..{revisions['to_revision']}").splitlines())
+    pathspecs.update({":(exclude)**/i18n/**", ":(exclude)**/tests/**",
+                      ":(exclude)**/demo/**", ":(exclude)**/static/description/**"})
+    if not pathspecs:
+        raise ValueError("The selected addons did not resolve to relevant Odoo paths")
+    return dict(selected_addons=sorted(selected), partner_addons=sorted(partner),
+                manifest_dependencies=sorted(dependencies), core_modules=sorted(core_modules),
+                technical_identifiers=sorted(identifiers), observations=observations,
+                pathspecs=sorted(pathspecs), changed_files_in_full_diff=len(changed))
+
+
+def write_relevant_local_diff(repo, addons, origin, destination, session):
+    # Search the addons first, then stream one path-filtered Git diff to disk.
+    first = resolve_version_ref(repo, origin)
+    last = resolve_version_ref(repo, destination)
+    first_sha = _git(repo, "rev-parse", f"{first}^{{commit}}").strip()
+    last_sha = _git(repo, "rev-parse", f"{last}^{{commit}}").strip()
+    revisions = dict(from_ref=first, to_ref=last, from_revision=first_sha, to_revision=last_sha)
+    scope = relevant_diff_scope(repo, addons, revisions)
+    command = ["git", "-C", os.fspath(repo), "diff", "--no-ext-diff", "--no-textconv",
+               "--no-color", "--unified=3", f"{first_sha}..{last_sha}", "--", *scope["pathspecs"]]
+    unit = session / uuid4().hex
+    unit.mkdir()
+    path = unit / "comparison-relevant.diff"
+    digest = hashlib.sha256()
+    with path.open("xb") as stream:
+        process = subprocess.run(command, stdout=stream, stderr=subprocess.PIPE,
+                                 env={**os.environ, "GIT_CONFIG_NOSYSTEM": "1"})
+    if process.returncode:
+        raise ValueError(process.stderr.decode("utf-8", errors="replace").strip() or "Git diff failed")
+    if path.stat().st_size == 0:
+        raise ValueError("The relevant Odoo paths have no changes between the selected revisions")
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    scope["changed_files_in_relevant_diff"] = len(_git(
+        repo, "diff", "--name-only", f"{first_sha}..{last_sha}", "--", *scope["pathspecs"]
+    ).splitlines())
+    return dict(path=str(path), bytes=path.stat().st_size), revisions, digest.hexdigest(), scope
+
+
+def prepare_local_collection(repo, addons, origin, destination, output):
     # Inputs: Local Odoo versions and a new R2.2 output directory.
     # Does: Materialize a provenance-bearing local diff and build the normal R2 index.
     # Output: Database path, revision data and build summary.
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
-    text, revisions = local_diff(repo, origin, destination)
     session = output / "temp_data" / uuid4().hex
-    unit_id = uuid4().hex
-    unit = session / unit_id
-    unit.mkdir(parents=True)
-    relative = f"{unit_id}/comparison.diff"
-    (unit / "comparison.diff").write_text(text, encoding="utf-8")
+    session.mkdir(parents=True)
+    part, revisions, diff_sha256, scope = write_relevant_local_diff(
+        repo, addons, origin, destination, session)
     source_url = f"local-git:{Path(repo).resolve().as_posix()}#{revisions['from_revision']}..{revisions['to_revision']}"
     captured = utcnow()
+    path = Path(part["path"])
+    relative = path.relative_to(session).as_posix()
+    source_id = "local-odoo-relevant-diff"
     inventory = [dict(
-        id=unit_id, source_id="local-odoo-diff", kind="github_diff", urls=[source_url],
+        id=path.parent.name, source_id=source_id, kind="github_diff", urls=[source_url],
         status="accepted", files=[relative], captures=[dict(url=source_url, status=200, captured_at=captured)],
         file_metadata=[dict(path=relative, representation="original_bytes", decode_state="decoded",
                             screening_encoding="utf-8", text_conversion="not_performed",
                             content_type="text/x-diff", url=source_url)],
         storage_form="original", created_at=captured, captured_at=captured,
     )]
+    bindings = {source_id: dict(from_version=origin, to_version=destination,
+                                from_revision=revisions["from_revision"],
+                                to_revision=revisions["to_revision"],
+                                migration_id=f"local-odoo-{origin}-{destination}")}
     inventory_path = session / "inventory.json"
     inventory_path.write_text(json.dumps(inventory, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     bindings_path = output / "bindings.json"
-    bindings_path.write_text(json.dumps({"sources": {"local-odoo-diff": {
-        "from_version": origin, "to_version": destination,
-        "from_revision": revisions["from_revision"], "to_revision": revisions["to_revision"],
-        "migration_id": f"local-odoo-{origin}-{destination}",
-    }}}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    bindings_path.write_text(json.dumps({"sources": bindings}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     database = output / "collection.sqlite"
     build = build_normalized(inventory_path, bindings_path, database)
     metadata_path = output / "local-source.json"
     metadata_path.write_text(json.dumps({"repository": str(Path(repo).resolve()), **revisions,
-                                         "diff_bytes": len(text.encode("utf-8"))},
+                                         "diff_bytes": part["bytes"], "diff_sha256": diff_sha256,
+                                         "diff_file": part, "scope": scope},
                                         ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return dict(database=str(database), inventory=str(inventory_path), bindings=str(bindings_path),
                 metadata=str(metadata_path), revisions=revisions, build=build)
@@ -198,7 +318,7 @@ def run_local_analysis(repo, addons, origin, destination, output, *, layer="all"
     # Inputs: Local Odoo checkout, selected addons, versions and query settings.
     # Does: Build one local diff collection and query it for every selected addon.
     # Output: Collection metadata and a concise result for each addon.
-    prepared = prepare_local_collection(repo, origin, destination, output)
+    prepared = prepare_local_collection(repo, addons, origin, destination, output)
     results = []
     for addon in addons:
         result = search_units(prepared["database"], addon["path"], origin, destination,

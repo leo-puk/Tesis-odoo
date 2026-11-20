@@ -9,6 +9,7 @@ from unittest.mock import patch
 
 from r2.cli import main
 from r2.evaluation.normalized import evaluate
+from r2.records import connect, load
 from r2.report import search_units, validate_report
 from test_session_integration import Response
 
@@ -77,6 +78,16 @@ class NormalizedWorkflowTests(unittest.TestCase):
 
     def test_run_reports_scoped_distinct_hunks_with_provenance_before_display_limit(self):
         report = self.run_workflow()
+        with connect(self.db) as con:
+            stored = json.loads(con.execute(
+                "SELECT payload FROM information_units WHERE id IN "
+                "(SELECT unit_id FROM unit_content) LIMIT 1"
+            ).fetchone()[0])
+            self.assertTrue({"entities", "source_locator", "artifact_id"} <= stored.keys())
+            self.assertFalse({"text", "data", "terms"} & stored.keys())
+            self.assertTrue(any(unit["kind"] == "diff_hunk" and unit["data"]["diff_body"]
+                                for unit in load(con, "information_units")))
+            self.assertGreater(con.execute("SELECT count(*) FROM unit_search").fetchone()[0], 0)
         self.assertEqual(report, json.loads((self.output / "report.json").read_text(encoding="utf-8")))
         self.assertTrue((self.output / "crossing.json").is_file())
         self.assertTrue((self.output / "relations.json").is_file())

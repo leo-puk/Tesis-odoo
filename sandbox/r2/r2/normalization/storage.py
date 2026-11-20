@@ -6,7 +6,7 @@ import time
 from pathlib import Path
 
 from .. import __version__
-from ..records import canonical, fingerprint
+from ..records import canonical, split_unit, streaming_fingerprint
 from .pipeline import normalize_session
 from .terms import term_counts
 
@@ -23,7 +23,7 @@ def build_normalized(inventory, bindings, destination):
         raise ValueError("Choose a new collection path")
 
     metadata = dict(schema_version=4, layout="normalized-units", engine_version=__version__,
-                    collection_revision=fingerprint(["normalized-units", corpus]),
+                    collection_revision=streaming_fingerprint(["normalized-units", corpus]),
                     normalization=corpus["normalization"], normalization_issues=corpus["issues"],
                     warnings=corpus["warnings"], excluded=corpus["excluded"],
                     include_oca_migrations=False, information_unit_count=len(corpus["units"]),
@@ -39,8 +39,14 @@ def build_normalized(inventory, bindings, destination):
                        "artifacts": corpus["artifacts"], "information_units": corpus["units"]}
             for table, rows in records.items():
                 con.execute(f"CREATE TABLE {table}(id TEXT PRIMARY KEY,payload TEXT NOT NULL)")
-                con.executemany(f"INSERT INTO {table} VALUES (?,?)",
-                                ((key, canonical(row)) for key, row in sorted(rows.items())))
+                if table != "information_units":
+                    con.executemany(f"INSERT INTO {table} VALUES (?,?)",
+                                    ((key, canonical(row)) for key, row in sorted(rows.items())))
+            con.execute("CREATE TABLE unit_content(unit_id TEXT PRIMARY KEY,payload TEXT NOT NULL)")
+            for uid, unit in sorted(corpus["units"].items()):
+                attributes, content = split_unit(unit)
+                con.execute("INSERT INTO information_units VALUES (?,?)", (uid, canonical(attributes)))
+                con.execute("INSERT INTO unit_content VALUES (?,?)", (uid, canonical(content)))
             con.execute("CREATE TABLE unit_entities(unit_id TEXT,ordinal INTEGER,name TEXT,type TEXT,"
                         "payload TEXT,PRIMARY KEY(unit_id,ordinal))")
             con.execute("CREATE INDEX unit_entity_lookup ON unit_entities(name,type)")

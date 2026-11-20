@@ -17,7 +17,7 @@ flowchart TD
 
 ### Entrada local
 
-`r2 start` detecta `odoo-bin`, referencias Git y addons por `__manifest__.py`. Compara los SHA elegidos con `git diff`, registra el diff como artefacto local, construye una colección una sola vez y la consulta por cada addon seleccionado.
+`r2 start` detecta `odoo-bin`, referencias Git y addons por `__manifest__.py`. Antes de comparar versiones, lee los manifiestos y el código de los addons sin ejecutarlos, amplía las dependencias personalizadas disponibles y obtiene dependencias núcleo, modelos y namespaces XML. Con esa evidencia selecciona directorios de addons de Odoo y archivos del framework relacionados. `git diff` compara los SHA elegidos solo sobre esas rutas, excluyendo traducciones, demostraciones, pruebas y descripciones estáticas. El diff filtrado se registra como artefacto local junto con el alcance que lo justificó, se construye una colección compartida y se consulta por cada addon seleccionado.
 
 ### Entrada web
 
@@ -43,6 +43,7 @@ La colección activa usa `schema_version=4` y `layout=normalized-units`.
 | `sources` | Procedencia y bindings de versión. |
 | `artifacts` | Artefactos completos y hashes almacenados. |
 | `information_units` | Hunks, secciones, texto, PR y otras unidades. |
+| `unit_content` | Texto, datos del fragmento y términos, separados de los atributos que usa el grafo. |
 | `unit_entities` | Identidades técnicas tipadas. |
 | `unit_terms` | Frecuencias y TF-IDF. |
 | `unit_search` | Índice FTS5 usado por BM25. |
@@ -62,6 +63,7 @@ El reporte filtra por intervalo, capa y profundidad, deduplica hunks idénticos 
 - El addon no se ejecuta ni modifica.
 - Las versiones avanzan de origen a destino.
 - Cada evidencia mantiene procedencia y localizador.
+- El alcance del diff local registra addons, dependencias, identificadores, pathspecs y cantidad de archivos incluidos frente al diff completo.
 - Las colecciones y reportes no se sobrescriben.
 - Se distinguen ausencia limpia, lectura parcial y adquisición fallida.
 - Una coincidencia técnica no equivale a una decisión automática de migración.

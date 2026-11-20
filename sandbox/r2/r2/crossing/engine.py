@@ -15,7 +15,7 @@ def _candidates(con, name, kinds):
     # Output: Matching SQLite rows.
     placeholders = ','.join('?' for _ in kinds)
     return con.execute(
-        'SELECT e.unit_id,e.ordinal,e.name,e.type,e.payload AS entity_payload,u.payload AS unit_payload '
+        'SELECT e.unit_id,e.ordinal,e.name,e.type,e.payload AS entity_payload '
         'FROM unit_entities AS e INDEXED BY unit_entity_lookup '
         'JOIN information_units AS u ON u.id=e.unit_id '
         f'WHERE e.name=? AND e.type IN ({placeholders}) ORDER BY e.unit_id,e.ordinal',
@@ -49,7 +49,7 @@ def cross_module(database, module, *, module_name=None, output=None):
                 raise ValueError('Missing normalized collection table: '+table)
         if not con.execute("SELECT 1 FROM sqlite_master WHERE type='index' AND name='unit_entity_lookup'").fetchone():
             raise ValueError('Missing entity index; rebuild the collection')
-        cache, source_modules = {}, {}
+        cache, source_modules, units = {}, {}, {}
         for entity in code['entities']:
             identity, reason = partner_identity(entity,module_name)
             if identity is None:
@@ -62,7 +62,13 @@ def cross_module(database, module, *, module_name=None, output=None):
                 if key not in cache:
                     cache[key] = _candidates(con,name,kinds)
                 for row in cache[key]:
-                    unit = json.loads(row['unit_payload'])
+                    uid = row['unit_id']
+                    if uid not in units:
+                        stored = con.execute('SELECT payload FROM information_units WHERE id=?', (uid,)).fetchone()
+                        if stored is None:
+                            raise ValueError('Entity index refers to a missing normalized unit')
+                        units[uid] = json.loads(stored[0])
+                    unit = units[uid]
                     target = json.loads(row['entity_payload'])
                     if (unit.get('id') != row['unit_id'] or unit.get('schema_version') != SCHEMA_VERSION
                             or unit.get('rules_version') != NORMALIZATION_RULES):

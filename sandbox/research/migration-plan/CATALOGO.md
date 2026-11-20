@@ -10,9 +10,9 @@ Planificado y preparado no significan ejecutado ni aprobado. Las dependencias so
 |---|---|---|---|---|
 | g01 | g01 | 16.0->17.0 | stock_quant_manual_assign, server_action_mass_edit, sale_blanket_order, sale_financial_risk, fieldservice_isp_flow | existing_metadata |
 | g02 | g02 | 16.0->17.0 | product_variant_sale_price, product_cost_price_avco_sync, account_credit_control, hr_timesheet_employee_analytic_tag, mail_notification_custom_subject | existing_metadata |
-| oca_v01_1617 | oca_v01 | 16.0->17.0 | stock_picking_auto_create_package, product_supplier_code_purchase, partner_contact_age_range, purchase_stock_picking_invoice_link, partner_affiliate | planned_pending_validation |
-| oca_v01_1718 | oca_v01 | 17.0->18.0 | stock_picking_auto_create_package, product_supplier_code_purchase, partner_contact_age_range, purchase_stock_picking_invoice_link, partner_affiliate | planned_pending_validation |
-| oca_v01_1819 | oca_v01 | 18.0->19.0 | stock_picking_auto_create_package, product_supplier_code_purchase, partner_contact_age_range, purchase_stock_picking_invoice_link, partner_affiliate | planned_pending_validation |
+| oca_v01_1617 | oca_v01 | 16.0->17.0 | stock_picking_filter_lot, product_supplier_code_purchase, partner_contact_age_range, purchase_stock_picking_invoice_link, partner_affiliate | planned_pending_validation |
+| oca_v01_1718 | oca_v01 | 17.0->18.0 | stock_picking_filter_lot, product_supplier_code_purchase, partner_contact_age_range, purchase_stock_picking_invoice_link, partner_affiliate | planned_pending_validation |
+| oca_v01_1819 | oca_v01 | 18.0->19.0 | stock_picking_filter_lot, product_supplier_code_purchase, partner_contact_age_range, purchase_stock_picking_invoice_link, partner_affiliate | planned_pending_validation |
 | oca_v02_1617 | oca_v02 | 16.0->17.0 | partner_contact_nationality, partner_employee_quantity, partner_identification, purchase_delivery_split_date, purchase_all_shipments | planned_pending_validation |
 | oca_v02_1718 | oca_v02 | 17.0->18.0 | partner_contact_nationality, partner_employee_quantity, partner_identification, purchase_delivery_split_date, purchase_all_shipments | planned_pending_validation |
 | oca_v02_1819 | oca_v02 | 18.0->19.0 | partner_contact_nationality, partner_employee_quantity, partner_identification, purchase_delivery_split_date, purchase_all_shipments | planned_pending_validation |

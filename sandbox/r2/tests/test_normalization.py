@@ -219,6 +219,9 @@ class NormalizationTests(unittest.TestCase):
             self.assertEqual(report['issues'],[])
             with connect(output/'collection.sqlite') as con:
                 self.assertEqual(load(con,'relations'),[])
+                stored = json.loads(con.execute(
+                    'SELECT payload FROM information_units LIMIT 1').fetchone()[0])
+                self.assertFalse({'text', 'data', 'terms'} & stored.keys())
                 self.assertGreater(con.execute('SELECT count(*) FROM unit_terms').fetchone()[0],0)
                 self.assertGreater(con.execute('SELECT count(*) FROM unit_entities').fetchone()[0],0)
                 self.assertEqual(len(load(con,'information_units')),report['unit_count'])

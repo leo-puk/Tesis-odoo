@@ -14,7 +14,7 @@ from ..policy import select_sources
 from ..review import apply_reviews, search_document
 from ..selection import assign_sources
 from .. import __version__
-from ..records import canonical, connect, load, meta, fingerprint as digest
+from ..records import canonical, connect, load, meta, split_unit, fingerprint as digest
 
 
 def git(repo, *args, binary=False):
@@ -317,8 +317,11 @@ def write_collection(sources, elements, relations, changes, destination, annotat
                 con.execute('CREATE INDEX unit_term_lookup ON unit_terms(term)')
                 con.execute('CREATE TABLE unit_entities(unit_id TEXT,ordinal INTEGER,name TEXT,type TEXT,payload TEXT,PRIMARY KEY(unit_id,ordinal))')
                 con.execute('CREATE INDEX unit_entity_lookup ON unit_entities(name,type)')
+                con.execute('CREATE TABLE unit_content(unit_id TEXT PRIMARY KEY,payload TEXT NOT NULL)')
                 for uid,unit in sorted((normalized_units or {}).items()):
-                    con.execute('INSERT INTO information_units VALUES (?,?)',(uid,canonical(unit)))
+                    attributes, content = split_unit(unit)
+                    con.execute('INSERT INTO information_units VALUES (?,?)',(uid,canonical(attributes)))
+                    con.execute('INSERT INTO unit_content VALUES (?,?)',(uid,canonical(content)))
                     con.executemany('INSERT INTO unit_terms VALUES (?,?,?,?)',[(uid,t['term'],t['frequency'],t['tfidf']) for t in unit['terms']])
                     con.executemany('INSERT INTO unit_entities VALUES (?,?,?,?,?)',[(uid,i,e['name'],e['type'],canonical(e)) for i,e in enumerate(unit['entities'])])
             con.execute("CREATE TABLE change_evidence(change_id TEXT,evidence_id TEXT,PRIMARY KEY(change_id,evidence_id))")

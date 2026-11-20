@@ -28,7 +28,7 @@ Entregar a un partner evidencia trazable de cambios de Odoo potencialmente relac
 | R2-018 | Insights | Mostrar dashboard | Gráficos enlazan capas, profundidad y evidencia | Pendiente |
 | R2-019 | Git | Asistir ramas faltantes | Explica y confirma antes de `git fetch` | Pendiente |
 | R2-020 | Cobertura | Añadir fuentes específicas por salto | PR, commits y diffs revisados complementan el diff global | Pendiente prioritario |
-| R2-021 | Rendimiento | Procesar diffs grandes | Lectura incremental/filtrada mantiene trazabilidad | Pendiente prioritario |
+| R2-021 | Rendimiento | Procesar diffs grandes | Análisis estático previo genera un diff filtrado y registra su alcance | Cumplido técnicamente |
 | R2-022 | Filtros | Medir pérdida por filtros | Reporta candidatos antes/después, recall y exclusiones | Pendiente prioritario |
 | R2-023 | Relaciones | Medir aporte por profundidad | Relevantes nuevos, ruido y caminos perdidos por nivel | Pendiente prioritario |
 | R2-024 | Tesis | Validar con verdad independiente | Muestra congelada, revisores y juicios reproducibles | Pendiente |
@@ -39,9 +39,8 @@ Entregar a un partner evidencia trazable de cambios de Odoo potencialmente relac
 
 1. R2-020: aumentar evidencia específica del intervalo.
 2. R2-022 y R2-023: medir filtros y relaciones.
-3. R2-021: hacer viable el diff completo entre ramas grandes.
-4. R2-018: presentar insights sin perder trazabilidad.
-5. R2-024: cerrar la evaluación académica independiente.
+3. R2-018: presentar insights sin perder trazabilidad.
+4. R2-024: cerrar la evaluación académica independiente.
 
 ## Definición de terminado
 

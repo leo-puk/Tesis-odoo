@@ -13,12 +13,12 @@ Convertir artefactos aceptados en unidades verificables y almacenarlas en una co
 | NP-05 | Validar releyendo el artefacto retenido | `schema.validate_collection` |
 | NP-06 | Prohibir relaciones precalculadas en unidades | `schema.py` |
 | NP-07 | Calcular IDs y revisión deterministas | `records.fingerprint` y pipeline |
-| NP-08 | Persistir esquema 4 `normalized-units` | `storage.build_normalized` |
+| NP-08 | Persistir esquema 4 `normalized-units`, separando atributos de grafo y contenido recuperable | `storage.build_normalized`, `records.split_unit` |
 | NP-09 | Indexar entidades y términos FTS5/BM25 | `unit_entities`, `unit_terms`, `unit_search` |
 | NP-10 | No sobrescribir colecciones | `build_normalized` |
 
 **Entrada:** `inventory.json` y bindings opcionales.  
-**Salida:** `collection.sqlite` con sources, artifacts, information_units e índices.
+**Salida:** `collection.sqlite` con sources, artifacts, information_units sin texto duplicado, unit_content e índices.
 
 **Límites:** valida fidelidad contra la captura, no autenticidad remota. Sintaxis parcial produce advertencias; unidades sin intervalo completo no son cambios finales.
 

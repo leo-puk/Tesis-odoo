@@ -11,6 +11,8 @@ Se conservan los grupos historicos `g01` y `g02`, ambos 16.0→17.0. Se agregan 
 
 `plan.json` es la fuente unica de identidades, versiones, repositorios y addons. No se copian sus entradas a `meta.json` hasta preparar el caso. Los resultados y validaciones se guardan en archivos separados; el programa no reemplaza addons automaticamente ni altera las definiciones para hacer pasar una prueba.
 
+La variante `oca_v01` usa `stock_picking_filter_lot` en lugar de `stock_picking_auto_create_package`. El segundo no existe en la rama OCA 16.0 verificada. Se comprobaron los manifiestos instalables del reemplazo en los refs OCA 16.0 (`6cef26ac`), 17.0 (`faf6f074`), 18.0 (`0d3301f7`) y 19.0 (`80d754ec`); todos dependen de `stock`. El censo registra la migracion 16.0→17.0. La validacion completa de dependencias y ejecucion para 17.0→18.0 y 18.0→19.0 sigue pendiente. Los resultados de las pruebas parciales anteriores corresponden a la seleccion antigua.
+
 La seleccion conserva la propuesta aleatoria con semilla 20261120. Los 50 addons nuevos no repiten los diez addons de g01/g02. Los nombres aparecen en los catalogos de 18/19 consultados al elaborar la propuesta; continuidad 16/17, dependencias, instalacion y exclusion de OWL siguen pendientes. Tener un caso en este catalogo no implica que ya haya sido validado ni ejecutado.
 
 ## Uso

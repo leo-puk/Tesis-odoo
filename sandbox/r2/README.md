@@ -34,8 +34,9 @@ El asistente:
 3. Busca addons mediante `__manifest__.py` y los muestra numerados.
 4. Permite escoger números, rangos, nombres o `all`.
 5. Muestra las versiones disponibles localmente.
-6. Genera el diff entre SHA locales, sin descargar el compare de GitHub.
-7. Construye una colección SQLite y un reporte por addon.
+6. Inspecciona estáticamente los addons elegidos, resuelve sus dependencias locales y los namespaces técnicos que usan, y los traduce a rutas relevantes del checkout de Odoo.
+7. Genera entre los SHA locales un único diff limitado a esas rutas. Excluye traducciones, demostraciones, pruebas y descripciones estáticas, y no descarga el compare de GitHub.
+8. Construye una colección SQLite y un reporte por addon.
 
 La configuración se guarda en `%USERPROFILE%\.r2\config.json`. R2 no ejecuta `git fetch` ni modifica los repositorios analizados.
 
@@ -61,7 +62,7 @@ Para revisar la detección sin analizar:
 | Ruta | Contenido |
 |---|---|
 | `collection.sqlite` | Colección normalizada compartida. |
-| `local-source.json` | Repositorio, refs, SHA y tamaño del diff. |
+| `local-source.json` | Repositorio, refs, SHA, tamaño y SHA-256 del diff filtrado, addons inspeccionados, dependencias, módulos núcleo, identificadores, rutas y cobertura de archivos. |
 | `bindings.json` | Versiones y revisiones de la fuente local. |
 | `summary.json` | Resumen de toda la ejecución. |
 | `addons/<addon>/report.txt` | Reporte legible del addon. |
@@ -101,6 +102,7 @@ Sirve para incorporar documentación, PR y URL permitidas por catálogo:
 - R2 entrega candidatos técnicos; no migra código ni certifica equivalencia funcional.
 - Las revisiones y fuentes necesarias deben estar disponibles.
 - Las referencias dinámicas pueden quedar sin resolver.
+- El diff local cubre las rutas justificadas por el análisis estático previo; los cambios de Odoo sin vínculo observable con los addons quedan fuera de la colección.
 - El dashboard visual permanece pendiente; la salida vigente es TXT y JSON.
 
 Véase [FUNCIONAMIENTO.md](FUNCIONAMIENTO.md) para la arquitectura y [PRODUCT_BACKLOG.md](PRODUCT_BACKLOG.md) para pendientes.
