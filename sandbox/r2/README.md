@@ -97,6 +97,31 @@ Sirve para incorporar documentación, PR y URL permitidas por catálogo:
 ./.venv/Scripts/python.exe -m unittest discover -s tests -v
 ```
 
+## Barras en la terminal
+
+Las consultas aceptan `--format bars`. Los reportes guardados pueden consultarse
+por nivel sin volver a ejecutar la búsqueda. Desde el entorno de R2:
+
+```bash
+python -m r2 query /ruta/addon --module-name addon --db /ruta/collection.sqlite --from 16.0 --to 17.0 --format bars
+python -m r2 charts /ruta/salida/addons/addon --level 1 --top 10 --ascii
+python -m r2 charts /ruta/salida/addons/addon --format json
+python -m r2 charts /ruta/evaluacion.json --ascii
+```
+
+El directorio de consulta conserva `report.json`, `crossing.json` y
+`relations.json`. Las etiquetas muestran rutas de archivos y líneas del diff;
+las etiquetas largas se reparten en varias líneas. Cada barra tiene su valor
+alineado, con separador de miles. Los gráficos porcentuales usan escala 0–100.
+Las barras muestran nodos por nivel, evidencias por nodo e
+identidad técnica y participación de cada arista en caminos mínimos. Se cuentan
+todos los caminos mínimos empatados hasta los destinos del nivel seleccionado.
+Los conteos de coincidencias incluyen evidencia directa e incidencias de las
+aristas sobre sus extremos seleccionados. El alcance es el grafo extraído antes
+de los filtros finales de presentación. `--width` controla el ancho y
+`--format json` conserva los identificadores completos. Un archivo producido
+por `r2 evaluate` permite graficar C1, P1 y C2 con sus juicios disponibles.
+
 ## Límites
 
 - R2 entrega candidatos técnicos; no migra código ni certifica equivalencia funcional.

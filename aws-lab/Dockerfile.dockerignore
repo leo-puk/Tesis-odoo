@@ -1,0 +1,10 @@
+**
+!sandbox
+!sandbox/r2
+!sandbox/r2/pyproject.toml
+!sandbox/r2/r2
+!sandbox/r2/r2/**
+!sandbox/r2/tests
+!sandbox/r2/tests/**
+**/__pycache__
+**/*.pyc

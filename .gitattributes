@@ -1,2 +1,3 @@
 # Preserve exact R2 source, fixture and audit bytes across Git checkouts.
 sandbox/r2/** -text
+aws-lab/*.sh text eol=lf

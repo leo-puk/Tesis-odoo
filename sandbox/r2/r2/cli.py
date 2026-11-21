@@ -15,6 +15,7 @@ from .relations import execute_query, save_graph
 from .report import render_report, search_units, validate_report
 from .workflow import run_workflow
 from .assistant import start as start_assistant
+from .charts import graph_statistics, load_charts, render_charts, render_evaluation
 
 
 def query_arguments(command, *, baseline=False):
@@ -30,7 +31,7 @@ def query_arguments(command, *, baseline=False):
     command.add_argument("--module-name")
     if baseline:
         command.add_argument("--engine", choices=("graph", "bm25"), default="graph")
-    command.add_argument("--format", choices=("text", "json"), default="text")
+    command.add_argument("--format", choices=("text", "json", "bars"), default="text")
 
 
 def parser():
@@ -40,6 +41,13 @@ def parser():
     cli = argparse.ArgumentParser(prog="r2", description="Local Odoo migration evidence from normalized units")
     cli.add_argument("--version", action="version", version=__version__)
     commands = cli.add_subparsers(dest="command", required=True)
+    charts = commands.add_parser("charts", help="Bar charts from a saved query directory or report.json")
+    charts.add_argument("report", type=Path)
+    charts.add_argument("--level", type=int, choices=range(4))
+    charts.add_argument("--top", type=int, choices=range(1, 101), default=10)
+    charts.add_argument("--width", type=int, choices=range(60, 201))
+    charts.add_argument("--ascii", action="store_true")
+    charts.add_argument("--format", choices=("text", "json"), default="text")
     start = commands.add_parser("start", help="Interactively select local Odoo versions and addons")
     start.add_argument("--odoo", type=Path, help="Local Odoo Git checkout containing odoo-bin")
     start.add_argument("--addons", type=Path, help="Addon folder or repository to scan")
@@ -141,6 +149,8 @@ def run_query(args):
             output.mkdir(parents=True)
         write_report(output, *result)
     report = result[0]
+    if args.format == "bars":
+        return render_charts(graph_statistics(*result))
     return render_report(report) if args.format == "text" else json_text(report)
 
 
@@ -151,6 +161,17 @@ def main(argv=None):
     cli = parser()
     args = cli.parse_args(argv)
     try:
+        if args.command == "charts":
+            if args.report.is_file():
+                payload = json.loads(args.report.read_text(encoding="utf-8-sig"))
+                if "queries" in payload and "C1" in payload:
+                    print(json_text(payload) if args.format == "json" else render_evaluation(
+                        payload, top=args.top, width=args.width, ascii_only=args.ascii))
+                    return
+            stats = load_charts(args.report, args.level)
+            print(json_text(stats) if args.format == "json" else render_charts(
+                stats, top=args.top, width=args.width, ascii_only=args.ascii))
+            return
         if args.command == "start":
             print(json_text(start_assistant(args)))
             return

@@ -1,0 +1,46 @@
+name: tesis-r2
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: ${PG_PASSWORD:?Run setup.sh first}
+      POSTGRES_DB: postgres
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U odoo]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+  odoo:
+    image: odoo:${ODOO_VERSION:-16.0}
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: ${PG_PASSWORD:?Run setup.sh first}
+    ports:
+      - "127.0.0.1:8069:8069"
+    volumes:
+      - filestore:/var/lib/odoo
+      - ./data/addons:/mnt/extra-addons:ro
+    restart: unless-stopped
+  r2:
+    build:
+      context: ..
+      dockerfile: aws-lab/Dockerfile
+    volumes:
+      - ../:/workspace/repo:ro
+      - ./data:/data
+      - ./results:/results
+    environment:
+      PYTHONUTF8: "1"
+      PYTHONPATH: /workspace/repo/sandbox/r2
+    profiles: [tools]
+volumes:
+  database:
+  filestore:

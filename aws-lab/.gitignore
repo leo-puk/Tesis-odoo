@@ -1,0 +1,9 @@
+.state/
+.env
+*.pem
+*.tar.gz
+results/
+__pycache__/
+.venv/
+data/
+source-revision.json
