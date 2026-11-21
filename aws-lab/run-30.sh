@@ -10,7 +10,7 @@ docker_cmd=(docker)
 if ! docker info >/dev/null 2>&1; then
   docker_cmd=(sudo docker)
 fi
-export R2_BATCH_ID="${R2_BATCH_ID:-lote30}"
+export R2_BATCH_ID="${R2_BATCH_ID:-lote30_v5}"
 export LOCAL_UID="$(id -u)"
 export LOCAL_GID="$(id -g)"
 if [[ ! "$R2_BATCH_ID" =~ ^[A-Za-z0-9_-]+$ ]]; then
@@ -18,13 +18,26 @@ if [[ ! "$R2_BATCH_ID" =~ ^[A-Za-z0-9_-]+$ ]]; then
   exit 1
 fi
 mkdir -p data results
-compose=("${docker_cmd[@]}" compose -f experiments.compose.yml)
+compose=("${docker_cmd[@]}" compose -p "tesis-$R2_BATCH_ID" -f experiments.compose.yml)
+container="tesis-$R2_BATCH_ID-runner"
 case "$action" in
-  start) "${compose[@]}" up -d --build runner ;;
-  logs) "${compose[@]}" logs -f --tail 60 runner ;;
-  status) "${compose[@]}" ps -a ;;
-  summary) "${compose[@]}" run --rm runner summary --output "/results/$R2_BATCH_ID" ;;
-  evaluate) "${compose[@]}" run --rm runner evaluate --output "/results/$R2_BATCH_ID" "$@" ;;
-  stop) "${compose[@]}" stop runner ;;
-  *) echo 'Use: bash aws-lab/run-30.sh start|logs|status|summary|evaluate|stop' >&2; exit 2 ;;
+  start)
+    if [[ "$#" -eq 0 ]]; then set -- --next 1; fi
+    if "${docker_cmd[@]}" inspect "$container" >/dev/null 2>&1; then
+      if [[ "$("${docker_cmd[@]}" inspect -f '{{.State.Running}}' "$container")" == true ]]; then
+        echo "This batch is already running. Use logs or stop before starting another block." >&2
+        exit 1
+      fi
+      "${docker_cmd[@]}" rm "$container" >/dev/null
+    fi
+    "${compose[@]}" run -d --build --name "$container" runner run \
+      --output "/results/$R2_BATCH_ID" --cache /data/batch-cache "$@"
+    ;;
+  logs) "${docker_cmd[@]}" logs -f --tail 60 "$container" ;;
+  status) "${docker_cmd[@]}" ps -a --filter "name=^/${container}$" ;;
+  summary|evaluate|review|apply-review)
+    "${compose[@]}" run --rm runner "$action" --output "/results/$R2_BATCH_ID" --cache /data/batch-cache "$@"
+    ;;
+  stop) "${docker_cmd[@]}" stop "$container" ;;
+  *) echo 'Use: bash aws-lab/run-30.sh start|logs|status|summary|review|apply-review|evaluate|stop [options]' >&2; exit 2 ;;
 esac

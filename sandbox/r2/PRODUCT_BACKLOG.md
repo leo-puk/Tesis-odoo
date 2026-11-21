@@ -22,7 +22,7 @@ Entregar a un partner evidencia trazable de cambios de Odoo potencialmente relac
 | R2-007 | R2.2 Relaciones | Ampliar matches a cambios relacionados | Recorrido reproducible de 0 a 3 saltos | Cumplido |
 | R2-008 | R2.2 Reporte | Presentar candidatos trazables | TXT/JSON, máximo configurable y conteos totales | Cumplido |
 | R2-009 | R2.2 Consulta | Cambiar filtros sin recapturar | `query` reutiliza SQLite | Cumplido |
-| R2-010 | R2.2 Baseline | Comparar con búsqueda léxica | BM25 por unidades en CLI y por fuentes completas en el experimento; granularidad y corpus documentados | Cumplido técnicamente |
+| R2-010 | R2.2 Baseline | Comparar con búsqueda léxica | Graph frente a BM25 por unidades en CLI y experimento; mismo corpus, consultas y límite | Cumplido técnicamente |
 | R2-011 | Evaluación | Medir C1/P1/C2/V1/T1 | Solo usa referencias y juicios explícitos | Cumplido técnicamente |
 | R2-012 | R2.2 | Elegir addons fácilmente | `start` muestra addons y acepta números/rangos/nombres | Cumplido |
 | R2-013 | R2.1 | Preparar evidencia con versiones locales | Diff por SHA local filtrado antes de normalización y cruce | Cumplido |

@@ -16,6 +16,20 @@ import experimentos as batch
 
 
 class BatchTests(unittest.TestCase):
+    def test_next_block_skips_successes_and_retries_partial_cases(self):
+        cases = batch.catalog(batch.DEFAULT_PLAN)
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            batch.save(output / "cases" / cases[0]["id"] / "latest.json", {"status": "completed"})
+            batch.save(output / "cases" / cases[1]["id"] / "latest.json", {"status": "partial"})
+            args = argparse.Namespace(only=None, next_count=5, offset=0, count=None)
+            self.assertEqual(batch.select_cases(cases, args, output), cases[1:6])
+            args.next_count, args.offset, args.count = None, 5, 5
+            self.assertEqual(batch.select_cases(cases, args, output), cases[5:10])
+            args.only = [cases[0]["id"]]
+            with self.assertRaises(ValueError):
+                batch.select_cases(cases, args, output)
+
     def test_source_resume_restores_frozen_ref_without_fetching(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -144,7 +158,7 @@ class BatchTests(unittest.TestCase):
                 attempt.mkdir(parents=True)
                 shutil.copytree(output, attempt / "addons" / "original")
                 batch.save(run_root / "manifest.json", {"cases": [case], "protocol": {"code": {}}})
-                batch.save(attempt.parent / "latest.json", {"status": "partial", "attempt": str(attempt.relative_to(run_root))})
+                batch.save(attempt.parent / "latest.json", {"status": "completed", "attempt": str(attempt.relative_to(run_root))})
                 batch.save(attempt / "result.json", dict(database=str(fixture.db), database_sha256=batch.digest(fixture.db),
                     modules=[result]))
                 graph = batch.read(output / "graph" / "report.json")

@@ -6,7 +6,7 @@ R2.1 comprende planificación, adquisición, normalización, persistencia y cruc
 inicial. R2.2 comprende extracción de relaciones, recorrido, búsqueda, reporte,
 CLI y evaluación. El comando `start` coordina ambos resultados. Su flujo local
 usa el diff filtrado disponible. El experimento en `aws-lab` incorpora además
-adquisición web y una línea base sobre fuentes completas, documentada en
+adquisición web y la comparación Graph/BM25 por unidades, documentada en
 [Funcionamiento](FUNCIONAMIENTO.md).
 
 ## Requisitos

@@ -27,13 +27,14 @@ def suggest_links(database, folder, reference_dir, commits, origin, target):
                 source = row["source"]["source_id"]
                 if "graph_sources" not in retrieved_sources[source]:
                     retrieved_sources[source].append("graph_sources")
-    for row in results("bm25_sources"):
-        retrieved_sources[row["source_id"]].append("bm25_sources")
+    if (folder / "bm25_sources" / "report.json").exists():
+        for row in results("bm25_sources"):
+            retrieved_sources[row["source_id"]].append("bm25_sources")
 
     hunks, warnings = [], []
     for commit in commits:
         sha = commit["sha"]
-        patch = (reference_dir / f"{sha}.diff").read_text(encoding="utf-8")
+        patch = (reference_dir / commit.get("patch_file", f"{sha}.diff")).read_text(encoding="utf-8")
         try:
             parsed, notes = parse_diff(patch)
         except ValueError as error:
@@ -42,7 +43,8 @@ def suggest_links(database, folder, reference_dir, commits, origin, target):
         warnings.extend({"commit": sha, "detail": note} for note in notes)
         for hunk in parsed:
             tokens = sorted(identifiers(hunk["removed"] + "\n" + hunk["added"]))
-            hunks.append(dict(id=f"{sha}:{hunk['artifact_start']}", commit=sha, file=hunk["file_path"],
+            hunks.append(dict(id=f"{sha}:{hunk['artifact_start']}", commit=sha,
+                repository=commit.get("repository"), url=commit.get("url"), file=hunk["file_path"],
                 patch_line=hunk["artifact_start"], identifiers=tokens, available_unit_candidates=[],
                 retrieved_unit_candidates=[], retrieved_source_candidates=[]))
 

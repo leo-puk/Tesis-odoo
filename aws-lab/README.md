@@ -6,7 +6,8 @@ Desde el checkout del repositorio en tu servidor Ubuntu, ejecuta:
 
 ```bash
 git pull --ff-only origin master
-bash aws-lab/run-30.sh start
+export R2_BATCH_ID=lote30_v5
+bash aws-lab/run-30.sh start --next 1
 bash aws-lab/run-30.sh logs
 ```
 
@@ -19,6 +20,15 @@ El proceso corre en un contenedor en segundo plano y continúa al desconectar
 SSH. `Ctrl+C` en la vista de logs cierra esa vista. Para detener el cálculo usa
 `bash aws-lab/run-30.sh stop`. Con `start` se reanuda el lote. Si falta Docker,
 el lanzador lo instala mediante el bootstrap de esta carpeta con `sudo`.
+`start` sin argumentos ejecuta el siguiente caso. Al terminar, repite
+`start --next 5` para ejecutar los cinco siguientes; los casos completados se
+omiten y los parciales se reintentan. `--offset 5 --count 5` selecciona las
+posiciones 6 a 10 del catálogo; `--only oca_v01_1617` permite elegir un caso.
+La selección del bloque no cambia el protocolo ni exige otro ID de lote.
+No actualices el código entre bloques de una misma corrida.
+
+El procedimiento de revisión y los comandos finales están en
+[EVALUACION_FINAL.md](EVALUACION_FINAL.md).
 
 El lote toma los treinta grupos nuevos de
 `sandbox/research/migration-plan/plan.json`, cinco addons en cada grupo, para
@@ -32,10 +42,11 @@ admitidas por el catálogo. Los inventarios se fusionan antes de normalizar.
 R2.1 termina con el cruce inicial, conservado por addon y agregado para el
 grupo. R2.2 extrae relaciones, busca, ordena y emite reportes por addon.
 
-El lote compara Graph, BM25 por unidades como control y `bm25_sources` sobre
-el texto completo de cada artefacto admitido. Cada consulta presenta hasta
+El lote compara exclusivamente Graph y BM25 por unidades. Cada consulta presenta hasta
 diez resultados y se repite tres veces alternando el orden de los motores.
-El total previsto es de 150 consultas de addons y 1 350 ejecuciones de motor.
+El total previsto es de 150 consultas de addons y 900 ejecuciones de motor
+durante la medición inicial; la evaluación vuelve a consultar para verificar
+las entradas y medir sus tiempos.
 `logs` muestra, al terminar cada caso, los candidatos a revisar del grafo por
 addon, con su título e ID. El reporte detallado se guarda en el intento.
 El PostgreSQL y los forks del sandbox de migración se ejecutan mediante la
@@ -53,7 +64,7 @@ bash aws-lab/run-30.sh status
 bash aws-lab/run-30.sh summary
 ```
 
-Las salidas están en `aws-lab/results/lote30/`:
+Las salidas están en `aws-lab/results/$R2_BATCH_ID/`:
 
 - `manifest.json` fija parámetros, versiones y hashes del código.
 - `sources.json` conserva los SHA de las fuentes.
@@ -66,25 +77,39 @@ Las salidas están en `aws-lab/results/lote30/`:
 - `acquisition/` conserva planificación, capturas originales, inventario
   fusionado y colección complementada. Los estados de captura permanecen
   visibles en `acquisition.json`, también ante una fuente fallida.
-- `addons/<addon>/graph/`, `bm25/` y `bm25_sources/` conservan resultados
+- `addons/<addon>/graph/` y `bm25/` conservan resultados
   estructurados. Cada addon tiene tiempos por repetición, hashes,
-  `judgments.csv` por unidad y `source-judgments.csv` por fuente completa.
-- `references/<addon>/` conserva los commits candidatos `[MIG]` y sus parches
+  y `judgments.csv` por unidad.
+- `references/pool/` conserva los commits candidatos `[MIG]` y sus parches
   para la revisión externa de correcciones después de ejecutar las consultas.
-  `suggested-links.json` vincula cada hunk con unidades del salto, resultados
-  recuperados y fuentes completas mostradas cuando comparten identificadores
+  Se busca el historial de los repositorios OCA de los cinco addons completos,
+  incluyendo MIG de otros addons. `--mig-catalog` permite agregar repositorios
+  OCA revisados (formato en `mig-sources.example.json`). El alcance queda fijado
+  por SHA, con errores y limitaciones explícitos; no se afirma una búsqueda
+  exhaustiva de todo Internet. Se admiten correcciones después del juicio técnico.
+  `references/<addon>/suggested-links.json` vincula cada hunk con unidades del salto,
+  resultados recuperados y sus fuentes cuando comparten identificadores
   cualificados o con guion bajo. Los logs muestran cuántos hunks tienen
   sugerencias. El archivo conserva también hunks sin vínculos y avisos.
   La colección usa el diff del núcleo y las fuentes web admitidas. Los parches
   de solución de los addons evaluados se conservan en el dossier de referencia.
+- `review/RECOMENDACIONES_MIG.md` muestra las recomendaciones de ambos motores
+  cruzadas con los hunks sugeridos. `packet.json`, `corpus-units.json`,
+  `addon-sources.json` y `MIG/` conservan la evidencia para emitir el juicio.
+  Se incluye la colección completa para detectar correcciones no recuperadas.
 
-El catálogo contiene treinta grupos de laboratorio y requiere comprobar su
-admisibilidad para la muestra académica. El criterio de utilidad de cada
-unidad y las correcciones manuales evaluables necesitan la revisión técnica
-prevista en la tesis. Hasta completar esa revisión, C1, P1 y C2 aparecen como
-valores pendientes. Los errores, vistas vacías y denominadores se conservan.
+El catálogo operativo contiene treinta grupos de laboratorio. El objetivo
+académico del autor son treinta migraciones de referencia: los MIG admitidos
+deben identificarse y documentarse; treinta grupos no acreditan treinta MIG
+independientes. Se comienza por un caso. El autor encarga al asistente los
+juicios finales, registrados como revisión asistida por IA. Hasta disponer
+de esa revisión, C1, P1 y C2 aparecen pendientes. Los errores, vistas vacías
+y denominadores se conservan.
 
-Para calcular las métricas, completa `evaluation-spec.json` de cada intento.
+Para calcular las métricas, genera el dossier con `review` y devuelve los
+juicios del asistente en `reviews/<case-id>.json`, según `review-template.json`
+y `REVIEW_PROMPT.md`. `apply-review` valida su integridad y completa
+`evaluation-spec.json` de cada intento.
 El archivo trae la revisión de colección, rutas, saltos y consultas fijados.
 Completa `reviewer`, las `references` con correcciones evaluables y
 `available_unit_ids`, y para cada consulta sus `reference_ids` y `judgments`
@@ -105,20 +130,14 @@ C1 se agrega mediante los conteos de correcciones cubiertas y evaluables;
 P1 usa la media de pares Graph/BM25 con precisión definida. Una especificación
 editada exige volver a evaluar antes de incorporar sus cifras al resumen.
 
-`r2 evaluate` y `evaluation.json` conservan la comparación por unidades.
-Para el contraste con fuentes completas, completa también
-`source-judgments.csv` de cada addon. `relevant` acepta `true` o `false`;
-`reference_ids` enumera correcciones separadas por punto y coma, y cada juicio
-requiere `reviewer` y `reason`. La ejecución `evaluate` produce además
-`source-evaluation.json` y `source-metrics.csv`. El grafo se proyecta a las
-fuentes distintas citadas en su primera vista y ambos motores usan los juicios
-de fuente. Se registra el tamaño real de cada vista. La precisión por fuentes
-y la precisión por unidades conservan sus propios denominadores.
+`r2 evaluate` y `evaluation.json` conservan exclusivamente la comparación por
+unidades del protocolo acordado. Las funciones históricas de fuentes completas
+permanecen para lectura de ensayos anteriores y no se ejecutan en el lote nuevo.
 
 `timing.json` distingue consulta completa y etapas. Cada tiempo se toma de
 forma síncrona en el trabajador. El contenedor del lote corre en segundo
 plano. `relations_seconds` mide extracción, recorrido y validación de
-relaciones. `bm25_units_seconds` y `bm25_sources_search_seconds` miden las búsquedas léxicas indicadas. La
+relaciones. `bm25_units_seconds` mide la búsqueda léxica por unidades. La
 preparación de fuentes y de índices queda registrada aparte de esos tiempos.
 
 El catálogo predeterminado está en
@@ -132,8 +151,8 @@ los identificadores excluidos conservan la política de admisión vigente.
 Para una corrida nueva tras cambiar el código o el plan, usa un identificador:
 
 ```bash
-R2_BATCH_ID=lote30_v4 bash aws-lab/run-30.sh start
-R2_BATCH_ID=lote30_v4 bash aws-lab/run-30.sh logs
+R2_BATCH_ID=lote30_v5 bash aws-lab/run-30.sh start --next 1
+R2_BATCH_ID=lote30_v5 bash aws-lab/run-30.sh logs
 ```
 
 Conserva el mismo identificador para los comandos de esa corrida. Los

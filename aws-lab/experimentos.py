@@ -114,7 +114,7 @@ class Sources:
             stream.write(json.dumps(command) + "\n" + result.stdout + result.stderr + "\n")
         if result.returncode:
             raise RuntimeError(f"Git {arguments[0]} failed: {result.stderr[-1800:]}")
-        return result.stdout.strip()
+        return result.stdout.rstrip("\r\n")
 
     def snapshot(self, organization, repository, version):
         identity = f"{organization}/{repository}@{version}"
@@ -275,8 +275,9 @@ def measure_module(database, module, case, destination, repeats, source_baseline
 
 def execute_case(case, args, attempt):
     from r2.assistant import prepare_local_source
-    from experiment_sources import SourceBaseline, supplement
+    from experiment_sources import supplement
     from mig_review import suggest_links
+    from mig_collection import collect_migs
     attempt.mkdir(parents=True, exist_ok=True)
     sources = Sources(args.cache, args.output, attempt / "sources.log")
     origin, target = case["version_from"], case["version_to"]
@@ -305,10 +306,8 @@ def execute_case(case, args, attempt):
     prepared = supplement(local, addons, origin, target, attempt / "acquisition", args.source_catalog)
     acquisition_seconds = time.perf_counter() - started
     database = Path(prepared["database"])
-    started = time.perf_counter()
-    baseline = SourceBaseline(database, attempt / "source-baseline.sqlite", origin, target)
-    prepared["preparation_timing"] = dict(local_seconds=local_seconds, acquisition_and_normalization_seconds=acquisition_seconds,
-                                         source_index_seconds=time.perf_counter() - started)
+    prepared["preparation_timing"] = dict(local_seconds=local_seconds,
+                                         acquisition_and_normalization_seconds=acquisition_seconds)
     save(attempt / "acquisition.json", prepared)
     from r2.crossing import cross_module, save_result
     initial = {}
@@ -329,40 +328,47 @@ def execute_case(case, args, attempt):
         name = addon["name"]
         print(f"{case['id']} / {name}", flush=True)
         try:
-            modules.append(measure_module(database, addon["path"], case, attempt / "addons" / name, args.repeats, baseline))
+            modules.append(measure_module(database, addon["path"], case, attempt / "addons" / name, args.repeats))
         except Exception as exc:
             failures[name] = str(exc)
             traceback.print_exc()
     mig_review = {}
+    reference_dir = attempt / "references" / "pool"
+    pool = collect_migs(sources, case, reference_dir, getattr(args, "mig_catalog", None))
     measured = {module["module"] for module in modules}
     for item in case["modules"]:
         name = item["module"]
         if name in provenance:
-            reference_dir = attempt / "references" / name
             try:
-                commits = sources.references(item, target, reference_dir)
+                commits = pool["candidates"]
+                save(attempt / "references" / name / "candidates.json", dict(
+                    status="collected", candidates=commits, scope=pool["scope"], failures=pool["failures"]))
                 if name in measured:
                     links = suggest_links(database, attempt / "addons" / name, reference_dir, commits, origin, target)
-                    save(reference_dir / "suggested-links.json", links)
+                    save(attempt / "references" / name / "suggested-links.json", links)
                     mig_review[name] = dict(status=links["status"], commits=len(commits), hunks=len(links["hunks"]),
                         hunks_with_suggestions=sum(bool(hunk["available_unit_candidates"]
                             or hunk["retrieved_unit_candidates"] or hunk["retrieved_source_candidates"])
                             for hunk in links["hunks"]))
             except (RuntimeError, OSError, ValueError, KeyError) as exc:
                 mig_review[name] = {"status": "failed", "reason": str(exc)}
-                save(reference_dir / "error.json", mig_review[name])
+                save(attempt / "references" / name / "error.json", mig_review[name])
     specification = dict(reviewer=None, collection_revision=prepared["build"]["collection_revision"], references={},
         queries=[dict(id=case["id"] + "/" + module["module"], module=module["input_path"],
             module_name=module["module"], input_revision=module["query"]["input_revision"], from_version=origin,
             to_version=target, layer="all", maximum_hops=3, limit=10, reference_ids=[], judgments={}) for module in modules])
     save(attempt / "evaluation-spec.json", specification)
-    status = dict(id=case["id"], status="completed" if len(modules) == 5 and not failures else "partial",
+    status = dict(id=case["id"], status="completed" if len(modules) == 5 and not failures and not pool["failures"] else "partial",
                   finished_at=now(), modules=modules, failures=failures, database=str(database),
                   database_sha256=digest(database), C1=None, academic_review="pending")
     status["acquisition_status"] = prepared["acquisition_status"]
     status["mig_review"] = mig_review
-    status["baseline_contract"] = "bm25_sources ranks complete sources; bm25 retains the unit-level control"
+    status["baseline_contract"] = "Graph versus BM25 units only; identical corpus, queries and first-view limit"
+    status["reference_collection"] = dict(status=pool["status"], failures=pool["failures"],
+                                          candidates=len(pool["candidates"]))
     save(attempt / "result.json", status)
+    from review_dossier import export_case
+    export_case(attempt, case)
     return status
 
 
@@ -416,17 +422,27 @@ def summary(output):
     table(output / "metrics.csv", rows, ["case", "module", "jump", "engine", "granularity", "status", "found", "shown",
           "median_T1_seconds", "stage", "median_stage_seconds", "C1", "P1", "C2", "evidence"])
     table(output / "cases.csv", case_rows, ["case", "jump", "status", "evidence"])
-    table(output / "source-metrics.csv", source_rows, ["case", "module", "engine", "shown", "P1_source", "C2_reference", "unjudged"])
+    if source_rows:
+        table(output / "source-metrics.csv", source_rows, ["case", "module", "engine", "shown", "P1_source", "C2_reference", "unjudged"])
     references = sum(value["reference_count"] for value in evaluated)
     covered = sum(len(value["covered_reference_ids"]) for value in evaluated)
     pairs = [query["engines"] for value in evaluated for query in value["queries"]
              if all(query["engines"][engine]["P1"] is not None for engine in ("graph", "bm25"))]
+    migrations = {(item["repository"], item["sha"]): item for value in evaluated
+                  for item in value.get("admitted_migrations", [])}
+    coverage_pairs = [query["engines"] for value in evaluated for query in value["queries"]
+                      if all(query["engines"][engine]["C2"] is not None for engine in ("graph", "bm25"))]
     save(output / "summary.json", dict(updated_at=now(), cases_total=len(manifest["cases"]), statuses=dict(counts),
         module_engine_rows=len(rows), C1=100 * covered / references if references else None,
         reference_count=references, covered_reference_count=covered, measured_cases=len(evaluated),
+        admitted_migration_count=len(migrations), admitted_migrations=[migrations[key] for key in sorted(migrations)],
         P1_defined_pairs=len(pairs), P1_macro_paired={engine: statistics.mean(pair[engine]["P1"] for pair in pairs)
-            if pairs else None for engine in ("graph", "bm25")}, academic_review="sample_admission_pending",
-        scope="30 laboratory groups, five addons each. Academic sample eligibility and relevance review are required separately."))
+            if pairs else None for engine in ("graph", "bm25")},
+        C2_defined_pairs=len(coverage_pairs), C2_macro_paired={engine: statistics.mean(pair[engine]["C2"] for pair in coverage_pairs)
+            if coverage_pairs else None for engine in ("graph", "bm25")},
+        academic_review="assistant_judged" if evaluated else "not_judged",
+        scope="30 operational cases of five addons; admitted_migration_count counts distinct reviewed MIG commits. "
+              "Case count and MIG count are separate; sample independence is not certified by execution."))
     print(json.dumps(dict(counts), ensure_ascii=False), flush=True)
 
 
@@ -468,6 +484,32 @@ def show_recommendations(case_id, attempt, modules, mig_review=None):
             print(f"  MIG review: {review['status']}", flush=True)
 
 
+def select_cases(cases, args, output=None):
+    """Selection is outside the protocol: blocks can grow within one frozen run."""
+    only = getattr(args, "only", None)
+    count = getattr(args, "next_count", None)
+    offset = getattr(args, "offset", 0)
+    limit = getattr(args, "count", None)
+    if only and (count is not None or offset or limit is not None):
+        raise ValueError("Use --only, --next N, or --offset N --count N")
+    if count is not None and (offset or limit is not None):
+        raise ValueError("--next cannot be combined with --offset/--count")
+    if (count is not None and count < 1) or (limit is not None and limit < 1) or offset < 0:
+        raise ValueError("Counts must be positive and offset must be nonnegative")
+    if only:
+        if set(only) - {case["id"] for case in cases}:
+            raise ValueError("Unknown --only case")
+        return [case for case in cases if case["id"] in only]
+    if count is not None:
+        remaining = []
+        for case in cases:
+            pointer = output / "cases" / case["id"] / "latest.json"
+            if not pointer.exists() or read(pointer)["status"] != "completed":
+                remaining.append(case)
+        return remaining[:count]
+    return cases[offset:offset + limit if limit is not None else None]
+
+
 def run(args):
     cases = catalog(args.plan)
     args.output.mkdir(parents=True, exist_ok=True)
@@ -478,6 +520,7 @@ def run(args):
         protocol = dict(plan_sha256=digest(args.plan), code=code, repeats=args.repeats, depth=3, limit=10,
                         cache=str(args.cache.resolve()), output=str(args.output.resolve()),
                         source_catalog_sha256=digest(args.source_catalog) if args.source_catalog else None)
+        protocol["mig_catalog_sha256"] = digest(args.mig_catalog) if getattr(args, "mig_catalog", None) else None
         path = args.output / "manifest.json"
         if path.exists():
             manifest = read(path)
@@ -486,9 +529,9 @@ def run(args):
         else:
             save(path, dict(created_at=now(), python=sys.version, platform=platform.platform(), protocol=protocol, cases=cases,
                             cache_policy="Uncontrolled OS cache; engine order alternates per repetition"))
-        wanted = set(args.only or [case["id"] for case in cases])
-        if wanted - {case["id"] for case in cases}:
-            raise ValueError("Unknown --only case")
+        selected = select_cases(cases, args, args.output)
+        wanted = {case["id"] for case in selected}
+        print("Selected: " + (", ".join(case["id"] for case in selected) or "no unfinished cases"), flush=True)
         for case in cases:
             if case["id"] not in wanted:
                 continue
@@ -512,11 +555,16 @@ def run(args):
                        "--only", case["id"], "--attempt", str(attempt)]
             if args.source_catalog:
                 command.extend(["--source-catalog", str(args.source_catalog)])
+            if getattr(args, "mig_catalog", None):
+                command.extend(["--mig-catalog", str(args.mig_catalog)])
             print(f"Starting {case['id']} -> {attempt}", flush=True)
             code = run_worker(command, attempt / "execution.log", args.case_timeout)
             payload = read(attempt / "result.json") if (attempt / "result.json").exists() else {
                 "status": "failed", "reason": "Case timed out" if code == 124 else "Worker exited without a result",
                 "returncode": code}
+            if code and payload["status"] == "completed":
+                payload.update(status="partial", reason="Worker failed after saving query outputs", returncode=code)
+                save(attempt / "result.json", payload)
             if not (attempt / "result.json").exists():
                 save(attempt / "result.json", payload)
             state.update(status=payload["status"], finished_at=now(), returncode=code)
@@ -531,18 +579,24 @@ def evaluate(args):
     from r2.evaluation.normalized import evaluate as evaluate_spec
     from r2.charts import render_evaluation
     verify_protocol_code(args.output)
-    for case in catalog(args.plan):
+    failures, measured = [], 0
+    for case in select_cases(catalog(args.plan), args, args.output):
         pointer = args.output / "cases" / case["id"] / "latest.json"
         if not pointer.exists():
+            if getattr(args, "require_all", False):
+                failures.append(case["id"] + ": not executed")
             continue
         attempt = args.output / read(pointer)["attempt"]
         spec = attempt / "evaluation-spec.json"
         if not spec.exists():
+            failures.append(case["id"] + ": missing evaluation specification")
             continue
         try:
+            if read(pointer)["status"] != "completed":
+                raise ValueError("The case is incomplete; rerun it before final evaluation")
             specification = read(spec)
-            if not specification.get("references") or not specification.get("reviewer"):
-                raise ValueError("Complete independent reference changes and reviewer first")
+            if not specification.get("reviewer"):
+                raise ValueError("Apply the assistant's completed review first (apply-review)")
             result = read(attempt / "result.json")
             if not all(verify_artifacts(attempt / "addons" / module["module"], module) for module in result["modules"]):
                 raise ValueError("Archived query outputs changed after execution")
@@ -552,16 +606,27 @@ def evaluate(args):
             if digest(Path(result["database"])) != result["database_sha256"]:
                 raise ValueError("Collection changed since the archived queries")
             value = evaluate_spec(result["database"], specification, spec.parent, repeats=args.repeats)
+            if any(score["unjudged"] for query in value["queries"] for score in query["engines"].values()):
+                raise ValueError("Every shown unit needs a completed relevance judgment")
+            value["admitted_migrations"] = specification.get("admitted_migrations", [])
+            value["review_method"] = specification.get("review_method", "explicit technical judgments")
             save(attempt / "evaluation.json", value)
             (attempt / "evaluation-bars.txt").write_text(render_evaluation(value, ascii_only=True), encoding="utf-8")
             save(attempt / "evaluation-status.json", {"status": "measured", "updated_at": now(),
                  "spec_sha256": digest(spec)})
-            evaluate_sources(attempt, result, specification)
+            measured += 1
             print(case["id"] + " evaluated", flush=True)
         except (ValueError, KeyError, OSError) as exc:
+            failures.append(case["id"] + ": " + str(exc))
             save(attempt / "evaluation-status.json", {"status": "pending_review", "reason": str(exc)})
             print(case["id"] + ": " + str(exc), flush=True)
     summary(args.output)
+    required_migs = getattr(args, "require_migs", None)
+    if required_migs is not None and read(args.output / "summary.json")["admitted_migration_count"] < required_migs:
+        failures.append(f"The study requires at least {required_migs} distinct admitted MIG commits; review the sample")
+    for failure in failures:
+        print(failure, file=sys.stderr)
+    return int(bool(failures) or measured == 0)
 
 
 def evaluate_sources(attempt, result, specification):
@@ -610,18 +675,29 @@ def evaluate_sources(attempt, result, specification):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("run", "case", "summary", "evaluate"))
+    parser.add_argument("action", choices=("run", "case", "summary", "evaluate", "review", "apply-review"))
     parser.add_argument("--plan", type=Path, default=DEFAULT_PLAN)
     parser.add_argument("--output", type=Path, default=Path("/results/lote30"))
     parser.add_argument("--cache", type=Path, default=Path("/data/batch-cache"))
     parser.add_argument("--repeats", type=int, choices=range(1, 11), default=3)
     parser.add_argument("--case-timeout", type=int, default=14400)
     parser.add_argument("--only", nargs="+")
+    parser.add_argument("--next", type=int, dest="next_count", help="Run the next N unfinished cases")
+    parser.add_argument("--offset", type=int, default=0, help="Zero-based position in the case catalogue")
+    parser.add_argument("--count", type=int, help="Number of catalogue cases to select")
+    parser.add_argument("--require-all", action="store_true", help="Fail final evaluation if a selected case is not executed")
+    parser.add_argument("--require-migs", type=int, help="Require at least N distinct admitted MIG commits in the study")
+    parser.add_argument("--mig-catalog", type=Path, help="Optional reviewed extra OCA repositories for MIG collection")
+    parser.add_argument("--reviews", type=Path, help="Directory containing completed <case-id>.json reviews")
     parser.add_argument("--attempt", type=Path)
     parser.add_argument("--source-catalog", type=Path,
         default=ROOT / "sandbox/r2/reference/adquisition-final/examples/catalog.json",
         help="Reviewed catalogue of supplementary sources")
     args = parser.parse_args()
+    if args.next_count is not None and args.action != "run":
+        parser.error("--next is only valid for run; use --only or --offset/--count for review/evaluation")
+    if args.require_migs is not None and args.require_migs < 1:
+        parser.error("--require-migs must be positive")
     if os.name != "nt":
         signal.signal(signal.SIGTERM, lambda signum, frame: sys.exit(128 + signum))
     args.output, args.cache, args.plan = args.output.resolve(), args.cache.resolve(), args.plan.resolve()
@@ -630,13 +706,21 @@ def main():
             manifest = verify_protocol_code(args.output)
             if digest(args.plan) != manifest["protocol"]["plan_sha256"]:
                 raise ValueError("The case plan differs from the experimental protocol")
+            for name in ("source_catalog", "mig_catalog"):
+                path = getattr(args, name)
+                actual = digest(path) if path else None
+                if actual != manifest["protocol"].get(name + "_sha256"):
+                    raise ValueError("The case source catalogue differs from the experimental protocol")
             case = next(case for case in catalog(args.plan) if case["id"] == args.only[0])
             execute_case(case, args, args.attempt)
         elif args.action == "run":
             return run(args)
-        elif args.action == "evaluate":
+        elif args.action in {"evaluate", "review", "apply-review"}:
             with exclusive_lock(args.output / "batch.lock"), exclusive_lock(args.cache / "cache.lock"):
-                evaluate(args)
+                if args.action == "evaluate":
+                    return evaluate(args)
+                from review_dossier import review_batch
+                return review_batch(args)
         else:
             summary(args.output)
     except Exception:

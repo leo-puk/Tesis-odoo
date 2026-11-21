@@ -29,13 +29,13 @@ Presentar candidatos trazables y medir el motor relacional frente a una línea b
 
 ## Comparación del experimento de AWS
 
-El experimento conserva BM25 por unidades como control de la CLI y añade
-`bm25_sources`, que busca en el texto completo de los artefactos admitidos.
-Las salidas de fuentes tienen su propio contrato y juicios en
-`source-judgments.csv`. Para comparar precisiones a nivel de fuente, se
-deduplican las fuentes citadas por la primera vista del grafo y se registran
-los tamaños efectivos de ambas vistas. Se conserva P1 por unidad para el
-contraste original y P1 por fuente para el nuevo contraste.
+El experimento compara exclusivamente Graph y BM25 por unidades sobre el
+mismo corpus, entrada y límite de diez resultados. La comparación histórica
+por fuentes completas queda fuera del protocolo acordado. El dossier conserva
+recomendaciones, contenido de la colección, código del addon y parches MIG
+para emitir juicios asistidos por IA con motivo e incertidumbre. Su importación
+valida IDs, integridad, salto y completitud antes de calcular las métricas.
+El procedimiento incremental está en `aws-lab/EVALUACION_FINAL.md`.
 
 Los MIG se revisan como referencia externa para identificar correcciones
 manuales evaluables. Sus parches quedan fuera de los inventarios de entrada

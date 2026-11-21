@@ -1,0 +1,8 @@
+{
+  "repositories": [
+    {
+      "repository": "server-tools",
+      "cases": ["oca_v01_1617"]
+    }
+  ]
+}
