@@ -1,5 +1,92 @@
 # Entorno de pruebas R2 en AWS Learner Lab
 
+## Lote R2 de treinta casos en EC2
+
+Desde el checkout del repositorio en tu servidor Ubuntu, ejecuta:
+
+```bash
+git pull --ff-only origin master
+bash aws-lab/run-30.sh start
+bash aws-lab/run-30.sh logs
+```
+
+El proceso corre en un contenedor en segundo plano y continúa al desconectar
+SSH. `Ctrl+C` en la vista de logs cierra esa vista. Para detener el cálculo usa
+`bash aws-lab/run-30.sh stop`. Con `start` se reanuda el lote. Si falta Docker,
+el lanzador lo instala mediante el bootstrap de esta carpeta con `sudo`.
+
+El lote toma los treinta grupos nuevos de
+`sandbox/research/migration-plan/plan.json`, cinco addons en cada grupo, para
+los saltos 16→17, 17→18 y 18→19. Descarga fuentes públicas de Odoo y OCA, fija
+sus SHA y comprueba los manifiestos en las versiones de origen y destino.
+Los análisis de R2 usan el código de origen y el diff local del núcleo por
+salto. Cada caso construye su colección, ejecuta Graph y BM25 con los mismos
+filtros, profundidad 3 y límite 10, y realiza tres repeticiones alternadas.
+El total previsto es de 150 consultas de addons y 900 ejecuciones de motor.
+El PostgreSQL y los forks del sandbox de migración se ejecutan mediante la
+CLI `odoolab` documentada más abajo. Este lote mide el análisis estático de R2.
+
+Los casos se procesan en serie. Cada caso usa un proceso propio para liberar
+memoria al terminar. Los errores de fuentes y addons quedan registrados y el
+lote continúa con los demás casos. Un caso parcialmente completado conserva
+su intento original y se vuelve a ejecutar en un intento nuevo. Los casos
+completados se reutilizan después de verificar sus hashes. Los bloqueos se
+liberan al detenerse el proceso. Los SHA quedan fijados durante toda la corrida.
+
+```bash
+bash aws-lab/run-30.sh status
+bash aws-lab/run-30.sh summary
+```
+
+Las salidas están en `aws-lab/results/lote30/`:
+
+- `manifest.json` fija parámetros, versiones y hashes del código.
+- `sources.json` conserva los SHA de las fuentes.
+- `summary.json`, `cases.csv` y `metrics.csv` muestran el avance y los conteos.
+- `cases/<caso>/latest.json` señala el intento actual y su estado.
+- Cada intento guarda `execution.log`, `sources.log`, la colección SQLite,
+  inventario, bindings, alcance del diff y la procedencia de cada addon.
+- `addons/<addon>/graph/` y `bm25/` conservan JSON, TXT y barras. Cada addon
+  tiene tiempos por repetición, hashes y `judgments.csv` con su primera vista.
+- `references/<addon>/` conserva los commits candidatos `[MIG]` y sus parches
+  para la revisión externa de correcciones. Esos parches se guardan como
+  referencia y la colección usa el diff del núcleo de Odoo.
+
+El catálogo contiene treinta grupos de laboratorio y requiere comprobar su
+admisibilidad para la muestra académica. El criterio de utilidad de cada
+unidad y las correcciones manuales evaluables necesitan la revisión técnica
+prevista en la tesis. Hasta completar esa revisión, C1, P1 y C2 aparecen como
+valores pendientes. Los errores, vistas vacías y denominadores se conservan.
+
+Para calcular las métricas, completa `evaluation-spec.json` de cada intento.
+El archivo trae la revisión de colección, rutas, saltos y consultas fijados.
+Completa `reviewer`, las `references` con correcciones evaluables y
+`available_unit_ids`, y para cada consulta sus `reference_ids` y `judgments`
+revisados (`relevant` y `reference_ids` por unidad). Usa `judgments.csv` y los
+dossiers como instrumentos de revisión. Un hallazgo puede ser útil aunque
+carezca de correspondencia con una corrección del MIG.
+
+```bash
+bash aws-lab/run-30.sh evaluate
+```
+
+El evaluador vigente de R2 verifica los juicios y produce `evaluation.json`,
+`evaluation-bars.txt` y `evaluation-status.json` por caso. Se actualizan los
+CSV y el resumen con las cifras disponibles y el número de pares comparables.
+C1 se agrega mediante los conteos de correcciones cubiertas y evaluables;
+P1 usa la media de pares Graph/BM25 con precisión definida. Una especificación
+editada exige volver a evaluar antes de incorporar sus cifras al resumen.
+
+Para una corrida nueva tras cambiar el código o el plan, usa un identificador:
+
+```bash
+R2_BATCH_ID=lote30_v2 bash aws-lab/run-30.sh start
+R2_BATCH_ID=lote30_v2 bash aws-lab/run-30.sh logs
+```
+
+Conserva el mismo identificador para los comandos de esa corrida. Los
+directorios de resultados y caché persisten en el disco de EC2.
+
 ## Asistente Python desde tu computadora
 
 Copia `.env.example` a `.env` en esta carpeta y completa las tres credenciales
