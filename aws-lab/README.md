@@ -71,6 +71,10 @@ Las salidas están en `aws-lab/results/lote30/`:
   `judgments.csv` por unidad y `source-judgments.csv` por fuente completa.
 - `references/<addon>/` conserva los commits candidatos `[MIG]` y sus parches
   para la revisión externa de correcciones después de ejecutar las consultas.
+  `suggested-links.json` vincula cada hunk con unidades del salto, resultados
+  recuperados y fuentes completas mostradas cuando comparten identificadores
+  cualificados o con guion bajo. Los logs muestran cuántos hunks tienen
+  sugerencias. El archivo conserva también hunks sin vínculos y avisos.
   La colección usa el diff del núcleo y las fuentes web admitidas. Los parches
   de solución de los addons evaluados se conservan en el dossier de referencia.
 
@@ -85,7 +89,9 @@ El archivo trae la revisión de colección, rutas, saltos y consultas fijados.
 Completa `reviewer`, las `references` con correcciones evaluables y
 `available_unit_ids`, y para cada consulta sus `reference_ids` y `judgments`
 revisados (`relevant` y `reference_ids` por unidad). Usa `judgments.csv` y los
-dossiers como instrumentos de revisión. Un hallazgo puede ser útil aunque
+dossiers como instrumentos de revisión. Confirma las sugerencias de
+`suggested-links.json` y agrega relaciones que la coincidencia léxica haya
+omitido. Un hallazgo puede ser útil aunque
 carezca de correspondencia con una corrección del MIG.
 
 ```bash
@@ -126,8 +132,8 @@ los identificadores excluidos conservan la política de admisión vigente.
 Para una corrida nueva tras cambiar el código o el plan, usa un identificador:
 
 ```bash
-R2_BATCH_ID=lote30_v3 bash aws-lab/run-30.sh start
-R2_BATCH_ID=lote30_v3 bash aws-lab/run-30.sh logs
+R2_BATCH_ID=lote30_v4 bash aws-lab/run-30.sh start
+R2_BATCH_ID=lote30_v4 bash aws-lab/run-30.sh logs
 ```
 
 Conserva el mismo identificador para los comandos de esa corrida. Los

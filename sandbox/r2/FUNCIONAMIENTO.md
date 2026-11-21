@@ -33,7 +33,7 @@ La consulta BM25 usa términos de las entidades técnicas extraídas del addon.
 La coincidencia y la ordenación son léxicas. La extracción de relaciones usa
 identidades técnicas tipadas y sus caminos de evidencia.
 
-Los MIG candidatos se recogen después de las consultas. El filtro exige `[MIG]`, el nombre del addon y la versión destino en el asunto. Sus parches se guardan en el dossier de referencia. Tras la revisión, las correcciones evaluables y los juicios se incorporan mediante `evaluation-spec.json` y `source-judgments.csv`. El grafo se construye a partir de los cruces y la colección admitida durante R2.1.
+Los MIG candidatos se recogen después de las consultas. Se buscan en el historial de destino que afecta a la ruta del addon. Se incluyen los commits `[MIG]` que mencionan la versión destino o cuyo asunto carece de una versión explícita. `suggested-links.json` vincula los hunks de esos parches con las unidades disponibles para el salto, las unidades recuperadas y las fuentes completas mostradas mediante identificadores compartidos. Tras la revisión, las correcciones evaluables y los juicios se incorporan mediante `evaluation-spec.json` y `source-judgments.csv`. El grafo se construye a partir de los cruces y la colección admitida durante R2.1.
 
 ## Componentes
 

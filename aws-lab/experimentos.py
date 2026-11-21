@@ -150,16 +150,16 @@ class Sources:
         """Write MIG candidates only into a reference dossier, outside the R2 corpus."""
         repository = self.cache / "git" / f"OCA-{item['repo']}.git"
         sha = self.pins[f"OCA/{item['repo']}@{target}"]
-        history = self.git(repository, "log", "--format=%H%x09%s", sha, "--", item["module"])
+        history = self.git(repository, "log", "--full-history", "--format=%H%x09%s", sha, "--", item["module"])
         candidates = []
         for line in history.splitlines():
             commit, _, subject = line.partition("\t")
-            if ("[MIG]" in subject.upper() and target in subject
-                    and re.search(r"\b" + re.escape(item["module"]) + r"\b", subject)):
-                candidates.append(dict(sha=commit, subject=subject))
+            versions = re.findall(r"(?<![\d.])\d+\.0(?![\d.])", subject)
+            if "[MIG]" in subject.upper() and (target in versions or not versions):
+                candidates.append(dict(sha=commit, subject=subject, target_in_subject=target in versions))
         destination.mkdir(parents=True, exist_ok=True)
         for candidate in candidates:
-            patch = self.git(repository, "show", "--format=fuller", "--no-ext-diff", "--no-textconv",
+            patch = self.git(repository, "show", "--diff-merges=first-parent", "--format=fuller", "--no-ext-diff", "--no-textconv",
                              candidate["sha"], "--", item["module"])
             (destination / (candidate["sha"] + ".diff")).write_text(patch + "\n", encoding="utf-8")
         save(destination / "candidates.json", {"status": "pending_review", "candidates": candidates,
@@ -276,6 +276,7 @@ def measure_module(database, module, case, destination, repeats, source_baseline
 def execute_case(case, args, attempt):
     from r2.assistant import prepare_local_source
     from experiment_sources import SourceBaseline, supplement
+    from mig_review import suggest_links
     attempt.mkdir(parents=True, exist_ok=True)
     sources = Sources(args.cache, args.output, attempt / "sources.log")
     origin, target = case["version_from"], case["version_to"]
@@ -332,12 +333,24 @@ def execute_case(case, args, attempt):
         except Exception as exc:
             failures[name] = str(exc)
             traceback.print_exc()
+    mig_review = {}
+    measured = {module["module"] for module in modules}
     for item in case["modules"]:
-        if item["module"] in provenance:
+        name = item["module"]
+        if name in provenance:
+            reference_dir = attempt / "references" / name
             try:
-                sources.references(item, target, attempt / "references" / item["module"])
-            except (RuntimeError, OSError) as exc:
-                save(attempt / "references" / item["module"] / "error.json", {"status": "pending", "reason": str(exc)})
+                commits = sources.references(item, target, reference_dir)
+                if name in measured:
+                    links = suggest_links(database, attempt / "addons" / name, reference_dir, commits, origin, target)
+                    save(reference_dir / "suggested-links.json", links)
+                    mig_review[name] = dict(status=links["status"], commits=len(commits), hunks=len(links["hunks"]),
+                        hunks_with_suggestions=sum(bool(hunk["available_unit_candidates"]
+                            or hunk["retrieved_unit_candidates"] or hunk["retrieved_source_candidates"])
+                            for hunk in links["hunks"]))
+            except (RuntimeError, OSError, ValueError, KeyError) as exc:
+                mig_review[name] = {"status": "failed", "reason": str(exc)}
+                save(reference_dir / "error.json", mig_review[name])
     specification = dict(reviewer=None, collection_revision=prepared["build"]["collection_revision"], references={},
         queries=[dict(id=case["id"] + "/" + module["module"], module=module["input_path"],
             module_name=module["module"], input_revision=module["query"]["input_revision"], from_version=origin,
@@ -347,6 +360,7 @@ def execute_case(case, args, attempt):
                   finished_at=now(), modules=modules, failures=failures, database=str(database),
                   database_sha256=digest(database), C1=None, academic_review="pending")
     status["acquisition_status"] = prepared["acquisition_status"]
+    status["mig_review"] = mig_review
     status["baseline_contract"] = "bm25_sources ranks complete sources; bm25 retains the unit-level control"
     save(attempt / "result.json", status)
     return status
@@ -438,7 +452,7 @@ def run_worker(command, log, timeout):
                 process.wait()
 
 
-def show_recommendations(case_id, attempt, modules):
+def show_recommendations(case_id, attempt, modules, mig_review=None):
     for module in modules:
         path = attempt / "addons" / module["module"] / "graph" / "report.json"
         report = read(path)
@@ -446,6 +460,12 @@ def show_recommendations(case_id, attempt, modules):
         print(f"{case_id} / {module['module']}: {len(results)} candidates to review", flush=True)
         for rank, row in enumerate(results, 1):
             print(f"  {rank}. {row['title']} | {row['change_id']}", flush=True)
+        review = (mig_review or {}).get(module["module"])
+        if review and review["status"] == "pending_review":
+            print(f"  MIG review: {review['commits']} commits, {review['hunks']} textual hunks, "
+                  f"{review['hunks_with_suggestions']} with suggested links", flush=True)
+        elif review:
+            print(f"  MIG review: {review['status']}", flush=True)
 
 
 def run(args):
@@ -501,7 +521,7 @@ def run(args):
                 save(attempt / "result.json", payload)
             state.update(status=payload["status"], finished_at=now(), returncode=code)
             save(pointer, state)
-            show_recommendations(case["id"], attempt, payload.get("modules", []))
+            show_recommendations(case["id"], attempt, payload.get("modules", []), payload.get("mig_review"))
             summary(args.output)
         summary(args.output)
         return int(any(read(args.output / "cases" / cid / "latest.json")["status"] != "completed" for cid in wanted))

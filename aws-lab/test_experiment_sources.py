@@ -10,6 +10,7 @@ import uuid
 
 import experimentos as batch
 from experiment_sources import SourceBaseline, supplement
+from mig_review import suggest_links
 
 
 @unittest.skipUnless(importlib.util.find_spec("r2"), "Requires the R2 test environment")
@@ -41,6 +42,17 @@ class SourceExperimentTests(unittest.TestCase):
         self.assertTrue(any("bm25_sources_search_seconds" in row["stages"] for row in timing))
         self.assertTrue((self.fixture.root / "comparison/source-judgments.csv").exists())
         folder = self.fixture.root / "comparison"
+        references = self.fixture.root / "references"
+        references.mkdir()
+        (references / "abc.diff").write_text(
+            "--- a/original/models.py\n+++ b/original/models.py\n@@ -1 +1 @@\n"
+            "-model = 'old.seed'\n+model = 'original.seed'\n", encoding="utf-8")
+        links = suggest_links(self.fixture.db, folder, references, [{"sha": "abc"}], "16.0", "17.0")
+        hunk = links["hunks"][0]
+        self.assertEqual(links["status"], "pending_review")
+        self.assertTrue(hunk["available_unit_candidates"])
+        self.assertTrue(hunk["retrieved_unit_candidates"])
+        self.assertTrue(any("bm25_sources" in value["engines"] for value in hunk["retrieved_source_candidates"]))
         attempt = self.fixture.root / "source-evaluation"
         import shutil
         shutil.copytree(folder, attempt / "addons" / "original")
