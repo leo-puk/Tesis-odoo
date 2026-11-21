@@ -2,6 +2,10 @@
 
 ## Propósito
 
+La interfaz pertenece a R2.2 y coordina funciones de ambos resultados. Las
+operaciones que prepara o invoca conservan su atribución funcional, R2.1
+hasta el cruce inicial y R2.2 desde la extracción de relaciones y el reporte.
+
 Permitir que un partner use R2 sin construir manualmente URL, nombres técnicos o comandos extensos.
 
 | ID | Requisito cumplido | Código principal |

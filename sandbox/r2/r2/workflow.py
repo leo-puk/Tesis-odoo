@@ -1,4 +1,4 @@
-"""R2.1 entry point independent of the command line."""
+"""Orchestrate R2.1 through crossing and R2.2 relations and reporting."""
 from pathlib import Path
 
 from .adquisition import capture_plan

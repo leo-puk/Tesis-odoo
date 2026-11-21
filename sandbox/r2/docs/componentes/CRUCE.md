@@ -2,6 +2,10 @@
 
 ## Propósito
 
+El cruce inicial cierra R2.1. Identifica coincidencias técnicas directas por
+addon. En el experimento se conserva también el agregado de los cinco addons.
+La extracción de relaciones y los reportes corresponden a R2.2.
+
 Comparar identidades técnicas del addon con el índice normalizado sin ejecutar código ni depender de palabras compartidas.
 
 | ID | Requisito cumplido | Código principal |

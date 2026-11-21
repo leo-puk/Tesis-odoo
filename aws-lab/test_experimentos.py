@@ -7,6 +7,7 @@ import io
 from pathlib import Path
 import sys
 import subprocess
+import shutil
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -79,7 +80,7 @@ class BatchTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             args = argparse.Namespace(output=root / "output", cache=root / "cache", plan=batch.DEFAULT_PLAN,
-                                      only=[case["id"] for case in cases], repeats=3, case_timeout=1)
+                                      only=[case["id"] for case in cases], repeats=3, case_timeout=1, source_catalog=None)
             calls = []
 
             def worker(command, log, timeout):
@@ -138,6 +139,7 @@ class BatchTests(unittest.TestCase):
                 run_root = fixture.root / "metrics-run"
                 attempt = run_root / "cases" / case["id"] / "attempt-test"
                 attempt.mkdir(parents=True)
+                shutil.copytree(output, attempt / "addons" / "original")
                 batch.save(run_root / "manifest.json", {"cases": [case], "protocol": {"code": {}}})
                 batch.save(attempt.parent / "latest.json", {"status": "partial", "attempt": str(attempt.relative_to(run_root))})
                 batch.save(attempt / "result.json", dict(database=str(fixture.db), database_sha256=batch.digest(fixture.db),

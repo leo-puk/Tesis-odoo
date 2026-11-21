@@ -2,17 +2,17 @@
 
 ## Objetivo y alcance
 
-R2 centraliza evidencia técnica de cambios entre versiones de Odoo y la cruza con addons para encontrar construcciones potencialmente afectadas antes de migrar. R2.1 implementa planificación/adquisición, normalización/persistencia, cruce, relaciones y reporte. R2.2 ofrece la CLI, el asistente local, consultas, evaluación y pruebas. No usa IA ni ejecuta el código analizado.
+R2 centraliza evidencia técnica de cambios entre versiones de Odoo y la cruza con addons para encontrar construcciones potencialmente afectadas antes de migrar. R2.1 comprende planificación, adquisición, normalización, persistencia y cruce inicial. R2.2 comienza con la extracción de relaciones y comprende recorrido, búsqueda, ordenación, reporte, CLI y evaluación. La clasificación depende de la función ejecutada aunque un comando coordine ambos resultados. El código de los addons se lee estáticamente.
 
 ## Flujo
 
 ```mermaid
 flowchart TD
-    A["Checkout Odoo y addons"] --> B["Fuente local o adquisición web"]
-    B --> C["Normalización y SQLite"]
-    C --> D["Cruce técnico"]
-    D --> E["Relaciones hasta 3 saltos"]
-    E --> F["Reporte TXT y JSON"]
+    A["Checkout Odoo y addons"] --> B["R2.1 Planificación y adquisición"]
+    B --> C["R2.1 Normalización y persistencia"]
+    C --> D["R2.1 Cruce inicial"]
+    D --> E["R2.2 Relaciones hasta 3 saltos y búsqueda"]
+    E --> F["R2.2 Reporte y evaluación"]
 ```
 
 ### Entrada local
@@ -23,15 +23,27 @@ flowchart TD
 
 `r2 plan` inspecciona estáticamente el addon y propone fuentes. Acquisition valida el catálogo, conserva bytes originales y registra estados `accepted`, `excluded`, `quarantined`, `incomplete`, `failed` o `deleted`. La descarga no decide relevancia.
 
+### Experimento por grupo de cinco addons
+
+`aws-lab/experimentos.py` descarga snapshots de los addons y del núcleo desde GitHub y fija sus SHA. El análisis conjunto de los cinco addons determina las rutas del diff local del núcleo entre origen y destino. El tamaño resultante depende de las referencias técnicas encontradas y queda registrado. Después se planifican y capturan fuentes web complementarias por addon, se deduplican URL y se fusionan los inventarios antes de normalizar. El experimento conserva el diff filtrado y omite el compare global que propone el planner genérico.
+
+La colección es compartida por el grupo. R2.1 produce un cruce por addon y un agregado de coincidencias de los cinco en `initial-crossing.json`. R2.2 ejecuta después las consultas y guarda reportes y caminos por addon. Se comparan tres salidas, el grafo, BM25 por unidades como control y BM25 por fuentes completas. Este último indexa el texto completo de cada artefacto admitido conservado en SQLite. Sus resultados identifican fuentes y su procedencia.
+
+La consulta BM25 usa términos de las entidades técnicas extraídas del addon.
+La coincidencia y la ordenación son léxicas. La extracción de relaciones usa
+identidades técnicas tipadas y sus caminos de evidencia.
+
+Los MIG del addon para el salto se recogen después de las consultas en un dossier de referencia separado. Se conservan todos los commits cuyo asunto contiene `[MIG]`, nombre de addon y versión destino. La revisión determina elegibilidad, correcciones evaluables y utilidad. La recuperación por título no acredita por sí misma una verdad de referencia exhaustiva.
+
 ## Componentes
 
 | Componente | Código | Responsabilidad |
 |---|---|---|
-| Planificación y adquisición | `r2/adquisition/` | Preparar fuentes, aplicar política y conservar capturas. |
-| Normalización y persistencia | `r2/normalization/` | Crear unidades verificables y SQLite esquema 4. |
-| Cruce | `r2/crossing/` | Localizar identidades técnicas exactas del addon. |
-| Relaciones | `r2/relations/` | Conectar unidades y recorrer de 0 a 3 saltos. |
-| Reporte y evaluación | `r2/report.py`, `r2/evaluation/` | Filtrar, presentar, validar y medir. |
+| R2.1 Planificación y adquisición | `r2/adquisition/` | Preparar fuentes, aplicar política y conservar capturas. |
+| R2.1 Normalización y persistencia | `r2/normalization/` | Crear unidades verificables y SQLite esquema 4. |
+| R2.1 Cruce inicial | `r2/crossing/` | Localizar identidades técnicas exactas del addon. |
+| R2.2 Relaciones | `r2/relations/` | Conectar unidades y recorrer de 0 a 3 saltos. |
+| R2.2 Reporte y evaluación | `r2/report.py`, `r2/evaluation/` | Filtrar, presentar, validar y medir. |
 | Interfaz R2.2 | `r2/cli.py`, `r2/assistant.py` | Exponer comandos y selección local de múltiples addons. |
 
 ## Datos
@@ -52,11 +64,15 @@ La colección activa usa `schema_version=4` y `layout=normalized-units`.
 
 El cruce lee Python, XML, CSV y manifiestos sin importarlos. Consulta el índice por nombre y tipo; no considera suficiente compartir palabras. El grafo conecta unidades mediante identidades técnicas completas, realiza un recorrido multiorigen no dirigido y conserva distancia mínima, caminos y evidencia de aristas.
 
-El reporte filtra por intervalo, capa y profundidad, deduplica hunks idénticos y calcula totales antes de limitar la vista. Cada resultado conserva fuente, localizador, evidencia del addon y camino. BM25 consulta las mismas unidades elegibles como línea base sin expansión relacional.
+El reporte filtra por intervalo, capa y profundidad, deduplica hunks idénticos y calcula totales antes de limitar la vista. Cada resultado conserva fuente, localizador, evidencia del addon y camino. En la CLI, `engine=bm25` consulta las mismas unidades elegibles como control léxico. El lote de AWS añade el motor `bm25_sources` sobre fuentes completas.
 
 ## Evaluación
 
 `r2 evaluate` calcula C1, P1, C2, V1 y T1 a partir de referencias y juicios explícitos. Cuando faltan juicios, la métrica es `null`; no se inventa un cero. La validación académica requiere una muestra independiente, no solo pruebas sintéticas.
+
+El evaluador de la CLI mantiene la comparación entre unidades. El experimento añade `source-evaluation.json` y `source-metrics.csv` para la comparación por fuentes. Proyecta la primera vista del grafo a sus fuentes distintas y aplica juicios de fuente a ambos motores. Registra el número efectivo de fuentes mostrado por cada uno. La precisión sobre unidades y la precisión sobre fuentes tienen denominadores diferentes y se identifican en los resultados. C1 usa correcciones manuales evaluables y C2 usa correcciones explicadas por la primera vista.
+
+`timing.json` registra tiempos de consulta completa y tiempos de etapa por repetición. `relations_seconds` mide extracción, recorrido y validación del grafo; `bm25_units_seconds` mide la consulta léxica de unidades; `bm25_sources_search_seconds` mide la búsqueda sobre el índice de fuentes completas. Descarga, normalización y construcción de índices son preparación. La comparación temporal es descriptiva y conserva los límites de cada medida.
 
 ## Invariantes
 

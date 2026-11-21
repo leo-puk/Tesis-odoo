@@ -2,6 +2,13 @@
 
 R2 analiza addons de Odoo antes de migrarlos. Lee el código sin ejecutarlo, compara versiones, identifica coincidencias técnicas, recorre relaciones y genera reportes trazables. Es determinista: no usa IA, embeddings ni servicios de lenguaje.
 
+R2.1 comprende planificación, adquisición, normalización, persistencia y cruce
+inicial. R2.2 comprende extracción de relaciones, recorrido, búsqueda, reporte,
+CLI y evaluación. El comando `start` coordina ambos resultados. Su flujo local
+usa el diff filtrado disponible. El experimento en `aws-lab` incorpora además
+adquisición web y una línea base sobre fuentes completas, documentada en
+[Funcionamiento](FUNCIONAMIENTO.md).
+
 ## Requisitos
 
 - Windows o Linux con Git.

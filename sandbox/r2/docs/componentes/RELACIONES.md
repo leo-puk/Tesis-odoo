@@ -2,6 +2,10 @@
 
 ## Propósito
 
+La extracción y el recorrido de relaciones pertenecen a R2.2. Reciben el
+cruce inicial y la colección producidos por R2.1. Sus caminos y resultados
+alimentan la búsqueda y el reporte de R2.2.
+
 Expandir coincidencias directas hacia unidades conectadas mediante identidades técnicas verificables.
 
 | ID | Requisito cumplido | Código principal |

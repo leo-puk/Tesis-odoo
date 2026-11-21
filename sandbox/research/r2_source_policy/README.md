@@ -1,6 +1,9 @@
 # Selector de fuentes para R2
 
-Componente independiente previo a la futura extracción e indexación. No modifica el laboratorio ni migra módulos.
+Selector independiente de fuentes para R2.1. La implementación integrada
+actual incorpora adquisición, normalización, persistencia y cruce inicial en
+R2.1; extracción de relaciones, búsqueda, reporte y evaluación pertenecen a
+R2.2. Este selector conserva su contrato de procedencia y exclusión.
 
 Desde sandbox, utilizando el contenedor de control:
 

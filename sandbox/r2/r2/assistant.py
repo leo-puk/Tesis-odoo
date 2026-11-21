@@ -257,10 +257,10 @@ def write_relevant_local_diff(repo, addons, origin, destination, session):
     return dict(path=str(path), bytes=path.stat().st_size), revisions, digest.hexdigest(), scope
 
 
-def prepare_local_collection(repo, addons, origin, destination, output):
-    # Inputs: Local Odoo versions and a new R2.2 output directory.
-    # Does: Materialize a provenance-bearing local diff and build the normal R2 index.
-    # Output: Database path, revision data and build summary.
+def prepare_local_source(repo, addons, origin, destination, output):
+    # Inputs: Local Odoo versions and a new analysis output directory.
+    # Does: Materialize a provenance-bearing local diff and acquisition inventory.
+    # Output: Inventory, bindings, metadata and immutable source revisions.
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
     session = output / "temp_data" / uuid4().hex
@@ -288,15 +288,20 @@ def prepare_local_collection(repo, addons, origin, destination, output):
     inventory_path.write_text(json.dumps(inventory, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     bindings_path = output / "bindings.json"
     bindings_path.write_text(json.dumps({"sources": bindings}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    database = output / "collection.sqlite"
-    build = build_normalized(inventory_path, bindings_path, database)
     metadata_path = output / "local-source.json"
     metadata_path.write_text(json.dumps({"repository": str(Path(repo).resolve()), **revisions,
                                          "diff_bytes": part["bytes"], "diff_sha256": diff_sha256,
                                          "diff_file": part, "scope": scope},
                                         ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    return dict(database=str(database), inventory=str(inventory_path), bindings=str(bindings_path),
-                metadata=str(metadata_path), revisions=revisions, build=build)
+    return dict(inventory=str(inventory_path), bindings=str(bindings_path),
+                metadata=str(metadata_path), revisions=revisions)
+
+
+def prepare_local_collection(repo, addons, origin, destination, output):
+    prepared = prepare_local_source(repo, addons, origin, destination, output)
+    database = Path(output) / "collection.sqlite"
+    build = build_normalized(prepared["inventory"], prepared["bindings"], database)
+    return dict(**prepared, database=str(database), build=build)
 
 
 def _save_report(folder, result):

@@ -2,6 +2,11 @@
 
 ## Propósito
 
+Este componente pertenece a R2.1. Sus capturas alimentan normalización,
+persistencia y cruce inicial. En el experimento de AWS se ejecuta después de
+obtener el diff local filtrado y complementa esa fuente con documentación,
+guías y otras URL admitidas por el catálogo.
+
 Preparar y capturar fuentes completas con procedencia explícita, sin decidir todavía su relevancia para un addon.
 
 | ID | Requisito cumplido | Código principal |

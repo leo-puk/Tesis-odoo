@@ -21,6 +21,8 @@ import uuid
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_PLAN = ROOT / "sandbox/research/migration-plan/plan.json"
+STAGE_NAMES = {"graph": "relations_seconds", "bm25": "bm25_units_seconds",
+               "bm25_sources": "bm25_sources_search_seconds"}
 
 
 def now():
@@ -170,19 +172,49 @@ def verify_artifacts(directory, payload):
         (directory / name).is_file() and digest(directory / name) == value for name, value in payload["artifacts"].items())
 
 
-def measure_module(database, module, case, destination, repeats):
+def verify_protocol_code(output):
+    manifest = read(output / "manifest.json")
+    if any(digest(ROOT / name) != expected for name, expected in manifest["protocol"]["code"].items()):
+        raise ValueError("The current code differs from the archived experimental protocol")
+    return manifest
+
+
+def measure_module(database, module, case, destination, repeats, source_baseline=None):
     from r2.assistant import _save_report
     from r2.charts import graph_statistics, render_charts
     from r2.report import render_report, search_units, validate_report
 
     destination.mkdir(parents=True)
     reports, timings, statuses, pool = {}, {"graph": [], "bm25": []}, [], {}
+    if source_baseline is not None:
+        timings["bm25_sources"] = []
     for repetition in range(repeats):
-        order = ("graph", "bm25") if repetition % 2 == 0 else ("bm25", "graph")
+        engines = ("graph", "bm25", "bm25_sources") if source_baseline is not None else ("graph", "bm25")
+        order = engines if repetition % 2 == 0 else tuple(reversed(engines))
         for engine in order:
             started = time.perf_counter()
+            stages = {}
+            if engine == "bm25_sources":
+                report = source_baseline.search(module, module.name, timings=stages)
+                serialized = json.dumps(report, ensure_ascii=False, allow_nan=False, indent=2)
+                elapsed = time.perf_counter() - started
+                timings[engine].append(elapsed)
+                statuses.append(dict(repetition=repetition + 1, engine=engine, seconds=elapsed,
+                                     stages=stages, boundary="Full-source BM25 query through JSON serialization"))
+                if engine in reports and reports[engine] != report:
+                    raise ValueError("Full-source BM25 changed across repetitions")
+                if engine not in reports:
+                    reports[engine] = report
+                    folder = destination / engine
+                    folder.mkdir()
+                    (folder / "report.json").write_text(serialized, encoding="utf-8")
+                    (folder / "report.txt").write_text("\n".join(
+                        f"{rank}. {row['url']} | {row['source_id']} | BM25 {row['bm25_score']}"
+                        for rank, row in enumerate(report["results"], 1)), encoding="utf-8")
+                continue
             result = search_units(database, module, case["version_from"], case["version_to"],
-                                  module_name=module.name, engine=engine, layer="all", maximum_hops=3, limit=10)
+                                  module_name=module.name, engine=engine, layer="all", maximum_hops=3, limit=10,
+                                  timings=stages)
             report, crossing, graph = result
             render_report(report)
             json.dumps(report, ensure_ascii=False, allow_nan=False)
@@ -202,7 +234,8 @@ def measure_module(database, module, case, destination, repeats):
                         reason="", source=json.dumps(row["source"], ensure_ascii=False),
                         before=row["before"], after=row["after"]))
                     entry[engine + "_rank"] = next(i for i, value in enumerate(report["results"], 1) if value["change_id"] == uid)
-            statuses.append(dict(repetition=repetition + 1, engine=engine, seconds=elapsed, structural_V1=True))
+            statuses.append(dict(repetition=repetition + 1, engine=engine, seconds=elapsed,
+                                 stages=stages, structural_V1=True))
             del result, crossing, graph
     if reports["graph"]["query"] != reports["bm25"]["query"]:
         raise ValueError("Query inputs differ between engines")
@@ -212,18 +245,37 @@ def measure_module(database, module, case, destination, repeats):
     table(destination / "judgments.csv", [pool[uid] for uid in sorted(pool)],
           ["unit_id", "relevant", "reference_ids", "reviewer", "reason", "source", "before", "after", "graph_rank", "bm25_rank"])
     save(destination / "timing.json", statuses)
+    stage_samples = {engine: [] for engine in reports}
+    for row in statuses:
+        stage = STAGE_NAMES[row["engine"]]
+        if stage in row.get("stages", {}):
+            stage_samples[row["engine"]].append(row["stages"][stage])
+    stage_medians = {}
+    for engine, samples in stage_samples.items():
+        stage_medians[engine] = {STAGE_NAMES[engine]: statistics.median(samples)} if samples else {}
+    if source_baseline is not None:
+        source_pool = {row["source_id"]: dict(source_id=row["source_id"], url=row["url"], relevant="",
+            reference_ids="", reviewer="", reason="") for row in reports["bm25_sources"]["results"]}
+        for row in reports["graph"]["results"]:
+            source = row["source"]
+            source_pool.setdefault(source["source_id"], dict(source_id=source["source_id"], url=source["url"],
+                                   relevant="", reference_ids="", reviewer="", reason=""))
+        table(destination / "source-judgments.csv", [source_pool[sid] for sid in sorted(source_pool)],
+              ["source_id", "relevant", "reference_ids", "reviewer", "reason", "url"])
     result = dict(module=module.name, collection_revision=reports["graph"]["collection_revision"],
                   query=reports["graph"]["query"], input_path=str(module), judgments_pending=len(pool),
                   engines={engine: dict(summary=report["summary"], P1=None, C2=None,
-                      median_T1_seconds=statistics.median(timings[engine])) for engine, report in reports.items()})
+                      median_T1_seconds=statistics.median(timings[engine]),
+                      median_stage_seconds=stage_medians[engine]) for engine, report in reports.items()})
     result["artifacts"] = {str(path.relative_to(destination)): digest(path) for path in destination.rglob("*")
-                           if path.is_file() and path.name != "judgments.csv"}
+                           if path.is_file() and path.name not in {"judgments.csv", "source-judgments.csv"}}
     save(destination / "complete.json", result)
     return result
 
 
 def execute_case(case, args, attempt):
-    from r2.assistant import prepare_local_collection
+    from r2.assistant import prepare_local_source
+    from experiment_sources import SourceBaseline, supplement
     attempt.mkdir(parents=True, exist_ok=True)
     sources = Sources(args.cache, args.output, attempt / "sources.log")
     origin, target = case["version_from"], case["version_to"]
@@ -241,16 +293,34 @@ def execute_case(case, args, attempt):
                     raise ValueError(f"Manifest is unavailable, non-installable or has a different major version ({version})")
             addons.append(dict(name=name, path=source / name))
             provenance[name] = dict(repository=item["repo"], source_sha=before, target_sha=after)
-            try:
-                sources.references(item, target, attempt / "references" / name)
-            except (RuntimeError, OSError) as exc:
-                save(attempt / "references" / name / "error.json", {"status": "pending", "reason": str(exc)})
         except (OSError, RuntimeError, ValueError, SyntaxError) as exc:
             failures[name] = str(exc)
     if not addons:
         raise ValueError("No source/destination addon pairs available: " + json.dumps(failures))
-    prepared = prepare_local_collection(core, addons, origin, target, attempt / "collection")
+    started = time.perf_counter()
+    local = prepare_local_source(core, addons, origin, target, attempt / "local-source")
+    local_seconds = time.perf_counter() - started
+    started = time.perf_counter()
+    prepared = supplement(local, addons, origin, target, attempt / "acquisition", args.source_catalog)
+    acquisition_seconds = time.perf_counter() - started
     database = Path(prepared["database"])
+    started = time.perf_counter()
+    baseline = SourceBaseline(database, attempt / "source-baseline.sqlite", origin, target)
+    prepared["preparation_timing"] = dict(local_seconds=local_seconds, acquisition_and_normalization_seconds=acquisition_seconds,
+                                         source_index_seconds=time.perf_counter() - started)
+    save(attempt / "acquisition.json", prepared)
+    from r2.crossing import cross_module, save_result
+    initial = {}
+    for addon in addons:
+        name = addon["name"]
+        try:
+            crossing = cross_module(database, addon["path"], module_name=name)
+            save_result(crossing, attempt / "r21-crossing" / (name + ".json"))
+            initial[name] = dict(result_id=crossing["result_id"], matched_unit_ids=crossing["matched_unit_ids"])
+        except (ValueError, OSError) as exc:
+            failures[name] = str(exc)
+    save(attempt / "initial-crossing.json", dict(component="R2.1", addons=initial,
+         matched_unit_ids=sorted({uid for value in initial.values() for uid in value["matched_unit_ids"]})))
     save(attempt / "provenance.json", dict(core=prepared["revisions"], addons=provenance,
         database_sha256=digest(database), collection_revision=prepared["build"]["collection_revision"]))
     modules = []
@@ -258,10 +328,16 @@ def execute_case(case, args, attempt):
         name = addon["name"]
         print(f"{case['id']} / {name}", flush=True)
         try:
-            modules.append(measure_module(database, addon["path"], case, attempt / "addons" / name, args.repeats))
+            modules.append(measure_module(database, addon["path"], case, attempt / "addons" / name, args.repeats, baseline))
         except Exception as exc:
             failures[name] = str(exc)
             traceback.print_exc()
+    for item in case["modules"]:
+        if item["module"] in provenance:
+            try:
+                sources.references(item, target, attempt / "references" / item["module"])
+            except (RuntimeError, OSError) as exc:
+                save(attempt / "references" / item["module"] / "error.json", {"status": "pending", "reason": str(exc)})
     specification = dict(reviewer=None, collection_revision=prepared["build"]["collection_revision"], references={},
         queries=[dict(id=case["id"] + "/" + module["module"], module=module["input_path"],
             module_name=module["module"], input_revision=module["query"]["input_revision"], from_version=origin,
@@ -270,12 +346,14 @@ def execute_case(case, args, attempt):
     status = dict(id=case["id"], status="completed" if len(modules) == 5 and not failures else "partial",
                   finished_at=now(), modules=modules, failures=failures, database=str(database),
                   database_sha256=digest(database), C1=None, academic_review="pending")
+    status["acquisition_status"] = prepared["acquisition_status"]
+    status["baseline_contract"] = "bm25_sources ranks complete sources; bm25 retains the unit-level control"
     save(attempt / "result.json", status)
     return status
 
 
 def summary(output):
-    rows, case_rows, counts, evaluated = [], [], Counter(), []
+    rows, source_rows, case_rows, counts, evaluated = [], [], [], Counter(), []
     manifest = read(output / "manifest.json")
     for case in manifest["cases"]:
         pointer = output / "cases" / case["id"] / "latest.json"
@@ -294,19 +372,37 @@ def summary(output):
             evaluation = read(attempt / "evaluation.json")
         if evaluation:
             evaluated.append(evaluation)
+        source_scores = {}
+        if evaluation and (attempt / "source-evaluation.json").exists():
+            source_evaluation = read(attempt / "source-evaluation.json")
+            if all(digest(attempt / "addons" / module / "source-judgments.csv") == expected
+                   for module, expected in source_evaluation["judgments_sha256"].items()):
+                source_scores = {query["module"]: query["engines"] for query in source_evaluation["queries"]}
+                for module, engines in source_scores.items():
+                    for engine, score in engines.items():
+                        source_rows.append(dict(case=case["id"], module=module, engine=engine,
+                            shown=len(score["shown"]), P1_source=score["P1_source"],
+                            C2_reference=score["C2_reference"], unjudged=len(score["unjudged"])))
         scores_by_module = {query["query"]["module_name"]: query["engines"] for query in evaluation.get("queries", [])}
         for module in result.get("modules", []):
             for engine, scores in module["engines"].items():
                 rows.append(dict(case=case["id"], module=module["module"], engine=engine,
                     jump=case["version_from"] + "->" + case["version_to"], status=state["status"],
-                    found=scores["summary"]["changes_found"], shown=scores["summary"]["changes_shown"],
+                    granularity="source" if engine == "bm25_sources" else "unit",
+                    found=scores["summary"].get("changes_found", scores["summary"].get("sources_found")),
+                    shown=scores["summary"].get("changes_shown", scores["summary"].get("sources_shown")),
                     median_T1_seconds=scores["median_T1_seconds"],
-                    P1=scores_by_module.get(module["module"], {}).get(engine, {}).get("P1"),
-                    C2=scores_by_module.get(module["module"], {}).get(engine, {}).get("C2"),
+                    stage=STAGE_NAMES[engine],
+                    median_stage_seconds=scores.get("median_stage_seconds", {}).get(STAGE_NAMES[engine]),
+                    P1=(source_scores.get(module["module"], {}).get(engine, {}).get("P1_source") if engine == "bm25_sources"
+                        else scores_by_module.get(module["module"], {}).get(engine, {}).get("P1")),
+                    C2=(source_scores.get(module["module"], {}).get(engine, {}).get("C2_reference") if engine == "bm25_sources"
+                        else scores_by_module.get(module["module"], {}).get(engine, {}).get("C2")),
                     C1=evaluation.get("C1"), evidence=str(attempt.relative_to(output))))
-    table(output / "metrics.csv", rows, ["case", "module", "jump", "engine", "status", "found", "shown",
-          "median_T1_seconds", "C1", "P1", "C2", "evidence"])
+    table(output / "metrics.csv", rows, ["case", "module", "jump", "engine", "granularity", "status", "found", "shown",
+          "median_T1_seconds", "stage", "median_stage_seconds", "C1", "P1", "C2", "evidence"])
     table(output / "cases.csv", case_rows, ["case", "jump", "status", "evidence"])
+    table(output / "source-metrics.csv", source_rows, ["case", "module", "engine", "shown", "P1_source", "C2_reference", "unjudged"])
     references = sum(value["reference_count"] for value in evaluated)
     covered = sum(len(value["covered_reference_ids"]) for value in evaluated)
     pairs = [query["engines"] for value in evaluated for query in value["queries"]
@@ -350,7 +446,8 @@ def run(args):
         code_paths = list((ROOT / "sandbox/r2/r2").rglob("*.py")) + list((ROOT / "aws-lab").glob("*.py"))
         code = {str(path.relative_to(ROOT)): digest(path) for path in code_paths}
         protocol = dict(plan_sha256=digest(args.plan), code=code, repeats=args.repeats, depth=3, limit=10,
-                        cache=str(args.cache.resolve()), output=str(args.output.resolve()))
+                        cache=str(args.cache.resolve()), output=str(args.output.resolve()),
+                        source_catalog_sha256=digest(args.source_catalog) if args.source_catalog else None)
         path = args.output / "manifest.json"
         if path.exists():
             manifest = read(path)
@@ -383,6 +480,8 @@ def run(args):
             command = [sys.executable, str(Path(__file__).resolve()), "case", "--plan", str(args.plan),
                        "--output", str(args.output), "--cache", str(args.cache), "--repeats", str(args.repeats),
                        "--only", case["id"], "--attempt", str(attempt)]
+            if args.source_catalog:
+                command.extend(["--source-catalog", str(args.source_catalog)])
             print(f"Starting {case['id']} -> {attempt}", flush=True)
             code = run_worker(command, attempt / "execution.log", args.case_timeout)
             payload = read(attempt / "result.json") if (attempt / "result.json").exists() else {
@@ -400,9 +499,7 @@ def run(args):
 def evaluate(args):
     from r2.evaluation.normalized import evaluate as evaluate_spec
     from r2.charts import render_evaluation
-    manifest = read(args.output / "manifest.json")
-    if any(digest(ROOT / name) != expected for name, expected in manifest["protocol"]["code"].items()):
-        raise ValueError("The current code differs from the archived experimental protocol")
+    verify_protocol_code(args.output)
     for case in catalog(args.plan):
         pointer = args.output / "cases" / case["id"] / "latest.json"
         if not pointer.exists():
@@ -416,6 +513,8 @@ def evaluate(args):
             if not specification.get("references") or not specification.get("reviewer"):
                 raise ValueError("Complete independent reference changes and reviewer first")
             result = read(attempt / "result.json")
+            if not all(verify_artifacts(attempt / "addons" / module["module"], module) for module in result["modules"]):
+                raise ValueError("Archived query outputs changed after execution")
             expected = {case["id"] + "/" + module["module"] for module in result["modules"]}
             if {query["id"] for query in specification["queries"]} != expected:
                 raise ValueError("Review specification must cover every executed addon query")
@@ -426,11 +525,56 @@ def evaluate(args):
             (attempt / "evaluation-bars.txt").write_text(render_evaluation(value, ascii_only=True), encoding="utf-8")
             save(attempt / "evaluation-status.json", {"status": "measured", "updated_at": now(),
                  "spec_sha256": digest(spec)})
+            evaluate_sources(attempt, result, specification)
             print(case["id"] + " evaluated", flush=True)
         except (ValueError, KeyError, OSError) as exc:
             save(attempt / "evaluation-status.json", {"status": "pending_review", "reason": str(exc)})
             print(case["id"] + ": " + str(exc), flush=True)
     summary(args.output)
+
+
+def evaluate_sources(attempt, result, specification):
+    """Use source-level judgments for both the baseline and projected Graph first view."""
+    queries = {query["module_name"]: query for query in specification["queries"]}
+    results = []
+    for module in result["modules"]:
+        folder = attempt / "addons" / module["module"]
+        if not (folder / "bm25_sources" / "report.json").exists():
+            continue
+        graph = read(folder / "graph" / "report.json")
+        baseline = read(folder / "bm25_sources" / "report.json")
+        if baseline["collection_revision"] != graph["collection_revision"] or (
+            baseline["query"]["input_revision"] != graph["query"]["input_revision"]):
+            raise ValueError("Source baseline and Graph inputs differ")
+        shown = dict(graph_sources=list(dict.fromkeys(row["source"]["source_id"] for row in graph["results"])),
+                     bm25_sources=[row["source_id"] for row in baseline["results"]])
+        with (folder / "source-judgments.csv").open(encoding="utf-8-sig", newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        judgments = {}
+        expected = set(queries[module["module"]]["reference_ids"])
+        for row in rows:
+            label = row["relevant"].strip().lower()
+            if not label:
+                continue
+            references = {value.strip() for value in row["reference_ids"].split(";") if value.strip()}
+            if (label not in {"true", "false"} or not row["reviewer"].strip() or not row["reason"].strip()
+                    or not references <= expected or (references and label == "false")
+                    or row["source_id"] in judgments):
+                raise ValueError("Invalid or duplicate complete-source relevance judgment")
+            judgments[row["source_id"]] = dict(relevant=label == "true", references=references)
+        scores = {}
+        for engine, ids in shown.items():
+            missing = sorted(set(ids) - judgments.keys())
+            relevant = [sid for sid in ids if judgments.get(sid, {}).get("relevant")]
+            covered = {reference for sid in relevant for reference in judgments[sid]["references"]}
+            scores[engine] = dict(P1_source=100 * len(relevant) / len(ids) if ids and not missing else None,
+                C2_reference=100 * len(covered) / len(expected) if expected and not missing else None,
+                shown=ids, relevant_count=len(relevant), unjudged=missing, covered_reference_ids=sorted(covered))
+        results.append(dict(module=module["module"], engines=scores))
+    save(attempt / "source-evaluation.json", dict(queries=results, granularity="complete source",
+        note="Graph sources project its first unit view; BM25 sources rank complete artifacts. View sizes may differ.",
+        judgments_sha256={module["module"]: digest(attempt / "addons" / module["module"] / "source-judgments.csv")
+                          for module in result["modules"] if (attempt / "addons" / module["module"] / "source-judgments.csv").exists()}))
 
 
 def main():
@@ -443,12 +587,18 @@ def main():
     parser.add_argument("--case-timeout", type=int, default=14400)
     parser.add_argument("--only", nargs="+")
     parser.add_argument("--attempt", type=Path)
+    parser.add_argument("--source-catalog", type=Path,
+        default=ROOT / "sandbox/r2/reference/adquisition-final/examples/catalog.json",
+        help="Reviewed catalogue of supplementary sources")
     args = parser.parse_args()
     if os.name != "nt":
         signal.signal(signal.SIGTERM, lambda signum, frame: sys.exit(128 + signum))
     args.output, args.cache, args.plan = args.output.resolve(), args.cache.resolve(), args.plan.resolve()
     try:
         if args.action == "case":
+            manifest = verify_protocol_code(args.output)
+            if digest(args.plan) != manifest["protocol"]["plan_sha256"]:
+                raise ValueError("The case plan differs from the experimental protocol")
             case = next(case for case in catalog(args.plan) if case["id"] == args.only[0])
             execute_case(case, args, args.attempt)
         elif args.action == "run":

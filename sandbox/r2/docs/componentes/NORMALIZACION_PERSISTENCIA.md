@@ -2,6 +2,11 @@
 
 ## Propósito
 
+Este componente pertenece a R2.1 y entrega la colección para el cruce inicial.
+Conserva los artefactos completos y sus unidades. El experimento de AWS usa
+los artefactos completos para su índice BM25 por fuentes y las unidades para
+el cruce y el motor relacional.
+
 Convertir artefactos aceptados en unidades verificables y almacenarlas en una colección reproducible.
 
 | ID | Requisito cumplido | Código principal |

@@ -2,6 +2,13 @@
 
 Acordado el 2026-10-09. Implementado en `control/odoolab/{census,casuistics,experiment}.py`.
 
+Este protocolo caracteriza casuísticas de migración y conserva su selección
+histórica. El experimento vigente de recuperación de información de R2 se
+describe en `../r2/FUNCIONAMIENTO.md` y `../../aws-lab/README.md`. R2.1 termina
+en el cruce inicial; R2.2 comprende relaciones, búsqueda, reporte y evaluación.
+Sus indicadores C1 y P1 requieren correcciones de referencia y juicios de
+pertinencia revisados conforme al protocolo de la tesis.
+
 ## Pregunta
 
 Que errores aparecen al llevar un modulo OCA de 16.0 a 17.0, en que fase aparecen,
@@ -25,7 +32,7 @@ No se inventa un procedimiento: se aplica el que ya existe y se mide donde se qu
 Ficha: modulo, salto, fase, sintoma (firma normalizada del log), ubicacion, categoria,
 severidad, hunks humanos que la resuelven, lineas, iteracion en que aparece (enmascaramiento).
 
-**Cobertura del estandar** (resultado central para OE II):
+**Cobertura del estándar en este laboratorio de casuísticas**
 
 | etiqueta | significado |
 |---|---|

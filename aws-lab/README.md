@@ -10,6 +10,11 @@ bash aws-lab/run-30.sh start
 bash aws-lab/run-30.sh logs
 ```
 
+Antes de actualizar un lote activo, detén su contenedor con
+`bash aws-lab/run-30.sh stop`. Los cambios de algoritmo o de adquisición exigen
+una corrida con un nuevo `R2_BATCH_ID`. Los trabajadores comprueban la huella
+del código y del plan para conservar las condiciones de cada corrida.
+
 El proceso corre en un contenedor en segundo plano y continúa al desconectar
 SSH. `Ctrl+C` en la vista de logs cierra esa vista. Para detener el cálculo usa
 `bash aws-lab/run-30.sh stop`. Con `start` se reanuda el lote. Si falta Docker,
@@ -19,10 +24,17 @@ El lote toma los treinta grupos nuevos de
 `sandbox/research/migration-plan/plan.json`, cinco addons en cada grupo, para
 los saltos 16→17, 17→18 y 18→19. Descarga fuentes públicas de Odoo y OCA, fija
 sus SHA y comprueba los manifiestos en las versiones de origen y destino.
-Los análisis de R2 usan el código de origen y el diff local del núcleo por
-salto. Cada caso construye su colección, ejecuta Graph y BM25 con los mismos
-filtros, profundidad 3 y límite 10, y realiza tres repeticiones alternadas.
-El total previsto es de 150 consultas de addons y 900 ejecuciones de motor.
+Los cinco addons se inspeccionan conjuntamente para delimitar el diff local
+del núcleo por salto. Después se ejecutan planificación y adquisición web
+para complementar el diff con guías, documentación, snapshots y URL técnicas
+admitidas por el catálogo. Los inventarios se fusionan antes de normalizar.
+R2.1 termina con el cruce inicial, conservado por addon y agregado para el
+grupo. R2.2 extrae relaciones, busca, ordena y emite reportes por addon.
+
+El lote compara Graph, BM25 por unidades como control y `bm25_sources` sobre
+el texto completo de cada artefacto admitido. Cada consulta presenta hasta
+diez resultados y se repite tres veces alternando el orden de los motores.
+El total previsto es de 150 consultas de addons y 1 350 ejecuciones de motor.
 El PostgreSQL y los forks del sandbox de migración se ejecutan mediante la
 CLI `odoolab` documentada más abajo. Este lote mide el análisis estático de R2.
 
@@ -46,11 +58,18 @@ Las salidas están en `aws-lab/results/lote30/`:
 - `cases/<caso>/latest.json` señala el intento actual y su estado.
 - Cada intento guarda `execution.log`, `sources.log`, la colección SQLite,
   inventario, bindings, alcance del diff y la procedencia de cada addon.
-- `addons/<addon>/graph/` y `bm25/` conservan JSON, TXT y barras. Cada addon
-  tiene tiempos por repetición, hashes y `judgments.csv` con su primera vista.
+- `initial-crossing.json` y `r21-crossing/` conservan el cierre de R2.1 antes
+  de las consultas relacionales.
+- `acquisition/` conserva planificación, capturas originales, inventario
+  fusionado y colección complementada. Los estados de captura permanecen
+  visibles en `acquisition.json`, también ante una fuente fallida.
+- `addons/<addon>/graph/`, `bm25/` y `bm25_sources/` conservan resultados
+  estructurados. Cada addon tiene tiempos por repetición, hashes,
+  `judgments.csv` por unidad y `source-judgments.csv` por fuente completa.
 - `references/<addon>/` conserva los commits candidatos `[MIG]` y sus parches
-  para la revisión externa de correcciones. Esos parches se guardan como
-  referencia y la colección usa el diff del núcleo de Odoo.
+  para la revisión externa de correcciones después de ejecutar las consultas.
+  La colección usa el diff del núcleo y las fuentes web admitidas. Los parches
+  de solución de los addons evaluados se conservan en el dossier de referencia.
 
 El catálogo contiene treinta grupos de laboratorio y requiere comprobar su
 admisibilidad para la muestra académica. El criterio de utilidad de cada
@@ -76,6 +95,29 @@ CSV y el resumen con las cifras disponibles y el número de pares comparables.
 C1 se agrega mediante los conteos de correcciones cubiertas y evaluables;
 P1 usa la media de pares Graph/BM25 con precisión definida. Una especificación
 editada exige volver a evaluar antes de incorporar sus cifras al resumen.
+
+`r2 evaluate` y `evaluation.json` conservan la comparación por unidades.
+Para el contraste con fuentes completas, completa también
+`source-judgments.csv` de cada addon. `relevant` acepta `true` o `false`;
+`reference_ids` enumera correcciones separadas por punto y coma, y cada juicio
+requiere `reviewer` y `reason`. La ejecución `evaluate` produce además
+`source-evaluation.json` y `source-metrics.csv`. El grafo se proyecta a las
+fuentes distintas citadas en su primera vista y ambos motores usan los juicios
+de fuente. Se registra el tamaño real de cada vista. La precisión por fuentes
+y la precisión por unidades conservan sus propios denominadores.
+
+`timing.json` distingue consulta completa y etapas. `relations_seconds` mide
+extracción, recorrido y validación de relaciones; `bm25_units_seconds` y
+`bm25_sources_search_seconds` miden las búsquedas léxicas indicadas. La
+preparación de fuentes y de índices queda registrada aparte de esos tiempos.
+
+El catálogo predeterminado está en
+`sandbox/r2/reference/adquisition-final/examples/catalog.json`. La adquisición
+propone fuentes técnicas a partir de los addons y agrega las URL revisadas
+que figuren en `allowed_urls`. Los PR y diffs específicos adicionales necesitan
+sus URL y bindings revisados en el catálogo. Se omite el compare global del
+núcleo, cubierto por el diff local filtrado. Las soluciones de evaluación y
+los identificadores excluidos conservan la política de admisión vigente.
 
 Para una corrida nueva tras cambiar el código o el plan, usa un identificador:
 

@@ -1,5 +1,10 @@
 # odolab — sandbox de migracion Odoo (produccion inmutable + forks)
 
+El experimento de recuperación de información de R2 se describe en
+`r2/FUNCIONAMIENTO.md` y se ejecuta desde `../aws-lab/`. R2.1 termina en el
+cruce inicial, después de adquisición, normalización y persistencia. R2.2
+comprende relaciones, búsqueda, reporte, interfaz y evaluación.
+
 Entorno reproducible para medir el desempeno de una herramienta propia de migracion
 de modulos Odoo, contrastandola contra la migracion de referencia de la OCA
 (**OpenUpgrade**), que se toma como correcta.

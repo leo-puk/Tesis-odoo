@@ -1,6 +1,7 @@
 """Build the migration evidence report from normalized units and crossing."""
 import re
 from collections import Counter
+from time import perf_counter
 
 from .records import connect, load, meta
 from .crossing import cross_module
@@ -79,7 +80,7 @@ def diff_key(unit):
 
 
 def search_units(database, module, from_version, to_version, *, layer="all", maximum_hops=3,
-                 limit=10, module_name=None, engine="graph"):
+                 limit=10, module_name=None, engine="graph", timings=None):
     # Inputs: database, module, from_version, to_version, layer, maximum_hops, limit, module_name, engine.
     # Does: Retrieve scoped changes by graph or BM25 and validate the result.
     # Output: The report and optional crossing and graph handoffs.
@@ -124,13 +125,17 @@ def search_units(database, module, from_version, to_version, *, layer="all", max
         graph = None
         paths, scores = {}, {}
         if engine == "graph":
+            stage_started = perf_counter()
             graph = execute_query(crossing, database, maximum_hops=maximum_hops)
+            if timings is not None:
+                timings["relations_seconds"] = perf_counter() - stage_started
             if graph["collection"] != crossing["collection"]:
                 raise ValueError("Collection changed during relation extraction")
             paths = graph_hits(graph, units, admissible)
             ordered = sorted(eligible & paths.keys(), key=lambda uid: (len(paths[uid][1]),
                              units[uid]["normalization_status"] != "valid", uid))
         else:
+            stage_started = perf_counter()
             terms = sorted(term_counts(" ".join(entity["name"] for entity in code["entities"])))
             if terms:
                 expression = " OR ".join(f'"{term}"' for term in terms)
@@ -138,6 +143,8 @@ def search_units(database, module, from_version, to_version, *, layer="all", max
                     "SELECT unit_id, bm25(unit_search) FROM unit_search WHERE unit_search MATCH ?",
                     (expression,)) if row[0] in eligible}
             ordered = sorted(scores, key=lambda uid: (scores[uid], uid))
+            if timings is not None:
+                timings["bm25_units_seconds"] = perf_counter() - stage_started
 
     direct = {row["information_unit_id"]: row["evidences"] for row in crossing["results"]} if crossing else {}
     edge_by_id = {edge["id"]: edge for edge in graph["edges"]} if graph else {}
