@@ -22,10 +22,11 @@ el lanzador lo instala mediante el bootstrap de esta carpeta con `sudo`.
 
 El lote toma los treinta grupos nuevos de
 `sandbox/research/migration-plan/plan.json`, cinco addons en cada grupo, para
-los saltos 16→17, 17→18 y 18→19. Descarga fuentes públicas de Odoo y OCA, fija
-sus SHA y comprueba los manifiestos en las versiones de origen y destino.
+los saltos 16→17, 17→18 y 18→19. Primero fija las revisiones del núcleo de
+Odoo. Luego prepara los snapshots de OCA y comprueba los manifiestos en origen
+y destino. Los repositorios locales se reutilizan cuando están disponibles.
 Los cinco addons se inspeccionan conjuntamente para delimitar el diff local
-del núcleo por salto. Después se ejecutan planificación y adquisición web
+del núcleo por salto mediante `git diff`. Después se ejecutan planificación y adquisición web
 para complementar el diff con guías, documentación, snapshots y URL técnicas
 admitidas por el catálogo. Los inventarios se fusionan antes de normalizar.
 R2.1 termina con el cruce inicial, conservado por addon y agregado para el
@@ -35,6 +36,8 @@ El lote compara Graph, BM25 por unidades como control y `bm25_sources` sobre
 el texto completo de cada artefacto admitido. Cada consulta presenta hasta
 diez resultados y se repite tres veces alternando el orden de los motores.
 El total previsto es de 150 consultas de addons y 1 350 ejecuciones de motor.
+`logs` muestra, al terminar cada caso, los candidatos a revisar del grafo por
+addon, con su título e ID. El reporte detallado se guarda en el intento.
 El PostgreSQL y los forks del sandbox de migración se ejecutan mediante la
 CLI `odoolab` documentada más abajo. Este lote mide el análisis estático de R2.
 
@@ -106,9 +109,10 @@ fuentes distintas citadas en su primera vista y ambos motores usan los juicios
 de fuente. Se registra el tamaño real de cada vista. La precisión por fuentes
 y la precisión por unidades conservan sus propios denominadores.
 
-`timing.json` distingue consulta completa y etapas. `relations_seconds` mide
-extracción, recorrido y validación de relaciones; `bm25_units_seconds` y
-`bm25_sources_search_seconds` miden las búsquedas léxicas indicadas. La
+`timing.json` distingue consulta completa y etapas. Cada tiempo se toma de
+forma síncrona en el trabajador. El contenedor del lote corre en segundo
+plano. `relations_seconds` mide extracción, recorrido y validación de
+relaciones. `bm25_units_seconds` y `bm25_sources_search_seconds` miden las búsquedas léxicas indicadas. La
 preparación de fuentes y de índices queda registrada aparte de esos tiempos.
 
 El catálogo predeterminado está en
@@ -122,8 +126,8 @@ los identificadores excluidos conservan la política de admisión vigente.
 Para una corrida nueva tras cambiar el código o el plan, usa un identificador:
 
 ```bash
-R2_BATCH_ID=lote30_v2 bash aws-lab/run-30.sh start
-R2_BATCH_ID=lote30_v2 bash aws-lab/run-30.sh logs
+R2_BATCH_ID=lote30_v3 bash aws-lab/run-30.sh start
+R2_BATCH_ID=lote30_v3 bash aws-lab/run-30.sh logs
 ```
 
 Conserva el mismo identificador para los comandos de esa corrida. Los

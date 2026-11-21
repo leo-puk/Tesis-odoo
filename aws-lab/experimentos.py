@@ -438,6 +438,16 @@ def run_worker(command, log, timeout):
                 process.wait()
 
 
+def show_recommendations(case_id, attempt, modules):
+    for module in modules:
+        path = attempt / "addons" / module["module"] / "graph" / "report.json"
+        report = read(path)
+        results = report["results"]
+        print(f"{case_id} / {module['module']}: {len(results)} candidates to review", flush=True)
+        for rank, row in enumerate(results, 1):
+            print(f"  {rank}. {row['title']} | {row['change_id']}", flush=True)
+
+
 def run(args):
     cases = catalog(args.plan)
     args.output.mkdir(parents=True, exist_ok=True)
@@ -491,6 +501,7 @@ def run(args):
                 save(attempt / "result.json", payload)
             state.update(status=payload["status"], finished_at=now(), returncode=code)
             save(pointer, state)
+            show_recommendations(case["id"], attempt, payload.get("modules", []))
             summary(args.output)
         summary(args.output)
         return int(any(read(args.output / "cases" / cid / "latest.json")["status"] != "completed" for cid in wanted))

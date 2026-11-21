@@ -97,6 +97,8 @@ class BatchTests(unittest.TestCase):
                     module.mkdir(parents=True)
                     output = module / "report.txt"
                     output.write_text("synthetic output")
+                    batch.save(module / "graph" / "report.json", {"results": [
+                        {"title": "Fixture recommendation", "change_id": "unit-fixture"}]})
                     modules.append(dict(module=item["module"], artifacts={"report.txt": batch.digest(output)},
                         engines={engine: dict(summary={"changes_found": 1, "changes_shown": 1},
                                               median_T1_seconds=0.1) for engine in ("graph", "bm25")}))
@@ -104,10 +106,11 @@ class BatchTests(unittest.TestCase):
                     database_sha256=batch.digest(database), modules=modules))
                 return 0
 
-            with patch("experimentos.run_worker", side_effect=worker), redirect_stdout(io.StringIO()):
+            with patch("experimentos.run_worker", side_effect=worker), redirect_stdout(io.StringIO()) as console:
                 self.assertEqual(batch.run(args), 1)
                 self.assertEqual(batch.run(args), 0)
             self.assertEqual(calls, [cases[0]["id"], cases[1]["id"], cases[1]["id"]])
+            self.assertEqual(console.getvalue().count("Fixture recommendation | unit-fixture"), 10)
             self.assertEqual(batch.read(args.output / "summary.json")["statuses"]["completed"], 2)
             with (args.output / "metrics.csv").open(encoding="utf-8") as stream:
                 rows = list(csv.DictReader(stream))

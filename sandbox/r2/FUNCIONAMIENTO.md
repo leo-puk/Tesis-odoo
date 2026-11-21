@@ -33,7 +33,7 @@ La consulta BM25 usa términos de las entidades técnicas extraídas del addon.
 La coincidencia y la ordenación son léxicas. La extracción de relaciones usa
 identidades técnicas tipadas y sus caminos de evidencia.
 
-Los MIG del addon para el salto se recogen después de las consultas en un dossier de referencia separado. Se conservan todos los commits cuyo asunto contiene `[MIG]`, nombre de addon y versión destino. La revisión determina elegibilidad, correcciones evaluables y utilidad. La recuperación por título no acredita por sí misma una verdad de referencia exhaustiva.
+Los MIG candidatos se recogen después de las consultas. El filtro exige `[MIG]`, el nombre del addon y la versión destino en el asunto. Sus parches se guardan en el dossier de referencia. Tras la revisión, las correcciones evaluables y los juicios se incorporan mediante `evaluation-spec.json` y `source-judgments.csv`. El grafo se construye a partir de los cruces y la colección admitida durante R2.1.
 
 ## Componentes
 
@@ -72,7 +72,7 @@ El reporte filtra por intervalo, capa y profundidad, deduplica hunks idénticos 
 
 El evaluador de la CLI mantiene la comparación entre unidades. El experimento añade `source-evaluation.json` y `source-metrics.csv` para la comparación por fuentes. Proyecta la primera vista del grafo a sus fuentes distintas y aplica juicios de fuente a ambos motores. Registra el número efectivo de fuentes mostrado por cada uno. La precisión sobre unidades y la precisión sobre fuentes tienen denominadores diferentes y se identifican en los resultados. C1 usa correcciones manuales evaluables y C2 usa correcciones explicadas por la primera vista.
 
-`timing.json` registra tiempos de consulta completa y tiempos de etapa por repetición. `relations_seconds` mide extracción, recorrido y validación del grafo; `bm25_units_seconds` mide la consulta léxica de unidades; `bm25_sources_search_seconds` mide la búsqueda sobre el índice de fuentes completas. Descarga, normalización y construcción de índices son preparación. La comparación temporal es descriptiva y conserva los límites de cada medida.
+`timing.json` registra tiempos de consulta completa y de etapa por repetición dentro del trabajador. `relations_seconds` mide extracción, recorrido y validación del grafo. `bm25_units_seconds` mide la consulta léxica de unidades. `bm25_sources_search_seconds` mide la búsqueda sobre el índice de fuentes completas. Descarga, normalización y construcción de índices son preparación. El contenedor corre en segundo plano y muestra las recomendaciones de cada addon al terminar su caso. El intento conserva el reporte detallado.
 
 ## Invariantes
 
