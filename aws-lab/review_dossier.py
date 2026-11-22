@@ -27,8 +27,10 @@ el objeto JSON por la salida del asistente. Conserva los archivos de evidencia.
    los addons. Conserva también las que Graph y BM25 no recuperaron. No uses las
    recomendaciones como única fuente para elegir qué correcciones existen.
 3. Para cada corrección admitida, inspecciona la colección completa en
-   corpus-units.json. ¿La unidad explica el cambio en la capa que se rompe y en
-   el componente que soluciona el MIG/FIX para este salto? Cita las unidades que
+   corpus-units.json. ¿La evidencia independiente muestra qué cambió en el
+   componente y permite justificar por qué el addon requiere la adaptación
+   observada en este salto? Puede mostrar, por ejemplo, una firma retirada o
+   un XPath cuya vista padre cambió. Cita las unidades que
    sí lo hacen en available_unit_ids y explica cada vínculo en unit_explanations
    (mapa de ID de unidad a explicación). Usa la capa técnica afectada aunque el
    formato de la fuente sea documentación. Una sección de la versión destino
@@ -38,7 +40,9 @@ el objeto JSON por la salida del asistente. Conserva los archivos de evidencia.
    cuando la versión aplica, el addon usa o depende del elemento y puedes explicar
    qué revisar en affected_layer y affected_component. Puede ser útil sin corresponder a un MIG/FIX: relevant=true y
    reference_ids=[]. Cada vínculo a una corrección debe estar en sus
-   available_unit_ids. Los identificadores compartidos son pistas, no pruebas.
+   available_unit_ids. Un aviso genérico o un identificador compartido puede
+   orientar la búsqueda; para dar cobertura a C2 documenta el cambio verificable
+   y su vínculo con la corrección.
 5. Emite true o false también ante dudas, con reason y uncertainty. No inventes
    evidencia ni atribuyas una revisión humana independiente. Reconoce que la
    interpretación puede no ser completamente acertada. Si faltan archivos o
@@ -101,7 +105,9 @@ def _markdown(packet):
                 uid = result["change_id"]
                 linked = [hunk["id"] for hunk in query["suggestions"].get("hunks", [])
                           if any(value["unit_id"] == uid for value in hunk["retrieved_unit_candidates"])]
-                cells = [str(rank), uid, result["title"], result["source"].get("url", result["source"].get("source_url", "")), ", ".join(linked) or "Sin sugerencia"]
+                shown_uid = result["source"]["unit_id"]
+                cells = [str(rank), f"[{uid}](unidades.html#{shown_uid})", result["title"],
+                         result["source"].get("url") or "", ", ".join(linked) or "Sin sugerencia"]
                 lines.append("| " + " | ".join(value.replace("|", "\\|").replace("\n", " ") for value in cells) + " |")
             if not query["reports"][engine]["results"]:
                 lines.append("| — | — | Vista vacía | — | — |")
@@ -116,7 +122,7 @@ def _markdown(packet):
     return "\n".join(lines)
 
 
-def export_case(attempt, case):
+def export_case(attempt, case, *, reference_dir=None):
     from r2.normalization.diff import parse_diff
     from r2.records import connect, load
     result = read(attempt / "result.json")
@@ -131,7 +137,7 @@ def export_case(attempt, case):
         sources = load(connection, "sources")
     save(folder / "corpus-units.json", dict(units=units, sources=sources))
     addon_sources, queries, all_hunks, candidates, warnings, parse_errors = {}, [], {}, [], [], []
-    collection = attempt / "references" / "pool" / "candidates.json"
+    collection = (reference_dir or attempt / "references" / "pool") / "candidates.json"
     if collection.exists():
         inventory = read(collection)
         pool = collection.parent
@@ -160,10 +166,13 @@ def export_case(attempt, case):
         source = Path(commit["legacy_path"]) if "legacy_path" in commit else pool / commit["patch_file"]
         text = source.read_text(encoding="utf-8")
         (patch_folder / filename).write_text(text, encoding="utf-8")
-        candidates.append({**{key: value for key, value in commit.items() if key != "legacy_path"},
-                           "patch_file": "MIG/" + filename})
+        candidate = {**{key: value for key, value in commit.items() if key != "legacy_path"},
+                     "patch_file": "MIG/" + filename}
+        candidates.append(candidate)
         try:
             hunks, notes = parse_diff(text)
+            touched = {hunk["file_path"].split("/", 1)[0] for hunk in hunks}
+            candidate["touched_case_addons"] = sorted(touched & {item["module"] for item in case["modules"]})
             warnings.extend(f"{commit['sha']}: {note}" for note in notes)
             for hunk in hunks:
                 hid = f"{commit['sha']}:{hunk['artifact_start']}"
@@ -185,6 +194,10 @@ def export_case(attempt, case):
                   parse_errors=parse_errors,
                   evidence_sha256={path.relative_to(folder).as_posix(): digest(path) for path in
                       [folder / "corpus-units.json", folder / "addon-sources.json", *sorted(patch_folder.glob("*.diff"))]})
+    from case_evidence import export_views
+    export_views(attempt, packet, units)
+    for name in ("README.md", "nodos.csv", "primeras-unidades.csv", "unidades.html", "mig-fix-candidatos.json"):
+        packet["evidence_sha256"][name] = digest(folder / name)
     save(folder / "packet.json", packet)
     template = dict(schema="r2.assistant-review.v2", packet_sha256=digest(folder / "packet.json"),
         case_id=case["id"], completed=False, reviewer="", review_method="assistant",
@@ -244,7 +257,12 @@ def apply_case(attempt, review_file):
             or not isinstance(note.get("uncertainty"), str) for note in notes.values()):
         raise ValueError("Document every non-textual MIG/FIX warning")
     result = read(attempt / "result.json")
-    if result["database_sha256"] != packet["database_sha256"] or digest(Path(result["database"])) != packet["database_sha256"]:
+    if result.get("review_packet_sha256"):
+        from case_evidence import verified_archive
+        verified_archive(attempt, result)
+    elif digest(Path(result["database"])) != packet["database_sha256"]:
+        raise ValueError("Review collection differs from the recorded run")
+    if result["database_sha256"] != packet["database_sha256"]:
         raise ValueError("Review collection differs from the recorded run")
     if not all(verify_artifacts(attempt / "addons" / module["module"], module) for module in result["modules"]):
         raise ValueError("Review query outputs changed")
@@ -300,7 +318,7 @@ def apply_case(attempt, review_file):
         references[rid].update(commit_ids=sorted(identities), hunk_ids=hids,
                                affected_layer=decision.get("affected_layer"),
                                affected_component=decision.get("affected_component"),
-                               unit_explanations=decision.get("unit_explanations"))
+                               unit_explanations=decision.get("unit_explanations") or {})
         for name in decision["modules"]:
             expected_by_module[name].append(rid)
     if accounted != packet["mig_hunks"].keys():
@@ -367,6 +385,10 @@ def apply_case(attempt, review_file):
         table(path, rows, fields)
     (folder / "JUICIOS.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     save(folder / "review-applied.json", review)
+    from case_evidence import export_judgments
+    export_judgments(folder, packet, specification, units,
+                     {decision["id"]: decision for decision in review["reference_decisions"]})
+    specification["judgment_matrix_sha256"] = digest(folder / "matriz-unidad-mig.csv")
     # The specification is the commit marker: metrics only see a fully applied review.
     save(attempt / "evaluation-spec.json", specification)
     return specification
@@ -394,7 +416,13 @@ def review_batch(args):
                 applied += 1
                 print(case["id"] + ": review applied", flush=True)
             else:
-                folders.append(export_case(attempt, case))
+                result = read(attempt / "result.json")
+                if result.get("review_packet_sha256"):
+                    from case_evidence import verified_archive
+                    verified_archive(attempt, result)
+                    folders.append(attempt / "review")
+                else:
+                    folders.append(export_case(attempt, case))
         except (OSError, ValueError, KeyError, TypeError) as error:
             failures.append(case["id"] + ": " + str(error))
     if args.action == "review" and folders:
@@ -402,6 +430,18 @@ def review_batch(args):
         with tarfile.open(target, "w:gz") as archive:
             for folder in folders:
                 archive.add(folder, arcname=folder.relative_to(args.output), recursive=True)
+                attempt = folder.parent
+                case = read(folder / "packet.json")["case"]
+                jump = f"{case['version_from']}-a-{case['version_to']}"
+                index = args.output / "logs" / jump / case["id"] / "README.md"
+                for graph in sorted((attempt / "addons").glob("*/graph/relations.json")):
+                    archive.add(graph, arcname=graph.relative_to(args.output))
+                for path in [index, *(attempt / name for name in (
+                    "recommended-sources.json", "execution.log", "sources.log", "result.json",
+                    "adquisicion", "reference-exclusions.json", "evaluation.json",
+                ))]:
+                    if path.exists():
+                        archive.add(path, arcname=path.relative_to(args.output))
         print("Review dossier: " + str(target), flush=True)
     for error in failures:
         print(error, flush=True)

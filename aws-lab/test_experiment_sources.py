@@ -135,6 +135,26 @@ class SourceExperimentTests(unittest.TestCase):
         inventory = batch.read(result["inventory"])
         self.assertEqual(inventory[0]["urls"], ["https://github.com/OCA/stock-logistics-warehouse/compare/first..last"])
 
+    def test_batch_plan_excludes_reviewed_pr_and_known_reference_content(self):
+        from r2.adquisition.planner import make_plan
+        from r2.adquisition.policy import Excluded, SourcePolicy
+
+        pr = "https://github.com/OCA/other-repo/pull/12"
+        commit = "https://api.github.com/repos/OCA/other-repo/commits/" + "c" * 40
+        reference = "e1" * 20
+        catalog = dict(allowed_urls=[pr, commit], excluded_urls=[], oca_addons=["fixture_migration"],
+                       oca_repositories=["OCA/fixture-repo"], reference_shas=[reference],
+                       exclude_pull_requests=True)
+        plan, resolved, _, notes = make_plan(self.addon, "16.0", "17.0", catalog)
+        self.assertNotIn(pr, [url for entry in plan for url in entry["files"].values()])
+        self.assertTrue(any(row["url"] == pr for row in notes["policy_excluded"]))
+        policy = SourcePolicy(resolved)
+        with self.assertRaisesRegex(Excluded, "Individual PR and commit"):
+            policy.url(commit)
+        with self.assertRaisesRegex(Excluded, "reference SHA"):
+            policy.content("Old name affected by revision " + reference)
+        policy.content("Old name changed in the base ORM method.")
+
 
 if __name__ == "__main__":
     unittest.main()

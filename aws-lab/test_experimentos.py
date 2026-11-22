@@ -146,6 +146,9 @@ class BatchTests(unittest.TestCase):
                 cid = command[command.index("--only") + 1]
                 calls.append(cid)
                 attempt = Path(command[command.index("--attempt") + 1])
+                cache = Path(command[command.index("--cache") + 1])
+                batch.save(cache / "captures/acquisition/session/inventory.json", [{"fixture": True}])
+                (cache / "captures/acquisition/session/raw.diff").write_text("disposable download")
                 if len(calls) == 2:
                     return 124
                 database = attempt / "db.sqlite"
@@ -170,10 +173,25 @@ class BatchTests(unittest.TestCase):
 
             with patch("experimentos.run_worker", side_effect=worker), redirect_stdout(io.StringIO()) as console:
                 self.assertEqual(batch.run(args), 1)
+                interrupted = args.output / "cases" / cases[1]["id"] / "latest.json"
+                state = batch.read(interrupted)
+                orphan = args.cache / (cases[1]["id"] + "-orphan_1")
+                batch.save(orphan / "captures/acquisition/session/inventory.json", [{"interrupted": True}])
+                batch.save(interrupted, dict(state, status="running", temporary_cache=orphan.name))
                 self.assertEqual(batch.run(args), 0)
+                recovered = args.output / state["attempt"] / "adquisicion/acquisition/session/inventory.json"
+                self.assertEqual(batch.read(recovered), [{"interrupted": True}])
             self.assertEqual(calls, [cases[0]["id"], cases[1]["id"], cases[1]["id"]])
             self.assertEqual(console.getvalue().count("Fixture recommendation | unit-fixture"), 20)
             self.assertEqual(batch.read(args.output / "summary.json")["statuses"]["completed"], 2)
+            self.assertEqual(list(args.cache.iterdir()), [args.cache / "cache.lock"])
+            case = cases[0]
+            logs = args.output / "logs" / f"{case['version_from']}-a-{case['version_to']}" / case["id"] / "README.md"
+            self.assertIn("Inventarios y planes", logs.read_text(encoding="utf-8"))
+            attempt = args.output / batch.read(args.output / "cases" / case["id"] / "latest.json")["attempt"]
+            archive = attempt / "adquisicion/acquisition/session"
+            self.assertTrue((archive / "inventory.json").is_file())
+            self.assertFalse((archive / "raw.diff").exists())
             with (args.output / "metrics.csv").open(encoding="utf-8") as stream:
                 rows = list(csv.DictReader(stream))
             self.assertEqual(len(rows), 20)

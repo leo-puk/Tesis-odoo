@@ -22,9 +22,12 @@ y diffs acotados de repositorios OCA auxiliares. Los selecciona a partir de
 dependencias, identificadores y rutas. La planificación registra URL, SHA,
 alcance y fallos. Las fuentes de evaluación se conservan en un dossier separado.
 
-Después de las consultas se archivan candidatos `[MIG]` y `[FIX]` del historial
-destino respecto de origen, en los repositorios evaluados y en los adicionales
-del catálogo de referencias. Se admiten parches de otros addons si explican
+Antes de adquirir las fuentes se identifican candidatos `[MIG]` y `[FIX]`
+del historial destino respecto de origen, en los repositorios evaluados y
+en los adicionales del catálogo. Sus parches se archivan para el juicio.
+El lote excluye PR y commits individuales, los repositorios de referencia
+del plan y los SHA de los candidatos conocidos del caso. Se admiten parches
+de otros addons como referencia si explican
 una incompatibilidad aplicable al salto y se justifica su relación con un addon
 evaluado mediante uso o dependencia. Cada candidato conserva repositorio,
 SHA, URL y parche. El alcance cubre los repositorios y revisiones registrados.
@@ -40,8 +43,9 @@ El asistente identifica primero las correcciones a partir de los parches y
 del código de los addons. Después revisa la colección para C1 y la unión de
 unidades mostradas por ambos motores para P1 y C2. Se registran capa afectada,
 componente, motivo e incertidumbre. Para cada vínculo de cobertura, el
-asistente explica cómo la unidad describe el cambio del salto que justifica la
-adaptación del MIG o FIX. Una sección de documentación puede explicar una
+asistente explica cómo la unidad muestra el cambio técnico del salto que
+justifica la adaptación observada en el MIG o FIX. Una alerta genérica o
+una coincidencia de identificador son pistas de revisión. Una sección de documentación puede explicar una
 incompatibilidad de Python o XML. La pertinencia de una unidad se puede
 acreditar por su utilidad para el addon aunque carezca de corrección asociada.
 

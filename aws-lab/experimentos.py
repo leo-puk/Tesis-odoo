@@ -15,6 +15,7 @@ import signal
 import statistics
 import subprocess
 import sys
+import tempfile
 import time
 import traceback
 import uuid
@@ -115,7 +116,8 @@ class Sources:
         result = subprocess.run(command, text=True, encoding="utf-8", errors="replace", capture_output=True,
                                 timeout=3600, env={**os.environ, "GIT_TERMINAL_PROMPT": "0"})
         with self.log.open("a", encoding="utf-8") as stream:
-            stream.write(json.dumps(command) + "\n" + result.stdout + result.stderr + "\n")
+            stream.write(json.dumps(dict(command=command, returncode=result.returncode,
+                                         stdout_characters=len(result.stdout), stderr=result.stderr[-1800:])) + "\n")
         if result.returncode:
             raise RuntimeError(f"Git {arguments[0]} failed: {result.stderr[-1800:]}")
         return result.stdout.rstrip("\r\n")
@@ -135,12 +137,16 @@ class Sources:
         if organization == "OCA":
             self.git(bare, "config", "remote.origin.promisor", "true")
             self.git(bare, "config", "remote.origin.partialclonefilter", "blob:none")
+        options = ["--depth=1"] if organization == "odoo" else ["--filter=blob:none"]
         if identity not in self.pins:
-            options = ["--depth=1"] if organization == "odoo" else ["--filter=blob:none"]
             self.git(bare, "fetch", *options, "origin", f"+refs/heads/{version}:refs/heads/{version}")
             self.pins[identity] = self.git(bare, "rev-parse", f"refs/heads/{version}")
             save(self.lock_path, self.pins)
         sha = self.pins[identity]
+        try:
+            self.git(bare, "cat-file", "-e", f"{sha}^{{commit}}")
+        except RuntimeError:
+            self.git(bare, "fetch", *options, "origin", sha)
         self.git(bare, "update-ref", f"refs/heads/{version}", sha)
         return bare, sha
 
@@ -291,16 +297,30 @@ def execute_case(case, args, attempt):
     attempt.mkdir(parents=True, exist_ok=True)
     sources = Sources(args.cache, args.output, attempt / "sources.log")
     origin, target = case["version_from"], case["version_to"]
+    work = args.cache / "captures"
+    reference_dir = args.cache / "reference-patches"
+    mig_catalog = getattr(args, "mig_catalog", None)
+    pool = collect_migs(sources, case, reference_dir, mig_catalog)
+    reference_repos = set().union(*(reference_repositories(item, mig_catalog)
+                                    for item in catalog(args.plan)))
+    reference_shas = [entry["sha"] for entry in pool["candidates"]]
+    save(attempt / "reference-exclusions.json", dict(
+        repositories=sorted(reference_repos), reference_shas=sorted(set(reference_shas)),
+        individual_prs_and_commits="excluded", scope=pool["scope"], failures=pool["failures"]))
     core, _ = sources.snapshot("odoo", "odoo", origin)
-    sources.snapshot("odoo", "odoo", target)
+    sources.pin("odoo", "odoo", target)
     addons, failures, provenance = [], {}, {}
     for item in case["modules"]:
         name = item["module"]
         try:
             source, before = sources.snapshot("OCA", item["repo"], origin)
-            destination, after = sources.snapshot("OCA", item["repo"], target)
-            for root, version in ((source, origin), (destination, target)):
-                manifest = ast.literal_eval((root / name / "__manifest__.py").read_text(encoding="utf-8-sig"))
+            destination, after = sources.pin("OCA", item["repo"], target)
+            manifests = {
+                origin: (source / name / "__manifest__.py").read_text(encoding="utf-8-sig"),
+                target: sources.git(destination, "show", f"{after}:{name}/__manifest__.py").lstrip("\ufeff"),
+            }
+            for version, content in manifests.items():
+                manifest = ast.literal_eval(content)
                 if not manifest.get("installable", True) or not str(manifest.get("version", "")).startswith(version + "."):
                     raise ValueError(f"Manifest is unavailable, non-installable or has a different major version ({version})")
             addons.append(dict(name=name, path=source / name))
@@ -310,13 +330,13 @@ def execute_case(case, args, attempt):
     if not addons:
         raise ValueError("No source/destination addon pairs available: " + json.dumps(failures))
     started = time.perf_counter()
-    local = prepare_local_source(core, addons, origin, target, attempt / "local-source",
+    local = prepare_local_source(core, addons, origin, target, work / "local-source",
                                  public_repository="odoo/odoo")
     local_seconds = time.perf_counter() - started
     started = time.perf_counter()
-    auxiliary = acquire_oca(sources, local, origin, target, attempt / "oca-sources",
-                            reference_repositories(case, getattr(args, "mig_catalog", None)), args.source_catalog)
-    prepared = supplement(local, addons, origin, target, attempt / "acquisition", args.source_catalog,
+    auxiliary = acquire_oca(sources, local, origin, target, work / "oca-sources",
+                            reference_repos, args.source_catalog, reference_shas=reference_shas)
+    prepared = supplement(local, addons, origin, target, work / "acquisition", args.source_catalog,
                           auxiliary=auxiliary)
     acquisition_seconds = time.perf_counter() - started
     database = Path(prepared["database"])
@@ -351,16 +371,12 @@ def execute_case(case, args, attempt):
             traceback.print_exc()
     save(attempt / "recommended-sources.json", case_shortlists(attempt, modules))
     mig_review = {}
-    reference_dir = attempt / "references" / "pool"
-    pool = collect_migs(sources, case, reference_dir, getattr(args, "mig_catalog", None))
     measured = {module["module"] for module in modules}
     for item in case["modules"]:
         name = item["module"]
         if name in provenance:
             try:
                 commits = pool["candidates"]
-                save(attempt / "references" / name / "candidates.json", dict(
-                    status="collected", candidates=commits, scope=pool["scope"], failures=pool["failures"]))
                 if name in measured:
                     links = suggest_links(database, attempt / "addons" / name, reference_dir, commits, origin, target)
                     save(attempt / "references" / name / "suggested-links.json", links)
@@ -389,10 +405,12 @@ def execute_case(case, args, attempt):
     status["oca_acquisition"] = auxiliary["diagnostics"]
     save(attempt / "result.json", status)
     from review_dossier import export_case
-    dossier = export_case(attempt, case)
+    dossier = export_case(attempt, case, reference_dir=reference_dir)
     if errors := read(dossier / "packet.json")["parse_errors"]:
         status.update(status="partial", reference_parse_errors=errors)
-        save(attempt / "result.json", status)
+    status["review_packet_sha256"] = digest(dossier / "packet.json")
+    status["storage"] = "Archived normalized units and reports; raw sources and Git cache are temporary"
+    save(attempt / "result.json", status)
     return status
 
 
@@ -587,6 +605,8 @@ def select_cases(cases, args, output=None):
 
 
 def run(args):
+    from case_evidence import archive_acquisition, publish_case_index, recover_case_cache, verified_archive
+
     cases = catalog(args.plan)
     args.output.mkdir(parents=True, exist_ok=True)
     args.cache.mkdir(parents=True, exist_ok=True)
@@ -609,32 +629,43 @@ def run(args):
         wanted = {case["id"] for case in selected}
         print("Selected: " + (", ".join(case["id"] for case in selected) or "no unfinished cases"), flush=True)
         for case in cases:
+            folder = args.output / "cases" / case["id"]
+            pointer = folder / "latest.json"
+            previous = read(pointer) if pointer.exists() else {}
+            recover_case_cache(args.cache, args.output, case, previous)
             if case["id"] not in wanted:
                 continue
-            folder = args.output / "cases" / case["id"]
             folder.mkdir(parents=True, exist_ok=True)
-            pointer = folder / "latest.json"
-            if pointer.exists() and read(pointer)["status"] == "completed":
-                prior = args.output / read(pointer)["attempt"]
+            if previous.get("status") == "completed":
+                prior = args.output / previous["attempt"]
                 result = read(prior / "result.json")
-                if digest(Path(result["database"])) != result["database_sha256"] or not all(
-                    verify_artifacts(prior / "addons" / module["module"], module) for module in result["modules"]):
+                if result.get("review_packet_sha256"):
+                    verified_archive(prior, result)
+                elif digest(Path(result["database"])) != result["database_sha256"]:
+                    raise ValueError("Completed evidence was changed. Use a new output directory to rerun.")
+                if not all(verify_artifacts(prior / "addons" / module["module"], module) for module in result["modules"]):
                     raise ValueError("Completed evidence was changed. Use a new output directory to rerun.")
                 print(case["id"] + " already completed; evidence verified", flush=True)
                 continue
             attempt = folder / ("attempt-" + uuid.uuid4().hex[:12])
             attempt.mkdir()
             state = dict(status="running", started_at=now(), attempt=str(attempt.relative_to(args.output)))
-            save(pointer, state)
-            command = [sys.executable, str(Path(__file__).resolve()), "case", "--plan", str(args.plan),
-                       "--output", str(args.output), "--cache", str(args.cache), "--repeats", str(args.repeats),
-                       "--only", case["id"], "--attempt", str(attempt)]
-            if args.source_catalog:
-                command.extend(["--source-catalog", str(args.source_catalog)])
-            if getattr(args, "mig_catalog", None):
-                command.extend(["--mig-catalog", str(args.mig_catalog)])
             print(f"Starting {case['id']} -> {attempt}", flush=True)
-            code = run_worker(command, attempt / "execution.log", args.case_timeout)
+            with tempfile.TemporaryDirectory(prefix=case["id"] + "-", dir=args.cache.resolve()) as cache:
+                cache = Path(cache)
+                state["temporary_cache"] = cache.name
+                save(pointer, state)
+                command = [sys.executable, str(Path(__file__).resolve()), "case", "--plan", str(args.plan),
+                           "--output", str(args.output), "--cache", str(cache), "--repeats", str(args.repeats),
+                           "--only", case["id"], "--attempt", str(attempt)]
+                if args.source_catalog:
+                    command.extend(["--source-catalog", str(args.source_catalog)])
+                if getattr(args, "mig_catalog", None):
+                    command.extend(["--mig-catalog", str(args.mig_catalog)])
+                try:
+                    code = run_worker(command, attempt / "execution.log", args.case_timeout)
+                finally:
+                    archive_acquisition(cache / "captures", attempt)
             payload = read(attempt / "result.json") if (attempt / "result.json").exists() else {
                 "status": "failed", "reason": "Case timed out" if code == 124 else "Worker exited without a result",
                 "returncode": code}
@@ -644,7 +675,12 @@ def run(args):
             if not (attempt / "result.json").exists():
                 save(attempt / "result.json", payload)
             state.update(status=payload["status"], finished_at=now(), returncode=code)
+            state.pop("temporary_cache")
+            save(attempt / "storage.json", dict(temporary_cache_removed=True,
+                acquisition_logs="adquisicion/" if (attempt / "adquisicion").is_dir() else None,
+                evidence="review/" if payload.get("review_packet_sha256") else None))
             save(pointer, state)
+            publish_case_index(args.output, case, attempt)
             show_recommendations(case["id"], attempt, payload.get("modules", []), payload.get("mig_review"))
             summary(args.output)
         summary(args.output)
@@ -652,6 +688,7 @@ def run(args):
 
 
 def evaluate(args):
+    from case_evidence import evaluate_archive
     from r2.evaluation.normalized import evaluate as evaluate_spec
     from r2.charts import render_evaluation
     from study_sample import coverage_label, freeze_sample
@@ -693,9 +730,12 @@ def evaluate(args):
             expected = {case["id"] + "/" + module["module"] for module in result["modules"]}
             if {query["id"] for query in specification["queries"]} != expected:
                 raise ValueError("Review specification must cover every executed addon query")
-            if digest(Path(result["database"])) != result["database_sha256"]:
-                raise ValueError("Collection changed since the archived queries")
-            value = evaluate_spec(result["database"], specification, spec.parent, repeats=args.repeats)
+            if result.get("review_packet_sha256"):
+                value = evaluate_archive(attempt, result, specification, manifest)
+            else:
+                if digest(Path(result["database"])) != result["database_sha256"]:
+                    raise ValueError("Collection changed since the archived queries")
+                value = evaluate_spec(result["database"], specification, spec.parent, repeats=args.repeats)
             for query in value["queries"]:
                 folder = attempt / "addons" / query["query"]["module_name"]
                 for engine in ENGINES:

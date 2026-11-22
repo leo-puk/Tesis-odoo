@@ -33,7 +33,15 @@ La consulta BM25 usa términos de las entidades técnicas extraídas del addon.
 La coincidencia y la ordenación son léxicas. La extracción de relaciones usa
 identidades técnicas tipadas y sus caminos de evidencia.
 
-Los candidatos `[MIG]` y `[FIX]` se recogen después de las consultas. Se examina el historial exclusivo del SHA destino de los repositorios OCA de los cinco addons y de los repositorios adicionales revisados. `suggested-links.json` conserva sugerencias por identificador. El dossier `review/` reúne unidades completas, código y parches. `judge` automatiza la revisión mediante un asistente. `apply-review` valida las decisiones y `evaluate` calcula las métricas. El grafo se construye a partir de los cruces y la colección de R2.1.
+Los candidatos `[MIG]` y `[FIX]` se recogen antes de la adquisición para
+identificar los SHA excluidos. Se examina el historial exclusivo del SHA
+destino de los repositorios OCA de los cinco addons y de los repositorios
+adicionales revisados. El lote excluye también las fuentes de PR y commits
+individuales. Después de consultar, `suggested-links.json` conserva sugerencias
+por identificador. El dossier `review/` reúne unidades normalizadas, código y
+parches de referencia. `apply-review` valida las decisiones y exporta la matriz
+unidad–corrección. `evaluate` calcula las métricas con las consultas archivadas.
+El índice por salto y caso enlaza la evidencia y los logs.
 
 ## Componentes
 

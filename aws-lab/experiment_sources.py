@@ -37,12 +37,14 @@ def scoped_oca_paths(paths, dependencies, models, excluded):
     return selected
 
 
-def acquire_oca(sources, local, origin, target, output, reference_repos, catalog_path=None):
+def acquire_oca(sources, local, origin, target, output, reference_repos, catalog_path=None, *, reference_shas=()):
     """Capture immutable, path-filtered diffs from a separate set of OCA repositories."""
     from r2.adquisition.policy import Excluded, SourcePolicy
     from experimentos import digest, now, save
 
     catalog = read_catalog(catalog_path)
+    catalog["reference_shas"] = sorted(set(reference_shas))
+    catalog["exclude_pull_requests"] = True
     excluded_addons = set(catalog["oca_addons"])
     excluded_repos = {value.lower().removeprefix("oca/") for value in catalog["oca_repositories"]}
     excluded_repos.update(reference_repos)
@@ -105,21 +107,25 @@ def acquire_oca(sources, local, origin, target, output, reference_repos, catalog
     save(output / "bindings.json", {"sources": bindings})
     save(output / "planning.json", diagnostics)
     return dict(inventory=str(session / "inventory.json"), bindings=str(output / "bindings.json"),
-                diagnostics=diagnostics, reference_repos=sorted(reference_repos))
+                diagnostics=diagnostics, reference_repos=sorted(reference_repos),
+                reference_shas=catalog["reference_shas"])
 
 
 def supplement(prepared, addons, origin, target, output, catalog_path=None, *, auxiliary=None):
-    from r2.adquisition import capture_plan
+    from r2.adquisition import SourcePolicy, capture_plan
     from r2.adquisition.planner import make_plan
+    from r2.adquisition.policy import Excluded
     from r2.normalization.storage import build_normalized
 
     output = Path(output)
     output.mkdir()
     catalog = read_catalog(catalog_path)
+    catalog["exclude_pull_requests"] = True
     catalog["oca_addons"] = sorted(set(catalog["oca_addons"]) | {addon["name"] for addon in addons})
     if auxiliary:
         catalog["oca_repositories"] = sorted(set(catalog["oca_repositories"]) |
                                               {"OCA/" + name for name in auxiliary["reference_repos"]})
+        catalog["reference_shas"] = auxiliary.get("reference_shas", [])
     entries, bindings, diagnostics, seen = [], {}, [], set()
     resolved = dict(catalog)
     for addon in addons:
@@ -145,6 +151,7 @@ def supplement(prepared, addons, origin, target, output, catalog_path=None, *, a
     inputs = [prepared, {**capture, "bindings": output / "bindings.json"}]
     if auxiliary:
         inputs.append(auxiliary)
+    reference_policy = SourcePolicy(catalog) if catalog.get("reference_shas") else None
     for item in inputs:
         inventory_path, binding_path = Path(item["inventory"]), Path(item["bindings"])
         rows = json.loads(inventory_path.read_text(encoding="utf-8-sig"))
@@ -154,6 +161,15 @@ def supplement(prepared, addons, origin, target, output, catalog_path=None, *, a
             if (session / uid).exists():
                 raise ValueError("Duplicate acquisition unit while merging sessions")
             original = inventory_path.parent / uid
+            if item is prepared and row["status"] == "accepted" and reference_policy:
+                try:
+                    for name in row["files"]:
+                        with (inventory_path.parent / name).open(encoding="utf-8", errors="replace") as stream:
+                            for line in stream:
+                                reference_policy.reference_content(line)
+                except Excluded as error:
+                    inventory.append(dict(row, status="excluded", reason=str(error)))
+                    continue
             if original.is_dir():
                 shutil.copytree(original, session / uid)
             inventory.append(row)

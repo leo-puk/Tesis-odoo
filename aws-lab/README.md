@@ -5,7 +5,7 @@
 Desde el checkout del repositorio en tu servidor Ubuntu, ejecuta:
 
 ```bash
-export R2_BATCH_ID=lote30_v6
+export R2_BATCH_ID=lote30_v7
 bash aws-lab/run-30.sh start --next 1
 bash aws-lab/run-30.sh logs
 ```
@@ -31,9 +31,9 @@ El procedimiento de revisión y los comandos finales están en
 
 El lote toma los treinta grupos nuevos de
 `sandbox/research/migration-plan/plan.json`, cinco addons en cada grupo, para
-los saltos 16→17, 17→18 y 18→19. Primero fija las revisiones del núcleo de
-Odoo. Luego prepara los snapshots de OCA y comprueba los manifiestos en origen
-y destino. Los repositorios locales se reutilizan cuando están disponibles.
+los saltos 16→17, 17→18 y 18→19. Primero reúne las referencias excluidas de
+la adquisición y fija las revisiones del núcleo de Odoo. Luego prepara el
+código de origen de OCA y comprueba los manifiestos en ambos SHA.
 Los cinco addons se inspeccionan conjuntamente para delimitar el diff local
 del núcleo por salto mediante `git diff`. Después se ejecutan planificación y adquisición web
 para complementar el diff con guías, documentación, snapshots y URL técnicas
@@ -47,8 +47,8 @@ El lote compara Graph y BM25 por unidades, incluidos hunks y secciones de
 documentación aplicables a la versión. Cada consulta presenta hasta diez
 resultados y se repite tres veces alternando el orden de los motores.
 El total previsto es de 150 consultas de addons y 900 ejecuciones de motor
-durante la medición inicial; la evaluación vuelve a consultar para verificar
-las entradas y medir sus tiempos.
+durante la medición inicial. La evaluación usa las salidas verificadas y los
+tiempos archivados de esas ejecuciones.
 `logs` muestra los resultados de ambos motores con título, ID y enlace por
 addon. `recommended-sources.json` reúne hasta diez URL distintas por motor
 y caso. Los reportes y las estadísticas detalladas quedan en el intento.
@@ -73,20 +73,19 @@ Las salidas están en `aws-lab/results/$R2_BATCH_ID/`:
 - `sources.json` conserva los SHA de las fuentes.
 - `summary.json`, `cases.csv` y `metrics.csv` muestran el avance y los conteos.
 - `cases/<caso>/latest.json` señala el intento actual y su estado.
-- Cada intento guarda `execution.log`, `sources.log`, la colección SQLite,
-  inventario, bindings, alcance del diff y la procedencia de cada addon.
+- `logs/<origen>-a-<destino>/<caso>/README.md` enlaza el dossier y los logs.
+  Cada intento guarda `execution.log`, `sources.log` y la procedencia.
 - `initial-crossing.json` y `r21-crossing/` conservan el cierre de R2.1 antes
   de las consultas relacionales.
-- `acquisition/` conserva planificación, capturas originales, inventario
-  fusionado y colección complementada. Los estados de captura permanecen
-  visibles en `acquisition.json`, también ante una fuente fallida.
-- `oca-sources/planning.json` registra el alcance, los SHA, las URL y el
+- `adquisicion/` conserva planificación, inventarios y logs de captura.
+  `acquisition.json` registra los estados, también ante una fuente fallida.
+- `adquisicion/oca-sources/planning.json` registra el alcance, los SHA, las URL y el
   estado de los diffs OCA auxiliares.
 - `addons/<addon>/graph/` y `bm25/` conservan resultados
   estructurados. Cada addon tiene tiempos por repetición, hashes,
   y `judgments.csv` por unidad.
-- `references/pool/` conserva los candidatos `[MIG]` y `[FIX]` del historial
-  destino respecto de origen y sus parches, incluyendo otras rutas de addon.
+- `review/mig-fix-candidatos.json` y `review/MIG/` conservan los candidatos
+  `[MIG]` y `[FIX]` del historial destino respecto de origen y sus parches.
   `--mig-catalog` agrega repositorios revisados. El alcance queda fijado por SHA
   y las correcciones se admiten mediante juicio técnico.
   `references/<addon>/suggested-links.json` vincula cada hunk con unidades del salto,
@@ -98,7 +97,10 @@ Las salidas están en `aws-lab/results/$R2_BATCH_ID/`:
 - `review/RECOMENDACIONES_MIG.md` muestra las recomendaciones de ambos motores
   cruzadas con los hunks sugeridos. `packet.json`, `corpus-units.json`,
   `addon-sources.json` y `MIG/` conservan la evidencia para emitir el juicio.
-  Se incluye la colección completa para detectar correcciones no recuperadas.
+  Se incluyen las unidades normalizadas de la colección para detectar
+  correcciones no recuperadas. El dossier enlaza rankings, nodos, aristas y
+  el fragmento de evidencia de cada unidad. Después del juicio se guardan
+  las referencias admitidas y `matriz-unidad-mig.csv`.
 
 El lote genera el dossier por caso. `judge` usa un asistente en el host para
 evaluar los parches y las recomendaciones, registra capa y componente y guarda
@@ -130,20 +132,20 @@ preparación de fuentes y de índices queda registrada aparte de esos tiempos.
 El catálogo predeterminado está en
 `sandbox/r2/reference/adquisition-final/examples/catalog.json`. La adquisición
 propone fuentes técnicas a partir de los addons y agrega las URL revisadas
-que figuren en `allowed_urls`. Los PR adicionales necesitan sus URL y
-bindings revisados en el catálogo. Los diffs de Git se limitan por rutas.
-Los repositorios de referencia y los addons excluidos quedan fuera de los
-diffs auxiliares.
+que figuren en `allowed_urls`. El lote excluye PR y commits individuales,
+repositorios de referencia y SHA MIG/FIX conocidos del caso. Los diffs de
+Git se limitan por rutas.
 
 Para una corrida nueva tras cambiar el código o el plan, usa un identificador:
 
 ```bash
-R2_BATCH_ID=lote30_v6 bash aws-lab/run-30.sh start --next 1
-R2_BATCH_ID=lote30_v6 bash aws-lab/run-30.sh logs
+R2_BATCH_ID=lote30_v7 bash aws-lab/run-30.sh start --next 1
+R2_BATCH_ID=lote30_v7 bash aws-lab/run-30.sh logs
 ```
 
 Conserva el mismo identificador para los comandos de esa corrida. Los
-directorios de resultados y caché persisten en el disco de EC2.
+resultados y las revisiones fijadas persisten en EC2. La caché Git, las
+capturas completas y la base temporal se retiran al terminar cada intento.
 
 ## Asistente Python desde tu computadora
 

@@ -43,21 +43,12 @@ def score(report, judgments, expected):
                 relevant_outside_reference=[uid for uid in relevant if not judgments[uid]["reference_ids"]])
 
 
-def evaluate(database, specification, base, *, repeats=1):
-    # Inputs: database, specification, base, repeats.
-    # Does: Compare graph and BM25 on the same corpus and reviewed judgments.
-    # Output: Coverage, per-query scores and timing.
-    if type(repeats) is not int or repeats < 1:
-        raise ValueError("Repetitions must be positive")
+def evaluate_reports(specification, units, collection_revision, report_for, timing):
+    """Score live or archived reports against the same reviewed evidence."""
     reviewer = specification["reviewer"]
     if not isinstance(reviewer, str) or not reviewer.strip():
         raise ValueError("An explicit reviewer is required")
-    with connect(database) as con:
-        metadata = meta(con)
-        if metadata.get("layout") != "normalized-units":
-            raise ValueError("Evaluation requires a normalized-unit collection")
-        units = {row["id"]: row for row in load(con, "information_units")}
-    if specification["collection_revision"] != metadata["collection_revision"]:
+    if specification["collection_revision"] != collection_revision:
         raise ValueError("Judgments must refer to the current collection revision")
     references = specification["references"]
     covered = coverage(references, units)
@@ -67,8 +58,6 @@ def evaluate(database, specification, base, *, repeats=1):
         if query_id in seen:
             raise ValueError("Duplicate evaluation query ID")
         seen.add(query_id)
-        parameters = {key: query[key] for key in ("from_version", "to_version", "layer", "maximum_hops", "limit")}
-        parameters["module_name"] = query.get("module_name")
         expected, judgments = set(query["reference_ids"]), query["judgments"]
         if not expected <= references.keys():
             raise ValueError("Query references an unknown change")
@@ -81,19 +70,9 @@ def evaluate(database, specification, base, *, repeats=1):
                 unit, reference = units[uid], references[ref_id]
                 if not evidence_matches_transition(unit, reference["from_version"], reference["to_version"]):
                     raise ValueError("A judgment maps results to a different transition")
-        reports, samples = {}, {"graph": [], "bm25": []}
-        for repeat in range(repeats):
-            for engine in (("graph", "bm25") if repeat % 2 == 0 else ("bm25", "graph")):
-                started = perf_counter()
-                report, _, _ = search_units(database, base / query["module"], engine=engine, **parameters)
-                render_report(report)
-                json.dumps(report, ensure_ascii=False, allow_nan=False)
-                samples[engine].append(perf_counter() - started)
-                if report["collection_revision"] != metadata["collection_revision"]:
-                    raise ValueError("Collection changed during evaluation")
-                if engine in reports and report != reports[engine]:
-                    raise ValueError("Search results changed across repetitions")
-                reports[engine] = report
+        reports, samples = report_for(query)
+        if any(report["collection_revision"] != collection_revision for report in reports.values()):
+            raise ValueError("Collection changed during evaluation")
         graph, bm25 = reports["graph"], reports["bm25"]
         if graph["query"] != bm25["query"] or graph["summary"]["eligible_units"] != bm25["summary"]["eligible_units"]:
             raise ValueError("Engines used different query inputs or eligible corpora")
@@ -117,12 +96,44 @@ def evaluate(database, specification, base, *, repeats=1):
             group = groups.setdefault(key, {"reference_count": 0, "covered_count": 0})
             group["reference_count"] += 1
             group["covered_count"] += ref_id in covered
-    return dict(schema_version=1, collection_revision=metadata["collection_revision"], reviewer=reviewer,
+    return dict(schema_version=1, collection_revision=collection_revision, reviewer=reviewer,
                 C1=100 * len(covered) / len(references) if references else None,
                 reference_count=len(references), covered_reference_ids=sorted(covered),
                 C1_by_transition=by_transition, C1_by_migration=by_migration, queries=cases,
-                timing=dict(repeats=repeats, environment=platform.platform(),
-                            order="Alternated per repetition", cache="Uncontrolled operating-system cache",
-                            boundary="Search through rendered and serialized first view and summary"),
+                timing=timing,
                 V1_scope="Automated structure and evidence paths; independent English review is required",
                 protocol_status="Independent sampling and admission audit must be documented separately")
+
+
+def evaluate(database, specification, base, *, repeats=1):
+    """Run the CLI evaluation against a local collection and addon paths."""
+    if type(repeats) is not int or repeats < 1:
+        raise ValueError("Repetitions must be positive")
+    with connect(database) as con:
+        metadata = meta(con)
+        if metadata.get("layout") != "normalized-units":
+            raise ValueError("Evaluation requires a normalized-unit collection")
+        units = {row["id"]: row for row in load(con, "information_units")}
+
+    def report_for(query):
+        parameters = {key: query[key] for key in ("from_version", "to_version", "layer", "maximum_hops", "limit")}
+        parameters["module_name"] = query.get("module_name")
+        reports, samples = {}, {"graph": [], "bm25": []}
+        for repeat in range(repeats):
+            for engine in (("graph", "bm25") if repeat % 2 == 0 else ("bm25", "graph")):
+                started = perf_counter()
+                report, _, _ = search_units(database, base / query["module"], engine=engine, **parameters)
+                render_report(report)
+                json.dumps(report, ensure_ascii=False, allow_nan=False)
+                samples[engine].append(perf_counter() - started)
+                if report["collection_revision"] != metadata["collection_revision"]:
+                    raise ValueError("Collection changed during evaluation")
+                if engine in reports and report != reports[engine]:
+                    raise ValueError("Search results changed across repetitions")
+                reports[engine] = report
+        return reports, samples
+
+    return evaluate_reports(specification, units, metadata["collection_revision"], report_for,
+        timing=dict(repeats=repeats, environment=platform.platform(),
+                    order="Alternated per repetition", cache="Uncontrolled operating-system cache",
+                    boundary="Search through rendered and serialized first view and summary"))

@@ -2,6 +2,7 @@
 import argparse
 from contextlib import redirect_stdout
 import copy
+import csv
 import importlib.util
 import io
 import json
@@ -112,6 +113,37 @@ class ReviewTests(unittest.TestCase):
         self.assertEqual(batch.read(self.output / "summary.json")["C1"], 100)
         self.assertEqual(batch.read(self.output / "summary.json")["admitted_migration_count"], 1)
         self.assertFalse((self.output / "source-metrics.csv").exists())
+
+    def test_archived_evidence_can_be_reviewed_after_discarding_the_collection_and_addon(self):
+        result_path = self.attempt / "result.json"
+        result = batch.read(result_path)
+        result["review_packet_sha256"] = batch.digest(self.folder / "packet.json")
+        batch.save(result_path, result)
+        manifest_path = self.output / "manifest.json"
+        manifest = batch.read(manifest_path)
+        manifest["protocol"]["repeats"] = 1
+        manifest["cache_policy"] = "Fixture cache"
+        batch.save(manifest_path, manifest)
+        self.fixture.db.unlink()
+        (self.fixture.root / "original" / "models.py").unlink()
+        self.assertIn(self.direct, (self.folder / "unidades.html").read_text(encoding="utf-8"))
+        self.assertTrue(batch.read(self.folder / "mig-fix-candidatos.json")["candidates"])
+        specification = self.apply()
+        self.assertTrue(batch.read(self.folder / "mig-fix-admitidos.json")["mig"])
+        with (self.folder / "matriz-unidad-mig.csv").open(encoding="utf-8", newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        self.assertTrue(any(row["scope"] == "collection" and row["covers_correction"] == "True"
+                            and row["commit_urls"] for row in rows))
+        self.assertTrue(any(row["engine"] == "graph" and row["unit_id"] == self.direct
+                            and row["link_explanation"] for row in rows))
+        args = argparse.Namespace(output=self.output, plan=batch.DEFAULT_PLAN, repeats=3, only=[self.case["id"]])
+        with redirect_stdout(io.StringIO()):
+            self.assertEqual(batch.evaluate(args), 0)
+        value = batch.read(self.attempt / "evaluation.json")
+        self.assertEqual(value["C1"], 100)
+        self.assertEqual(value["queries"][0]["engines"]["graph"]["C2"], 100)
+        self.assertEqual(value["timing"]["repeats"], 1)
+        self.assertEqual(value["reviewer"], specification["reviewer"])
 
     def test_final_gate_requires_real_migs_and_unexecuted_cases_are_not_successes(self):
         self.apply()

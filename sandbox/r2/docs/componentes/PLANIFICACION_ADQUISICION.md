@@ -8,8 +8,9 @@ obtener el diff local filtrado y complementa esa fuente con documentación,
 guías y URL admitidas por el catálogo. El lote también selecciona repositorios
 OCA auxiliares a partir de las dependencias de los addons y filtra sus diffs
 por dependencias y nombres técnicos. Conserva SHA, URL, rutas y estado de
-captura en `oca-sources/planning.json`. Los repositorios de evaluación y
-referencia quedan excluidos de los diffs auxiliares.
+captura en `adquisicion/oca-sources/planning.json`. Los repositorios de evaluación
+y referencia quedan excluidos de los diffs auxiliares. El lote de EC2 excluye
+fuentes de PR y commits individuales y comprueba los SHA de referencia del caso.
 
 La selección automática utiliza una lista acotada de repositorios vinculados
 con ventas, inventario, productos y componentes base. El criterio de selección

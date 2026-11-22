@@ -3,7 +3,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 action="${1:-start}"
 shift || true
-export R2_BATCH_ID="${R2_BATCH_ID:-lote30_v6}"
+export R2_BATCH_ID="${R2_BATCH_ID:-lote30_v7}"
 if [[ ! "$R2_BATCH_ID" =~ ^[A-Za-z0-9_-]+$ ]]; then
   echo 'R2_BATCH_ID must contain letters, numbers, underscores or hyphens.' >&2
   exit 1
