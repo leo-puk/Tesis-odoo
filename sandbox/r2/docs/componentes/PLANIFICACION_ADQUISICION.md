@@ -5,7 +5,19 @@
 Este componente pertenece a R2.1. Sus capturas alimentan normalización,
 persistencia y cruce inicial. En el experimento de AWS se ejecuta después de
 obtener el diff local filtrado y complementa esa fuente con documentación,
-guías y otras URL admitidas por el catálogo.
+guías y URL admitidas por el catálogo. El lote también selecciona repositorios
+OCA auxiliares a partir de las dependencias de los addons y filtra sus diffs
+por dependencias y nombres técnicos. Conserva SHA, URL, rutas y estado de
+captura en `oca-sources/planning.json`. Los repositorios de evaluación y
+referencia quedan excluidos de los diffs auxiliares.
+
+La selección automática utiliza una lista acotada de repositorios vinculados
+con ventas, inventario, productos y componentes base. El criterio de selección
+queda en `aws-lab/experiment_sources.py`.
+[sale-workflow](https://github.com/OCA/sale-workflow),
+[stock-logistics-warehouse](https://github.com/OCA/stock-logistics-warehouse),
+[product-variant](https://github.com/OCA/product-variant) y
+[server-tools](https://github.com/OCA/server-tools).
 
 Preparar y capturar fuentes completas con procedencia explícita, sin decidir todavía su relevancia para un addon.
 

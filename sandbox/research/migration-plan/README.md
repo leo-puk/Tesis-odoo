@@ -3,10 +3,13 @@
 El lote estático de R2 para los treinta grupos nuevos se ejecuta con
 `aws-lab/run-30.sh`. R2.1 comprende adquisición, normalización, persistencia y
 cruce inicial. R2.2 comprende relaciones, búsqueda, reporte y evaluación. El
-lote conserva fuentes web complementarias y compara exclusivamente el grafo
-con BM25 por unidades. Admite ejecución incremental mediante `start --next 1`
-y `start --next 5`, sin repetir casos completados. Las ejecuciones de
-migración con Odoo y OpenUpgrade siguen los comandos de este catálogo.
+lote conserva documentación y diffs OCA auxiliares y compara Graph con BM25
+por unidades. Admite ejecución incremental con `start --next 1` y
+`start --next 5`. Después del juicio sobre las referencias MIG/FIX,
+`freeze-sample` fija treinta MIG admitidos y las consultas asociadas.
+[Evaluación del lote estático](../../../aws-lab/EVALUACION_FINAL.md).
+Las ejecuciones de migración con Odoo y OpenUpgrade siguen los comandos de
+este catálogo.
 
 Se conservan los grupos historicos `g01` y `g02`, ambos 16.0→17.0. Se agregan diez variantes, cada una con cinco addons fijos y tres saltos consecutivos. Los pilotos `sale_advance_payment` y `sap_guiado` siguen existiendo; no cuentan entre los 32 casos.
 

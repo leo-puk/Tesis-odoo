@@ -1,23 +1,125 @@
 """Supplementary acquisition and BM25 over complete admitted source artifacts."""
 import json
 from pathlib import Path
+import re
 import shutil
 import sqlite3
+from subprocess import TimeoutExpired
 import uuid
 from time import perf_counter
 
 
-def supplement(prepared, addons, origin, target, output, catalog_path=None):
+DEFAULT_CATALOG = Path(__file__).resolve().parent.parent / "sandbox/r2/reference/adquisition-final/examples/catalog.json"
+AUXILIARY_REPOSITORIES = {
+    "stock-logistics-warehouse": {"stock", "stock_account"},
+    "sale-workflow": {"sale", "sale_management", "sale_stock", "purchase", "purchase_stock"},
+    "product-variant": {"product", "purchase", "sale"},
+    "server-tools": {"base", "mail", "contacts"},
+}
+
+
+def read_catalog(path):
+    return json.loads(Path(path or DEFAULT_CATALOG).read_text(encoding="utf-8-sig"))
+
+
+def scoped_oca_paths(paths, dependencies, models, excluded):
+    modules = {path.split("/")[0] for path in paths if re.fullmatch(r"[a-z0-9_]+/__manifest__\.py", path)}
+    selected = []
+    for path in sorted(paths):
+        parts = path.split("/")
+        addon, filename = parts[0], Path(parts[-1])
+        if (addon not in modules or addon in excluded or set(parts) & {"tests", "i18n", "demo"}
+                or filename.suffix not in {".py", ".xml", ".csv"}):
+            continue
+        if addon in dependencies or filename.stem in models or (
+                filename.suffix == ".xml" and re.sub(r"_(?:views?|templates?)$", "", filename.stem) in models):
+            selected.append(path)
+    return selected
+
+
+def acquire_oca(sources, local, origin, target, output, reference_repos, catalog_path=None):
+    """Capture immutable, path-filtered diffs from a separate set of OCA repositories."""
+    from r2.adquisition.policy import Excluded, SourcePolicy
+    from experimentos import digest, now, save
+
+    catalog = read_catalog(catalog_path)
+    excluded_addons = set(catalog["oca_addons"])
+    excluded_repos = {value.lower().removeprefix("oca/") for value in catalog["oca_repositories"]}
+    excluded_repos.update(reference_repos)
+    catalog["oca_repositories"] = sorted(set(catalog["oca_repositories"]) | {"OCA/" + name for name in reference_repos})
+    scope = json.loads(Path(local["metadata"]).read_text(encoding="utf-8"))["scope"]
+    excluded_addons.update(scope["selected_addons"])
+    catalog["oca_addons"] = sorted(excluded_addons)
+    policy = SourcePolicy(catalog)
+    dependencies = set(scope["manifest_dependencies"])
+    models = {value.replace(".", "_") for value in scope["technical_identifiers"]
+              if re.fullmatch(r"[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+", value)}
+    session = output / uuid.uuid4().hex
+    session.mkdir(parents=True)
+    inventory, bindings, diagnostics = [], {}, []
+    for repository, triggers in sorted(AUXILIARY_REPOSITORIES.items()):
+        matched = sorted(triggers & (dependencies | set(scope["core_modules"])))
+        if not matched:
+            continue
+        entry = dict(repository="OCA/" + repository, trigger_dependencies=matched)
+        diagnostics.append(entry)
+        if repository in excluded_repos:
+            entry.update(status="excluded", reason="Evaluation/reference repository or policy exclusion")
+            continue
+        try:
+            bare, first = sources.pin("OCA", repository, origin)
+            _, last = sources.pin("OCA", repository, target)
+            paths = {path for sha in (first, last) for path in
+                     sources.git(bare, "ls-tree", "-r", "--name-only", sha).splitlines()}
+            selected = scoped_oca_paths(paths, dependencies, models, excluded_addons)
+            url = f"https://github.com/OCA/{repository}/compare/{first}..{last}"
+            entry.update(from_revision=first, to_revision=last, url=url, pathspecs=selected)
+            if not selected:
+                entry.update(status="empty")
+                continue
+            if url in policy.excluded:
+                raise Excluded("Comparison excluded by catalogue")
+            policy.content(url)
+            diff = sources.git(bare, "diff", "--no-ext-diff", "--no-textconv", "--no-color",
+                               "--no-renames", "--unified=3", first, last, "--", *selected)
+            if not diff:
+                entry.update(status="empty")
+                continue
+            policy.content(diff)
+        except Excluded as error:
+            entry.update(status="excluded", reason=str(error))
+            continue
+        except (OSError, RuntimeError, ValueError, TimeoutExpired) as error:
+            entry.update(status="failed", reason=str(error))
+            continue
+        uid = uuid.uuid4().hex
+        relative = f"{uid}/comparison-relevant.diff"
+        path = session / relative
+        path.parent.mkdir()
+        path.write_bytes((diff + "\n").encode("utf-8"))
+        inventory.append(dict(id=uid, source_id=f"oca-{repository}", kind="github_diff", urls=[url],
+            status="accepted", files=[relative], captures=[dict(url=url, method="scoped git diff", captured_at=now())]))
+        bindings[uid] = dict(from_version=origin, to_version=target, from_revision=first, to_revision=last)
+        entry.update(status="accepted", sha256=digest(path))
+    save(session / "inventory.json", inventory)
+    save(output / "bindings.json", {"sources": bindings})
+    save(output / "planning.json", diagnostics)
+    return dict(inventory=str(session / "inventory.json"), bindings=str(output / "bindings.json"),
+                diagnostics=diagnostics, reference_repos=sorted(reference_repos))
+
+
+def supplement(prepared, addons, origin, target, output, catalog_path=None, *, auxiliary=None):
     from r2.adquisition import capture_plan
     from r2.adquisition.planner import make_plan
     from r2.normalization.storage import build_normalized
 
     output = Path(output)
     output.mkdir()
-    catalog_path = Path(catalog_path) if catalog_path else (
-        Path(__file__).resolve().parent.parent / "sandbox/r2/reference/adquisition-final/examples/catalog.json")
-    catalog = json.loads(catalog_path.read_text(encoding="utf-8-sig"))
+    catalog = read_catalog(catalog_path)
     catalog["oca_addons"] = sorted(set(catalog["oca_addons"]) | {addon["name"] for addon in addons})
+    if auxiliary:
+        catalog["oca_repositories"] = sorted(set(catalog["oca_repositories"]) |
+                                              {"OCA/" + name for name in auxiliary["reference_repos"]})
     entries, bindings, diagnostics, seen = [], {}, [], set()
     resolved = dict(catalog)
     for addon in addons:
@@ -40,8 +142,11 @@ def supplement(prepared, addons, origin, target, output, catalog_path=None):
     session = output / uuid.uuid4().hex
     session.mkdir()
     inventory, merged = [], {}
-    for inventory_path, binding_path in ((Path(prepared["inventory"]), Path(prepared["bindings"])),
-                                         (Path(capture["inventory"]), output / "bindings.json")):
+    inputs = [prepared, {**capture, "bindings": output / "bindings.json"}]
+    if auxiliary:
+        inputs.append(auxiliary)
+    for item in inputs:
+        inventory_path, binding_path = Path(item["inventory"]), Path(item["bindings"])
         rows = json.loads(inventory_path.read_text(encoding="utf-8-sig"))
         config = json.loads(binding_path.read_text(encoding="utf-8-sig"))["sources"]
         for row in rows:

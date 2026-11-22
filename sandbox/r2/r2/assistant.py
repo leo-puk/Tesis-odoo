@@ -257,7 +257,7 @@ def write_relevant_local_diff(repo, addons, origin, destination, session):
     return dict(path=str(path), bytes=path.stat().st_size), revisions, digest.hexdigest(), scope
 
 
-def prepare_local_source(repo, addons, origin, destination, output):
+def prepare_local_source(repo, addons, origin, destination, output, *, public_repository=None):
     # Inputs: Local Odoo versions and a new analysis output directory.
     # Does: Materialize a provenance-bearing local diff and acquisition inventory.
     # Output: Inventory, bindings, metadata and immutable source revisions.
@@ -268,6 +268,9 @@ def prepare_local_source(repo, addons, origin, destination, output):
     part, revisions, diff_sha256, scope = write_relevant_local_diff(
         repo, addons, origin, destination, session)
     source_url = f"local-git:{Path(repo).resolve().as_posix()}#{revisions['from_revision']}..{revisions['to_revision']}"
+    if public_repository:
+        source_url = (f"https://github.com/{public_repository}/compare/"
+                      f"{revisions['from_revision']}..{revisions['to_revision']}")
     captured = utcnow()
     path = Path(part["path"])
     relative = path.relative_to(session).as_posix()

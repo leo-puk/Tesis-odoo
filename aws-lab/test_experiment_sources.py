@@ -9,7 +9,7 @@ from unittest.mock import patch
 import uuid
 
 import experimentos as batch
-from experiment_sources import SourceBaseline, supplement
+from experiment_sources import SourceBaseline, acquire_oca, supplement
 from mig_review import suggest_links
 
 
@@ -71,7 +71,9 @@ class SourceExperimentTests(unittest.TestCase):
                             batch.read(attempt / "source-evaluation.json")["queries"][0]["engines"].values()))
 
     def test_supplement_preserves_local_capture_and_adds_admitted_web_source(self):
+        from r2.evaluation.normalized import coverage
         from r2.records import connect, load
+        from r2.report import search_units
         fixture = self.fixture
         inventory = next((fixture.output / "temp_data").rglob("inventory.json"))
         prepared = dict(inventory=str(inventory), bindings=str(fixture.bindings), revisions={})
@@ -88,7 +90,7 @@ class SourceExperimentTests(unittest.TestCase):
             uid = uuid.uuid4().hex
             destination = session / uid
             destination.mkdir(parents=True)
-            (destination / "guide.md").write_text("# ORM migration\nReview original.seed.\n", encoding="utf-8")
+            (destination / "guide.md").write_text("# ORM migration\nReview the `original.seed` model.\n", encoding="utf-8")
             rows = [dict(id=uid, source_id="supplement-0001", kind="official_documentation", status="accepted",
                          urls=[url], captures=[dict(url=url, status=200)], files=[uid + "/guide.md"])]
             batch.save(session / "inventory.json", rows)
@@ -99,9 +101,39 @@ class SourceExperimentTests(unittest.TestCase):
             result = supplement(prepared, [dict(name="original", path=self.addon)], "16.0", "17.0", fixture.root / "web")
         with connect(result["database"]) as con:
             sources = load(con, "sources")
+            units = {unit["id"]: unit for unit in load(con, "information_units")}
         self.assertTrue(any(source["url"] == url for source in sources))
         self.assertGreater(len(sources), 1)
         self.assertEqual(result["acquisition_status"]["accepted"], 4)
+        document = next(unit for unit in units.values() if unit["source_url"] == url)
+        for engine in batch.ENGINES:
+            report, _, _ = search_units(result["database"], self.addon, "16.0", "17.0", engine=engine)
+            self.assertIn(document["id"], {row["source"]["unit_id"] for row in report["results"]})
+        reference = dict(from_version="16.0", to_version="17.0", available_unit_ids=[document["id"]])
+        self.assertEqual(coverage({"fix": reference}, units), {"fix"})
+        with self.assertRaises(ValueError):
+            coverage({"fix": dict(reference, to_version="18.0")}, units)
+
+    def test_oca_comparison_limits_paths_and_excludes_reference_repository(self):
+        from unittest.mock import Mock
+
+        root = self.fixture.root
+        metadata = root / "scope.json"
+        batch.save(metadata, dict(scope=dict(selected_addons=["original"], manifest_dependencies=["stock", "sale"],
+            core_modules=["stock"], technical_identifiers=["stock.picking"])))
+        sources = Mock()
+        sources.pin.side_effect = [(root, "first"), (root, "last")]
+        trees = "\n".join(["original/__manifest__.py", "original/models/stock_picking.py",
+            "aux/__manifest__.py", "aux/models/stock_picking.py", "aux/models/unrelated.py",
+            "aux/tests/stock_picking.py"])
+        sources.git.side_effect = [trees, trees,
+            "--- a/aux/models/stock_picking.py\n+++ b/aux/models/stock_picking.py\n@@ -1 +1 @@\n-x\n+y"]
+        result = acquire_oca(sources, dict(metadata=str(metadata)), "16.0", "17.0",
+                             root / "oca", {"sale-workflow", "product-variant"})
+        self.assertEqual([row["status"] for row in result["diagnostics"]], ["excluded", "excluded", "accepted"])
+        self.assertEqual(sources.git.call_args.args[-2:], ("--", "aux/models/stock_picking.py"))
+        inventory = batch.read(result["inventory"])
+        self.assertEqual(inventory[0]["urls"], ["https://github.com/OCA/stock-logistics-warehouse/compare/first..last"])
 
 
 if __name__ == "__main__":

@@ -1,25 +1,21 @@
-# Ejecución incremental y evaluación final de R2
+# Ejecución incremental y evaluación de R2
 
-## Preparar una corrida nueva en EC2
+## Correr el lote en EC2
 
-Desde la raíz del checkout en Ubuntu, detén el contenedor de la corrida anterior
-antes de actualizar. Si usabas el lanzador anterior a v5, ejecuta su comando
-`stop` antes del `git pull`. No borres resultados anteriores ni la caché.
+Usa un ID nuevo para esta versión. Si hay un lote activo, detén ese contenedor
+con su propio ID antes de cambiar el código. Ejecuta desde la raíz del checkout
+que contiene esta versión.
 
 ```bash
-git pull --ff-only origin master
-export R2_BATCH_ID=lote30_v5
+export R2_BATCH_ID=lote30_v6
 bash aws-lab/run-30.sh start --next 1
 bash aws-lab/run-30.sh logs
+bash aws-lab/run-30.sh summary
 ```
 
-`logs` termina cuando el trabajador sale. `Ctrl+C` cierra solo la vista de logs.
-Consulta el código de salida y los errores en `status`, `summary` y
-`cases/<caso>/<intento>/execution.log`. Un fallo conserva su evidencia.
-
-## Seguir por bloques
-
-Cuando el primer caso termine, ejecuta los cinco siguientes:
+Después del piloto, repite el siguiente bloque hasta cerrar los treinta casos.
+`--next 5` toma los próximos casos pendientes o fallidos. Un reintento conserva
+el intento anterior. `--only oca_v01_1617` permite seleccionar el piloto.
 
 ```bash
 bash aws-lab/run-30.sh start --next 5
@@ -27,118 +23,80 @@ bash aws-lab/run-30.sh logs
 bash aws-lab/run-30.sh summary
 ```
 
-Repite ese bloque hasta completar los treinta. `--next 5` selecciona hasta
-cinco casos sin completar en el orden de `plan.json`, incluyendo reintentos
-de fallos. Los completados se conservan. El bloque final puede contener menos
-de cinco. Las treinta entradas operativas son grupos de cinco addons, no una
-lista ya admitida de treinta commits MIG independientes. El objetivo académico
-de treinta migraciones se comprueba con la selección de referencias revisadas.
+Cada caso analiza cinco addons en un salto. Graph y BM25 guardan las unidades
+mostradas, sus localizadores y sus tiempos. `recommended-sources.json` reúne
+hasta diez URL públicas distintas por motor y caso, intercalando puestos de los
+cinco addons. La precisión se calcula sobre las unidades de cada consulta.
+Los errores de adquisición y referencia quedan en `acquisition.json`,
+`sources.log`, `execution.log` y `result.json`.
 
-También puedes repetir una selección fija:
+## Emitir y aplicar los juicios
 
-```bash
-bash aws-lab/run-30.sh start --offset 0 --count 5
-bash aws-lab/run-30.sh start --offset 5 --count 5
-# Ejecutar cada comando cuando haya terminado el anterior.
-```
+Cada intento genera el dossier `review/`. Su `REVIEW_PROMPT.md` y
+`review-template.json` definen el formato. Los parches MIG y FIX se guardan
+en `MIG/`, junto al código de los addons y las unidades completas del corpus.
 
-Mantén el mismo ID, código, catálogo y parámetros entre bloques. Con otro
-código utiliza otro ID de lote. Las fuentes Git se fijan por SHA y la caché
-de descargas se reutiliza. Una terminal nueva necesita volver a exportar
-`R2_BATCH_ID=lote30_v5`.
-
-## Obtener la evidencia para que el asistente emita los juicios
-
-Después del primer caso, o después de cada bloque:
+`judge` se ejecuta en el host y usa por defecto una instalación autenticada de
+Codex CLI. Lee el dossier en su directorio y guarda el JSON en
+`aws-lab/results/$R2_BATCH_ID/reviews/`. Para usar otro asistente, pasa un
+ejecutable disponible en el host con `--judge-command /ruta/al/asistente`.
+El proceso recibe el prompt por stdin y devuelve un único objeto JSON por
+stdout. Sus diagnósticos quedan en `judge.log` dentro del intento.
 
 ```bash
-bash aws-lab/run-30.sh review
-ls -lh "aws-lab/results/$R2_BATCH_ID/review-bundle.tar.gz"
-```
-
-El comando empaqueta los casos completados. Si hay casos intentados pero
-incompletos informa de ellos y devuelve un código de error. Los demás dossiers
-se conservan. Puedes seleccionar solo el piloto con `review --only oca_v01_1617`.
-
-Descarga el archivo desde tu computadora con la misma clave SSH que ya funciona:
-
-```powershell
-scp -i "C:\ruta\tesis-odo.pem" ubuntu@44.205.67.137:/RUTA/AL/REPO/aws-lab/results/lote30_v5/review-bundle.tar.gz .
-```
-
-Sustituye la ruta remota por la que muestra `pwd` en la raíz del repositorio.
-Entrega ese archivo al asistente para que emita los juicios reales. El dossier
-incluye recomendaciones Graph/BM25, fragmentos completos, código del addon,
-unidades no recuperadas y parches MIG. `REVIEW_PROMPT.md` contiene las reglas y
-`review-template.json` el formato de respuesta. Se registra que el juicio lo
-emitió un asistente, con motivos e incertidumbre; no se atribuye revisión humana
-independiente. No se obtienen etiquetas de pertinencia solo por coincidencia léxica.
-
-El asistente devolverá un JSON por caso, con nombre `<case-id>.json`. Copia
-esos archivos a `aws-lab/results/lote30_v5/reviews/` en EC2. Por ejemplo:
-
-```bash
-mkdir -p "aws-lab/results/$R2_BATCH_ID/reviews"
-```
-
-Desde la computadora que tiene los juicios:
-
-```powershell
-scp -i "C:\ruta\tesis-odo.pem" .\reviews\*.json ubuntu@44.205.67.137:/RUTA/AL/REPO/aws-lab/results/lote30_v5/reviews/
-```
-
-## Aplicar juicios y calcular métricas
-
-Para el primer caso:
-
-```bash
+bash aws-lab/run-30.sh judge --only oca_v01_1617
 bash aws-lab/run-30.sh apply-review --only oca_v01_1617
 bash aws-lab/run-30.sh evaluate --only oca_v01_1617
 ```
 
-Para todos los casos ya ejecutados:
+El juicio documenta la capa técnica y el componente afectados, por ejemplo
+Python y `res.partner`. Para acreditar cobertura explica qué cambio del
+salto justifica la adaptación del parche y cita las unidades correspondientes.
+La documentación de destino puede aportar evidencia si explica la transición.
+El importador exige los juicios de ambas vistas, los motivos y la incertidumbre.
+Usa `judge --retry-judgments --only <caso>` para regenerar una respuesta
+rechazada. Para revisar con un asistente fuera del host, empaqueta los casos
+terminados con `review`, entrega el `review-bundle.tar.gz` generado y coloca la
+respuesta de cada caso en `reviews/<case-id>.json`.
+
+## Congelar la muestra y calcular las métricas finales
 
 ```bash
+bash aws-lab/run-30.sh judge
 bash aws-lab/run-30.sh apply-review
-bash aws-lab/run-30.sh evaluate
+bash aws-lab/run-30.sh freeze-sample
+bash aws-lab/run-30.sh evaluate --require-all --require-sample
 bash aws-lab/run-30.sh summary
 ```
 
-Al cerrar las treinta pruebas exige que ninguna esté sin ejecutar:
+`freeze-sample` selecciona diez SHA MIG distintos por salto entre los admitidos,
+en orden de SHA. Identifica los parches de referencia por repositorio y SHA, sus
+correcciones, las consultas originales y las huellas de las revisiones en
+`study-sample.json`. Si un salto tiene menos de diez MIG elegibles, informa
+cuántos hay. Los FIX aportan correcciones de referencia y se cuentan por separado.
+`--require-migs 30` sigue disponible como comprobación de cantidad total.
 
-```bash
-bash aws-lab/run-30.sh apply-review
-bash aws-lab/run-30.sh evaluate --require-all --require-migs 30
-bash aws-lab/run-30.sh summary
-cat "aws-lab/results/$R2_BATCH_ID/summary.json"
-```
+- **C1** mide qué proporción de las correcciones admitidas explica alguna unidad
+  de la colección. Un commit queda cubierto si todas sus correcciones están
+  cubiertas. Los estados parcial y sin cobertura se registran por separado.
+- **C2** mide qué proporción de las correcciones esperadas explica la primera
+  vista de cada motor. También se registra la cobertura por MIG de la muestra.
+- **P1(q)** es 100 × unidades pertinentes mostradas / unidades mostradas.
+  Una vista vacía deja P1 indefinida. El resumen informa el número de consultas
+  pareadas, la media por motor y la diferencia Graph − BM25. La meta se cumple
+  cuando la diferencia es positiva.
 
-`apply-review` rechaza juicios sin terminar, IDs desconocidos, evidencia alterada,
-correspondencias con otro salto, hunks sin decisión y resultados sin juicio.
-Los casos dudosos reciben una decisión y nota de incertidumbre. Las correcciones
-sin evidencia permanecen en el denominador de cobertura. Si no hay correcciones
-admitidas, el asistente debe explicarlo y la cobertura es indefinida.
-`evaluate` devuelve error si falta revisión o un caso intentado está incompleto;
-`--require-all` también exige los treinta casos del catálogo. `--require-migs 30`
-exige al menos treinta commits MIG distintos admitidos: el resumen los lista
-por repositorio, SHA y URL. El conteo de casos no sustituye ese conteo. Completar una
-corrida operativa no certifica la independencia de la muestra académica.
+`metrics.csv` y `evaluation.json` conservan los resultados del lote operativo.
+En `summary.json`, `study_sample.metrics` recoge las métricas de la muestra
+congelada y usa una sola vez cada consulta vinculada a sus MIG. Documenta
+el alcance de la muestra y sus dependencias al presentar los resultados.
 
-## Archivos finales
+## Alcance de las referencias
 
-- `metrics.csv`: P1, C2, C1, conteos y tiempos por addon y motor.
-- `summary.json`: avance, C1 agregado y P1 medio de pares comparables.
-- `cases.csv`: estado de todos los casos, incluidos fallos.
-- `cases/<caso>/<intento>/evaluation.json`: métricas detalladas y denominadores.
-- `evaluation-bars.txt` dentro del intento: barras de las métricas calculadas.
-- `review/RECOMENDACIONES_MIG.md`: recomendaciones cruzadas con sugerencias MIG.
-- `review/JUICIOS.md`, `review/review-applied.json` y `evaluation-spec.json`:
-  decisiones, motivos, incertidumbre y vínculos admitidos.
-
-La recolección automática consulta GitHub mediante Git y conserva todos los
-commits `[MIG]` alcanzables en los repositorios OCA seleccionados para el destino,
-incluyendo otros addons del repositorio. Conserva candidatos sin versión en el
-asunto para su revisión. Los PR sin fusionar y otros repositorios están fuera
-del alcance predeterminado. Amplía los repositorios antes de iniciar un lote con
-`--mig-catalog /workspace/repo/aws-lab/mig-sources.json`, siguiendo el ejemplo
-versionado. El catálogo adicional forma parte de la huella del protocolo.
+El recolector busca commits `[MIG]` y `[FIX]` alcanzables desde el SHA destino
+y ausentes del historial del SHA origen. Incluye todas las rutas de los
+repositorios de los addons del caso. Admite asuntos que nombran el destino o
+carecen de versión explícita. `--mig-catalog` agrega repositorios revisados
+antes del primer bloque. Consulta
+[`mig-sources.example.json`](mig-sources.example.json) para ver el formato.
+Los PR sin fusionar quedan fuera de esta búsqueda Git.

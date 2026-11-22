@@ -12,7 +12,7 @@ Presentar candidatos trazables y medir el motor relacional frente a una línea b
 | RP-01 | Filtrar por versión, capa y profundidad | `report.search_units` |
 | RP-02 | Deduplicar hunks idénticos con IDs estables | `report.py` |
 | RP-03 | Calcular conteos antes del límite | `summary` |
-| RP-04 | Mostrar entre 1 y 10 resultados | Parámetro `limit` |
+| RP-04 | Mostrar hasta diez hunks o secciones documentales por consulta | Parámetro `limit` |
 | RP-05 | Conservar fuente, localizador, evidencia, camino y relaciones | Contrato del reporte |
 | RP-06 | Generar TXT y JSON | `render_report` y escritores |
 | RP-07 | Validar conteos y caminos | `validate_report` |
@@ -29,16 +29,17 @@ Presentar candidatos trazables y medir el motor relacional frente a una línea b
 
 ## Comparación del experimento de AWS
 
-El experimento compara exclusivamente Graph y BM25 por unidades sobre el
-mismo corpus, entrada y límite de diez resultados. La comparación histórica
-por fuentes completas queda fuera del protocolo acordado. El dossier conserva
-recomendaciones, contenido de la colección, código del addon y parches MIG
-para emitir juicios asistidos por IA con motivo e incertidumbre. Su importación
-valida IDs, integridad, salto y completitud antes de calcular las métricas.
-El procedimiento incremental está en `aws-lab/EVALUACION_FINAL.md`.
+Graph y BM25 consultan el mismo corpus con el mismo addon, salto y límite.
+El dossier conserva recomendaciones, colección, código y parches MIG/FIX.
+La revisión asistida por IA registra capa, componente, motivos e incertidumbre.
+La importación valida IDs, integridad, salto y completitud antes de calcular
+C1, C2 y P1. Las secciones documentales de destino pueden cubrir una corrección
+si explican el cambio aplicable al salto. Las estadísticas de grafo describen
+coincidencias, atributos y aristas. Los juicios establecen pertinencia.
 
-Los MIG se revisan como referencia externa para identificar correcciones
-manuales evaluables. Sus parches quedan fuera de los inventarios de entrada
-del experimento. La existencia de una coincidencia técnica requiere revisión
-para establecer su utilidad. Los tiempos por etapa y por consulta completa
-se registran con sus límites de medición.
+El lote conserva una selección de hasta diez URL públicas distintas por caso
+y motor para revisión operativa. La evaluación usa unidades por consulta y
+reporta la media pareada de P1 en la muestra congelada de treinta MIG. Los
+parches de referencia quedan en el dossier. Los tiempos por etapa y por
+consulta completa se registran con sus límites de medición.
+[Procedimiento en AWS](../../../../aws-lab/EVALUACION_FINAL.md).

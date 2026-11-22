@@ -5,7 +5,13 @@ from statistics import median
 from time import perf_counter
 
 from ..records import connect, load, meta
-from ..report import render_report, search_units
+from ..report import DOCUMENT_KINDS, render_report, search_units
+
+
+def evidence_matches_transition(unit, origin, target):
+    versions = (unit["version_from"], unit["version_to"])
+    return versions == (origin, target) or (
+        unit["kind"] in DOCUMENT_KINDS and versions == (None, target))
 
 
 def coverage(references, units):
@@ -16,9 +22,8 @@ def coverage(references, units):
     for ref_id, reference in references.items():
         for unit_id in reference["available_unit_ids"]:
             unit = units.get(unit_id)
-            if unit is None or not unit["source_url"] or (
-                    unit["version_from"], unit["version_to"]
-            ) != (reference["from_version"], reference["to_version"]):
+            if unit is None or not unit["source_url"] or not evidence_matches_transition(
+                    unit, reference["from_version"], reference["to_version"]):
                 raise ValueError(f"Coverage evidence for {ref_id} must exist and match the reference transition")
             covered.add(ref_id)
     return covered
@@ -74,7 +79,7 @@ def evaluate(database, specification, base, *, repeats=1):
                 raise ValueError("Invalid relevance judgment")
             for ref_id in refs:
                 unit, reference = units[uid], references[ref_id]
-                if (unit["version_from"], unit["version_to"]) != (reference["from_version"], reference["to_version"]):
+                if not evidence_matches_transition(unit, reference["from_version"], reference["to_version"]):
                     raise ValueError("A judgment maps results to a different transition")
         reports, samples = {}, {"graph": [], "bm25": []}
         for repeat in range(repeats):
@@ -97,6 +102,9 @@ def evaluate(database, specification, base, *, repeats=1):
         scores = {engine: dict(**score(report, judgments, expected),
                              T1_seconds=samples[engine], median_T1_seconds=median(samples[engine]))
                   for engine, report in reports.items()}
+        for engine, report in reports.items():
+            scores[engine]["shown_units"] = [dict(id=row["change_id"], citation=row["source"])
+                                             for row in report["results"]]
         p_graph, p_bm25 = scores["graph"]["P1"], scores["bm25"]["P1"]
         cases.append(dict(id=query_id, query=graph["query"], engines=scores,
                           P1_difference=p_graph - p_bm25 if p_graph is not None and p_bm25 is not None else None))

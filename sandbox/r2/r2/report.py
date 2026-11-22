@@ -11,6 +11,8 @@ from .normalization.terms import term_counts
 from .relations import execute_query
 from .relations.traversal import traverse_relations
 
+DOCUMENT_KINDS = {"markdown_section", "rst_section", "html_document", "pr_description"}
+
 
 def version_key(version):
     # Inputs: version.
@@ -27,7 +29,17 @@ def citation(unit):
     # Output: A source citation.
     return dict(unit_id=unit["id"], source_id=unit["source_id"], url=unit["source_url"],
                 artifact_id=unit["artifact_id"], locator=unit["source_locator"],
-                from_version=unit["version_from"], to_version=unit["version_to"])
+                from_version=unit["version_from"], to_version=unit["version_to"], kind=unit["kind"])
+
+
+def matches_transition(unit, first, last):
+    """Use destination documentation as candidates with an explicit version anchor."""
+    before, after = unit["version_from"], unit["version_to"]
+    if unit["kind"] not in DOCUMENT_KINDS | {"diff_hunk"} or not after:
+        return False
+    if before is None:
+        return unit["kind"] in DOCUMENT_KINDS and first < version_key(after) <= last
+    return first <= version_key(before) < version_key(after) <= last
 
 
 def graph_hits(graph, units, admissible):
@@ -98,6 +110,8 @@ def search_units(database, module, from_version, to_version, *, layer="all", max
         # Does: Apply the query's version bounds to a result or context unit.
         # Output: A boolean eligibility decision.
         origin, target = unit["version_from"], unit["version_to"]
+        if not context:
+            return matches_transition(unit, first, last)
         if origin and target:
             return first <= version_key(origin) < version_key(target) <= last
         return context and all(first <= version_key(value) <= last
@@ -113,15 +127,16 @@ def search_units(database, module, from_version, to_version, *, layer="all", max
             raise ValueError("Collection changed during search")
         units = {unit["id"]: unit for unit in load(con, "information_units")}
         sources = {source["id"]: source for source in load(con, "sources")}
-        observations = {uid: changed_observations(unit) for uid, unit in units.items()
-                        if unit["kind"] == "diff_hunk" and admissible(unit)}
+        observations = {uid: changed_observations(unit) if unit["kind"] == "diff_hunk" else []
+                        for uid, unit in units.items() if admissible(unit)}
         layers = {uid: sorted(set(units[uid]["layers"]) | (
                   {"xml"} if any(entity["rule"] == "xpath_attribute_v1" for entity in entities) else set()))
                   for uid, entities in observations.items()}
         eligible = {uid for uid, unit_layers in layers.items() if layer == "all" or layer in unit_layers}
+        keys = {uid: diff_key(units[uid]) if units[uid]["kind"] == "diff_hunk" else (uid,) for uid in eligible}
         change_ids = {}
         for uid in sorted(eligible):
-            change_ids.setdefault(diff_key(units[uid]), uid)
+            change_ids.setdefault(keys[uid], uid)
         graph = None
         paths, scores = {}, {}
         if engine == "graph":
@@ -154,7 +169,7 @@ def search_units(database, module, from_version, to_version, *, layer="all", max
     seen = set()
     for uid in ordered:
         unit = units[uid]
-        change_id = change_ids[diff_key(unit)]
+        change_id = change_ids[keys[uid]]
         if change_id in seen:
             continue
         seen.add(change_id)
@@ -170,9 +185,13 @@ def search_units(database, module, from_version, to_version, *, layer="all", max
         methods.update((entity["context"]["model"], entity["name"]) for entity in observations[uid]
                        if entity["type"] in {"method", "method_reference"} and entity["context"].get("model"))
         if len(results) < limit:
-            results.append(dict(change_id=change_id, title=f"Observed diff in {data['file_path']}",
+            is_diff = unit["kind"] == "diff_hunk"
+            title = (f"Observed diff in {data['file_path']}" if is_diff else
+                     data.get("heading") or data.get("pr_title") or unit["source_locator"]["artifact_path"].rsplit("/", 1)[-1])
+            results.append(dict(change_id=change_id, title=title,
                                 status="candidate", layers=layers[uid], source_layers=unit["layers"], depth=depth,
-                                before=data["removed"], after=data["added"], source=citation(unit),
+                                before=data["removed"] if is_diff else "",
+                                after=data["added"] if is_diff else unit["text"], source=citation(unit),
                                 path=[citation(units[node]) for node in path],
                                 relations=[edge_by_id[edge] for edge in edge_ids],
                                 module_evidence=direct.get(path[0], []) if path else [],
@@ -187,7 +206,7 @@ def search_units(database, module, from_version, to_version, *, layer="all", max
     if engine == "graph" and not crossing["matched_unit_ids"]:
         warnings.append("No exact technical seeds were found.")
     report = dict(schema_version=1, collection_revision=metadata["collection_revision"], engine=engine,
-                  ranking_version="depth-fidelity-id-1" if engine == "graph" else "fts5-score-id-1",
+                  ranking_version="depth-fidelity-id-2" if engine == "graph" else "fts5-score-id-2",
                   query=dict(from_version=from_version, to_version=to_version, layer=layer, limit=limit,
                              maximum_hops=maximum_hops, module_name=code["module_name"],
                              input_revision=code["input_revision"]),
@@ -224,7 +243,9 @@ def validate_report(report):
         source = row["source"]
         if not source["unit_id"] or not source["locator"].get("artifact_path"):
             raise ValueError("A result must cite its own localized source")
-        if (not first <= version_key(source["from_version"]) < version_key(source["to_version"]) <= last
+        scope = dict(kind=source.get("kind", "diff_hunk"), version_from=source["from_version"],
+                     version_to=source["to_version"])
+        if (not matches_transition(scope, first, last)
                 or (query["layer"] != "all" and query["layer"] not in row["layers"])):
             raise ValueError("Result falls outside the requested transition or layer")
         if report["engine"] == "graph":
@@ -255,7 +276,7 @@ def render_report(report):
     for result in report["results"]:
         source = result["source"]
         lines.append(f"- {result['title']} [{result['status']}] | "
-                     f"{source['from_version']} -> {source['to_version']} | {', '.join(result['layers'])}")
+                     f"{source['from_version'] or '?'} -> {source['to_version']} | {', '.join(result['layers'])}")
         lines.append(f"  Source: {source['url'] or '(local artifact)'} | {source['locator']}")
         if result["path"]:
             evidence = result["module_evidence"][0]["input_entity"]["location"]

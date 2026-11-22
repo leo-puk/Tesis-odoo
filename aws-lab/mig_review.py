@@ -1,4 +1,4 @@
-"""Suggest auditable links between archived MIG hunks and retrieved evidence."""
+"""Suggest auditable links between archived MIG/FIX hunks and retrieved evidence."""
 from collections import defaultdict
 import json
 import re
@@ -12,6 +12,7 @@ def identifiers(text):
 
 
 def suggest_links(database, folder, reference_dir, commits, origin, target):
+    from r2.evaluation.normalized import evidence_matches_transition
     from r2.normalization.diff import parse_diff
     from r2.records import connect
 
@@ -67,13 +68,13 @@ def suggest_links(database, folder, reference_dir, commits, origin, target):
                     "SELECT u.payload,c.payload FROM information_units u JOIN unit_content c ON u.id=c.unit_id ORDER BY u.id"):
                 unit = json.loads(unit_payload)
                 uid = unit["id"]
-                exact_jump = (unit["version_from"], unit["version_to"]) == (origin, target)
-                if not (exact_jump or uid in retrieved_units):
+                applicable = evidence_matches_transition(unit, origin, target)
+                if not (applicable or uid in retrieved_units):
                     continue
                 for hunk_id, tokens in matching_hunks(json.loads(content).get("text") or "").items():
                     entry = dict(unit_id=uid, identifiers=tokens, source_id=unit["source_id"])
                     hunk = by_id[hunk_id]
-                    if exact_jump and unit.get("source_url"):
+                    if applicable and unit.get("source_url"):
                         hunk["available_unit_candidates"].append(entry)
                     for result in retrieved_units.get(uid, []):
                         hunk["retrieved_unit_candidates"].append({**entry, **result})

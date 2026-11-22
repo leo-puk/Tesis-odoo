@@ -10,6 +10,13 @@ from ..csv_entities import extract_csv_entities
 from .anchors import partial_anchors
 
 ENTITY_RULE_VERSION = 'observed_entities_v2_scopes'
+MODEL_NAME = r"[a-z][a-z0-9_]*(?:\.[a-z][a-z0-9_]*)+"
+DOCUMENTED_MODELS = (
+    re.compile(rf":model:`({MODEL_NAME})`"),
+    re.compile(rf"`+({MODEL_NAME})`+\s+model\b"),
+    re.compile(rf"\bmodel\s+`+({MODEL_NAME})`+"),
+    re.compile(rf"\b(?:self\.)?env\[(['\"])({MODEL_NAME})\1\]"),
+)
 
 
 def extract_entities(text, path, locator, origin='code', module=None, side=None, start=1):
@@ -49,6 +56,10 @@ def extract_entities(text, path, locator, origin='code', module=None, side=None,
     if origin != 'code':
         for line,value in enumerate(text.splitlines(),1):
             mentions(value,line,origin)
+            if origin == 'documentation':
+                for pattern in DOCUMENTED_MODELS:
+                    for match in pattern.finditer(value):
+                        add(match.groups()[-1], 'model', line, 'documented_model_v1')
         return entities,warnings
 
     if path.endswith('.py'):

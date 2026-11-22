@@ -25,7 +25,7 @@ flowchart TD
 
 ### Experimento por grupo de cinco addons
 
-`aws-lab/experimentos.py` descarga snapshots de los addons y del núcleo desde GitHub y fija sus SHA. El análisis conjunto de los cinco addons determina las rutas del diff local del núcleo entre origen y destino. El tamaño resultante depende de las referencias técnicas encontradas y queda registrado. Después se planifican y capturan fuentes web complementarias por addon, se deduplican URL y se fusionan los inventarios antes de normalizar. El experimento conserva el diff filtrado y omite el compare global que propone el planner genérico.
+`aws-lab/experimentos.py` descarga snapshots de los addons y del núcleo desde GitHub y fija sus SHA. El análisis de los cinco addons delimita el diff local del núcleo. Las dependencias y los nombres técnicos también delimitan diffs de repositorios OCA auxiliares por rutas y SHA. Se planifican y capturan fuentes web complementarias por addon, se deduplican URL y se fusionan los inventarios antes de normalizar. El plan del lote conserva el diff filtrado del núcleo como fuente de comparación.
 
 La colección es compartida por el grupo. R2.1 produce un cruce por addon y un agregado de coincidencias de los cinco en `initial-crossing.json`. R2.2 ejecuta después las consultas y guarda reportes y caminos por addon. La comparación acordada comprende exclusivamente Graph y BM25 por unidades, con el mismo corpus, entrada y límite. El lote permite ejecutar primero un caso con `start --next 1` y avanzar por bloques con `start --next 5`, conservando los casos completados bajo el mismo protocolo.
 
@@ -33,7 +33,7 @@ La consulta BM25 usa términos de las entidades técnicas extraídas del addon.
 La coincidencia y la ordenación son léxicas. La extracción de relaciones usa
 identidades técnicas tipadas y sus caminos de evidencia.
 
-Los MIG candidatos se recogen después de las consultas mediante Git desde GitHub. Se examina el historial fijado de destino de los repositorios OCA de los cinco addons, incluyendo otras rutas de addon. Un catálogo permite agregar repositorios revisados. Se incluyen los commits `[MIG]` que mencionan la versión destino o cuyo asunto carece de una versión explícita. `suggested-links.json` vincula los hunks de esos parches con las unidades disponibles y recuperadas mediante identificadores compartidos. El dossier `review/` conserva recomendaciones, unidades completas, código y parches para que el asistente emita juicios con motivos e incertidumbre. `apply-review` valida las decisiones y completa `evaluation-spec.json`; `evaluate` calcula las métricas. Se informa por separado el número de casos y el de commits MIG distintos admitidos. El grafo se construye a partir de los cruces y la colección admitida durante R2.1.
+Los candidatos `[MIG]` y `[FIX]` se recogen después de las consultas. Se examina el historial exclusivo del SHA destino de los repositorios OCA de los cinco addons y de los repositorios adicionales revisados. `suggested-links.json` conserva sugerencias por identificador. El dossier `review/` reúne unidades completas, código y parches. `judge` automatiza la revisión mediante un asistente. `apply-review` valida las decisiones y `evaluate` calcula las métricas. El grafo se construye a partir de los cruces y la colección de R2.1.
 
 ## Componentes
 
@@ -64,15 +64,15 @@ La colección activa usa `schema_version=4` y `layout=normalized-units`.
 
 El cruce lee Python, XML, CSV y manifiestos sin importarlos. Consulta el índice por nombre y tipo; no considera suficiente compartir palabras. El grafo conecta unidades mediante identidades técnicas completas, realiza un recorrido multiorigen no dirigido y conserva distancia mínima, caminos y evidencia de aristas.
 
-El reporte filtra por intervalo, capa y profundidad, deduplica hunks idénticos y calcula totales antes de limitar la vista. Cada resultado conserva fuente, localizador, evidencia del addon y camino. En la CLI y el lote de AWS, `engine=bm25` consulta las mismas unidades elegibles como control léxico.
+El reporte filtra por intervalo, capa y profundidad, deduplica hunks idénticos y calcula totales antes de limitar la vista. Puede devolver hunks y secciones de documentación aplicables. Cada resultado cita fuente y localizador. Graph conserva el camino desde el addon, y BM25 guarda la puntuación léxica. El lote reúne hasta diez URL públicas distintas por caso y motor en `recommended-sources.json`.
 
 ## Evaluación
 
 `r2 evaluate` calcula C1, P1, C2, V1 y T1 a partir de referencias y juicios explícitos. Cuando faltan juicios, la métrica es `null`; no se inventa un cero. La validación académica requiere una muestra independiente, no solo pruebas sintéticas.
 
-El evaluador de la CLI y el experimento mantienen la comparación entre unidades. C1 usa las correcciones evaluables, incluidas las que no tienen evidencia en la colección. P1 cuenta unidades pertinentes entre las mostradas. C2 usa correcciones explicadas por la primera vista. El autor encarga los juicios finales al asistente: se conserva su autoría, motivos e incertidumbre sin atribuir una revisión humana independiente. El objetivo de treinta migraciones de referencia se verifica por los MIG admitidos, sin equipararlo automáticamente a treinta grupos operativos.
+El evaluador de la CLI y el experimento mantienen la comparación entre unidades. C1 usa las correcciones evaluables, incluidas las que carecen de evidencia en la colección. P1 cuenta unidades pertinentes entre las mostradas. C2 usa correcciones explicadas por la primera vista. Se registra quién emitió el juicio, la capa técnica, el componente afectado, los motivos y la incertidumbre. El lote fija treinta MIG admitidos mediante `freeze-sample` y mide la diferencia de P1 sobre sus consultas pareadas.
 
-`timing.json` registra tiempos de consulta completa y de etapa por repetición dentro del trabajador. `relations_seconds` mide extracción, recorrido y validación del grafo. `bm25_units_seconds` mide la consulta léxica de unidades. Descarga, normalización y construcción de índices son preparación. El contenedor corre en segundo plano y muestra las recomendaciones de cada addon al terminar su caso. El intento conserva el reporte detallado.
+`timing.json` registra tiempos de consulta y de etapa por repetición. `relations_seconds` mide extracción, recorrido y validación del grafo. `bm25_units_seconds` mide la consulta léxica. Descarga, normalización y construcción de índices son preparación. Al terminar el caso, el contenedor registra los resultados de ambos motores. `statistics.json` y `bars.txt` conservan conteos estructurales de nodos, identidades y aristas. La pertinencia se establece en los juicios.
 
 ## Invariantes
 

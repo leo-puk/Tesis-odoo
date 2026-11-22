@@ -13,6 +13,7 @@ import unittest
 from unittest.mock import patch
 
 import experimentos as batch
+from study_sample import freeze_sample, sample_metrics, validate_sample
 
 
 class BatchTests(unittest.TestCase):
@@ -37,8 +38,9 @@ class BatchTests(unittest.TestCase):
             seed.mkdir()
 
             def git(directory, *arguments):
-                return subprocess.check_output(["git", "-C", str(directory), *arguments],
-                    text=True, stderr=subprocess.DEVNULL).strip()
+                result = subprocess.run(["git", "-C", str(directory), *arguments], text=True, capture_output=True)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                return result.stdout.strip()
 
             git(seed, "init", "-q")
             source = seed / "model.py"
@@ -56,8 +58,9 @@ class BatchTests(unittest.TestCase):
             output.mkdir()
             bare = cache / "git" / "OCA-fixture.git"
             bare.parent.mkdir(parents=True)
-            git(root, "clone", "--bare", str(seed), str(bare))
-            git(bare, "remote", "set-url", "origin", "https://github.com/OCA/fixture.git")
+            git(root, "init", "--bare", str(bare))
+            shutil.copytree(seed / ".git" / "objects", bare / "objects", dirs_exist_ok=True)
+            git(bare, "remote", "add", "origin", "https://github.com/OCA/fixture.git")
             git(bare, "update-ref", "refs/heads/16.0", latest)
             batch.save(output / "sources.json", {"OCA/fixture@16.0": frozen})
             sources = batch.Sources(cache, output, output / "sources.log")
@@ -89,6 +92,48 @@ class BatchTests(unittest.TestCase):
             report.write_text("changed")
             self.assertFalse(batch.verify_artifacts(root, payload))
 
+    def test_study_cohort_freezes_thirty_migs_and_scores_only_its_queries(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            manifest = {"cases": []}
+            evaluated = {}
+            for offset, origin in enumerate(range(16, 19)):
+                case = dict(id=f"case-{origin}", version_from=f"{origin}.0", version_to=f"{origin + 1}.0")
+                manifest["cases"].append(case)
+                attempt = output / "cases" / case["id"] / "attempt"
+                batch.save(attempt.parent / "latest.json", dict(status="completed",
+                    attempt=str(attempt.relative_to(output))))
+                commits = [dict(repository="OCA/fixture", sha=f"{offset * 11 + index:040x}")
+                           for index in range(11)]
+                refs = {str(i): dict(commit_ids=[f"OCA/fixture@{commit['sha']}"], hunk_ids=[f"fixture:{i}"])
+                        for i, commit in enumerate(commits)}
+                packet = attempt / "review" / "packet.json"
+                batch.save(packet, {"case": case})
+                spec = dict(review_packet_sha256=batch.digest(packet), admitted_migrations=commits, references=refs,
+                    queries=[dict(id=case["id"] + "/selected", reference_ids=list(refs)[:10]),
+                             dict(id=case["id"] + "/other", reference_ids=["10"])])
+                path = attempt / "evaluation-spec.json"
+                batch.save(path, spec)
+                evaluated[case["id"]] = dict(covered_reference_ids=["0"], queries=[
+                    dict(id=spec["queries"][0]["id"], engines={
+                        "graph": dict(P1=75, covered_reference_ids=["0"]),
+                        "bm25": dict(P1=50, covered_reference_ids=[])}),
+                    dict(id=spec["queries"][1]["id"], engines={
+                        "graph": dict(P1=1, covered_reference_ids=[]), "bm25": dict(P1=100, covered_reference_ids=[])})])
+            sample_path = freeze_sample(output, manifest)
+            self.assertEqual(freeze_sample(output, manifest), sample_path)
+            sample = batch.read(sample_path)
+            self.assertEqual(len({item["sha"] for item in sample["migrations"]}), 30)
+            metrics = sample_metrics(sample, evaluated)
+            self.assertEqual(metrics["query_count"], 3)
+            self.assertEqual(metrics["P1_difference"], 25)
+            self.assertTrue(metrics["graph_exceeds_bm25"])
+            self.assertEqual(metrics["C1"], 10)
+            self.assertEqual(metrics["migrations"][0]["first_view"], {"graph": "covered", "bm25": "uncovered"})
+            batch.save(path, dict(spec, reviewer="changed"))
+            with self.assertRaisesRegex(ValueError, "changed"):
+                validate_sample(output, sample)
+
     def test_case_failure_does_not_stop_batch_and_retry_preserves_successes(self):
         cases = batch.catalog(batch.DEFAULT_PLAN)[:2]
         with tempfile.TemporaryDirectory() as temporary:
@@ -111,8 +156,11 @@ class BatchTests(unittest.TestCase):
                     module.mkdir(parents=True)
                     output = module / "report.txt"
                     output.write_text("synthetic output")
-                    batch.save(module / "graph" / "report.json", {"results": [
-                        {"title": "Fixture recommendation", "change_id": "unit-fixture"}]})
+                    for engine in batch.ENGINES:
+                        batch.save(module / engine / "report.json", {"summary": {}, "results": [
+                            {"title": "Fixture recommendation", "change_id": "unit-fixture",
+                             "source": {"url": "https://example.invalid/guide", "unit_id": "unit-fixture",
+                                        "locator": {"line_start": 1}}}]})
                     modules.append(dict(module=item["module"], artifacts={"report.txt": batch.digest(output)},
                         engines={engine: dict(summary={"changes_found": 1, "changes_shown": 1},
                                               median_T1_seconds=0.1) for engine in ("graph", "bm25")}))
@@ -124,7 +172,7 @@ class BatchTests(unittest.TestCase):
                 self.assertEqual(batch.run(args), 1)
                 self.assertEqual(batch.run(args), 0)
             self.assertEqual(calls, [cases[0]["id"], cases[1]["id"], cases[1]["id"]])
-            self.assertEqual(console.getvalue().count("Fixture recommendation | unit-fixture"), 10)
+            self.assertEqual(console.getvalue().count("Fixture recommendation | unit-fixture"), 20)
             self.assertEqual(batch.read(args.output / "summary.json")["statuses"]["completed"], 2)
             with (args.output / "metrics.csv").open(encoding="utf-8") as stream:
                 rows = list(csv.DictReader(stream))

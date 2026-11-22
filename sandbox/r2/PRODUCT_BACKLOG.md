@@ -20,7 +20,7 @@ Entregar a un partner evidencia trazable de cambios de Odoo potencialmente relac
 | R2-005 | R2.1 Persistencia | Reutilizar una colección | SQLite esquema 4 guarda unidades, entidades y términos | Cumplido |
 | R2-006 | R2.1 Cruce | Hallar identidades del addon en evidencia | Matches exactos incluyen ambas ubicaciones | Cumplido |
 | R2-007 | R2.2 Relaciones | Ampliar matches a cambios relacionados | Recorrido reproducible de 0 a 3 saltos | Cumplido |
-| R2-008 | R2.2 Reporte | Presentar candidatos trazables | TXT/JSON, máximo configurable y conteos totales | Cumplido |
+| R2-008 | R2.2 Reporte | Presentar candidatos trazables | Hunks y documentación por consulta, estadísticas y hasta diez URL por caso y motor en el lote | Cumplido técnicamente |
 | R2-009 | R2.2 Consulta | Cambiar filtros sin recapturar | `query` reutiliza SQLite | Cumplido |
 | R2-010 | R2.2 Baseline | Comparar con búsqueda léxica | Graph frente a BM25 por unidades en CLI y experimento; mismo corpus, consultas y límite | Cumplido técnicamente |
 | R2-011 | Evaluación | Medir C1/P1/C2/V1/T1 | Solo usa referencias y juicios explícitos | Cumplido técnicamente |
@@ -32,20 +32,19 @@ Entregar a un partner evidencia trazable de cambios de Odoo potencialmente relac
 | R2-017 | UX | Incorporar interfaz gráfica | Selector de carpetas, versiones, addons y resultados | Pendiente |
 | R2-018 | Insights | Mostrar dashboard | Gráficos enlazan capas, profundidad y evidencia | Pendiente |
 | R2-019 | Git | Asistir ramas faltantes | Explica y confirma antes de `git fetch` | Pendiente |
-| R2-020 | R2.1 Adquisición | Complementar el diff filtrado con fuentes por salto | Capturas e inventarios fusionados; PR/diffs adicionales mediante catálogo revisado | Integrado en el lote; selección de fuentes específicas pendiente de revisión |
+| R2-020 | R2.1 Adquisición | Complementar el diff filtrado con fuentes por salto | Diffs OCA auxiliares por dependencias, documentación y capturas integradas con procedencia | Cumplido técnicamente |
 | R2-021 | Rendimiento | Procesar diffs grandes | Análisis estático previo genera un diff filtrado y registra su alcance | Cumplido técnicamente |
 | R2-022 | Filtros | Medir pérdida por filtros | Reporta candidatos antes/después, recall y exclusiones | Pendiente prioritario |
 | R2-023 | Relaciones | Medir aporte por profundidad | Relevantes nuevos, ruido y caminos perdidos por nivel | Pendiente prioritario |
-| R2-024 | Tesis | Validar con verdad independiente | Muestra congelada, revisores y juicios reproducibles | Pendiente |
+| R2-024 | Tesis | Ejecutar y documentar la validación | Dossier MIG/FIX, capa y componente en juicios, muestra congelada y P1 pareada | Flujo implementado. Ejecución y revisión de la muestra real pendientes |
 | R2-025 | Versiones | Tratar saltos múltiples por separado | Cada salto conserva fuentes y bindings propios | Parcial |
 | R2-026 | Distribución | Instalar como producto | Paquete versionado probado en Windows y Linux | Pendiente |
 
 ## Prioridad siguiente
 
-1. R2-020: aumentar evidencia específica del intervalo.
-2. R2-022 y R2-023: medir filtros y relaciones.
-3. R2-018: presentar insights sin perder trazabilidad.
-4. R2-024: cerrar la evaluación académica independiente.
+1. Ejecutar y documentar la muestra de R2-024.
+2. Medir el efecto de filtros y relaciones en R2-022 y R2-023.
+3. Incorporar el dashboard de R2-018.
 
 ## Definición de terminado
 

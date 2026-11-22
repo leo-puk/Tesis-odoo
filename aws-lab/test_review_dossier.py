@@ -4,32 +4,37 @@ from contextlib import redirect_stdout
 import copy
 import importlib.util
 import io
+import json
 from pathlib import Path
 import sys
 import tempfile
 import unittest
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 
 import experimentos as batch
 from mig_collection import collect_migs
 from mig_review import suggest_links
-from review_dossier import apply_case, export_case
+from review_dossier import apply_case, export_case, judge_batch
 
 
 class CollectionTests(unittest.TestCase):
-    def test_other_addon_migs_are_archived_with_version_and_scope(self):
+    def test_other_addon_migs_and_fixes_are_archived_with_version_and_scope(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
-            sources = Mock(cache=root, pins={"OCA/fixture@17.0": "frozen"})
+            sources = Mock()
+            sources.pin.side_effect = [(root, "source"), (root, "frozen")]
             def git(directory, *args):
                 if args[0] == "log":
                     self.assertNotIn("--", args)  # Whole repository, including other addons.
-                    return "a\t[17.0][MIG] another_addon\nb\t[18.0][MIG] wrong_version\nc\t[MIG] versionless"
+                    self.assertEqual(args[-1], "source..frozen")
+                    return "a\t[17.0][MIG] another_addon\nb\t[18.0][MIG] wrong_version\nc\t[FIX] versionless"
                 return "--- a/other/models.py\n+++ b/other/models.py\n@@ -1 +1 @@\n-old_name\n+new_name\n"
             sources.git.side_effect = git
-            case = dict(id="oca_v01_1617", version_to="17.0", modules=[dict(repo="fixture", module="original")])
+            case = dict(id="oca_v01_1617", version_from="16.0", version_to="17.0",
+                        modules=[dict(repo="fixture", module="original")])
             result = collect_migs(sources, case, root / "references")
             self.assertEqual([entry["sha"] for entry in result["candidates"]], ["a", "c"])
+            self.assertEqual(result["candidates"][1]["tags"], ["FIX"])
             self.assertEqual(result["status"], "collected")
             self.assertTrue((root / "references/fixture-a.diff").exists())
             self.assertIn("not an exhaustive", result["scope"]["limitation"])
@@ -81,10 +86,13 @@ class ReviewTests(unittest.TestCase):
         self.review.update(completed=True, reviewer="Synthetic fixture: not an academic reviewer", reference_decisions=[dict(
             id="fix", admitted=True, description="Synthetic incompatibility", modules=["original"], hunk_ids=[self.hid],
             available_unit_ids=[self.direct], reason="Synthetic patch evidence", uncertainty="Fixture only",
+            affected_layer="python", affected_component="original.seed",
+            unit_explanations={self.direct: "Synthetic technical evidence"},
             coverage_reason="Synthetic exact-jump evidence")])
         for judgments in self.review["judgments"].values():
             for uid, judgment in judgments.items():
                 judgment.update(relevant=uid == self.direct, reference_ids=["fix"] if uid == self.direct else [],
+                                affected_layer="python", affected_component="original.seed",
                                 reason="Synthetic technical decision", uncertainty="Fixture only")
         self.path = self.output / "reviews" / (self.case["id"] + ".json")
 
@@ -117,13 +125,15 @@ class ReviewTests(unittest.TestCase):
 
     def test_uncovered_correction_remains_in_reference_denominator(self):
         self.review["reference_decisions"].append(dict(self.review["reference_decisions"][0], id="missed",
-            description="Another synthetic correction", available_unit_ids=[], coverage_reason="Absent from collection"))
+            description="Another synthetic correction", available_unit_ids=[], unit_explanations={},
+            coverage_reason="Absent from collection"))
         self.apply()
         args = argparse.Namespace(output=self.output, plan=batch.DEFAULT_PLAN, repeats=1, only=[self.case["id"]])
         with redirect_stdout(io.StringIO()):
             self.assertEqual(batch.evaluate(args), 0)
         value = batch.read(self.attempt / "evaluation.json")
         self.assertEqual(value["C1"], 50)
+        self.assertEqual(value["commit_coverage"][0]["status"], "partial")
         self.assertEqual(value["queries"][0]["engines"]["graph"]["C2"], 50)
 
     def test_incomplete_or_stale_or_unaccounted_reviews_are_rejected(self):
@@ -136,6 +146,24 @@ class ReviewTests(unittest.TestCase):
         self.assertIsNone(batch.read(self.attempt / "evaluation-spec.json")["reviewer"])
         (self.folder / "addon-sources.json").write_text("{}", encoding="utf-8")
         with self.assertRaises(ValueError):
+            self.apply()
+
+    def test_automated_judge_archives_real_response_once_and_applies_validation(self):
+        args = argparse.Namespace(output=self.output, reviews=None, judge_command=["fixture-judge"],
+                                  judge_timeout=5, retry_judgments=False, only=None)
+        response = Mock(stdout=json.dumps(self.review))
+        with patch("review_dossier.subprocess.run", return_value=response) as runner, redirect_stdout(io.StringIO()):
+            self.assertEqual(judge_batch(args), 0)
+            self.assertEqual(judge_batch(args), 0)
+        runner.assert_called_once()
+        self.assertEqual(runner.call_args.kwargs["cwd"], self.folder)
+        self.assertEqual(batch.read(self.path), self.review)
+        self.assertTrue(apply_case(self.attempt, self.path)["admitted_commits"])
+
+    def test_rejects_positive_judgment_without_technical_scope(self):
+        query = next(iter(self.review["judgments"].values()))
+        query[self.direct]["affected_component"] = ""
+        with self.assertRaisesRegex(ValueError, "layer and component"):
             self.apply()
 
 
